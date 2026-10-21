@@ -50,7 +50,8 @@ async def replay(args: argparse.Namespace) -> dict:
             body = {"model": args.model_name, "prompt": row.prompt, "max_tokens": row.max_tokens,
                     "temperature": 0, "stream": True, "add_special_tokens": False,
                     "stream_options": {"include_usage": True}}
-            headers = {"X-Cacheflow-Request-ID": row.request_id, "X-Cacheflow-Arrival-Ns": str(due_ns)}
+            headers = {"X-Cacheflow-Request-ID": row.request_id, "X-Cacheflow-Arrival-Ns": str(due_ns),
+                       "X-Cacheflow-Run-ID": args.run_id}
             first_ns = None
             token_events = []
             pieces = []

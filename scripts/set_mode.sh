@@ -5,7 +5,7 @@ policy=${2:-fifo}
 case "$mode" in B0|B1|B2|B3|B4) ;; *) echo "invalid mode" >&2; exit 2;; esac
 case "$policy" in fifo|static_group|dhas) ;; *) echo "invalid policy" >&2; exit 2;; esac
 
-supervisorctl stop cacheflow_gateway cacheflow_vllm 2>/dev/null || true
+supervisorctl stop cacheflow_gateway cacheflow_vllm cacheflow_lmcache 2>/dev/null || true
 printf '%s\n' "$mode" > /workspace/.cacheflow-mode
 printf '%s\n' "$policy" > /workspace/.cacheflow-policy
 if [[ "$mode" == B0 || "$mode" == B1 ]]; then

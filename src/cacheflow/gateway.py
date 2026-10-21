@@ -86,6 +86,7 @@ def create_app(config_path: str | None = None) -> FastAPI:
         if payload.get("add_special_tokens") is not False:
             raise HTTPException(400, "set add_special_tokens=false for auditable token alignment")
         request_id = request.headers.get("x-cacheflow-request-id") or os.urandom(8).hex()
+        run_id = request.headers.get("x-cacheflow-run-id") or "unlabeled"
         arrival_header = request.headers.get("x-cacheflow-arrival-ns")
         try:
             arrival_ns = int(arrival_header) if arrival_header else received_ns
@@ -102,13 +103,13 @@ def create_app(config_path: str | None = None) -> FastAPI:
             upstream_response = await stream_cm.__aenter__()
         except Exception as exc:
             await scheduler.finish(ticket, cancellation_reason="upstream_connect_error")
-            await trace.append(_record(ticket, received_ns, len(token_ids), status="upstream_connect_error"))
+            await trace.append(_record(ticket, received_ns, len(token_ids), run_id=run_id, status="upstream_connect_error"))
             raise HTTPException(502, f"upstream connection failed: {type(exc).__name__}") from exc
         if upstream_response.status_code >= 400:
             error_body = await upstream_response.aread()
             await stream_cm.__aexit__(None, None, None)
             await scheduler.finish(ticket, cancellation_reason="upstream_http_error")
-            await trace.append(_record(ticket, received_ns, len(token_ids), status=f"upstream_http_{upstream_response.status_code}"))
+            await trace.append(_record(ticket, received_ns, len(token_ids), run_id=run_id, status=f"upstream_http_{upstream_response.status_code}"))
             return Response(content=error_body, status_code=upstream_response.status_code, media_type="application/json")
 
         async def relay():
@@ -130,15 +131,16 @@ def create_app(config_path: str | None = None) -> FastAPI:
                 if ticket.first_token_ns is None and status == "ok":
                     status = "empty_response"
                 await scheduler.finish(ticket, cancellation_reason=None if status == "ok" else status)
-                await trace.append(_record(ticket, received_ns, len(token_ids), status=status))
+                await trace.append(_record(ticket, received_ns, len(token_ids), run_id=run_id, status=status))
 
         return StreamingResponse(relay(), media_type="text/event-stream", headers={"X-Cacheflow-Request-ID": request_id})
 
     return app
 
 
-def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, status: str) -> dict[str, Any]:
+def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str, status: str) -> dict[str, Any]:
     return {
+        "run_id": run_id,
         "request_id": ticket.request_id,
         "arrival_ns": ticket.arrival_ns,
         "received_ns": received_ns,
