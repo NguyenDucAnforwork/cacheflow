@@ -12,11 +12,13 @@ if [[ "$mode" == B0 || "$mode" == B1 ]]; then
     supervisorctl stop cacheflow_lmcache 2>/dev/null || true
 else
     supervisorctl start cacheflow_lmcache 2>/dev/null || true
+    lmcache_health_path=metrics
+    [[ -e /workspace/.cacheflow-trace ]] && lmcache_health_path=docs
     for _ in $(seq 1 60); do
-        if curl --silent --fail --max-time 1 http://127.0.0.1:18080/metrics >/dev/null; then break; fi
+        if curl --silent --fail --max-time 1 "http://127.0.0.1:18080/$lmcache_health_path" >/dev/null; then break; fi
         sleep 1
     done
-    curl --silent --fail --max-time 2 http://127.0.0.1:18080/metrics >/dev/null
+    curl --silent --fail --max-time 2 "http://127.0.0.1:18080/$lmcache_health_path" >/dev/null
 fi
 
 supervisorctl start cacheflow_vllm
