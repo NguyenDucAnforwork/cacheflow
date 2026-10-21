@@ -2,6 +2,16 @@
 
 Status: six-hour experiment matrix complete; GPU serving processes stopped. The original DHAS gain was not supported, while CPU KV tiering showed repeatable pressure-dependent benefits. Seed 11 guard holdout and all development results are labeled below.
 
+## Executive findings
+
+- On the same eight-document 8K revisit trace at 6 GiB GPU KV, B0/B1/B2 arrival-TTFT p50 was **10,653 / 1,894–2,017 / 1,452–1,541 ms** across the recorded baseline runs. B2 restored 65,536 prompt tokens from LMCache CPU RAM per run and reduced late-revisit mean TTFT from B1's ~2.59 s to 0.33–0.37 s. These tier baselines were taken in separate cold service restarts.
+- Original B3/DHAS added **no** cached tokens or saved prefill over B2 in the repeated 8K revisit pairs; paired mean B3−B2 arrival TTFT was **+302 and +31 ms**. A stronger same-engine simultaneous-trace crossover gave **−92 and +109 ms**, opposite signs. No reproducible DHAS latency or throughput win is established.
+- The frozen readiness guard's seed 11 holdout bypassed four futile waits per run yet had paired mean TTFT **+3 and +98 ms** versus FIFO, again with unchanged aggregate cache/prefill work. It is retained as a negative refinement.
+- CPU-tier benefit followed the working set: at 8 GiB GPU KV, eight documents had zero CPU loads and ~0.1 s late-revisit TTFT under both B1/B2; 12 documents caused 98,304 CPU-restored tokens in B2 and reduced late-revisit mean TTFT from 5.42–5.70 s to 2.00–2.09 s in two pairs.
+- OTLP captured eight inclusive CPU KV retrieve spans (median ~149 ms each) but no staging/kernel child spans. Exact H2D and copy/compute overlap are **not instrumented**. Output hashes differed in some paired and same-policy repeats; content materiality is unknown.
+
+These are single-host synthetic-trace measurements, not general performance guarantees. The raw files, run IDs, source SHAs, reset controls, and caveats follow.
+
 ## Host audit (2026-10-22)
 
 | Item | Observed |
@@ -34,7 +44,7 @@ Do not label a request as CPU-restored from a prefix match alone. Require GPU-lo
 
 ## Setup checkpoint (2026-10-21 17:48 UTC)
 
-Pinned stack installed: vLLM 0.22.0, LMCache 0.5.3, transformers 5.6.2, torch 2.11.0+cu128. Qwen3-1.7B revision `70d244cc86ccca08cf5af4e1e306ecf908b1ad5e` downloaded. B1 server booted and returned two 3,071-token prompt requests with 8 completion tokens each. After the second request, `vllm:prefix_cache_hits_total` was 3,056; this is a smoke check, not a benchmark result. LMCache MP HTTP/metrics server runs on localhost:18080; B2 connector verification is pending.
+Pinned stack installed: vLLM 0.22.0, LMCache 0.5.3, transformers 5.6.2, torch 2.11.0+cu128. Qwen3-1.7B revision `70d244cc86ccca08cf5af4e1e306ecf908b1ad5e` downloaded. B1 server booted and returned two 3,071-token prompt requests with 8 completion tokens each. After the second request, `vllm:prefix_cache_hits_total` was 3,056; this is a smoke check, not a benchmark result. LMCache MP HTTP/metrics server runs on localhost:18080; the later B2 restore probe verified the connector.
 
 ## Two-tier and gateway checkpoint (2026-10-21 17:56 UTC)
 
@@ -53,7 +63,7 @@ The deterministic revisit trace holds each document's last question until after 
 | r1, B3→B2 | 1,426 / 3,954 | 1,808 / 4,408 | +302 | 186.9 / 185.8 | 65,536 / 58,960 | 256 / 231 |
 | r2, B2→B3 | 1,754 / 4,253 | 1,805 / 4,288 | +31 | 185.3 / 186.2 | 65,536 / 65,536 | 256 / 256 |
 
-All 128 requests succeeded and output hashes match within each pair. In both pairs, B2 and B3 had exactly 196,608 cached prompt tokens and 66,128 computed prefill KV tokens per arm. Thus the scheduler has **not reduced duplicate prefill** in this trace. Both arms show real CPU-tier reads and loads, but B3 does not consistently increase CPU restores. The large change in B2's timing between r1 and r2 means the magnitude of the TTFT penalty is unstable; request-level bootstrap intervals within one run do not capture run-to-run system variation. These two pairs do not support a DHAS performance win. Next: record negative-control and strong B0/B1 baselines, then repeat with a workload that stresses overlapping uncached producers while keeping matched arrivals.
+All 128 requests succeeded and output hashes match within each pair. In both pairs, B2 and B3 had exactly 196,608 cached prompt tokens and 66,128 computed prefill KV tokens per arm. Thus the scheduler has **not reduced duplicate prefill** in this trace. Both arms show real CPU-tier reads and loads, but B3 does not consistently increase CPU restores. The large change in B2's timing between r1 and r2 means the magnitude of the TTFT penalty is unstable; request-level bootstrap intervals within one run do not capture run-to-run system variation. These two pairs do not support a DHAS performance win. The later sections record the negative control, B0/B1 baselines, and a simultaneous-arrival trace.
 
 ### Why the 200 ms delay cannot work at 8K
 
@@ -135,6 +145,8 @@ The two run-level paired effects average about **+9 ms for B3**, with opposite s
 
 A single non-comparative B2 8K revisit replay used LMCache 0.5.3's OTLP tracing into a localhost sink. It completed 32/32 requests; it is excluded from latency comparisons because tracing changes the instrumentation path. `results/raw/otlp-profile.jsonl` contains 124 exported spans: 32 request roots, 32 lookup/prefetch spans, 52 store spans, and **8 retrieve spans**. The eight retrieves report 256 chunks and 7.0 GiB total, matching the external prefix hits and LMCache loaded-chunk counters. Each retrieve reported 896 MiB; span duration median/p90 was 149/157 ms (range 147–164 ms). This inclusive LMCache operation interval contains more than DMA and may overlap with other work, so it must not be presented as pure PCIe bandwidth or added directly to request TTFT. The pinned build did not export separate `transfer.staging` or `transfer.kernel_interval` spans; precise H2D and GPU staging times remain **not instrumented**. The 1-second CPU/GPU utilization plots are coarse overlap evidence only.
 
+The eight `mp.retrieve` intervals in this single profile were non-overlapping: their summed inclusive duration was **1,206 ms** across a **1,666 ms** first-start to last-end window (~72% interval occupancy). This is an observation about exported operation spans, not proof that PCIe copies serialized or that the GPU was idle between them. The missing child spans and lack of a synchronized compute trace prevent a copy/compute overlap claim.
+
 ## Readiness-guard development crossover (2026-10-21 19:09 UTC)
 
 One vLLM PID `41476` and LMCache PID `41336` served six 8K revisit runs in B3 original → B3 guarded → B2 FIFO → B2 FIFO → B3 guarded → B3 original order. The source SHA was `5280c743dc54a59e5f860f96af5e84c6bcdf05a4`, seed 7, common trace SHA `374cf57d2e2631eb5f1c8d605d2b25f453b0679925fe79f4c8989d26fda11781`. Fixed direct warmup and empty-cache reset preceded each run. All 192 requests succeeded. Every run reported 196,608 cached prompt tokens, 66,128 computed prefill tokens, 65,536 external hit tokens, and 256 LMCache chunks loaded. The guard did not create extra KV reuse.
@@ -148,7 +160,7 @@ One vLLM PID `41476` and LMCache PID `41336` served six 8K revisit runs in B3 or
 | 5 | B3 guarded | 1,753 / 4,247 | −3 (vs order 4) | 4/10 |
 | 6 | B3 original | 1,491 / 4,028 | — | 0/10 |
 
-Guarded-vs-original paired mean TTFT was −285 ms in the first bracket and +191 ms in the reversed bracket. The guard bypassed predicted-infeasible holds, reducing bypassed-candidate queue-wait median to ~20–21 ms from original DHAS candidate wait ~200.5 ms. Yet all observed matching producers reached first token later than the 200 ms bound, and the whole-run latency effect changed sign. One output hash differed in the first B2-vs-guard pair and none in the second; one differed in each guard-vs-original comparison. These development runs support a scheduler-wait mechanism, but **do not establish an end-to-end speedup**. An untouched seed 11 holdout is running with the frozen policy.
+Guarded-vs-original paired mean TTFT was −285 ms in the first bracket and +191 ms in the reversed bracket. The guard bypassed predicted-infeasible holds, reducing bypassed-candidate queue-wait median to ~20–21 ms from original DHAS candidate wait ~200.5 ms. Yet all observed matching producers reached first token later than the 200 ms bound, and the whole-run latency effect changed sign. One output hash differed in the first B2-vs-guard pair and none in the second; one differed in each guard-vs-original comparison. These development runs support a scheduler-wait mechanism, but **do not establish an end-to-end speedup**. The untouched seed 11 holdout results follow below.
 
 ## Frozen-guard seed 11 holdout (2026-10-21 19:14 UTC)
 

@@ -31,7 +31,7 @@ The untouched seed 11 holdout did not rescue the guard: it saved selected queue 
 
 ## Working-set question after the capacity sweep
 
-Eight 8K document prefixes fit within an 8 GiB GPU KV budget in the measured replay, and LMCache CPU L1 receives writes but no restores. Increase to 12 document prefixes at the **same** 8 GiB GPU budget and 16 GiB CPU L1. Prediction: old GPU prefixes will be displaced, B1 will recompute, and B2 will restore from CPU. Confirm with GPU/external hit tokens, LMCache chunks loaded, and paired late-revisit latency. This separates working-set pressure from the numeric cache-size setting. A later systems design question is whether CPU stores can be gated when the current working set fits GPU, but LMCache MP metadata behavior must be verified before proposing a policy implementation.
+Eight 8K document prefixes fit within an 8 GiB GPU KV budget in the measured replay, and LMCache CPU L1 receives writes but no restores. The next test increased to 12 document prefixes at the **same** 8 GiB GPU budget and 16 GiB CPU L1. It confirmed GPU-prefix displacement and repeated B2 CPU restores using external-hit tokens, LMCache chunks loaded, and paired late-revisit latency. This separates working-set pressure from the numeric cache-size setting. A later systems design question is whether CPU stores can be gated when the current working set fits GPU, but LMCache MP metadata behavior must be verified before proposing a policy implementation.
 
 ## Research questions left after the measured controls
 
