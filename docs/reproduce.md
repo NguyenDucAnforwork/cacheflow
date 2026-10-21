@@ -77,3 +77,7 @@ The Vast.ai instance `57086282` was stopped at about 2026-10-21 19:40 UTC after 
 ## Decision-stratified guard audit
 
 For a holdout comparison, run `PYTHONPATH=src python3 -m cacheflow.stratify_guard results/raw/gateway.jsonl BASELINE_RUN GUARDED_RUN --output results/figures/PAIR/guard_phase_by_decision.json`. The committed artifacts cover both FIFO→guard and original-DHAS→guard comparisons for seed 11. It classifies each request from the guard's logged decision and reports paired mean deltas for arrival→dispatch, dispatch→first token, and total arrival TTFT. The phase decomposition is descriptive; it does not remove whole-run drift.
+
+## Prompt-token source accounting
+
+Regenerate the B0–B4 stacked token-source plot with `PYTHONPATH=src python3 -m cacheflow.plot_cache_accounting configs/cache_accounting_matrix.csv --output-dir results/figures/cache_accounting`. The script uses live-metric deltas and checks that GPU-hit + CPU-hit + newly computed prefill tokens equals total prompt tokens for each run; it refuses a matrix that mixes trace hashes. The five selected rows are representative runs from different execution blocks, so use this plot for cache-source accounting only.

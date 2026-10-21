@@ -14,7 +14,7 @@ All measured prompts, statuses, and output token counts matched within the selec
 
 - [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs.
 - `src/cacheflow/` contains the gateway, bounded admission scheduler, token-aligned prefix fingerprints, deterministic replay, metrics collector, paired analyzer, quality audit, and plot generators.
-- `scripts/` contains stack setup, controlled runs, cache-reset crossover, profiler and audit commands. `results/raw/` holds per-request/metrics traces; `results/figures/` contains paired timelines and the [capacity](results/figures/capacity/capacity_boundary.png) and [working-set](results/figures/workingset/workingset_pressure.png) plots.
+- `scripts/` contains stack setup, controlled runs, cache-reset crossover, profiler and audit commands. `results/raw/` holds per-request/metrics traces; `results/figures/` contains paired timelines and the [cache accounting](results/figures/cache_accounting/cache_accounting.png), [capacity](results/figures/capacity/capacity_boundary.png), and [working-set](results/figures/workingset/workingset_pressure.png) plots.
 - `results/registry.csv` and individual `.summary.json` files record run IDs, trace hashes, source commits and parameters. Model weights and credentials are excluded from Git.
 
 The baseline commands and host-specific setup are in [docs/reproduce.md](docs/reproduce.md). All performance claims above refer to the recorded single host and workload, with two run-level repeats where stated.

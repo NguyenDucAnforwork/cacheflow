@@ -86,6 +86,8 @@ All runs share the 32-request trace SHA `374cf57d2e2631eb5f1c8d605d2b25f453b0679
 
 B2 restored 65,536 prompt tokens from the external CPU tier in each measured B2 run, with 256 LMCache chunks loaded. The late revisit requests fell from about 2.59 s under B1 to 0.33–0.37 s under B2 (86–87% lower mean TTFT for that subset), while whole-run output throughput rose from ~135 to ~183 output tokens/s. B0→B1 establishes the much larger benefit of GPU prefix caching in this trace. These are development results from one host, not a universal speedup claim.
 
+The [cache-accounting figure](../results/figures/cache_accounting/cache_accounting.png) makes the source distinction explicit for one representative run per B0–B4 arm on the same trace. Each bar totals 262,736 prompt tokens: B0 computes all, B1 computes 131,664 and reuses 131,072 from GPU, and B2/B3/B4 each compute 66,128, reuse 131,072 from GPU and restore 65,536 from CPU. This validates that the extra cache contribution comes from the CPU tier, while DHAS and static grouping add **zero** cached tokens over FIFO. The chosen B0–B4 runs came from separate time/source blocks, so the figure is token-accounting evidence, not a latency effect estimate.
+
 Output hashes were not perfectly stable across modes or repeated runs at temperature zero: each B1-vs-B2 pair had one mismatching request out of 32, and B0-vs-B1 had one. The deviations were on `doc-06-q2` in B2 r3, `doc-05-q3` in B1 r2, and `doc-02-q2` in B0 respectively; all still produced 64 output tokens. B2-vs-B3 pairs had zero output hash mismatches. The current runner stores hashes rather than the full generated text, so the materiality of those three deviations is not known.
 
 ## Static grouping control: 8K revisit (2026-10-21 18:33 UTC)
