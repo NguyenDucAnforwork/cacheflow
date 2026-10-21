@@ -79,3 +79,7 @@ Keep `dhas_guarded` frozen at SHA `5280c74`. It skipped 6/10 and 4/10 inferred f
 ## Holdout decision (2026-10-21 19:14 UTC)
 
 The frozen seed 11 guard bypassed four candidate waits per run but left total cached and computed prefill tokens unchanged. Its paired mean TTFT versus FIFO was +3 and +98 ms; versus original DHAS +111 and +118 ms. Do not promote `dhas_guarded` as a performance improvement. Keep it as a documented unsuccessful refinement. The next independent research question is where CPU KV tiering becomes useful as GPU KV capacity changes, using 4 and 8 GiB against the 6 GiB baseline.
+
+## Capacity-boundary result and next control (2026-10-21 19:25 UTC)
+
+B2's CPU tier helps under GPU KV pressure at 4/6 GiB and becomes unused at 8 GiB for the eight-document trace. The new 4/8 GiB runs repeated each B1/B2 arm twice; the prior 6 GiB runs provide a descriptive middle point. The main evidence is source-specific CPU-hit/load and computed-prefill counters, supported by late-request TTFT, rather than whole-run p50 alone. Test one more axis with 12 distinct 8K documents at the same 8 GiB budget: if CPU benefit returns, working-set size rather than an absolute 8 GiB threshold explains the finding. Use balanced B1/B2 repeats and stop GPU services at completion.
