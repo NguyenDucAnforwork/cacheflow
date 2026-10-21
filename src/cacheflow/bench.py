@@ -155,7 +155,7 @@ def main() -> None:
     parser.add_argument("--url", default="http://127.0.0.1:8100")
     parser.add_argument("--model-path", required=True)
     parser.add_argument("--model-name", default="cacheflow-qwen3-1.7b")
-    parser.add_argument("--workload", choices=["long_doc", "multi_turn", "distinct"], required=True)
+    parser.add_argument("--workload", choices=["long_doc", "long_doc_revisit", "multi_turn", "distinct"], required=True)
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--input-tokens", type=int, default=4096)
     parser.add_argument("--output-tokens", type=int, default=64)

@@ -47,3 +47,7 @@ Use vLLM 0.22.0 + LMCache 0.5.3 + transformers 5.6.2 with the image's torch 2.11
 ## Runtime controls (2026-10-21 17:56 UTC)
 
 Supervisor manages `cacheflow_lmcache`, `cacheflow_vllm`, and `cacheflow_gateway`, all bound to 127.0.0.1. `scripts/set_mode.sh` selects B0/B1/B2/B3/B4 and gateway policy, restarts services, and checks health. vLLM dev mode is enabled solely on localhost to permit local GPU prefix-cache reset without clearing LMCache; this provides a direct CPU restore validation. For controlled benchmark cold resets, restart both vLLM and LMCache, then use the same warmup procedure in each arm. Current restore probe confirms the MP path; benchmark pressure remains to be measured.
+
+## Workload revision after evidence (2026-10-21 18:03 UTC)
+
+The first long-doc burst never revisited a document after enough distinct documents filled GPU KV. It is retained as a development screening trace. Add `long_doc_revisit`: hold the final question for each document until after the first wave, then revisit early documents after likely GPU eviction while LMCache CPU L1 remains populated. Use the same deterministic trace and cold reset in both arms. Verify actual external hit counters before calling it a CPU-pressure condition. Development seed 7 may guide window tuning; reserve a different seed for final holdout.

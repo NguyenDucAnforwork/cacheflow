@@ -1,0 +1,48 @@
+{
+  "a_cache_metric_deltas": {
+    "lmcache_mp_l1_memory_usage_bytes": 7516192768.0,
+    "lmcache_mp_l1_read_chunks_total": 357.0,
+    "lmcache_mp_l1_write_chunks_total": 256.0,
+    "vllm:external_prefix_cache_hits_total": 0.0,
+    "vllm:kv_cache_usage_perc": 0.0,
+    "vllm:num_requests_running": 0.0,
+    "vllm:num_requests_waiting": 0.0,
+    "vllm:prefix_cache_hits_total": 196608.0,
+    "vllm:prompt_tokens_cached_total": 196608.0,
+    "vllm:prompt_tokens_total": 262736.0,
+    "vllm:request_prefill_kv_computed_tokens_sum": 66128.0
+  },
+  "a_errors": 0,
+  "a_output_tokens_per_s": 216.5332829626167,
+  "a_run_id": "b2-longdoc-8k-r1",
+  "a_ttft_p50_ms": 3007.991212,
+  "a_ttft_p90_ms": 4581.8358471,
+  "b_cache_metric_deltas": {
+    "lmcache_mp_l1_memory_usage_bytes": 7516192768.0,
+    "lmcache_mp_l1_read_chunks_total": 357.0,
+    "lmcache_mp_l1_write_chunks_total": 256.0,
+    "vllm:external_prefix_cache_hits_total": 0.0,
+    "vllm:kv_cache_usage_perc": 0.0,
+    "vllm:num_requests_running": 0.0,
+    "vllm:num_requests_waiting": 0.0,
+    "vllm:prefix_cache_hits_total": 196608.0,
+    "vllm:prompt_tokens_cached_total": 196608.0,
+    "vllm:prompt_tokens_total": 262736.0,
+    "vllm:request_prefill_kv_computed_tokens_sum": 66128.0
+  },
+  "b_errors": 0,
+  "b_output_tokens_per_s": 218.66990045737833,
+  "b_run_id": "b3-longdoc-8k-r1",
+  "b_ttft_p50_ms": 2906.499053,
+  "b_ttft_p90_ms": 4485.3869724999995,
+  "output_hash_mismatches": 0,
+  "paired_count": 32,
+  "paired_mean_delta_cluster_bootstrap_95_ms": [
+    -103.82318620156249,
+    -96.78909951484391
+  ],
+  "paired_ttft_mean_delta_ms": -100.38982750000008,
+  "paired_ttft_median_delta_ms": -101.4921589999999,
+  "request_count": 32,
+  "trace_sha256": "94d26c4d0049b9c91acdee9feae1f02ccfc2881e40dd93e6f0ab8e8646c2b576"
+}

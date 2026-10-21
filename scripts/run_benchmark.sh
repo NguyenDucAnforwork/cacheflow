@@ -19,3 +19,4 @@ python -m cacheflow.bench --url http://127.0.0.1:8100 --model-path "$model" \
     --workload "$workload" --input-tokens "$input_tokens" --groups "$groups" \
     --per-group "$per_group" --output-tokens "$output_tokens" \
     --run-id "$run_id" --output "$out"
+sleep 2  # capture final cache counters after the last response

@@ -29,3 +29,7 @@ B1: `./scripts/serve_vllm.sh B1`; probe: `python scripts/smoke.py http://127.0.0
 ## CPU-restore verification and managed services
 
 Install supervisor programs with `./scripts/install_services.sh`, then select mode with `./scripts/set_mode.sh B2 fifo`. The mode script waits for localhost health endpoints. `PYTHONPATH=/workspace/src /venv/main/bin/python scripts/restore_probe.py` stores a common prefix, waits for LMCache, resets only vLLM's local cache through `/reset_prefix_cache`, then sends a related prompt. Verified deltas are in `results/raw/restore_probe.json`. `./scripts/run_benchmark.sh RUN_ID WORKLOAD INPUT_TOKENS GROUPS PER_GROUP OUTPUT_TOKENS` records client results, a metrics time series and registry row. Run it from `/workspace` after setting the mode; exact benchmark corpus/trace SHA will be written by the runner.
+
+## Development screening runs
+
+From a clean stack, `./scripts/set_mode.sh B2 fifo && ./scripts/run_benchmark.sh b2-longdoc-8k-r1 long_doc 8192 8 4 64`; then `./scripts/set_mode.sh B3 dhas && ./scripts/run_benchmark.sh b3-longdoc-8k-r1 long_doc 8192 8 4 64`. Source SHA for both: `9be600cfbdce4e70a94ae9451987420e688d3d9b`. Trace SHA is recorded in both summaries and must match for paired comparison. Analyze with `PYTHONPATH=src python -m cacheflow.analyze results/raw/b2-longdoc-8k-r1.jsonl results/raw/b3-longdoc-8k-r1.jsonl --output-dir results/figures/dev-screen`. This was a development screen; there was no CPU restore during the replay.

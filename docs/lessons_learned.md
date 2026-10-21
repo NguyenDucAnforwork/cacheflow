@@ -20,3 +20,7 @@ No CacheFlow experiment has run yet. Record failed attempts and their fixes here
 ## Restore evidence and instrumentation caveat
 
 A large LMCache `l1_read` count alone did not prove an effective CPU restore: the initial repeated request still showed GPU-local prefix hits. Clearing only vLLM's local cache and checking vLLM external hit tokens together with LMCache loaded chunks gave a defensible test. The pinned vLLM version exposes its reset endpoint only with `VLLM_SERVER_DEV_MODE=1`; the server is localhost-only.
+
+## First scheduler screen
+
+The original 32-request long-document trace filled LMCache L1 (~7.5 GiB) but produced zero engine-loaded LMCache chunks. Closely spaced questions reused GPU KV; the trace had no later revisit after GPU eviction. A CPU-tier baseline needs a workload that returns to old prefixes, not just a working CPU-cache process or a cache-full gauge. The one B3 run was ~100 ms faster across every request with unchanged GPU hit and prefill-compute totals, so run-order/thermal effects must be tested before attributing the difference to DHAS.
