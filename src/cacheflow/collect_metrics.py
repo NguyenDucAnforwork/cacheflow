@@ -21,6 +21,12 @@ NAMES = (
     "vllm:kv_cache_usage_perc",
     "vllm:num_requests_running",
     "vllm:num_requests_waiting",
+    "vllm:request_queue_time_seconds_sum",
+    "vllm:request_queue_time_seconds_count",
+    "vllm:time_to_first_token_seconds_sum",
+    "vllm:time_to_first_token_seconds_count",
+    "vllm:request_prefill_time_seconds_sum",
+    "vllm:request_prefill_time_seconds_count",
     "lmcache_mp_l1_read_chunks_total",
     "lmcache_mp_l1_write_chunks_total",
     "lmcache_mp_l1_evicted_chunks_total",
@@ -28,6 +34,8 @@ NAMES = (
     "lmcache_mp_l1_memory_usage_bytes",
     "lmcache_mp_num_submitted_retrieves_total",
     "lmcache_mp_num_finished_retrieves_total",
+    "lmcache_mp_l0_l1_retrieve_throughput_GB_per_second_sum",
+    "lmcache_mp_l0_l1_retrieve_throughput_GB_per_second_count",
 )
 
 
@@ -58,16 +66,18 @@ def gpu_snapshot() -> dict:
 
 def process_snapshot() -> dict:
     result = {}
-    for process in psutil.process_iter(["pid", "name", "cmdline", "memory_info", "num_ctx_switches"]):
+    for process in psutil.process_iter(["pid", "name", "cmdline", "memory_info", "num_ctx_switches", "cpu_times"]):
         try:
             cmd = " ".join(process.info.get("cmdline") or [])
-            name = "vllm" if "vllm serve" in cmd else "lmcache" if "lmcache server" in cmd else None
+            name = "vllm" if "vllm serve" in cmd else "lmcache" if "lmcache server" in cmd else "gateway" if "cacheflow.gateway:create_app" in cmd else None
             if name:
-                entry = result.setdefault(name, {"rss_bytes": 0, "processes": 0, "ctx_switches": 0})
+                entry = result.setdefault(name, {"rss_bytes": 0, "processes": 0, "ctx_switches": 0, "cpu_seconds": 0.0})
                 entry["rss_bytes"] += process.info["memory_info"].rss
                 entry["processes"] += 1
                 switches = process.info["num_ctx_switches"]
                 entry["ctx_switches"] += switches.voluntary + switches.involuntary
+                times = process.info["cpu_times"]
+                entry["cpu_seconds"] += times.user + times.system
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             continue
     return result

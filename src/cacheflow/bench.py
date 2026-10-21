@@ -142,7 +142,7 @@ async def replay(args: argparse.Namespace) -> dict:
             if args.run_id in {existing["run_id"] for existing in csv.DictReader(file)}:
                 raise ValueError(f"duplicate run_id: {args.run_id}")
     with registry_path.open("a", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=list(row))
+        writer = csv.DictWriter(file, fieldnames=list(row), lineterminator="\n")
         if file.tell() == 0:
             writer.writeheader()
         writer.writerow(row)

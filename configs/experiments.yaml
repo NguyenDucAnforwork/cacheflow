@@ -1,0 +1,47 @@
+model_revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+gpu_kv_bytes: 6442450944
+cpu_l1_gb: 16
+max_num_seqs: 16
+output_tokens: 64
+temperature: 0
+
+# Run each paired contrast on identical generated prompts and arrival offsets.
+# Every run resets both vLLM and LMCache via scripts/set_mode.sh.
+development:
+  - name: first_burst_screen
+    workload: long_doc
+    seed: 7
+    input_tokens: 8192
+    groups: 8
+    per_group: 4
+    order: [B2_fifo, B3_dhas]
+  - name: cpu_revisit_primary
+    workload: long_doc_revisit
+    seed: 7
+    input_tokens: 8192
+    groups: 8
+    per_group: 4
+    order: [B3_dhas, B2_fifo, B2_fifo, B3_dhas]
+  - name: low_reuse_control
+    workload: distinct
+    seed: 7
+    input_tokens: 2048
+    groups: 8
+    per_group: 4
+    order: [B2_fifo, B3_dhas, B3_dhas, B2_fifo]
+  - name: agent_sessions
+    workload: multi_turn
+    seed: 7
+    input_tokens: 4096
+    groups: 8
+    per_group: 4
+    order: [B2_fifo, B3_dhas]
+
+holdout:
+  name: unseen_cpu_revisit
+  workload: long_doc_revisit
+  seed: 11
+  input_tokens: 8192
+  groups: 8
+  per_group: 4
+  order: [B2_fifo, B3_dhas]

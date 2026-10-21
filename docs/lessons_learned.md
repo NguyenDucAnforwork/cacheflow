@@ -9,7 +9,7 @@
 - A small probe can reject a bad idea but cannot certify an improvement; repeat representative conditions.
 - Validate effects in the workload regime where the mechanism acts; include a low-reuse negative control.
 
-No CacheFlow experiment has run yet. Record failed attempts and their fixes here as they occur.
+Experiments below are development runs; preserve failures and contradictory observations.
 
 ## Setup attempts (2026-10-21)
 
@@ -24,3 +24,7 @@ A large LMCache `l1_read` count alone did not prove an effective CPU restore: th
 ## First scheduler screen
 
 The original 32-request long-document trace filled LMCache L1 (~7.5 GiB) but produced zero engine-loaded LMCache chunks. Closely spaced questions reused GPU KV; the trace had no later revisit after GPU eviction. A CPU-tier baseline needs a workload that returns to old prefixes, not just a working CPU-cache process or a cache-full gauge. The one B3 run was ~100 ms faster across every request with unchanged GPU hit and prefill-compute totals, so run-order/thermal effects must be tested before attributing the difference to DHAS.
+
+## Revisit pairs
+
+Adding late requests successfully exercised CPU-tier restores in both B2 and B3. Yet all four arms computed exactly 66,128 prefill KV tokens and recorded 196,608 cached prompt tokens. The first paired B3 run lost ~302 ms on mean per-request TTFT, while the second lost ~31 ms. B2 varied much more across runs than B3. A bootstrap over requests inside one run is too narrow for this between-run variance; report repeated run-level effects and do not treat the request-level interval as a causal confidence interval. The measured scheduler has no demonstrated cache benefit so far.
