@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
+if [[ -n ${PROC_NAME:-} ]]; then
+    source /opt/supervisor-scripts/utils/logging.sh ""
+fi
 source /venv/main/bin/activate >/dev/null
 export LD_LIBRARY_PATH="/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib:${LD_LIBRARY_PATH:-}"
 export LMCACHE_DISABLE_BANNER=1

@@ -1,0 +1,23 @@
+{
+  "cpu_restore_confirmed": true,
+  "first_usage": {
+    "completion_tokens": 8,
+    "prompt_tokens": 3068,
+    "prompt_tokens_details": null,
+    "total_tokens": 3076
+  },
+  "metric_delta": {
+    "lmcache_mp_l1_read_chunks_total": 11.0,
+    "lmcache_mp_l1_write_chunks_total": 1.0,
+    "lmcache_mp_num_chunks_loaded_total": 11.0,
+    "vllm:external_prefix_cache_hits_total": 2816.0,
+    "vllm:prefix_cache_hits_total": 0.0
+  },
+  "reset_status": 200,
+  "second_usage": {
+    "completion_tokens": 8,
+    "prompt_tokens": 3068,
+    "prompt_tokens_details": null,
+    "total_tokens": 3076
+  }
+}

@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
-mode=${1:-B1}
+mode=${1:-$(cat /workspace/.cacheflow-mode 2>/dev/null || printf B2)}
+if [[ -n ${PROC_NAME:-} ]]; then
+    source /opt/supervisor-scripts/utils/logging.sh ""
+fi
 source /venv/main/bin/activate >/dev/null
 export HF_HOME=/workspace/.hf_home
+export VLLM_SERVER_DEV_MODE=1
 export LD_LIBRARY_PATH="/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib:${LD_LIBRARY_PATH:-}"
 model=/workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
 

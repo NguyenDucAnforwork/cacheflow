@@ -43,3 +43,7 @@ After pinning versions, inspect live `/metrics` names. Current vLLM docs list `v
 ## Stack pin (2026-10-21 17:48 UTC)
 
 Use vLLM 0.22.0 + LMCache 0.5.3 + transformers 5.6.2 with the image's torch 2.11.0+cu128. vLLM's wheel links CUDA 13 runtime libraries even though the base PyTorch wheel is cu128; `LD_LIBRARY_PATH=/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib` is required before CLI launch. The B1 smoke succeeded with this combination, but MP interoperability remains to be proven. Set GPU KV budget to 6 GiB (vLLM reported 56,160 tokens), CPU L1 to 16 GiB, model length 12,288, and max sequences 16. All compared arms will use these engine settings.
+
+## Runtime controls (2026-10-21 17:56 UTC)
+
+Supervisor manages `cacheflow_lmcache`, `cacheflow_vllm`, and `cacheflow_gateway`, all bound to 127.0.0.1. `scripts/set_mode.sh` selects B0/B1/B2/B3/B4 and gateway policy, restarts services, and checks health. vLLM dev mode is enabled solely on localhost to permit local GPU prefix-cache reset without clearing LMCache; this provides a direct CPU restore validation. For controlled benchmark cold resets, restart both vLLM and LMCache, then use the same warmup procedure in each arm. Current restore probe confirms the MP path; benchmark pressure remains to be measured.

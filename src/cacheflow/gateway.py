@@ -53,6 +53,8 @@ class TraceWriter:
 
 def create_app(config_path: str | None = None) -> FastAPI:
     settings = yaml.safe_load(Path(config_path or os.environ.get("CACHEFLOW_POLICY_CONFIG", "/workspace/configs/policies.yaml")).read_text())
+    if os.environ.get("CACHEFLOW_POLICY"):
+        settings["scheduler"]["policy"] = os.environ["CACHEFLOW_POLICY"]
     model = settings["model"]
     tokenizer = AutoTokenizer.from_pretrained(model, local_files_only=True, trust_remote_code=False)
     scheduler = AdmissionScheduler(**settings["scheduler"])

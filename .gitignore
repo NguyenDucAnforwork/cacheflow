@@ -8,8 +8,6 @@ __pycache__/
 .pytest_cache/
 *.pyc
 *.log
-results/raw/
-results/figures/
 *.safetensors
 *.bin
 *.pt
@@ -17,3 +15,6 @@ results/figures/
 *.cache
 AGENTS.md
 CLAUDE.md
+.uv-cache/
+.cacheflow-mode
+.cacheflow-policy

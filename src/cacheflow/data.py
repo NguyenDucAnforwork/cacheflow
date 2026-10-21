@@ -36,14 +36,15 @@ def _document(rng: random.Random, tokenizer: PreTrainedTokenizerBase, target_tok
     next_index = 0
     while True:
         batch = []
-        for _ in range(120):
+        for _ in range(30):
             words = " ".join(rng.choice(WORDS) for _ in range(22))
             batch.append(f"Section {next_index}: {words}. Fact code {label}-{next_index}.\n")
             next_index += 1
         parts.extend(batch)
         text = "".join(parts)
-        if len(tokenizer.encode(text, add_special_tokens=False)) >= target_tokens:
-            return text
+        token_ids = tokenizer.encode(text, add_special_tokens=False)
+        if len(token_ids) >= target_tokens:
+            return tokenizer.decode(token_ids[:target_tokens], clean_up_tokenization_spaces=False)
 
 
 def build_trace(
