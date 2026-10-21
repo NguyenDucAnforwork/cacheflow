@@ -68,7 +68,9 @@ The gateway trace audit found 10 delay-hit candidates in each revisit B3 run. Th
 | r1 | 2,123 / 3,634 | 2,198 / 3,709 | +75 | 317.4 / 315.5 |
 | r2 | 2,123 / 3,647 | 2,252 / 3,793 | +129 | 315.2 / 306.3 |
 
-The no-reuse control does not meet a zero-overhead goal: B3 is slower in both runs despite no intentional deferral. vLLM queue-time sums rose from 9.18 to 9.82 seconds in r1 and from 8.94 to 10.04 seconds in r2; this is consistent with more host/engine contention but not enough to isolate the cause. More repetitions and GPU-clock/CPU process samples are planned. Request-level bootstrap intervals are not used as evidence for a run-level causal effect.
+The no-reuse control does not meet a zero-overhead goal: B3 is slower in both runs despite no intentional deferral. vLLM queue-time sums rose from 9.18 to 9.82 seconds in r1 and from 8.94 to 10.04 seconds in r2; this is consistent with more host/engine contention but not enough to isolate the cause. Request-level bootstrap intervals are not used as evidence for a run-level causal effect.
+
+A later phase audit found near-identical gateway receive-to-enqueue preparation (~5.0–5.2 ms mean per request) and gateway CPU-time deltas (B2 0.44/0.46 s, B3 0.42/0.49 s) across these four runs. B3's mean enqueue-to-dispatch interval exceeded B2 by 39/73 ms and dispatch-to-first-token by 37/57 ms in the two pairs, approximately accounting for the observed +75/+129 ms arrival-TTFT differences. With zero delay-hit candidates, the data do **not** isolate Python policy-matching cost as the cause; serving and queue timing changed as well. These timings are run-level observations, not a calibrated gateway-overhead microbenchmark.
 
 ## Tier baselines: same 8K revisit trace (2026-10-21 18:28 UTC)
 

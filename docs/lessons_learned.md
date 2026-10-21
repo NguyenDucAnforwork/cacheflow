@@ -32,7 +32,9 @@ Adding late requests successfully exercised CPU-tier restores in both B2 and B3.
 
 The 200 ms fairness bound expired for every delay-hit candidate in both revisit runs: median producer-first-token time was ~1.77 seconds after follower arrival. The admission policy paid the hold cost without reaching its first-token readiness condition. A gateway should estimate whether producer readiness can occur inside its latency budget before deferring a follower; a raw shared-prefix match is insufficient.
 
-In the distinct-prefix control, neither B3 run had a delay-hit candidate or any cache hit, yet it trailed FIFO by +75 and +129 ms mean paired TTFT. The scheduler's matching checks and event-loop work may have a measurable cost, but host/engine queue-time drift also changed. Instrument CPU and GPU clock behavior before attributing the entire difference to Python logic.
+In the distinct-prefix control, neither B3 run had a delay-hit candidate or any cache hit, yet it trailed FIFO by +75 and +129 ms mean paired TTFT. The scheduler's matching checks and event-loop work may have a measurable cost, but host/engine queue-time drift also changed. Attribution to Python logic would require a tighter gateway-only overhead control.
+
+The later per-phase audit narrowed that caution: receive-to-enqueue preparation stayed ~5 ms in all four distinct-prefix runs, gateway CPU time was similar, while B3's enqueue-to-dispatch and dispatch-to-first intervals both rose. The observed negative-control penalty cannot be assigned wholly to policy-check CPU overhead from these measurements.
 
 Repeated tier baselines show a clear CPU-cache mechanism: B1 recomputed 131,664 prefill KV tokens, while B2 computed 66,128 and loaded 256 LMCache chunks, reducing late revisit mean TTFT from ~2.59 s to 0.33–0.37 s. Temperature zero did not make every generated string identical across engine/cache configurations or repeated runs: isolated 1/32 hash mismatches occurred in B0/B1 and B1/B2 comparisons with unchanged 64-token budgets. Report these rather than implying byte-for-byte equivalence across every baseline.
 
