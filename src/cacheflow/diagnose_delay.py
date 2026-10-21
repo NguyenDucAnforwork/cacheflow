@@ -20,7 +20,7 @@ def diagnose(gateway_path: Path, run_id: str, max_wait_ms: int) -> dict:
         active_producers = [row for row in rows if row["request_id"] != follower["request_id"]
                             and row.get("prefix_group") == follower.get("prefix_group")
                             and row.get("dispatch_ns") is not None
-                            and row["dispatch_ns"] <= follower["enqueue_ns"]
+                            and row["dispatch_ns"] <= follower["dispatch_ns"]
                             and (row.get("complete_ns") or 0) > follower["enqueue_ns"]]
         if not active_producers:
             no_matching_producer += 1

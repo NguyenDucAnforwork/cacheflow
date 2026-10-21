@@ -10,7 +10,7 @@ from typing import Literal
 
 from transformers import PreTrainedTokenizerBase
 
-Workload = Literal["long_doc", "long_doc_revisit", "multi_turn", "distinct"]
+Workload = Literal["long_doc", "long_doc_revisit", "long_doc_simultaneous", "multi_turn", "distinct"]
 WORDS = (
     "archive circuit lattice spectrum operator dataset retrieval scheduler cache transport "
     "profile latency epoch sequence artifact evidence memory bandwidth context query "
@@ -57,7 +57,7 @@ def build_trace(
     per_group: int = 4,
     output_tokens: int = 64,
 ) -> list[TraceRow]:
-    if workload not in ("long_doc", "long_doc_revisit", "multi_turn", "distinct"):
+    if workload not in ("long_doc", "long_doc_revisit", "long_doc_simultaneous", "multi_turn", "distinct"):
         raise ValueError(workload)
     rng = random.Random(seed)
     rows: list[TraceRow] = []
@@ -67,12 +67,12 @@ def build_trace(
             prompt = doc + f"\nQuestion: Summarize the evidence for item {i}.\nAnswer:"
             rows.append(TraceRow(f"distinct-{i:03d}", i * 50, prompt,
                                  len(tokenizer.encode(prompt, add_special_tokens=False)), output_tokens, f"distinct-{i}"))
-    elif workload in ("long_doc", "long_doc_revisit"):
+    elif workload in ("long_doc", "long_doc_revisit", "long_doc_simultaneous"):
         for group in range(groups):
             doc = _document(rng, tokenizer, target_input_tokens, f"doc-{group}")
             for question in range(per_group):
                 prompt = doc + f"\nQuestion {question}: Which facts in this document relate to section {question * 7}?\nAnswer:"
-                offset = group * 450 + question * 35
+                offset = group * 450 + (0 if workload == "long_doc_simultaneous" else question * 35)
                 if workload == "long_doc_revisit" and question == per_group - 1:
                     offset = groups * 450 + 4500 + group * 200
                 rows.append(TraceRow(f"doc-{group:02d}-q{question}", offset,

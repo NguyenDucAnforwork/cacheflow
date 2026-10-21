@@ -51,3 +51,11 @@ Supervisor manages `cacheflow_lmcache`, `cacheflow_vllm`, and `cacheflow_gateway
 ## Workload revision after evidence (2026-10-21 18:03 UTC)
 
 The first long-doc burst never revisited a document after enough distinct documents filled GPU KV. It is retained as a development screening trace. Add `long_doc_revisit`: hold the final question for each document until after the first wave, then revisit early documents after likely GPU eviction while LMCache CPU L1 remains populated. Use the same deterministic trace and cold reset in both arms. Verify actual external hit counters before calling it a CPU-pressure condition. Development seed 7 may guide window tuning; reserve a different seed for final holdout.
+
+## Mechanism and profiler choice (2026-10-21 18:36 UTC)
+
+The 8K gateway traces show that the 200 ms defer bound expires before producer first-token readiness for all measured delay-hit candidates. Preserve that bound for fairness instead of extending it to ~1.8 seconds to force a cache event. Run a 2K positive-locality probe and multi-turn sessions before trying one refinement that predicts infeasible waits. The static grouping control and low-reuse negative control are retained even though they did not improve latency.
+
+Nsight Systems is absent on this rental. The pinned LMCache MP server supports OTLP tracing, and its official tracing reference describes `mp.retrieve`, `transfer.kernel_interval`, and `transfer.staging` spans. Capture one separate B2 profiling run with a localhost OTLP gRPC sink; do not mix tracing-overhead timing into the B2/B3 performance pairs. LMCache's broad `/metrics` counters and 1-second GPU sampler remain the main low-overhead instruments. Exact H2D time remains uninstrumented unless the transfer staging spans appear in the pinned build.
+
+`max_wait_ms` bounds the policy's intentional delay: at the deadline the ticket becomes eligible. Actual arrival-to-dispatch wait can exceed it when `max_inflight` is full or ingress preparation is delayed. Record the admission deadline and any overrun separately from first-token and total TTFT rather than describing 200 ms as an end-to-end queue cap.
