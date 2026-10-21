@@ -1,6 +1,6 @@
 # CacheFlow: live results
 
-Status: implementation and initial paired experiments running. Results below are development measurements, not final holdout estimates.
+Status: six-hour experiment matrix complete; GPU serving processes stopped. The original DHAS gain was not supported, while CPU KV tiering showed repeatable pressure-dependent benefits. Seed 11 guard holdout and all development results are labeled below.
 
 ## Host audit (2026-10-22)
 
@@ -170,3 +170,22 @@ The same seed 7, 32-request 8K revisit trace (`374cf57d…`) was replayed with 4
 | 8 GiB | 99 / 96 ms | 97 / 109 ms | 66,128 / 66,128 | 0 / 0 | 190.5, 192.7 / 192.7, 191.0 |
 
 At 4 GiB, B2 reduced mean revisit TTFT by 77–81% and raised output throughput by ~34–36% in the matched pairs, with measured CPU restores and half as much newly computed prefill. At 8 GiB the long-document working set fit in GPU KV: both modes computed and cached exactly the same tokens, and B2 recorded no CPU KV loads. The late-request latency was indistinguishable at this resolution; whole-run paired mean B2−B1 was +14 and +291 ms across the two pairs, so **no CPU-tier benefit is established in this fit regime**, and run drift prevents a precise overhead estimate. Four-GiB B1/B2 comparisons had 3/32 output hash mismatches each; eight-GiB pairs had 1/32 and 2/32. These output differences are retained as correctness caveats. The 6-GiB rows came from an earlier measurement block, so the cross-budget trend is descriptive; the zero-to-65,536 CPU-hit transition is directly observed.
+
+## Additional control: larger working set at the same 8 GiB budget (2026-10-21 19:33 UTC)
+
+To distinguish a capacity threshold from a particular numeric budget, the 8 GiB B1/B2 comparison was repeated with **12** distinct 8K documents (48 requests) instead of eight (32 requests). Seed 7 trace SHA `cf8142e4a4638007184f099d90e7a232bf61983fc47c2f7b612213438c659d61`; all four runs used source SHA `37056f9`, full stack restarts, 16 GiB LMCache L1, and B1→B2→B2→B1 order. All 192 requests succeeded; initial GPU KV occupancy was zero in all arms and initial L1 usage zero in B2.
+
+| Pair | B1/B2 TTFT p50 ms | B1/B2 late revisit mean ms | B1/B2 throughput tokens/s | B1/B2 new prefill tokens | B2 CPU hit tokens / loaded chunks | Paired mean B2−B1 TTFT | Output hash mismatches |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| r1 | 4,179 / 2,132 | 5,701 / 2,003 | 139.9 / 203.6 | 197,488 / 99,184 | 98,304 / 384 | −934 ms | 2/48 |
+| r2, reverse order | 3,922 / 2,305 | 5,415 / 2,089 | 142.2 / 203.6 | 197,488 / 99,184 | 98,304 / 384 | −562 ms | 2/48 |
+
+At the same 8 GiB budget, the eight-document trace had **zero** CPU loads and ~0.1 s late revisit TTFT in both B1/B2; the 12-document trace forced 98,304 CPU hit tokens in B2 and gave a repeated ~61–65% lower late revisit TTFT than B1. Thus the tier benefit tracks the working set relative to GPU KV capacity, not a universal 8 GiB cutoff. Across the 12-document pairs, B2 throughput was ~43–46% higher. The larger trace also increases request count/load, so only within-trace B1/B2 effects are causal contrasts. `results/figures/workingset/workingset_pressure.png` plots the two document counts; `configs/workingset_matrix.csv` and raw JSONL permit regeneration.
+
+### Mechanism interpretation
+
+The original DHAS did not create additional cached tokens even for simultaneous 8K siblings. [vLLM 0.22's prefix-cache design](https://docs.vllm.ai/en/v0.22.0/design/prefix_caching/) says a full allocated KV block is immediately made reusable by other requests in the same batch. That behavior is **consistent with** the measured identical 196,608 cached / 66,128 computed tokens under FIFO and DHAS; the counters alone do not prove which internal block-sharing path served each sibling. The matched timing audit found all 8K DHAS producer first tokens later than its 200 ms bound, so the gateway's specific wait condition could not release them in time. The negative result is specific to this model, scheduler bound, trace shapes, and vLLM/LMCache versions.
+
+## Paired output-quality audit
+
+`results/quality_audit.jsonl` records 18 selected pairs (640 pair comparisons, including same-policy repeat comparisons). Prompt hashes, input token counts, success status, and output token counts matched in every comparison. **25 output-text SHA-256 comparisons differed**, including seven among same-policy repeats; these are overlapping pair comparisons, not 25 independent bad requests. Full generated text was not retained, so semantic impact cannot be assessed. The exact differing request IDs are in the artifact. This rules out a blanket byte-for-byte output-equivalence claim despite matched inputs and `temperature=0`.

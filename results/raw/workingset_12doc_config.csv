@@ -1,0 +1,5 @@
+run_id,mode,gpu_kv_bytes,groups,per_group,seed
+b1-ws12-cap8-r1,B1,8589934592,12,4,7
+b2-ws12-cap8-r1,B2,8589934592,12,4,7
+b2-ws12-cap8-r2,B2,8589934592,12,4,7
+b1-ws12-cap8-r2,B1,8589934592,12,4,7
