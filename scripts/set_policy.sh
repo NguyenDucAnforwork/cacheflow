@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-mode=${1:?usage: set_policy.sh B2|B3|B4 fifo|dhas|static_group}
+mode=${1:?usage: set_policy.sh B2|B3|B4 fifo|dhas|dhas_guarded|static_group}
 policy=${2:?missing policy}
 case "$mode:$policy" in
-    B2:fifo|B3:dhas|B4:static_group) ;;
+    B2:fifo|B3:dhas|B3:dhas_guarded|B4:static_group) ;;
     *) echo "unsupported mode/policy pair" >&2; exit 2 ;;
 esac
 current_mode=$(cat /workspace/.cacheflow-mode)

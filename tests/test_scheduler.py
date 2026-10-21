@@ -46,3 +46,24 @@ def test_dhas_hard_wait_limit_and_cancellation():
         assert scheduler.queue_depth == 0
         await scheduler.finish(lead)
     asyncio.run(run())
+
+
+def test_guard_bypasses_wait_when_measured_producer_is_too_slow():
+    async def run():
+        scheduler = AdmissionScheduler(policy="dhas_guarded", max_inflight=2, max_wait_ms=20,
+                                       min_shared_tokens=8, block_size=4, store_grace_ms=0)
+        first_group = prefix_blocks(list(range(16)), block_size=4)
+        second_group = prefix_blocks(list(range(100, 116)), block_size=4)
+        warm_producer = await scheduler.admit("warm-producer", first_group)
+        await asyncio.sleep(0.05)
+        await scheduler.mark_first_token(warm_producer)
+        await scheduler.finish(warm_producer)
+        producer = await scheduler.admit("producer", second_group)
+        follower = await asyncio.wait_for(scheduler.admit("follower", second_group), 0.1)
+        assert follower.delay_hit_candidate
+        assert follower.readiness_guard_bypassed
+        assert follower.readiness_estimate_ms is not None
+        assert follower.readiness_estimate_ms > 20
+        await scheduler.finish(producer)
+        await scheduler.finish(follower)
+    asyncio.run(run())

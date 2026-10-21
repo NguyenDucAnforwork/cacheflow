@@ -156,6 +156,8 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         "input_tokens": input_tokens,
         "prefix_group": ticket.group,
         "delay_hit_candidate": ticket.delay_hit_candidate,
+        "readiness_guard_bypassed": ticket.readiness_guard_bypassed,
+        "readiness_estimate_ms": ticket.readiness_estimate_ms,
         "recent_match": ticket.recent_match,
         "status": status,
     }

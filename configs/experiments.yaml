@@ -43,6 +43,13 @@ development:
     groups: 8
     per_group: 4
     order: [B2_fifo, B3_dhas]
+  - name: readiness_guard_refinement
+    workload: long_doc_revisit
+    seed: 7
+    input_tokens: 8192
+    groups: 8
+    per_group: 4
+    order: [B3_dhas, B3_dhas_guarded, B2_fifo]
 
 holdout:
   name: unseen_cpu_revisit
@@ -51,4 +58,4 @@ holdout:
   input_tokens: 8192
   groups: 8
   per_group: 4
-  order: [B2_fifo, B3_dhas]
+  order: [B2_fifo, B3_dhas, B3_dhas_guarded]

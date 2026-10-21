@@ -3,7 +3,7 @@ set -euo pipefail
 mode=${1:?usage: set_mode.sh B0|B1|B2|B3|B4 [fifo|static_group|dhas]}
 policy=${2:-fifo}
 case "$mode" in B0|B1|B2|B3|B4) ;; *) echo "invalid mode" >&2; exit 2;; esac
-case "$policy" in fifo|static_group|dhas) ;; *) echo "invalid policy" >&2; exit 2;; esac
+case "$policy" in fifo|static_group|dhas|dhas_guarded) ;; *) echo "invalid policy" >&2; exit 2;; esac
 
 supervisorctl stop cacheflow_gateway cacheflow_vllm cacheflow_lmcache 2>/dev/null || true
 printf '%s\n' "$mode" > /workspace/.cacheflow-mode

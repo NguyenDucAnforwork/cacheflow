@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import statistics
 import time
 from collections import deque
 from dataclasses import dataclass
@@ -10,7 +11,7 @@ from typing import Literal
 
 from .prefix import group_digest, shared_prefix_tokens
 
-Policy = Literal["fifo", "static_group", "dhas"]
+Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded"]
 
 
 @dataclass(slots=True)
@@ -27,6 +28,8 @@ class Ticket:
     cancellation_reason: str | None = None
     delay_hit_candidate: bool = False
     recent_match: bool = False
+    readiness_guard_bypassed: bool = False
+    readiness_estimate_ms: float | None = None
 
 
 class AdmissionScheduler:
@@ -42,7 +45,7 @@ class AdmissionScheduler:
         store_grace_ms: int = 20,
         group_window_ms: int = 30,
     ) -> None:
-        if policy not in ("fifo", "static_group", "dhas"):
+        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded"):
             raise ValueError(f"unknown policy {policy}")
         if min(max_inflight, max_queue, max_wait_ms, min_shared_tokens, block_size) <= 0:
             raise ValueError("capacities and thresholds must be positive")
@@ -59,6 +62,7 @@ class AdmissionScheduler:
         self._active: dict[str, Ticket] = {}
         self._recent: deque[Ticket] = deque(maxlen=256)
         self._last_group: str | None = None
+        self._producer_first_token_ms: dict[int, deque[float]] = {}
 
     @property
     def queue_depth(self) -> int:
@@ -90,6 +94,15 @@ class AdmissionScheduler:
         if producer is None:
             return True
         ticket.delay_hit_candidate = True
+        if self.policy == "dhas_guarded" and producer.first_token_ns is None:
+            observations = self._producer_first_token_ms.get(len(producer.blocks))
+            if observations:
+                expected_remaining_ms = statistics.median(observations) - (now - (producer.dispatch_ns or now)) / 1e6
+                remaining_budget_ms = (ticket.deadline_ns - now) / 1e6
+                ticket.readiness_estimate_ms = max(0.0, expected_remaining_ms)
+                if expected_remaining_ms > remaining_budget_ms:
+                    ticket.readiness_guard_bypassed = True
+                    return True
         return producer.first_token_ns is not None and now >= producer.first_token_ns + self.store_grace_ns
 
     def _choose(self, now: int) -> Ticket | None:
@@ -110,7 +123,7 @@ class AdmissionScheduler:
         deadlines = [t.deadline_ns for t in self._queue if t.deadline_ns > now]
         if self.policy == "static_group":
             deadlines += [t.enqueued_ns + self.group_window_ns for t in self._queue if t.enqueued_ns + self.group_window_ns > now]
-        if self.policy == "dhas":
+        if self.policy in ("dhas", "dhas_guarded"):
             deadlines += [t.first_token_ns + self.store_grace_ns for t in self._active.values()
                           if t.first_token_ns is not None and t.first_token_ns + self.store_grace_ns > now]
         return max(0.001, (min(deadlines) - now) / 1e9) if deadlines else 0.1
@@ -160,6 +173,10 @@ class AdmissionScheduler:
         async with self._condition:
             if ticket.request_id in self._active and ticket.first_token_ns is None:
                 ticket.first_token_ns = time.monotonic_ns()
+                if not ticket.delay_hit_candidate and not ticket.recent_match and ticket.dispatch_ns is not None:
+                    bucket = len(ticket.blocks)
+                    observations = self._producer_first_token_ms.setdefault(bucket, deque(maxlen=16))
+                    observations.append((ticket.first_token_ns - ticket.dispatch_ns) / 1e6)
                 self._condition.notify_all()
 
     async def finish(self, ticket: Ticket, *, cancellation_reason: str | None = None) -> None:
