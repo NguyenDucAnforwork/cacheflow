@@ -1,0 +1,25 @@
+{
+  "baseline_run_id": "b2-revisit-8k-holdout-r7",
+  "groups": {
+    "bypassed": {
+      "arrival_to_dispatch_ms_mean_delta": 2.24695325,
+      "arrival_to_first_ms_mean_delta": 135.77396549999997,
+      "count": 4,
+      "dispatch_to_first_ms_mean_delta": 133.52701225000004
+    },
+    "noncandidate": {
+      "arrival_to_dispatch_ms_mean_delta": 49.137917772727235,
+      "arrival_to_first_ms_mean_delta": 79.36695418181823,
+      "count": 22,
+      "dispatch_to_first_ms_mean_delta": 30.22903640909093
+    },
+    "other_candidate": {
+      "arrival_to_dispatch_ms_mean_delta": 176.94037966666667,
+      "arrival_to_first_ms_mean_delta": 143.06035183333336,
+      "count": 6,
+      "dispatch_to_first_ms_mean_delta": -33.88002783333334
+    }
+  },
+  "guarded_run_id": "b3g-revisit-8k-holdout-r2",
+  "paired_count": 32
+}

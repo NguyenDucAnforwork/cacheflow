@@ -73,3 +73,7 @@ Run `PYTHONPATH=src /venv/main/bin/python scripts/run_quality_audit.py` to regen
 ## Instance state at handoff
 
 The Vast.ai instance `57086282` was stopped at about 2026-10-21 19:40 UTC after all GPU services ended. `/workspace` data is expected to persist on the stopped instance, but SSH is unavailable until it is restarted and a GPU is assigned. The private GitHub branch `feat/cacheflow-6h` contains code, raw measurements, figures, and the five living docs; model weights and the Python environment are not in Git. Vast documents that stopped instances continue storage billing: https://github.com/vast-ai/docs/blob/main/guides/instances/manage-instances.mdx . Use the GitHub repository as the durable record before restarting or destroying the rental.
+
+## Decision-stratified guard audit
+
+For a holdout comparison, run `PYTHONPATH=src python3 -m cacheflow.stratify_guard results/raw/gateway.jsonl BASELINE_RUN GUARDED_RUN --output results/figures/PAIR/guard_phase_by_decision.json`. The committed artifacts cover both FIFO→guard and original-DHAS→guard comparisons for seed 11. It classifies each request from the guard's logged decision and reports paired mean deltas for arrival→dispatch, dispatch→first token, and total arrival TTFT. The phase decomposition is descriptive; it does not remove whole-run drift.
