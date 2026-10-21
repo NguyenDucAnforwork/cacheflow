@@ -40,6 +40,50 @@ def metric_delta(path: Path) -> dict[str, float]:
     return output
 
 
+def resource_summary(path: Path) -> dict[str, float]:
+    if not path.exists():
+        return {}
+    samples = read_jsonl(path)
+    if not samples:
+        return {}
+    def values(*keys: str) -> list[float]:
+        output = []
+        for row in samples:
+            value = row
+            for key in keys:
+                value = value.get(key) if isinstance(value, dict) else None
+            if isinstance(value, (int, float)):
+                output.append(float(value))
+        return output
+
+    summary = {}
+    for label, keys, reduction in (
+        ("host_cpu_mean_pct", ("cpu_percent",), statistics.mean),
+        ("gpu_sm_mean_pct", ("gpu", "gpu_util_pct"), statistics.mean),
+        ("gpu_sm_clock_mean_mhz", ("gpu", "sm_clock_mhz"), statistics.mean),
+        ("gpu_temperature_peak_c", ("gpu", "temperature_c"), max),
+        ("gpu_power_mean_w", ("gpu", "power_w"), statistics.mean),
+        ("vram_peak_mib", ("gpu", "vram_used_mib"), max),
+        ("host_ram_available_min_gib", ("memory_available_bytes",), min),
+        ("gpu_kv_usage_peak_fraction", ("vllm", "vllm:kv_cache_usage_perc"), max),
+        ("cpu_l1_peak_gib", ("lmcache", "lmcache_mp_l1_memory_usage_bytes"), max),
+    ):
+        series = values(*keys)
+        if series:
+            value = reduction(series)
+            if label.endswith("_gib"):
+                value /= 1024 ** 3
+            summary[label] = value
+    for process in ("gateway", "vllm", "lmcache"):
+        series = values("process", process, "cpu_seconds")
+        if len(series) > 1:
+            summary[f"{process}_cpu_seconds_delta"] = max(0.0, series[-1] - series[0])
+        series = values("process", process, "rss_bytes")
+        if series:
+            summary[f"{process}_rss_peak_gib"] = max(series) / 1024 ** 3
+    return summary
+
+
 def compare(a_path: Path, b_path: Path) -> dict:
     a_rows, b_rows = read_jsonl(a_path), read_jsonl(b_path)
     a = {r["request_id"]: r for r in a_rows}
@@ -71,6 +115,8 @@ def compare(a_path: Path, b_path: Path) -> dict:
     b_summary = json.loads(b_path.with_suffix(".summary.json").read_text())
     a_metrics = metric_delta(a_path.with_suffix(".metrics.jsonl"))
     b_metrics = metric_delta(b_path.with_suffix(".metrics.jsonl"))
+    a_resources = resource_summary(a_path.with_suffix(".metrics.jsonl"))
+    b_resources = resource_summary(b_path.with_suffix(".metrics.jsonl"))
     return {
         "a_run_id": a_summary["run_id"], "b_run_id": b_summary["run_id"],
         "trace_sha256": hashes.pop(), "paired_count": len(comparable), "request_count": len(a),
@@ -85,6 +131,7 @@ def compare(a_path: Path, b_path: Path) -> dict:
         "a_output_tokens_per_s": a_summary["output_tokens_per_s"],
         "b_output_tokens_per_s": b_summary["output_tokens_per_s"],
         "a_cache_metric_deltas": a_metrics, "b_cache_metric_deltas": b_metrics,
+        "a_resource_summary": a_resources, "b_resource_summary": b_resources,
     }
 
 
@@ -96,6 +143,10 @@ def figures(a_path: Path, b_path: Path, output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     a = {r["request_id"]: r for r in read_jsonl(a_path)}
     b = {r["request_id"]: r for r in read_jsonl(b_path)}
+    a_info = json.loads(a_path.with_suffix(".summary.json").read_text())
+    b_info = json.loads(b_path.with_suffix(".summary.json").read_text())
+    a_label = f"{a_info['mode']} {a_info['policy']}"
+    b_label = f"{b_info['mode']} {b_info['policy']}"
     keys = [k for k in sorted(a) if a[k]["arrival_ttft_ms"] and b[k]["arrival_ttft_ms"]]
     xs = [a[k]["arrival_ttft_ms"] for k in keys]
     ys = [b[k]["arrival_ttft_ms"] for k in keys]
@@ -103,7 +154,7 @@ def figures(a_path: Path, b_path: Path, output_dir: Path) -> None:
     ax.scatter(xs, ys, alpha=0.75, s=28)
     lim = max(xs + ys, default=1) * 1.05
     ax.plot([0, lim], [0, lim], color="gray", linestyle="--", linewidth=1)
-    ax.set(xlabel="FIFO arrival TTFT (ms)", ylabel="DHAS arrival TTFT (ms)", title="Paired requests")
+    ax.set(xlabel=f"{a_label} arrival TTFT (ms)", ylabel=f"{b_label} arrival TTFT (ms)", title="Paired requests")
     fig.tight_layout()
     fig.savefig(output_dir / "paired_ttft.png", dpi=160)
     plt.close(fig)
@@ -119,7 +170,7 @@ def figures(a_path: Path, b_path: Path, output_dir: Path) -> None:
         fig, ax = plt.subplots(figsize=(10, 4))
         ax.plot(seconds, gpu, label="GPU SM utilization (%)")
         ax.plot(seconds, cpu, label="Host CPU utilization (%)", alpha=0.7)
-        ax.set(xlabel="Seconds from first sample", ylabel="Utilization (%)", title="Host and GPU activity during DHAS run")
+        ax.set(xlabel="Seconds from first sample", ylabel="Utilization (%)", title=f"Host and GPU activity during {b_label} run")
         secondary = ax.twinx()
         secondary.bar(seconds, read_deltas, width=0.6, color="tab:green", alpha=0.22, label="LMCache L1 read chunks")
         secondary.set_ylabel("L1 read chunks / sample")
@@ -133,8 +184,8 @@ def figures(a_path: Path, b_path: Path, output_dir: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("a", type=Path, help="FIFO B2 JSONL")
-    parser.add_argument("b", type=Path, help="DHAS B3 JSONL")
+    parser.add_argument("a", type=Path, help="first run JSONL")
+    parser.add_argument("b", type=Path, help="second run JSONL")
     parser.add_argument("--output-dir", type=Path, default=Path("/workspace/results/figures"))
     args = parser.parse_args()
     result = compare(args.a, args.b)

@@ -55,13 +55,14 @@ def parse_metrics(text: str) -> dict[str, float]:
 
 def gpu_snapshot() -> dict:
     result = subprocess.run(
-        ["nvidia-smi", "--query-gpu=utilization.gpu,utilization.memory,memory.used,memory.total",
+        ["nvidia-smi", "--query-gpu=utilization.gpu,utilization.memory,memory.used,memory.total,clocks.sm,temperature.gpu,power.draw",
          "--format=csv,noheader,nounits"], capture_output=True, text=True, timeout=4,
     )
     if result.returncode:
         return {"error": result.stderr.strip()[:150]}
     items = [float(x.strip()) for x in result.stdout.splitlines()[0].split(",")]
-    return dict(zip(("gpu_util_pct", "gpu_memory_util_pct", "vram_used_mib", "vram_total_mib"), items))
+    return dict(zip(("gpu_util_pct", "gpu_memory_util_pct", "vram_used_mib", "vram_total_mib",
+                     "sm_clock_mhz", "temperature_c", "power_w"), items))
 
 
 def process_snapshot() -> dict:

@@ -1,6 +1,6 @@
 # CacheFlow: reproducibility log
 
-Status: setup pending. Do not use these notes as a claim that vLLM, LMCache, or the model is installed.
+Status: pinned stack installed and development replay verified on `optim`. This file records both the initial host audit and the commands used after setup.
 
 ## Host snapshot (2026-10-22)
 
@@ -33,3 +33,13 @@ Install supervisor programs with `./scripts/install_services.sh`, then select mo
 ## Development screening runs
 
 From a clean stack, `./scripts/set_mode.sh B2 fifo && ./scripts/run_benchmark.sh b2-longdoc-8k-r1 long_doc 8192 8 4 64`; then `./scripts/set_mode.sh B3 dhas && ./scripts/run_benchmark.sh b3-longdoc-8k-r1 long_doc 8192 8 4 64`. Source SHA for both: `9be600cfbdce4e70a94ae9451987420e688d3d9b`. Trace SHA is recorded in both summaries and must match for paired comparison. Analyze with `PYTHONPATH=src python -m cacheflow.analyze results/raw/b2-longdoc-8k-r1.jsonl results/raw/b3-longdoc-8k-r1.jsonl --output-dir results/figures/dev-screen`. This was a development screen; there was no CPU restore during the replay.
+
+## Revisit and negative-control pairs
+
+Use `./scripts/set_mode.sh MODE POLICY` before **each** run to clear both tiers by restarting the serving stack. The 8K revisit pairs used `./scripts/run_benchmark.sh RUN_ID long_doc_revisit 8192 8 4 64` with order `b3-revisit-8k-r1`, `b2-revisit-8k-r1`, `b2-revisit-8k-r2`, `b3-revisit-8k-r2`; all four summaries record source SHA `cc1ae6536f8ad6cddfc0995fedf8b0ec4f4cffa4`. The 2K distinct-prefix pairs used `./scripts/run_benchmark.sh RUN_ID distinct 2048 8 4 64` with order `b2-distinct-2k-r1`, `b3-distinct-2k-r1`, `b3-distinct-2k-r2`, `b2-distinct-2k-r2`; source SHA `46fb90a212e4a90579c66a89e8127fec877d8fcb`. Policy is `fifo` for B2 and `dhas` for B3. All traces and metrics are under `results/raw/` and aggregate JSON/figures under `results/figures/`.
+
+Compare each pair with `PYTHONPATH=src /venv/main/bin/python -m cacheflow.analyze results/raw/B2_RUN.jsonl results/raw/B3_RUN.jsonl --output-dir results/figures/PAIR`. Audit whether a delay-hit candidate could have reached the first-token signal within the 200 ms bound using `PYTHONPATH=src /venv/main/bin/python -m cacheflow.diagnose_delay results/raw/gateway.jsonl B3_RUN`. Generate one phase figure with `PYTHONPATH=src /venv/main/bin/python -m cacheflow.plot_timeline results/raw/b3-revisit-8k-r2.jsonl results/figures/revisit-r2/critical_path.png --group doc-0`. The timeline uses client scheduled arrival and first/complete timestamps plus gateway dispatch timestamps; LMCache reads are sampled once per second, so its vertical markers are approximate windows, not transfer duration measurements.
+
+## Matched tier baseline commands
+
+Run order was B0 r1 → B1 r1 → B2 r3 → B1 r2 → B2 r4. Each mode was reset before its run: `./scripts/set_mode.sh B0 fifo` or `B1 fifo` or `B2 fifo`, then `./scripts/run_benchmark.sh RUN_ID long_doc_revisit 8192 8 4 64`. `results/raw/*.summary.json` records exact run IDs, Git HEAD and common trace SHA. The first B0 attempt stopped after setup because `supervisorctl status` returned a nonzero code for intentionally stopped LMCache; it produced no benchmark rows. The B0/B1 launcher status check was repaired before the five successful runs, but the benchmark summaries still contain the preceding committed HEAD. The next commit includes the exact launcher fix; this does not alter the engine or gateway code paths used in the measurements.

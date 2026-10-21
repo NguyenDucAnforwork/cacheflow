@@ -18,3 +18,4 @@ CLAUDE.md
 .uv-cache/
 .cacheflow-mode
 .cacheflow-policy
+.cacheflow-trace

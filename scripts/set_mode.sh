@@ -31,4 +31,7 @@ for _ in $(seq 1 30); do
     sleep 1
 done
 curl --silent --fail --max-time 2 http://127.0.0.1:8100/health
-supervisorctl status cacheflow_vllm cacheflow_lmcache cacheflow_gateway
+supervisorctl status cacheflow_vllm cacheflow_lmcache cacheflow_gateway || {
+    [[ "$mode" == B0 || "$mode" == B1 ]] &&
+        supervisorctl status cacheflow_vllm cacheflow_gateway
+}

@@ -11,6 +11,7 @@ dependencies = ["fastapi>=0.115", "httpx>=0.28", "PyYAML>=6", "transformers==5.6
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "matplotlib>=3.9", "psutil>=6"]
+profile = ["grpcio==1.84.0", "opentelemetry-proto==1.40.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
