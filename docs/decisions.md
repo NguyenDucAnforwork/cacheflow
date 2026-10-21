@@ -71,3 +71,11 @@ The separate OTLP profile captured `mp.retrieve` operation intervals and byte co
 ## One bounded refinement: online readiness guard (2026-10-21 19:03 UTC)
 
 Add `dhas_guarded` as a separate policy so the original DHAS measurements remain intact. It records dispatch-to-first-token time from completed prefix producers in a rolling 16-sample window per block-aligned prompt-length bucket. When a matching producer is active, it compares the median estimated remaining time to the follower's remaining 200 ms deadline; if readiness is predicted after the deadline, it admits the follower immediately and logs the bypass/estimate. With no prior observation it uses the original bounded wait. This changes only the admission decision and does not alter prompts, engine settings or decoding. Evaluate on development seed 7 first, then freeze before seed 11 holdout; do not claim a new cache hit unless vLLM/LMCache counters show one.
+
+## Development gate before holdout (2026-10-21 19:09 UTC)
+
+Keep `dhas_guarded` frozen at SHA `5280c74`. It skipped 6/10 and 4/10 inferred follower waits on two development runs while preserving exactly the same aggregate cache/compute counters as FIFO and original DHAS. Its paired TTFT against FIFO was −211 ms then −3 ms; against original DHAS it was −285 ms then +191 ms. The sign reversal prevents a development performance claim. Run one new-seed, same-PID six-arm crossover with the same reset protocol and compare run-level effects, output hashes, first-sample cache state, and guard decisions. Do not retune after seeing holdout.
+
+## Holdout decision (2026-10-21 19:14 UTC)
+
+The frozen seed 11 guard bypassed four candidate waits per run but left total cached and computed prefill tokens unchanged. Its paired mean TTFT versus FIFO was +3 and +98 ms; versus original DHAS +111 and +118 ms. Do not promote `dhas_guarded` as a performance improvement. Keep it as a documented unsuccessful refinement. The next independent research question is where CPU KV tiering becomes useful as GPU KV capacity changes, using 4 and 8 GiB against the 6 GiB baseline.

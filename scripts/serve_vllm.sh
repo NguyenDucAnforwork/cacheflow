@@ -10,12 +10,20 @@ export HF_HOME=/workspace/.hf_home
 export VLLM_SERVER_DEV_MODE=1
 export LD_LIBRARY_PATH="/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib:${LD_LIBRARY_PATH:-}"
 model=/workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+gpu_kv_bytes=6442450944
+if [[ -f /workspace/.cacheflow-gpu-kv-bytes ]]; then
+    gpu_kv_bytes=$(cat /workspace/.cacheflow-gpu-kv-bytes)
+fi
+case "$gpu_kv_bytes" in
+    4294967296|6442450944|8589934592) ;;
+    *) echo "unsupported GPU KV budget: $gpu_kv_bytes" >&2; exit 2 ;;
+esac
 
 args=(
     "$model" --served-model-name cacheflow-qwen3-1.7b
     --host 127.0.0.1 --port 8000 --dtype bfloat16
     --max-model-len 12288 --max-num-seqs 16
-    --kv-cache-memory-bytes 6442450944 --enforce-eager
+    --kv-cache-memory-bytes "$gpu_kv_bytes" --enforce-eager
     --generation-config vllm
 )
 

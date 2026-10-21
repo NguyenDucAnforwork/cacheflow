@@ -19,3 +19,4 @@ CLAUDE.md
 .cacheflow-mode
 .cacheflow-policy
 .cacheflow-trace
+.cacheflow-gpu-kv-bytes

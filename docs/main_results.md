@@ -128,3 +128,33 @@ The two run-level paired effects average about **+9 ms for B3**, with opposite s
 ## Separate LMCache transfer-path profile (2026-10-21 19:00 UTC)
 
 A single non-comparative B2 8K revisit replay used LMCache 0.5.3's OTLP tracing into a localhost sink. It completed 32/32 requests; it is excluded from latency comparisons because tracing changes the instrumentation path. `results/raw/otlp-profile.jsonl` contains 124 exported spans: 32 request roots, 32 lookup/prefetch spans, 52 store spans, and **8 retrieve spans**. The eight retrieves report 256 chunks and 7.0 GiB total, matching the external prefix hits and LMCache loaded-chunk counters. Each retrieve reported 896 MiB; span duration median/p90 was 149/157 ms (range 147–164 ms). This inclusive LMCache operation interval contains more than DMA and may overlap with other work, so it must not be presented as pure PCIe bandwidth or added directly to request TTFT. The pinned build did not export separate `transfer.staging` or `transfer.kernel_interval` spans; precise H2D and GPU staging times remain **not instrumented**. The 1-second CPU/GPU utilization plots are coarse overlap evidence only.
+
+## Readiness-guard development crossover (2026-10-21 19:09 UTC)
+
+One vLLM PID `41476` and LMCache PID `41336` served six 8K revisit runs in B3 original → B3 guarded → B2 FIFO → B2 FIFO → B3 guarded → B3 original order. The source SHA was `5280c743dc54a59e5f860f96af5e84c6bcdf05a4`, seed 7, common trace SHA `374cf57d2e2631eb5f1c8d605d2b25f453b0679925fe79f4c8989d26fda11781`. Fixed direct warmup and empty-cache reset preceded each run. All 192 requests succeeded. Every run reported 196,608 cached prompt tokens, 66,128 computed prefill tokens, 65,536 external hit tokens, and 256 LMCache chunks loaded. The guard did not create extra KV reuse.
+
+| Run order | Policy | Arrival TTFT p50/p90 ms | Paired mean vs adjacent B2 ms | Guard bypasses |
+| --- | --- | ---: | ---: | ---: |
+| 1 | B3 original | 1,711 / 4,218 | — | 0/10 |
+| 2 | B3 guarded | 1,354 / 3,848 | −211 (vs order 3) | 6/10 |
+| 3 | B2 FIFO | 1,610 / 4,119 | reference | — |
+| 4 | B2 FIFO | 1,727 / 4,315 | reference | — |
+| 5 | B3 guarded | 1,753 / 4,247 | −3 (vs order 4) | 4/10 |
+| 6 | B3 original | 1,491 / 4,028 | — | 0/10 |
+
+Guarded-vs-original paired mean TTFT was −285 ms in the first bracket and +191 ms in the reversed bracket. The guard bypassed predicted-infeasible holds, reducing bypassed-candidate queue-wait median to ~20–21 ms from original DHAS candidate wait ~200.5 ms. Yet all observed matching producers reached first token later than the 200 ms bound, and the whole-run latency effect changed sign. One output hash differed in the first B2-vs-guard pair and none in the second; one differed in each guard-vs-original comparison. These development runs support a scheduler-wait mechanism, but **do not establish an end-to-end speedup**. An untouched seed 11 holdout is running with the frozen policy.
+
+## Frozen-guard seed 11 holdout (2026-10-21 19:14 UTC)
+
+The untouched `long_doc_revisit` seed 11 trace SHA is `fece35d29ada31e10d1b17d38789cc50970331759ff3f22a38eea6055d86087d`. Six 32-request runs used the frozen guard at source SHA `5280c74` in original B3 → guarded B3 → FIFO B2 → FIFO B2 → guarded B3 → original B3 order. vLLM PID `44375` and LMCache PID `44163` were unchanged. Each run began with 0 LMCache L1 bytes and 0 vLLM GPU KV occupancy after the same warmup/reset. All 192 requests succeeded.
+
+| Order | Arm | TTFT p50/p90 ms | Paired mean guarded−comparator ms | Output hash mismatches vs guarded |
+| --- | --- | ---: | ---: | ---: |
+| 1→2 | B3 original → guarded | 1,504 / 4,037 → 1,609 / 4,246 | +111 | 3/32 |
+| 3→2 | B2 FIFO → guarded | 1,652 / 4,156 → 1,609 / 4,246 | +3 | 3/32 |
+| 4→5 | B2 FIFO → guarded | 1,554 / 4,054 → 1,696 / 4,188 | +98 | 2/32 |
+| 6→5 | B3 original → guarded | 1,540 / 4,031 → 1,696 / 4,188 | +118 | 2/32 |
+
+Each guard run marked 10 matching candidates and bypassed 4 predicted-late holds, with bypassed-candidate gateway wait p50 ~20.6–20.8 ms; no matching producer emitted first token inside 200 ms. All six arms cached 196,608 prompt tokens and computed 66,128 prefill KV tokens. The first guard arm used 59,072 external/137,536 GPU-local hit tokens and loaded 231 LMCache chunks; the other five used 65,536 external/131,072 local hits and loaded 256 chunks. Thus the total reuse was equal but one run changed its tier split. Five hash mismatches across the two FIFO-vs-guard pairs are logged; only hashes were retained, so content impact is unknown.
+
+The frozen guard's two run-level effects versus FIFO are **+3 and +98 ms** (guard slower on average); versus original DHAS they are **+111 and +118 ms**. This holdout rejects the proposed latency improvement under this configuration, despite a real reduction in selected gateway waits. With only two run-level replicates, the exact penalty is uncertain. Request-level bootstrap intervals are not a substitute for additional independent runs.

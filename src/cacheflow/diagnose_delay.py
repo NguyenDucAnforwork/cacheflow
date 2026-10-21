@@ -32,6 +32,10 @@ def diagnose(gateway_path: Path, run_id: str, max_wait_ms: int) -> dict:
         producer_ready_ms.append(delay)
         ready_within_bound += delay <= max_wait_ms
     waits = [row["queue_wait_ms"] for row in candidates if row.get("queue_wait_ms") is not None]
+    bypassed = [row for row in candidates if row.get("readiness_guard_bypassed")]
+    bypass_waits = [row["queue_wait_ms"] for row in bypassed if row.get("queue_wait_ms") is not None]
+    estimates = [row["readiness_estimate_ms"] for row in bypassed
+                 if isinstance(row.get("readiness_estimate_ms"), (int, float))]
     return {
         "run_id": run_id,
         "requests": len(rows),
@@ -43,6 +47,9 @@ def diagnose(gateway_path: Path, run_id: str, max_wait_ms: int) -> dict:
         "producer_ready_delay_p90_ms": percentile(producer_ready_ms, 90),
         "candidate_queue_wait_p50_ms": percentile(waits, 50),
         "candidate_queue_wait_mean_ms": statistics.mean(waits) if waits else None,
+        "guard_bypassed_candidates": len(bypassed),
+        "guard_bypassed_queue_wait_p50_ms": percentile(bypass_waits, 50),
+        "guard_readiness_estimate_p50_ms": percentile(estimates, 50),
         "max_wait_ms": max_wait_ms,
         "note": "Matching uses logged prefix-group IDs and overlapping intervals; this is a scheduler feasibility audit, not proof of a cache hit.",
     }
