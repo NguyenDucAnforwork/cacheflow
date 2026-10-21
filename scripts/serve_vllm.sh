@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mode=${1:-B1}
+source /venv/main/bin/activate >/dev/null
+export HF_HOME=/workspace/.hf_home
+export LD_LIBRARY_PATH="/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib:${LD_LIBRARY_PATH:-}"
+model=/workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+
+args=(
+    "$model" --served-model-name cacheflow-qwen3-1.7b
+    --host 127.0.0.1 --port 8000 --dtype bfloat16
+    --max-model-len 12288 --max-num-seqs 16
+    --kv-cache-memory-bytes 6442450944 --enforce-eager
+    --generation-config vllm
+)
+
+case "$mode" in
+    B0) args+=(--no-enable-prefix-caching) ;;
+    B1) args+=(--enable-prefix-caching) ;;
+    B2|B3|B4)
+        args+=(--enable-prefix-caching)
+        args+=(--kv-transfer-config '{"kv_connector":"LMCacheMPConnector","kv_connector_module_path":"lmcache.integration.vllm.lmcache_mp_connector","kv_role":"kv_both","kv_connector_extra_config":{"lmcache.mp.host":"127.0.0.1","lmcache.mp.port":5555}}')
+        ;;
+    *) echo "unknown mode: $mode" >&2; exit 2 ;;
+esac
+
+exec vllm serve "${args[@]}"

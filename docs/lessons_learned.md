@@ -10,3 +10,9 @@
 - Validate effects in the workload regime where the mechanism acts; include a low-reuse negative control.
 
 No CacheFlow experiment has run yet. Record failed attempts and their fixes here as they occur.
+
+## Setup attempts (2026-10-21)
+
+- vLLM CLI initially failed importing `libcudart.so.13`. The library existed in the installed CUDA 13 package; adding its directory to `LD_LIBRARY_PATH` allowed B1 to boot and serve a real request. CUDA/PyTorch ABI compatibility still needs MP and longer-run validation.
+- LMCache MP first failed because port 8080 was occupied by the instance image. Restarted its localhost metrics HTTP endpoint on 18080; `/metrics` returned 200. Request port remains 5555.
+- LMCache warned that its `c_ops` extension was unavailable and would use torch baseline device ops. Record this in performance interpretation.

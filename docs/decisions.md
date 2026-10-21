@@ -39,3 +39,7 @@ Pin versions only after verifying Python/Torch/CUDA ABI and a live Qwen3-1.7B sm
 ## Metric implementation notes (pre-install review)
 
 After pinning versions, inspect live `/metrics` names. Current vLLM docs list `vllm:prompt_tokens_cached_by_source` (device vs host), `vllm:request_prefill_kv_computed_tokens`, `vllm:request_queue_time_seconds`, and `vllm:time_to_first_token_seconds`. Current LMCache MP docs list L1 read/write/eviction counters, `lmcache_mp.num_chunks_loaded`, submitted/finished retrieve counters, and L0↔L1 throughput histograms. A transfer completion counter alone does not prove bytes were restored; use loaded chunks and tier-source tokens together.
+
+## Stack pin (2026-10-21 17:48 UTC)
+
+Use vLLM 0.22.0 + LMCache 0.5.3 + transformers 5.6.2 with the image's torch 2.11.0+cu128. vLLM's wheel links CUDA 13 runtime libraries even though the base PyTorch wheel is cu128; `LD_LIBRARY_PATH=/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib` is required before CLI launch. The B1 smoke succeeded with this combination, but MP interoperability remains to be proven. Set GPU KV budget to 6 GiB (vLLM reported 56,160 tokens), CPU L1 to 16 GiB, model length 12,288, and max sequences 16. All compared arms will use these engine settings.

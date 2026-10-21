@@ -1,0 +1,11 @@
+model: /workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+upstream: http://127.0.0.1:8000
+scheduler:
+  policy: dhas
+  max_inflight: 16
+  max_queue: 64
+  max_wait_ms: 200
+  min_shared_tokens: 1024
+  block_size: 256
+  store_grace_ms: 20
+  group_window_ms: 30

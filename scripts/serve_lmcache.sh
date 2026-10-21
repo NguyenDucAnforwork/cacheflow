@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source /venv/main/bin/activate >/dev/null
+export LD_LIBRARY_PATH="/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib:${LD_LIBRARY_PATH:-}"
+export LMCACHE_DISABLE_BANNER=1
+exec lmcache server \
+    --host 127.0.0.1 --port 5555 \
+    --http-host 127.0.0.1 --http-port 18080 \
+    --l1-size-gb 16 --eviction-policy LRU --chunk-size 256 \
+    --supported-transfer-mode auto
