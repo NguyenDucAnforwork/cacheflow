@@ -81,3 +81,7 @@ For a holdout comparison, run `PYTHONPATH=src python3 -m cacheflow.stratify_guar
 ## Prompt-token source accounting
 
 Regenerate the B0–B4 stacked token-source plot with `PYTHONPATH=src python3 -m cacheflow.plot_cache_accounting configs/cache_accounting_matrix.csv --output-dir results/figures/cache_accounting`. The script uses live-metric deltas and checks that GPU-hit + CPU-hit + newly computed prefill tokens equals total prompt tokens for each run; it refuses a matrix that mixes trace hashes. The five selected rows are representative runs from different execution blocks, so use this plot for cache-source accounting only.
+
+## Observed readiness-window sweep
+
+Run `PYTHONPATH=src python3 -m cacheflow.readiness_sweep configs/readiness_sweep.csv --output-dir results/figures/readiness` to rebuild the CSV and plot for four trace families. It invokes the logged-producer audit at each candidate window and at `window − 20 ms` to account for the configured grace. The line shows the share of observed matching producers whose first token plus grace would fit inside a given bound; it does not simulate how another bound would alter request execution, cache-store visibility, or throughput.
