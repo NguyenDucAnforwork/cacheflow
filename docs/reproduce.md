@@ -87,3 +87,7 @@ Regenerate the B0–B4 stacked token-source plot with `PYTHONPATH=src python3 -m
 ## Observed readiness-window sweep
 
 Run `PYTHONPATH=src python3 -m cacheflow.readiness_sweep configs/readiness_sweep.csv --output-dir results/figures/readiness` to rebuild the CSV and plot for four trace families. It invokes the logged-producer audit at each candidate window and at `window − 20 ms` to account for the configured grace. The line shows the share of observed matching producers whose first token plus grace would fit inside a given bound; it does not simulate how another bound would alter request execution, cache-store visibility, or throughput.
+
+## Admission-deadline audit
+
+Run `PYTHONPATH=src python3 -m cacheflow.audit_admission configs/admission_audit.csv --output results/figures/admission_audit.csv`. The script reports queue-wait p50/p90/max and count/tail above the configured 200 ms intentional-deferral deadline for ten selected runs; it checks newer logged overrun fields against the value reconstructed from arrival and dispatch times. The older gateway trace schema lacks explicit deadline fields, so the reconstruction assumes the pinned `max_wait_ms=200` policy config. Compare FIFO and DHAS rows before attributing over-bound waits to policy deferral.

@@ -1,0 +1,11 @@
+workload,policy,run_id
+8K revisit,B2 fifo,b2-revisit-8k-r2
+8K revisit,B3 dhas,b3-revisit-8k-r2
+2K distinct,B2 fifo,b2-distinct-2k-r2
+2K distinct,B3 dhas,b3-distinct-2k-r2
+2K burst,B2 fifo,b2-longdoc-2k-r1
+2K burst,B3 dhas,b3-longdoc-2k-r1
+8K simultaneous,B2 fifo,b2-simultaneous-8k-r2
+8K simultaneous,B3 dhas,b3-simultaneous-8k-r2
+8K seed11,B2 fifo,b2-revisit-8k-holdout-r7
+8K seed11,B3 guarded,b3g-revisit-8k-holdout-r2
