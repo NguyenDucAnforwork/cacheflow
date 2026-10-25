@@ -1,6 +1,6 @@
 # CacheFlow V2: new host and execution log
 
-Status: V2 data audit complete; serving stack installation and 32K memory pilot pending. This log is separate from the V1 host log in `docs/reproduce.md`.
+Status: V2 data audit complete; serving stack installation and 32K memory pilot pending. Work was paused at the owner's request; see `docs/PROGRESS.md` for the exact server handoff. This log is separate from the V1 host log in `docs/reproduce.md`.
 
 ## Owner decision (2026-10-25)
 
