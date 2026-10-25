@@ -32,3 +32,16 @@ def test_counter_reset_invalidates_run(tmp_path):
         "vllm": {"vllm:prompt_tokens_total": v}}) for t, v in [(1, 10), (2, 3)]) + "\n")
     with pytest.raises(ValueError, match="counter reset"):
         summarize(path)
+
+
+def test_counter_absent_at_healthy_baseline_starts_at_zero(tmp_path):
+    path = tmp_path / "late_counter.jsonl"
+    rows = [
+        {"timestamp_ns": 1, "lmcache": {"lmcache_mp_l1_memory_usage_bytes": 0}},
+        {"timestamp_ns": 2, "lmcache": {"lmcache_mp_num_chunks_loaded_total": 3}},
+    ]
+    path.write_text("\n".join(json.dumps(row) for row in rows) + "\n")
+    assert summarize(path)["counter_deltas"]["lmcache"]["lmcache_mp_num_chunks_loaded_total"] == 3
+    rows[0]["lmcache"] = {"error": "ConnectError"}
+    path.write_text("\n".join(json.dumps(row) for row in rows) + "\n")
+    assert summarize(path)["counter_deltas"]["lmcache"]["lmcache_mp_num_chunks_loaded_total"] is None

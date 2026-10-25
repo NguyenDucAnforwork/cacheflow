@@ -29,7 +29,7 @@ bash scripts/v2_run.sh v2-e1-b3-2k-50ms-r1 data/processed/v2/e1_2k_50ms_1pair.js
 # Return to FIFO with `bash scripts/v2_set_policy.sh fifo` for ABBA.
 ```
 
-`v2_run.sh` starts the one-second collector before replay and keeps it alive for two seconds afterward. It writes per-request rows and a run summary under `results/v2/raw/`, appends `results/v2/registry.csv`, and writes counter deltas to `results/v2/<run_id>.metrics_summary.json`. `v2_metrics.py` rejects counter decreases, which indicate a process restart invalidating the run. The run summary records mode, policy, GPU KV bytes, model revision, dependency versions, trace SHA, source SHA where available, error count, and arrival-based TTFT. Missing counters are reported as null.
+`v2_run.sh` starts the one-second collector before replay and keeps it alive for two seconds afterward. It writes per-request rows and a run summary under `results/v2/raw/`, appends `results/v2/registry.csv`, and writes counter deltas to `results/v2/<run_id>.metrics_summary.json`. `v2_metrics.py` rejects counter decreases, which indicate a process restart invalidating the run. The run summary records mode, policy, GPU KV bytes, model revision, dependency versions, trace SHA, source SHA where available, error count, and arrival-based TTFT. Counters absent at a healthy baseline are treated as zero when they first appear; missing data after an endpoint error remains null. This distinction was checked against a historical 256-chunk LMCache restore log.
 
 ## Decision rule
 

@@ -36,10 +36,12 @@ def summarize(path: Path) -> dict:
         last = rows[-1].get(source, {})
         values = {}
         for name in names:
-            if name not in first or name not in last:
+            if name not in last or "error" in first or "http_status" in first:
                 values[name] = None
                 continue
-            value = last[name] - first[name]
+            # Prometheus may not expose a counter until its first event. A
+            # healthy endpoint with an absent initial counter means zero.
+            value = last[name] - first.get(name, 0)
             if value < 0:
                 raise ValueError(f"counter reset during replay: {name}")
             values[name] = value
