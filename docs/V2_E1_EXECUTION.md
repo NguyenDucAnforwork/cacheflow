@@ -12,7 +12,7 @@ The E1 pair experiment uses B2 (CPU tier + FIFO) and B3 (same engine + fixed-200
 
 ## Commands after the service stack is validated
 
-The ignored LoCoMo source in this worktree is linked to `/workspace/cacheflow/data/raw/locomo10.json`; its SHA256 was rechecked as `79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4`. Pilot traces have not yet been regenerated on this server.
+The ignored LoCoMo source in this worktree is linked to `/workspace/cacheflow/data/raw/locomo10.json`; its SHA256 was rechecked as `79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4`. The ignored traces were regenerated on this server from the pinned tokenizer snapshot and official source. Because the package install is still running, generation used the already extracted `uv` package cache as a temporary Python import path; the CLI and project code were unchanged. Both 30-request LoCoMo SHA256 values exactly match `docs/V2_DATA_FIT.md` (`5acdf79b...` for P-QA and `fdeb1efd...` for P-SESSION). The one-question B1 full-context trace (`conv-26`) has 19,464 input tokens and SHA256 `1559381e885668d7430a3cf21bc11748ba4e325c2a1805ae9406c7315042c44c`. The first two-request E1 trace (2,048-token prefix target, 50 ms follower) has 2,060/2,059 input tokens and SHA256 `a2e44487457bf1378c0ea6f955588add37208d199f0f939b484de12e502fbc16`. All four manifests passed `load_trace` and `trace_digest` checks. Recheck tokenizer package version once `/venv/main` finishes installing.
 
 Run from the selected server repo root whose supervisor programs point to the same checkout. The raw JSONL contains prompts and stays under ignored `data/processed/v2/` or `results/v2/raw/`.
 
