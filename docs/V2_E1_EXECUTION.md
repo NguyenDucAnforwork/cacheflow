@@ -4,6 +4,8 @@ Status: CPU-side runner and counter analysis prepared on the new server; no GPU 
 
 ## Gate before GPU runs
 
+`scripts/v2_start.sh` now runs `scripts/v2_preflight.py` before stopping or starting any V2 services. The gate checks pinned package versions, runtime imports, the model revision and every shard listed in the safetensors index. On 2026-10-25 15:15 UTC it correctly failed: vLLM, LMCache, transformers, httpx, FastAPI and uvicorn had not finished installing, and model shard 1 was incomplete. The other Codex session owns those detached downloads; do not launch competing installs.
+
 The pinned Qwen3-1.7B model snapshot and vLLM/LMCache packages must finish downloading and pass version checks. Start B1 at 32K with 8 GiB GPU KV first and send one full-context LoCoMo QA request. Record VRAM, server token count and any OOM or context validation error in `docs/V2_NEW_HOST_REPRO.md`. Do not claim a full-context benchmark from tokenizer fit alone.
 
 The E1 pair experiment uses B2 (CPU tier + FIFO) and B3 (same engine + fixed-200-ms DHAS). The same generated producer/follower JSONL and manifest SHA must be replayed for both arms. Generate 2K, 4K and 8K exact token prefixes with follower offsets 0, 50, 200, 500 and 1,000 ms; screen concurrency 1, 4 and 8 pairs. Do a small pilot first, then expand where the trace actually shows cache opportunity. A hot-prefix control and an in-flight producer condition must be labelled separately.

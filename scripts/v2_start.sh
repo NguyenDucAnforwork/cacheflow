@@ -12,6 +12,8 @@ case "$gpu_kv_gib" in
     4|6|8) ;;
     *) echo "GPU KV budget must be 4, 6 or 8 GiB" >&2; exit 2 ;;
 esac
+venv=${CACHEFLOW_VENV:-/venv/main}
+"$venv/bin/python" "$root/scripts/v2_preflight.py"
 supervisorctl stop cacheflow_v2_gateway cacheflow_v2_vllm cacheflow_v2_lmcache >/dev/null 2>&1 || true
 printf '%s\n' "$mode" > "$root/.cacheflow-mode"
 printf '%s\n' "$policy" > "$root/.cacheflow-policy"

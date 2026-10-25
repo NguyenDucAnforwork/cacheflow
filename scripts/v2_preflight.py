@@ -1,0 +1,68 @@
+"""Fail before touching serving processes if the pinned V2 stack is incomplete."""
+from __future__ import annotations
+
+import json
+import os
+import sys
+from importlib.metadata import PackageNotFoundError, version
+from pathlib import Path
+
+REVISION = "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e"
+REQUIRED = {
+    "vllm": "0.22.0",
+    "lmcache": "0.5.3",
+    "transformers": "5.6.2",
+    "torch": "2.11.0+cu128",
+}
+RUNTIME = ("httpx", "psutil", "fastapi", "uvicorn", "PyYAML")
+
+
+def check(model: Path) -> list[str]:
+    errors = []
+    for package, expected in REQUIRED.items():
+        try:
+            actual = version(package)
+        except PackageNotFoundError:
+            actual = None
+        if actual != expected:
+            errors.append(f"{package}: expected {expected}, found {actual or 'missing'}")
+    for package in RUNTIME:
+        try:
+            version(package)
+        except PackageNotFoundError:
+            errors.append(f"{package}: missing")
+    if model.name != REVISION:
+        errors.append(f"model revision mismatch: {model.name}")
+    for name in ("config.json", "tokenizer.json", "model.safetensors.index.json"):
+        if not (model / name).is_file():
+            errors.append(f"model file missing: {name}")
+    index = model / "model.safetensors.index.json"
+    if index.is_file():
+        try:
+            shards = set(json.loads(index.read_text())["weight_map"].values())
+            if not shards:
+                errors.append("model index has no weight shards")
+            for shard in sorted(shards):
+                path = model / shard
+                if not path.is_file() or path.stat().st_size == 0:
+                    errors.append(f"model shard missing or empty: {shard}")
+        except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+            errors.append(f"invalid model weight index: {type(exc).__name__}")
+    return errors
+
+
+def main() -> int:
+    home = Path(os.environ.get("HF_HOME", "/workspace/.hf_home"))
+    model = Path(os.environ.get("CACHEFLOW_MODEL_PATH", str(
+        home / "hub/models--Qwen--Qwen3-1.7B/snapshots" / REVISION
+    )))
+    errors = check(model)
+    if errors:
+        print("V2 preflight failed:\n" + "\n".join(f"- {error}" for error in errors), file=sys.stderr)
+        return 1
+    print(f"V2 preflight passed: {model}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
