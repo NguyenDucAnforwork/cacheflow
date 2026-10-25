@@ -91,3 +91,7 @@ The 12-document control at 8 GiB produced repeated B2 CPU restores (98,304 token
 ## Vast instance cost control (2026-10-21 19:40 UTC)
 
 After the last experiment and GitHub push, `vastai stop instance 57086282` returned `stopping instance 57086282`; the SSH port then refused connections. The serving processes had already been stopped at 19:31 UTC. The measured serving window was about 17:48–19:31 UTC (~1 h 43 min wall time, including service restarts); this is not a provider-billed-hours reading. A complete Git bundle and checkout were saved locally before stopping, and GitHub branch `feat/cacheflow-6h` matched remote commit `42babf0`. Vast's documented Stop action preserves the instance data while storage charges continue; restarting can wait for GPU availability. Continue report/code review from the local checkout and push any final documentation changes to GitHub.
+
+## V2 execution scope (2026-10-25)
+
+The owner explicitly waived M1 old-baseline restoration. Start with V2 LoCoMo data audit and new-host feasibility instead. Any B1/B2 observations collected later must be new, matched V2 controls; do not treat V1 numbers as a cross-host baseline. Delay implementation of an adaptive scheduler until E1 shows avoidable duplicate prefill. See `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md` and `docs/V2_NEW_HOST_REPRO.md`.

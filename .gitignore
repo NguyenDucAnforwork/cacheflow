@@ -20,3 +20,7 @@ CLAUDE.md
 .cacheflow-policy
 .cacheflow-trace
 .cacheflow-gpu-kv-bytes
+data/raw/
+data/processed/v2/
+results/v2/raw/
+*.egg-info/

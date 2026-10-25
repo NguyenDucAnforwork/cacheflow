@@ -1,0 +1,48 @@
+plan_version: v2-2026-10-25
+owner_decision: skip_old_baseline_restoration
+source:
+  dataset: snap-research/locomo/data/locomo10.json
+  commit: 3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376
+  sha256: 79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4
+  license: CC-BY-NC-4.0
+model:
+  id: Qwen/Qwen3-1.7B
+  revision: 70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+  dtype: bfloat16
+prompt:
+  version: locomo-text-v1
+  image_policy: include_released_blip_caption_only
+  output_tokens: 64
+  temperature: 0
+  max_model_len: 32768
+split:
+  method: fixed_conversation_id
+  dev: [conv-26, conv-30, conv-41, conv-42, conv-43, conv-44]
+  validation: [conv-47, conv-48]
+  holdout: [conv-49, conv-50]
+pilot:
+  sample_ids: [conv-26, conv-30]
+  max_questions_per_sample: 15
+  protocol: p_qa
+  arrivals: [grouped, interleaved]
+  qps: 2.0
+  seed: 7
+e1:
+  shared_prefix_tokens: [2048, 4096, 8192]
+  follower_offset_ms: [0, 50, 200, 500, 1000]
+  concurrency: [1, 4, 8]
+  arms: [fifo, dhas]
+  gate: reproducible_avoided_prefill_or_restore_gain_required_for_b5
+e2:
+  gpu_kv_gib_candidates: [4, 8]
+  cpu_l1_gib_candidate: 16
+  arrivals: [grouped, interleaved, low_reuse]
+  arrival_model: open_loop_exponential
+  arms: [B1, B2]
+  min_independent_run_replicates: 3
+  gate: measure_cpu_restore_and_arrival_based_latency
+quality:
+  answerable_categories: [1, 2, 3, 4]
+  adversarial_category: 5
+  require_identical_prompt_hashes: true
+  label_fit_subset_separately_from_full_benchmark: true
