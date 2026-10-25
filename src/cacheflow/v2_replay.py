@@ -8,7 +8,10 @@ import csv
 import hashlib
 import json
 import subprocess
+import sys
 import time
+from datetime import datetime, timezone
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
 import httpx
@@ -24,6 +27,13 @@ def _percentile(values: list[float], pct: float) -> float | None:
     low = int(position)
     high = min(low + 1, len(ordered) - 1)
     return ordered[low] + (ordered[high] - ordered[low]) * (position - low)
+
+
+def _package_version(name: str) -> str | None:
+    try:
+        return version(name)
+    except PackageNotFoundError:
+        return None
 
 
 def load_trace(path: Path) -> list[V2TraceRow]:
@@ -53,6 +63,7 @@ async def replay(args: argparse.Namespace) -> dict:
                 raise ValueError(f"duplicate run ID: {args.run_id}")
     root = Path(__file__).resolve().parents[2]
     git_sha = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
+    started_utc = datetime.now(timezone.utc).isoformat()
     base_ns = time.monotonic_ns() + 2_000_000_000
     records: list[dict] = []
     outputs: list[dict] = []
@@ -143,11 +154,21 @@ async def replay(args: argparse.Namespace) -> dict:
     duration_s = (max(record["complete_ns"] for record in records) - base_ns) / 1e9
     summary = {
         "run_id": args.run_id, "git_sha": git_sha, "trace_sha256": trace_sha,
+        "started_utc": started_utc, "finished_utc": datetime.now(timezone.utc).isoformat(),
+        "mode": args.mode, "policy": args.policy, "gpu_kv_bytes": args.gpu_kv_bytes,
+        "engine_pid": args.engine_pid, "lmcache_pid": args.lmcache_pid,
+        "model_revision": args.model_revision, "max_model_len": manifest.get("max_model_len"),
+        "output_tokens_budget": manifest.get("output_tokens"),
+        "python_version": sys.version.split()[0],
+        "vllm_version": _package_version("vllm"), "lmcache_version": _package_version("lmcache"),
+        "transformers_version": _package_version("transformers"),
+        "metrics_path": str(args.metrics_path) if args.metrics_path else None,
         "source_sha256": manifest.get("source_sha256"),
         "prompt_version": manifest.get("prompt_version"),
         "protocol": manifest.get("protocol"), "arrival": manifest.get("arrival"),
         "model_name": args.model_name, "url": args.url,
         "requests": len(records), "successes": len(successful),
+        "errors": len(records) - len(successful),
         "arrival_ttft_p50_ms": _percentile(ttft, 50),
         "arrival_ttft_p95_ms": _percentile(ttft, 95),
         "arrival_ttft_p99_ms": _percentile(ttft, 99),
@@ -176,6 +197,13 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--registry", type=Path, default=Path("results/v2/registry.csv"))
     parser.add_argument("--capture-text", action="store_true")
+    parser.add_argument("--metrics-path", type=Path)
+    parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
+    parser.add_argument("--policy", choices=["fifo", "dhas"])
+    parser.add_argument("--gpu-kv-bytes", type=int)
+    parser.add_argument("--engine-pid", type=int)
+    parser.add_argument("--lmcache-pid", type=int)
+    parser.add_argument("--model-revision", default="70d244cc86ccca08cf5af4e1e306ecf908b1ad5e")
     asyncio.run(replay(parser.parse_args()))
 
 
