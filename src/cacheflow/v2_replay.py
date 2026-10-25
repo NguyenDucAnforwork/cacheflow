@@ -163,6 +163,7 @@ async def replay(args: argparse.Namespace) -> dict:
         "vllm_version": _package_version("vllm"), "lmcache_version": _package_version("lmcache"),
         "transformers_version": _package_version("transformers"),
         "metrics_path": str(args.metrics_path) if args.metrics_path else None,
+        "gateway_trace_path": str(args.gateway_trace_path) if args.gateway_trace_path else None,
         "source_sha256": manifest.get("source_sha256"),
         "prompt_version": manifest.get("prompt_version"),
         "protocol": manifest.get("protocol"), "arrival": manifest.get("arrival"),
@@ -198,6 +199,7 @@ def main() -> None:
     parser.add_argument("--registry", type=Path, default=Path("results/v2/registry.csv"))
     parser.add_argument("--capture-text", action="store_true")
     parser.add_argument("--metrics-path", type=Path)
+    parser.add_argument("--gateway-trace-path", type=Path)
     parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
     parser.add_argument("--policy", choices=["fifo", "dhas"])
     parser.add_argument("--gpu-kv-bytes", type=int)
