@@ -1,0 +1,72 @@
+{
+  "rehearsal_passed": true,
+  "serving_calls": 0,
+  "new_inference_requests": 0,
+  "source_run_id": "v6native1-primary-s101-native",
+  "existing_requests": 60,
+  "source_native_audit_sha256": "6b661c5363d4e531e06e3d369cecf4337a7eb6be3751c24a648c67840dd6a870",
+  "source_quality_sha256": "de4edf2b2ba1bd15147ed6b8de0636d5275a516bf62c88a4f065340ba8bbd6c4",
+  "source_raw_sha256": {
+    "results/v3/raw/sglang/v6native1-primary-s101-native.jsonl": "70aff43f321d4b0fe44a0e0f77830bdf14626d138de38bdae877c6da45e102a1",
+    "results/v3/raw/sglang/v6native1-primary-s101-native.outputs.jsonl": "c4f1bd7d37053614161bb9579103836a02cc73bd6212da04f38198712331a6b6",
+    "results/v3/raw/sglang/v6native1-primary-s101-native.summary.json": "b5125633a2deeb2ad9ebb40dbdfaf6e55eada1aca64590662e1fcc7c6f0b47fd",
+    "results/v3/raw/sglang/v6native1-primary-s101-native.metrics.jsonl": "f40d507d6b722ce0a33cfc64b9c422784865d9c9b4983a2b105cbbc6e89a6477"
+  },
+  "copied_raw_archive": [
+    {
+      "source_path": "results/v3/raw/sglang/v6native1-primary-s101-native.jsonl",
+      "uncompressed_sha256": "70aff43f321d4b0fe44a0e0f77830bdf14626d138de38bdae877c6da45e102a1",
+      "gzip_sha256": "0910fee0a4d76783a10b8ff981b1b49f1570135a17a2060c80a560951f356a23",
+      "uncompressed_bytes": 50696,
+      "gzip_bytes": 9183
+    },
+    {
+      "source_path": "results/v3/raw/sglang/v6native1-primary-s101-native.outputs.jsonl",
+      "uncompressed_sha256": "c4f1bd7d37053614161bb9579103836a02cc73bd6212da04f38198712331a6b6",
+      "gzip_sha256": "33d4677681d0e291327269eb78893aa9424d189652457888af7d9fbc5bceebd5",
+      "uncompressed_bytes": 11615,
+      "gzip_bytes": 2597
+    },
+    {
+      "source_path": "results/v3/raw/sglang/v6native1-primary-s101-native.summary.json",
+      "uncompressed_sha256": "b5125633a2deeb2ad9ebb40dbdfaf6e55eada1aca64590662e1fcc7c6f0b47fd",
+      "gzip_sha256": "33391b9e3e5c604c8d7bafad5986f2a77557d2ebc0e58365238a529acd6d7fdd",
+      "uncompressed_bytes": 1455,
+      "gzip_bytes": 756
+    },
+    {
+      "source_path": "results/v3/raw/sglang/v6native1-primary-s101-native.metrics.jsonl",
+      "uncompressed_sha256": "f40d507d6b722ce0a33cfc64b9c422784865d9c9b4983a2b105cbbc6e89a6477",
+      "gzip_sha256": "c2df2f88993d35ef83e36d43f93ca6897f2c70ab77a2a317cd620593d58ba05a",
+      "uncompressed_bytes": 89429,
+      "gzip_bytes": 4697
+    }
+  ],
+  "byte_roundtrip_equal": true,
+  "integrity_equal_after_expansion": true,
+  "official_quality_equal_after_expansion": true,
+  "answerable_f1": 0.31600554817472076,
+  "by_category": {
+    "1": {
+      "n": 23,
+      "mean": 0.36829932125737885
+    },
+    "2": {
+      "n": 30,
+      "mean": 0.2800352288613158
+    },
+    "3": {
+      "n": 5,
+      "mean": 0.17271708683473389
+    },
+    "4": {
+      "n": 2,
+      "mean": 0.6124031007751938
+    }
+  },
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "rehearsal_source_sha256": "e07aa87a09483608736a50c9a2170096ca103d634cd3d35b049611506a4d26dc",
+  "archive_implementation_sha256": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+  "scope": "Real60QA development outputs on temporary byte-identical copies. Official evaluator/integrity pass before and after lossless archive/expand. No original raw deletion, model serving, full1986QA,48GBGPU validation or production-liveness evidence.",
+  "original_raw_unchanged": true
+}

@@ -1,16 +1,16 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Checkpoint16:36UTC:** diagnostic off/on/off660request hoàn tất, không tái hiện stall gốc; đã đo được2,021GiB cấp phát prefix trùng trong một snapshot bundle restore. V6 readiness+union và baseline chỉ có gate đang ở pilot dev, chưa có kết luận. V5 full benchmark chưa chạy; không gộp số V5/V6.
+**Cập nhật 26/10/2026, 20:33 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
-**Đính chính15:38UTC:** validation57lượt hoàn tất nhưng một main repeat đã được manual abort sau khi mắc kẹt, giữ đủ40kết quả client; full study chưa bắt đầu. Budget cấu hình bằng byte không bảo đảm allocator thật bằng nhau: LMCache lazy làm tròn64MiB, hiện quan sát16.039.018.496byte so native16.000.745.472(+0,2392%). Các so sánh policy trong cùng engine vẫn cùng budget; không dùng mô tả “khớp tuyệt đối dung lượng thật giữa hai stack”. Chi tiết/source hash ở `results/v3/v5_host_allocator_rounding.json`.
+**Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
-**Cập nhật 26/10/2026:** V5 dùng Qwen3-4B, đã audit57lượt validation/2820request không lỗi và đang chạy các lượt lặp protocol đã sửa; full study còn chờ. V4 có lỗi chỉ dẫn abstention mâu thuẫn; các số V4 dưới đây giữ phạm vi lịch sử, không gộp với V5. Phần21 giải thích lỗi, timeout và profiling mới nhất; phần18–20 là các bài học/cấu hình V4. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
+Đọc cùng [báo cáo V6](V6_DEV_EVIDENCE.md), [research questions](PROPOSAL_LOCOMO_AGENTPERF_V2.md), [kế hoạch nghiên cứu](V3_RESEARCH_PLAN.md) [phạm vi baseline/paper](V3_BASELINES.md) và [claim ledger theo từng RQ](V6_RESEARCH_CLAIMS.md). Kết quả tốt về tail không tự chứng minh tốt về median, decode, chất lượng hay liveness.
 
 ## 1. Kể project trong hai phút
 
 CacheFlow nghiên cứu cách phục vụ nhiều câu hỏi dùng lại các lịch sử hội thoại dài. Thay vì prefill lại toàn bộ lịch sử mỗi lần, engine có thể tái dùng KV cache của prefix giống hệt về token. GPU nhanh nhưng bộ nhớ hạn chế; CPU RAM giữ được nhiều KV hơn nhưng cần chuyển lại qua PCIe. Project đặt câu hỏi: khi nào tier CPU thực sự giúp, khi nào scheduling có thể tránh việc tính/chuyển dữ liệu thừa, và lợi ích đó còn giữ được khi tính toàn bộ thời gian từ lúc request đến hay không?
 
-Stack hiện tại là Qwen3-4B BF16 trên RTX 3090, vLLM làm inference engine, LMCache giữ CPU KV, và gateway Python điều khiển admission. LoCoMo cung cấp hội thoại thật và QA; arrival là workload được xây dựng có công bố seed, không phải trace production. V2 xác nhận cơ chế tiering và bẫy đo counter. V4 bổ sung admission theo hợp bộ nhớ prefix, đối chiếu vLLM/LMCache và SGLang/HiCache đã tune. V5 giữ phương pháp đó, sửa mâu thuẫn chỉ dẫn trong prompt và mở rộng timeout đo lường; full benchmark và audit cuối vẫn chưa hoàn tất.
+Stack hiện tại là Qwen3-4B BF16 trên RTX 3090, vLLM làm inference engine, LMCache giữ CPU KV, và gateway Python điều khiển admission. LoCoMo cung cấp hội thoại thật và QA; arrival là workload được xây dựng có công bố seed, không phải trace production. V2 xác nhận cơ chế tiering và bẫy đo counter. V4 bổ sung admission theo hợp bộ nhớ prefix, đối chiếu vLLM/LMCache và SGLang/HiCache đã tune. V5 sửa mâu thuẫn chỉ dẫn trong prompt và tách rõ lỗi transport. V6 giữ union admission, thêm first-text readiness như một ablation, kiểm trên cả hai backend và đối chiếu source work/quality với controls. Full benchmark và audit nghiên cứu cuối vẫn chưa hoàn tất.
 
 **Câu hỏi: Trong phỏng vấn, nên nói gì là phần mình làm?**
 
@@ -602,6 +602,8 @@ NativeLPM/HiCache đầu tiên đã chạy đủ1.986QA, không lỗi. Trace ph�
 
 ## 21. Tự phản biện: phát hiện một sửa lỗi chưa đủ triệt để
 
+Phần này ghi các bài học V4/V5 và checkpoint lịch sử. Các lượt đã kết thúc; trạng thái và bằng chứng V6 hiện tại nằm ở phần 22.
+
 **Hỏi: Điểm abstention rất thấp có hoàn toàn do model không biết từ chối không?**
 
 **Đáp:** Chưa thể kết luận như vậy. Khi kiểm tra V4 full prompt, tôi phát hiện system yêu cầu `No information available.` nhưng footer user vẫn yêu cầu `I don't know`. Tôi đã sửa system trước đó nhưng bỏ sót renderer phía trong. Cả1.986prompt đều có mâu thuẫn này. Trong446câu category5 của native full,155output đúng nguyên văn câu trả lời legacy,165output chứa nó, còn evaluator chỉ nhận4output theo hai phrase mà nó quy định.
@@ -754,129 +756,160 @@ Main repeat V5 seed702đã đứng yên gần29phút: GPU0%, engine0running/11wa
 
 **Đáp:** Engine và connector giữ trạng thái qua nhiều lượt ngay cả khi đã reset cache. Nếu lỗi phụ thuộc trạng thái tích lũy hoặc thứ tự, chỉ chạy riêng request có thể làm nó biến mất. Diagnostic prospectively đăng ký đúng warmup→FIFO701→bundle701→union701→union702, lặp off/on/off với process mới cho mỗi phase. Probe ghi status request, block vật lý/refcount và membership của future, không thêm CUDA synchronization. Nó giúp phân biệt logical prefix có vẻ fit với tensor/block đã thật sự chia sẻ và được giải phóng; chưa có snapshot thực tế thì các lời giải thích đó vẫn chỉ là giả thuyết.
 
-## 22. Khi logical sharing chưa trở thành physical sharing
+## 22. V6: readiness, capacity và giới hạn của bằng chứng hiện tại
 
-**Hỏi: Union các block prefix giống nhau có đủ dự đoán memory footprint không?**
+Phần này cập nhật bằng chứng V6. Các phần trước giữ bối cảnh V2–V5 và không được gộp số khác model, prompt hay protocol. Nguồn chính là [báo cáo V6](V6_DEV_EVIDENCE.md), audit main 24 arms và audit native 60 arms. Main controls và full 1.986 QA vẫn chưa hoàn tất.
 
-**Đáp:** Không ở mọi trạng thái. Nó tính đúng lượng thông tin KV có thể dùng chung, nhưng engine có thể cấp phát nhiều bản vật lý khi restore còn bất đồng bộ và các block chưa được đăng ký sẵn sàng trong cache index. Trong diagnostic native, hai request cùng prefix đang`WAITING_FOR_REMOTE_KVS` mỗi request có1.776block. Có856block dùng chung, còn920logical prefix block được cấp phát ở hai bộ block ID khác nhau. Thực tế là2.696block vật lý thay vì1.776nếu chia sẻ trọn vẹn.
+### 22.1. Logical sharing khác physical sharing như thế nào?
 
-Mỗi block16token của model4B chiếm`16×147456`byte, nên920bản cấp phát thêm là2.170.552.320byte, khoảng2,021GiB. Pool2730block được đối chiếu thành2696đang được request giữ+33free+1null. Đây là ledger allocation/refcount, không phải suy luận từ một con sốcache-hit. Hai request mỗi bên còn920block chưa được hash vào cache; snapshot worker gần đó có2retrieve future. Không đọc tensor nên chưa khẳng định hai buffer chứa dữ liệu gì hoặc mọi copy đã hoàn tất.
+**Hỏi: Hai request có cùng prefix thì chắc chỉ tốn một bản KV không?**
 
-**Hỏi: Có tìm được nguyên nhân stall trước đó chưa?**
+**Đáp:** Chưa chắc trong mọi trạng thái chuyển tiếp. Union admission tính lượng KV có thể dùng chung theo token prefix. Engine vẫn có thể cấp hai bộ block vật lý trong lúc restore bất đồng bộ chưa publish đủ metadata để follower dùng lại. Logical identity và physical allocation là hai lớp khác nhau.
 
-**Đáp:** Chưa. Cả ba phase off/on/off mới đều hoàn tất, tổng660request không lỗi. Snapshot trùng block xảy ra ở baseline bundle rồi tự phục hồi; các điểm lấy mẫu union/target trong lần diagnostic này ghi0trùng. Nó chứng minh một khoảng cách giữa logical và physical sharing, chưa chứng minh đó gây stall gốc. Tôi giữ nguyên lần stall thật và13gián đoạn do manual abort, không dùng ba lần thành công để xóa nó.
+Diagnostic native vLLM đã ghi hai request ở trạng thái `WAITING_FOR_REMOTE_KVS`, mỗi request giữ 1.776 block. Có 856 block dùng chung, còn 920 logical block có hai bộ physical ID riêng. Tổng là 2.696 block vật lý thay vì 1.776 nếu chia sẻ trọn vẹn. Pool được đối chiếu thành 2.696 block đang giữ + 33 free + 1 null = 2.730 block.
 
-**Hỏi: Thay đổi admission đang kiểm tra là gì?**
+Với block 16 token và 147.456 byte/token, phần cấp phát thêm là `920 × 16 × 147456 = 2.170.552.320 byte`, khoảng 2,021 GiB. Đây là bằng chứng allocation/refcount, không phải kiểm nội dung tensor hay số DMA đã hoàn tất. Snapshot worker gần đó có hai retrieve future nhưng lệch thời gian 8,73 ms, nên không gọi là một phép join nguyên tử.
 
-**Đáp:** Tôi giữ union budget và giới hạn bypass, thêm gate: khi đã có một request cùng exact prefix chưa ra text đầu tiên, follower đó tiếp tục chờ; request prefix khác vẫn có thể được xem xét trong bound. Khi producer ra text đầu tiên, follower có thể tiếp tục. Sau đó mỗi prefix vẫn chỉ có tối đa một request mới chưa ra text đầu tiên tại một thời điểm. Mục tiêu là giảm các producer/follower cùng đi vào giai đoạn restore chưa sẵn sàng; chưa có GPU result thì đây vẫn là giả thuyết đang kiểm.
+**Hỏi: Vậy đã tìm được nguyên nhân stall chưa?**
 
-Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union budget. Nếu nó tốt ngang hoặc hơn candidate, phải thừa nhận phần lợi ích đến từ readiness đơn giản, không tự gán cho union. Baseline FIFO và union cũ vẫn được đo lại trong pilot. Các đối chứng mạnh khác, controls và full benchmark còn phải hoàn tất trước khi chốt đóng góp.
+**Đáp:** Chưa. Diagnostic off/on/off mới hoàn tất 660 request mà không tái hiện stall. Duplication xuất hiện ở một lượt bundle rồi tự phục hồi; các điểm lấy mẫu union/target trong diagnostic đó không có duplication. Không thể dùng snapshot này để kết luận nó gây stall gốc.
 
-**Hỏi: First text có bảo đảm KV đã được pin sẵn cho follower không?**
+Lượt V5 bị can thiệp vẫn giữ đủ 40 record: 27 thành công và 13 `RemoteProtocolError` sau khi dừng gateway. Đó là manual interruption, không phải timeout tự nhiên. Không lấy percentile trên riêng 27 response thành công, không dùng diagnostic thành công để xóa lần thất bại.
 
-**Đáp:** Không. Nó là tín hiệu frontend sau khi model đã bắt đầu phát text, không phải API cấp phát/pinning. Native cache publication, eviction, request completion và queue có thể làm giả định sharing thay đổi. Gate chỉ bảo đảm quy tắc số request pending trong mô hình admission; không bảo đảm engine luôn tiến triển, không cưỡng bức restore/recompute và không đưa ra deadline E2E. Cần counter/allocation evidence và kiểm lỗi/fairness thực tế để xác định phạm vi.
+### 22.2. Readiness gate làm gì và không bảo đảm gì?
 
-**Hỏi: Vì sao thêm một gate nhỏ lại phải sửa decision-cache key?**
+**Hỏi: Policy mới thay đổi admission thế nào?**
 
-**Đáp:** Trước đây queue và tập active không đổi thì quyết định có thể cache lại. Với readiness, producer có thể vừa ra text đầu tiên mà cả hai tập ID vẫn giữ nguyên. Nếu cache key chỉ chứa ID, scheduler có thể giữ quyết định`None`cũ mãi và không dispatch follower dù điều kiện đã đổi. Tôi đưa bit readiness của từng active request vào key, đồng thời dùng notification hiện có khi nhận first text. Test kiểm quyết định bị cache lúc pending rồi follower được đánh thức sau transition; test khác kiểm cancellation và bypass/drain. Test này xác minh logic, không thay thế GPU benchmark.
+**Đáp:** Nó giữ union budget, cap 64 và bypass bound 8. Khi có producer cùng exact prefix chưa ra text đầu tiên, follower tiếp tục chờ; request prefix khác có thể được backfill trong bound. Ngưỡng shared prefix là 1.024 token. Mỗi prefix có tối đa một request chưa ra text đầu tiên tại một thời điểm.
 
-**Hỏi: Vì sao71unit test xanh mà policy mới vẫn chưa chạy được?**
+Baseline `ready_fifo` có cùng gate và bypass bound nhưng không có union budget. Nhờ nó, ta kiểm được lợi ích đến từ readiness, capacity hay sự kết hợp. FIFO và union cũ được đo lại, thay vì ghép baseline cũ vào candidate mới.
 
-**Đáp:** Test trước đó kiểm class scheduler và factory adapter, nhưng chưa đi hết chuỗi launcher. CLI replay còn danh sách policy cố định nên nó từ chối hai tên mới trước khi gửi request. Tôi giữ lần pilot hỏng, lưu nguyên source đã đăng ký và không lấy hai baseline thành công ghép với một lượt sửa sau. Bản thay thế có namespace mới, thêm preflight cho CLI và test so sánh launcher/replay với parent: chỉ khác tên module/entrypoint và hai enum metadata. Toàn bộ72test hiện qua; vẫn phải nhìn request thật, source/argv thực tế và audit toàn bộ pilot mới biết end-to-end đã đúng. Test xanh không tự chứng minh một thí nghiệm hoàn tất hay một method có lợi.
+**Hỏi: First text có nghĩa KV đã được pin cho follower không?**
 
-**Hỏi: Pilot có chứng minh gate mới nhanh hơn union cũ không?**
+**Đáp:** Không. Nó là tín hiệu frontend sau khi producer bắt đầu phát text, không phải API xác nhận pinning hay ownership. Cache publication, eviction, producer completion và native queue vẫn có thể thay đổi trạng thái sau đó. Gate không cưỡng bức restore/recompute, không bảo đảm native engine luôn tiến triển và không đặt deadline E2E.
 
-**Đáp:** Chưa. Pilot mới có400/400request thành công trên hai tập đã dùng trước đây. Gatedunion giảm p95 khoảng41–45%soFIFO, nhưng so union cũ thì dev chậm hơn3,2%, stress nhanh hơn2,6%. Gate-onlyFIFO gần như giữ nguyên compute/CPU-source work và latency củaFIFO; phần lợi ích lớn hiện đến từ grouping/union. Gate là giả thuyết bảo vệ trạng thái pending, chưa chứng minh sửa được stall gốc. F1 soFIFO giảm nhỏ ở cả hai tập và khác chiều khi so union cũ, nên không gọi quality equivalence.
+**Hỏi: Vì sao thêm gate lại phải sửa decision-cache key?**
 
-**Hỏi: Tại sao vẫn đo decode khi TTFT giảm gần một nửa?**
+**Đáp:** Producer có thể vừa ra first text trong khi tập queue/active ID không đổi. Nếu cache key chỉ chứa ID, scheduler có thể giữ quyết định `None` cũ và không đánh thức follower. Key mới chứa cả readiness bit của active requests; first-text notification, finish và cancellation làm scheduler xét lại. Test kiểm transition đó cùng backfill/drain/cancel, nhưng không thay thế benchmark GPU.
 
-**Đáp:** Vì người dùng nhìn cả stream. Proxy decode p95 của gatedunion giảm so union cũ từ123xuống92ms/token ở dev và90xuống52ởstress, nhưng FIFO chỉ khoảng19/18ms/token. Completion dev lại tăng từ21,4lên22,4giây, trong khistressgiảm21,0xuống19,4. Cần báo cả gain và cost. Đây là proxy theo request, chịu ảnh hưởng output length/chunk/đóng response; tôi bổ sung native histogram ở các lượt chưa chạy để đối chiếu. Không có baseline snapshot của hai arm đầu thì đểnull, không dựng lại từ số trung bình của arm khác.
+**Hỏi: Tại sao test scheduler qua mà pilot đầu vẫn hỏng?**
 
-**Hỏi: Vì sao ma trận tiếp theo khởi động engine mới cho mỗi arm?**
+**Đáp:** Replay CLI còn danh sách policy cố định nên từ chối hai tên mới trước khi gửi request. Lượt pilot hỏng và source đã đăng ký được giữ nguyên; bản sửa chạy lại toàn pilot trong namespace khác. Sau đó thêm kiểm CLI, launcher equivalence và actual gateway factory argv. Bài học là phải kiểm cả đường deploy, không chỉ class scheduler.
 
-**Đáp:** Để tách các lượt đo khỏi trạng thái tích lũy qua reset sau khi đã thấy một anomaly chưa giải thích. Mọi baseline/candidate đều chịu cùng quy tắc, có warmup giống nhau và thứ tự cân bằng theo seed. Nó làm đơn vị lặp có process mới, nhưng không chứng minh lỗi đã được sửa hay production service chạy lâu sẽ an toàn. Full workload vẫn phải chạy hàng nghìn request trong một lượt. Tôi giữ dữ liệu protocol cũ riêng, báo stage mới là development, rồi tiếp tục native/control/full evaluation trước khi chốt đóng góp.
+### 22.3. Main matrix chứng minh được gì?
 
-**Hỏi: Có thể thêm một cột metadata rồi tiếp tục append CSV cũ không?**
+**Hỏi: Kết quả main V6 hiện tại là gì?**
 
-**Đáp:** Không an toàn nếu writer vẫn ghi theo thứ tự field của schema mới nhưng header cũ không đổi. Project có CSV main header35cột và65dòng về sau có38cột khi thêm timeout/keepalive. Đọc bằng header cũ có thể gán nhầm giá trị cho cột. Tôi giữ bản raw, lấy các JSON summary có tên key rõ ràng làm nguồn rồi tạo index CSV riêng với union header, summary SHA và invalid status. Các latency quantile của run lỗi/invalid được để trống trong index; raw không bị sửa. Test kiểm đúng trường thiếu, metadata mới và bảo toàn file cũ. Index không tự biến một run thành hợp lệ: vẫn phải qua audit đúng protocol, nhất là các lỗi xảy ra trước khi client tạo summary.
+**Đáp:** Ma trận 24 arms đã audit đủ 1.440/1.440 request đo, không lỗi, cộng 1.440 warmup riêng. Mỗi arm có engine/LMCache mới. Nó dùng 60 QA đã tiếp xúc trước đây, lặp ba lịch arrival; không phải 1.440 câu hỏi độc lập hay full benchmark.
 
-**Hỏi: Fresh engine cho mỗi arm và fresh engine cho mỗi block khác nhau thế nào?**
+Mean của run p95 TTFT: FIFO64 **35,877 s**, bundle16 **27,657 s**, union cũ **19,696 s**, readiness+union **19,383 s**. Readiness+union giảm p95 khoảng 46% so FIFO và 29,9% so bundle. Engine-consumed CPU KV tokens giảm từ 918.496 xuống 76.064, khoảng 91,7%; đây là token theo source ledger, không phải byte DMA đo trực tiếp.
 
-**Đáp:** Với main matrix V6, mỗi policy/seed có engine riêng, nên không dùng lại trạng thái native của policy trước đó. Với native validation tiếp theo, mỗi regime/seed có engine mới nhưng các policy trong block dùng chung process, có flush cache và gateway mới giữa các arm. Cách thứ hai giảm chi phí khởi động và tạo paired comparison trong cùng process, nhưng vẫn có thể giữ trạng thái allocator/kernel sau flush. Tôi đảo thứ tự và ghi PID, không gộp hai protocol thành một quần thể. Cả hai đều chưa chứng minh service chạy lâu không bị stall.
+**Hỏi: Có thể nhận gate mới là phần tạo ra gain lớn không?**
 
-**Hỏi: Counter không xuất hiện ở warmup có được xem bằng 0 không?**
+**Đáp:** Chưa. Gate-only FIFO gần như giữ nguyên compute/CPU-source work và tails của FIFO. Union cũ đã có phần lớn lợi ích. Readiness so union cũ có p95 −1,66/−3,98/+1,08% theo ba seed; interval thăm dò còn cắt 0. Mean completion p95 là 21,234 s với readiness, so 21,182 s của union cũ. Bằng chứng lớn hiện hỗ trợ union/grouping dưới memory pressure, chưa chứng minh gate cải thiện ổn định hay sửa stall.
 
-**Đáp:** Không. Prometheus có thể chỉ tạo một metric khi sự kiện đầu tiên xảy ra. Nếu đầu cửa sổ không có cached-token counter, giá trị cuối không đủ chứng minh delta của toàn cửa sổ bằng bao nhiêu. Collector V6 lưu null và hai endpoint riêng; warmup được đánh dấu tường minh, không dùng để claim hiệu năng. Các lượt đo chính thức phải đủ counter để đối chiếu cached+uncached với toàn bộ prompt. Với ITL, nếu snapshot thiếu, PID đổi, lệch cửa sổ hoặc histogram reset, kết quả coverage phải fail và mean/bounds để null. Một số đo thiếu không tự làm các request thành lỗi, nhưng cũng không được thay bằng số từ lượt khác.
+**Hỏi: TTFT tốt hơn thì stream cũng nhanh hơn chứ?**
 
-**Hỏi: Bypass tối đa8lần có nghĩa request chỉ đợi tối đa200ms không?**
+**Đáp:** Không nhất thiết. Client TPOT proxy p95 của FIFO64, bundle, union cũ và readiness lần lượt khoảng 19,3/55,2/110,8/93,6 ms/token. Proxy là trung bình theo request từ first text tới response close; nó chịu ảnh hưởng chunking, output length, special-token accounting và close overhead, không phải exact token ITL.
 
-**Đáp:** Không. Trên ba lượt seed101đã hoàn tất của main matrix V6, FIFO64không có bypass, union cũ và readiness+union có tối đa8lần. Nhưng admission wait lớn nhất của hai policy union là khoảng19,6và20,2giây. Mốc200ms trong metadata không phải deadline cứng khi tài nguyên chưa cho phép dispatch. Giới hạn bypass nói một request bị vượt qua bao nhiêu lần; mỗi request đang active có thể mất nhiều giây hoặc native engine có thể không tiến triển. Tôi đo riêng admission wait và deadline overrun, đưa chúng vào TTFT tính từ scheduled arrival, đồng thời báo per-conversation tails. Các số này là checkpoint của ba arm, chưa phải kết luận cho toàn matrix.
+Native vLLM histogram có coverage hợp lệ ở 22/24 arms; hai FIFO seed101 thiếu baseline vì observer đăng ký muộn. Native update-interval mean là FIFO64 19,5 ms (n=2), union cũ 50,8 ms và readiness 45,8 ms (n=3). P95 chỉ có bucket bounds: FIFO [10,25] ms, readiness [100,150] ms, union cũ [150,200] hoặc [200,300] ms. Nó củng cố việc phải báo decode cost, không biến proxy thành exact client ITL.
 
-**Hỏi: Làm sao giữ raw outputs khi đĩa nhỏ mà vẫn kiểm chứng được nghiên cứu?**
+### 22.4. Native baselines và input-only oracle
 
-**Đáp:** Tôi không bỏ các response lỗi hay chỉ giữ aggregate. Công cụ archival mới yêu cầu audit từng run hoàn tất và có SHA của toàn bộ raw cần lưu; nén gzip rồi giải nén đọc kiểm SHA trước khi bỏ bản plain dư thừa. Manifest giữ đường dẫn, kích thước, hash plain/gzip và hash audit. Reader có thể mở rộng tạm về đúng byte ban đầu để chạy lại evaluator rồi thu hồi bản tạm nếu nó chưa bị sửa. Đây là cách lưu lossless, không tạo thêm bằng chứng chất lượng hay làm run lỗi thành hợp lệ. Hiện tool đã qua test roundtrip/corruption/missing-audit, chưa được áp dụng lên raw thí nghiệm trong continuation này.
+**Hỏi: Có lặp được tác động trên một engine khác không?**
 
-**Hỏi: Đã bật CUDA graphs thì có thể nói cả prefill lẫn decode đều chạy graph không?**
+**Đáp:** Native primary có 15 arms, 900/900 request thành công trên ba fresh engine blocks. Trong mỗi block, các arm dùng chung process nhưng flush cache và restart gateway giữa lượt. Protocol này khác fresh-per-arm của main và được báo riêng.
 
-**Đáp:** Không. Trong cấu hình SGLang đã capture, runtime đặt graphs=true và decode backend làfull, nhưng resolved prefill backend làdisabled. Flag chỉ nói ý định cấu hình; phải đọc mode thực tế engine chọn. Tôi giữ cấu hình native giống nhau giữa baseline và method, lưu source/package/argv cùng server_info, và không gán khác biệt cross-engine cho riêng scheduler. Audit full kiểm graph decode cùng dtype/budget/policy đã resolve; nó không tự biến prefill thành graph-enabled.
+Mean-run p50/p95 của native LPM là 4,374/20,141 s; union cũ 13,441/16,588 s; readiness 13,505/15,910 s. Readiness giảm p95 so native 13,7/26,5/21,7% nhưng median tăng khoảng 168–278%. So union cũ, p95 giảm 2,2–5,7% ở cả ba seed, song interval thăm dò vẫn cắt 0 và F1 thấp hơn ở cả ba seed. F1 mean native/old union/readiness là .316803/.318125/.315315. Không gọi là thắng toàn diện hoặc quality equivalence.
 
-**Hỏi: Vì sao thêm union cũ vào controls dù readiness mới là phần đang thử?**
+**Hỏi: Mức tham chiếu 65.122 token được tính thế nào?**
 
-**Đáp:** Vì full study giữ cả hai policy. Nếu chỉ đo readiness ở tải thấp/ítreuse/GPUfit rồi dùng kết quả đó thay cho union cũ, tôi đã suy rộng qua một thay đổi admission có thể làm khác thứ tự dispatch và output. Tôi mở rộng kế hoạch trước nativeGPU đầu tiên: mỗi control native có native/union cũ/readiness, còn main cóFIFO/union cũ/readiness. Primary union phải qua gate low-reuse<=5% ở từng seed trước full freeze. Readiness giữ gate status riêng và vẫn là ablation; không được mượn acceptance của primary.
+**Đáp:** Oracle offline tokenize 60 prompt, kiểm input length/fingerprint rồi xây trie có khóa gồm parent-node và block token. Hai block có cùng nội dung sau hai prefix khác nhau không được gộp. Có 4.045 complete causal blocks và 402 token đuôi lẻ riêng cho request: `4045 × 16 + 402 = 65122`.
 
-**Hỏi: Unit test cho verifier có phải bằng chứng full benchmark đã đúng không?**
+Mô hình giả định giữ toàn bộ cache và publish ngay. Nó không mô phỏng bộ nhớ hữu hạn, queue, IO, native transient state hay generated suffix. Oracle không tham gia quyết định admission và không phải chứng minh scheduler tối ưu. Native tokenizer loader/batched path được kiểm riêng trên CPU: 60 vector token ID khớp encoder của oracle.
 
-**Đáp:** Không. Test full-contract hiện lấy một setup native đã capture rồi chiếu host budget sang48GB để thử verifier, sau đó cố ý làm sai policy/GPU/host/timeout/profile/source và kiểm nó từ chối. Nó phát hiện lỗ hổng kiểm chứng, nhưng fixture chiếu không phải run48GB thật. Bằng chứng thực phải đến từ full request/output/token ledgers, actual config và quan sát host của process mới. Full pipeline chỉ đánh dấu từng run sau audit/official evaluator, rồi final audit giải nén kiểm lại raw. Viết xong controller, test xanh hoặc có seal vẫn chưa có nghĩa đã hoàn tất nghiên cứu.
+**Hỏi: Oracle đối chiếu thế nào với số đo?**
 
-**Hỏi: Sau main matrix24arms, gate mới có phải đóng góp chính không?**
+**Đáp:** Cả sáu lượt có gate đều ghi 65.122 new-prefill tokens; chín lượt native/FIFO/union cũ đều 69.650, cao hơn 4.528 token. Đây là tác động lặp lại lên source-labelled prefill work, không phải cam kết giảm tương ứng FLOPs, GPU time hoặc transfer.
 
-**Đáp:** Chưa. Toàn1440request đo đều thành công, nhưng readiness so union cũ có p95−1,66/−3,98/+1,08% theo3seed và interval thăm dò cắt0. Gate-onlyFIFO không giảm compute/CPU-source work. Readiness+union soFIFO giảm p95khoảng46%và CPU-source tokens91,7%, nhưng union cũ đã có phần lớn lợi ích đó. Vì vậy phần bằng chứng mạnh hiện là union/grouping trong chế độ memory pressure; gate là ablation bổ sung, chưa được gọi là sửa stall hay cải tiến ổn định.
+Gate-only FIFO cũng giảm compute 6,5% nhưng làm p95 xấu hơn 30,4/12,6/7,5% so native. Nó cho thấy work saving chưa đủ: queue, thứ tự đổi prefix, promotion và batch/decode interleaving còn ảnh hưởng critical path. Chưa có trace join từng request thì không tự gán nguyên nhân cụ thể từ aggregate counters.
 
-**Hỏi: Native histogram mới có xác nhận decode cost chỉ là artifact của proxy không?**
+### 22.5. Đối chứng nào giới hạn claim?
 
-**Đáp:** Nó cho thấy tradeoff vẫn xuất hiện trong engine-update metrics. Có22/24arm đủ coverage;2FIFOseed101thiếu baseline vì observer đăng ký muộn. Mean native update interval FIFO64khoảng19,5ms(n2), union cũ50,8ms(n3), readiness45,8ms(n3). P95 chỉ có bucket bounds: FIFO[10,25]ms, readiness[100,150]ms, union cũ[150,200]hoặc[200,300]ms. Đây không phải exact client ITL, nhưng đủ để không bỏ qua decode khi TTFT tốt. Completion p95mean readiness21,234s còn union cũ21,182s; không thể chỉ chọn proxy decode giảm rồi gọi mọi trải nghiệm đều nhanh hơn.
+**Hỏi: Native study đã hoàn tất chưa?**
 
-**Hỏi: Giảm compute có chắc giảm latency không?**
+**Đáp:** Đã audit đủ 60 arms, 2.700/2.700 request đo, không lỗi, cộng 1.080 warmup riêng và 18 fresh engine blocks. Cấu hình thực, source/entrypoint, token/output ledgers, official quality, native histogram coverage 60/60 và host payload đều được kiểm. Main controls và full 1.986 QA vẫn còn chờ; hoàn tất dev không hoàn tất nghiên cứu.
 
-**Đáp:** Không. Trong native development seed101, gate-onlyFIFO và readiness+union đều giảm new-prefill tokens từ69650xuống65122, khoảng6,5%. Nhưng gate-onlyFIFO làm p95 tăng30,4%so native; readiness+union giảm13,7%. Cách giữ request, thứ tự đổi prefix, host promotion, batch/decode interleaving và thời gian chờ đều tác động critical path. Native gate-only còn có304656host-promotion tokens quan sát được, so90144của gated union. Đây mới là một block; tôi chưa dùng aggregate counters để tự gán nguyên nhân cho từng request hoặc khẳng định kết quả lặp ổn định.
+**Hỏi: Method tốt ở 4 QPS thì có thể nói không regression ở tải thấp?**
 
-**Hỏi: Có thể nói native không transfer vì metric lànull không?**
+**Đáp:** Không. Ở 2 QPS, union cũ có một seed p95 tăng 9,26%; readiness tăng 3,64%, median cũng tăng mạnh. Với native DFS, readiness giảm p95 khoảng 12–26% nhưng median vẫn tăng 172–280%. Phải giữ seed xấu và phạm vi tải trong claim, không đổi tên control hay chỉ chọn bảng đẹp.
 
-**Đáp:** Không. Ở block đó native/FIFO thiếu counter ở cả hai endpoint, còn union cũ thiếu endpoint đầu nhưng endpoint cuối là90144. Tôi giữ delta=null. Hai arm sau mới có đủ endpoint90144→394800→484944 để tínhdelta. Nếu ghi null thành0 rồi so304656hoặc90144với0, bảng sẽ tạo ra một kết luận transfer không được đo. Muốn chứng minh0hay so lượng copy phải có source contract/coverage độc lập hoặc tracing phù hợp; không thể lấy số đẹp từ một loại metric khác.
+**Hỏi: Ở 2 QPS, main và native có cùng kết luận không?**
 
-**Hỏi: Oracle65.122token được tính như thế nào, có dùng thông tin tương lai để schedule không?**
+**Đáp:** Không. Main low-load đã audit riêng đủ chín arms, 540 request đo và 540 warmup, không lỗi. Union cũ giảm p95 so FIFO khoảng 30–46%, trong khi native LPM có một seed union tăng p95 9,26%. Đây là so policy trong từng stack, không phải phép đo causal engine nào nhanh hơn.
 
-**Đáp:** Đây là tham chiếu offline, không tham gia scheduler. Tôi tokenize60prompt, kiểm chiều dài và fingerprint rồi xây trie có khóa gồm parent-node cùng block token. Hai block có nội dung giống nhau nhưng nằm sau prefix khác nhau không được gộp. Có4045block16token khác nhau và402token đuôi lẻ riêng cho các request, thành65122. Nó giả định giữ toàn bộ cache và publish ngay, không mô phỏng bộ nhớ hữu hạn, queue hay IO. SGLang native tokenizer được kiểm riêng trênCPU:60vector token ID khớp oracle. Khớp oracle chỉ xác nhận counter đạt mức tham chiếu của mô hình này, không chứng minh scheduler tối ưu hay native KV publication đúng.
+Trong main, readiness so union cũ có p95 −0,44/−0,84/+4,58%, median tăng 4,6–8,6%. Mean upstream giảm 2,94 xuống 0,74 s nhưng admission tăng 5,74 lên 8,51 s, làm total mean tăng 8,76 lên 9,32 s. Tín hiệu backend đẹp hơn chưa đủ để nhận cải thiện E2E. Phải tách từng stack/regime, giữ cả seed xấu và đo từ scheduled arrival.
 
-**Hỏi: Ba seed có làm kết luận readiness mạnh hơn chưa?**
+**Hỏi: Low-reuse gate có qua không?**
 
-**Đáp:** Phần compute đã lặp rõ hơn: cả6lượt có gate đều65122token, còn9lượt native/FIFO/union cũ đều69650. Ready union giảm p95so native13,7/26,5/21,7%, nhưng median tăng khoảng168–278%. So union cũ, p95giảm2,2–5,7% ở cả3seed, song interval thăm dò vẫn cắt0và F1 giảm ở cả3seed. Tôi có thể nói đã quan sát tác động lên compute và một tradeoff tail/median/quality trên dev; vẫn chưa thể nói tốt hơn toàn diện, quality-equivalent hay đã sửa stall. Controls và full benchmark còn đang chờ.
+**Đáp:** Cả hai policy qua ngưỡng p95 regression ≤5% ở ba seed native; mức thay đổi chỉ khoảng −0,07 đến +0,41%. Tất cả outputs/scores trong control đó khớp pairwise. Nhưng chỉ có tám QA riêng biệt lặp nhiều lần, nên không suy thành bảo đảm tail hay chất lượng trên mọi workload. Main stack còn phải có control riêng.
 
-**Hỏi: Cùng số token có đủ để so hai engine không?**
+**Hỏi: GPU-fit có làm method thành no-op không?**
 
-**Đáp:** Không. Hai vector có thể dài bằng nhau nhưng token ID khác, dẫn đến input model và cache prefix khác. Tôi đã kiểm60prompt bằng native tokenizer loader và main encoder, tất cả ID khớp. Preflight full mới sẽ kiểm1.986prompt cùng artifact/source/package hashes trước khi GPU chạy; còn kiểm ba seed có cùng prompt/output budget, chỉ khác arrival. Test cố ý thay hash vector nhưng giữ nguyên chiều dài để chắc verifier từ chối. Hai prompt smoke đã chạy chỉ xác nhận đường code, không được ghi thành full parity.
+**Đáp:** Union cũ gần native: p95 tăng khoảng 0,1–0,9%, outputs/F1 giống nhau. Readiness vẫn đổi thứ tự vào engine vì gate dựa trên pending prefix/first text, không dựa trên API báo CPU restore. Ở 10 GiB dev, nó giảm p95 khoảng 4–6% nhưng tăng median 22–32%, thay đổi outputs và tăng F1 khoảng .0175–.0251. Cap hits là hai thay vì ba mỗi run. Không tự gán gain đó cho tiết kiệm CPU copy; full ten-conversation 10 GiB cũng chỉ là larger-cache control, không phải GPU-fit.
 
-**Hỏi: Làm sao chạy lại khi repo đã có registration của thí nghiệm cũ?**
+**Hỏi: Answerable F1=null trong abstention test có phải model được 0 điểm?**
 
-**Đáp:** Giữ nguyên registration cũ và tạo namespace độc lập. Công cụ mới kiểm reference seal rồi sao controller/auditor/protocol sang đường dẫn mới; AST chỉ cho đổi chuỗi namespace/path cùng bootstrap import cố định. Kế hoạch phải giữ nguyên model,policy,budget,seed,trace và chỉ khác run ID. Bản mới vẫn phải qua gate, preflight và freeze riêng trước GPU. Đây là lặp toàn study có provenance, không phải sửa ID để retry riêng request lỗi hay ghép số đẹp. Unit test còn gọi CLI của bản sinh ra để bắt lỗi import/path như lần pilot trước; nó không chứng minh kết quả GPU đã lặp.
+**Đáp:** Không. Subset chỉ gồm 12 câu category5, không có answerable questions để tính F1. Accuracy category5 là 7/12 với mọi arm/seed và không có cap hit; cùng bảy câu được trả lời đúng dù raw outputs có khác. Null ở đây là “không áp dụng”, khác null do thiếu counter coverage. Mười hai câu lặp ba seed không trở thành 36 câu độc lập và chưa đại diện đủ 446 category5 của full.
 
-**Hỏi: Vì sao haiSHA-256đều64ký tự mà so sánh lại sai?**
+### 22.6. Đo queue, counter, capacity và provenance đúng cách
 
-**Đáp:** Thuật toán giống nhau không có nghĩa đang hash cùng đối tượng. Registration ở đây hash byte fileJSONL hoặcgzip; replay/manifest hash một JSONarray canonical từ cácV2TraceRow. Whitespace/key order hoặcgzip header làm fileSHAkhác, dù request vẫn như nhau. Tôi đã viết nhầm một phép so sánh ba giá trị này; auditcontrol bắt được trước pipelinecuối. Cách sửa là kiểm byte-fileSHA với registration và canonicalSHA với manifest/replay riêng biệt, có testUnicode/gzip và một lượtCPU60prompt đi hết nhánh. Không sửa dataset hay chạy lạiGPU để làm hash khớp.
+**Hỏi: Bypass tối đa tám lần có nghĩa request chỉ chờ tối đa 200 ms?**
 
-**Hỏi: Nếu method tốt ở4QPS nhưng xấu ở2QPS thì báo thế nào?**
+**Đáp:** Không. Bound đếm số lần head bị vượt qua, không chặn thời gian native engine xử lý một request. Main seed101 có max admission wait khoảng 19,6 s ở union cũ và 20,2 s ở readiness dù metadata có mốc 200 ms. Tôi đo deadline overrun, per-conversation waits và giữ admission trong scheduled-arrival TTFT. Bound này không chứng minh production starvation freedom.
 
-**Đáp:** Báo đủ cả hai. Native control mới có oldunion p95seed103tăng9,26%ở2QPS; readiness còn tăng3,64%và median vẫn tăng mạnh. Cả hai lại nằm trong gate5%ởlowreuse. Các điều kiện này kiểm những giả thuyết khác nhau: giảm tải không đồng nghĩa workload hếtreuse, và một gate qua không chứng minh mọi regime đều không regression. Claim phù hợp là lợi ích có điều kiện dưới cấu hình đã đo; không đổi tên control hoặc bỏ seed xấu để tạo universalwin.
+**Hỏi: Upstream TTFT giảm 2,44 xuống 0,65 s thì có thể quảng bá nhanh hơn 3,7 lần?**
 
-**Hỏi: Vì sao GPUfit vẫn có thay đổi khi thêm readiness?**
+**Đáp:** Không nếu delay đã chuyển ra trước upstream. Native primary old union có mean admission 10,62 s, readiness 12,48 s; total mean TTFT là 13,15 và 13,21 s. Tôi đối chiếu từng request để các stage cộng đúng vào tổng rồi mới lấy mean. Quantile của các stage không cộng được; upstream còn chứa queue/copy/compute/transport, không phải pure GPU time.
 
-**Đáp:** Gate chờ producer ra text đầu tiên theo exactprefix; nó không kiểm một API báoCPUrestore. Vì thế nó cũng đổi native arrival/batching khi logical working set vừaGPU. Ở control10GiB, readiness giảm p95khoảng4–6%nhưng tăng median22–32%và thay đổiF1/output; oldunion gần nhưnative. Điều này gợi ý phải tách tác động pending-prefix/batching khỏi tiết kiệmCPU↔GPUcopy. Chưa có trace đối chiếu từng request thì không tự gán toàn bộ gain cho một loại transfer, nhất là khi counter promotion thiếu endpoint.
+**Hỏi: Counter promotion=null có nghĩa là không transfer?**
 
-**Hỏi: AnswerableF1=nullởabstention test có phải model được0điểm không?**
+**Đáp:** Không. Seed101 native/FIFO thiếu cả hai endpoint; union cũ thiếu endpoint đầu nhưng cuối là 90.144. Hai arm sau mới có đủ 90.144→394.800→484.944 để tính delta. Điền null thành 0 sẽ tạo một transfer claim chưa được đo. Native promotion, main engine-consumed-source tokens và profiler byte events cũng là ba đại lượng khác nhau.
 
-**Đáp:** Không. Subset đó chỉ có12câu category5 nên không có câu answerable để tínhF1; nullởđây là không áp dụng. Accuracycategory5là7/12cho mọi arm/seed, với0cap hit. Metric thiếu do counter coverage là một loại nullkhác: chưa đo được giá trị. Tôi giữ nđi kèm và tên metric rõ ràng; không điền0để tạo bảng dễ đọc.12câu lặp3seed vẫn không thành36câu độc lập hay đại diện đủ446category5củafull.
+**Hỏi: Cùng byte flag hoặc CUDA graphs=true có đủ chứng minh cấu hình tương đương?**
 
+**Đáp:** Không. Native host payload quan sát là 16.000.745.472 byte; LMCache lazy heap 16.039.018.496 byte do round lên 64 MiB. So policy trong cùng engine vẫn matched, nhưng không có actual cross-engine exact parity. Tương tự, native runtime bật graphs nhưng resolved prefill backend vẫn disabled; decode mới là full graph. Phải đọc argv/server_info/allocator status, không chỉ runtime marker.
 
-**Hỏi: Nếu upstreamTTFTgiảm2,44xuống0,65giây thì có thể quảng bá nhanh hơn3,7lần không?**
+**Hỏi: Hai SHA-256 đều 64 ký tự sao lại so sai?**
 
-**Đáp:** Không nếu đã đẩy thời gian chờ ra trước upstream. Native primary mới có oldunion meanadmission10,62giây, readiness12,48giây; totalmeanTTFTlà13,15và13,21giây. Upstream-to-firsttext giảm nhưng admission tăng gần tương ứng. Tôi đối chiếu từng request để các stage cộng đúng vào TTFT từ scheduledarrival, rồi mới lấy mean. P95của các stage không cộng được với nhau. Upstream còn chứa nativequeue/copy/compute/transport nên cũng không được gọi toàn bộ là GPUtime.
+**Đáp:** Vì representation khác nhau. Registration hash byte file JSONL/gzip; manifest/replay hash canonical JSON array của V2TraceRow. Một phép so sánh nhầm đã được control audit bắt trước terminal pipeline. Bản sửa kiểm file/uncompressed/canonical hashes riêng, có regression test Unicode/gzip và real 60-QA CPU path. Không sửa dataset hay replay GPU để làm hash khớp.
+
+**Hỏi: Thêm metadata vào CSV cũ có thể làm sai kết quả không?**
+
+**Đáp:** Có. Project từng có header 35 cột nhưng row mới 38 cột; đọc theo header cũ có thể gán nhầm giá trị. Giữ nguyên raw CSV, tạo index riêng từ JSON có named keys, SHA và invalid status. Percentile của run lỗi/invalid không được đưa vào bảng hoàn chỉnh. Index chỉ là locator; eligibility vẫn cần audit đúng protocol.
+
+### 22.7. Full pipeline và reproduction cần được chứng minh thế nào?
+
+**Hỏi: Có thể gọi test xanh hoặc có seal là full benchmark xong không?**
+
+**Đáp:** Không. Test verifier hiện có cả setup chiếu để cố ý làm sai budget/policy/timeout/source rồi kiểm nó bị từ chối; fixture đó không phải run 48 GB thật. Full study còn cần 30 arms × 1.986 QA = 59.580 request đo, actual host allocation, quality/category5, fairness, resources và native ITL. Ba arrival seed không phải ba bộ semantic data độc lập.
+
+**Hỏi: Cùng số token có đủ để so hai engine?**
+
+**Đáp:** Không: vector có thể dài bằng nhau nhưng ID khác. Preflight full sẽ kiểm mọi token ID trong hai môi trường, cùng model/tokenizer/source/package hashes, và mọi nội dung/metadata ngoài arrival giữa ba trace. Hai-prompt smoke hoặc 60-QA worker check không đủ để qua gate 1.986 QA. Preflight nặng chạy khi serving đã idle, trước GPU/freeze.
+
+**Hỏi: Vì sao main fresh-per-arm, còn native dev fresh-per-block?**
+
+**Đáp:** Main khởi động engine mới cho từng policy/seed sau một anomaly chưa giải thích. Native dev dùng engine mới theo regime/seed rồi flush/restart gateway giữa các arm trong block. Hai cách có state history và đơn vị lặp khác nhau nên được báo riêng. Full dự kiến fresh engine cho từng arm, warmup giống nhau rồi reset; cả hai vẫn chưa chứng minh service chạy lâu không stall.
+
+**Hỏi: Nén raw có làm mất khả năng kiểm chứng không?**
+
+**Đáp:** Công cụ chỉ nén sau complete per-run integrity/official quality audit, kiểm gzip roundtrip SHA rồi lưu manifest gồm raw/compressed/audit hashes trước khi thu hồi bản plain dư. Thử nghiệm trên bản sao một run native 60 QA thật đã chạy integrity/evaluator trước và sau giải nén, mọi byte và điểm khớp, raw gốc không đổi và không phát sinh inference mới. Đây là kiểm đường archival, không phải full GPU success.
+
+**Hỏi: Làm sao chạy lại khi registration cũ đã có trong repo?**
+
+**Đáp:** Tạo namespace độc lập từ reference seal. Công cụ sao controller/auditor/protocol, chỉ cho đổi namespace/path strings cùng import bootstrap cố định qua AST proof; action graph phải giữ model, policy, budget, seed và trace. Bản mới vẫn cần preflight/gate/seal riêng. Không xóa evidence cũ, không đổi ID để retry riêng request lỗi và không hứa bit-exact timing/outputs. CLI/import/plan của bundle sinh ra đã có CPU test; chưa có study reproduction GPU mới.
+
+**Hỏi: Hiện nên trình bày contribution thế nào?**
+
+**Đáp:** Nêu một kết quả có điều kiện: admission theo causal-prefix union giảm mạnh CPU-source work và tail latency ở main memory-pressure dev; bổ sung readiness cho thấy một thay đổi prefill lặp lại trên native, đi kèm median/quality costs. Kèm bằng chứng allocation, counter/clock/source audits, controls và những lần thất bại. Không gọi đó là full Strata/Cake reproduction, SOTA, quality equivalence hay stall fix. Hoàn tất main controls, full serving/quality evaluation và requirement audit rồi mới quyết định kết luận nghiên cứu cuối cùng.

@@ -120,3 +120,27 @@ Maincontrols36arms1260requests2160warmups have now started only after native aud
 The complete native gateway wait reconstruction checks all42gateway arms(1920measured requests);18direct-native arms have no gateway ledger and are explicitly omitted from the stage split. Per-request timestamps add to scheduled-arrival TTFT before means/quantiles are computed. Native primary mean TTFT/preparation/admission/upstream-to-firsttext, inseconds, is FIFO64=7.267/.072/.000044/7.186; oldunion=13.147/.076/10.621/2.441; gateFIFO=16.436/.075/15.038/1.315; readiness+union=13.208/.072/12.476/.652. Small remaining arrival/return-transport stages are retained in the JSON. Upstream includes native queue,copy,compute andtransport, not pureGPU time.
 
 Readiness therefore reduces observed upstream-to-text mean1.790s versus oldunion while admission rises1.855s; total mean slightly worsens rather than showing a multi-fold speedup. Quantiles are never added, and frontend waiting is not excluded from E2E TTFT. `v6native1_waits.json` links the complete native audit SHA. At GPUfit, cap hits are3pernative/oldunion run versus2perreadiness run; at abstention, all methods preserve the same seven correct question outcomes perseed despite raw output differences. These are exact cohort observations, not quality equivalence over unseen questions.
+
+
+## Main lower-load control: complete nine-arm subset
+
+The 2-QPS main subset now passes independent integrity/config/source/observer/token/output/official-quality checks: **9 arms, 540/540 measured successes, zero errors, plus 540 separate warmups**, with nine distinct engine and LMCache process IDs. It uses the same 60 exposed QA across arrival seeds 101/102/103. `v6controls1_main_lowload_subset_audit.json` links the registration, analysis sources, quality and raw/setup artifacts. This is a complete subset, not the pending 36-arm controls stage or the full benchmark. The strict terminal auditor is unchanged.
+
+![Within-stack lower-load tradeoffs](../figures/v6_lowload_tradeoffs.png)
+
+| Mean of three run values | FIFO64 | Old union64 | Ready union |
+| --- | ---: | ---: | ---: |
+| TTFT p50 s | 19.199 | 8.688 | 9.308 |
+| TTFT p95 s | 23.822 | 15.221 | 15.391 |
+| New-prefill source tokens | 71810 | 65783.3 | 65676.7 |
+| Engine-consumed CPU KV tokens | 918496 | 92266.7 | 82938.7 |
+| Answerable F1 | .313862 | .313934 | .316141 |
+| Cap hits across 180 responses | 12 | 12 | 12 |
+
+Old union versus FIFO p95 changes are **−45.559/−31.308/−29.883%**; ready union versus FIFO **−45.797/−31.883/−26.671%**. Ready versus old union changes **−.437/−.837/+4.582%**, with median regressions **+4.574/+8.430/+8.631%**. The exploratory n3 paired-log p95 interval for the extra gate is [−6.098,+8.792]%, crossing zero. F1 increases .001370/.002727/.002525 versus old union on this cohort, while 6/5/7 output hashes differ. Equal cap counts or improved mean F1 do not establish quality equivalence.
+
+Per-request additive wait reconstruction (`v6controls1_main_lowload_subset_waits.json`) verifies all 540 responses. Mean total/admission/upstream-to-text seconds are FIFO **19.098/.000047/19.022**, old union **8.762/5.744/2.943**, ready union **9.325/8.511/.738**. The extra gate reduces upstream mean by 2.206 s but adds 2.768 s admission; overall mean worsens by .563 s. Upstream includes engine queue, transfer, computation and transport. Stage quantiles are never added.
+
+Main union therefore retains a large low-load benefit against its FIFO reference, whereas native LPM has a much stronger low-load median and a different admission effect. The figure shows matched contrasts within each protocol; it does not compare engine speed causally. This narrows any portable contribution claim: the beneficial memory-pressure admission regime and its latency/quality costs must be measured for each stack. The readiness increment remains unproven as a stable improvement.
+
+The subset auditor also rejects the still-incomplete low-reuse regime before producing a success table; it writes only a separately named incomplete record. All ten active serving actors and the native audit SHA referenced by the live registration remain unchanged. Main low-reuse/GPU-fit/abstention controls and the prospective full study remain open.
