@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "run_id": "v3-bytes-bundle_wave4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": false,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-bytes-fifo4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": false,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-bytes-lpm_real4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": false,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-bytes-packing_fifo4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": false,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-bytes-residency4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": false,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-tuned16-bundle_wave4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-tuned16-fifo16-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-tuned16-fifo4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-tuned16-lpm_real4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-tuned16-packing_fifo4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-1.7b"
+    },
+    {
+      "run_id": "v3-tuned16-residency4-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-1.7b"
+    }
+  ]
+}

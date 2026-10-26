@@ -31,6 +31,9 @@ engine_pid=$(supervisorctl pid cacheflow_v2_vllm)
 replay_args=(--engine-pid "$engine_pid")
 if [[ "$result_dir" == "$root/results/v3" ]]; then
     replay_args+=(--engine-request-ids)
+    model_name=$("$venv/bin/python" "$root/scripts/v3_runtime.py" model-name)
+    model_path=$("$venv/bin/python" "$root/scripts/v3_runtime.py" model-path)
+    replay_args+=(--model-name "$model_name" --model-revision "${model_path##*/}")
 fi
 case "${CACHEFLOW_CAPTURE_TEXT:-0}" in
     1) replay_args+=(--capture-text) ;;

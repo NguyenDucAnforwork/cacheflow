@@ -78,19 +78,31 @@ def gpu_snapshot() -> dict:
 
 
 def process_snapshot() -> dict:
+    """Parent plus descendants; summed RSS includes shared pages across processes."""
     result = {}
-    for process in psutil.process_iter(["pid", "name", "cmdline", "memory_info", "num_ctx_switches", "cpu_times"]):
+    for process in psutil.process_iter(["pid", "cmdline"]):
         try:
-            cmd = " ".join(process.info.get("cmdline") or [])
-            name = "vllm" if "vllm serve" in cmd else "lmcache" if "lmcache server" in cmd else "gateway" if "cacheflow.gateway:create_app" in cmd else None
-            if name:
-                entry = result.setdefault(name, {"rss_bytes": 0, "processes": 0, "ctx_switches": 0, "cpu_seconds": 0.0})
-                entry["rss_bytes"] += process.info["memory_info"].rss
-                entry["processes"] += 1
-                switches = process.info["num_ctx_switches"]
-                entry["ctx_switches"] += switches.voluntary + switches.involuntary
-                times = process.info["cpu_times"]
-                entry["cpu_seconds"] += times.user + times.system
+            args = process.info.get("cmdline") or []
+            name = None
+            if any(Path(arg).name == "vllm" for arg in args) and "serve" in args:
+                name = "vllm"
+            elif (any(Path(arg).name == "lmcache" for arg in args) and "server" in args) or "cacheflow.v3_lmcache_profile" in args:
+                name = "lmcache"
+            elif "cacheflow.gateway:create_app" in args:
+                name = "gateway"
+            if name is None:
+                continue
+            entry = result.setdefault(name, {"rss_bytes": 0, "processes": 0, "ctx_switches": 0, "cpu_seconds": 0.0})
+            for member in [process, *process.children(recursive=True)]:
+                try:
+                    entry["rss_bytes"] += member.memory_info().rss
+                    entry["processes"] += 1
+                    switches = member.num_ctx_switches()
+                    entry["ctx_switches"] += switches.voluntary + switches.involuntary
+                    times = member.cpu_times()
+                    entry["cpu_seconds"] += times.user + times.system
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    continue
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             continue
     return result

@@ -1,0 +1,29 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l1_evicted_chunks_total": 0.0,
+      "lmcache_mp_l1_read_chunks_total": 4712.0,
+      "lmcache_mp_l1_write_chunks_total": 251.0,
+      "lmcache_mp_num_chunks_loaded_total": 961.0
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 244896.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 2154336.0,
+      "vllm:prompt_tokens_cached_total": 1211568.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 244896.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 966672.0,
+      "vllm:prompt_tokens_source_local_compute_total": 66610.0,
+      "vllm:prompt_tokens_total": 1278178.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 66610.0,
+      "vllm:request_queue_time_seconds_sum": 22.3410586239479
+    }
+  },
+  "duration_s": 30.003595871,
+  "first_timestamp_ns": 99873567154849,
+  "host_memory_available_min_bytes": 215406473216,
+  "last_timestamp_ns": 99903570750720,
+  "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v3-bytes-residency4-dev3-qps2-s101.metrics.jsonl",
+  "samples": 31,
+  "vram_peak_mib": 8881.0
+}

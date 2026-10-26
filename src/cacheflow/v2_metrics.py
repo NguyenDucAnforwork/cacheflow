@@ -18,12 +18,21 @@ COUNTERS = {
         "vllm:request_prefill_kv_computed_tokens_sum",
         "vllm:request_queue_time_seconds_sum",
         "vllm:num_preemptions_total",
+        "vllm:request_queue_time_seconds_count",
+        "vllm:time_to_first_token_seconds_sum",
+        "vllm:time_to_first_token_seconds_count",
+        "vllm:request_prefill_time_seconds_sum",
+        "vllm:request_prefill_time_seconds_count",
     ),
     "lmcache": (
         "lmcache_mp_l1_read_chunks_total",
         "lmcache_mp_l1_write_chunks_total",
         "lmcache_mp_l1_evicted_chunks_total",
         "lmcache_mp_num_chunks_loaded_total",
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum",
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count",
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum",
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count",
     ),
 }
 

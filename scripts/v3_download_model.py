@@ -21,7 +21,7 @@ for f in small:
  raw=urllib.request.urlopen(f'https://huggingface.co/{repo}/resolve/{revision}/{name}',timeout=60).read()
  p.write_bytes(raw)
 inputs=Path('results/v3/raw/qwen3_4b_aria.input')
-inputs.write_text(''.join(f'https://huggingface.co/{repo}/resolve/{revision}/{f["rfilename"]}\n  dir={target}\n  out={f["rfilename"]}\n' for f in weights))
+inputs.write_text(''.join(f'https://huggingface.co/{repo}/resolve/{revision}/{f["rfilename"]}?download=true\n  dir={target}\n  out={f["rfilename"]}\n' for f in weights))
 subprocess.run(['aria2c','--continue=true','--auto-file-renaming=false','--file-allocation=none',
  '--allow-overwrite=false','-x','8','-s','8','-j','3','--min-split-size=16M','--summary-interval=60',
  '--console-log-level=warn','--download-result=hide','--timeout=60','--retry-wait=5','--max-tries=20',

@@ -56,6 +56,8 @@ async def replay(args: argparse.Namespace) -> dict:
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
     if manifest and manifest.get("trace_sha256") != trace_sha:
         raise ValueError("trace SHA does not match manifest")
+    if manifest.get('model_revision') and manifest['model_revision'] != args.model_revision:
+        raise ValueError('trace tokenizer revision does not match serving model revision')
     registry = args.registry
     if registry.exists():
         with registry.open(newline="") as file:
@@ -164,7 +166,8 @@ async def replay(args: argparse.Namespace) -> dict:
         "model_revision": args.model_revision, "max_model_len": manifest.get("max_model_len"),
         "output_tokens_budget": manifest.get("output_tokens"),
         "python_version": sys.version.split()[0],
-        "vllm_version": _package_version("vllm"), "lmcache_version": _package_version("lmcache"),
+        "vllm_version": _package_version("vllm") if args.engine_kind == 'vllm' else None,
+        "lmcache_version": _package_version("lmcache") if args.engine_kind == 'vllm' else None,
         "transformers_version": _package_version("transformers"),
         "metrics_path": str(args.metrics_path) if args.metrics_path else None,
         "gateway_trace_path": str(args.gateway_trace_path) if args.gateway_trace_path else None,
@@ -181,6 +184,8 @@ async def replay(args: argparse.Namespace) -> dict:
         "duration_s": duration_s,
         "raw_path": str(args.output),
     }
+    if args.engine_kind != 'vllm':
+        summary.update(engine_kind=args.engine_kind, engine_version=_package_version(args.engine_kind))
     summary_path = args.output.with_suffix(".summary.json")
     summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
     registry.parent.mkdir(parents=True, exist_ok=True)
@@ -206,7 +211,8 @@ def main() -> None:
     parser.add_argument("--metrics-path", type=Path)
     parser.add_argument("--gateway-trace-path", type=Path)
     parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
-    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency"])
+    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency", "sglang_lpm", "sglang_fcfs"])
+    parser.add_argument('--engine-kind', choices=['vllm','sglang'], default='vllm')
     parser.add_argument("--gpu-kv-bytes", type=int)
     parser.add_argument("--engine-pid", type=int)
     parser.add_argument("--lmcache-pid", type=int)

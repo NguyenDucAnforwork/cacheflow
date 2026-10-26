@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "run_id": "v3-4b-fifo16-dev3-qps2-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    }
+  ]
+}

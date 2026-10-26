@@ -14,8 +14,9 @@ p.add_argument('--seed',type=int,default=101)
 p.add_argument('--qps',type=float,default=1)
 p.add_argument('--arrival',choices=['interleaved','grouped','low_reuse'],default='interleaved')
 p.add_argument('--output',type=Path,required=True)
+p.add_argument('--model-path',default='/workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e')
 args=p.parse_args()
-model='/workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e'
+model=args.model_path
 tok=AutoTokenizer.from_pretrained(model,local_files_only=True)
 source=Path('data/raw/locomo10.json')
 rows,manifest=build_trace(load_locomo(source),tok,sample_ids=tuple(args.samples),

@@ -9,6 +9,7 @@ url=${3:-http://127.0.0.1:8100}
 [[ ! -e "results/v3/$id.setup.json" ]] || { echo 'setup already exists'; exit 2; }
 /venv/main/bin/python - "$id" "$trace" <<'PY'
 import hashlib,json,subprocess,sys,urllib.request
+from importlib.util import spec_from_file_location,module_from_spec
 from datetime import datetime,timezone
 from pathlib import Path
 rid,trace=sys.argv[1:]
@@ -17,8 +18,14 @@ assert health['active']==health['queue']==0, 'gateway must be idle before replay
 files=sorted(p for root in ['src/cacheflow','scripts','configs'] for p in Path(root).rglob('*')
              if p.is_file() and p.suffix in ['.py','.sh','.yaml','.json'])
 source_files={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+runtime=json.loads(Path('.cacheflow-v3-runtime.json').read_text())
+spec=spec_from_file_location('v3_model','scripts/v3_model.py');module=module_from_spec(spec);spec.loader.exec_module(module)
+model=module.get_model(runtime.get('model_key','qwen3-1.7b'))
+gpu_bytes=int(Path('.cacheflow-v2-gpu-kv-bytes').read_text())
+capacity=(gpu_bytes//(16*model['bytes_per_token'])-1)*16
+assert runtime['kv_capacity_tokens']==capacity, ('reservation capacity mismatch', runtime['kv_capacity_tokens'], capacity)
 pid=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v2_vllm'],text=True))
-c=dict(run_id=rid,trace_path=trace,runtime=json.loads(Path('.cacheflow-v3-runtime.json').read_text()),
+c=dict(run_id=rid,trace_path=trace,runtime=runtime, model=model,
        gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text(),
        gpu_kv_bytes=int(Path('.cacheflow-v2-gpu-kv-bytes').read_text()),
        actual_engine_argv=Path(f'/proc/{pid}/cmdline').read_bytes().replace(b'\0',b' ').decode(),

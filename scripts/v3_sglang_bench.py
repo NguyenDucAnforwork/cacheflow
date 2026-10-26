@@ -1,0 +1,104 @@
+"""Run an upstream SGLang/HiCache arm with native metrics and captured QA outputs."""
+import argparse
+import hashlib
+import json
+import os
+import re
+import subprocess
+import sys
+import threading
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+import httpx
+import psutil
+
+from cacheflow.collect_metrics import gpu_snapshot
+
+
+def parse_metrics(text):
+    values={}
+    for line in text.splitlines():
+        match=re.match(r'^([a-zA-Z_:][a-zA-Z0-9_:]*)(?:\{.*\})?\s+([-+0-9.eE]+)',line)
+        if match and not match[1].endswith('_bucket'):
+            values[match[1]]=values.get(match[1],0)+float(match[2])
+    return values
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('run_id');p.add_argument('trace',type=Path)
+    p.add_argument('--url',default='http://127.0.0.1:8300');args=p.parse_args()
+    assert re.fullmatch(r'[A-Za-z0-9._-]+',args.run_id)
+    base=Path('results/v3/sglang');raw=Path('results/v3/raw/sglang')
+    base.mkdir(parents=True,exist_ok=True);raw.mkdir(parents=True,exist_ok=True)
+    setup=base/f'{args.run_id}.setup.json'
+    assert not setup.exists(), 'run ID already exists'
+    with httpx.Client(timeout=30) as client:
+        client.get(args.url+'/health').raise_for_status()
+        # Flush rejects outstanding requests; do not hide a failed reset.
+        time.sleep(2)
+        reset=client.post(args.url+'/flush_cache',params={'timeout':10});reset.raise_for_status()
+        info=client.get(args.url+'/server_info').json()
+    assert info['max_total_tokens']==37440
+    assert info['enable_hierarchical_cache'] and info['hicache_size']==16
+    assert Path(info['model_path']).name=='70d244cc86ccca08cf5af4e1e306ecf908b1ad5e'
+    launcher=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v3_sglang'],text=True))
+    assert launcher>0
+    children=[psutil.Process(launcher),*psutil.Process(launcher).children(recursive=True)]
+    allow=['model_path','served_model_name','dtype','context_length','max_total_tokens',
+        'max_running_requests','chunked_prefill_size','page_size','mem_fraction_static',
+        'enable_hierarchical_cache','hicache_size','hicache_write_policy','hicache_io_backend',
+        'hicache_mem_layout','schedule_policy','attention_backend','disable_cuda_graph',
+        'disable_decode_cuda_graph','disable_prefill_cuda_graph','cuda_graph_config','version']
+    c=dict(run_id=args.run_id,engine_kind='sglang',cache_backend='upstream_hicache',
+        source_head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        server_config={k:info.get(k) for k in allow},launcher_pid=launcher,
+        process_argv={str(x.pid):x.cmdline() for x in children},reset_status=reset.status_code,
+        captured_utc=datetime.now(timezone.utc).isoformat())
+    setup.write_text(json.dumps(c,indent=2)+'\n')
+    stop=threading.Event();samples=[];collector_error=[]
+    def sample():
+        try:
+            with httpx.Client(timeout=5) as client, (raw/f'{args.run_id}.metrics.jsonl').open('w') as f:
+                while True:
+                    response=client.get(args.url+'/metrics');response.raise_for_status()
+                    processes=[psutil.Process(launcher),*psutil.Process(launcher).children(recursive=True)]
+                    rss=0;live_count=0
+                    for member in processes:
+                        try:
+                            rss+=member.memory_info().rss;live_count+=1
+                        except (psutil.NoSuchProcess,psutil.AccessDenied):
+                            continue
+                    row=dict(timestamp_ns=time.monotonic_ns(),sglang=parse_metrics(response.text),
+                        gpu=gpu_snapshot(),processes=live_count,summed_process_rss_bytes=rss)
+                    samples.append(row);f.write(json.dumps(row,sort_keys=True)+'\n');f.flush()
+                    if stop.wait(1):break
+        except Exception as e:collector_error.append(repr(e))
+    thread=threading.Thread(target=sample);thread.start()
+    try:
+        cmd=[sys.executable,'-m','cacheflow.v2_replay','--trace',str(args.trace),'--url',args.url,
+            '--run-id',args.run_id,'--output',str(raw/f'{args.run_id}.jsonl'),
+            '--registry',str(base/'registry.csv'),'--capture-text','--engine-kind','sglang',
+            '--engine-pid',str(launcher),'--model-revision',Path(info['model_path']).name,
+            '--model-name',info['served_model_name'],'--mode','D0',
+            '--policy','sglang_'+info['schedule_policy'],'--gpu-kv-bytes','4294967296']
+        subprocess.run(cmd,check=True,env=os.environ.copy())
+        time.sleep(2)
+    finally:
+        stop.set();thread.join(timeout=15)
+    assert not collector_error and not thread.is_alive(),collector_error
+    assert len(samples)>=2
+    assert launcher==int(subprocess.check_output(['supervisorctl','pid','cacheflow_v3_sglang'],text=True))
+    requests=[json.loads(line) for line in (raw/f'{args.run_id}.jsonl').read_text().splitlines()]
+    assert all(x['status']=='ok' and x['server_prompt_tokens']==x['input_tokens'] for x in requests)
+    counter_names=set(samples[0]['sglang'])|set(samples[-1]['sglang'])
+    deltas={name:(samples[-1]['sglang'][name]-samples[0]['sglang'].get(name,0)
+        if name in samples[-1]['sglang'] else None) for name in sorted(counter_names)
+        if name.startswith('sglang:') and name.endswith(('_total','_sum','_count'))}
+    (base/f'{args.run_id}.metrics_summary.json').write_text(json.dumps(dict(
+        counter_deltas=deltas,samples=len(samples),scope='native source labels; load_back tokens are not vLLM engine-consumed-source tokens'),indent=2)+'\n')
+    print('Verified SGLang replay',args.run_id,flush=True)
+
+
+if __name__=='__main__':main()

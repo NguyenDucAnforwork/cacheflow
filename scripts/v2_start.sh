@@ -10,6 +10,7 @@ case "$mode:$policy" in
 esac
 case "$gpu_kv_gib" in
     4|6|8) ;;
+    10) [[ -s "$root/.cacheflow-v3-runtime.json" ]] || exit 2 ;;
     *) echo "GPU KV budget must be 4, 6 or 8 GiB" >&2; exit 2 ;;
 esac
 venv=${CACHEFLOW_VENV:-/venv/main}

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import yaml
+from v3_model import MODELS, get_model
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = ROOT / '.cacheflow-v3-runtime.json'
@@ -16,12 +17,14 @@ def load():
     assert c['max_num_batched_tokens'] >= 2048
     assert c['chunk_size'] in [64, 128, 256, 512, 1024]
     assert isinstance(c['enforce_eager'], bool)
+    c.setdefault('model_key', 'qwen3-1.7b')
     return c
 
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('command', choices=['configure', 'gateway', 'validate', 'vllm-args'])
+    p.add_argument('command', choices=['configure', 'gateway', 'validate', 'vllm-args', 'model-path', 'model-name'])
+    p.add_argument('--model', choices=list(MODELS), default='qwen3-1.7b')
     p.add_argument('--policy', choices=['fifo','static_group','dhas','dhas_guarded','lpm_hint','bundle_wave','lpm_real','packing_fifo','residency'],default='fifo')
     p.add_argument('--max-inflight', type=int, default=16)
     p.add_argument('--max-num-seqs', type=int, default=4)
@@ -38,6 +41,7 @@ def main():
                  max_num_batched_tokens=args.max_num_batched_tokens, chunk_size=args.chunk_size,
                  enforce_eager=not args.cuda_graphs, profile=args.profile, kv_events=args.kv_events,
                  residency_events=args.residency_events, kv_capacity_tokens=args.kv_capacity_tokens)
+        c['model_key'] = args.model
         if args.command == 'gateway':
             c = load() | {'max_inflight': args.max_inflight}
         MARKER.write_text(json.dumps(c, indent=2)+'\n')
@@ -45,13 +49,16 @@ def main():
         gateway = yaml.safe_load((ROOT/'configs/policies.yaml').read_text())
         gateway['scheduler']['max_inflight'] = c['max_inflight']
         gateway['scheduler']['policy'] = args.policy
+        gateway['model'] = get_model(c['model_key'])['path']
         gateway['residency'] = dict(enabled=c.get('residency_events', False),
                                    endpoint='ipc:///tmp/cacheflow-v3-kv-events.sock',
                                    kv_capacity_tokens=c.get('kv_capacity_tokens', 37424), max_bypasses=4)
         (ROOT/'.cacheflow-policy').write_text(args.policy+'\n')
         (ROOT/'.cacheflow-v3-gateway.yaml').write_text(yaml.safe_dump(gateway))
     c = load()
-    if args.command == 'vllm-args':
+    if args.command in ('model-path', 'model-name'):
+        print(get_model(c['model_key'])['path' if args.command == 'model-path' else 'served_name'])
+    elif args.command == 'vllm-args':
         out = ['--max-num-seqs', str(c['max_num_seqs']),
                '--max-num-batched-tokens', str(c['max_num_batched_tokens'])]
         if c['enforce_eager']:

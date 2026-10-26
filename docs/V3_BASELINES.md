@@ -18,3 +18,15 @@ The installed vLLM/LMCache stack remains untouched. Latest SGLang 0.5.22 require
 ## Methodological constraints
 
 A paper's own published throughput on H100/H200 is literature context, not a comparator to our RTX 3090. Every locally measured arm needs matched model revision, exact tokenized prompts, output budget, cache capacity and host-memory budget. Engine-specific allocator and scheduler differences are documented. Profile overhead is excluded from the final unprofiled latency contrasts.
+
+## Compatibility update ~07:22 UTC
+
+The first actual SGLang GPU launch failed at native-library import: PyPI's `sglang-kernel==0.4.4` wheel links CUDA13 cuBLAS, unavailable in the torch2.11/cu128 environment. The official CUDA12.9 index provides `sglang_kernel-0.4.4+cu129-cp310-abi3-manylinux2014_x86_64.whl`, SHA256 `4ea2f7176965c3d1a5697254befe45c2ac995793577108129710d0f66ca85b33`. Its download is progressing through aria2 after uv's direct download made no payload progress; adopt only after complete SHA verification. This compatibility repair is isolated and is not a change to the main serving stack. The native upstream HiCache baseline remains unmeasured until an actual server/replay succeeds.
+
+## First native upstream execution, ~07:44 UTC
+
+SGLang0.5.14 now serves the pinned 1.7B model with native HiRadixCache, kernel/page_first I/O, write-through, 16 GiB host KV and 37,440 GPU KV tokens. A fresh process after isolated runtime pins has decode CUDA graphs (`full`); upstream automatically disables prefill graphs with this Triton attention configuration. Max running requests16, batch8192, seed0. This is an **upstream HiCache/LPM baseline**, not a claim to reproduce every Strata scheduler feature. Actual server config and process arguments are saved per run.
+
+A first 60-QA replay completed but its RSS sampler failed on a transient child-process exit; it is explicitly invalidated for performance comparison. The corrected sampler handles process exits per member. New run `v3-sglang-lpm16-dev3-qps2-s101-r2` succeeds with exact prompt-token agreement and complete native metrics: p50 1.009s, p95 6.939s, p99 7.546s. Seeds102/103 are running. These are dev controls; further backend/concurrency tuning is needed before calling this the strongest supported SGLang configuration on SM86.
+
+**Native counter caveat:** `sglang:load_back_duration_seconds` is measured around `HiRadixCache.load_back`, whose controller queues asynchronous copy work and returns device indices. Its CPU wall duration is not the full H2D DMA duration. `load_back_tokens_total` is the source-labelled host promotion count, not vLLM's engine-consumed external-token counter. Preserve both meanings instead of merging them. Source inspected in the installed `sglang/srt/mem_cache/hiradix_cache.py` and `observability/metrics_collector.py`.

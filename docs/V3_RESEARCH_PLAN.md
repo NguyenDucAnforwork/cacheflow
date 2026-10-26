@@ -43,3 +43,22 @@ An isolated SGLang 0.5.14 install completed successfully after a slow but progre
 ### Live hash-contract audit, ~07:18 UTC
 
 The first IPC-event screens received events with zero gaps but predicted zero GPU matches. A direct store-payload probe established that vLLM defaults to legacy **integer 64-bit external hashes**, whereas the gateway index used full SHA256 byte keys. Matching the internal hash function alone did not validate this external representation. All `v3-real-*` screens are diagnostic-only and excluded from valid comparisons by `residency_namespace_diagnostic.json`; raw outputs remain retained. The runtime now explicitly sets `VLLM_KV_EVENTS_USE_INT_BLOCK_HASHES=0`, and the subscriber verifies block size, key type and the hash of one actual store payload before accepting residency measurements. Health exposes verification and task failure; failed observers invalidate residency evidence. Twenty-seven tests pass, including legacy-int rejection.
+
+### Tuned-engine gate, ~07:29 UTC
+
+Verified byte-hash dev seed101 screens (60 QA each, eager maxseq4): FIFO4 p95 15.291s; actual-residency LPM4 17.641s; packing-only4 4.539s; migration-gated residency4 6.832s; bundle-wave4 9.410s. All observer checks pass with zero gaps. Packing-only beats the extra residency variant on this seed: additional state is not presumed beneficial. These are exploratory, not candidate confirmation.
+
+A stronger vLLM configuration is now live: CUDA graphs enabled, max_num_seqs16, batched-token budget8192, same model/KV/CPU budgets and event publisher. A fixed tiny 4-token engine warmup precedes the crossover; caches clear before each run. The first tuned FIFO16 p95 is **4.235s**, substantially below eager FIFO. This invalidates any claim that the old 15s FIFO result alone establishes a strong contribution. Compare packing and all other arms on this tuned engine before freezing a method. `setup_engine_audit.json` verifies actual engine arguments against the declared runtime.
+
+Resource sampler correction: process metrics now include descendants (engine core, LMCache workers), whereas earlier per-service fields only counted parents. Sum-of-process RSS double-counts shared pages and is not physical memory usage. Final comparisons use the same updated sampler across arms. LMCache transfer histogram summaries are event-average bandwidth values, not total transfer time; do not reinterpret arithmetic throughput sums as byte totals.
+
+
+### Stronger-model adoption and live matrix, ~07:50 UTC
+
+Qwen3-4B revision `1cfa9a7208912126459214e8b04321603b3df60c` is fully downloaded and all shard SHA256 checks pass; adoption is recorded. Refreshed primary HF range URL resumed existing pieces after a validated Content-Range probe, without discarding completed data. Model-specific dev traces at QPS2/4 and seeds101/102/103 are generated with its pinned tokenizer; no confirmation run is evaluated. The serving preflight rechecks all 4B SHA values and index coverage.
+
+4B screening uses 6GiB GPU KV (43,680 physical tokens, 43,664 reservation budget after null-block allowance), CPU16GiB, CUDA graphs, maxseq16 and batch8192. The 4B GPU-fit budget, if used later, is 10GiB (72,800 conservative tokens). These budgets follow the model's 144KiB/token geometry; 4GiB would not support the chosen 32K maximum context. Do not interpret cross-model timing as changing model size alone. The dev matrix screens FIFO16/FIFO4, packing4/packing16, actual-LPM16, residency16 and bundle-wave16 at QPS2/4, seed101. Fixed tiny warmup and per-run reset remain in place. Candidate/config remain unfrozen.
+
+Three valid native HiCache/LPM dev runs now exist and are graded; seed101/102/103 p95=6.939/8.983/7.761s, p99=7.546/11.222/10.543s. Backend tuning is still required. Current native Triton configuration has decode graphs and auto-disabled prefill graphs, recorded from the resolved server configuration. Native timer/source semantics remain separate from vLLM counters.
+
+First 4B FIFO16 dev QPS2 run completed: 60/60 success, exact prompt-token agreement, actual engine configuration audit passed, F1 **0.3146727492**, 3/60 cap hits, p95 **25.305s**, p99 **26.102s**. This meets the stronger-model feasibility/quality opportunity, not the final method gate. Remaining arms are still running in tool session20750; inspect its actual state before changing any engine process.

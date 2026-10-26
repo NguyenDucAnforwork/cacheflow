@@ -12,6 +12,11 @@ if [[ -d "$cu13_lib" ]]; then
 fi
 
 model=${CACHEFLOW_MODEL_PATH:-$HF_HOME/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e}
+served_model_name=cacheflow-qwen3-1.7b
+if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
+    model=$("$venv/bin/python" "$root/scripts/v3_runtime.py" model-path)
+    served_model_name=$("$venv/bin/python" "$root/scripts/v3_runtime.py" model-name)
+fi
 mode=${CACHEFLOW_MODE:-$(cat "$root/.cacheflow-mode" 2>/dev/null || printf B1)}
 gpu_kv_bytes=${CACHEFLOW_GPU_KV_BYTES:-$(cat "$root/.cacheflow-v2-gpu-kv-bytes" 2>/dev/null || printf 8589934592)}
 max_model_len=${CACHEFLOW_MAX_MODEL_LEN:-32768}
@@ -19,11 +24,12 @@ max_num_seqs=${CACHEFLOW_MAX_NUM_SEQS:-4}
 [[ -d "$model" ]] || { echo "missing pinned model: $model" >&2; exit 2; }
 case "$gpu_kv_bytes" in
     4294967296|6442450944|8589934592) ;;
+    10737418240) [[ -s "$root/.cacheflow-v3-runtime.json" ]] || exit 2 ;;
     *) echo "unsupported GPU KV budget: $gpu_kv_bytes" >&2; exit 2 ;;
 esac
 
 args=(
-    "$model" --served-model-name cacheflow-qwen3-1.7b
+    "$model" --served-model-name "$served_model_name"
     --host 127.0.0.1 --port 8000 --dtype bfloat16
     --max-model-len "$max_model_len" --max-num-seqs "$max_num_seqs"
     --kv-cache-memory-bytes "$gpu_kv_bytes"

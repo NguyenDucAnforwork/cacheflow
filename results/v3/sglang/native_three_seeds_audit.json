@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "run_id": "v3-sglang-lpm16-dev3-qps2-s101-r2",
+      "requests": 60,
+      "errors": 0,
+      "p50_ms": 1009.4615515,
+      "p95_ms": 6939.037111199999,
+      "p99_ms": 7546.087687879995,
+      "total_prompt_tokens": 1278178,
+      "native_cached_tokens": 1205840.0,
+      "native_uncached_tokens": 72338.0,
+      "native_host_promoted_tokens": 623728.0,
+      "native_load_back_cpu_duration_s": 0.04379850199620705,
+      "same_pinned_prompt_token_counts": true,
+      "output_hashes_verified": true
+    },
+    {
+      "run_id": "v3-sglang-lpm16-dev3-qps2-s102",
+      "requests": 60,
+      "errors": 0,
+      "p50_ms": 1378.2334425,
+      "p95_ms": 8982.647565549996,
+      "p99_ms": 11221.81146695,
+      "total_prompt_tokens": 1278178,
+      "native_cached_tokens": 1203936.0,
+      "native_uncached_tokens": 74242.0,
+      "native_host_promoted_tokens": 509568.0,
+      "native_load_back_cpu_duration_s": 0.03695743602293078,
+      "same_pinned_prompt_token_counts": true,
+      "output_hashes_verified": true
+    },
+    {
+      "run_id": "v3-sglang-lpm16-dev3-qps2-s103",
+      "requests": 60,
+      "errors": 0,
+      "p50_ms": 1411.8542585,
+      "p95_ms": 7761.424638949994,
+      "p99_ms": 10542.81292452,
+      "total_prompt_tokens": 1278178,
+      "native_cached_tokens": 1203936.0,
+      "native_uncached_tokens": 74242.0,
+      "native_host_promoted_tokens": 499488.0,
+      "native_load_back_cpu_duration_s": 0.03757353100809269,
+      "same_pinned_prompt_token_counts": true,
+      "output_hashes_verified": true
+    }
+  ],
+  "counter_scope": "Native SGLang source semantics; host-promotion counts/CPU enqueue timers are not full DMA timing."
+}
