@@ -1,6 +1,7 @@
 {
   "source_audit_sha256": "f214c479d62a0175a7ca6b87e4c83aa466105465945894d6795eccaaf91fc87b",
-  "scope": "57 audited V5 revision2 dev/control runs. Client TPOT proxies are request-level averages, not individual-token ITL. Generated-token volume varies with batching/answers. No throughput-capacity or quality-equivalence inference.",
+  "stage": "validation",
+  "scope": "Complete audited V5 revision2 stage. Client TPOT proxies are request-level averages, not individual-token ITL. Generated-token volume varies with batching/answers. No throughput-capacity or quality-equivalence inference.",
   "runs": [
     {
       "run_id": "v5r2-dev-lpm-g6-qps4-native-s101",

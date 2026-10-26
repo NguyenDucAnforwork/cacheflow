@@ -91,3 +91,43 @@ Run `PYTHONPATH=src python3 -m cacheflow.readiness_sweep configs/readiness_sweep
 ## Admission-deadline audit
 
 Run `PYTHONPATH=src python3 -m cacheflow.audit_admission configs/admission_audit.csv --output results/figures/admission_audit.csv`. The script reports queue-wait p50/p90/max and count/tail above the configured 200 ms intentional-deferral deadline for ten selected runs; it checks newer logged overrun fields against the value reconstructed from arrival and dispatch times. The older gateway trace schema lacks explicit deadline fields, so the reconstruction assumes the pinned `max_wait_ms=200` policy config. Compare FIFO and DHAS rows before attributing over-bound waits to policy deferral.
+
+## Current V5 protocol and evidence (2026-10-26)
+
+Earlier sections retain historical V1/V2 commands and paths. Current worktree is `/workspace/cacheflow-e1`, branch `feat/cacheflow-v3-competitive`, modelQwen3-4B revision`1cfa9a7208912126459214e8b04321603b3df60c`. Model/data paths, installed versions, source snapshots and actual arguments are captured by each run's setup. Main environment is `/venv/main`; nativeSG is isolated at `/venv/sglang-baseline`. Do not install another serving stack over either environment.
+
+Current protocol is [V5_PROMPT_REPAIR_PLAN.md](V5_PROMPT_REPAIR_PLAN.md), with immutable seal`results/v3/v5_prompt_freeze.json` SHA256`19f3fc70db3ba44df24b99dd64ae02b9dfe220bf1a434e54553b1bbf1b4e8271`. V5 changes the contradictory user abstention footer and uniformly records3600s transport timeouts/client keepalive0; it does not alter the fixed union policy. Revision1 source/plan/seal and the ReadError are archived separately. The historical V4 verifier intentionally rejects the documented transport additions; use the V5 verifier.
+
+Read-only protocol/plan/test checks:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v5_verify.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_validate.py --plan
+PYTHONPATH=src /venv/main/bin/python scripts/v5_confirm.py --plan
+PYTHONPATH=src /venv/main/bin/python scripts/v5_full.py --plan
+PYTHONPATH=src /venv/main/bin/python -m pytest -q
+```
+
+`--plan` prints the actual fixed action graph without starting services. The executing controller is `scripts/v5_pipeline.py`:57validation→audit→27repair-repeat→audit→17full→audit. All measured request errors invalidate their run; there are no request retries or successful-only percentile tables. Each ID refuses overwrite. These exact IDs have already been used on this instance: rerunning the controller here is not a reproduction shortcut. A new independent replay needs a fresh recorded namespace/prospective plan and source/trace provenance, without replacing any historical artifact. Confirm current jobs via actual process/supervisor state before any GPU action; never run the two GPU stacks concurrently.
+
+Recompute complete validation evidence from retained private raw outputs:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v5_audit_validation.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_main.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_decode.py --validation --output results/v3/v5r2_validation_secondary_metrics.json
+PYTHONPATH=src /venv/main/bin/python scripts/v5_run_intervals.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_waits.py results/v3/v5r2_validation_audit.json --output results/v3/v5r2_validation_waits.json
+PYTHONPATH=src /venv/main/bin/python scripts/v5_plot_primary.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_plot_main.py
+```
+
+These commands analyze existing data; audits reject missing source/token/output/resource coverage. The official evaluator version/SHA is embedded in quality artifacts. Raw generated text stays captured privately; no posthoc answer extraction or normalization was introduced. Repeated seeds reuse fixed questions; means of run quantiles and exploratory n3 intervals must retain those labels.
+
+After all27repair repeats exist, `v5_audit_confirmation.py` and `v5_analyze_confirmation.py` produce integrity/quality and all18contrasts including fresh-processDFS. `v5_analyze_decode.py --stage confirmation --output results/v3/v5r2_confirmation_secondary_metrics.json` and `v5_run_intervals.py --stage confirmation` extend secondary metrics to that stage. Full equivalents use`--stage full` and require the complete17-run audit, not an incomplete subset. Conv43/44 repair repeats are not a new semantic holdout.
+
+The separate `v5_full_histograms.py PIPELINE_PID` is a passive observer registered before full request arrivals. It verifies the live controller identity, waits on setup markers and takes two native metrics snapshots outside each measured request window. It never starts/resets engines or changes parameters. Exact prompt-token delta, response-window clock and enginePID determine coverage. `v5_analyze_histograms.py SNAPSHOT... --output OUTPUT.json` rejects invalid cumulative buckets and gives quantile bounds. `results/v3/v5_native_itl_semantics.json` hashes installed native sources: SG token-weighted update averages and vLLM engine-output intervals must not be pooled or confused with client-token timestamps.
+
+`v5_after_pipeline.py PIPELINE_PID` waits on a verified live controller and analyzes complete audits only after it exits. It cannot retry/start serving work or mark the research complete. It derives completion, waits, run descriptors, per-conversation QoS, native resource samples and available full ITL snapshots; missing histogram coverage remains explicit. Final scientific review, plots/report and requirement audit still follow.
+
+Direct and kernel profiling artifacts remain separate from serving comparisons. Do not rerun heavy profilers while latency experiments are active. Direct DMA coverage is incomplete; kernel overlap is a scoped GPU-clock interval measurement. Preserve raw failures, output text, metric samples and trace manifests before any cleanup or instance recycle. Current state lives in [PROGRESS.md](PROGRESS.md), not the historical instance-state section above.

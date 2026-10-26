@@ -1,5 +1,6 @@
 {
-  "scope": "Conditional serving-run variability across3 paired arrival schedules on fixed QA/model/host. Same serving process is reused within a backend; these are not independent host/process or semantic-data replications. n3 intervals are assumption-dependent descriptors, not robust population inference or quality-equivalence tests.",
+  "stage": "validation",
+  "scope": "Conditional serving-run variability across3 paired arrival schedules on fixed QA/model/host. Processes may be reused or restarted; these are not independent host or semantic-data replications. n3 intervals are assumption-dependent descriptors, not robust population inference or quality-equivalence tests. Single-pair controls have null intervals.",
   "comparisons": [
     {
       "baseline": "v5r2-dev-lpm-g6-qps4-native",

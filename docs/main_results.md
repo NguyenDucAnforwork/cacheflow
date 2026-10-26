@@ -240,3 +240,37 @@ RQ3 remains qualified: 30/90 dev-pressure, 9/90 dev-GPU-fit and 46/90 holdout ou
 The useful contribution is an exploratory, reproducible real-content residency boundary plus a source-aware reuse audit. It is not a new caching algorithm or a whole-LoCoMo leaderboard score. RQ0's existing matched E1 screens still show no DHAS cache-work gain, so B5 remains gated.
 
 Supplemental single-pair checks remain separate: chat-template validation on conv-47/48 gives p95 9,555.80 → 3,333.80 ms (-65.11%), 462,480 saved prefill tokens and F1 0.113467/0.113390 (budget hits 8/30 and 9/30). The evidence-visible P-SESSION dev trace fits 4-GiB GPU KV: both arms compute 16,287 tokens, consume zero external tokens, and B2 p95 is +9.21% in this pilot. These are exploratory controls, not replicated quality or regression guarantees. Overall this continuation completed 23 runs / 690 requests without errors, with a complete captured-output/source-accounting audit; tests 21/21 pass and all V2 services are stopped.
+
+# V5 research checkpoint: fixed union admission under KV pressure (2026-10-26)
+
+**Status: incomplete research study; validation results only.** V1/V2 above retain their own model, host, workload and prompt protocols. V3/V4 development history is in [V4_DEV_EVIDENCE.md](V4_DEV_EVIDENCE.md). V5 repairs a conflicting abstention instruction found in all V4 full prompts; no V4/V5 scores or latency are pooled. The algorithm was fixed before earlier confirmation exposure and remains unchanged. The new confirmation stage repeats previously exposed questions under a repaired protocol; it is not a new semantic holdout.
+
+The research question is whether bounded, exact-prefix union admission can reduce arrival-based serving tails under cache pressure relative to FIFO and stronger cache-aware controls. It admits the oldest feasible request under a logical shared-block budget, allows at most eight head bypasses and avoids unbounded preference for popular prefixes. It controls ordering/admission, not a per-request engine restore-versus-recompute choice. Details and prospective source/trace hashes are in [V5_PROMPT_REPAIR_PLAN.md](V5_PROMPT_REPAIR_PLAN.md).
+
+The working stack is pinned Qwen3-4B BF16 on RTX3090,6GiB GPU KV, vLLM0.22.0/LMCache0.5.3 and an isolated SGLang0.5.14/HiCache baseline. Both validation stacks receive the same actual CPU payload16000745472bytes, rather than confusing decimalGB withGiB. Prompt cap is32768 with96output tokens; the full1986QA fit, which is a tokenizer-fit fact rather than a completed serving evaluation. Native HiCache controls use Direct I/O, FlashInfer, native LPM/DFS and a uniformly applied local same-batch delay-hit guard. This is a component adaptation inspired by Strata, not the complete published scheduler. [V3_BASELINES.md](V3_BASELINES.md) describes recent-paper grounding and unexecuted components/policies.
+
+All57 measured validation runs pass strict integrity/quality/source/budget audits:2820/2820successful requests, no errors. Eighteen main runs repeat60uniqueQA over three arrival schedules. Table entries are means of run quantiles; CPU-source tokens are engine-consumed tokens, not direct bus-byte measurements.
+
+| Main policy | TTFT p50 / p95 / p99 (s) | CPU-source tokens/run | Answerable F1 |
+| --- | --- | ---: | ---: |
+| FIFO64 |25.130 /35.963 /36.691|918496|.313862|
+| Actual GPU-residency LPM16 |22.444 /35.259 /36.552|429083|.317538|
+| Bundle16 |19.592 /27.469 /28.069|300155|.317180|
+| Fixed DHAS16 |25.213 /36.125 /36.868|918496|.313862|
+| Fixed union64 |15.428 /19.817 /20.478|84443|.318350|
+
+Union paired p95 gains are43.6–46.9% overFIFO64 and25.7–31.1% overbundle. Newly computed prefill declines71810→65725tokens and CPU-consumed KV falls~90.8% vsFIFO64. All arms have12cap hits across180scheduled responses. Mean quality differences are small, but do not establish equivalence; raw outputs and official per-question scores are retained.
+
+Completion latency preserves the dev benefit: p95 FIFO64/bundle/union36.452/28.041/21.266s. However the p95 of a **request-level client TPOT proxy** worsens19.380→117.673ms/token vsFIFO64; bundle52.273. Proxy is first-text→response-close divided by output_tokens−1, excluding single-token responses. It includes chunking, special-token accounting and close overhead; it is not exact native per-token ITL. This is a material streaming tradeoff even with earlier completion.
+
+![V5 main dev tradeoffs](../results/v3/figures/v5r2_main_tradeoffs.png)
+
+Thirty-nine nativeSG validation runs cover primary/load/low-reuse/abstention/DFS/GPU-fit conditions. At4QPS, mean p95 native19.043s vsunion16.803s, but median4.894→13.564s and mean7.156→13.298s. Every primary arm computes69650tokens and union has more host promotion, so the main-stack source-saving explanation does not apply. NativeDFS p95 gains12.1–22.9% coexist with mixed F1 deltas. Lower-load2QPS includes+8.544% regression. Low-reuse maximum+.648% passes the predefined5%gate; GPU-fit10GiB control regresses+.530–.993%. The12QA abstention stratum scores7/12for both policies at all three seeds; it is not a full446QA category5 evaluation or a causal improvement estimate against V4.
+
+Three arrival schedules are not independent semantic replications. Raw paired deltas remain primary. An exploratory paired-log-ratio t(df2) descriptor for SGnative p95 spans−24.366 to+3.249%, despite three negative point estimates; assumptions are unverified at n3. MainFIFO64 descriptor spans−49.111 to−40.281%. Neither proves generalization to different hosts/workloads or quality equivalence.
+
+CPU↔GPU profiling is kept separate from unprofiled latency. The Direct diagnostic reconciles35.15GBpayload with events/counters but lacks complete bulk-copy timeline coverage; pure DMA overlap remains unknown. A kernel/page_first off/on/off diagnostic records432per-layer I/O kernels,3.120s union time and.306s overlap with heavy-model kernels (9.818%of I/O-kernel time). That is temporal kernel overlap, not measured bus occupancy, useful stall hiding or causal E2E acceleration. The diagnostic uses12requests/4output tokens and is not the serving workload.
+
+Full study remains pending:27repaired-protocol repeats1080requests, then17full runs33762requests with48GBnative CPU payload matched exactly to LMCache. Required final evidence includes complete-success comparisons against nativeLPM/DFS, full per-category quality including446category5QA, per-conversation fairness/SLO, resource/source accounting and completion/decode tradeoffs. Supplemental native ITL histograms require clock/PID/token-window coverage and retain engine-specific semantics. No universal win, full-paper reproduction or completed research contribution is claimed at this checkpoint.
+
+Authoritative validation artifacts: `results/v3/v5r2_validation_audit.json`, `v5r2_main_dev_findings.json`, `v5r2_validation_secondary_metrics.json`, `v5r2_validation_run_intervals.json` and `v5r2_validation_waits.json`. See [reproduce.md](reproduce.md) for current audit/analysis commands and [INTERVIEW.md](INTERVIEW.md) for accessible Vietnamese explanations and questions.

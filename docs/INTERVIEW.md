@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026:** V5 dùng Qwen3-4B và đang revalidate protocol đã sửa. V4 có lỗi chỉ dẫn abstention mâu thuẫn; các số V4 dưới đây giữ phạm vi lịch sử, không gộp với V5. Phần21 giải thích lỗi, timeout và profiling mới nhất; phần18–20 là các bài học/cấu hình V4. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
+**Cập nhật 26/10/2026:** V5 dùng Qwen3-4B, đã audit57lượt validation/2820request không lỗi và đang chạy các lượt lặp protocol đã sửa; full study còn chờ. V4 có lỗi chỉ dẫn abstention mâu thuẫn; các số V4 dưới đây giữ phạm vi lịch sử, không gộp với V5. Phần21 giải thích lỗi, timeout và profiling mới nhất; phần18–20 là các bài học/cấu hình V4. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
 
 ## 1. Kể project trong hai phút
 

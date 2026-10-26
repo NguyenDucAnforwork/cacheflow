@@ -47,11 +47,14 @@ def analyze(run_id):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('run_id',nargs='?');p.add_argument('--validation',action='store_true');p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    assert bool(a.run_id)!=a.validation, 'choose a single run ID or --validation'
-    if a.validation:
-        path=Path('results/v3/v5r2_validation_audit.json');audit=json.loads(path.read_text())
-        assert len(audit['runs'])==57 and audit['requests']==2820 and not audit['errors']
+    p=argparse.ArgumentParser();p.add_argument('run_id',nargs='?');p.add_argument('--validation',action='store_true');p.add_argument('--stage',choices=['validation','confirmation','full']);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    assert not (a.validation and a.stage), 'choose one stage flag'
+    stage='validation' if a.validation else a.stage
+    assert bool(a.run_id)!=bool(stage), 'choose a single run ID or an audited stage'
+    if stage:
+        path=Path(f'results/v3/v5r2_{stage}_audit.json');audit=json.loads(path.read_text())
+        n,requests={'validation':(57,2820),'confirmation':(27,1080),'full':(17,33762)}[stage]
+        assert len(audit['runs'])==n and audit['requests']==requests and not audit['errors']
         rows=[analyze(r['run_id']) for r in audit['runs']];by={r['run_id']:r for r in rows};pairs=[]
         for pair in audit['pairs']:
             left,right=by[pair['a']],by[pair['b']]
@@ -59,10 +62,10 @@ def main():
                 completion_p95_delta_pct=100*(right['completion_latency_ms']['p95']/left['completion_latency_ms']['p95']-1),
                 generated_tokens_a=left['generated_tokens'],generated_tokens_b=right['generated_tokens']))
         result=dict(source_audit_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
-            scope='57 audited V5 revision2 dev/control runs. Client TPOT proxies are request-level averages, not individual-token ITL. Generated-token volume varies with batching/answers. No throughput-capacity or quality-equivalence inference.',runs=rows,pairs=pairs)
+            stage=stage,scope='Complete audited V5 revision2 stage. Client TPOT proxies are request-level averages, not individual-token ITL. Generated-token volume varies with batching/answers. No throughput-capacity or quality-equivalence inference.',runs=rows,pairs=pairs)
     else:result=analyze(a.run_id)
     a.output.write_text(json.dumps(result,indent=2)+'\n')
-    print('Analyzed',len(result['runs']) if a.validation else 1,'runs:',a.output)
+    print('Analyzed',len(result['runs']) if stage else 1,'runs:',a.output)
 
 
 if __name__=='__main__':main()
