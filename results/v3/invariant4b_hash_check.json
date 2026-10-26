@@ -1,0 +1,10 @@
+{
+  "runs": [
+    "v3-invariant4b-fifo16-kvprofile-qps4-s101",
+    "v3-invariant4b-packing16-kvprofile-qps4-s101"
+  ],
+  "requests_per_run": 60,
+  "hash_mismatch_count": 0,
+  "mismatched_request_ids": [],
+  "scope": "Batch-invariant correctness diagnostic with KV-event instrumentation, not standard performance evidence"
+}
