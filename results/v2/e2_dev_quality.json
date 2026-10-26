@@ -1,0 +1,2877 @@
+{
+  "evaluator_url": "https://raw.githubusercontent.com/snap-research/locomo/3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376/task_eval/evaluation.py",
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "nltk_version": "3.9.2",
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "scope": "LoCoMo text-only serving subsets; protocol and prompt version per run; raw budgeted outputs, no answer extraction; not leaderboard",
+  "runs": [
+    {
+      "run_id": "v2-e2-b1-4g-dev3-qps02-s17",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "4a866013a301106c5b9560d995312de764fab581795b150784841b92e5877c0c",
+      "answerable_f1": 0.07437634590451271,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.019766074034366716
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16812165587158548
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b1-4g-dev3-qps02-s29",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "9679d501af01971968ecc6c841c82b913c75bc7bfe5942439e3e0de3412dc993",
+      "answerable_f1": 0.07440053555134388,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.019766074034366716
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.01923076923076923
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16812165587158548
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03846153846153846
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b1-4g-dev3-qps02-s43",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "2a333263a64cb3d863624bdd6b5ee946d406ab35c542c7d9bf2e4ca993fb019c",
+      "answerable_f1": 0.07314593896903801,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.019766074034366716
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.01923076923076923
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.14930270713699753
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03846153846153846
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2608695652173913
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b1-8g-dev3-qps02-s17",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "4a866013a301106c5b9560d995312de764fab581795b150784841b92e5877c0c",
+      "answerable_f1": 0.07467928119594318,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.020323565323565326
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.01923076923076923
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16812165587158548
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03846153846153846
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05714285714285715
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b1-8g-dev3-qps02-s29",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "9679d501af01971968ecc6c841c82b913c75bc7bfe5942439e3e0de3412dc993",
+      "answerable_f1": 0.07340049496680616,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.020323565323565326
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.14930270713699753
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2608695652173913
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05714285714285715
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b1-8g-dev3-qps02-s43",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "2a333263a64cb3d863624bdd6b5ee946d406ab35c542c7d9bf2e4ca993fb019c",
+      "answerable_f1": 0.07623957540683995,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.14697427189908394
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.019766074034366716
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16812165587158548
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.163265306122449
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.05263157894736842
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b2-4g-dev3-qps02-s17",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "4a866013a301106c5b9560d995312de764fab581795b150784841b92e5877c0c",
+      "answerable_f1": 0.07358269511086192,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.01817877244706513
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16812165587158548
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.047619047619047616
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b2-4g-dev3-qps02-s29",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "9679d501af01971968ecc6c841c82b913c75bc7bfe5942439e3e0de3412dc993",
+      "answerable_f1": 0.07232809852855605,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.01817877244706513
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.14930270713699753
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.047619047619047616
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2608695652173913
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b2-4g-dev3-qps02-s43",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "2a333263a64cb3d863624bdd6b5ee946d406ab35c542c7d9bf2e4ca993fb019c",
+      "answerable_f1": 0.07232809852855605,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.01817877244706513
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.14930270713699753
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.047619047619047616
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2608695652173913
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b2-8g-dev3-qps02-s17",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "4a866013a301106c5b9560d995312de764fab581795b150784841b92e5877c0c",
+      "answerable_f1": 0.07342468461363731,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.020323565323565326
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.01923076923076923
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.14930270713699753
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03846153846153846
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2608695652173913
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05714285714285715
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b2-8g-dev3-qps02-s29",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "9679d501af01971968ecc6c841c82b913c75bc7bfe5942439e3e0de3412dc993",
+      "answerable_f1": 0.07463179781512647,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.1418927368927369
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.020323565323565326
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16777224986180211
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.037037037037037035
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05714285714285715
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "run_id": "v2-e2-b2-8g-dev3-qps02-s43",
+      "answerable_n": 30,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-text-v1",
+      "trace_sha256": "2a333263a64cb3d863624bdd6b5ee946d406ab35c542c7d9bf2e4ca993fb019c",
+      "answerable_f1": 0.07623957540683995,
+      "by_category": {
+        "1": {
+          "n": 11,
+          "mean": 0.14697427189908394
+        },
+        "2": {
+          "n": 15,
+          "mean": 0.019766074034366716
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.018867924528301886
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.16812165587158548
+        }
+      },
+      "output_budget_hits": 30,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.125
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.14285714285714288
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2666666666666667
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.07142857142857142
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.03773584905660377
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.32
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "category": 4,
+          "budget_hit": true,
+          "score": 0.2985074626865672
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.12500000000000003
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.16666666666666669
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.05128205128205129
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.2222222222222222
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.163265306122449
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.048780487804878044
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.07407407407407407
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.08333333333333334
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "category": 3,
+          "budget_hit": true,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "category": 1,
+          "budget_hit": true,
+          "score": 0.05263157894736842
+        }
+      ]
+    }
+  ]
+}
