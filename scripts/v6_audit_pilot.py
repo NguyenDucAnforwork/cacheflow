@@ -50,11 +50,12 @@ def main():
         candidate=f'v6pilot2-{dataset}-packing_ready-s{seed}'
         for arm in ['fifo64','union64','ready_fifo']:
             baseline=f'v6pilot2-{dataset}-{arm}-s{seed}';p=compare(loaded[baseline],loaded[candidate]);p.pop('a_metrics');p.pop('b_metrics')
+            p['p99_delta_pct']=100*(loaded[candidate]['summary']['arrival_ttft_p99_ms']/loaded[baseline]['summary']['arrival_ttft_p99_ms']-1)
             p.update(a_f1=quality[baseline]['answerable_f1'],b_f1=quality[candidate]['answerable_f1'],f1_delta=quality[candidate]['answerable_f1']-quality[baseline]['answerable_f1']);pairs.append(p)
     result=dict(scope='Complete prospective development pilot:60devQA at one arrival seed plus40previously exposed repairQA at another, not a fresh holdout, replicated confirmation or full benchmark. Native probe off. Host configured flags are shared; effective lazy heaps are recorded separately. First-text gate is not a physical pin/restore guarantee.',
         registration_sha256=hashlib.sha256(reg_path.read_bytes()).hexdigest(),requests=400,errors=0,runs=rows,pairs=pairs,secondary=secondary)
     Path('results/v3/v6pilot2_audit.json').write_text(json.dumps(result,indent=2)+'\n')
-    for p in pairs:print(p['a'],'vs',p['b'],'p95 delta',p['p95_ms_delta_pct'],'F1 delta',p['f1_delta'])
+    for p in pairs:print(p['a'],'vs',p['b'],'p95 delta',p['p95_delta_pct'],'F1 delta',p['f1_delta'])
 
 
 if __name__=='__main__':main()

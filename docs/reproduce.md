@@ -163,3 +163,25 @@ The registered`v6pilot2-*`namespace is already running; do not start another con
 Only after all8measured arms exist, run`PYTHONPATH=src /venv/main/bin/python scripts/v6_audit_pilot.py`. It checks parent19source coverage plus new entrypoint/source/policy/reset/transport/budget/observer evidence, grades captured outputs officially, and derives paired TTFT, completion and decode proxies. A partial pilot cannot produce a complete audit. These100uniqueQA reuse previous development exposure; no fresh semantic holdout, three-seed confirmation or full contribution claim is implied. No V5/V6 pooling.
 
 The first`v6pilot1`attempt is retained as an integration failure: parent replay argparse did not accept either new policy, so no new-policy request was sent. Registered five-source snapshots are archived in`v6pilot1_source_archive.json`. Replacement`v6pilot2`adds a replay module with only those two CLI enum entries and two mechanically checked shell launch-target substitutions. Parent files stay byte-identical. Controller preflight verifies both policy names and exact source transformations before GPU. The replacement reruns the entire fixed pilot; earlier baseline results are not pooled. `v6_after_pilot.py VERIFIED_PILOT_PID` waits on the verified current controller then audits all eight completed arms only, without GPU retries/restarts.
+
+### Strong V6 main development matrix and passive native ITL
+
+`v6pilot2_audit.json` accepts all8measured arms400requests plus official scores; no primary GPU replay was needed when a print-only analysis key was corrected. The registered three-seed matrix is now running under`v6dev1-main-*`: eight policies×three seeds, fresh engine/LMCache per arm, identical60devFIFO warmup, empty-cache reset and fresh gateway,180s uniform dev transport. Warmups1440requests remain separate from1440measured requests on60uniqueQA. Original/shared-process protocols are not pooled. Failed independent arms are retained, then the next preplanned arm starts its own fresh engine; no retries.
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_main_matrix.py --plan
+```
+
+Do not start a second controller for the existing namespace. `v6_after_main_matrix.py VERIFIED_LIVE_MATRIX_PID` waits for terminal status and runs`v6_audit_main_matrix.py`; it requires all24measured and24warmup outcomes/source/token/output/resource/observer contracts before emitting complete comparisons. Failure/missing coverage emits an incomplete artifact. Native probes and GPU profilers are off.
+
+`v6_main_histograms.py VERIFIED_LIVE_MATRIX_PID` is separately registered passive observation. It takes no retrospective baseline for setup markers already present, and two metrics GETs for future arms outside request windows. SamePID, before/after clocks and exact prompt/generation-token deltas determine native coverage. Count/sum/buckets must be monotonic/complete; missing coverage staysnull. Main audit includes native engine-update mean and bucket bounds separately from primary metrics. This is not an individual-client-token timestamp trace or exact percentile interpolation. The current observer is already live; avoid duplicate collectors.
+
+### Canonical request-ledger indexes
+
+The historical append-only main CSV has a35column header and later38column rows after transport metadata was added; nativeSG also has mixed legacy widths. It is preserved as raw history and must not be read as a single stable positional schema. Per-run JSON summaries and per-protocol strict audits are authoritative. Build separate named-column indexes without changing any active writer or historical record:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_normalize_registry.py
+```
+
+`results/v3/registry_normalized.csv` and`results/v3/sglang/registry_normalized.csv` derive a union header from JSON keys, retain summary path/SHA and invalid-marker status, and leave unavailable values blank. They hide successful-only latency quantiles for explicitly failed/invalid entries while preserving raw JSON. Their audit JSON reports legacy width counts, duplicate IDs and incomplete summaries. They are request-ledger locators, not automatic performance-eligibility or independent-QA counts; failures before replay require controller outcomes. Rerun after jobs end; the main-matrix auditor does this automatically. A regression test verifies mixed schema normalization, raw preservation and blank invalid latency fields.

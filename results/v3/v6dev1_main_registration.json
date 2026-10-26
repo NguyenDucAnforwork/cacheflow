@@ -1,0 +1,210 @@
+{
+  "registered_utc": "2026-10-26T17:04:41.835563+00:00",
+  "actions": [
+    {
+      "arm": "fifo16",
+      "seed": 101,
+      "policy": "fifo",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-fifo16-s101"
+    },
+    {
+      "arm": "fifo64",
+      "seed": 101,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-fifo64-s101"
+    },
+    {
+      "arm": "lpm16",
+      "seed": 101,
+      "policy": "lpm_real",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-lpm16-s101"
+    },
+    {
+      "arm": "bundle16",
+      "seed": 101,
+      "policy": "bundle_wave",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-bundle16-s101"
+    },
+    {
+      "arm": "dhas16",
+      "seed": 101,
+      "policy": "dhas",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-dhas16-s101"
+    },
+    {
+      "arm": "union64",
+      "seed": 101,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-union64-s101"
+    },
+    {
+      "arm": "ready_fifo",
+      "seed": 101,
+      "policy": "ready_fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-ready_fifo-s101"
+    },
+    {
+      "arm": "packing_ready",
+      "seed": 101,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6dev1-main-packing_ready-s101"
+    },
+    {
+      "arm": "packing_ready",
+      "seed": 102,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-packing_ready-s102"
+    },
+    {
+      "arm": "ready_fifo",
+      "seed": 102,
+      "policy": "ready_fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-ready_fifo-s102"
+    },
+    {
+      "arm": "union64",
+      "seed": 102,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-union64-s102"
+    },
+    {
+      "arm": "dhas16",
+      "seed": 102,
+      "policy": "dhas",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-dhas16-s102"
+    },
+    {
+      "arm": "bundle16",
+      "seed": 102,
+      "policy": "bundle_wave",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-bundle16-s102"
+    },
+    {
+      "arm": "lpm16",
+      "seed": 102,
+      "policy": "lpm_real",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-lpm16-s102"
+    },
+    {
+      "arm": "fifo64",
+      "seed": 102,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-fifo64-s102"
+    },
+    {
+      "arm": "fifo16",
+      "seed": 102,
+      "policy": "fifo",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6dev1-main-fifo16-s102"
+    },
+    {
+      "arm": "dhas16",
+      "seed": 103,
+      "policy": "dhas",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-dhas16-s103"
+    },
+    {
+      "arm": "union64",
+      "seed": 103,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-union64-s103"
+    },
+    {
+      "arm": "ready_fifo",
+      "seed": 103,
+      "policy": "ready_fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-ready_fifo-s103"
+    },
+    {
+      "arm": "packing_ready",
+      "seed": 103,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-packing_ready-s103"
+    },
+    {
+      "arm": "fifo16",
+      "seed": 103,
+      "policy": "fifo",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-fifo16-s103"
+    },
+    {
+      "arm": "fifo64",
+      "seed": 103,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-fifo64-s103"
+    },
+    {
+      "arm": "lpm16",
+      "seed": 103,
+      "policy": "lpm_real",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-lpm16-s103"
+    },
+    {
+      "arm": "bundle16",
+      "seed": 103,
+      "policy": "bundle_wave",
+      "cap": 16,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6dev1-main-bundle16-s103"
+    }
+  ],
+  "source_sha256": {
+    "scripts/v6_main_matrix.py": "f3cede0cfc6867d2d286a4a1d940d5c9eb406136c52b530b0782e2a6b39a2b84",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v6_replay.py": "ee31f9a31493766cfa93cafd56c2490e902b2bf329faa299d3ba210e79f73f46",
+    "scripts/v6_run.sh": "799b3748b59d99918aa3526aca8b524b84794fa6b34e79f3ec22f16b3d99e300",
+    "scripts/v6_v2_run.sh": "3bc9bf82aa548034beab6579298ed8a3300614a795cc72f67fa26047e596cf0e"
+  },
+  "parent_v5_seal_sha256": "19f3fc70db3ba44df24b99dd64ae02b9dfe220bf1a434e54553b1bbf1b4e8271",
+  "original_supervisor_sha256": "7e2cbb9bc46a2ce4480314482ee4619bab909a6af405246a3bcc97d31feffdb7",
+  "scope": "Fixed8arms across3arrival seeds on60previously exposed QA, not180unique questions or fresh semantic holdout. Fresh main/LMCache engine per measured arm, uniform60devFIFO warmup then cache reset/fresh gateway. Same6GiB GPU and16000745472byte host flags (effective lazy heap separately observed), model/output cap/preparation.180s read/pool/upstream timeouts uniformly. No native probes/profilers. No retries; a failed independent arm is retained then next preplanned arm gets its own fresh process. No successful-only quantiles for failures. This does not establish production long-service liveness."
+}

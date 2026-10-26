@@ -783,3 +783,19 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Vì sao71unit test xanh mà policy mới vẫn chưa chạy được?**
 
 **Đáp:** Test trước đó kiểm class scheduler và factory adapter, nhưng chưa đi hết chuỗi launcher. CLI replay còn danh sách policy cố định nên nó từ chối hai tên mới trước khi gửi request. Tôi giữ lần pilot hỏng, lưu nguyên source đã đăng ký và không lấy hai baseline thành công ghép với một lượt sửa sau. Bản thay thế có namespace mới, thêm preflight cho CLI và test so sánh launcher/replay với parent: chỉ khác tên module/entrypoint và hai enum metadata. Toàn bộ72test hiện qua; vẫn phải nhìn request thật, source/argv thực tế và audit toàn bộ pilot mới biết end-to-end đã đúng. Test xanh không tự chứng minh một thí nghiệm hoàn tất hay một method có lợi.
+
+**Hỏi: Pilot có chứng minh gate mới nhanh hơn union cũ không?**
+
+**Đáp:** Chưa. Pilot mới có400/400request thành công trên hai tập đã dùng trước đây. Gatedunion giảm p95 khoảng41–45%soFIFO, nhưng so union cũ thì dev chậm hơn3,2%, stress nhanh hơn2,6%. Gate-onlyFIFO gần như giữ nguyên compute/CPU-source work và latency củaFIFO; phần lợi ích lớn hiện đến từ grouping/union. Gate là giả thuyết bảo vệ trạng thái pending, chưa chứng minh sửa được stall gốc. F1 soFIFO giảm nhỏ ở cả hai tập và khác chiều khi so union cũ, nên không gọi quality equivalence.
+
+**Hỏi: Tại sao vẫn đo decode khi TTFT giảm gần một nửa?**
+
+**Đáp:** Vì người dùng nhìn cả stream. Proxy decode p95 của gatedunion giảm so union cũ từ123xuống92ms/token ở dev và90xuống52ởstress, nhưng FIFO chỉ khoảng19/18ms/token. Completion dev lại tăng từ21,4lên22,4giây, trong khistressgiảm21,0xuống19,4. Cần báo cả gain và cost. Đây là proxy theo request, chịu ảnh hưởng output length/chunk/đóng response; tôi bổ sung native histogram ở các lượt chưa chạy để đối chiếu. Không có baseline snapshot của hai arm đầu thì đểnull, không dựng lại từ số trung bình của arm khác.
+
+**Hỏi: Vì sao ma trận tiếp theo khởi động engine mới cho mỗi arm?**
+
+**Đáp:** Để tách các lượt đo khỏi trạng thái tích lũy qua reset sau khi đã thấy một anomaly chưa giải thích. Mọi baseline/candidate đều chịu cùng quy tắc, có warmup giống nhau và thứ tự cân bằng theo seed. Nó làm đơn vị lặp có process mới, nhưng không chứng minh lỗi đã được sửa hay production service chạy lâu sẽ an toàn. Full workload vẫn phải chạy hàng nghìn request trong một lượt. Tôi giữ dữ liệu protocol cũ riêng, báo stage mới là development, rồi tiếp tục native/control/full evaluation trước khi chốt đóng góp.
+
+**Hỏi: Có thể thêm một cột metadata rồi tiếp tục append CSV cũ không?**
+
+**Đáp:** Không an toàn nếu writer vẫn ghi theo thứ tự field của schema mới nhưng header cũ không đổi. Project có CSV main header35cột và65dòng về sau có38cột khi thêm timeout/keepalive. Đọc bằng header cũ có thể gán nhầm giá trị cho cột. Tôi giữ bản raw, lấy các JSON summary có tên key rõ ràng làm nguồn rồi tạo index CSV riêng với union header, summary SHA và invalid status. Các latency quantile của run lỗi/invalid được để trống trong index; raw không bị sửa. Test kiểm đúng trường thiếu, metadata mới và bảo toàn file cũ. Index không tự biến một run thành hợp lệ: vẫn phải qua audit đúng protocol, nhất là các lỗi xảy ra trước khi client tạo summary.

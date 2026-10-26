@@ -1,0 +1,11 @@
+{
+  "registered_utc": "2026-10-26T17:14:29.809539+00:00",
+  "matrix_pid": 339516,
+  "source_sha256": "b02add979b4ecd149b2e2bdec6f2ea984fdea9df8ae8de58947a40378f15420e",
+  "parser_source_sha256": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8",
+  "preexisting_setups_skipped": [
+    "v6dev1-main-fifo16-s101",
+    "v6dev1-main-fifo64-s101"
+  ],
+  "scope": "Two passive metrics GETs per not-yet-started measured arm, outside request window. Any setup already present at registration gets no baseline GET and remains null. No engine reset/parameter/source/profiler change. Exact clock/PID/prompt/generation token deltas and histogram coverage required; native engine-update timing differs from client TPOT proxy."
+}
