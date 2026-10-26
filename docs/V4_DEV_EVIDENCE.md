@@ -136,3 +136,31 @@ Earlier native sections calling HiCache16/48 **GiB** used the wrong unit. Instal
 The profile contains603 ordinary GPU memcpy events, but all visible HtoD copies total only22864bytes, including input/index tensors. That is at most0.0000651% of expected KV payload. It cannot represent bulk Direct restore.444 CUDA runtime events are labelled `INVALID`; the installed Direct path references batched-copy API. Those facts suggest a coverage gap, but do not prove every invalid label is that API. **DMA/model overlap remains null.** CPU launch clock plus CUDA-event elapsed time cannot produce an absolute GPU interval. Load-stream spans include enqueue gaps/dependencies and are not pure PCIe busy time. Reproduce: `PYTHONPATH=src /venv/main/bin/python scripts/v4_audit_steady_profile.py`.
 
 A separate kernel-I/O off/on/off diagnostic is scheduled after all frozen full unprofiled runs, using a unique artifact namespace. It is a diagnostic backend variation and will not replace the primary Direct serving measurements or justify an overlap claim before its actual timeline is inspected.
+
+## Frozen held-out confirmation,13:01UTC
+
+All27 measured runs complete1080/1080 requests, zero errors. `v4_confirmation_audit.json` verifies the frozen source/config/resource protocol, exact prompt/token/output identity and fresh state; separate pinned-evaluator audits cover18 SGLang and9 main runs. `v4_confirmation_findings.json` adds all18 contrasts, score-improved/worse/equal counts by category, hash differences and explicit fresh-process DFS labels.
+
+| Union contrast | p95 change, seeds701/702/703 | Answerable F1 delta |
+| --- | --- | --- |
+| main FIFO64,4QPS |−42.413/−43.922/−40.287%|−.005207/−.010397/−.004614|
+| main bundle16,4QPS |−29.749/−27.777/−24.950%|+.002361/−.002829/+.002953|
+| native LPM+guard,4QPS |−8.261/−8.704/−3.909%|−.008486/−.020297/−.003393|
+| native DFS+guard,4QPS |−8.637/−4.145/−3.820%|−.008486/−.007209/−.003393|
+| native LPM+guard,2QPS |−14.787/−14.042/−8.284%|−.007143/−.003445/−.008723|
+
+SGLang4QPS median increases41.3–46.1% vs nativeLPM. Smaller held-out tail gains and systematic negative paired F1 changes preclude claiming universal latency or quality equivalence.40 unique held-out questions repeat three arrival schedules; these are not120 independent QA. Results do not authorize changing frozen method/cap/bypass. Main and native engines are evaluated within their own matched controls; cross-stack latency is not a single-policy causal comparison. Full-data runs remain required and are not replaced by this confirmation.
+
+### Additive arrival-latency reconstruction
+
+`scripts/v4_analyze_waits.py` reconstructs every completed gateway request using the same host monotonic clock: scheduled arrival→gateway receipt→preparation/enqueue→admission handoff→first upstream token→client first token. The reconstructed sum matches recorded arrival-TTFT within1e−6ms for all18 held-out gateway arms. Quantiles of stages do not add; the following are request means for seed701,4QPS, in milliseconds.
+
+| Stack/arm | Arrival→gateway | Preparation | Admission wait | Handoff→upstream token | Return stream | Total |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| main FIFO64 |8.32|99.11|.03|28053.73|.54|28161.73|
+| main bundle16 |7.50|105.04|15329.42|9604.05|.56|25046.57|
+| main union64 |6.63|103.07|13841.43|3999.03|.63|17950.80|
+| SG FIFO64 |8.09|96.00|.04|10862.36|1.94|10968.43|
+| SG union64 |8.92|98.95|12182.21|3156.75|1.83|15448.66|
+
+This distinguishes a real E2E improvement on main from moving queue time alone: union adds ingress waiting but total mean still falls~10.21s vsFIFO. On SG it raises mean~4.48s despite improving p95; this is a tail/mean tradeoff. The upstream stage includes native queueing, load, compute and transport, so it cannot be called pure GPU compute. Worker CPU/queue are already inside preparation and must not be added a second time. Full results must retain this same arrival-based accounting.

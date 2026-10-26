@@ -272,5 +272,25 @@
       "subscriber_error": null
     }
   },
-  "captured_utc": "2026-10-26T12:58:31.558542+00:00"
+  "captured_utc": "2026-10-26T12:58:31.558542+00:00",
+  "gateway_after": {
+    "policy": "fifo",
+    "queue": 0,
+    "active": 0,
+    "completed_history_requests": 40,
+    "prepare_mode": "thread",
+    "decision_stats": null,
+    "residency": {
+      "known": true,
+      "sequence": 1080,
+      "gaps": 0,
+      "blocks": 2728,
+      "events": 35063,
+      "batches": 149,
+      "last_event_age_ms": 3230.240192,
+      "subscriber_running": true,
+      "hash_contract_verified": true,
+      "subscriber_error": null
+    }
+  }
 }

@@ -140,3 +140,19 @@ Native full-context threshold32768/deprioritize1024 probe completes240/240 inclu
 CPU prompt preparation on the gateway loop measures~68ms tokenize/~12ms hashing per request in existing logs. An opt-in serial CPU worker now preserves exact ids/hashes; CPU-only20-real-prompt heartbeat experiment gives inline/worker total1.025/1.135s but max gap161.6/12.9ms. Not E2E speedup. `prepare_queue_ms` and thread CPU time remain visible.37 tests pass.
 
 **Live GPU job tool43292**, `scripts/v4_sglang_cap64_screen.sh`, prospectively compares native and FIFO/packing cap64 with inline/serial-worker preparation at GPU6/10GiB, same native maxrunning16, seed101. This tests gateway queue visibility as a source of GPU-fit regressions. Do not change SG runtime/source metadata mid-matrix. Five-hour minimum has elapsed; candidate remains unfrozen and full/held-out evaluation plus main V4 comparisons are still required. `v4_vllm_replicate.sh` is prepared, unrun.
+
+### Requirement audit and full launch,13:04UTC
+
+The previous status-only user turn was no progress; this continuation completed concrete audits, held-out evidence, resource-unit correction documentation and a reproducible figure. Minimum five hours is elapsed, but completion remains unproven.
+
+| Requirement | Current authoritative evidence | Remaining / qualification |
+| --- | --- | --- |
+| RQ0 measured opportunity | Fixed-DHAS negatives preserved; exact native prefill interval/duplicate diagnostic; CUDA/event/source audits | Do not recast equal-compute guarded SG tail gains as avoided compute |
+| RQ1 CPU↔GPU mechanism | Historical full tiering matrix; invariant retrieve-event bytes; Direct off/on/off counter/event reconciliation | Direct timeline has incomplete bulk-copy coverage; DMA overlap unmeasured; separate kernel diagnostic queued after full |
+| RQ2 strong baselines |18 main dev runs1080success;33 native-control runs1668success;27 frozen held-out runs1080success | Full primary12 runs not yet complete; held-out SG median/mean worse; dev lower-load regression retained |
+| Recent primary-paper grounding | StrataOSDI26/CakeICML25/LPCNeurIPS25/EpiCacheICML26 source/code applicability matrix | Native HiCache and local guard are component-level execution, not full Strata/Cake or every latest native scheduler |
+| RQ3 operational integrity/quality | Strict complete-success/token/output/hash/freshness checks, exact budget bytes, official evaluator,42 CPU tests | Full category5, per-category paired changes and per-conversation fairness required; held-out F1 drops prevent quality-equivalence claim |
+| Prospective split discipline | Revision1 freeze SHA verified before all held-outGPU;40 unique QA,3 schedules | Full contains dev/held-out and is breadth evaluation, not a new independent confirmation set |
+| Reproducibility/docs |Source/config/env snapshots, scripts, raw retained; devPNG/SVG visually inspected; INTERVIEW sections18–19 added | Full report/figures and final requirements audit pending; small checkpoints pushed534332d |
+
+Actual full driver PID269852 launched13:01UTC under coordinator264797 after all27 confirmation runs passed audit.17 full measured runs planned, each1986QA;6GiB primarySG LPM/FIFO/union/DFS×3seeds,10GiB native/union×1seed and mainFIFO/bundle/union×1seed. Confirm actual current process before changes; this PID is a checkpoint, not a permanent lock. Driver verifies the unchanged method seal before each action, stops the current GPU stack before transitions, audits full evidence after all runs, then runs a separate kernel-I/O diagnostic. This launch is not a successful full result.

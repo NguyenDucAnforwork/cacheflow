@@ -519,3 +519,19 @@ Trên SGLang/HiCache Direct đã bật cùng guard cho mọi arm,33 lượt vali
 **Hỏi: Làm sao biết profiler không phá kết quả?**
 
 **Đáp:** Chạy off/on/off cùng prompt và trạng thái CPU-hot, tắt stack/shape, chỉ thu hoạt động GPU. P95 khoảng492/492/493ms, cùng238.400token promote và254token compute mỗi phase. Chênh lệch nhỏ cho thấy overhead thấp trong diagnostic này; không chứng minh profiler hoàn toàn không ảnh hưởng mọi workload. Các lượt này chỉ sinh4token để soi đường truyền, tách khỏi QA cap96 và bảng latency chính.
+
+### 19.1. Held-out đã làm thay đổi kết luận như thế nào?
+
+Ngày26/10/2026, toàn bộ27 lượt xác nhận trên conv43/44 hoàn tất1080/1080request,40QA duy nhất lặp ba lịch đến. Source/config đã khóa trước GPU evaluation; không thay phương pháp sau khi nhìn kết quả. Trên vLLM, union giảm p95 khoảng40,3–43,9% so vớiFIFO64 và25,0–29,7% so vớibundle16. Tuy vậy F1 so vớiFIFO giảm khoảng0,0046–0,0104; so vớibundle có seed tăng, có seed giảm. Không được chỉ nói “latency thắng và quality giữ nguyên”.
+
+Trên SGLang Direct+guard, p95 giảm3,9–8,7% so với nativeLPM ở4QPS và3,8–8,6% so với nativeDFS. Median tăng khoảng41–46% so vớiLPM; F1 giảm0,0034–0,0203 theo cặp. Gain held-out nhỏ hơn dev: đây là bằng chứng phải giảm độ mạnh của claim và xem full quality/category, không phải lý do đổi seed hay retune. Ở2QPS held-out tail lại tốt hơn8,3–14,8%, nhưng không xóa seed dev2QPS bị regression11,9%; hai tập có geometry và thứ tự arrival khác nhau.
+
+**Hỏi: Nếu người phỏng vấn hỏi có thể đưa vào production chưa?**
+
+**Đáp:** Tôi chưa có bằng chứng đủ để bật rộng rãi. Có lợi ích rõ trong một số regime pressure và stack, nhưng tradeoff median và sai khác chất lượng vẫn phải audit. Cần thêm full-data evaluation, SLO theo nhóm và kiểm tra numerical batching. Trong production, policy cần được đánh giá bằng arrival-based latency và chất lượng của cùng output, chứ không chỉ giảm engine queue. Bypass8 chỉ giới hạn số lần vượt đầu hàng trước handoff, không cam kết deadline hay công bằng E2E của native engine.
+
+### 19.2. Làm sao chứng minh không chỉ chuyển queue ra gateway?
+
+Tôi dựng lại từng request từ cùng clock monotonic trên host, rồi kiểm tra tổng các khoảng khớp arrival-TTFT. Với held-out seed701 trên vLLM, FIFO có mean28,16giây; union17,95giây. Union chờ admission13,84giây nhưng phần handoff→token chỉ4,00giây, còn FIFO gần như không chờ gateway nhưng handoff→token28,05giây. Tổng giảm khoảng10,21giây: lợi ích không chỉ là đổi chỗ ghi queue.
+
+Cùng seed trên SGLang, FIFO mean10,97giây còn union15,45giây. Union làm p95 tốt hơn nhưng mean xấu hơn khoảng4,48giây. Vì vậy người review phải thấy cả mean/median/tail, và SLO quyết định tradeoff có hữu ích hay không. Tôi không gọi phần handoff→token là GPU compute: nó còn gồm native queue, KV load và transport. P95 của từng stage cũng không cộng thành p95 tổng vì các request chậm nhất ở mỗi stage có thể khác nhau.
