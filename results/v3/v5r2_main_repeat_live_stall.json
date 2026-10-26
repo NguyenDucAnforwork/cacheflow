@@ -1,0 +1,204 @@
+{
+  "run_id": "v5r2-confirm-main-qps4-union64-s702",
+  "status": "live incomplete stalled observation; no terminal failure or latency inference",
+  "observed_monotonic_ns": 129750381824489,
+  "engine_pid": 308380,
+  "engine_created_unix_s": 1793028181.3,
+  "sampled_no_progress_s": 723.11446538,
+  "samples_in_contiguous_suffix": 724,
+  "first": {
+    "cpu_percent": 6.0,
+    "gpu": {
+      "gpu_memory_util_pct": 0.0,
+      "gpu_util_pct": 0.0,
+      "power_w": 162.62,
+      "sm_clock_mhz": 1950.0,
+      "temperature_c": 61.0,
+      "vram_total_mib": 24576.0,
+      "vram_used_mib": 15997.0
+    },
+    "lmcache": {
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 118.0,
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1309.0351522983076,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 85.0,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 655.4015072661434,
+      "lmcache_mp_l1_evicted_chunks_total": 951.0,
+      "lmcache_mp_l1_memory_usage_bytes": 9059696640.0,
+      "lmcache_mp_l1_read_chunks_total": 19321.0,
+      "lmcache_mp_l1_write_chunks_total": 1191.0,
+      "lmcache_mp_num_chunks_loaded_total": 7016.0
+    },
+    "memory_available_bytes": 216315068416,
+    "process": {
+      "gateway": {
+        "cpu_seconds": 15.34,
+        "ctx_switches": 1555,
+        "processes": 1,
+        "rss_bytes": 1023193088
+      },
+      "lmcache": {
+        "cpu_seconds": 31.830000000000002,
+        "ctx_switches": 4750,
+        "processes": 1,
+        "rss_bytes": 17008930816
+      },
+      "vllm": {
+        "cpu_seconds": 259.96,
+        "ctx_switches": 44175,
+        "processes": 3,
+        "rss_bytes": 3751665664
+      }
+    },
+    "timestamp_ns": 129026593678659,
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 1785008.0,
+      "vllm:kv_cache_usage_perc": 0.9970685232685965,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 11.0,
+      "vllm:prefix_cache_hits_total": 126249136.0,
+      "vllm:prompt_tokens_cached_total": 5226528.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 1754768.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 3471760.0,
+      "vllm:prompt_tokens_source_local_compute_total": 317504.0,
+      "vllm:prompt_tokens_total": 5544032.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 317504.0,
+      "vllm:request_prefill_time_seconds_count": 207.0,
+      "vllm:request_prefill_time_seconds_sum": 207.40024136878492,
+      "vllm:request_queue_time_seconds_count": 207.0,
+      "vllm:request_queue_time_seconds_sum": 2805.9865082178585,
+      "vllm:time_to_first_token_seconds_count": 207.0,
+      "vllm:time_to_first_token_seconds_sum": 3232.8146471977234
+    }
+  },
+  "last": {
+    "cpu_percent": 5.7,
+    "gpu": {
+      "gpu_memory_util_pct": 0.0,
+      "gpu_util_pct": 0.0,
+      "power_w": 30.1,
+      "sm_clock_mhz": 210.0,
+      "temperature_c": 39.0,
+      "vram_total_mib": 24576.0,
+      "vram_used_mib": 15997.0
+    },
+    "lmcache": {
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 118.0,
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1309.0351522983076,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 85.0,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 655.4015072661434,
+      "lmcache_mp_l1_evicted_chunks_total": 951.0,
+      "lmcache_mp_l1_memory_usage_bytes": 9059696640.0,
+      "lmcache_mp_l1_read_chunks_total": 19321.0,
+      "lmcache_mp_l1_write_chunks_total": 1191.0,
+      "lmcache_mp_num_chunks_loaded_total": 7016.0
+    },
+    "memory_available_bytes": 214777860096,
+    "process": {
+      "gateway": {
+        "cpu_seconds": 17.72,
+        "ctx_switches": 13770,
+        "processes": 1,
+        "rss_bytes": 1023266816
+      },
+      "lmcache": {
+        "cpu_seconds": 53.85,
+        "ctx_switches": 13529,
+        "processes": 1,
+        "rss_bytes": 17008611328
+      },
+      "vllm": {
+        "cpu_seconds": 804.07,
+        "ctx_switches": 885381,
+        "processes": 3,
+        "rss_bytes": 3751915520
+      }
+    },
+    "timestamp_ns": 129749708144039,
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 1785008.0,
+      "vllm:kv_cache_usage_perc": 0.9970685232685965,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 11.0,
+      "vllm:prefix_cache_hits_total": 126249136.0,
+      "vllm:prompt_tokens_cached_total": 5226528.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 1754768.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 3471760.0,
+      "vllm:prompt_tokens_source_local_compute_total": 317504.0,
+      "vllm:prompt_tokens_total": 5544032.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 317504.0,
+      "vllm:request_prefill_time_seconds_count": 207.0,
+      "vllm:request_prefill_time_seconds_sum": 207.40024136878492,
+      "vllm:request_queue_time_seconds_count": 207.0,
+      "vllm:request_queue_time_seconds_sum": 2805.9865082178585,
+      "vllm:time_to_first_token_seconds_count": 207.0,
+      "vllm:time_to_first_token_seconds_sum": 3232.8146471977234
+    }
+  },
+  "progress_keys": [
+    "vllm:prompt_tokens_total",
+    "vllm:request_prefill_kv_computed_tokens_sum",
+    "vllm:prompt_tokens_source_external_kv_transfer_total",
+    "vllm:time_to_first_token_seconds_count"
+  ],
+  "gateway_health": {
+    "policy": "packing_reuse",
+    "queue": 2,
+    "active": 11,
+    "completed_history_requests": 27,
+    "upstream_read_timeout_s": 3600.0,
+    "prepare_mode": "thread",
+    "decision_stats": {
+      "calls": 19916,
+      "cpu_ms": 537.813412,
+      "wall_ms": 544.315369,
+      "max_ms": 7.556403,
+      "cache_hits": 19814
+    },
+    "residency": {
+      "known": true,
+      "sequence": 524,
+      "gaps": 0,
+      "blocks": 1784,
+      "events": 3860,
+      "batches": 49,
+      "last_event_age_ms": 723700.979767,
+      "subscriber_running": true,
+      "hash_contract_verified": true,
+      "subscriber_error": null
+    }
+  },
+  "gateway_completed_records": 27,
+  "gateway_completed_request_ids": [
+    "conv-43-q000",
+    "conv-44-q008",
+    "conv-44-q007",
+    "conv-44-q000",
+    "conv-44-q004",
+    "conv-44-q005",
+    "conv-44-q001",
+    "conv-44-q006",
+    "conv-44-q002",
+    "conv-44-q003",
+    "conv-43-q003",
+    "conv-43-q006",
+    "conv-43-q008",
+    "conv-43-q005",
+    "conv-43-q012",
+    "conv-43-q002",
+    "conv-43-q014",
+    "conv-43-q017",
+    "conv-43-q011",
+    "conv-43-q001",
+    "conv-43-q013",
+    "conv-43-q016",
+    "conv-43-q015",
+    "conv-43-q009",
+    "conv-43-q010",
+    "conv-43-q007",
+    "conv-43-q004"
+  ],
+  "metric_file_sha256_at_observation": "b5863f3f48dfaa6dd88752dffde7ab203482b1834b1e3a907c5ef4c2f5d7c3fb",
+  "limitations": "Counters, occupancy and zero sampled GPU utilization do not expose internal request states, free-block references or pending connector futures. Root cause is unproven. No retry/reset/profiler was used; the request timeout remains unchanged."
+}

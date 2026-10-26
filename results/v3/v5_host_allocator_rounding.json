@@ -1,0 +1,33 @@
+{
+  "scope": "Correction: command-line byte roundtrip is not actual cross-engine capacity parity. Existing within-engine policy contrasts remain matched. Do not pool cross-engine timings causally or change sealed current settings.",
+  "allocator_pin_chunk_bytes": 67108864,
+  "observed_lmcache_memory_total_bytes": 16039018496,
+  "status_snapshot_sha256": "7915b505bae63ed40d22e973c52ae32a225af204d549e252d1ad9f839e802c1e",
+  "source_sha256": {
+    "v1/memory_allocators/lazy_memory_allocator.py": "80dd913a964b287765b5e7ce6d3a4ed2e11571b251e92b7bbb139bec4d408c24",
+    "v1/distributed/config.py": "d9fd4fe210a9acfa3a69d601e19395f351d7a64b279af535fad2ce0e020d9d57",
+    "v1/distributed/l1_manager.py": "3f418c66990a9153de8f33e9160003a903476f60e2031b448ea586e639a8a922",
+    "v1/distributed/memory_manager/l1_memory_manager.py": "946a6f5de9302e6c69fcc31f4b6b4ede51c0429c2363e2001751f27d8087d291"
+  },
+  "budgets": [
+    {
+      "native_host_gb": 16,
+      "native_pool_payload_bytes": 16000745472,
+      "lmcache_configured_budget_bytes": 16000745472,
+      "lmcache_lazy_expected_effective_bytes": 16039018496,
+      "difference_bytes": 38273024,
+      "difference_pct": 0.23919525541467035,
+      "observation": "Directly observed on current main repeat engine308380/LMCache308252"
+    },
+    {
+      "native_host_gb": 48,
+      "native_pool_payload_bytes": 48002236416,
+      "lmcache_configured_budget_bytes": 48002236416,
+      "lmcache_lazy_expected_effective_bytes": 48049946624,
+      "difference_bytes": 47710208,
+      "difference_pct": 0.09939163581156318,
+      "observation": "Source-derived prediction only; full main engine not yet started"
+    }
+  ],
+  "limitations": "Historical validation source/argv establishes configured-byte parity only; its effective allocator capacity was not directly snapshotted. Current source predicts rounding for default lazy allocation. Stalled-run root cause is unproven and not attributed to this small host-budget mismatch."
+}

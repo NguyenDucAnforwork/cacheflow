@@ -1,5 +1,7 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
+**Đính chính15:38UTC:** validation57lượt hoàn tất nhưng một main repeat đang mắc kẹt/chưa có summary; full study chưa bắt đầu. Budget cấu hình bằng byte không bảo đảm allocator thật bằng nhau: LMCache lazy làm tròn64MiB, hiện quan sát16.039.018.496byte so native16.000.745.472(+0,2392%). Các so sánh policy trong cùng engine vẫn cùng budget; không dùng mô tả “khớp tuyệt đối dung lượng thật giữa hai stack”. Chi tiết/source hash ở `results/v3/v5_host_allocator_rounding.json`.
+
 **Cập nhật 26/10/2026:** V5 dùng Qwen3-4B, đã audit57lượt validation/2820request không lỗi và đang chạy các lượt lặp protocol đã sửa; full study còn chờ. V4 có lỗi chỉ dẫn abstention mâu thuẫn; các số V4 dưới đây giữ phạm vi lịch sử, không gộp với V5. Phần21 giải thích lỗi, timeout và profiling mới nhất; phần18–20 là các bài học/cấu hình V4. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
 
 ## 1. Kể project trong hai phút
@@ -715,3 +717,24 @@ Ví dụ SGnative4QPS có ba delta p95 đều âm, nhưng interval thăm dò kho
 **Hỏi: Làm sao chứng minh không chỉ chuyển queue từ engine ra gateway?**
 
 **Đáp:** Tôi giữ scheduled arrival làm mốc chung, tái dựng từng request qua nhận ở gateway, chuẩn bị, chờ admission, upstream token đầu rồi client nhận text đầu. Tổng các đoạn khớp arrivalTTFT trong sai số nhỏ hơn1e-6ms ở cả39gateway arm của validation. MainFIFO64 có meanTTFT25,45giây; union15,25giây dù khoảng11,87giây nằm ở admission. Lợi ích tổng vẫn còn. Nhưng SGnative mean7,16giây cònunion13,30giây, nên tail tốt hơn không đủ để gọi trải nghiệm trung bình tốt hơn. Tôi cộng thời gian từng request hoặc mean của các đoạn, không cộng p95 các đoạn vì request ở p95 của mỗi đoạn có thể khác nhau. Đoạn upstream vẫn gồm queue, copy, compute và transport; chưa có GPU timeline thì không được gọi đó là GPU compute thuần.
+
+
+### 21.7. Healthcheck xanh nhưng request không tiến triển
+
+**Hỏi: Có thể tin `/healthcheck` trả200 là engine đang xử lý tốt không?**
+
+**Đáp:** Không. Trong main repeat V5 seed702, gateway đã hoàn tất27request nhưng còn11đang chờ upstream và2chờ admission. Chuỗi metrics hơn6phút ghi GPU0%, engine0running/11waiting, KV khoảng99,7% và counter prompt/compute/TTFT không đổi. LMCache vẫn báohealthy, không cóL1read/write lock hay công việc store/prefetch đang chờ. Health của HTTP/server khác với liveness của toàn bộ request pipeline.
+
+Tôi giữ đây là quan sát một lượt chưa kết thúc, không tự gắn nhãn nguyên nhân. Source cho thấy async restore và delayed block freeing có thể giữ tài nguyên ở các trạng thái ngoài “running”; cần state/future cụ thể để chứng minh. Logical union của prefix cũng không tự bảo đảm mọi physical block đã chia sẻ được trong lúc restore. Chưa có bằng chứng để gọi đây là deadlock do một dòng code, do dung lượng CPU hay do scheduler riêng của chúng tôi.
+
+**Hỏi: Xử lý một lượt mắc kẹt mà vẫn giữ benchmark trung thực thế nào?**
+
+**Đáp:** Lưu clock/counter/PID và số request đã hoàn tất, giữ timeout như protocol, chờ kết quả terminal hoặc ghi rõ một lần dừng thủ công nếu phải dừng. Không lấy27response thành công tính p95 của một workload40request, không retry13request rồi ghép vào lượt cũ. Snapshot thread/diagnostic là bằng chứng chẩn đoán riêng; không trộn với bảng performance không profiler. Nếu cần sửa admission hoặc connector, phải có protocol/source mới, kiểm chứng rồi đo lại dưới namespace mới.
+
+**Hỏi: Vì sao so đúng flag byte rồi vẫn sai dung lượng thực tế?**
+
+**Đáp:** Flag đi qua nhiều lớp. LMCache đọcGiB thành byte chính xác nhưng allocator lazy lại làm tròn heap lên bội64MiB. Vì vậy16.000.745.472byte cấu hình thành16.039.018.496byte thật trên process đang đo. NativeHiCache làm tròn theo page16token, khác granularity. Tôi phải đọc status/allocator source và ghi riêng requested, allocated, usable capacity; không dùng argv đúng để suy ra actual heap đúng. Sai lệch nhỏ này không tự chứng minh nguyên nhân stall. Nó sửa phạm vi claim resource parity; so policy trong cùng engine vẫn dùng cùng heap.
+
+**Hỏi: Kết quả lặp trên các câu hỏi khác dev có giữ nguyên độ lớn lợi ích không?**
+
+**Đáp:** Không. Phần nativeSG của repair repeats đã audit18lượt/720request không lỗi. So nativeLPM4QPS, union giảm p95 khoảng11,22/7,81/4,34% theo ba seed, nhưng median tăng khoảng38–40%; một seed giảmF1. Đây là40câu conv43/44đã từng dùng ởV4, không phảiholdout mới. SoDFS mức giảm p95 khoảng11,00/9,83/4,40%. Tôi báo hiệu ứng nhỏ hơn dev này cùng với main đang mắc kẹt, không chọn bảng dev tốt nhất làm kết luận. Audit toàn27lượt và full study vẫn chưa đủ, nên ở checkpoint này chưa thể tuyên bố đóng góp đã đạt mục tiêu.

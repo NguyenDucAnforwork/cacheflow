@@ -1,5 +1,7 @@
 # V3 competitive research execution
 
+> **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. A main repeat is currently stalled/incomplete; no full study has started.
+
 Started 2026-10-26 05:59 UTC; user explicitly requires **at least five additional hours** of work (earliest completion ~10:59 UTC), a materially stronger research contribution, comparison against strong relevant baselines, thorough profiling and complete documentation including `docs/INTERVIEW.md` for inference-engineer interview preparation. Five hours is a minimum, not a success criterion. The previous V2 results are mechanism baselines and do not meet this new objective.
 
 ## Requirements and completion evidence

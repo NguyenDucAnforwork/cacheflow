@@ -1,5 +1,7 @@
 # CacheFlow: reproducibility log
 
+> **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. A main repeat is currently stalled/incomplete; no full study has started.
+
 Status: pinned stack installed and development replay verified on `optim`. This file records both the initial host audit and the commands used after setup.
 
 ## Host snapshot (2026-10-22)
@@ -122,7 +124,7 @@ PYTHONPATH=src /venv/main/bin/python scripts/v5_plot_primary.py
 PYTHONPATH=src /venv/main/bin/python scripts/v5_plot_main.py
 ```
 
-These commands analyze existing data; audits reject missing source/token/output/resource coverage. The official evaluator version/SHA is embedded in quality artifacts. Raw generated text stays captured privately; no posthoc answer extraction or normalization was introduced. Repeated seeds reuse fixed questions; means of run quantiles and exploratory n3 intervals must retain those labels.
+These commands analyze existing data; audits reject missing source/token/output/configured-budget coverage; configured flags do not prove actual allocator capacity, as corrected above. The official evaluator version/SHA is embedded in quality artifacts. Raw generated text stays captured privately; no posthoc answer extraction or normalization was introduced. Repeated seeds reuse fixed questions; means of run quantiles and exploratory n3 intervals must retain those labels.
 
 After all27repair repeats exist, `v5_audit_confirmation.py` and `v5_analyze_confirmation.py` produce integrity/quality and all18contrasts including fresh-processDFS. `v5_analyze_decode.py --stage confirmation --output results/v3/v5r2_confirmation_secondary_metrics.json` and `v5_run_intervals.py --stage confirmation` extend secondary metrics to that stage. Full equivalents use`--stage full` and require the complete17-run audit, not an incomplete subset. Conv43/44 repair repeats are not a new semantic holdout.
 

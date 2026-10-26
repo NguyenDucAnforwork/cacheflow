@@ -1,5 +1,7 @@
 # V4 development evidence — preliminary, unfrozen
 
+> **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. A main repeat is currently stalled/incomplete; no full study has started.
+
 Updated2026-10-26 around10:24UTC. This document separates exploratory evidence from confirmation. No V4 held-out or full1986-QA GPU evaluation exists yet. The active goal is incomplete. Results from V3 and V4 prompts must remain separate.
 
 The current method is external **KV-union admission**: reserve the union of active exact16-token prefix blocks plus per-request suffix/output/safety; admit the oldest feasible request, backfill compatible work while bounding bypass of the head. `packing_reuse` applies packing when a queued prefix group matches active/recent work and otherwise falls back to FIFO. That reuse signal is logical history, not verified KV readiness. The gateway controls order/admission; engine allocator and KV validity remain native.
@@ -266,7 +268,7 @@ Main vLLM/LMCache startup/warmup succeeds60/60, actual byte budget and all19 sou
 
 ## V5 revision2 complete validation, main mechanism and decode tradeoff,15:16UTC
 
-`v5r2_validation_audit.json` accepts all57 measured runs2820/2820success, no errors. This includes18 main runs1080requests under the same actual16GB CPU payload as nativeSG controls. All19 selected source fingerprints, fresh gateway state, real GPU-event observer/hash/sequence and exact budgets pass. Same60uniqueQA are repeated across three arrival schedules, not180independent examples.
+`v5r2_validation_audit.json` accepts all57 measured runs2820/2820success, no errors. This includes18 main runs1080requests under byte-equivalent configured16GB flags; the actual LMCache lazy heap rounds higher as corrected above. All19 selected source fingerprints, fresh gateway state, real GPU-event observer/hash/sequence and exact budgets pass. Same60uniqueQA are repeated across three arrival schedules, not180independent examples.
 
 | Main arm | Mean run p50 / p95 / p99 (seconds) | CPU-consumed / newly computed tokens | Mean answerable F1 |
 | --- | --- | --- | --- |
@@ -311,3 +313,20 @@ Native ITL source audit: `v5_native_itl_semantics.json` retains SHA of installed
 `v5_analyze_waits.py` reconstructs every request across all39 validation gateway arms with additive error<1e-6ms. Mean mainFIFO64/bundle/union arrivalTTFT is25.447/19.891/15.248s. Mean admission wait is0.000/14.176/11.866s and upstream-to-token25.365/5.634/3.299s. Union therefore moves substantial waiting to ingress while still reducing total arrival latency in this main regime. Upstream spans include engine queue/copy/compute/transport; do not relabel them GPU compute or add stage p95s. CPU worker queue and CPU execution are already included in preparation.
 
 In nativeSG primary, direct native meanTTFT7.156s vsunion13.298s; gatewayFIFO7.269s. Union mean admission10.709s and upstream-to-token2.503s. Thus the lower tail percentile comes at higher median **and mean** latency, not merely a visually large p50. `v5r2_validation_waits.json` retains all stages and explicit native-without-gateway exclusions. Reproduce with `PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_waits.py results/v3/v5r2_validation_audit.json --output results/v3/v5r2_validation_waits.json`.
+
+## V5 repair-repeat nativeSG portion audited; main live stall,15:43UTC
+
+`v5_audit_sg_repeats.py` verifies all18completed nativeSG repair-repeat runs720/720success, zero errors, with actual source/transport/reset/configured-budget contracts and official per-question grading. Conv43/44were previously exposed underV4; these40uniqueQA repeated across three schedules are not a new semantic holdout. Full27-run audit remains incomplete because mainunion64-s702 is live/stalled after27gateway completions.
+
+| Union contrast | p95 change seeds701/702/703 | Answerable F1 delta |
+| --- | --- | --- |
+| NativeLPM4QPS |−11.220 /−7.808 /−4.341%|+.000556 /+.003450 /−.005000|
+| GatewayFIFO4QPS |−11.814 /−8.647 /−4.836%|+.000556 /+.003450 /−.005000|
+| NativeDFS4QPS |−10.998 /−9.827 /−4.399%|+.000556 /+.000556 /−.005000|
+| NativeLPM2QPS |−15.371 /−13.923 /−9.322%|−.002105 /+.001387 /+.022182|
+
+Mean run p95 nativeLPM/union19.657/18.127s, median10.299/14.312s; nativeLPM paired median penalties+39.141/+38.028/+39.523%. The4QPS native tail effect is smaller than dev; one quality regression remains.2QPS here improves tails whereas dev has a regressing seed, further showing dependence on question/prefix/arrival mix. No quality-equivalence or universal-load claim. NativeDFS compares fresh processes with identical runtime except native policy and matching installed sourceSHA. Artifacts: `v5r2_sg_repair_repeats_{audit,quality}.json`.
+
+The live main stall is preserved in `v5r2_main_repeat_live_stall.json`; at15:41the trailing723second metric window has no progress. Request timeout remains3600s, client/controller are live and no retry/reset is attempted. Read-only diagnostic snapshots were taken after detecting the stall, and cannot be passed off as uninstrumented performance. LMCache status/thread endpoints show healthy idle server components, but do not expose engine worker connector futures or block-reference ownership. Source-based hypotheses about async loads/physical sharing remain hypotheses.
+
+Allocator correction: LMCache's default lazy heap rounds the configured byte budget to64MiB. Direct current status gives16039018496bytes against configured/native16000745472 (+.239195%);48GBcase predicts48049946624vs48002236416 (+.099392%), still unobserved. CLI roundtrip is not actual capacity proof. `v5_audit_host_rounding.py` parses the installed chunk constant and reconciles source with observed status, retaining all sourceSHA. Original frozen plan/flags are unchanged; within-engine arms remain matched, but actual cross-stack exact-parity wording is revoked. This discrepancy is not proven to cause the stall.
