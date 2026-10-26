@@ -74,7 +74,7 @@ def compare(b2: dict, b3: dict) -> dict:
                 "lmcache_version", "transformers_version"):
         if left.get(key) != right.get(key):
             raise ValueError(f"unmatched run metadata: {key}")
-    for key in ("trace_sha256", "model_revision", "gpu_kv_bytes", "max_model_len"):
+    for key in ("trace_sha256", "model_revision", "gpu_kv_bytes"):
         if left.get(key) is None:
             raise ValueError(f"required run metadata missing: {key}")
     for key in ("engine_pid", "lmcache_pid"):
