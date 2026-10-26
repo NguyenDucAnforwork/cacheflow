@@ -10,6 +10,7 @@ from v6_native_matrix import build_plan,BASE,CONFIG
 from v6_native_metrics import summarize
 from v5_analyze_histograms import analyze as histogram
 from v5_analyze_decode import analyze as decode
+from v6_analyze_fairness import analyze as fairness
 
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -90,7 +91,7 @@ def main():
             results.append(dict(**step,regime=block['regime'],seed=block['seed'],engine_pid=s['engine_pid'],
                 **{k:s[k] for k in ['arrival_ttft_p50_ms','arrival_ttft_p95_ms','arrival_ttft_p99_ms']},
                 computed_tokens=counters.get('sglang:uncached_prompt_tokens_histogram_sum'),
-                host_promoted_tokens=counters.get('sglang:load_back_tokens_total'),native_itl=histogram(nativepath),secondary=decode(rid)))
+                host_promoted_tokens=counters.get('sglang:load_back_tokens_total'),native_itl=histogram(nativepath),secondary=decode(rid),fairness=fairness(rid)))
         assert len(blockpids)==1;allpids.extend(blockpids)
     assert len(allpids)==len(set(allpids))==18 and len(results)==45
     qualitypath=BASE/'v6native1_quality.json'

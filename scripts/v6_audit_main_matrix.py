@@ -12,6 +12,7 @@ from v3_analyze_runs import load
 from v5_analyze_decode import analyze as decode
 from v5_analyze_histograms import analyze as native_histogram
 from v5_run_intervals import paired_log_interval
+from v6_analyze_fairness import analyze as fairness
 
 
 def main():
@@ -57,7 +58,7 @@ def main():
             **{k:s['arrival_ttft_'+k] for k in ['p50_ms','p95_ms','p99_ms']},
             computed_tokens=c['vllm:request_prefill_kv_computed_tokens_sum'],consumed_cpu_tokens=c['vllm:prompt_tokens_source_external_kv_transfer_total'],
             gpu_source_tokens=c['vllm:prompt_tokens_source_local_cache_hit_total'],preemptions=c['vllm:num_preemptions_total'],
-            decision_stats=setup['gateway_after']['decision_stats']))
+            decision_stats=setup['gateway_after']['decision_stats'],fairness=fairness(rid)))
     assert len({r['engine_pid'] for r in rows})==len({r['lmcache_pid'] for r in rows})==24 and len(host_sizes)==1
     quality_path=base/'v6dev1_main_quality.json'
     subprocess.run([sys.executable,'scripts/v2_quality_audit.py','--raw-dir',str(raw),'--run-ids',*[r['run_id'] for r in rows],'--output',str(quality_path)],check=True)

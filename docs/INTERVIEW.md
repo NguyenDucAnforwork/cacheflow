@@ -807,3 +807,11 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Counter không xuất hiện ở warmup có được xem bằng 0 không?**
 
 **Đáp:** Không. Prometheus có thể chỉ tạo một metric khi sự kiện đầu tiên xảy ra. Nếu đầu cửa sổ không có cached-token counter, giá trị cuối không đủ chứng minh delta của toàn cửa sổ bằng bao nhiêu. Collector V6 lưu null và hai endpoint riêng; warmup được đánh dấu tường minh, không dùng để claim hiệu năng. Các lượt đo chính thức phải đủ counter để đối chiếu cached+uncached với toàn bộ prompt. Với ITL, nếu snapshot thiếu, PID đổi, lệch cửa sổ hoặc histogram reset, kết quả coverage phải fail và mean/bounds để null. Một số đo thiếu không tự làm các request thành lỗi, nhưng cũng không được thay bằng số từ lượt khác.
+
+**Hỏi: Bypass tối đa8lần có nghĩa request chỉ đợi tối đa200ms không?**
+
+**Đáp:** Không. Trên ba lượt seed101đã hoàn tất của main matrix V6, FIFO64không có bypass, union cũ và readiness+union có tối đa8lần. Nhưng admission wait lớn nhất của hai policy union là khoảng19,6và20,2giây. Mốc200ms trong metadata không phải deadline cứng khi tài nguyên chưa cho phép dispatch. Giới hạn bypass nói một request bị vượt qua bao nhiêu lần; mỗi request đang active có thể mất nhiều giây hoặc native engine có thể không tiến triển. Tôi đo riêng admission wait và deadline overrun, đưa chúng vào TTFT tính từ scheduled arrival, đồng thời báo per-conversation tails. Các số này là checkpoint của ba arm, chưa phải kết luận cho toàn matrix.
+
+**Hỏi: Làm sao giữ raw outputs khi đĩa nhỏ mà vẫn kiểm chứng được nghiên cứu?**
+
+**Đáp:** Tôi không bỏ các response lỗi hay chỉ giữ aggregate. Công cụ archival mới yêu cầu audit từng run hoàn tất và có SHA của toàn bộ raw cần lưu; nén gzip rồi giải nén đọc kiểm SHA trước khi bỏ bản plain dư thừa. Manifest giữ đường dẫn, kích thước, hash plain/gzip và hash audit. Reader có thể mở rộng tạm về đúng byte ban đầu để chạy lại evaluator rồi thu hồi bản tạm nếu nó chưa bị sửa. Đây là cách lưu lossless, không tạo thêm bằng chứng chất lượng hay làm run lỗi thành hợp lệ. Hiện tool đã qua test roundtrip/corruption/missing-audit, chưa được áp dụng lên raw thí nghiệm trong continuation này.
