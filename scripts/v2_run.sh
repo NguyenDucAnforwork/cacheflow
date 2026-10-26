@@ -28,6 +28,11 @@ gpu_kv_bytes=$(cat "$root/.cacheflow-v2-gpu-kv-bytes")
 engine_pid=$(supervisorctl pid cacheflow_v2_vllm)
 [[ "$engine_pid" =~ ^[1-9][0-9]*$ ]] || { echo "vLLM PID unavailable" >&2; exit 1; }
 replay_args=(--engine-pid "$engine_pid")
+case "${CACHEFLOW_CAPTURE_TEXT:-0}" in
+    1) replay_args+=(--capture-text) ;;
+    0) ;;
+    *) echo "CACHEFLOW_CAPTURE_TEXT must be 0 or 1" >&2; exit 2 ;;
+esac
 if [[ "$mode" != B1 ]]; then
     lmcache_pid=$(supervisorctl pid cacheflow_v2_lmcache)
     [[ "$lmcache_pid" =~ ^[1-9][0-9]*$ ]] || { echo "LMCache PID unavailable" >&2; exit 1; }
