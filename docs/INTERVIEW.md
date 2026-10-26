@@ -910,7 +910,7 @@ Ví dụ integration check trước freeze bắt được main audit đặt tên
 
 **Hỏi: Nén raw có làm mất khả năng kiểm chứng không?**
 
-**Đáp:** Công cụ chỉ nén sau complete per-run integrity/official quality audit, kiểm gzip roundtrip SHA rồi lưu manifest gồm raw/compressed/audit hashes trước khi thu hồi bản plain dư. Thử nghiệm trên bản sao một run native 60 QA thật đã chạy integrity/evaluator trước và sau giải nén, mọi byte và điểm khớp, raw gốc không đổi và không phát sinh inference mới. Đây là kiểm đường archival, không phải full GPU success.
+**Đáp:** Công cụ chỉ nén sau complete per-run integrity/official quality audit, kiểm gzip roundtrip SHA rồi lưu manifest gồm raw/compressed/audit hashes trước khi thu hồi bản plain dư. Đã thử riêng trên bản sao một run native 60 QA thật và một run main gồm 60 request đo + 60 warmup. Main có 10 raw files, gồm cả hai gateway log. Sau giải nén, mọi byte, full official-quality JSON, integrity của cả warm/measured, fairness, decode, native histogram, additive waits và sampled resources đều khớp. Raw gốc không đổi và không phát sinh inference mới. Đây là kiểm đường archival, không phải full GPU success hay thêm 120 mẫu độc lập.
 
 **Hỏi: Làm sao chạy lại khi registration cũ đã có trong repo?**
 

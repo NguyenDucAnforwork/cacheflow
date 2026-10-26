@@ -18,11 +18,13 @@ ACTORS=['scripts/v6_full.py','scripts/v6_full_plan.py','scripts/v6_freeze_full.p
     'scripts/v6_v2_run.sh','scripts/v6_sglang_bench.py','scripts/v6_native_metrics.py',
     'scripts/v5_full_histograms.py','scripts/v3_sglang_runtime.py','scripts/v3_serve_sglang.sh',
     'scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v4_sglang_delayhit.py',
-    'scripts/v6_raw_archive.py','scripts/v6_token_fingerprints.py','scripts/v6_full_input_preflight.py','scripts/v6_input_oracle.py','scripts/v6_trace_hashes.py','src/cacheflow/locomo.py']
+    'scripts/v6_raw_archive.py','scripts/v6_token_fingerprints.py','scripts/v6_full_input_preflight.py','scripts/v6_input_oracle.py','scripts/v6_trace_hashes.py','src/cacheflow/locomo.py',
+    'src/cacheflow/collect_metrics.py','src/cacheflow/v2_metrics.py','scripts/v2_extract_gateway.py',
+    'scripts/v3_model.py','scripts/v4_services.py','scripts/v2_start.sh','scripts/v2_reset.sh','scripts/v2_preflight.py']
 ANALYSIS=['scripts/v6_audit_full_run.py','scripts/v6_audit_full.py','scripts/v6_full_contracts.py',
     'scripts/v3_analyze_runs.py','scripts/v4_audit_sglang_runs.py','scripts/v2_quality_audit.py',
     'data/processed/v2/evaluator/evaluation.py','scripts/v6_main_resources.py','scripts/v6_native_resources.py',
-    'scripts/v4_analyze_sglang_resources.py','scripts/v6_analyze_fairness.py','scripts/v5_analyze_decode.py',
+    'scripts/v4_analyze_sglang_resources.py','scripts/v6_analyze_fairness.py','scripts/v3_audit_admission.py','scripts/v5_analyze_decode.py',
     'scripts/v5_analyze_histograms.py','scripts/v5_analyze_waits.py','scripts/v5_run_intervals.py',
     'scripts/v6_normalize_registry.py']
 PREREQUISITES=[('results/v3/v6dev1_main_audit.json',24,1440),

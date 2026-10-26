@@ -1,0 +1,128 @@
+{
+  "rehearsal_passed": true,
+  "source_run_id": "v6controls1-main-lowload-packing_ready-s101",
+  "existing_measured_requests": 60,
+  "existing_warmup_requests": 60,
+  "new_inference_requests": 0,
+  "serving_calls": 0,
+  "source_subset_audit_sha256": "5ef9c11bab4044d5ad7f3e7c6774a9c86295037ab0121efe17f7b384db9fb19c",
+  "source_quality_sha256": "0eb424cc521339b87f762e7754ddf622d17509d71359af20a3d5a7ddb58bd54d",
+  "original_artifact_sha256": {
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.jsonl": "ac7ed3f69c2a392bc956c3d8780e470dd38f839fa54f084fe12c5617a0941b7a",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.outputs.jsonl": "c3d82dd52580192f94e3b6cde902a9c34a6a4a9fb460f874b55cf47e0256b50c",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.summary.json": "1f51a55abca9128b83faa9288516d5b3c65b3e51644b4ec442881583ec783c4a",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.metrics.jsonl": "b3b9ab5441f8184eb6f4bc2a4e1afb6e301b4a604273b48150d27928673a97a2",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.gateway.jsonl": "37014aab3ec0ad60f9ba763e83732bcd3e000cea65c3ab28ab9101430fd5d2d6",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.jsonl": "01fe9c9017ec0013f3120e82ba57f90e8fd20b56277a6af0695f6128c32756d1",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.outputs.jsonl": "7c1e3e5901950449ee22e4e519053de410fee2ddb672c160c8987841372a5d21",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.summary.json": "cc6eb1bb3698bec10c69e094b2a9df84238173b5a8a547b4089f637732ce5231",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.metrics.jsonl": "80f9ec197df19f17b98b2e7c1c140613880c2719d2080f7ca6dd593f859924d0",
+    "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.gateway.jsonl": "f359902377f00b825c8361bd7ab01f129638d0e24d16335eb67f123261763e90",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101-warm.setup.json": "0b9add0884e6dcb0dac27a4c881c83aad44652b3b5c74130d0f89f4dedc0ca58",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101-warm.metrics_summary.json": "43eebde78046cbf12caf90dc4563817ea133bc8aa333bfafc11436519e302412",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101-warm.itl_histogram.json": "90cc7c8f4e704de919f18cd54d5b96a813af2183c192d53da13db94fd0a35e74",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101-warm.v6_entrypoint.json": "69bcf18e53e23011e1a7348606bd5276908734fbcfe914bfc31ee41d7999e60b",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101.setup.json": "bdb574c5081963057d9e10d3fb0afd96a115b38fa674a03966da04dd61819959",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101.metrics_summary.json": "806c76b2760940fde5227e22d82a85c3036e001d3b6c6e4688b291f49f22c3ca",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101.itl_histogram.json": "205896cfcee989c90c4833e725c68dd4adeb46a21aee1a87186cf982a4f8fab5",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101.v6_entrypoint.json": "fa88ddb5d3b315d87aaa552ef1fb0a1fdcbcb5402347645c99e654a6effd0868",
+    "results/v3/v6controls1-main-lowload-packing_ready-s101.host_status.json": "a50b07a4ee727805c951acfa3bdd7e4433b28d0111fded808cee4f36c0bb5fa0"
+  },
+  "copied_archive": [
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.jsonl",
+      "uncompressed_sha256": "ac7ed3f69c2a392bc956c3d8780e470dd38f839fa54f084fe12c5617a0941b7a",
+      "gzip_sha256": "36662aca3445f1597eb399c218fe9eade78adcd877505036ab6c39209a5cd63d",
+      "uncompressed_bytes": 55545,
+      "gzip_bytes": 9602
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.outputs.jsonl",
+      "uncompressed_sha256": "c3d82dd52580192f94e3b6cde902a9c34a6a4a9fb460f874b55cf47e0256b50c",
+      "gzip_sha256": "005a9d43ff4329d67a1afd989ce30787df9410987f49f3718a2d45c364eaecae",
+      "uncompressed_bytes": 12703,
+      "gzip_bytes": 2622
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.summary.json",
+      "uncompressed_sha256": "1f51a55abca9128b83faa9288516d5b3c65b3e51644b4ec442881583ec783c4a",
+      "gzip_sha256": "8dd0e9be1144da0fc0c29d13860751fab59ac82673b4bd55074e5c5d70916210",
+      "uncompressed_bytes": 1644,
+      "gzip_bytes": 768
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.metrics.jsonl",
+      "uncompressed_sha256": "b3b9ab5441f8184eb6f4bc2a4e1afb6e301b4a604273b48150d27928673a97a2",
+      "gzip_sha256": "710054c31f478bdf34d4ac25380a70fc9766bd48eaade49671726834be3447e3",
+      "uncompressed_bytes": 97459,
+      "gzip_bytes": 8158
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101-warm.gateway.jsonl",
+      "uncompressed_sha256": "37014aab3ec0ad60f9ba763e83732bcd3e000cea65c3ab28ab9101430fd5d2d6",
+      "gzip_sha256": "f1335df859d8fcf20c18b5459bb1c0a20cbc394efa05a707752ae6c24cb0fa2b",
+      "uncompressed_bytes": 55671,
+      "gzip_bytes": 6640
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.jsonl",
+      "uncompressed_sha256": "01fe9c9017ec0013f3120e82ba57f90e8fd20b56277a6af0695f6128c32756d1",
+      "gzip_sha256": "ac62fe58e09efa5cfbe6c396b789340f7aeddcba3c68eac340479f5a71cab483",
+      "uncompressed_bytes": 54850,
+      "gzip_bytes": 9520
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.outputs.jsonl",
+      "uncompressed_sha256": "7c1e3e5901950449ee22e4e519053de410fee2ddb672c160c8987841372a5d21",
+      "gzip_sha256": "8845f14c981d2466995aff71e4a2d289bb14a5eeefb772fba9f0ebc7a831eb54",
+      "uncompressed_bytes": 12506,
+      "gzip_bytes": 2639
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.summary.json",
+      "uncompressed_sha256": "cc6eb1bb3698bec10c69e094b2a9df84238173b5a8a547b4089f637732ce5231",
+      "gzip_sha256": "a05f4254fdf259ad37654b13d9e21a9ca0661fbb6f18eae5f74cac473119ab26",
+      "uncompressed_bytes": 1637,
+      "gzip_bytes": 766
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.metrics.jsonl",
+      "uncompressed_sha256": "80f9ec197df19f17b98b2e7c1c140613880c2719d2080f7ca6dd593f859924d0",
+      "gzip_sha256": "caa8cf0d13d84745a12f9077ab903a7b49aeb4dbf703cbb5e4aaa2805c23a8cf",
+      "uncompressed_bytes": 70493,
+      "gzip_bytes": 4963
+    },
+    {
+      "source_path": "results/v3/raw/v6controls1-main-lowload-packing_ready-s101.gateway.jsonl",
+      "uncompressed_sha256": "f359902377f00b825c8361bd7ab01f129638d0e24d16335eb67f123261763e90",
+      "gzip_sha256": "7b8813380fd3454f211b1359cbc488921f502a7775cbf7a7d118fbd0bbedaf41",
+      "uncompressed_bytes": 57429,
+      "gzip_bytes": 7549
+    }
+  ],
+  "byte_roundtrip_equal": true,
+  "measured_and_warm_integrity_equal": true,
+  "official_quality_json_equal": true,
+  "fairness_equal": true,
+  "completion_decode_equal": true,
+  "native_histogram_equal": true,
+  "additive_waits_equal": true,
+  "sampled_resources_equal": true,
+  "original_artifacts_unchanged": true,
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "answerable_f1": 0.3169547723280001,
+  "analysis_source_sha256": {
+    "scripts/v6_rehearse_main_archival.py": "3cf99645fe266c60164588d0ff16820fbf2bcc7d52021b42965e0cb838419d58",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v3_analyze_runs.py": "7d095e4facce7dd42dd23eb0f170fc76679b477b4b249f5a518ee6abfd2eab37",
+    "scripts/v6_analyze_fairness.py": "1e62346d7249242fe8cad9ea2fa9e2fc1c9f2b4c7a9d9fd7c1c59c2e7353c0df",
+    "scripts/v3_audit_admission.py": "16b58e73b92ac7ad9dc38f4e047b3d57129fc80848c700174b33e71fc10ae70c",
+    "scripts/v5_analyze_decode.py": "d291c5dda7be6714cdbcd033b52d058cbd53db884b28cc19981dd88b1b0f2725",
+    "scripts/v5_analyze_histograms.py": "ff26dcdf211500c32ff8dd1deedaedb0469707575066d2337a41c2c6ddd10a8d",
+    "scripts/v5_analyze_waits.py": "801dd463a985541388933ca1b7571e2958b3dbbbb949806f2012290feb260b04",
+    "scripts/v6_main_resources.py": "51c0a0f3cf32dc624272896794b59cfd58c1ccee05896e8eaaace97134537544",
+    "scripts/v6_native_metrics.py": "79dfcc5fae25256a208a055a22528bd9888d56a50471f52619e0260a941dceea",
+    "scripts/v2_quality_audit.py": "71da2d14bd262d9c2197fbcf791969137cd8020bc2caa054f30037b9a25845eb"
+  },
+  "scope": "Temporary copies of one real audited 60-QA main development arm plus60warmup. Ten raw files include both gateway logs. Full official quality and integrity/fairness/decode/histogram/waits/resources match before/after archival. No serving calls, original raw deletion, full1986QA/48GB validation, new performance result or liveness proof."
+}
