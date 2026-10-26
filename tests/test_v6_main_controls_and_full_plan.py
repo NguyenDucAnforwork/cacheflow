@@ -7,14 +7,14 @@ from v6_full_plan import build_plan as full
 
 
 def test_controls_match_regimes_and_existing_manifests():
-    steps=controls();assert len(steps)==24 and sum(s['requests'] for s in steps)==840
-    assert len({s['run_id'] for s in steps})==24
+    steps=controls();assert len(steps)==36 and sum(s['requests'] for s in steps)==1260
+    assert len({s['run_id'] for s in steps})==36
     for s in steps:
         assert json.loads(Path(s['trace']).with_suffix('.manifest.json').read_text())['requests']==s['requests']
     for regime in ['lowload','lowreuse','gpufit','abstention']:
-        rr=[s for s in steps if s['regime']==regime];assert len(rr)==6
+        rr=[s for s in steps if s['regime']==regime];assert len(rr)==9
         assert {s['seed'] for s in rr}=={101,102,103}
-        assert {s['arm'] for s in rr}=={'fifo64','packing_ready'}
+        assert {s['arm'] for s in rr}=={'fifo64','union64','packing_ready'}
         assert {s['budget'] for s in rr}==({10} if regime=='gpufit' else {6})
 
 

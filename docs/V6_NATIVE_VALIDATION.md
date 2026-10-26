@@ -1,19 +1,19 @@
 # V6 native validation protocol
 
-Prepared 2026-10-26 18:04 UTC, before any `v6native1` GPU execution. This is development validation, not a final-method freeze or fresh semantic holdout. The completed V6 pilot does not establish that readiness improves on original union admission or fixes the historical stall.
+Prepared 2026-10-26 18:04 UTC; expanded 18:27 UTC before any native registration/GPU run to include original union in every control. The previous 45-arm/2,100-request draft remains in git history. This amendment adds matched controls for both methods retained in the full study. Prepared before any `v6native1` GPU execution. This is development validation, not a final-method freeze or fresh semantic holdout. The completed V6 pilot does not establish that readiness improves on original union admission or fixes the historical stall.
 
 `PYTHONPATH=src /venv/main/bin/python scripts/v6_native_matrix.py --plan` prints the execution graph without modifying services or runtime files. Execution registers all actions, trace/source hashes, native package/source pins and original supervisor configuration before GPU use. Run IDs cannot overwrite an existing registration/setup. The launcher requires the completed 24-arm main audit and idle serving services. `v6_after_main_native.py` verifies the live main and analysis process identities, waits for both to terminate, and executes the native controller once. Missing/failed main audit stops it; it never restarts the main job.
 
 | Regime | GPU KV | Native scheduler | Arms per arrival seed | Requests per arm |
 | --- | --- | --- | --- | --- |
 | Primary, 4 QPS | 6 GiB | LPM | native, FIFO64, old union64, readiness-only FIFO64, readiness+union64 | 60 |
-| Scheduler control, 4 QPS | 6 GiB | DFS-weight | native, readiness+union64 | 60 |
-| Lower load, 2 QPS | 6 GiB | LPM | native, readiness+union64 | 60 |
-| Low reuse, 4 QPS | 6 GiB | LPM | native, readiness+union64 | 8 |
-| Development GPU fit, 4 QPS | 10 GiB | LPM | native, readiness+union64 | 60 |
-| Abstention stratum, 4 QPS | 6 GiB | LPM | native, readiness+union64 | 12 |
+| Scheduler control, 4 QPS | 6 GiB | DFS-weight | native, original union64, readiness+union64 | 60 |
+| Lower load, 2 QPS | 6 GiB | LPM | native, original union64, readiness+union64 | 60 |
+| Low reuse, 4 QPS | 6 GiB | LPM | native, original union64, readiness+union64 | 8 |
+| Development GPU fit, 4 QPS | 10 GiB | LPM | native, original union64, readiness+union64 | 60 |
+| Abstention stratum, 4 QPS | 6 GiB | LPM | native, original union64, readiness+union64 | 12 |
 
-Three arrival seeds 101/102/103 give 45 measured arms and 2,100 measured requests. These reuse exposed QA; counting repetitions does not create independent semantic examples. Each regime/seed block starts a fresh SGLang process and receives the same 60-QA native warmup: 18 blocks and 1,080 separate warmup requests. Primary order is normal/reversed/rotated; two-arm blocks reverse the middle seed. This is an order permutation, not perfect counterbalancing of all positions with only three seeds.
+Three arrival seeds 101/102/103 give 60 measured arms and 2,700 measured requests. These reuse exposed QA; counting repetitions does not create independent semantic examples. Each regime/seed block starts a fresh SGLang process and receives the same 60-QA native warmup: 18 blocks and 1,080 separate warmup requests. Primary order is normal/reversed/rotated; three-arm control blocks reverse the middle seed and rotate the third seed. This is an order permutation, not perfect counterbalancing of all positions with only three seeds.
 
 Within a block, paired arms share the native engine, with native cache flush before every arm and fresh gateway state for gateway arms. Across blocks, native engines are distinct. This differs from the main V6 matrix's fresh engine per arm: report these protocols separately. An arm failure stops this study, retains raw outputs/invalid status, and does not trigger retries or successful-only latency tables. Fresh engines do not establish production liveness; the original manual-abort failure remains part of the record.
 
@@ -23,4 +23,4 @@ The V6 native collector uses `cacheflow.v6_replay` and captures the actual V6 ga
 
 Two passive native metrics GETs bracket each replay, outside the request window. Histogram acceptance requires matching nonzero engine PID, complete prompt/generation-token coverage, finite counters, unchanged bucket schema, nonnegative monotonic bucket deltas, and +Inf equal to observation count. Coverage failures produce null native mean/bounds; they do not invalidate an otherwise complete request ledger. SGLang's histogram weights averaged update intervals by emitted-token count; it does not record exact client token arrivals. Quantiles are bucket bounds, and client TPOT remains a separate request-level proxy.
 
-`v6_audit_native_matrix.py` requires all 45 measured arms and 18 warmups, restores/checks supervisor config, verifies process-block identities, fingerprints, prompts, reset states, budgets/transport, token accounting, native histogram coverage and official evaluator output hashes. It writes official quality, matched prompt/hash/latency/F1 deltas and completion/decode evidence. Category-5-only answerable F1 remains null. No quality equivalence follows from nearby scores. Native validation cannot replace main-stack controls, a prospective final-method freeze, the full 1,986-QA evaluation, fairness/resource analysis or the final research requirement audit.
+`v6_audit_native_matrix.py` requires all 60 measured arms and 18 warmups, restores/checks supervisor config, verifies process-block identities, fingerprints, prompts, reset states, budgets/transport, token accounting, native histogram coverage and official evaluator output hashes. It writes official quality, matched prompt/hash/latency/F1 deltas and completion/decode evidence. Category-5-only answerable F1 remains null. No quality equivalence follows from nearby scores. Native validation cannot replace main-stack controls, a prospective final-method freeze, the full 1,986-QA evaluation, fairness/resource analysis or the final research requirement audit.

@@ -20,7 +20,7 @@ def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def main():
     parent,seal=verify();base=Path('results/v3');raw=base/'raw';regpath=base/'v6controls1_main_registration.json'
-    reg=json.loads(regpath.read_text());assert reg['actions']==build_plan() and len(reg['actions'])==24
+    reg=json.loads(regpath.read_text());assert reg['actions']==build_plan() and len(reg['actions'])==36
     for name,digest in reg['source_sha256'].items():assert sha(name)==digest,name
     assert sha(CONFIG)==reg['original_supervisor_sha256']
     assert sha('results/v3/sglang/v6native1_audit.json')==reg['native_audit_sha256']
@@ -73,25 +73,26 @@ def main():
             **{k:s['arrival_ttft_'+k] for k in ['p50_ms','p95_ms','p99_ms']},
             computed_tokens=c['vllm:request_prefill_kv_computed_tokens_sum'],consumed_cpu_tokens=c['vllm:prompt_tokens_source_external_kv_transfer_total'],
             preemptions=c['vllm:num_preemptions_total'],actual_host_heap_bytes=host,native_itl=histogram(snapshotpath),secondary=decode(rid),fairness=fairness(rid)))
-    assert len(pids)==len(lmcachepids)==24
+    assert len(pids)==len(lmcachepids)==36
     qualitypath=base/'v6controls1_main_quality.json'
     subprocess.run([sys.executable,'scripts/v2_quality_audit.py','--raw-dir',str(raw),'--run-ids',*[r['run_id'] for r in results],'--output',str(qualitypath)],check=True)
     quality={r['run_id']:r for r in json.loads(qualitypath.read_text())['runs']};by={r['run_id']:r for r in results};pairs=[];intervals=[]
     for r in results:r.update(f1=quality[r['run_id']]['answerable_f1'],output_budget_hits=quality[r['run_id']]['output_budget_hits'])
     for regime in ['lowload','lowreuse','gpufit','abstention']:
-        aa=[];bb=[]
-        for seed in [101,102,103]:
-            a=f'v6controls1-main-{regime}-fifo64-s{seed}';b=f'v6controls1-main-{regime}-packing_ready-s{seed}'
-            ar=loaded[a]['requests'];br=loaded[b]['requests'];assert ar.keys()==br.keys()
-            assert all(ar[k]['prompt_sha256']==br[k]['prompt_sha256'] for k in ar)
-            fa,fb=by[a]['f1'],by[b]['f1'];aa.append(by[a]);bb.append(by[b])
-            pairs.append(dict(a=a,b=b,regime=regime,seed=seed,
-                **{k+'_delta_pct':100*(by[b][k]/by[a][k]-1) for k in ['p50_ms','p95_ms','p99_ms']},
-                f1_delta=fb-fa if fa is not None and fb is not None else None,
-                output_hash_mismatches=sum(ar[k]['output_hash']!=br[k]['output_hash'] for k in ar)))
-        intervals.append(dict(regime=regime,metrics={k:paired_log_interval([r[k] for r in aa],[r[k] for r in bb]) for k in ['p50_ms','p95_ms','p99_ms']}))
+        for candidate,baseline in [('union64','fifo64'),('packing_ready','fifo64'),('packing_ready','union64')]:
+            aa=[];bb=[]
+            for seed in [101,102,103]:
+                a=f'v6controls1-main-{regime}-{baseline}-s{seed}';b=f'v6controls1-main-{regime}-{candidate}-s{seed}'
+                ar=loaded[a]['requests'];br=loaded[b]['requests'];assert ar.keys()==br.keys()
+                assert all(ar[k]['prompt_sha256']==br[k]['prompt_sha256'] for k in ar)
+                fa,fb=by[a]['f1'],by[b]['f1'];aa.append(by[a]);bb.append(by[b])
+                pairs.append(dict(a=a,b=b,regime=regime,seed=seed,baseline=baseline,candidate=candidate,
+                    **{k+'_delta_pct':100*(by[b][k]/by[a][k]-1) for k in ['p50_ms','p95_ms','p99_ms']},
+                    f1_delta=fb-fa if fa is not None and fb is not None else None,
+                    output_hash_mismatches=sum(ar[k]['output_hash']!=br[k]['output_hash'] for k in ar)))
+            intervals.append(dict(regime=regime,baseline=baseline,candidate=candidate,metrics={k:paired_log_interval([r[k] for r in aa],[r[k] for r in bb]) for k in ['p50_ms','p95_ms','p99_ms']}))
     result=dict(complete=True,registration_sha256=sha(regpath),scope=reg['scope'],requests=sum(r['requests'] for r in results),errors=0,
-        separate_warmup_requests=1440,runs=results,pairs=pairs,exploratory_intervals=intervals,
+        separate_warmup_requests=2160,runs=results,pairs=pairs,exploratory_intervals=intervals,
         limitations='n3paired log-ratio t(df2) descriptors are not semantic population significance or quality equivalence. Missing native coverage stays null. Source tokens are not measured DMA bytes. Report each regime/seed including regressions.')
     (base/'v6controls1_main_audit.json').write_text(json.dumps(result,indent=2)+'\n')
     print('Main controls audited',result['requests'],'requests',flush=True)

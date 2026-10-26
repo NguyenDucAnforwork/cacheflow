@@ -34,7 +34,7 @@ def build_plan():
         ('lowload',2,6,'lpm','dev4b3',60),('lowreuse',4,6,'lpm','lowreuse8',8),
         ('gpufit',4,10,'lpm','dev4b3',60),('abstention',4,6,'lpm','abstention12',12)]:
         for seed in [101,102,103]:
-            arms=list(ARMS) if regime=='primary' else ['native','packing_ready']
+            arms=list(ARMS) if regime=='primary' else ['native','union64','packing_ready']
             if seed==102:arms.reverse()
             elif seed==103:arms=arms[2:]+arms[:2] if len(arms)>2 else arms
             name=f'v6native1-{regime}-s{seed}'
@@ -47,7 +47,7 @@ def build_plan():
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--plan',action='store_true');a=p.parse_args();blocks=build_plan()
-    scope=('Development evidence on previously exposed questions. 45 measured arms/2100 requests, 18 fresh native engines; '
+    scope=('Development evidence on previously exposed questions. 60 measured arms/2700 requests, 18 fresh native engines; '
         'each regime/seed block has one separate60-request native warmup, reset before every arm and fresh gateway for gateway arms. '
         'Native Direct HiCache with LPM or DFS, same-batch guard component enabled in all arms (not full Strata). '
         'All gateway arms cap64/bypass8/thread preparation/logical budget43664 or72800, uniform180s transport. '

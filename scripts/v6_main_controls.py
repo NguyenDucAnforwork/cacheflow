@@ -16,7 +16,7 @@ from v5_verify import verify
 from v6_native_metrics import capture,summarize
 
 ROOT=Path.cwd();CONFIG=Path('/etc/supervisor/conf.d/cacheflow_v2_gateway.conf')
-ARMS={'fifo64':('fifo',64),'packing_ready':('packing_ready',64)}
+ARMS={'fifo64':('fifo',64),'union64':('packing_reuse',64),'packing_ready':('packing_ready',64)}
 
 
 def build_plan():
@@ -26,6 +26,7 @@ def build_plan():
         for seed in [101,102,103]:
             arms=list(ARMS)
             if seed==102:arms.reverse()
+            elif seed==103:arms=arms[1:]+arms[:1]
             for arm in arms:steps.append(dict(regime=regime,qps=qps,budget=budget,requests=count,
                 arm=arm,seed=seed,policy=ARMS[arm][0],cap=ARMS[arm][1],
                 trace=f'data/processed/v3/v5-{family}-qps{qps}-s{seed}.jsonl',run_id=f'v6controls1-main-{regime}-{arm}-s{seed}'))
@@ -37,7 +38,7 @@ def main():
     if a.plan:print(json.dumps(dict(scope='Prospective development matrix; not fresh semantic confirmation',actions=steps),indent=2));return
     verify()
     native=json.loads(Path('results/v3/sglang/v6native1_audit.json').read_text())
-    assert native['complete'] and native['requests']==2100 and native['errors']==0 and len(native['runs'])==45
+    assert native['complete'] and native['requests']==2700 and native['errors']==0 and len(native['runs'])==60
     for policy in ['ready_fifo','packing_ready']:
         subprocess.run([sys.executable,'-m','cacheflow.v6_replay','--policy',policy,'--help'],check=True,stdout=subprocess.DEVNULL)
     for name in ['cacheflow_v2_gateway','cacheflow_v2_vllm','cacheflow_v2_lmcache','cacheflow_v3_sglang']:assert service_pid(name)==0
@@ -55,7 +56,7 @@ def main():
         source_sha256={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in sources},
         parent_v5_seal_sha256=hashlib.sha256(Path('results/v3/v5_prompt_freeze.json').read_bytes()).hexdigest(),
         original_supervisor_sha256=hashlib.sha256(original.encode()).hexdigest(),
-        scope='Main-stack matched controls on exposed QA, FIFO64 vs readiness+union64 across lowload/lowreuse/developmentGPUfit/abstention and3arrival schedules.24measured arms840requests and1440separate warmups. Fresh main/LMCache per arm, reset/fresh gateway, same180s read/pool/upstream timeout/keepalive0/preparation. GPU6or10GiB and host flag16000745472bytes. Nativehistogram boundary GETs, no GPUprofiler or livenessprobe. Retain all failures and proceed to next independent preplanned fresh engine, no retries. Not a full benchmark, semantic holdout or production liveness proof.')
+        scope='Main-stack matched controls on exposed QA, FIFO64 vs originalunion64 vs readiness+union64 across lowload/lowreuse/developmentGPUfit/abstention and3arrival schedules.36measured arms1260requests and2160separate warmups. Fresh main/LMCache per arm, reset/fresh gateway, same180s read/pool/upstream timeout/keepalive0/preparation. GPU6or10GiB and host flag16000745472bytes. Nativehistogram boundary GETs, no GPUprofiler or livenessprobe. Retain all failures and proceed to next independent preplanned fresh engine, no retries. Not a full benchmark, semantic holdout or production liveness proof.')
     registration_path.write_text(json.dumps(registration,indent=2)+'\n');results=[]
     env=dict(os.environ,CACHEFLOW_REQUEST_READ_TIMEOUT_S='180',CACHEFLOW_REQUEST_POOL_TIMEOUT_S='180',
         CACHEFLOW_CLIENT_KEEPALIVE_CONNECTIONS='0',CACHEFLOW_ALLOW_FAILED_DIAGNOSTIC='1')

@@ -2,6 +2,7 @@
 import argparse
 import csv
 import hashlib
+import gzip
 import json
 from collections import Counter,defaultdict
 from datetime import datetime,timezone
@@ -15,15 +16,18 @@ def normalize(base,raw):
             rr=list(csv.reader(f))
         if rr:header=len(rr[0]);widths=dict(Counter(map(len,rr[1:])))
     records=[];skipped=[];ids=defaultdict(list)
-    for path in sorted(raw.glob('*.summary.json')):
-        blob=path.read_bytes()
-        try:row=json.loads(blob)
-        except json.JSONDecodeError:
+    for path in sorted([*raw.glob('*.summary.json'),*raw.glob('*.summary.json.gz')]):
+        stored=path.read_bytes()
+        try:
+            blob=gzip.decompress(stored) if path.suffix=='.gz' else stored
+            row=json.loads(blob)
+        except (json.JSONDecodeError,OSError,EOFError,UnicodeDecodeError):
             skipped.append(str(path));continue
         if 'run_id' not in row:skipped.append(str(path));continue
         row=dict(row);rid=row['run_id'];ids[rid].append(str(path))
         invalid=(base/f'{rid}.invalid').exists()
-        row.update(summary_path=str(path.resolve()),summary_file_sha256=hashlib.sha256(blob).hexdigest(),invalid_marker_exists=invalid,
+        row.update(summary_path=str(path.resolve()),summary_file_sha256=hashlib.sha256(stored).hexdigest(),
+            summary_uncompressed_sha256=hashlib.sha256(blob).hexdigest(),summary_storage='gzip' if path.suffix=='.gz' else 'plain',invalid_marker_exists=invalid,
             index_scope='Request ledger locator only; use per-protocol audits for performance eligibility')
         redacted=invalid or bool(row.get('errors',0))
         row['latency_quantiles_hidden_for_invalid_or_failed']=redacted

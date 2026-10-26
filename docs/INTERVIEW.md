@@ -815,3 +815,15 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Làm sao giữ raw outputs khi đĩa nhỏ mà vẫn kiểm chứng được nghiên cứu?**
 
 **Đáp:** Tôi không bỏ các response lỗi hay chỉ giữ aggregate. Công cụ archival mới yêu cầu audit từng run hoàn tất và có SHA của toàn bộ raw cần lưu; nén gzip rồi giải nén đọc kiểm SHA trước khi bỏ bản plain dư thừa. Manifest giữ đường dẫn, kích thước, hash plain/gzip và hash audit. Reader có thể mở rộng tạm về đúng byte ban đầu để chạy lại evaluator rồi thu hồi bản tạm nếu nó chưa bị sửa. Đây là cách lưu lossless, không tạo thêm bằng chứng chất lượng hay làm run lỗi thành hợp lệ. Hiện tool đã qua test roundtrip/corruption/missing-audit, chưa được áp dụng lên raw thí nghiệm trong continuation này.
+
+**Hỏi: Đã bật CUDA graphs thì có thể nói cả prefill lẫn decode đều chạy graph không?**
+
+**Đáp:** Không. Trong cấu hình SGLang đã capture, runtime đặt graphs=true và decode backend làfull, nhưng resolved prefill backend làdisabled. Flag chỉ nói ý định cấu hình; phải đọc mode thực tế engine chọn. Tôi giữ cấu hình native giống nhau giữa baseline và method, lưu source/package/argv cùng server_info, và không gán khác biệt cross-engine cho riêng scheduler. Audit full kiểm graph decode cùng dtype/budget/policy đã resolve; nó không tự biến prefill thành graph-enabled.
+
+**Hỏi: Vì sao thêm union cũ vào controls dù readiness mới là phần đang thử?**
+
+**Đáp:** Vì full study giữ cả hai policy. Nếu chỉ đo readiness ở tải thấp/ítreuse/GPUfit rồi dùng kết quả đó thay cho union cũ, tôi đã suy rộng qua một thay đổi admission có thể làm khác thứ tự dispatch và output. Tôi mở rộng kế hoạch trước nativeGPU đầu tiên: mỗi control native có native/union cũ/readiness, còn main cóFIFO/union cũ/readiness. Primary union phải qua gate low-reuse<=5% ở từng seed trước full freeze. Readiness giữ gate status riêng và vẫn là ablation; không được mượn acceptance của primary.
+
+**Hỏi: Unit test cho verifier có phải bằng chứng full benchmark đã đúng không?**
+
+**Đáp:** Không. Test full-contract hiện lấy một setup native đã capture rồi chiếu host budget sang48GB để thử verifier, sau đó cố ý làm sai policy/GPU/host/timeout/profile/source và kiểm nó từ chối. Nó phát hiện lỗ hổng kiểm chứng, nhưng fixture chiếu không phải run48GB thật. Bằng chứng thực phải đến từ full request/output/token ledgers, actual config và quan sát host của process mới. Full pipeline chỉ đánh dấu từng run sau audit/official evaluator, rồi final audit giải nén kiểm lại raw. Viết xong controller, test xanh hoặc có seal vẫn chưa có nghĩa đã hoàn tất nghiên cứu.

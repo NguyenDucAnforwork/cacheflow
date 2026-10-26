@@ -93,24 +93,25 @@ def main():
                 computed_tokens=counters.get('sglang:uncached_prompt_tokens_histogram_sum'),
                 host_promoted_tokens=counters.get('sglang:load_back_tokens_total'),native_itl=histogram(nativepath),secondary=decode(rid),fairness=fairness(rid)))
         assert len(blockpids)==1;allpids.extend(blockpids)
-    assert len(allpids)==len(set(allpids))==18 and len(results)==45
+    assert len(allpids)==len(set(allpids))==18 and len(results)==60
     qualitypath=BASE/'v6native1_quality.json'
     subprocess.run([sys.executable,'scripts/v2_quality_audit.py','--raw-dir',str(raw),'--run-ids',*[r['run_id'] for r in results],'--output',str(qualitypath)],check=True)
     quality={r['run_id']:r for r in json.loads(qualitypath.read_text())['runs']}
     by={r['run_id']:r for r in results};pairs=[]
     for r in results:r.update(f1=quality[r['run_id']]['answerable_f1'],output_budget_hits=quality[r['run_id']]['output_budget_hits'])
     for block in reg['blocks']:
-        candidate=next(s['run_id'] for s in block['actions'] if s['arm']=='packing_ready')
-        for step in block['actions']:
-            a=step['run_id']
-            if a==candidate:continue
-            aa=requestmaps[a];bb=requestmaps[candidate];assert aa.keys()==bb.keys()
-            assert all(aa[k]['prompt_sha256']==bb[k]['prompt_sha256'] for k in aa)
-            fa,fb=by[a]['f1'],by[candidate]['f1']
-            pairs.append(dict(a=a,b=candidate,regime=block['regime'],seed=block['seed'],
-                p95_delta_pct=100*(by[candidate]['arrival_ttft_p95_ms']/by[a]['arrival_ttft_p95_ms']-1),
-                f1_delta=fb-fa if fa is not None and fb is not None else None,
-                output_hash_mismatches=sum(aa[k]['output_hash']!=bb[k]['output_hash'] for k in aa)))
+        for candidate_arm in ['union64','packing_ready']:
+            candidate=next(s['run_id'] for s in block['actions'] if s['arm']==candidate_arm)
+            for step in block['actions']:
+                a=step['run_id']
+                if step['arm'] in {'union64','packing_ready'} and not (candidate_arm=='packing_ready' and step['arm']=='union64'):continue
+                aa=requestmaps[a];bb=requestmaps[candidate];assert aa.keys()==bb.keys()
+                assert all(aa[k]['prompt_sha256']==bb[k]['prompt_sha256'] for k in aa)
+                fa,fb=by[a]['f1'],by[candidate]['f1']
+                pairs.append(dict(a=a,b=candidate,regime=block['regime'],seed=block['seed'],baseline=step['arm'],candidate=candidate_arm,
+                    p95_delta_pct=100*(by[candidate]['arrival_ttft_p95_ms']/by[a]['arrival_ttft_p95_ms']-1),
+                    f1_delta=fb-fa if fa is not None and fb is not None else None,
+                    output_hash_mismatches=sum(aa[k]['output_hash']!=bb[k]['output_hash'] for k in aa)))
     result=dict(complete=True,registration_sha256=sha(regpath),scope=reg['scope'],requests=sum(r['requests'] for r in results),
         errors=0,separate_warmup_requests=1080,runs=results,pairs=pairs)
     (BASE/'v6native1_audit.json').write_text(json.dumps(result,indent=2)+'\n')
