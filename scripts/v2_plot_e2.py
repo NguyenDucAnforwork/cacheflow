@@ -4,6 +4,7 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use('Agg')
+matplotlib.rcParams['svg.hashsalt'] = 'cacheflow-v2-e2-2026-10-26'
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -11,7 +12,7 @@ base = Path('results/v2')
 rows = [dict(r, cohort='Dev') for r in csv.DictReader((base / 'e2_runs.csv').open())]
 if (base / 'e2_holdout2_runs.csv').exists():
     rows += [dict(r, cohort='Holdout') for r in csv.DictReader((base / 'e2_holdout2_runs.csv').open())]
-fig, axes = plt.subplots(1, 3, figsize=(12, 3.7), layout='constrained')
+fig, axes = plt.subplots(1, 3, figsize=(14, 4.4), layout='constrained')
 colors = {'B1': '#2463a5', 'B2': '#d87818'}
 groups = sorted({(r['cohort'], int(r['gpu_kv_gib'])) for r in rows})
 for i, (cohort, gib) in enumerate(groups):
@@ -35,8 +36,9 @@ for i, (cohort, gib) in enumerate(groups):
     axes[2].scatter([i]*len(cpu), cpu, color=colors['B2'], s=30)
     axes[2].plot([i-.07, i+.07], [np.mean(cpu)]*2, color=colors['B2'], lw=2)
 for ax in axes:
-    ax.set_xticks(range(len(groups)), [f'{c} / {g} GiB' for c, g in groups])
-    ax.set_xlabel('Conversation split / GPU KV budget')
+    ax.set_xticks(range(len(groups)), [f'{c}\n{g} GiB' for c, g in groups])
+    ax.set_xlabel('Split / GPU KV budget')
+    ax.set_xlim(-.45, len(groups)-.55)
     ax.grid(axis='y', alpha=.25)
     ax.set_ylim(bottom=0)
     ax.spines[['top', 'right']].set_visible(False)
@@ -49,6 +51,8 @@ axes[2].set_title('Actual external KV tokens (B2)')
 axes[2].set_ylabel('Thousands of tokens / run')
 fig.suptitle('LoCoMo full-context serving subsets · 30 QA/run · 0.2 QPS\n'
              'Dots are independent arrival-seed runs; bars are means. CPU tier: 16 GiB.', fontsize=11)
-fig.savefig(base / 'e2_tiering.png', dpi=180)
-fig.savefig(base / 'e2_tiering.svg')
+fig.savefig(base / 'e2_tiering.png', dpi=180, bbox_inches='tight')
+svg = base / 'e2_tiering.svg'
+fig.savefig(svg, bbox_inches='tight', metadata={'Date': None})
+svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
 print(base / 'e2_tiering.png')

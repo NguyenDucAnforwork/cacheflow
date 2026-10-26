@@ -1,0 +1,29 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l1_evicted_chunks_total": null,
+      "lmcache_mp_l1_read_chunks_total": 240.0,
+      "lmcache_mp_l1_write_chunks_total": 70.0,
+      "lmcache_mp_num_chunks_loaded_total": null
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 0.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 64400.0,
+      "vllm:prompt_tokens_cached_total": 64400.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 0.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 64400.0,
+      "vllm:prompt_tokens_source_local_compute_total": 16287.0,
+      "vllm:prompt_tokens_total": 80687.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 16287.0,
+      "vllm:request_queue_time_seconds_sum": 13.760539916984271
+    }
+  },
+  "duration_s": 25.003167682,
+  "first_timestamp_ns": 91902740944129,
+  "host_memory_available_min_bytes": 189828837376,
+  "last_timestamp_ns": 91927744111811,
+  "metrics_path": "/workspace/cacheflow-e1/results/v2/raw/v2-e3-session-dev2-qps2-b2-4g.metrics.jsonl",
+  "samples": 26,
+  "vram_peak_mib": 8453.0
+}

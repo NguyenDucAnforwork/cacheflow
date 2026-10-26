@@ -1,0 +1,54 @@
+{
+  "note": "Repeated seeds reuse the same QA; these are paired run-level scores, not new independent QA samples.",
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "pairs": [
+    {
+      "b1": "v2-e3-session-dev2-qps2-b1-4g",
+      "b2": "v2-e3-session-dev2-qps2-b2-4g",
+      "requests": 30,
+      "b1_f1": 0.08643396228770252,
+      "b2_f1": 0.0922534746199972,
+      "delta_f1": 0.005819512332294677,
+      "b1_budget_hits": 30,
+      "b2_budget_hits": 30,
+      "score_changed_requests": [
+        {
+          "request_id": "conv-26-q004",
+          "b1_score": 0.10526315789473684,
+          "b2_score": 0.3076923076923077,
+          "delta": 0.20242914979757087
+        },
+        {
+          "request_id": "conv-26-q008",
+          "b1_score": 0.18181818181818182,
+          "b2_score": 0.16216216216216214,
+          "delta": -0.01965601965601968
+        },
+        {
+          "request_id": "conv-26-q014",
+          "b1_score": 0.03636363636363636,
+          "b2_score": 0.0,
+          "delta": -0.03636363636363636
+        },
+        {
+          "request_id": "conv-30-q002",
+          "b1_score": 0.0425531914893617,
+          "b2_score": 0.041666666666666664,
+          "delta": -0.0008865248226950367
+        },
+        {
+          "request_id": "conv-30-q005",
+          "b1_score": 0.25000000000000006,
+          "b2_score": 0.2857142857142857,
+          "delta": 0.03571428571428564
+        },
+        {
+          "request_id": "conv-30-q014",
+          "b1_score": 0.09756097560975609,
+          "b2_score": 0.0909090909090909,
+          "delta": -0.006651884700665189
+        }
+      ]
+    }
+  ]
+}
