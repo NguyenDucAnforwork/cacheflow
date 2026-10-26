@@ -64,5 +64,68 @@
     "session_gap_ms": null,
     "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
     "trace_sha256": "2a333263a64cb3d863624bdd6b5ee946d406ab35c542c7d9bf2e4ca993fb019c"
+  },
+  "e2_holdout2_qps02_s101.manifest": {
+    "selected_samples": [
+      "conv-49",
+      "conv-50"
+    ],
+    "excluded": {
+      "no_evidence": 0,
+      "context_too_long": 0
+    },
+    "requests": 30,
+    "trace_sha256": "ac0f095f048a44798be81542bcbd5452b792fd67b897a03b8d4fc86a713b2aa8",
+    "protocol": "p_qa",
+    "arrival": "interleaved",
+    "seed": 101,
+    "qps": 0.2,
+    "max_model_len": 32768,
+    "output_tokens": 64,
+    "session_gap_ms": null,
+    "prompt_version": "locomo-text-v1",
+    "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "e2_holdout2_qps02_s211.manifest": {
+    "selected_samples": [
+      "conv-49",
+      "conv-50"
+    ],
+    "excluded": {
+      "no_evidence": 0,
+      "context_too_long": 0
+    },
+    "requests": 30,
+    "trace_sha256": "f462ab319ae45c15b27686bff4bc3d5bce4e96f98b0db029c8de81062b62a4ce",
+    "protocol": "p_qa",
+    "arrival": "interleaved",
+    "seed": 211,
+    "qps": 0.2,
+    "max_model_len": 32768,
+    "output_tokens": 64,
+    "session_gap_ms": null,
+    "prompt_version": "locomo-text-v1",
+    "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "e2_holdout2_qps02_s307.manifest": {
+    "selected_samples": [
+      "conv-49",
+      "conv-50"
+    ],
+    "excluded": {
+      "no_evidence": 0,
+      "context_too_long": 0
+    },
+    "requests": 30,
+    "trace_sha256": "cf9b56a5e54fab4a29ad0283fd617b2d4933f57340d0266a5cef63167dd60e82",
+    "protocol": "p_qa",
+    "arrival": "interleaved",
+    "seed": 307,
+    "qps": 0.2,
+    "max_model_len": 32768,
+    "output_tokens": 64,
+    "session_gap_ms": null,
+    "prompt_version": "locomo-text-v1",
+    "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
   }
 }

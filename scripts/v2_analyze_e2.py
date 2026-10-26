@@ -120,16 +120,18 @@ def main():
     p.add_argument('--root', type=Path, default=Path('.'))
     p.add_argument('--seeds', type=int, nargs='+', default=[17, 29, 43])
     p.add_argument('--budgets', type=int, nargs='+', default=[4, 8])
+    p.add_argument('--cohort', choices=['dev3', 'holdout2'], default='dev3')
     args = p.parse_args()
     base = args.root / 'results/v2'
     comparisons, table = [], []
+    prefix = 'e2' if args.cohort == 'dev3' else f'e2_{args.cohort}'
     for gib, seed in itertools.product(args.budgets, args.seeds):
-        ids = [f'v2-e2-{arm}-{gib}g-dev3-qps02-s{seed}' for arm in ('b1', 'b2')]
+        ids = [f'v2-e2-{arm}-{gib}g-{args.cohort}-qps02-s{seed}' for arm in ('b1', 'b2')]
         arms = [load_run(args.root, rid) for rid in ids]
         c = compare(*arms)
         c['seed'] = seed
         comparisons.append(c)
-        (base / f'e2-{gib}g-s{seed}.compare.json').write_text(json.dumps(c, indent=2) + '\n')
+        (base / f'{prefix}-{gib}g-s{seed}.compare.json').write_text(json.dumps(c, indent=2) + '\n')
         for run in arms:
             s, m = run['summary'], run['metrics']
             row = {k: s[k] for k in ('run_id', 'mode', 'requests', 'errors', 'arrival_ttft_p50_ms',
@@ -143,7 +145,7 @@ def main():
                 row[field] = max((r.get('vllm', {}).get(metric, 0) for r in sampled), default=None)
             row['admission_wait_p95_ms'] = sorted(g['admission_wait_ms'] for g in run['gateway'].values())[int(.95*(len(run['gateway'])-1))]
             table.append(row)
-    with (base / 'e2_runs.csv').open('w') as f:
+    with (base / f'{prefix}_runs.csv').open('w') as f:
         writer = csv.DictWriter(f, fieldnames=list(table[0]))
         writer.writeheader()
         writer.writerows(table)
@@ -155,7 +157,7 @@ def main():
                              'p50_relative_change_pct': run_level_interval([c['latency']['arrival_ttft_p50_ms']['relative_change_pct'] for c in group]),
                              'output_hash_matches': sum(c['output_hash_matches'] for c in group),
                              'output_pairs': sum(c['requests'] for c in group)}
-    (base / 'e2_aggregate.json').write_text(json.dumps(summary, indent=2) + '\n')
+    (base / f'{prefix}_aggregate.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary, indent=2))
 
 
