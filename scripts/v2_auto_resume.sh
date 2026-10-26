@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-install_pid=${1:?usage: v2_auto_resume.sh UV_INSTALL_PID}
+install_pid=${1:?usage: v2_auto_resume.sh UV_INSTALL_PID [MODEL_DOWNLOAD_PID]}
+model_pid=${2:-0}
 venv=${CACHEFLOW_VENV:-/venv/main}
 cd "$root"
 log() { printf '[%s] %s\n' "$(date -u +%FT%TZ)" "$*"; }
-log "waiting for pinned package install PID $install_pid (maximum 6 hours)"
-for ((i=0; i<720; i++)); do
-    if ! kill -0 "$install_pid" 2>/dev/null; then break; fi
+log "waiting for package PID $install_pid and model PID $model_pid (maximum 12 hours)"
+for ((i=0; i<1440; i++)); do
+    if ! kill -0 "$install_pid" 2>/dev/null && ! kill -0 "$model_pid" 2>/dev/null; then break; fi
     sleep 30
 done
-if kill -0 "$install_pid" 2>/dev/null; then
-    log "package install did not finish within 6 hours"
+if kill -0 "$install_pid" 2>/dev/null || kill -0 "$model_pid" 2>/dev/null; then
+    log "package install or model download did not finish within 12 hours"
     exit 1
 fi
-log "package install process exited; checking pinned versions"
+log "setup processes exited; checking pinned versions"
 "$venv/bin/python" - <<'PY_CHECK'
 from importlib.metadata import PackageNotFoundError, version
 for name, expected in {'vllm': '0.22.0', 'lmcache': '0.5.3',
@@ -31,6 +32,8 @@ log "installing local project and lightweight test dependencies"
 uv pip install --python "$venv/bin/python" -e "$root" pytest psutil
 "$venv/bin/python" scripts/v2_preflight.py
 PYTHONPATH=src "$venv/bin/python" -m pytest -q
+log "regenerating ignored traces with pinned tokenizer"
+bash scripts/v2_prepare_traces.sh
 log "checking traces with installed tokenizer"
 PYTHONPATH=src "$venv/bin/python" - <<'PY_CHECK'
 import json

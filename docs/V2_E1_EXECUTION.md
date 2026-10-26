@@ -39,7 +39,7 @@ bash scripts/v2_run.sh v2-e1-b3-2k-50ms-r1 data/processed/v2/e1_2k_50ms_1pair.js
 
 ## Server auto-resume
 
-`bash scripts/v2_auto_resume.sh UV_INSTALL_PID` waits up to six hours for the existing pinned `uv` process. After it exits, the script checks exact versions, installs this checkout and test dependencies into `/venv/main`, runs preflight and tests, and rechecks the four server traces with the installed tokenizer. It refuses to touch V2 services if supervisor configs already exist or ports 8000/8100/18080 are in use. Only then does it install its V2 supervisor programs and run the one-request B1 full-context pilot at 32K and 8 GiB GPU KV. It stops its V2 services on exit and requires one successful request. The detached run log is `results/v2/auto_resume.log`; an active wait or a log entry is not a GPU result.
+`bash scripts/v2_auto_resume.sh UV_INSTALL_PID [MODEL_DOWNLOAD_PID]` waits up to twelve hours for the setup processes. After it exits, the script checks exact versions, installs this checkout and test dependencies into `/venv/main`, runs preflight and tests, regenerates the four ignored traces using `scripts/v2_prepare_traces.sh`, and rechecks them with the installed tokenizer. It refuses to touch V2 services if supervisor configs already exist or ports 8000/8100/18080 are in use. Only then does it install its V2 supervisor programs and run the one-request B1 full-context pilot at 32K and 8 GiB GPU KV. It stops its V2 services on exit and requires one successful request. The detached run log is `results/v2/auto_resume.log`; an active wait or a log entry is not a GPU result.
 
 ## Decision rule
 
