@@ -17,7 +17,7 @@ ACTORS=['scripts/v6_full.py','scripts/v6_full_plan.py','scripts/v6_freeze_full.p
     'scripts/v6_v2_run.sh','scripts/v6_sglang_bench.py','scripts/v6_native_metrics.py',
     'scripts/v5_full_histograms.py','scripts/v3_sglang_runtime.py','scripts/v3_serve_sglang.sh',
     'scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v4_sglang_delayhit.py',
-    'scripts/v6_raw_archive.py','scripts/v6_token_fingerprints.py','scripts/v6_full_input_preflight.py','scripts/v6_input_oracle.py']
+    'scripts/v6_raw_archive.py','scripts/v6_token_fingerprints.py','scripts/v6_full_input_preflight.py','scripts/v6_input_oracle.py','scripts/v6_trace_hashes.py','src/cacheflow/locomo.py']
 PREREQUISITES=[('results/v3/v6dev1_main_audit.json',24,1440),
     ('results/v3/sglang/v6native1_audit.json',60,2700),
     ('results/v3/v6controls1_main_audit.json',36,1260)]
@@ -84,6 +84,7 @@ def main():
     main_tokens=json.loads(mp.read_text());native_tokens=json.loads(np.read_text());compare(main_tokens,native_tokens)
     for report in [main_tokens,native_tokens]:
         assert report['source_sha256']==preflight['worker_sha256'] and report['oracle_source_sha256']==sha('scripts/v6_input_oracle.py')
+        assert report['canonical_implementation_sha256']==sha('scripts/v6_trace_hashes.py')
     assert all(importlib.metadata.version(n)==v for n,v in main_tokens['package_versions'].items())
     assert main_tokens['model_revision']==parent['model_revision']
     for name,digest in main_tokens['tokenizer_artifact_sha256'].items():assert modelpins[name]==digest,name

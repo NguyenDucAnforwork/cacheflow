@@ -1,4 +1,6 @@
-# V6 development evidence: complete main matrix
+# V6 development evidence: complete main and native stages
+
+Latest: main24/1440and native60/2700development stages are complete and strictly audited, with separate warmups. Native controls retain lower-load/median/quality regressions. Main36controls and full30study remain pending; these development results do not complete the research goal.
 
 The registered main matrix completed24measured runs: **1,440/1,440 requests, zero errors**, plus1,440separate warmups. It reuses60previously exposed QA over3arrival schedules, with a fresh vLLM+LMCache process per arm, identical warmup/reset, pinned Qwen3-4B,6GiB GPU KV, observed16,039,018,496byte host heaps, max native sequences16/graphs, preparation worker and uniform180s transport/keepalive0. This is development evidence, not a full1,986QA result, semantic holdout or long-service liveness proof. V5 and shared-process pilot results are separate protocols.
 
@@ -77,3 +79,44 @@ All6readiness runs (two variants×3seeds) exactly match65122, while all9native/F
 Promotion coverage remains uneven. Fully observed native deltas are0atseed102and26448atseed103, whereas seed101isnull; oldunion has a fully observed90144only atseed102; readyunion has90144at101/103butnullat102. Every gate-onlyFIFO delta is observed(304656/350064/283184). Do not impute missing values, average only a convenient subset and claim transfer savings, or equate main consumed-source tokens with these native promotions. The figure deliberately plots prefill/latency/quality rather than hiding missing promotion coverage in bars.
 
 Remaining nativeDFS/lowerload/lowreuse/GPUfit/abstention controls, main36controls, full30runs and the final research requirement audit are still required. No assertion of production liveness, stall repair, full Strata reproduction, quality equivalence or universal dominance follows from this subset.
+
+## Completed native controls: DFS, lower load, low reuse and GPU fit
+
+Four separate9-arm control audits now verify **1,692/1,692measured requests, zero errors**, plus720separate warmups: DFS540, lowerload540, lowreuse72, GPUfit540. Each regime has3fresh engine blocks, native/oldunion/readiness matched within each block after flush/freshgateway. Resource samples directly report108512host tokens,16,000,745,472payload bytes, in every measured control arm. This differs from main's16,039,018,496byte lazy heap; cross-engine actual parity remains revoked.
+
+![Native regime controls](../figures/v6native1_controls.png)
+
+| Regime | Old union p95 change vs native, seeds101/102/103 | Ready union p95 change vs native |
+| --- | --- | --- |
+| DFS,6GiB,4QPS | −12.384/−22.304/−18.364% | −12.070/−26.335/−21.435% |
+| LPM,6GiB,2QPS | +.396/−3.313/+9.264% | −3.835/−7.625/+3.639% |
+| Low reuse,8QA | +.367/+.183/+.170% | +.412/+.100/−.070% |
+| GPU fit,10GiB | +.884/+.578/+.129% | −5.604/−4.045/−4.296% |
+
+The DFS control uses the same DFS backend for both native and gateway arms; it isolates admission without relying on native LPM's large-queue fallback. Ready union still increases median by172–280%versus DFS. Versus oldunion, its p95 changes+.359/−5.187/−3.763%, with mixedF1changes. The extra gate remains a qualified ablation rather than a universal improvement.
+
+At2QPS, oldunion's seed103p95regression reaches9.264%, readiness3.639%; readiness median rises38–170%versus native. Both variants retain the same computed-token pattern as primary: old/native69650, readiness65122. Lower source compute therefore does not ensure lower p95at every load. Keep these failures of no-regression visible; the declared5%acceptance gate applies to lowreuse, not all regimes.
+
+Both policies pass that lowreuse gate at every seed. All9arms compute190916new-prefill tokens, and outputs/scores match pairwise exactly, with0hashmismatches. This is8distinct QA repeated over3arrival schedules, not a broad tail/semantic-population guarantee. Missing native host-promotion counter endpoints remainnull; identical compute/output does not independently prove zero transfers.
+
+At10GiB GPUfit, oldunion remains close to native with identical output hashes/F1. Readiness reduces p95about4–6%but increases median22–32%, changes5/7outputs perseed, and improves F1by.025134/.019691/.017489on this small dev cohort. These quality differences/cap-hit changes must remain part of the comparison. The readiness rule depends on pending prefix/firsttext state rather than a CPU-restore API, so its effects are not confined to declared GPU-cache pressure. Counter/oracle agreement is not proof of the exact native causal path. Full10GiB on ten conversations is a larger-cache control, not GPUfit.
+
+Analysis caught and corrected a digest-domain bug before the60-arm/fullfollow-ons: registration hashes exact file bytes, while manifest/replay hashes the canonical JSONarray ofV2TraceRow values. These differ even for identical requests. New checks validate each independently; streaming canonical hashing is tested against the original implementation, includingUnicode andgzip. The complete60-QA CPU worker branch now passes and matches every main/native token vector, but is rejected as an incomplete1,986-QA preflight. No serving actor/input/timeout changed and no GPU request was replayed. `v6_trace_digest_correction.json` preserves the corrected proof. Primary performance/quality results were unaffected.
+
+The abstention control, complete60-arm native audit, main36controls and full30study remain separate pending evidence at this checkpoint.
+
+
+## Native60-arm stage terminal and audited,19:55UTC
+
+The complete expanded native stage now passes strict audit: **60arms,2700/2700measured requests,0errors,1080separate warmups**,18distinct fresh engine blocks and60/60valid native histogram windows. Configuration checks include actual resolved dtype/model/policy/GPU/host/page/graph/IO values, mandatory V6 factory/source proof, reset/history, transport, prompt/source accounting, captured output hashes, warmup ledgers, observed host capacity and official quality. `v6native1_audit.json` and `v6native1_quality.json` are authoritative. The completed audit is now immutable because the live main-controls registration references its SHA.
+
+The final abstention subset has9arms108/108successful measured responses on12distinct category5QA repeated3schedules. Every arm scores7/12(.583333), zero cap hits, answerableF1=nullbecause there are no answerable questions. Readiness p95changes−12.109/−12.123/−10.785%vsnative, oldunion+2.688/+2.404/+3.436%. Readiness has1–2output hash differences perpair despite equal category5accuracy. This is neither identical outputs, broad quality equivalence nor evidence on all446category5QA. No causal comparison to the differently prompted V4 full protocol is made.
+
+The complete stage preserves66within-block paired contrasts across all regimes. Native primary/DFS gains, lower-load failures, low-reuse gate passes, GPUfit median/quality differences and missing promotion endpoints all remain part of the result. Sample-window GPU/queue/RSS/counter summaries retain their scope; unknown optional retraction gauges are not zero-filled. The unprofiled runs do not create new DMA timelines or prove the historical stall fixed.
+
+Maincontrols36arms1260requests2160warmups have now started only after native audit success. Their actual registration/source hashes are separate. Full1986QA token preflight, prospective final seal,30fullarms59580requests, final report/quality/fairness/resource review and the research completion audit remain open.
+
+
+The complete native gateway wait reconstruction checks all42gateway arms(1920measured requests);18direct-native arms have no gateway ledger and are explicitly omitted from the stage split. Per-request timestamps add to scheduled-arrival TTFT before means/quantiles are computed. Native primary mean TTFT/preparation/admission/upstream-to-firsttext, inseconds, is FIFO64=7.267/.072/.000044/7.186; oldunion=13.147/.076/10.621/2.441; gateFIFO=16.436/.075/15.038/1.315; readiness+union=13.208/.072/12.476/.652. Small remaining arrival/return-transport stages are retained in the JSON. Upstream includes native queue,copy,compute andtransport, not pureGPU time.
+
+Readiness therefore reduces observed upstream-to-text mean1.790s versus oldunion while admission rises1.855s; total mean slightly worsens rather than showing a multi-fold speedup. Quantiles are never added, and frontend waiting is not excluded from E2E TTFT. `v6native1_waits.json` links the complete native audit SHA. At GPUfit, cap hits are3pernative/oldunion run versus2perreadiness run; at abstention, all methods preserve the same seven correct question outcomes perseed despite raw output differences. These are exact cohort observations, not quality equivalence over unseen questions.

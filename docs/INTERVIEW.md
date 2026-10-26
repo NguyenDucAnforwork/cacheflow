@@ -859,3 +859,24 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Làm sao chạy lại khi repo đã có registration của thí nghiệm cũ?**
 
 **Đáp:** Giữ nguyên registration cũ và tạo namespace độc lập. Công cụ mới kiểm reference seal rồi sao controller/auditor/protocol sang đường dẫn mới; AST chỉ cho đổi chuỗi namespace/path cùng bootstrap import cố định. Kế hoạch phải giữ nguyên model,policy,budget,seed,trace và chỉ khác run ID. Bản mới vẫn phải qua gate, preflight và freeze riêng trước GPU. Đây là lặp toàn study có provenance, không phải sửa ID để retry riêng request lỗi hay ghép số đẹp. Unit test còn gọi CLI của bản sinh ra để bắt lỗi import/path như lần pilot trước; nó không chứng minh kết quả GPU đã lặp.
+
+**Hỏi: Vì sao haiSHA-256đều64ký tự mà so sánh lại sai?**
+
+**Đáp:** Thuật toán giống nhau không có nghĩa đang hash cùng đối tượng. Registration ở đây hash byte fileJSONL hoặcgzip; replay/manifest hash một JSONarray canonical từ cácV2TraceRow. Whitespace/key order hoặcgzip header làm fileSHAkhác, dù request vẫn như nhau. Tôi đã viết nhầm một phép so sánh ba giá trị này; auditcontrol bắt được trước pipelinecuối. Cách sửa là kiểm byte-fileSHA với registration và canonicalSHA với manifest/replay riêng biệt, có testUnicode/gzip và một lượtCPU60prompt đi hết nhánh. Không sửa dataset hay chạy lạiGPU để làm hash khớp.
+
+**Hỏi: Nếu method tốt ở4QPS nhưng xấu ở2QPS thì báo thế nào?**
+
+**Đáp:** Báo đủ cả hai. Native control mới có oldunion p95seed103tăng9,26%ở2QPS; readiness còn tăng3,64%và median vẫn tăng mạnh. Cả hai lại nằm trong gate5%ởlowreuse. Các điều kiện này kiểm những giả thuyết khác nhau: giảm tải không đồng nghĩa workload hếtreuse, và một gate qua không chứng minh mọi regime đều không regression. Claim phù hợp là lợi ích có điều kiện dưới cấu hình đã đo; không đổi tên control hoặc bỏ seed xấu để tạo universalwin.
+
+**Hỏi: Vì sao GPUfit vẫn có thay đổi khi thêm readiness?**
+
+**Đáp:** Gate chờ producer ra text đầu tiên theo exactprefix; nó không kiểm một API báoCPUrestore. Vì thế nó cũng đổi native arrival/batching khi logical working set vừaGPU. Ở control10GiB, readiness giảm p95khoảng4–6%nhưng tăng median22–32%và thay đổiF1/output; oldunion gần nhưnative. Điều này gợi ý phải tách tác động pending-prefix/batching khỏi tiết kiệmCPU↔GPUcopy. Chưa có trace đối chiếu từng request thì không tự gán toàn bộ gain cho một loại transfer, nhất là khi counter promotion thiếu endpoint.
+
+**Hỏi: AnswerableF1=nullởabstention test có phải model được0điểm không?**
+
+**Đáp:** Không. Subset đó chỉ có12câu category5 nên không có câu answerable để tínhF1; nullởđây là không áp dụng. Accuracycategory5là7/12cho mọi arm/seed, với0cap hit. Metric thiếu do counter coverage là một loại nullkhác: chưa đo được giá trị. Tôi giữ nđi kèm và tên metric rõ ràng; không điền0để tạo bảng dễ đọc.12câu lặp3seed vẫn không thành36câu độc lập hay đại diện đủ446category5củafull.
+
+
+**Hỏi: Nếu upstreamTTFTgiảm2,44xuống0,65giây thì có thể quảng bá nhanh hơn3,7lần không?**
+
+**Đáp:** Không nếu đã đẩy thời gian chờ ra trước upstream. Native primary mới có oldunion meanadmission10,62giây, readiness12,48giây; totalmeanTTFTlà13,15và13,21giây. Upstream-to-firsttext giảm nhưng admission tăng gần tương ứng. Tôi đối chiếu từng request để các stage cộng đúng vào TTFT từ scheduledarrival, rồi mới lấy mean. P95của các stage không cộng được với nhau. Upstream còn chứa nativequeue/copy/compute/transport nên cũng không được gọi toàn bộ là GPUtime.

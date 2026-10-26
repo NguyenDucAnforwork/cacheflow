@@ -11,6 +11,8 @@ from v6_native_metrics import summarize
 from v5_analyze_histograms import analyze as histogram
 from v5_analyze_decode import analyze as decode
 from v6_analyze_fairness import analyze as fairness
+from v6_native_contracts import configuration,ledger
+from v6_native_resources import analyze as resources
 
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -42,7 +44,10 @@ def main():
             assert len(rows)==s['requests']==s['successes']==step['requests']==m['requests'] and not s['errors']
             assert len({r['request_id'] for r in rows})==len(rows)
             assert all(r['status']=='ok' and r['server_prompt_tokens']==r['input_tokens'] for r in rows)
-            assert s['trace_sha256']==m['trace_sha256']==reg['trace_sha256'][step['trace']]
+            assert s['trace_sha256']==m['trace_sha256']
+            assert sha(step['trace'])==reg['trace_sha256'][step['trace']]
+            configuration(step,block,setup,s,parent,seal,reg,warm)
+            ledger(rid,raw,step['requests'])
             assert s['prompt_version']==m['prompt_version']=='locomo-qwen-concise-v5'
             assert m['renderer_sha256']==seal['source_sha256']['src/cacheflow/v5_prompt.py']
             assert m['abstention_style']=='official_consistent_system_and_user'
@@ -87,10 +92,12 @@ def main():
             assert native['request_file_sha256']==sha(raw/(rid+'.jsonl'))
             verified=summarize(rid,native['before'],native['after'],rows,s,'sglang')
             assert verified['coverage_valid']==native['coverage_valid'] and verified['coverage_failures']==native['coverage_failures']
+            samples=[json.loads(l) for l in (raw/(rid+'.metrics.jsonl')).read_text().splitlines()]
+            resource=resources(samples);assert resource['host_capacity_tokens']*147456==16000745472
             requestmaps[rid]={r['request_id']:r for r in rows}
             results.append(dict(**step,regime=block['regime'],seed=block['seed'],engine_pid=s['engine_pid'],
                 **{k:s[k] for k in ['arrival_ttft_p50_ms','arrival_ttft_p95_ms','arrival_ttft_p99_ms']},
-                computed_tokens=counters.get('sglang:uncached_prompt_tokens_histogram_sum'),
+                computed_tokens=counters.get('sglang:uncached_prompt_tokens_histogram_sum'),resource=resource,actual_host_payload_bytes=resource['host_capacity_tokens']*147456,
                 host_promoted_tokens=counters.get('sglang:load_back_tokens_total'),native_itl=histogram(nativepath),secondary=decode(rid),fairness=fairness(rid)))
         assert len(blockpids)==1;allpids.extend(blockpids)
     assert len(allpids)==len(set(allpids))==18 and len(results)==60
@@ -113,7 +120,7 @@ def main():
                     f1_delta=fb-fa if fa is not None and fb is not None else None,
                     output_hash_mismatches=sum(aa[k]['output_hash']!=bb[k]['output_hash'] for k in aa)))
     result=dict(complete=True,registration_sha256=sha(regpath),scope=reg['scope'],requests=sum(r['requests'] for r in results),
-        errors=0,separate_warmup_requests=1080,runs=results,pairs=pairs)
+        errors=0,separate_warmup_requests=1080,runs=results,pairs=pairs,analysis_source_sha256={name:sha(name) for name in ['scripts/v6_audit_native_matrix.py','scripts/v6_native_contracts.py','scripts/v6_native_resources.py']})
     (BASE/'v6native1_audit.json').write_text(json.dumps(result,indent=2)+'\n')
     print('Audited native matrix',result['requests'],'requests',flush=True)
 

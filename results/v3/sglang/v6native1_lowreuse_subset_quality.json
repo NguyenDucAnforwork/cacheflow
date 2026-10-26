@@ -1,0 +1,738 @@
+{
+  "evaluator_url": "https://raw.githubusercontent.com/snap-research/locomo/3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376/task_eval/evaluation.py",
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "nltk_version": "3.9.2",
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "scope": "LoCoMo text-only serving subsets; protocol and prompt version per run; raw budgeted outputs, no answer extraction; not leaderboard",
+  "runs": [
+    {
+      "run_id": "v6native1-lowreuse-s101-native",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s101-union64",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s101-packing_ready",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s102-packing_ready",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s102-union64",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s102-native",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s103-packing_ready",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s103-native",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    },
+    {
+      "run_id": "v6native1-lowreuse-s103-union64",
+      "answerable_n": 8,
+      "protocol": "p_qa",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+      "answerable_f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0,
+      "per_request": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.1904761904761905
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.6666666666666666
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "sample_id": "conv-42",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "sample_id": "conv-47",
+          "category": 3,
+          "budget_hit": false,
+          "score": 0.0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "sample_id": "conv-48",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.4
+        },
+        {
+          "request_id": "conv-49-q000",
+          "sample_id": "conv-49",
+          "category": 1,
+          "budget_hit": false,
+          "score": 0.5
+        },
+        {
+          "request_id": "conv-50-q000",
+          "sample_id": "conv-50",
+          "category": 2,
+          "budget_hit": false,
+          "score": 0.26666666666666666
+        }
+      ]
+    }
+  ]
+}

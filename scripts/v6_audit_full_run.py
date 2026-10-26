@@ -12,7 +12,7 @@ from v5_analyze_decode import analyze as decode
 from v6_analyze_fairness import analyze as fairness
 from v3_analyze_runs import load
 from v4_audit_sglang_runs import audit as native_integrity
-from v4_analyze_sglang_resources import analyze as native_resources
+from v6_native_resources import analyze as native_resources
 from v6_main_resources import analyze as main_resources
 from v5_analyze_waits import analyze as waits
 

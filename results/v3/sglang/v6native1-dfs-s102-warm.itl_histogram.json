@@ -1,0 +1,62 @@
+{
+  "run_id": "v6native1-dfs-s102-warm",
+  "before": {
+    "pid": 381910,
+    "start_ns": 141600560808788,
+    "end_ns": 141600592740269,
+    "counters": {
+      "sglang:prompt_tokens_total": 6.0,
+      "sglang:generation_tokens_total": 8.0
+    },
+    "itl_cumulative_buckets": {}
+  },
+  "after": {
+    "pid": 381910,
+    "start_ns": 141627223791313,
+    "end_ns": 141627274513807,
+    "counters": {
+      "sglang:prompt_tokens_total": 1278184.0,
+      "sglang:generation_tokens_total": 1433.0,
+      "sglang:inter_token_latency_seconds_sum": 50.49826869321987,
+      "sglang:inter_token_latency_seconds_count": 1365.0
+    },
+    "itl_cumulative_buckets": {
+      "0.002": 201.0,
+      "0.004": 305.0,
+      "0.006": 319.0,
+      "0.008": 319.0,
+      "0.01": 323.0,
+      "0.015": 374.0,
+      "0.02": 641.0,
+      "0.025": 756.0,
+      "0.03": 840.0,
+      "0.035": 911.0,
+      "0.04": 983.0,
+      "0.06": 1185.0,
+      "0.08": 1208.0,
+      "0.1": 1241.0,
+      "0.2": 1344.0,
+      "0.4": 1363.0,
+      "0.6": 1363.0,
+      "0.8": 1363.0,
+      "1.0": 1363.0,
+      "2.0": 1364.0,
+      "4.0": 1365.0,
+      "6.0": 1365.0,
+      "8.0": 1365.0,
+      "+Inf": 1365.0
+    }
+  },
+  "coverage_valid": false,
+  "coverage_failures": [
+    "Missing/reset ITL observations",
+    "Bucket schema missing/changed"
+  ],
+  "prompt_tokens_delta": 1278178.0,
+  "generation_tokens_delta": 1425.0,
+  "itl_observations": null,
+  "native_itl_mean_ms": null,
+  "native_itl_cumulative_bucket_deltas": null,
+  "limitations": "Native engine histogram semantics, not exact client individual-token timestamps. SG weights averaged update intervals by new-token count; vLLM observes engine-output update intervals. Bucket quantiles are bounds. No GPU profiler enabled.",
+  "request_file_sha256": "f59c74b80762a238bdc3229dd7bf34c9ed350ab5e1e722e05bb32f9939eee775"
+}

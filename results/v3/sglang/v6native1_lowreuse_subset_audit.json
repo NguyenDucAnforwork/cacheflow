@@ -1,0 +1,4081 @@
+{
+  "subset_complete": true,
+  "overall_native_stage_complete": false,
+  "regime": "lowreuse",
+  "requests": 72,
+  "errors": 0,
+  "separate_warmup_requests": 180,
+  "registration_sha256": "44663cfe8ce50dd706a2df742592be184cb5ed6a8a7eed242765fe8cab678b2f",
+  "quality_sha256": "afefa4ad76c51e835a19536d0d3ce6c94b121ade625e22fae0198433af9dcb67",
+  "analysis_source_sha256": {
+    "scripts/v6_audit_native_subset.py": "5f9a9b46c4f7b6d539dcde27bfd0faad4f7e748978d315febabd3afc55d855c5",
+    "scripts/v6_native_contracts.py": "36587ebf999df1d36c2420d35693b97415b78258fea48d2d724caf7c4ad84bc6",
+    "scripts/v6_native_resources.py": "b116721732f51b275d049a5677f1688a28b9545a80a22b73e42d1608689a8fa5"
+  },
+  "runs": [
+    {
+      "run_id": "v6native1-lowreuse-s101-native",
+      "arm": "native",
+      "policy": null,
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl",
+      "seed": 101,
+      "regime": "lowreuse",
+      "engine_pid": 390898,
+      "p50_ms": 22933.6122055,
+      "p95_ms": 42229.32544475001,
+      "p99_ms": 44101.35302735,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.41917866,
+        "start_ns": 142856768876174,
+        "end_ns": 142908188054834,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.129999999999999,
+          "sglang:queue_time_seconds_sum": 130.6803613859811,
+          "sglang:time_to_first_token_seconds_sum": 186.96001462597633,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 90.39784416735372,
+        "gpu_time_weighted_power_w": 280.38677146812404,
+        "vram_peak_mib": 15962.0,
+        "temperature_peak_c": 68.0,
+        "summed_process_rss_peak_bytes": 21591425024,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s101-native",
+        "snapshot_sha256": "92c838c9ecfdd45d050eda6e04e4a8dbe904bde1551c06b5c800b06d65a83a1d",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.83954970757967,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 2000.0,
+            "upper_ms": 4000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s101-native",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+        "request_file_sha256": "2e064cb38231759c0b848a2970d1240b2159f14f5ecb5dfaae44045c5ec695e1",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 22965.7192,
+          "p95": 42442.94647415,
+          "p99": 44357.30315083
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.9642005,
+          "p95": 1729.443583649999,
+          "p99": 2333.8900895299994
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.067755147058826,
+          "p95": 58.845262365322554,
+          "p99": 75.898129015
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.184800510336818,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.83954970757967,
+        "native_itl_sample_endpoints_ns": [
+          142856768876174,
+          142908188054834
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s101-native",
+        "request_file_sha256": "2e064cb38231759c0b848a2970d1240b2159f14f5ecb5dfaae44045c5ec695e1",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5007.585699,
+              "p95": 5007.585699,
+              "p99": 5007.585699,
+              "max": 5007.585699
+            },
+            "completion_latency_ms": {
+              "p50": 7492.587415,
+              "p95": 7492.587415,
+              "p99": 7492.587415,
+              "max": 7492.587415
+            }
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6956.362963,
+              "p95": 6956.362963,
+              "p99": 6956.362963,
+              "max": 6956.362963
+            },
+            "completion_latency_ms": {
+              "p50": 7120.934303,
+              "p95": 7120.934303,
+              "p99": 7120.934303,
+              "max": 7120.934303
+            }
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14086.370566,
+              "p95": 14086.370566,
+              "p99": 14086.370566,
+              "max": 14086.370566
+            },
+            "completion_latency_ms": {
+              "p50": 14163.403568,
+              "p95": 14163.403568,
+              "p99": 14163.403568,
+              "max": 14163.403568
+            }
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 19587.130367,
+              "p95": 19587.130367,
+              "p99": 19587.130367,
+              "max": 19587.130367
+            },
+            "completion_latency_ms": {
+              "p50": 19590.687918,
+              "p95": 19590.687918,
+              "p99": 19590.687918,
+              "max": 19590.687918
+            }
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 26280.094044,
+              "p95": 26280.094044,
+              "p99": 26280.094044,
+              "max": 26280.094044
+            },
+            "completion_latency_ms": {
+              "p50": 26340.750482,
+              "p95": 26340.750482,
+              "p99": 26340.750482,
+              "max": 26340.750482
+            }
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 32822.433044,
+              "p95": 32822.433044,
+              "p99": 32822.433044,
+              "max": 32822.433044
+            },
+            "completion_latency_ms": {
+              "p50": 33148.697239,
+              "p95": 33148.697239,
+              "p99": 33148.697239,
+              "max": 33148.697239
+            }
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 37883.547128,
+              "p95": 37883.547128,
+              "p99": 37883.547128,
+              "max": 37883.547128
+            },
+            "completion_latency_ms": {
+              "p50": 37998.904189,
+              "p95": 37998.904189,
+              "p99": 37998.904189,
+              "max": 37998.904189
+            }
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 44569.359923,
+              "p95": 44569.359923,
+              "p99": 44569.359923,
+              "max": 44569.359923
+            },
+            "completion_latency_ms": {
+              "p50": 44835.89232,
+              "p95": 44835.89232,
+              "p99": 44835.89232,
+              "max": 44835.89232
+            }
+          }
+        ],
+        "admission": null,
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6native1-lowreuse-s101-native"
+        ]
+      },
+      "setup_sha256": "255be35ddf295c114a1bb34259ffce37a5f2874c61c0cb059d316c0894059660",
+      "request_file_sha256": "2e064cb38231759c0b848a2970d1240b2159f14f5ecb5dfaae44045c5ec695e1",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s101-union64",
+      "arm": "union64",
+      "policy": "packing_reuse",
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl",
+      "seed": 101,
+      "regime": "lowreuse",
+      "engine_pid": 390898,
+      "p50_ms": 23068.978194000003,
+      "p95_ms": 42384.115241700005,
+      "p99_ms": 44257.77170834,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.433411006,
+        "start_ns": 142926467724243,
+        "end_ns": 142977901135249,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.1699999999999964,
+          "sglang:queue_time_seconds_sum": 129.5619901889586,
+          "sglang:time_to_first_token_seconds_sum": 187.28989790499327,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 89.00115228447504,
+        "gpu_time_weighted_power_w": 280.06164496178917,
+        "vram_peak_mib": 15962.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 21591588864,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s101-union64",
+        "snapshot_sha256": "f8d0392e5327874a5b207fe05b2d7a61345b6896acd932b62e92743342906bc9",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.74076710564182,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s101-union64",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+        "request_file_sha256": "12a813282d6dff8ffd4ddb5259e3fc75c6d033260d3b3c0c4277c363065d1189",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23101.4582775,
+          "p95": 42597.401319749995,
+          "p99": 44512.94675995
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.8545125,
+          "p95": 1723.945628299999,
+          "p99": 2323.5608408599996
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.087587540476193,
+          "p95": 58.10621234193546,
+          "p99": 75.45258811999999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.1775975348303724,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.74076710564182,
+        "native_itl_sample_endpoints_ns": [
+          142926467724243,
+          142977901135249
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s101-union64",
+        "request_file_sha256": "12a813282d6dff8ffd4ddb5259e3fc75c6d033260d3b3c0c4277c363065d1189",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5137.572436,
+              "p95": 5137.572436,
+              "p99": 5137.572436,
+              "max": 5137.572436
+            },
+            "completion_latency_ms": {
+              "p50": 7611.03708,
+              "p95": 7611.03708,
+              "p99": 7611.03708,
+              "max": 7611.03708
+            },
+            "admission_wait_ms": {
+              "p50": 0.0556,
+              "p95": 0.0556,
+              "p99": 0.0556,
+              "max": 0.0556
+            },
+            "preparation_ms": {
+              "p50": 79.879513,
+              "p95": 79.879513,
+              "p99": 79.879513,
+              "max": 79.879513
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7075.097506,
+              "p95": 7075.097506,
+              "p99": 7075.097506,
+              "max": 7075.097506
+            },
+            "completion_latency_ms": {
+              "p50": 7238.762713,
+              "p95": 7238.762713,
+              "p99": 7238.762713,
+              "max": 7238.762713
+            },
+            "admission_wait_ms": {
+              "p50": 0.03835,
+              "p95": 0.03835,
+              "p99": 0.03835,
+              "max": 0.03835
+            },
+            "preparation_ms": {
+              "p50": 107.596857,
+              "p95": 107.596857,
+              "p99": 107.596857,
+              "max": 107.596857
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14226.232589,
+              "p95": 14226.232589,
+              "p99": 14226.232589,
+              "max": 14226.232589
+            },
+            "completion_latency_ms": {
+              "p50": 14297.583949,
+              "p95": 14297.583949,
+              "p99": 14297.583949,
+              "max": 14297.583949
+            },
+            "admission_wait_ms": {
+              "p50": 0.029083,
+              "p95": 0.029083,
+              "p99": 0.029083,
+              "max": 0.029083
+            },
+            "preparation_ms": {
+              "p50": 91.414198,
+              "p95": 91.414198,
+              "p99": 91.414198,
+              "max": 91.414198
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 19717.100256,
+              "p95": 19717.100256,
+              "p99": 19717.100256,
+              "max": 19717.100256
+            },
+            "completion_latency_ms": {
+              "p50": 19720.370059,
+              "p95": 19720.370059,
+              "p99": 19720.370059,
+              "max": 19720.370059
+            },
+            "admission_wait_ms": {
+              "p50": 0.027187,
+              "p95": 0.027187,
+              "p99": 0.027187,
+              "max": 0.027187
+            },
+            "preparation_ms": {
+              "p50": 69.870798,
+              "p95": 69.870798,
+              "p99": 69.870798,
+              "max": 69.870798
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 26420.856132,
+              "p95": 26420.856132,
+              "p99": 26420.856132,
+              "max": 26420.856132
+            },
+            "completion_latency_ms": {
+              "p50": 26482.546496,
+              "p95": 26482.546496,
+              "p99": 26482.546496,
+              "max": 26482.546496
+            },
+            "admission_wait_ms": {
+              "p50": 0.029327,
+              "p95": 0.029327,
+              "p99": 0.029327,
+              "max": 0.029327
+            },
+            "preparation_ms": {
+              "p50": 77.895062,
+              "p95": 77.895062,
+              "p99": 77.895062,
+              "max": 77.895062
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 32964.833612,
+              "p95": 32964.833612,
+              "p99": 32964.833612,
+              "max": 32964.833612
+            },
+            "completion_latency_ms": {
+              "p50": 33296.815354,
+              "p95": 33296.815354,
+              "p99": 33296.815354,
+              "max": 33296.815354
+            },
+            "admission_wait_ms": {
+              "p50": 0.029351,
+              "p95": 0.029351,
+              "p99": 0.029351,
+              "max": 0.029351
+            },
+            "preparation_ms": {
+              "p50": 83.675745,
+              "p95": 83.675745,
+              "p99": 83.675745,
+              "max": 83.675745
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38034.555587,
+              "p95": 38034.555587,
+              "p99": 38034.555587,
+              "max": 38034.555587
+            },
+            "completion_latency_ms": {
+              "p50": 38150.599405,
+              "p95": 38150.599405,
+              "p99": 38150.599405,
+              "max": 38150.599405
+            },
+            "admission_wait_ms": {
+              "p50": 0.0298,
+              "p95": 0.0298,
+              "p99": 0.0298,
+              "max": 0.0298
+            },
+            "preparation_ms": {
+              "p50": 91.569011,
+              "p95": 91.569011,
+              "p99": 91.569011,
+              "max": 91.569011
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 44726.185825,
+              "p95": 44726.185825,
+              "p99": 44726.185825,
+              "max": 44726.185825
+            },
+            "completion_latency_ms": {
+              "p50": 44991.83312,
+              "p95": 44991.83312,
+              "p99": 44991.83312,
+              "max": 44991.83312
+            },
+            "admission_wait_ms": {
+              "p50": 0.03097,
+              "p95": 0.03097,
+              "p99": 0.03097,
+              "max": 0.03097
+            },
+            "preparation_ms": {
+              "p50": 110.42471,
+              "p95": 110.42471,
+              "p99": 110.42471,
+              "max": 110.42471
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-lowreuse-s101-union64",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000269668,
+          "queued_with_at_most_one_active_s": 9.395000000000001e-05,
+          "active_request_seconds": 190.992777361,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6native1-lowreuse-s101-union64",
+            "requests": 8,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 8.930199374999999,
+                "p50": 5.466237,
+                "p95": 24.68917804999998
+              },
+              "gateway_prepare": {
+                "mean": 89.04073675000001,
+                "p50": 87.5449715,
+                "p95": 109.43496145
+              },
+              "gateway_admission": {
+                "mean": 0.0337085,
+                "p50": 0.029575499999999998,
+                "p95": 0.04956249999999999
+              },
+              "upstream_to_token": {
+                "mean": 23438.47221275,
+                "p50": 22988.4622245,
+                "p95": 42272.9820778
+              },
+              "return_stream": {
+                "mean": 1.3273855,
+                "p50": 1.2748400000000002,
+                "p95": 1.6886604999999997
+              },
+              "ttft": {
+                "mean": 23537.804242875,
+                "p50": 23068.978194000003,
+                "p95": 42384.1152417
+              },
+              "worker_queue": {
+                "mean": 13.245312125,
+                "p50": 0.328064,
+                "p95": 45.943796249999984
+              },
+              "worker_cpu": {
+                "mean": 74.3107795,
+                "p50": 77.059241,
+                "p95": 86.9643228
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "setup_sha256": "1960c287b28075fdce017fbea56ddceb1af54dd3ca438f2282d0ce18394c5a23",
+      "request_file_sha256": "12a813282d6dff8ffd4ddb5259e3fc75c6d033260d3b3c0c4277c363065d1189",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s101-packing_ready",
+      "arm": "packing_ready",
+      "policy": "packing_ready",
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl",
+      "seed": 101,
+      "regime": "lowreuse",
+      "engine_pid": 390898,
+      "p50_ms": 23070.501249,
+      "p95_ms": 42403.236651600004,
+      "p99_ms": 44285.55618552,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.451078390999996,
+        "start_ns": 142996427088971,
+        "end_ns": 143047878167362,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.129999999999999,
+          "sglang:queue_time_seconds_sum": 129.58256293094018,
+          "sglang:time_to_first_token_seconds_sum": 187.33672198004206,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 88.44879983940316,
+        "gpu_time_weighted_power_w": 280.0770516306153,
+        "vram_peak_mib": 15962.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 21591871488,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s101-packing_ready",
+        "snapshot_sha256": "6551a91d083090d467e8f63efc046ccfbe8faab6a429e2e1b5317f2b9051fda9",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.47483094583119,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s101-packing_ready",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+        "request_file_sha256": "9d8aceca69953405aabeb6ea077002545bcddd74e2af48ff786bd888aa939e93",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23102.61613,
+          "p95": 42600.65141504999,
+          "p99": 44518.18224061
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.789525,
+          "p95": 1725.282478749999,
+          "p99": 2325.5406701499996
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.095857416666668,
+          "p95": 58.13992474516127,
+          "p99": 75.51457122
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.177333684005226,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.47483094583119,
+        "native_itl_sample_endpoints_ns": [
+          142996427088971,
+          143047878167362
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s101-packing_ready",
+        "request_file_sha256": "9d8aceca69953405aabeb6ea077002545bcddd74e2af48ff786bd888aa939e93",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5131.208523,
+              "p95": 5131.208523,
+              "p99": 5131.208523,
+              "max": 5131.208523
+            },
+            "completion_latency_ms": {
+              "p50": 7606.813741,
+              "p95": 7606.813741,
+              "p99": 7606.813741,
+              "max": 7606.813741
+            },
+            "admission_wait_ms": {
+              "p50": 0.048484,
+              "p95": 0.048484,
+              "p99": 0.048484,
+              "max": 0.048484
+            },
+            "preparation_ms": {
+              "p50": 77.074915,
+              "p95": 77.074915,
+              "p99": 77.074915,
+              "max": 77.074915
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7070.727591,
+              "p95": 7070.727591,
+              "p99": 7070.727591,
+              "max": 7070.727591
+            },
+            "completion_latency_ms": {
+              "p50": 7234.632376,
+              "p95": 7234.632376,
+              "p99": 7234.632376,
+              "max": 7234.632376
+            },
+            "admission_wait_ms": {
+              "p50": 0.040007,
+              "p95": 0.040007,
+              "p99": 0.040007,
+              "max": 0.040007
+            },
+            "preparation_ms": {
+              "p50": 103.347504,
+              "p95": 103.347504,
+              "p99": 103.347504,
+              "max": 103.347504
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14227.142661,
+              "p95": 14227.142661,
+              "p99": 14227.142661,
+              "max": 14227.142661
+            },
+            "completion_latency_ms": {
+              "p50": 14298.366357,
+              "p95": 14298.366357,
+              "p99": 14298.366357,
+              "max": 14298.366357
+            },
+            "admission_wait_ms": {
+              "p50": 0.02894,
+              "p95": 0.02894,
+              "p99": 0.02894,
+              "max": 0.02894
+            },
+            "preparation_ms": {
+              "p50": 96.70268,
+              "p95": 96.70268,
+              "p99": 96.70268,
+              "max": 96.70268
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 19721.324893,
+              "p95": 19721.324893,
+              "p99": 19721.324893,
+              "max": 19721.324893
+            },
+            "completion_latency_ms": {
+              "p50": 19724.133517,
+              "p95": 19724.133517,
+              "p99": 19724.133517,
+              "max": 19724.133517
+            },
+            "admission_wait_ms": {
+              "p50": 0.02887,
+              "p95": 0.02887,
+              "p99": 0.02887,
+              "max": 0.02887
+            },
+            "preparation_ms": {
+              "p50": 73.802061,
+              "p95": 73.802061,
+              "p99": 73.802061,
+              "max": 73.802061
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 26419.677605,
+              "p95": 26419.677605,
+              "p99": 26419.677605,
+              "max": 26419.677605
+            },
+            "completion_latency_ms": {
+              "p50": 26481.098743,
+              "p95": 26481.098743,
+              "p99": 26481.098743,
+              "max": 26481.098743
+            },
+            "admission_wait_ms": {
+              "p50": 0.02939,
+              "p95": 0.02939,
+              "p99": 0.02939,
+              "max": 0.02939
+            },
+            "preparation_ms": {
+              "p50": 80.327348,
+              "p95": 80.327348,
+              "p99": 80.327348,
+              "max": 80.327348
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 32962.429369,
+              "p95": 32962.429369,
+              "p99": 32962.429369,
+              "max": 32962.429369
+            },
+            "completion_latency_ms": {
+              "p50": 33294.255332,
+              "p95": 33294.255332,
+              "p99": 33294.255332,
+              "max": 33294.255332
+            },
+            "admission_wait_ms": {
+              "p50": 0.02883,
+              "p95": 0.02883,
+              "p99": 0.02883,
+              "max": 0.02883
+            },
+            "preparation_ms": {
+              "p50": 82.020843,
+              "p95": 82.020843,
+              "p99": 82.020843,
+              "max": 82.020843
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38033.566305,
+              "p95": 38033.566305,
+              "p99": 38033.566305,
+              "max": 38033.566305
+            },
+            "completion_latency_ms": {
+              "p50": 38149.24057,
+              "p95": 38149.24057,
+              "p99": 38149.24057,
+              "max": 38149.24057
+            },
+            "admission_wait_ms": {
+              "p50": 0.029,
+              "p95": 0.029,
+              "p99": 0.029,
+              "max": 0.029
+            },
+            "preparation_ms": {
+              "p50": 86.471722,
+              "p95": 86.471722,
+              "p99": 86.471722,
+              "max": 86.471722
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 44756.136069,
+              "p95": 44756.136069,
+              "p99": 44756.136069,
+              "max": 44756.136069
+            },
+            "completion_latency_ms": {
+              "p50": 44997.564947,
+              "p95": 44997.564947,
+              "p99": 44997.564947,
+              "max": 44997.564947
+            },
+            "admission_wait_ms": {
+              "p50": 0.030077,
+              "p95": 0.030077,
+              "p99": 0.030077,
+              "max": 0.030077
+            },
+            "preparation_ms": {
+              "p50": 103.95211,
+              "p95": 103.95211,
+              "p99": 103.95211,
+              "max": 103.95211
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-lowreuse-s101-packing_ready",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000263598,
+          "queued_with_at_most_one_active_s": 8.8491e-05,
+          "active_request_seconds": 190.99452909800002,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6native1-lowreuse-s101-packing_ready",
+            "requests": 8,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 9.2781875,
+                "p50": 5.908248,
+                "p95": 24.425128999999984
+              },
+              "gateway_prepare": {
+                "mean": 87.962397875,
+                "p50": 84.2462825,
+                "p95": 103.74049790000001
+              },
+              "gateway_admission": {
+                "mean": 0.03294975,
+                "p50": 0.029195,
+                "p95": 0.045517049999999996
+              },
+              "upstream_to_token": {
+                "mean": 23441.775155875,
+                "p50": 22986.4867315,
+                "p95": 42297.592477599996
+              },
+              "return_stream": {
+                "mean": 1.227936,
+                "p50": 1.1311404999999999,
+                "p95": 1.7175309499999998
+              },
+              "ttft": {
+                "mean": 23540.276627,
+                "p50": 23070.501249,
+                "p95": 42403.2366516
+              },
+              "worker_queue": {
+                "mean": 12.0646275,
+                "p50": 0.2897605,
+                "p95": 41.950149899999985
+              },
+              "worker_cpu": {
+                "mean": 74.5382175,
+                "p50": 77.001568,
+                "p95": 89.865473
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "setup_sha256": "e228538aa0b5cc9d76d1aa1089f857dc5c68fffa7b1157dae5d861f85ec771f3",
+      "request_file_sha256": "9d8aceca69953405aabeb6ea077002545bcddd74e2af48ff786bd888aa939e93",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s102-packing_ready",
+      "arm": "packing_ready",
+      "policy": "packing_ready",
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl",
+      "seed": 102,
+      "regime": "lowreuse",
+      "engine_pid": 392765,
+      "p50_ms": 23963.601079,
+      "p95_ms": 43079.934296600004,
+      "p99_ms": 44909.258633720005,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.494510725,
+        "start_ns": 143161901357292,
+        "end_ns": 143213395868017,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.009999999999998,
+          "sglang:queue_time_seconds_sum": 136.77906723998603,
+          "sglang:time_to_first_token_seconds_sum": 192.01964617305202,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 90.63558522800199,
+        "gpu_time_weighted_power_w": 279.7177566299531,
+        "vram_peak_mib": 15964.0,
+        "temperature_peak_c": 68.0,
+        "summed_process_rss_peak_bytes": 21568495616,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s102-packing_ready",
+        "snapshot_sha256": "06bbd898f0f06e09fadc47d65f4ad7d460d446759e0c9dbe4bc7c2e677871953",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 37.083455431887785,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 2000.0,
+            "upper_ms": 4000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s102-packing_ready",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+        "request_file_sha256": "640717608ff2158662e14ecb2e0d286e74aa2982f06b3e0b43999648f6d2585c",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23996.3179035,
+          "p95": 43293.1589923,
+          "p99": 45164.585142460004
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.7103085,
+          "p95": 1742.1814710999988,
+          "p99": 2349.5994134199996
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.103854245238097,
+          "p95": 59.2928557177419,
+          "p99": 76.41222014999998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.188023826180831,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 37.083455431887785,
+        "native_itl_sample_endpoints_ns": [
+          143161901357292,
+          143213395868017
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s102-packing_ready",
+        "request_file_sha256": "640717608ff2158662e14ecb2e0d286e74aa2982f06b3e0b43999648f6d2585c",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5107.300856,
+              "p95": 5107.300856,
+              "p99": 5107.300856,
+              "max": 5107.300856
+            },
+            "completion_latency_ms": {
+              "p50": 7608.754755,
+              "p95": 7608.754755,
+              "p99": 7608.754755,
+              "max": 7608.754755
+            },
+            "admission_wait_ms": {
+              "p50": 0.051501,
+              "p95": 0.051501,
+              "p99": 0.051501,
+              "max": 0.051501
+            },
+            "preparation_ms": {
+              "p50": 66.956742,
+              "p95": 66.956742,
+              "p99": 66.956742,
+              "max": 66.956742
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6873.726446,
+              "p95": 6873.726446,
+              "p99": 6873.726446,
+              "max": 6873.726446
+            },
+            "completion_latency_ms": {
+              "p50": 7037.658719,
+              "p95": 7037.658719,
+              "p99": 7037.658719,
+              "max": 7037.658719
+            },
+            "admission_wait_ms": {
+              "p50": 0.044367,
+              "p95": 0.044367,
+              "p99": 0.044367,
+              "max": 0.044367
+            },
+            "preparation_ms": {
+              "p50": 45.650241,
+              "p95": 45.650241,
+              "p99": 45.650241,
+              "max": 45.650241
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14791.879366,
+              "p95": 14791.879366,
+              "p99": 14791.879366,
+              "max": 14791.879366
+            },
+            "completion_latency_ms": {
+              "p50": 14870.085262,
+              "p95": 14870.085262,
+              "p99": 14870.085262,
+              "max": 14870.085262
+            },
+            "admission_wait_ms": {
+              "p50": 0.032437,
+              "p95": 0.032437,
+              "p99": 0.032437,
+              "max": 0.032437
+            },
+            "preparation_ms": {
+              "p50": 109.606521,
+              "p95": 109.606521,
+              "p99": 109.606521,
+              "max": 109.606521
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20655.861517,
+              "p95": 20655.861517,
+              "p99": 20655.861517,
+              "max": 20655.861517
+            },
+            "completion_latency_ms": {
+              "p50": 20659.280544,
+              "p95": 20659.280544,
+              "p99": 20659.280544,
+              "max": 20659.280544
+            },
+            "admission_wait_ms": {
+              "p50": 0.029807,
+              "p95": 0.029807,
+              "p99": 0.029807,
+              "max": 0.029807
+            },
+            "preparation_ms": {
+              "p50": 118.328885,
+              "p95": 118.328885,
+              "p99": 118.328885,
+              "max": 118.328885
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27271.340641,
+              "p95": 27271.340641,
+              "p99": 27271.340641,
+              "max": 27271.340641
+            },
+            "completion_latency_ms": {
+              "p50": 27333.355263,
+              "p95": 27333.355263,
+              "p99": 27333.355263,
+              "max": 27333.355263
+            },
+            "admission_wait_ms": {
+              "p50": 0.028507,
+              "p95": 0.028507,
+              "p99": 0.028507,
+              "max": 0.028507
+            },
+            "preparation_ms": {
+              "p50": 82.241837,
+              "p95": 82.241837,
+              "p99": 82.241837,
+              "max": 82.241837
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 33947.755091,
+              "p95": 33947.755091,
+              "p99": 33947.755091,
+              "max": 33947.755091
+            },
+            "completion_latency_ms": {
+              "p50": 34279.859196,
+              "p95": 34279.859196,
+              "p99": 34279.859196,
+              "max": 34279.859196
+            },
+            "admission_wait_ms": {
+              "p50": 0.029217,
+              "p95": 0.029217,
+              "p99": 0.029217,
+              "max": 0.029217
+            },
+            "preparation_ms": {
+              "p50": 82.29464,
+              "p95": 82.29464,
+              "p99": 82.29464,
+              "max": 82.29464
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38833.288514,
+              "p95": 38833.288514,
+              "p99": 38833.288514,
+              "max": 38833.288514
+            },
+            "completion_latency_ms": {
+              "p50": 38948.776858,
+              "p95": 38948.776858,
+              "p99": 38948.776858,
+              "max": 38948.776858
+            },
+            "admission_wait_ms": {
+              "p50": 0.028084,
+              "p95": 0.028084,
+              "p99": 0.028084,
+              "max": 0.028084
+            },
+            "preparation_ms": {
+              "p50": 61.429695,
+              "p95": 61.429695,
+              "p99": 61.429695,
+              "max": 61.429695
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 45366.589718,
+              "p95": 45366.589718,
+              "p99": 45366.589718,
+              "max": 45366.589718
+            },
+            "completion_latency_ms": {
+              "p50": 45632.44168,
+              "p95": 45632.44168,
+              "p99": 45632.44168,
+              "max": 45632.44168
+            },
+            "admission_wait_ms": {
+              "p50": 0.02813,
+              "p95": 0.02813,
+              "p99": 0.02813,
+              "max": 0.02813
+            },
+            "preparation_ms": {
+              "p50": 76.140609,
+              "p95": 76.140609,
+              "p99": 76.140609,
+              "max": 76.140609
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-lowreuse-s102-packing_ready",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.00027205,
+          "queued_with_at_most_one_active_s": 9.5868e-05,
+          "active_request_seconds": 195.639910808,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6native1-lowreuse-s102-packing_ready",
+            "requests": 8,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 9.315069124999999,
+                "p50": 5.3441735,
+                "p95": 25.940072049999984
+              },
+              "gateway_prepare": {
+                "mean": 80.33114625,
+                "p50": 79.19122300000001,
+                "p95": 115.2760576
+              },
+              "gateway_admission": {
+                "mean": 0.03400625,
+                "p50": 0.029512,
+                "p95": 0.049004099999999995
+              },
+              "upstream_to_token": {
+                "mean": 24015.148212625,
+                "p50": 23857.775405499997,
+                "p95": 43002.05523195
+              },
+              "return_stream": {
+                "mean": 1.139334375,
+                "p50": 1.023022,
+                "p95": 1.5598743499999996
+              },
+              "ttft": {
+                "mean": 24105.967768625,
+                "p50": 23963.601079,
+                "p95": 43079.9342966
+              },
+              "worker_queue": {
+                "mean": 0.20565850000000002,
+                "p50": 0.138289,
+                "p95": 0.43409849999999994
+              },
+              "worker_cpu": {
+                "mean": 78.68661575,
+                "p50": 77.598512,
+                "p95": 113.59495495
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "setup_sha256": "8e1b5d39a3318ec2c022dba2432a1251ea69cd15e46d205f606f87f5059c0c67",
+      "request_file_sha256": "640717608ff2158662e14ecb2e0d286e74aa2982f06b3e0b43999648f6d2585c",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s102-union64",
+      "arm": "union64",
+      "policy": "packing_reuse",
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl",
+      "seed": 102,
+      "regime": "lowreuse",
+      "engine_pid": 392765,
+      "p50_ms": 23974.534609000002,
+      "p95_ms": 43115.45906270001,
+      "p99_ms": 44947.96492614,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.415557449,
+        "start_ns": 143232238876396,
+        "end_ns": 143283654433845,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.179999999999996,
+          "sglang:queue_time_seconds_sum": 136.77030413004104,
+          "sglang:time_to_first_token_seconds_sum": 192.31267659910372,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 91.0081723869165,
+        "gpu_time_weighted_power_w": 279.2520274113528,
+        "vram_peak_mib": 15964.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 21568536576,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s102-union64",
+        "snapshot_sha256": "fd6c4e4236dddeda2ba3aa80dfbe6c46468e8eb035b73f1b940aec5eacbf7c0f",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.667169431396026,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 2000.0,
+            "upper_ms": 4000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s102-union64",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+        "request_file_sha256": "2dbf6da49e3c28add0a7d39be0796de855e4e9fa3d4c25deb817d8c50bbb68a5",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24007.4363025,
+          "p95": 43329.842177,
+          "p99": 45204.755228199996
+        },
+        "after_first_to_close_ms": {
+          "p50": 140.0935295,
+          "p95": 1723.111394149999,
+          "p99": 2329.0896204299997
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.076933599999997,
+          "p95": 58.30676726008062,
+          "p99": 75.67642898749999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.1861178612265553,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.667169431396026,
+        "native_itl_sample_endpoints_ns": [
+          143232238876396,
+          143283654433845
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s102-union64",
+        "request_file_sha256": "2dbf6da49e3c28add0a7d39be0796de855e4e9fa3d4c25deb817d8c50bbb68a5",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5148.398591,
+              "p95": 5148.398591,
+              "p99": 5148.398591,
+              "max": 5148.398591
+            },
+            "completion_latency_ms": {
+              "p50": 7628.982768,
+              "p95": 7628.982768,
+              "p99": 7628.982768,
+              "max": 7628.982768
+            },
+            "admission_wait_ms": {
+              "p50": 0.316562,
+              "p95": 0.316562,
+              "p99": 0.316562,
+              "max": 0.316562
+            },
+            "preparation_ms": {
+              "p50": 81.855081,
+              "p95": 81.855081,
+              "p99": 81.855081,
+              "max": 81.855081
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6907.605172,
+              "p95": 6907.605172,
+              "p99": 6907.605172,
+              "max": 6907.605172
+            },
+            "completion_latency_ms": {
+              "p50": 7071.854374,
+              "p95": 7071.854374,
+              "p99": 7071.854374,
+              "max": 7071.854374
+            },
+            "admission_wait_ms": {
+              "p50": 0.042673,
+              "p95": 0.042673,
+              "p99": 0.042673,
+              "max": 0.042673
+            },
+            "preparation_ms": {
+              "p50": 56.27122,
+              "p95": 56.27122,
+              "p99": 56.27122,
+              "max": 56.27122
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14845.207382,
+              "p95": 14845.207382,
+              "p99": 14845.207382,
+              "max": 14845.207382
+            },
+            "completion_latency_ms": {
+              "p50": 14917.144735,
+              "p95": 14917.144735,
+              "p99": 14917.144735,
+              "max": 14917.144735
+            },
+            "admission_wait_ms": {
+              "p50": 0.03026,
+              "p95": 0.03026,
+              "p99": 0.03026,
+              "max": 0.03026
+            },
+            "preparation_ms": {
+              "p50": 89.429839,
+              "p95": 89.429839,
+              "p99": 89.429839,
+              "max": 89.429839
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20666.229012,
+              "p95": 20666.229012,
+              "p99": 20666.229012,
+              "max": 20666.229012
+            },
+            "completion_latency_ms": {
+              "p50": 20669.568357,
+              "p95": 20669.568357,
+              "p99": 20669.568357,
+              "max": 20669.568357
+            },
+            "admission_wait_ms": {
+              "p50": 0.029447,
+              "p95": 0.029447,
+              "p99": 0.029447,
+              "max": 0.029447
+            },
+            "preparation_ms": {
+              "p50": 71.191391,
+              "p95": 71.191391,
+              "p99": 71.191391,
+              "max": 71.191391
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27282.840206,
+              "p95": 27282.840206,
+              "p99": 27282.840206,
+              "max": 27282.840206
+            },
+            "completion_latency_ms": {
+              "p50": 27345.304248,
+              "p95": 27345.304248,
+              "p99": 27345.304248,
+              "max": 27345.304248
+            },
+            "admission_wait_ms": {
+              "p50": 0.03044,
+              "p95": 0.03044,
+              "p99": 0.03044,
+              "max": 0.03044
+            },
+            "preparation_ms": {
+              "p50": 76.87421,
+              "p95": 76.87421,
+              "p99": 76.87421,
+              "max": 76.87421
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 33987.744006,
+              "p95": 33987.744006,
+              "p99": 33987.744006,
+              "max": 33987.744006
+            },
+            "completion_latency_ms": {
+              "p50": 34304.120232,
+              "p95": 34304.120232,
+              "p99": 34304.120232,
+              "max": 34304.120232
+            },
+            "admission_wait_ms": {
+              "p50": 0.030407,
+              "p95": 0.030407,
+              "p99": 0.030407,
+              "max": 0.030407
+            },
+            "preparation_ms": {
+              "p50": 79.489013,
+              "p95": 79.489013,
+              "p99": 79.489013,
+              "max": 79.489013
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38861.427594,
+              "p95": 38861.427594,
+              "p99": 38861.427594,
+              "max": 38861.427594
+            },
+            "completion_latency_ms": {
+              "p50": 38977.365451,
+              "p95": 38977.365451,
+              "p99": 38977.365451,
+              "max": 38977.365451
+            },
+            "admission_wait_ms": {
+              "p50": 0.029787,
+              "p95": 0.029787,
+              "p99": 0.029787,
+              "max": 0.029787
+            },
+            "preparation_ms": {
+              "p50": 61.908951,
+              "p95": 61.908951,
+              "p99": 61.908951,
+              "max": 61.908951
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 45406.091392,
+              "p95": 45406.091392,
+              "p99": 45406.091392,
+              "max": 45406.091392
+            },
+            "completion_latency_ms": {
+              "p50": 45673.483491,
+              "p95": 45673.483491,
+              "p99": 45673.483491,
+              "max": 45673.483491
+            },
+            "admission_wait_ms": {
+              "p50": 0.029263,
+              "p95": 0.029263,
+              "p99": 0.029263,
+              "max": 0.029263
+            },
+            "preparation_ms": {
+              "p50": 78.124496,
+              "p95": 78.124496,
+              "p99": 78.124496,
+              "max": 78.124496
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-lowreuse-s102-union64",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000538839,
+          "queued_with_at_most_one_active_s": 0.000359235,
+          "active_request_seconds": 195.89432607199998,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6native1-lowreuse-s102-union64",
+            "requests": 8,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 10.524481125,
+                "p50": 5.9227615,
+                "p95": 28.41716834999999
+              },
+              "gateway_prepare": {
+                "mean": 74.393025125,
+                "p50": 77.499353,
+                "p95": 86.7786737
+              },
+              "gateway_admission": {
+                "mean": 0.06735487500000001,
+                "p50": 0.0303335,
+                "p95": 0.22070084999999987
+              },
+              "upstream_to_token": {
+                "mean": 24051.99429175,
+                "p50": 23894.585568,
+                "p95": 43036.18531834999
+              },
+              "return_stream": {
+                "mean": 1.2137665,
+                "p50": 1.037069,
+                "p95": 1.7936455999999998
+              },
+              "ttft": {
+                "mean": 24138.192919375,
+                "p50": 23974.534609000002,
+                "p95": 43115.4590627
+              },
+              "worker_queue": {
+                "mean": 0.27534549999999997,
+                "p50": 0.140652,
+                "p95": 0.8507378999999994
+              },
+              "worker_cpu": {
+                "mean": 72.359689625,
+                "p50": 75.9008155,
+                "p95": 83.87208125
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "setup_sha256": "ce6da0ec09214e5d116414bda3f70eb4c2e0b293f3db3d6f991cb63230328acc",
+      "request_file_sha256": "2dbf6da49e3c28add0a7d39be0796de855e4e9fa3d4c25deb817d8c50bbb68a5",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s102-native",
+      "arm": "native",
+      "policy": null,
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl",
+      "seed": 102,
+      "regime": "lowreuse",
+      "engine_pid": 392765,
+      "p50_ms": 23878.648001499998,
+      "p95_ms": 43036.7695265,
+      "p99_ms": 44872.4698069,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.454381134,
+        "start_ns": 143295614262749,
+        "end_ns": 143347068643883,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.039999999999999,
+          "sglang:queue_time_seconds_sum": 136.90099544098484,
+          "sglang:time_to_first_token_seconds_sum": 192.1910149109317,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 90.87899277719839,
+        "gpu_time_weighted_power_w": 279.4040117854548,
+        "vram_peak_mib": 15964.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 21568614400,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s102-native",
+        "snapshot_sha256": "507d56f459f9e3269560e0df11f86fdd7a5b6e4f4b76112f48e9cde7905b70e4",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.82113720018319,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 2000.0,
+            "upper_ms": 4000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s102-native",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+        "request_file_sha256": "209c76d055633dc7cd25b36c7371f5934d3e3c57fe3700a519c4fef9685a4cde",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23911.0524065,
+          "p95": 43250.87830875,
+          "p99": 45128.834118549996
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.83833099999998,
+          "p95": 1729.9175042499987,
+          "p99": 2331.9914592499995
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.09366848333333,
+          "p95": 58.30975521693544,
+          "p99": 75.72672389499998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.189610812080045,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.82113720018319,
+        "native_itl_sample_endpoints_ns": [
+          143295614262749,
+          143347068643883
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s102-native",
+        "request_file_sha256": "209c76d055633dc7cd25b36c7371f5934d3e3c57fe3700a519c4fef9685a4cde",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5033.972706,
+              "p95": 5033.972706,
+              "p99": 5033.972706,
+              "max": 5033.972706
+            },
+            "completion_latency_ms": {
+              "p50": 7516.482654,
+              "p95": 7516.482654,
+              "p99": 7516.482654,
+              "max": 7516.482654
+            }
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6795.63715,
+              "p95": 6795.63715,
+              "p99": 6795.63715,
+              "max": 6795.63715
+            },
+            "completion_latency_ms": {
+              "p50": 6959.298223,
+              "p95": 6959.298223,
+              "p99": 6959.298223,
+              "max": 6959.298223
+            }
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14738.431483,
+              "p95": 14738.431483,
+              "p99": 14738.431483,
+              "max": 14738.431483
+            },
+            "completion_latency_ms": {
+              "p50": 14809.941509,
+              "p95": 14809.941509,
+              "p99": 14809.941509,
+              "max": 14809.941509
+            }
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20567.346622,
+              "p95": 20567.346622,
+              "p99": 20567.346622,
+              "max": 20567.346622
+            },
+            "completion_latency_ms": {
+              "p50": 20570.693869,
+              "p95": 20570.693869,
+              "p99": 20570.693869,
+              "max": 20570.693869
+            }
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27189.949381,
+              "p95": 27189.949381,
+              "p99": 27189.949381,
+              "max": 27189.949381
+            },
+            "completion_latency_ms": {
+              "p50": 27251.410944,
+              "p95": 27251.410944,
+              "p99": 27251.410944,
+              "max": 27251.410944
+            }
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 33885.191166,
+              "p95": 33885.191166,
+              "p99": 33885.191166,
+              "max": 33885.191166
+            },
+            "completion_latency_ms": {
+              "p50": 34217.436989,
+              "p95": 34217.436989,
+              "p99": 34217.436989,
+              "max": 34217.436989
+            }
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38775.322447,
+              "p95": 38775.322447,
+              "p99": 38775.322447,
+              "max": 38775.322447
+            },
+            "completion_latency_ms": {
+              "p50": 38891.338036,
+              "p95": 38891.338036,
+              "p99": 38891.338036,
+              "max": 38891.338036
+            }
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 45331.394877,
+              "p95": 45331.394877,
+              "p99": 45331.394877,
+              "max": 45331.394877
+            },
+            "completion_latency_ms": {
+              "p50": 45598.323071,
+              "p95": 45598.323071,
+              "p99": 45598.323071,
+              "max": 45598.323071
+            }
+          }
+        ],
+        "admission": null,
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6native1-lowreuse-s102-native"
+        ]
+      },
+      "setup_sha256": "20f1f00ce24a7ba60f896f07a2c455022f2d3331fb5124e6c36d8d5070ebe0a2",
+      "request_file_sha256": "209c76d055633dc7cd25b36c7371f5934d3e3c57fe3700a519c4fef9685a4cde",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s103-packing_ready",
+      "arm": "packing_ready",
+      "policy": "packing_ready",
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl",
+      "seed": 103,
+      "regime": "lowreuse",
+      "engine_pid": 394512,
+      "p50_ms": 23764.213995500002,
+      "p95_ms": 43167.87600475,
+      "p99_ms": 45043.23805135,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.433748217,
+        "start_ns": 143460110152659,
+        "end_ns": 143511543900876,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.0000000000000036,
+          "sglang:queue_time_seconds_sum": 138.16666569400695,
+          "sglang:time_to_first_token_seconds_sum": 191.44961840703036,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 90.76056772257695,
+        "gpu_time_weighted_power_w": 276.65160421708975,
+        "vram_peak_mib": 15962.0,
+        "temperature_peak_c": 68.0,
+        "summed_process_rss_peak_bytes": 21570039808,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s103-packing_ready",
+        "snapshot_sha256": "97987777b68a3bb466733feb26b0cd7a246b7e80743028ac5181134c116b8b7c",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 37.05587606313393,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 2000.0,
+            "upper_ms": 4000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s103-packing_ready",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+        "request_file_sha256": "ba506eda05346f5a3e7f7bb12ddf92fc5533c937aaaaaf564e21f0da524ed269",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23796.938001000002,
+          "p95": 43381.65243695,
+          "p99": 45299.25408179
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.8606775,
+          "p95": 1735.2735873999986,
+          "p99": 2334.320471079999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.40550988809524,
+          "p95": 58.94504957338706,
+          "p99": 75.89435680499997
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.150732770107686,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 37.05587606313393,
+        "native_itl_sample_endpoints_ns": [
+          143460110152659,
+          143511543900876
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s103-packing_ready",
+        "request_file_sha256": "ba506eda05346f5a3e7f7bb12ddf92fc5533c937aaaaaf564e21f0da524ed269",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5104.927312,
+              "p95": 5104.927312,
+              "p99": 5104.927312,
+              "max": 5104.927312
+            },
+            "completion_latency_ms": {
+              "p50": 7589.009504,
+              "p95": 7589.009504,
+              "p99": 7589.009504,
+              "max": 7589.009504
+            },
+            "admission_wait_ms": {
+              "p50": 0.051767,
+              "p95": 0.051767,
+              "p99": 0.051767,
+              "max": 0.051767
+            },
+            "preparation_ms": {
+              "p50": 79.337216,
+              "p95": 79.337216,
+              "p99": 79.337216,
+              "max": 79.337216
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6954.883807,
+              "p95": 6954.883807,
+              "p99": 6954.883807,
+              "max": 6954.883807
+            },
+            "completion_latency_ms": {
+              "p50": 7118.88494,
+              "p95": 7118.88494,
+              "p99": 7118.88494,
+              "max": 7118.88494
+            },
+            "admission_wait_ms": {
+              "p50": 0.057407,
+              "p95": 0.057407,
+              "p99": 0.057407,
+              "max": 0.057407
+            },
+            "preparation_ms": {
+              "p50": 56.030927,
+              "p95": 56.030927,
+              "p99": 56.030927,
+              "max": 56.030927
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14581.262166,
+              "p95": 14581.262166,
+              "p99": 14581.262166,
+              "max": 14581.262166
+            },
+            "completion_latency_ms": {
+              "p50": 14659.65594,
+              "p95": 14659.65594,
+              "p99": 14659.65594,
+              "max": 14659.65594
+            },
+            "admission_wait_ms": {
+              "p50": 0.027867,
+              "p95": 0.027867,
+              "p99": 0.027867,
+              "max": 0.027867
+            },
+            "preparation_ms": {
+              "p50": 84.064668,
+              "p95": 84.064668,
+              "p99": 84.064668,
+              "max": 84.064668
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20375.428633,
+              "p95": 20375.428633,
+              "p99": 20375.428633,
+              "max": 20375.428633
+            },
+            "completion_latency_ms": {
+              "p50": 20379.243094,
+              "p95": 20379.243094,
+              "p99": 20379.243094,
+              "max": 20379.243094
+            },
+            "admission_wait_ms": {
+              "p50": 0.027456,
+              "p95": 0.027456,
+              "p99": 0.027456,
+              "max": 0.027456
+            },
+            "preparation_ms": {
+              "p50": 81.805755,
+              "p95": 81.805755,
+              "p99": 81.805755,
+              "max": 81.805755
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27152.999358,
+              "p95": 27152.999358,
+              "p99": 27152.999358,
+              "max": 27152.999358
+            },
+            "completion_latency_ms": {
+              "p50": 27214.632908,
+              "p95": 27214.632908,
+              "p99": 27214.632908,
+              "max": 27214.632908
+            },
+            "admission_wait_ms": {
+              "p50": 0.032347,
+              "p95": 0.032347,
+              "p99": 0.032347,
+              "max": 0.032347
+            },
+            "preparation_ms": {
+              "p50": 102.370505,
+              "p95": 102.370505,
+              "p99": 102.370505,
+              "max": 102.370505
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 33926.500611,
+              "p95": 33926.500611,
+              "p99": 33926.500611,
+              "max": 33926.500611
+            },
+            "completion_latency_ms": {
+              "p50": 34271.129647,
+              "p95": 34271.129647,
+              "p99": 34271.129647,
+              "max": 34271.129647
+            },
+            "admission_wait_ms": {
+              "p50": 0.028657,
+              "p95": 0.028657,
+              "p99": 0.028657,
+              "max": 0.028657
+            },
+            "preparation_ms": {
+              "p50": 148.173985,
+              "p95": 148.173985,
+              "p99": 148.173985,
+              "max": 148.173985
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38814.356968,
+              "p95": 38814.356968,
+              "p99": 38814.356968,
+              "max": 38814.356968
+            },
+            "completion_latency_ms": {
+              "p50": 38930.07719,
+              "p95": 38930.07719,
+              "p99": 38930.07719,
+              "max": 38930.07719
+            },
+            "admission_wait_ms": {
+              "p50": 0.035076,
+              "p95": 0.035076,
+              "p99": 0.035076,
+              "max": 0.035076
+            },
+            "preparation_ms": {
+              "p50": 60.578647,
+              "p95": 60.578647,
+              "p99": 60.578647,
+              "max": 60.578647
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 45512.078563,
+              "p95": 45512.078563,
+              "p99": 45512.078563,
+              "max": 45512.078563
+            },
+            "completion_latency_ms": {
+              "p50": 45778.654493,
+              "p95": 45778.654493,
+              "p99": 45778.654493,
+              "max": 45778.654493
+            },
+            "admission_wait_ms": {
+              "p50": 0.286383,
+              "p95": 0.286383,
+              "p99": 0.286383,
+              "max": 0.286383
+            },
+            "preparation_ms": {
+              "p50": 113.508259,
+              "p95": 113.508259,
+              "p99": 113.508259,
+              "max": 113.508259
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-lowreuse-s103-packing_ready",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.00054696,
+          "queued_with_at_most_one_active_s": 0.000109174,
+          "active_request_seconds": 195.12615907100002,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6native1-lowreuse-s103-packing_ready",
+            "requests": 8,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 9.459317125,
+                "p50": 5.389716,
+                "p95": 26.570202499999986
+              },
+              "gateway_prepare": {
+                "mean": 90.73374525,
+                "p50": 82.93521150000001,
+                "p95": 136.04098089999997
+              },
+              "gateway_admission": {
+                "mean": 0.06837,
+                "p50": 0.033711500000000005,
+                "p95": 0.20624139999999985
+              },
+              "upstream_to_token": {
+                "mean": 23951.411671125,
+                "p50": 23666.0769715,
+                "p95": 43065.843499099996
+              },
+              "return_stream": {
+                "mean": 1.13157375,
+                "p50": 1.017227,
+                "p95": 1.5902727999999997
+              },
+              "ttft": {
+                "mean": 24052.804677250002,
+                "p50": 23764.213995500002,
+                "p95": 43167.876004749996
+              },
+              "worker_queue": {
+                "mean": 15.362960625,
+                "p50": 0.3341455,
+                "p95": 58.260392699999976
+              },
+              "worker_cpu": {
+                "mean": 73.80435025,
+                "p50": 78.50135750000001,
+                "p95": 84.88445245
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "setup_sha256": "210bc7ab5c6b8da75f0bf54ec40ea6dcc93073c22e6d698204ab3b8914364884",
+      "request_file_sha256": "ba506eda05346f5a3e7f7bb12ddf92fc5533c937aaaaaf564e21f0da524ed269",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s103-native",
+      "arm": "native",
+      "policy": null,
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl",
+      "seed": 103,
+      "regime": "lowreuse",
+      "engine_pid": 394512,
+      "p50_ms": 23739.36648,
+      "p95_ms": 43198.010517300005,
+      "p99_ms": 45080.84993226,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.492021855,
+        "start_ns": 143524300605431,
+        "end_ns": 143575792627286,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 2.0799999999999983,
+          "sglang:queue_time_seconds_sum": 138.64323481399333,
+          "sglang:time_to_first_token_seconds_sum": 191.92046580603346,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 90.32536527157893,
+        "gpu_time_weighted_power_w": 278.2882209714587,
+        "vram_peak_mib": 15962.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 21570154496,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s103-native",
+        "snapshot_sha256": "e3770045e74bd57475edd3d781e253cf73022dd56e5a29c630fdeb201a5c1a5a",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.71961508470734,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s103-native",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+        "request_file_sha256": "434e32349a5504a7f50ba73b20cda9dcaf2aa1b4dd78d7435676a9382df94f73",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23772.070413,
+          "p95": 43411.781748149995,
+          "p99": 45336.73869283
+        },
+        "after_first_to_close_ms": {
+          "p50": 137.9191725,
+          "p95": 1723.630660699999,
+          "p99": 2323.1639217399998
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.893355145238095,
+          "p95": 58.067835822177386,
+          "p99": 75.43414102249999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.1489682334629223,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.71961508470734,
+        "native_itl_sample_endpoints_ns": [
+          143524300605431,
+          143575792627286
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s103-native",
+        "request_file_sha256": "434e32349a5504a7f50ba73b20cda9dcaf2aa1b4dd78d7435676a9382df94f73",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5023.51439,
+              "p95": 5023.51439,
+              "p99": 5023.51439,
+              "max": 5023.51439
+            },
+            "completion_latency_ms": {
+              "p50": 7496.561627,
+              "p95": 7496.561627,
+              "p99": 7496.561627,
+              "max": 7496.561627
+            }
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6866.818764,
+              "p95": 6866.818764,
+              "p99": 6866.818764,
+              "max": 6866.818764
+            },
+            "completion_latency_ms": {
+              "p50": 7026.658715,
+              "p95": 7026.658715,
+              "p99": 7026.658715,
+              "max": 7026.658715
+            }
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14536.019073,
+              "p95": 14536.019073,
+              "p99": 14536.019073,
+              "max": 14536.019073
+            },
+            "completion_latency_ms": {
+              "p50": 14607.031868,
+              "p95": 14607.031868,
+              "p99": 14607.031868,
+              "max": 14607.031868
+            }
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20340.882661,
+              "p95": 20340.882661,
+              "p99": 20340.882661,
+              "max": 20340.882661
+            },
+            "completion_latency_ms": {
+              "p50": 20344.530589,
+              "p95": 20344.530589,
+              "p99": 20344.530589,
+              "max": 20344.530589
+            }
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27137.850299,
+              "p95": 27137.850299,
+              "p99": 27137.850299,
+              "max": 27137.850299
+            },
+            "completion_latency_ms": {
+              "p50": 27199.610237,
+              "p95": 27199.610237,
+              "p99": 27199.610237,
+              "max": 27199.610237
+            }
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 33929.313454,
+              "p95": 33929.313454,
+              "p99": 33929.313454,
+              "max": 33929.313454
+            },
+            "completion_latency_ms": {
+              "p50": 34261.170473,
+              "p95": 34261.170473,
+              "p99": 34261.170473,
+              "max": 34261.170473
+            }
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38827.133304,
+              "p95": 38827.133304,
+              "p99": 38827.133304,
+              "max": 38827.133304
+            },
+            "completion_latency_ms": {
+              "p50": 38943.131698,
+              "p95": 38943.131698,
+              "p99": 38943.131698,
+              "max": 38943.131698
+            }
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 45551.559786,
+              "p95": 45551.559786,
+              "p99": 45551.559786,
+              "max": 45551.559786
+            },
+            "completion_latency_ms": {
+              "p50": 45817.977929,
+              "p95": 45817.977929,
+              "p99": 45817.977929,
+              "max": 45817.977929
+            }
+          }
+        ],
+        "admission": null,
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6native1-lowreuse-s103-native"
+        ]
+      },
+      "setup_sha256": "67a6034e0f632b9e2e24bbb442231086f98f0d968e00d159d95c72de99c8ddb6",
+      "request_file_sha256": "434e32349a5504a7f50ba73b20cda9dcaf2aa1b4dd78d7435676a9382df94f73",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "run_id": "v6native1-lowreuse-s103-union64",
+      "arm": "union64",
+      "policy": "packing_reuse",
+      "requests": 8,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl",
+      "seed": 103,
+      "regime": "lowreuse",
+      "engine_pid": 394512,
+      "p50_ms": 23838.538343,
+      "p95_ms": 43271.531132950004,
+      "p99_ms": 45151.50144979,
+      "computed_tokens": 190916.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": null
+      },
+      "resource": {
+        "samples": 48,
+        "window_s": 51.386151617,
+        "start_ns": 143595335715364,
+        "end_ns": 143646721866981,
+        "counter_deltas": {
+          "sglang:num_requests_total": 8.0,
+          "sglang:prompt_tokens_total": 191252.0,
+          "sglang:cached_tokens_total": 336.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 190916.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 1.9999999999999982,
+          "sglang:queue_time_seconds_sum": 138.44771870804834,
+          "sglang:time_to_first_token_seconds_sum": 191.9754990589572,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": null
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": null
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 6.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 90.61485062112624,
+        "gpu_time_weighted_power_w": 278.5397170823646,
+        "vram_peak_mib": 15962.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 21570174976,
+        "last_host_used_tokens": 102096.0,
+        "host_capacity_tokens": 108512.0,
+        "retract_gauge_samples_observed": 48,
+        "queue_samples_observed": 48,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "actual_host_payload_bytes": 16000745472.0,
+      "native_itl": {
+        "run_id": "v6native1-lowreuse-s103-union64",
+        "snapshot_sha256": "84b9e15be7955c8020705b2e94870e375de72f3d204b8b9fcb6f60f1eaff9a2c",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 36.783952810679025,
+        "itl_observations": 95.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 2000.0,
+            "upper_ms": 4000.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-lowreuse-s103-union64",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+        "request_file_sha256": "1554ed4386377e24afb36837d48da8d1670cf6d897f0268837074e5e703dbc79",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23871.1391975,
+          "p95": 43485.454961049996,
+          "p99": 45407.80142261
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.5676685,
+          "p95": 1727.3117374999988,
+          "p99": 2328.568765899999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 16.072961123809524,
+          "p95": 58.25799346451609,
+          "p99": 75.62277347999998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 103,
+        "workload_output_tokens_per_s": 2.145815986288673,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 95.0,
+        "native_itl_mean_ms": 36.783952810679025,
+        "native_itl_sample_endpoints_ns": [
+          143595335715364,
+          143646721866981
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-lowreuse-s103-union64",
+        "request_file_sha256": "1554ed4386377e24afb36837d48da8d1670cf6d897f0268837074e5e703dbc79",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5147.042919,
+              "p95": 5147.042919,
+              "p99": 5147.042919,
+              "max": 5147.042919
+            },
+            "completion_latency_ms": {
+              "p50": 7625.925942,
+              "p95": 7625.925942,
+              "p99": 7625.925942,
+              "max": 7625.925942
+            },
+            "admission_wait_ms": {
+              "p50": 0.052117,
+              "p95": 0.052117,
+              "p99": 0.052117,
+              "max": 0.052117
+            },
+            "preparation_ms": {
+              "p50": 78.872252,
+              "p95": 78.872252,
+              "p99": 78.872252,
+              "max": 78.872252
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 6991.355459,
+              "p95": 6991.355459,
+              "p99": 6991.355459,
+              "max": 6991.355459
+            },
+            "completion_latency_ms": {
+              "p50": 7154.940161,
+              "p95": 7154.940161,
+              "p99": 7154.940161,
+              "max": 7154.940161
+            },
+            "admission_wait_ms": {
+              "p50": 0.050584,
+              "p95": 0.050584,
+              "p99": 0.050584,
+              "max": 0.050584
+            },
+            "preparation_ms": {
+              "p50": 54.180765,
+              "p95": 54.180765,
+              "p99": 54.180765,
+              "max": 54.180765
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14647.378258,
+              "p95": 14647.378258,
+              "p99": 14647.378258,
+              "max": 14647.378258
+            },
+            "completion_latency_ms": {
+              "p50": 14719.165846,
+              "p95": 14719.165846,
+              "p99": 14719.165846,
+              "max": 14719.165846
+            },
+            "admission_wait_ms": {
+              "p50": 0.029277,
+              "p95": 0.029277,
+              "p99": 0.029277,
+              "max": 0.029277
+            },
+            "preparation_ms": {
+              "p50": 99.701065,
+              "p95": 99.701065,
+              "p99": 99.701065,
+              "max": 99.701065
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20443.774882,
+              "p95": 20443.774882,
+              "p99": 20443.774882,
+              "max": 20443.774882
+            },
+            "completion_latency_ms": {
+              "p50": 20447.182754,
+              "p95": 20447.182754,
+              "p99": 20447.182754,
+              "max": 20447.182754
+            },
+            "admission_wait_ms": {
+              "p50": 0.02811,
+              "p95": 0.02811,
+              "p99": 0.02811,
+              "max": 0.02811
+            },
+            "preparation_ms": {
+              "p50": 79.079966,
+              "p95": 79.079966,
+              "p99": 79.079966,
+              "max": 79.079966
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27233.301804,
+              "p95": 27233.301804,
+              "p99": 27233.301804,
+              "max": 27233.301804
+            },
+            "completion_latency_ms": {
+              "p50": 27295.095641,
+              "p95": 27295.095641,
+              "p99": 27295.095641,
+              "max": 27295.095641
+            },
+            "admission_wait_ms": {
+              "p50": 0.03036,
+              "p95": 0.03036,
+              "p99": 0.03036,
+              "max": 0.03036
+            },
+            "preparation_ms": {
+              "p50": 101.43574,
+              "p95": 101.43574,
+              "p99": 101.43574,
+              "max": 101.43574
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 34015.61646,
+              "p95": 34015.61646,
+              "p99": 34015.61646,
+              "max": 34015.61646
+            },
+            "completion_latency_ms": {
+              "p50": 34347.152953,
+              "p95": 34347.152953,
+              "p99": 34347.152953,
+              "max": 34347.152953
+            },
+            "admission_wait_ms": {
+              "p50": 0.029804,
+              "p95": 0.029804,
+              "p99": 0.029804,
+              "max": 0.029804
+            },
+            "preparation_ms": {
+              "p50": 159.638531,
+              "p95": 159.638531,
+              "p99": 159.638531,
+              "max": 159.638531
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 38907.314326,
+              "p95": 38907.314326,
+              "p99": 38907.314326,
+              "max": 38907.314326
+            },
+            "completion_latency_ms": {
+              "p50": 39022.864961,
+              "p95": 39022.864961,
+              "p99": 39022.864961,
+              "max": 39022.864961
+            },
+            "admission_wait_ms": {
+              "p50": 0.027477,
+              "p95": 0.027477,
+              "p99": 0.027477,
+              "max": 0.027477
+            },
+            "preparation_ms": {
+              "p50": 65.129918,
+              "p95": 65.129918,
+              "p99": 65.129918,
+              "max": 65.129918
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 45621.494029,
+              "p95": 45621.494029,
+              "p99": 45621.494029,
+              "max": 45621.494029
+            },
+            "completion_latency_ms": {
+              "p50": 45888.388038,
+              "p95": 45888.388038,
+              "p99": 45888.388038,
+              "max": 45888.388038
+            },
+            "admission_wait_ms": {
+              "p50": 0.02909,
+              "p95": 0.02909,
+              "p99": 0.02909,
+              "max": 0.02909
+            },
+            "preparation_ms": {
+              "p50": 105.989194,
+              "p95": 105.989194,
+              "p99": 105.989194,
+              "max": 105.989194
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-lowreuse-s103-union64",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.00027681900000000003,
+          "queued_with_at_most_one_active_s": 0.000102701,
+          "active_request_seconds": 195.671316045,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6native1-lowreuse-s103-union64",
+            "requests": 8,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 8.983363375,
+                "p50": 4.9180530000000005,
+                "p95": 26.354297649999985
+              },
+              "gateway_prepare": {
+                "mean": 93.003428875,
+                "p50": 89.39051549999999,
+                "p95": 140.86126304999996
+              },
+              "gateway_admission": {
+                "mean": 0.034602375,
+                "p50": 0.0295405,
+                "p95": 0.05158044999999999
+              },
+              "upstream_to_token": {
+                "mean": 24022.740613125,
+                "p50": 23742.3504645,
+                "p95": 43172.4669093
+              },
+              "return_stream": {
+                "mean": 1.147759375,
+                "p50": 1.0733579999999998,
+                "p95": 1.5718706499999997
+              },
+              "ttft": {
+                "mean": 24125.909767125,
+                "p50": 23838.538343,
+                "p95": 43271.53113295
+              },
+              "worker_queue": {
+                "mean": 15.713004625,
+                "p50": 0.305073,
+                "p95": 61.15479749999997
+              },
+              "worker_cpu": {
+                "mean": 75.901045625,
+                "p50": 77.2181075,
+                "p95": 92.52773074999999
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "setup_sha256": "ee1d204be06c8337542351e540b91c272b9d46c0d26639afebd66273bd47c7ac",
+      "request_file_sha256": "1554ed4386377e24afb36837d48da8d1670cf6d897f0268837074e5e703dbc79",
+      "f1": 0.25297619047619047,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.3047619047619048
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    }
+  ],
+  "pairs": [
+    {
+      "a": "v6native1-lowreuse-s101-native",
+      "b": "v6native1-lowreuse-s101-union64",
+      "baseline": "native",
+      "candidate": "union64",
+      "seed": 101,
+      "p50_ms_delta_pct": 0.5902514932538017,
+      "p95_ms_delta_pct": 0.3665457482917134,
+      "p99_ms_delta_pct": 0.3546800046996035,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s102-native",
+      "b": "v6native1-lowreuse-s102-union64",
+      "baseline": "native",
+      "candidate": "union64",
+      "seed": 102,
+      "p50_ms_delta_pct": 0.4015579420324933,
+      "p95_ms_delta_pct": 0.1828425717491422,
+      "p99_ms_delta_pct": 0.1682437351117061,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s103-native",
+      "b": "v6native1-lowreuse-s103-union64",
+      "baseline": "native",
+      "candidate": "union64",
+      "seed": 103,
+      "p50_ms_delta_pct": 0.4177527782114554,
+      "p95_ms_delta_pct": 0.1701944482386697,
+      "p99_ms_delta_pct": 0.1567217956985445,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s101-native",
+      "b": "v6native1-lowreuse-s101-packing_ready",
+      "baseline": "native",
+      "candidate": "packing_ready",
+      "seed": 101,
+      "p50_ms_delta_pct": 0.5968926406942909,
+      "p95_ms_delta_pct": 0.4118256804208853,
+      "p99_ms_delta_pct": 0.4176814213744606,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s102-native",
+      "b": "v6native1-lowreuse-s102-packing_ready",
+      "baseline": "native",
+      "candidate": "packing_ready",
+      "seed": 102,
+      "p50_ms_delta_pct": 0.3557700481813919,
+      "p95_ms_delta_pct": 0.10029742142569908,
+      "p99_ms_delta_pct": 0.08198529516720843,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s103-native",
+      "b": "v6native1-lowreuse-s103-packing_ready",
+      "baseline": "native",
+      "candidate": "packing_ready",
+      "seed": 103,
+      "p50_ms_delta_pct": 0.10466798059221016,
+      "p95_ms_delta_pct": -0.06975902868937567,
+      "p99_ms_delta_pct": -0.08343205810562582,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s101-union64",
+      "b": "v6native1-lowreuse-s101-packing_ready",
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "seed": 101,
+      "p50_ms_delta_pct": 0.006602177986336777,
+      "p95_ms_delta_pct": 0.0451145666034547,
+      "p99_ms_delta_pct": 0.0627787529907664,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s102-union64",
+      "b": "v6native1-lowreuse-s102-packing_ready",
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "seed": 102,
+      "p50_ms_delta_pct": -0.045604764298101674,
+      "p95_ms_delta_pct": -0.08239449810413246,
+      "p99_ms_delta_pct": -0.08611355927592435,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6native1-lowreuse-s103-union64",
+      "b": "v6native1-lowreuse-s103-packing_ready",
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "seed": 103,
+      "p50_ms_delta_pct": -0.3117823183224733,
+      "p95_ms_delta_pct": -0.23954578330386278,
+      "p99_ms_delta_pct": -0.23977806930824963,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    }
+  ],
+  "exploratory_intervals": [
+    {
+      "baseline": "native",
+      "candidate": "union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.46981779838679816,
+          "exploratory_t95_low_pct": 0.21043511716094915,
+          "exploratory_t95_high_pct": 0.7298718605445955,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.5902514932538017,
+            0.4015579420324933,
+            0.4177527782114554
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.23982077983989372,
+          "exploratory_t95_low_pct": -0.032715749625651346,
+          "exploratory_t95_high_pct": 0.5131003139839203,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.3665457482917134,
+            0.1828425717491422,
+            0.1701944482386697
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.2265074673267261,
+          "exploratory_t95_low_pct": -0.049049668169396377,
+          "exploratory_t95_high_pct": 0.5028242927974885,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.3546800046996035,
+            0.1682437351117061,
+            0.1567217956985445
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "native",
+      "candidate": "packing_ready",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.3522423266861923,
+          "exploratory_t95_low_pct": -0.2573329068260002,
+          "exploratory_t95_high_pct": 0.9655429665479496,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.5968926406942909,
+            0.3557700481813919,
+            0.10466798059221016
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.1472562440317711,
+          "exploratory_t95_low_pct": -0.4574084107114954,
+          "exploratory_t95_high_pct": 0.7555938928056163,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.4118256804208853,
+            0.10029742142569908,
+            -0.06975902868937567
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.1385279873070458,
+          "exploratory_t95_low_pct": -0.4934951080082779,
+          "exploratory_t95_high_pct": 0.7745654251364147,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.4176814213744606,
+            0.08198529516720843,
+            -0.08343205810562582
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.11702566430103174,
+          "exploratory_t95_low_pct": -0.5404932871292607,
+          "exploratory_t95_high_pct": 0.3082449518609715,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.006602177986336777,
+            -0.045604764298101674,
+            -0.3117823183224733
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.0923430779185187,
+          "exploratory_t95_low_pct": -0.44594817381872515,
+          "exploratory_t95_high_pct": 0.26251798458026376,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.0451145666034547,
+            -0.08239449810413246,
+            -0.23954578330386278
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.08778065029190565,
+          "exploratory_t95_low_pct": -0.4628912357474893,
+          "exploratory_t95_high_pct": 0.28874355821409325,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.0627787529907664,
+            -0.08611355927592435,
+            -0.23977806930824963
+          ]
+        }
+      }
+    }
+  ],
+  "scope": "One complete9-arm control, three fresh native blocks; paired arms share process after flush/freshgateway. Exposed QA reused across schedules. Not the60-arm stage or full benchmark. n3interval assumptions unverified; no quality equivalence, missing-counter zero imputation or DMA-time interpretation."
+}

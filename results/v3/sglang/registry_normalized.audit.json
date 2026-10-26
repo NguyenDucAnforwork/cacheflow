@@ -1,16 +1,16 @@
 {
-  "generated_utc": "2026-10-26T17:41:11.957330+00:00",
+  "generated_utc": "2026-10-26T20:06:13.024148+00:00",
   "scope": "Derived canonical index from complete JSON ledgers; legacy CSV preserved. Not a count of independent questions or performance-eligible runs. Pre-replay failures require controller outcomes; missing source/metadata is not inferred.",
-  "records": 227,
+  "records": 305,
   "legacy_header_columns": 37,
   "legacy_row_width_counts": {
     "37": 159,
     "39": 6,
-    "40": 62
+    "40": 140
   },
   "legacy_mixed_width": true,
   "skipped_incomplete_or_nonrequest_summaries": [],
   "duplicate_run_ids": {},
-  "normalized_csv_sha256": "2c6261009ac957ab0fb055cd6f1f3408ded574be5f10b85b861fb7511a7e497a",
+  "normalized_csv_sha256": "619d252c90ff4f518d92be66908d37a586639c66d892e5675c1fddfde7f74d9c",
   "latency_quantiles_hidden_records": 8
 }
