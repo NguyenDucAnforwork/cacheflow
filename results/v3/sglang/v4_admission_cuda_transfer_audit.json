@@ -1,0 +1,27 @@
+{
+  "runs": [
+    {
+      "run_id": "v4-sgdiag-admission-native-s101",
+      "observed_loads": 0,
+      "observed_tokens": 0,
+      "observed_bytes": 0,
+      "native_promoted_tokens": null,
+      "coverage_matches_native_counter": null,
+      "sum_load_stream_gpu_ms": 0,
+      "median_effective_GB_s": null,
+      "native_cpu_enqueue_sum_s": null
+    },
+    {
+      "run_id": "v4-sgdiag-admission-q8-s101",
+      "observed_loads": 5,
+      "observed_tokens": 98288,
+      "observed_bytes": 14493155328,
+      "native_promoted_tokens": 98288.0,
+      "coverage_matches_native_counter": true,
+      "sum_load_stream_gpu_ms": 1281.6916198730469,
+      "median_effective_GB_s": 11.279067798991523,
+      "native_cpu_enqueue_sum_s": 0.014777423988562077
+    }
+  ],
+  "scope": "Instrumented diagnostic. GPU load-stream spans exclude index preparation; CPU enqueue timer is separate. No absolute GPU timestamp or overlap estimate. Missing native counters remain null."
+}

@@ -62,3 +62,7 @@ Candidate loads5 times/98288tokens, all successful, mem_quota=None; native has n
 Native in-batch prefix checking only applies below its configured GPU-prefix threshold.32/1024 cannot cover the observed13280-token partial prefix; a prospective32768/1024 native tuning probe is prepared in `scripts/v4_sglang_full_inbatch_probe.sh`, not yet executed. Test that strong control before attributing novelty to external readiness gating. The earlier fixed-DHAS/vLLM negative results remain unchanged.
 
 Current GPU job: `scripts/v4_sglang_controls.sh`, tool12288, Direct native-cap4 replication then V4 low-reuse/QPS2/GPU-fit comparisons, all profilers disabled. Candidate remains unfrozen. Full benchmark and fresh confirmation are still unrun.
+
+Update10:37UTC: native Direct-cap4 replication finished360/360 measured requests. Native/q8 p95 per seed:19.776/17.337,27.063/20.247,26.090/25.578s. Candidate changes-12.34/-25.18/-1.96%; q8 cap4 is variable and slower on average than q8 cap16, so it is not silently substituted as the best method. Mean native cap4 p95 is also higher than cap16 over these dev seeds despite the favorable initial seed101 screen. Audits/quality/pairs are `v4_cap4_repl_*`.
+
+The new q8 admission diagnostic also has independently covered CUDA load events:5loads,98288tokens,14,493,155,328bytes; summed load-stream span1.282s, median11.279GB/s. CPU enqueue sum.01478s is a separate stage. See `v4_admission_cuda_transfer_audit.json`. These measurements remain diagnostic rather than a latency comparison.

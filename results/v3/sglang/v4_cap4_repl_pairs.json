@@ -1,0 +1,161 @@
+{
+  "scope": "Paired run-level dev contrasts; repeated QA are not independent new questions",
+  "pairs": [
+    {
+      "a": "v4-sgcontrol-cap4-native-s101",
+      "b": "v4-sgcontrol-cap4-q8-s101",
+      "requests": 60,
+      "trace_sha256": "ba8790ee8c536eb6d3e5c02874feffb579ebe55f8848ea0ffa556aa4443f69a7",
+      "p50_ms_delta_pct": 168.20632010335842,
+      "p95_ms_delta_pct": -12.334822138683975,
+      "p99_ms_delta_pct": -17.081417316912674,
+      "a_latency_ms": {
+        "p50_ms": 5544.593800500001,
+        "p95_ms": 19776.242679249997,
+        "p99_ms": 21310.105788679997
+      },
+      "b_latency_ms": {
+        "p50_ms": 14870.950997,
+        "p95_ms": 17336.87831905,
+        "p99_ms": 17670.03768824
+      },
+      "a_uncached_tokens": 70486.0,
+      "b_uncached_tokens": 70486.0,
+      "a_host_promoted_tokens": null,
+      "b_host_promoted_tokens": 98288.0,
+      "a_f1": 0.3097219753651615,
+      "b_f1": 0.31400377211566916,
+      "f1_delta": 0.00428179675050766,
+      "a_cap_hits": 2,
+      "b_cap_hits": 2,
+      "output_hash_mismatches": 6,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 2534.2422168,
+          "b_mean_ms": 14394.9747768,
+          "a_p95_ms": 5504.796511050001,
+          "b_p95_ms": 16986.51521635
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 5287.41341955,
+          "b_mean_ms": 15543.500825,
+          "a_p95_ms": 7945.1935781,
+          "b_p95_ms": 17563.6149692
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 17411.6586738,
+          "b_mean_ms": 14053.1216845,
+          "a_p95_ms": 21034.7243114,
+          "b_p95_ms": 15941.827465850001
+        }
+      ]
+    },
+    {
+      "a": "v4-sgcontrol-cap4-native-s102",
+      "b": "v4-sgcontrol-cap4-q8-s102",
+      "requests": 60,
+      "trace_sha256": "98dbd9ab1c7804a9d41a65bd389e409719c9a52bd1cc1f850e18a9a5e29be730",
+      "p50_ms_delta_pct": 59.515982585100026,
+      "p95_ms_delta_pct": -25.18452196332406,
+      "p99_ms_delta_pct": -26.30570786647691,
+      "a_latency_ms": {
+        "p50_ms": 10414.565147500001,
+        "p95_ms": 27062.943924350002,
+        "p99_ms": 28042.993790829998
+      },
+      "b_latency_ms": {
+        "p50_ms": 16612.895926999998,
+        "p95_ms": 20247.2708678,
+        "p99_ms": 20666.0857672
+      },
+      "a_uncached_tokens": 76726.0,
+      "b_uncached_tokens": 76726.0,
+      "a_host_promoted_tokens": 0.0,
+      "b_host_promoted_tokens": 98288.0,
+      "a_f1": 0.30749975314293926,
+      "b_f1": 0.3075703906822877,
+      "f1_delta": 7.06375393484393e-05,
+      "a_cap_hits": 2,
+      "b_cap_hits": 3,
+      "output_hash_mismatches": 5,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 2629.3349851000003,
+          "b_mean_ms": 13898.40756895,
+          "a_p95_ms": 5223.717736050001,
+          "b_p95_ms": 19198.702614600003
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 9983.15286455,
+          "b_mean_ms": 15828.6384072,
+          "a_p95_ms": 12746.9103039,
+          "b_p95_ms": 20548.887688
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 24232.4918379,
+          "b_mean_ms": 16554.78857855,
+          "a_p95_ms": 27814.83329215,
+          "b_p95_ms": 19650.1395118
+        }
+      ]
+    },
+    {
+      "a": "v4-sgcontrol-cap4-native-s103",
+      "b": "v4-sgcontrol-cap4-q8-s103",
+      "requests": 60,
+      "trace_sha256": "5411a7fb4d4fad7bc4ed4d50f6cf69538f3e2a524b2e20b5e5630c93335fc1df",
+      "p50_ms_delta_pct": 76.48568557699562,
+      "p95_ms_delta_pct": -1.9614703319510984,
+      "p99_ms_delta_pct": -4.558956402801051,
+      "a_latency_ms": {
+        "p50_ms": 11279.64955,
+        "p95_ms": 26090.173040799997,
+        "p99_ms": 27393.84239105
+      },
+      "b_latency_ms": {
+        "p50_ms": 19906.966839,
+        "p95_ms": 25578.42203705,
+        "p99_ms": 26144.969059389998
+      },
+      "a_uncached_tokens": 76726.0,
+      "b_uncached_tokens": 76726.0,
+      "a_host_promoted_tokens": 0.0,
+      "b_host_promoted_tokens": 98288.0,
+      "a_f1": 0.3057445973728647,
+      "b_f1": 0.30710742771932475,
+      "f1_delta": 0.0013628303464600644,
+      "a_cap_hits": 2,
+      "b_cap_hits": 3,
+      "output_hash_mismatches": 7,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 3099.70380985,
+          "b_mean_ms": 16318.87239025,
+          "a_p95_ms": 5278.176768050001,
+          "b_p95_ms": 22454.90371385
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 10020.735719549999,
+          "b_mean_ms": 19811.3882956,
+          "a_p95_ms": 13044.99685685,
+          "b_p95_ms": 26038.59983095
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 22474.06087445,
+          "b_mean_ms": 19394.744402,
+          "a_p95_ms": 27346.19581325,
+          "b_p95_ms": 24342.76823075
+        }
+      ]
+    }
+  ]
+}
