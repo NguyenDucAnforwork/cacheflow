@@ -655,3 +655,11 @@ Nhóm kiểm chứng abstention cố định có12QA, lấy bốn câu category5
 **Hỏi: Vì sao phải giữ seed2QPS bị regression dù4QPS có gain?**
 
 **Đáp:** Nó cho thấy policy phụ thuộc regime. Ở V5dev2QPS, p95 union thay đổi+.60/−.25/+8.54% theo ba seed; low-reuse chỉ tăng tối đa khoảng.65% và vượt gate5%. Không thể lấy control tốt để xóa control xấu. Tôi sẽ mô tả một phương pháp hữu ích có điều kiện, thay vì hứa luôn nhanh hơn ở mọi tải.
+
+### 21.3. Đối chứng mạnh hơn và bằng chứng cấu hình thật
+
+V5 đã hoàn tất39lượt validation SGLang,1.740request không lỗi. So nativeDFS, union giảm p95 khoảng12,1–22,9% theo seed, nhưng F1 có một cặp giảm0,0097 và hai cặp tăng. Khi tăng GPU KV lên10GiB trong control dev, p95 union lại tăng khoảng0,53–0,99%, F1 bằng nhau. Kết quả phù hợp với một lợi ích có điều kiện dưới pressure; chưa có lý do hứa thắng mọi tải hay mọi cấu hình cache.
+
+**Hỏi: Tại sao test xanh vẫn chưa đủ chứng minh benchmark đúng cấu hình?**
+
+**Đáp:** Test kiểm logic mà nó bao phủ. Một run còn cần actualargv, health/config và fingerprint source từ process thật. Audit V5 yêu cầu client keepalive0, read/pool3600giây, đúng policy/cap, byte budget, fresh history và source hash. Thiếu fingerprint của replay hoặc dùng transport revision cũ sẽ bị từ chối, dù các request đều trả200. Khi warmup vLLM mới chạy60/60, tôi còn kiểm subscriber có `known=true`, hash contract đã xác minh và không mất sequence. Đây mới là bằng chứng cho phép dùng actual-GPU LPM làm baseline; process sống hoặc một con sốhit không đủ.

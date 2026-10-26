@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 from v5_confirm import build_plan
 from v5_verify import verify
+from v5_audit_contracts import audit_common
 from v4_audit_sglang_runs import audit as audit_sg
 from v3_analyze_runs import load as load_main,compare as compare_main
 from v4_compare_sglang import compare as compare_sg
@@ -18,6 +19,11 @@ def main():
         rid=step['run_id'];lookup[rid]=step
         m=json.loads(Path(step['trace']).with_suffix('.manifest.json').read_text())
         assert m['requests']==40 and m['parent_method_freeze_sha256']==digest
+        root=Path('results/v3/sglang' if step['kind']=='sg' else 'results/v3')
+        raw=Path('results/v3/raw/sglang' if step['kind']=='sg' else 'results/v3/raw')
+        captured=json.loads((root/f'{rid}.setup.json').read_text())
+        summary=json.loads((raw/f'{rid}.summary.json').read_text())
+        audit_common(step,captured,summary,m,freeze,seal)
         if step['kind']=='sg':
             row=audit_sg(rid);sg_ids.append(rid)
             assert row['runtime']['same_batch_guard'] and not row['runtime']['profile_transfers']

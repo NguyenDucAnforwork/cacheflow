@@ -252,3 +252,13 @@ Analysis now explicitly handles a category5-only cohort: no answerableF1 is inve
 ![V5 revision2 audited primary latency tradeoff](../results/v3/figures/v5r2_primary_tradeoffs.png)
 
 Abstention paired score vectors are identical for every question at all three seeds, while one generated-text hash differs in each native/union pair. Equal score is therefore not bit-identical output, and a hash mismatch alone is not proof of lost answer quality. Raw text remains captured; no prediction normalization is applied.
+
+## All39 V5 SG validation runs complete; main stack started,14:49UTC
+
+`v5r2_sg_validation_complete.json` verifies39 measured runs1740/1740 successful requests, zero errors, with complete disjoint coverage of primary/low-load/low-reuse/abstention/DFS/GPU-fit blocks. The aggregate records SHA of every constituent audit and the prospective prompt seal; it is not a main-engine or full-data completion claim.
+
+NativeDFS paired union p95 changes−12.079/−22.906/−18.810%; F1 deltas−.009723/+.009764/+.006575. This is a replicated native-ordering control with a mixed quality effect, not quality equivalence. GPU-fit10GiB paired p95 changes+.530/+.726/+.993%, with equal F1 at every seed. Low-reuse gate remains passed; the lower-load+8.544% regression remains explicit. These controls bound the method's regime rather than proving universal benefit.
+
+Shared `v5_audit_contracts.py` now checks actual client keepalive/read/pool, gateway upstream read, intended policy/cap, model/prompt/trace identity, fresh history/decision state, exact CPU payload and mandatory serving-source fingerprints. Omitting source coverage or using the revision1 transport fails the contract. Dev, repaired-protocol-repeat and full auditors all use the shared check. Main source coverage requires all19 parent-selected files with the exact allowed transport patches; native coverage includes the measured frontend/overlay and gateway sources where applicable.57CPU tests pass; serving sources and experiment seal remain unchanged.
+
+Main vLLM/LMCache startup/warmup succeeds60/60, actual byte budget and all19 source fingerprints verified, real GPU-event observer `known=true`, hash contract verified, gaps0. The first main measuredFIFO16 arm is live. Main comparisons,27repair-repeat runs and17full runs remain required. Reproduce completed native blocks with `v5_analyze_controls.py dfs` / `gpufit` and aggregate with `v5_audit_sg_complete.py`.

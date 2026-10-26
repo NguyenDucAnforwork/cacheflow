@@ -13,6 +13,7 @@ import yaml
 from v5_full import build_plan
 from v4_full_contracts import audit_configuration
 from v5_verify import verify
+from v5_audit_contracts import audit_common
 from v4_audit_sglang_runs import audit as audit_sg
 from v3_analyze_runs import load as load_main
 from v3_audit_admission import audit as audit_admission
@@ -65,6 +66,7 @@ def main():
         assert s['client_keepalive_connections']==0
         if setup.get('gateway_config'):assert setup['gateway_before']['upstream_read_timeout_s']==3600
         manifest=json.loads(Path(step['trace']).with_suffix('.manifest.json').read_text())
+        audit_common(step,setup,s,manifest,freeze,seal)
         assert s['requests']==s['successes']==1986 and not s['errors']
         assert s['trace_sha256']==manifest['trace_sha256'] and manifest['requests']==1986
         assert manifest['parent_method_freeze_sha256']==digest

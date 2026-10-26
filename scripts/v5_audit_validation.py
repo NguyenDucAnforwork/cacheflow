@@ -6,6 +6,7 @@ from pathlib import Path
 import yaml
 from v5_validate import build_plan
 from v5_verify import verify
+from v5_audit_contracts import audit_common
 from v4_audit_sglang_runs import audit as sg_audit
 from v4_compare_sglang import compare as sg_compare
 from v3_analyze_runs import load as main_load,compare as main_compare
@@ -20,6 +21,7 @@ def main():
         base=Path('results/v3/sglang' if kind=='sg' else 'results/v3');raw=Path('results/v3/raw/sglang' if kind=='sg' else 'results/v3/raw')
         setup=json.loads((base/f'{rid}.setup.json').read_text());s=json.loads((raw/f'{rid}.summary.json').read_text())
         m=json.loads(Path(step['trace']).with_suffix('.manifest.json').read_text());runtime=setup['runtime']
+        audit_common(step,setup,s,m,parent,seal)
         assert s['requests']==s['successes']==m['requests'] and not s['errors'] and s['trace_sha256']==m['trace_sha256']
         assert s['prompt_version']==m['prompt_version']=='locomo-qwen-concise-v5'
         assert s['request_read_timeout_s']==s['request_pool_timeout_s']==3600
