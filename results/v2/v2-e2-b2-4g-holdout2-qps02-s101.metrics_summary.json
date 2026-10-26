@@ -1,0 +1,29 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l1_evicted_chunks_total": null,
+      "lmcache_mp_l1_read_chunks_total": 2604.0,
+      "lmcache_mp_l1_write_chunks_total": 197.0,
+      "lmcache_mp_num_chunks_loaded_total": 1161.0
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 291968.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 9514480.0,
+      "vllm:prompt_tokens_cached_total": 666624.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 291968.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 374656.0,
+      "vllm:prompt_tokens_source_local_compute_total": 52482.0,
+      "vllm:prompt_tokens_total": 719106.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 52482.0,
+      "vllm:request_queue_time_seconds_sum": 25.957507530067232
+    }
+  },
+  "duration_s": 143.016636123,
+  "first_timestamp_ns": 90248742444337,
+  "host_memory_available_min_bytes": 176961540096,
+  "last_timestamp_ns": 90391759080460,
+  "metrics_path": "/workspace/cacheflow-e1/results/v2/raw/v2-e2-b2-4g-holdout2-qps02-s101.metrics.jsonl",
+  "samples": 144,
+  "vram_peak_mib": 8457.0
+}

@@ -22,6 +22,17 @@
         "kv_cache_memory_bytes": 8589934592,
         "capacity_tokens": 74896
       }
+    },
+    {
+      "run_id": "v2-e2-b2-4g-holdout2-qps02-s101",
+      "snapshot_path": "results/v2/raw/v2-e2-b2-4g-holdout2-qps02-s101.engine_snapshot.prom",
+      "snapshot_sha256": "c5176d2c7820c968252ba7920954f029b0794e19b7a9fbd849a7772cdc2d9a64",
+      "config": {
+        "block_size": 16,
+        "num_gpu_blocks": 2340,
+        "kv_cache_memory_bytes": 4294967296,
+        "capacity_tokens": 37440
+      }
     }
   ],
   "working_set_prefix_tokens": {
