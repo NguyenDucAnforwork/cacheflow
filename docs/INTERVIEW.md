@@ -643,3 +643,15 @@ Revision2 dùng kết nối client mới cho mọi arm, giữ max connections256
 **Hỏi: V5 đã loại bỏ mọi tradeoff latency chưa?**
 
 **Đáp:** Chưa. Primary dev SGLang revision2 có540/540request thành công: p95 trung bình native/FIFO/union là19,043/19,163/16,803giây. Nhưng p50 native4,894giây cònunion13,564giây. Cả chín lượt đều compute69.650token; union còn có nhiều promotion hơn ở block nhỏ này. Vì vậy lời giải thích đúng không phải “luôn ít transfer/compute hơn”. Đây là tail/median tradeoff phụ thuộc engine, queue và working set; full study cùng các control mới quyết định phạm vi claim.
+
+### 21.2. Không biến một stratum nhỏ thành kết luận toàn benchmark
+
+Nhóm kiểm chứng abstention cố định có12QA, lấy bốn câu category5 đầu tiên theo source index ở mỗi conversation dev. Native vàunion mỗi bên chạy ba seed, tổng72request không lỗi. Mỗi lượt đều được evaluator chấm7/12, không có output chạm cap96. `answerable_f1=null` vì nhóm này không có câu có đáp án; điểm category5 được báo riêng.
+
+**Hỏi: Có thể gọi đây là cải thiện từ0,009 lên0,583 không?**
+
+**Đáp:** Chưa.0,009 là V4 full446câu dưới workload khác, còn0,583 là12câu của một stratum V5. Khác tập câu hỏi và lịch batching nên không phải một ablation chỉ thay template. Chúng tôi đã chứng minh prompt V5 không còn hai chỉ dẫn trái nhau, và quan sát compliance/quality trong stratum nhỏ. FullV5 vẫn cần chấm đủ mọi category để đánh giá phạm vi chất lượng.
+
+**Hỏi: Vì sao phải giữ seed2QPS bị regression dù4QPS có gain?**
+
+**Đáp:** Nó cho thấy policy phụ thuộc regime. Ở V5dev2QPS, p95 union thay đổi+.60/−.25/+8.54% theo ba seed; low-reuse chỉ tăng tối đa khoảng.65% và vượt gate5%. Không thể lấy control tốt để xóa control xấu. Tôi sẽ mô tả một phương pháp hữu ích có điều kiện, thay vì hứa luôn nhanh hơn ở mọi tải.

@@ -11,6 +11,18 @@ from v4_audit_sglang_runs import audit
 def read(path):return [json.loads(l) for l in path.read_text().splitlines()]
 
 
+
+def quality_contrast(a,b):
+    af,bf=a['answerable_f1'],b['answerable_f1']
+    assert (af is None)==(bf is None),'unmatched answerable score coverage'
+    ac=a.get('by_category',{}).get('5');bc=b.get('by_category',{}).get('5')
+    assert (ac is None)==(bc is None),'unmatched category5 coverage'
+    if ac is not None:assert ac['n']==bc['n']
+    av=ac['mean'] if ac else None;bv=bc['mean'] if bc else None
+    return dict(a_f1=af,b_f1=bf,f1_delta=bf-af if af is not None else None,
+        a_category5_score=av,b_category5_score=bv,category5_delta=bv-av if av is not None else None)
+
+
 def compare(a,b,quality):
     x=audit(a);y=audit(b)
     base=Path('results/v3/sglang');raw=Path('results/v3/raw/sglang')
@@ -41,7 +53,7 @@ def compare(a,b,quality):
         b_latency_ms={k:y[k] for k in ['p50_ms','p95_ms','p99_ms']},
         a_uncached_tokens=x['native_uncached_tokens'],b_uncached_tokens=y['native_uncached_tokens'],
         a_host_promoted_tokens=x['native_host_promoted_tokens'],b_host_promoted_tokens=y['native_host_promoted_tokens'],
-        a_f1=qa['answerable_f1'],b_f1=qb['answerable_f1'],f1_delta=qb['answerable_f1']-qa['answerable_f1'],
+        **quality_contrast(qa,qb),
         a_cap_hits=qa['output_budget_hits'],b_cap_hits=qb['output_budget_hits'],
         output_hash_mismatches=sum(ra[k]['output_hash']!=rb[k]['output_hash'] for k in ra),
         per_conversation=conversations)
@@ -53,4 +65,4 @@ if __name__=='__main__':
     quality={r['run_id']:r for r in json.loads(a.quality.read_text())['runs']}
     rows=[compare(*pair.split(':'),quality) for pair in a.pairs]
     a.output.write_text(json.dumps(dict(scope='Paired run-level dev contrasts; repeated QA are not independent new questions',pairs=rows),indent=2)+'\n')
-    for r in rows:print(r['b'],*[round(r[k],3) for k in ['p50_ms_delta_pct','p95_ms_delta_pct','p99_ms_delta_pct','f1_delta']],r['output_hash_mismatches'])
+    for r in rows:print(r['b'],*[round(r[k],3) if r[k] is not None else None for k in ['p50_ms_delta_pct','p95_ms_delta_pct','p99_ms_delta_pct','f1_delta']],r['output_hash_mismatches'])

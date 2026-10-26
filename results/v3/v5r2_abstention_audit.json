@@ -1,0 +1,619 @@
+{
+  "scope": "V5 revision2 named control only; repeated schedules do not add unique QA. No template causal claim against differently batched V4 full data.",
+  "regime": "abstention",
+  "requests": 72,
+  "errors": 0,
+  "runs": [
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-native-s101",
+      "requests": 12,
+      "errors": 0,
+      "trace_sha256": "2e1348f451f0594caaf4af63d2313837dcd0e593ce856bc4aa5c63e3f3855d08",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "gateway_policy": null,
+      "gateway_prepare_mode": null,
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 6821.1430265,
+      "p95_ms": 15895.3539768,
+      "p99_ms": 16059.79826736,
+      "native_uncached_tokens": 75552.0,
+      "native_host_promoted_tokens": 0.0,
+      "admission": null
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-union-s101",
+      "requests": 12,
+      "errors": 0,
+      "trace_sha256": "2e1348f451f0594caaf4af63d2313837dcd0e593ce856bc4aa5c63e3f3855d08",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "gateway_policy": "packing_reuse",
+      "gateway_prepare_mode": "thread",
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 14500.863045,
+      "p95_ms": 16240.728459099999,
+      "p99_ms": 16303.71641182,
+      "native_uncached_tokens": 75552.0,
+      "native_host_promoted_tokens": 19456.0,
+      "admission": {
+        "run_id": "v5r2-dev-abstention-g6-qps4-union-s101",
+        "policy": "packing_reuse",
+        "max_inflight": 64,
+        "configured_max_bypasses": 8,
+        "max_head_bypasses": 3,
+        "queued_with_spare_slots_s": 15.848205519000002,
+        "queued_with_at_most_one_active_s": 0.008006517,
+        "active_request_seconds": 84.511459636,
+        "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+        "decisions": [
+          {
+            "request_id": "conv-30-q079",
+            "head_id": "conv-30-q079",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q082",
+            "head_id": "conv-30-q082",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q083",
+            "head_id": "conv-30-q083",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q084",
+            "head_id": "conv-30-q084",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-26-q152",
+            "head_id": "conv-26-q152",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-41-q152",
+            "head_id": "conv-41-q152",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-41-q153",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 1
+          },
+          {
+            "request_id": "conv-41-q154",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 2
+          },
+          {
+            "request_id": "conv-41-q155",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 3
+          },
+          {
+            "request_id": "conv-26-q153",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 3
+          },
+          {
+            "request_id": "conv-26-q154",
+            "head_id": "conv-26-q154",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-26-q155",
+            "head_id": "conv-26-q155",
+            "bypasses_for_head": 0
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-native-s102",
+      "requests": 12,
+      "errors": 0,
+      "trace_sha256": "345f49f8e677050e9e528849c2c3d7877b3008d93a403c90762b4ceb6b760ec4",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "gateway_policy": null,
+      "gateway_prepare_mode": null,
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 7947.3681400000005,
+      "p95_ms": 16529.5807269,
+      "p99_ms": 16614.87104058,
+      "native_uncached_tokens": 75552.0,
+      "native_host_promoted_tokens": 0.0,
+      "admission": null
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-union-s102",
+      "requests": 12,
+      "errors": 0,
+      "trace_sha256": "345f49f8e677050e9e528849c2c3d7877b3008d93a403c90762b4ceb6b760ec4",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "gateway_policy": "packing_reuse",
+      "gateway_prepare_mode": "thread",
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 15604.219430000001,
+      "p95_ms": 16916.1884379,
+      "p99_ms": 17011.05587958,
+      "native_uncached_tokens": 75552.0,
+      "native_host_promoted_tokens": 19456.0,
+      "admission": {
+        "run_id": "v5r2-dev-abstention-g6-qps4-union-s102",
+        "policy": "packing_reuse",
+        "max_inflight": 64,
+        "configured_max_bypasses": 8,
+        "max_head_bypasses": 3,
+        "queued_with_spare_slots_s": 16.591316957,
+        "queued_with_at_most_one_active_s": 0.005025199,
+        "active_request_seconds": 87.106394049,
+        "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+        "decisions": [
+          {
+            "request_id": "conv-30-q079",
+            "head_id": "conv-30-q079",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q082",
+            "head_id": "conv-30-q082",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q083",
+            "head_id": "conv-30-q083",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q084",
+            "head_id": "conv-30-q084",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-26-q152",
+            "head_id": "conv-26-q152",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-41-q152",
+            "head_id": "conv-41-q152",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-41-q153",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 1
+          },
+          {
+            "request_id": "conv-41-q154",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 2
+          },
+          {
+            "request_id": "conv-41-q155",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 3
+          },
+          {
+            "request_id": "conv-26-q153",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 3
+          },
+          {
+            "request_id": "conv-26-q154",
+            "head_id": "conv-26-q154",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-26-q155",
+            "head_id": "conv-26-q155",
+            "bypasses_for_head": 0
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-native-s103",
+      "requests": 12,
+      "errors": 0,
+      "trace_sha256": "efd76e8e772c3c5f058aa98526d84fcdf684fcb07ac9f8b53a25a5b56a0ba7d7",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "gateway_policy": null,
+      "gateway_prepare_mode": null,
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 7851.4010645,
+      "p95_ms": 16549.49865445,
+      "p99_ms": 16842.21785969,
+      "native_uncached_tokens": 75552.0,
+      "native_host_promoted_tokens": 0.0,
+      "admission": null
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-union-s103",
+      "requests": 12,
+      "errors": 0,
+      "trace_sha256": "efd76e8e772c3c5f058aa98526d84fcdf684fcb07ac9f8b53a25a5b56a0ba7d7",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "gateway_policy": "packing_reuse",
+      "gateway_prepare_mode": "thread",
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 15526.928015,
+      "p95_ms": 17096.826877099997,
+      "p99_ms": 17162.166867419997,
+      "native_uncached_tokens": 75552.0,
+      "native_host_promoted_tokens": 19456.0,
+      "admission": {
+        "run_id": "v5r2-dev-abstention-g6-qps4-union-s103",
+        "policy": "packing_reuse",
+        "max_inflight": 64,
+        "configured_max_bypasses": 8,
+        "max_head_bypasses": 3,
+        "queued_with_spare_slots_s": 16.727998107999998,
+        "queued_with_at_most_one_active_s": 0.006539970000000001,
+        "active_request_seconds": 87.18990954399999,
+        "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+        "decisions": [
+          {
+            "request_id": "conv-30-q079",
+            "head_id": "conv-30-q079",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q082",
+            "head_id": "conv-30-q082",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q083",
+            "head_id": "conv-30-q083",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-30-q084",
+            "head_id": "conv-30-q084",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-26-q152",
+            "head_id": "conv-26-q152",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-41-q152",
+            "head_id": "conv-41-q152",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-41-q153",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 1
+          },
+          {
+            "request_id": "conv-41-q154",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 2
+          },
+          {
+            "request_id": "conv-41-q155",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 3
+          },
+          {
+            "request_id": "conv-26-q153",
+            "head_id": "conv-26-q153",
+            "bypasses_for_head": 3
+          },
+          {
+            "request_id": "conv-26-q154",
+            "head_id": "conv-26-q154",
+            "bypasses_for_head": 0
+          },
+          {
+            "request_id": "conv-26-q155",
+            "head_id": "conv-26-q155",
+            "bypasses_for_head": 0
+          }
+        ]
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "a": "v5r2-dev-abstention-g6-qps4-native-s101",
+      "b": "v5r2-dev-abstention-g6-qps4-union-s101",
+      "requests": 12,
+      "trace_sha256": "2e1348f451f0594caaf4af63d2313837dcd0e593ce856bc4aa5c63e3f3855d08",
+      "p50_ms_delta_pct": 112.58699588418608,
+      "p95_ms_delta_pct": 2.1728014538341833,
+      "p99_ms_delta_pct": 1.518812007469239,
+      "a_latency_ms": {
+        "p50_ms": 6821.1430265,
+        "p95_ms": 15895.3539768,
+        "p99_ms": 16059.79826736
+      },
+      "b_latency_ms": {
+        "p50_ms": 14500.863045,
+        "p95_ms": 16240.728459099999,
+        "p99_ms": 16303.71641182
+      },
+      "a_uncached_tokens": 75552.0,
+      "b_uncached_tokens": 75552.0,
+      "a_host_promoted_tokens": 0.0,
+      "b_host_promoted_tokens": 19456.0,
+      "a_f1": null,
+      "b_f1": null,
+      "f1_delta": null,
+      "a_category5_score": 0.5833333333333334,
+      "b_category5_score": 0.5833333333333334,
+      "category5_delta": 0.0,
+      "a_cap_hits": 0,
+      "b_cap_hits": 0,
+      "output_hash_mismatches": 1,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 6778.02428,
+          "b_mean_ms": 13862.34296375,
+          "a_p95_ms": 7048.243558699999,
+          "b_p95_ms": 16297.9902343
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 4502.18987425,
+          "b_mean_ms": 4284.9932485,
+          "a_p95_ms": 5593.30886035,
+          "b_p95_ms": 4934.1115263
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 15379.976406,
+          "b_mean_ms": 15033.733500999999,
+          "a_p95_ms": 16044.8487864,
+          "b_p95_ms": 15697.6517599
+        }
+      ]
+    },
+    {
+      "a": "v5r2-dev-abstention-g6-qps4-native-s102",
+      "b": "v5r2-dev-abstention-g6-qps4-union-s102",
+      "requests": 12,
+      "trace_sha256": "345f49f8e677050e9e528849c2c3d7877b3008d93a403c90762b4ceb6b760ec4",
+      "p50_ms_delta_pct": 96.34448983761308,
+      "p95_ms_delta_pct": 2.3388839522761717,
+      "p99_ms_delta_pct": 2.3845194948089565,
+      "a_latency_ms": {
+        "p50_ms": 7947.3681400000005,
+        "p95_ms": 16529.5807269,
+        "p99_ms": 16614.87104058
+      },
+      "b_latency_ms": {
+        "p50_ms": 15604.219430000001,
+        "p95_ms": 16916.1884379,
+        "p99_ms": 17011.05587958
+      },
+      "a_uncached_tokens": 75552.0,
+      "b_uncached_tokens": 75552.0,
+      "a_host_promoted_tokens": 0.0,
+      "b_host_promoted_tokens": 19456.0,
+      "a_f1": null,
+      "b_f1": null,
+      "f1_delta": null,
+      "a_category5_score": 0.5833333333333334,
+      "b_category5_score": 0.5833333333333334,
+      "category5_delta": 0.0,
+      "a_cap_hits": 0,
+      "b_cap_hits": 0,
+      "output_hash_mismatches": 1,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 7443.91150425,
+          "b_mean_ms": 14539.633491249999,
+          "a_p95_ms": 7795.65609535,
+          "b_p95_ms": 17002.4315667
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 5987.4310255,
+          "b_mean_ms": 6072.383725,
+          "a_p95_ms": 8328.9010744,
+          "b_p95_ms": 8411.536875
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 16219.640951750001,
+          "b_mean_ms": 15923.59590625,
+          "a_p95_ms": 16607.1173757,
+          "b_p95_ms": 16310.47612685
+        }
+      ]
+    },
+    {
+      "a": "v5r2-dev-abstention-g6-qps4-native-s103",
+      "b": "v5r2-dev-abstention-g6-qps4-union-s103",
+      "requests": 12,
+      "trace_sha256": "efd76e8e772c3c5f058aa98526d84fcdf684fcb07ac9f8b53a25a5b56a0ba7d7",
+      "p50_ms_delta_pct": 97.75996522715911,
+      "p95_ms_delta_pct": 3.307219354967139,
+      "p99_ms_delta_pct": 1.8996845332096113,
+      "a_latency_ms": {
+        "p50_ms": 7851.4010645,
+        "p95_ms": 16549.49865445,
+        "p99_ms": 16842.21785969
+      },
+      "b_latency_ms": {
+        "p50_ms": 15526.928015,
+        "p95_ms": 17096.826877099997,
+        "p99_ms": 17162.166867419997
+      },
+      "a_uncached_tokens": 75552.0,
+      "b_uncached_tokens": 75552.0,
+      "a_host_promoted_tokens": 0.0,
+      "b_host_promoted_tokens": 19456.0,
+      "a_f1": null,
+      "b_f1": null,
+      "f1_delta": null,
+      "a_category5_score": 0.5833333333333334,
+      "b_category5_score": 0.5833333333333334,
+      "category5_delta": 0.0,
+      "a_cap_hits": 0,
+      "b_cap_hits": 0,
+      "output_hash_mismatches": 1,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 7393.51558225,
+          "b_mean_ms": 14527.2856875,
+          "a_p95_ms": 7803.83877615,
+          "b_p95_ms": 17156.226868299997
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 5925.2330845,
+          "b_mean_ms": 6040.4225475,
+          "a_p95_ms": 8163.72109315,
+          "b_p95_ms": 8276.0082196
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 16186.205717249999,
+          "b_mean_ms": 15923.753360499999,
+          "a_p95_ms": 16815.60702285,
+          "b_p95_ms": 16553.458214399998
+        }
+      ]
+    }
+  ]
+}

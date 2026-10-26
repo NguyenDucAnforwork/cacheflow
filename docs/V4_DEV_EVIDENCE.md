@@ -234,3 +234,21 @@ Full audit import preflight caught and repaired an incorrect local module refere
 ### Descriptive whole-attempt QoS on historical V4 full evidence
 
 `v5_analyze_qos.py` reports all thresholds1/5/10/30/60/300/600seconds, counting every failed attempt as a nonattainment. These are descriptive reporting points, not a newly selected acceptance gate or a change to the old timeout. Native full has1986/1986 success but1139/1986(57.35%) receive their first token within600s of scheduled arrival. FailedFIFO has1960/1986 success and1794/1986(90.33%) within600s; it receives no complete-success latency quantiles from this analysis. Forconv30, native77/105(73.33%) meet600s vsFIFO58/105(55.24%), with26FIFO errors. Aggregate attainment can improve while one group gets worse. This is not a valid successful-only latency win or a causal fairness proof. Per-conversation/raw-hash evidence lives in `v4_full_native_qos.json` and `v4_full_fifo_failed_qos.json`.
+
+## V5 revision2 named controls audited,14:34UTC
+
+The first nativeLPM6GiB stage is complete:27 measured runs1020/1020 requests, zero errors, plus60warmup. This covers9 primary,6lower-load,6low-reuse and6abstention runs. The pipeline is starting nativeDFS; GPU-fit/main/repeats/full remain pending.
+
+| Named control, union vs native | p95 change by seed101/102/103 | Quality/scope |
+| --- | --- | --- |
+|2QPS |+.604/−.245/+8.544%|Answerable F1 deltas+.005704/+.007391/+.007989; one tail regression retained|
+|Low reuse |+.648/+.096/+.091%|F1 equal; all three within declared5% gate,8uniqueQA|
+|Abstention stratum |+2.173/+2.339/+3.307%|Both score7/12 at every seed; answerable F1 remainsnull; no output-cap hits|
+
+Sources: `v5r2_{lowload,lowreuse,abstention}_{audit,quality}.json`. Abstention stratum is the same12questions across all six runs, not72independent QA or a full446-question adversarial result. Its absolute7/12 does not provide a causal template improvement estimate against the differently batched V4 full run. No V4/V5 score pooling or posthoc phrase normalization.
+
+Analysis now explicitly handles a category5-only cohort: no answerableF1 is invented, and category5 score delta is separate. Coverage mismatches reject the comparison.54CPU tests pass. Figure `figures/v5r2_primary_tradeoffs.{png,svg}` is generated from the audited primary block and visually inspected; dots are three run-level quantiles. Reproduce with `PYTHONPATH=src /venv/main/bin/python scripts/v5_plot_primary.py`.
+
+![V5 revision2 audited primary latency tradeoff](../results/v3/figures/v5r2_primary_tradeoffs.png)
+
+Abstention paired score vectors are identical for every question at all three seeds, while one generated-text hash differs in each native/union pair. Equal score is therefore not bit-identical output, and a hash mismatch alone is not proof of lost answer quality. Raw text remains captured; no prediction normalization is applied.
