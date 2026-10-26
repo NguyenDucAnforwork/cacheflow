@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 20:33 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 20:39 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -893,6 +893,12 @@ Trong main, readiness so union cũ có p95 −0,44/−0,84/+4,58%, median tăng 
 **Hỏi: Có thể gọi test xanh hoặc có seal là full benchmark xong không?**
 
 **Đáp:** Không. Test verifier hiện có cả setup chiếu để cố ý làm sai budget/policy/timeout/source rồi kiểm nó bị từ chối; fixture đó không phải run 48 GB thật. Full study còn cần 30 arms × 1.986 QA = 59.580 request đo, actual host allocation, quality/category5, fairness, resources và native ITL. Ba arrival seed không phải ba bộ semantic data độc lập.
+
+**Hỏi: Tại sao cần khóa cả code phân tích trước full benchmark?**
+
+**Đáp:** Serving code giữ nguyên nhưng cách lọc run, chọn counter hoặc tính percentile có thể đổi kết luận. Seal full dự kiến ghi riêng hash của auditor, evaluator, resource/fairness/wait/decode analysis và phiên bản dependency, rồi kiểm lại trước từng arm và lúc tổng hợp. Một sửa lỗi sau seal phải có provenance riêng; hash chỉ chứng minh cùng byte, không chứng minh công thức đúng.
+
+Ví dụ integration check trước freeze bắt được main audit đặt tên trường `p95_ms_delta_pct`, còn native dùng `p95_delta_pct`. Freezer cũ đọc một tên cho cả hai nên sẽ dừng trước full. Bản sửa đọc đúng schema, yêu cầu đủ ba seed và số hữu hạn, giữ nguyên ngưỡng 5%. Test gate không phải kết quả GPU; actual main low-reuse vẫn phải đo/audit riêng.
 
 **Hỏi: Cùng số token có đủ để so hai engine?**
 

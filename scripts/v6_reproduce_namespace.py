@@ -65,7 +65,7 @@ def prepare(namespace,reference,root=None):
     reference=Path(reference);reference=reference if reference.is_absolute() else root/reference
     freeze=json.loads(reference.read_text());assert freeze['status']=='frozen_prospective_full_study_not_completion'
     assert len(freeze['actions'])==30
-    for key in ['actor_sha256','input_manifest_sha256','input_file_sha256','model_artifact_sha256','tokenizer_source_sha256','preflight_artifact_sha256','prerequisite_audit_sha256']:
+    for key in ['actor_sha256','analysis_source_sha256','input_manifest_sha256','input_file_sha256','model_artifact_sha256','tokenizer_source_sha256','preflight_artifact_sha256','prerequisite_audit_sha256']:
         for name,digest in freeze.get(key,{}).items():assert sha(root/name)==digest,('Reference evidence changed',key,name)
     assert sha(root/'docs/V6_FULL_PROTOCOL.md')==freeze['plan_sha256']
     bundle_rel=Path('scripts/reproductions')/namespace;bundle=root/bundle_rel;doc_rel=Path(f'docs/reproductions/{namespace}.md');doc=root/doc_rel

@@ -1,6 +1,7 @@
 """Prospective full-study seal; never starts serving or overwrites a seal."""
 import hashlib
 import json
+import math
 import importlib.metadata
 import subprocess
 import sys
@@ -18,6 +19,12 @@ ACTORS=['scripts/v6_full.py','scripts/v6_full_plan.py','scripts/v6_freeze_full.p
     'scripts/v5_full_histograms.py','scripts/v3_sglang_runtime.py','scripts/v3_serve_sglang.sh',
     'scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v4_sglang_delayhit.py',
     'scripts/v6_raw_archive.py','scripts/v6_token_fingerprints.py','scripts/v6_full_input_preflight.py','scripts/v6_input_oracle.py','scripts/v6_trace_hashes.py','src/cacheflow/locomo.py']
+ANALYSIS=['scripts/v6_audit_full_run.py','scripts/v6_audit_full.py','scripts/v6_full_contracts.py',
+    'scripts/v3_analyze_runs.py','scripts/v4_audit_sglang_runs.py','scripts/v2_quality_audit.py',
+    'data/processed/v2/evaluator/evaluation.py','scripts/v6_main_resources.py','scripts/v6_native_resources.py',
+    'scripts/v4_analyze_sglang_resources.py','scripts/v6_analyze_fairness.py','scripts/v5_analyze_decode.py',
+    'scripts/v5_analyze_histograms.py','scripts/v5_analyze_waits.py','scripts/v5_run_intervals.py',
+    'scripts/v6_normalize_registry.py']
 PREREQUISITES=[('results/v3/v6dev1_main_audit.json',24,1440),
     ('results/v3/sglang/v6native1_audit.json',60,2700),
     ('results/v3/v6controls1_main_audit.json',36,1260)]
@@ -27,12 +34,30 @@ def sha(path):
     with Path(path).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
 
+def lowreuse_gates(audits):
+    """Read each producer's explicit schema; require all three registered seeds."""
+    gates={}
+    for stack,baseline,metric in [('main','fifo64','p95_ms_delta_pct'),('sg','native','p95_delta_pct')]:
+        audit=audits[stack]
+        assert audit['complete'] and audit['errors']==0
+        for candidate in ['union64','packing_ready']:
+            pairs=[r for r in audit['pairs'] if r['regime']=='lowreuse' and r['baseline']==baseline and r['candidate']==candidate]
+            assert len(pairs)==3 and {r['seed'] for r in pairs}=={101,102,103},(stack,candidate,'Incomplete seeds')
+            pairs.sort(key=lambda r:r['seed'])
+            values=[r[metric] for r in pairs]
+            assert all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) for v in values),(stack,candidate,'Invalid p95 deltas')
+            gates[stack+'_'+candidate]=dict(seeds=[r['seed'] for r in pairs],source_metric=metric,
+                per_seed_p95_delta_pct=values,passes=all(v<=5 for v in values),threshold_pct=5)
+        assert gates[stack+'_union64']['passes'],'Original-union primary fails existing low-reuse gate; inspect controls before full freeze'
+    return gates
+
+
 def verify_full():
     parent,seal=verify();freeze=json.loads(PATH.read_text())
     assert freeze['actions']==build_plan() and freeze['plan_sha256']==sha(PLAN)
     assert all(importlib.metadata.version(n)==v for n,v in freeze['main_package_versions'].items())
     assert freeze['parent_v5_prompt_seal_sha256']==sha('results/v3/v5_prompt_freeze.json')
-    for key in ['actor_sha256','input_manifest_sha256','input_file_sha256','model_artifact_sha256','tokenizer_source_sha256','preflight_artifact_sha256','prerequisite_audit_sha256']:
+    for key in ['actor_sha256','analysis_source_sha256','input_manifest_sha256','input_file_sha256','model_artifact_sha256','tokenizer_source_sha256','preflight_artifact_sha256','prerequisite_audit_sha256']:
         for name,digest in freeze[key].items():assert sha(name)==digest,(key,name)
     expected=freeze['native_tokenizer_package_versions']
     versions=json.loads(subprocess.check_output(['/venv/sglang-baseline/bin/python','-c',
@@ -44,15 +69,9 @@ def verify_full():
 def main():
     parent,seal=verify();assert not PATH.exists();steps=build_plan()
     for name,runs,requests in PREREQUISITES:
-        audit=json.loads(Path(name).read_text());assert len(audit['runs'])==runs and audit['requests']==requests and audit['errors']==0,name
-    gates={}
-    for stack,path,baseline in [('main','results/v3/v6controls1_main_audit.json','fifo64'),('sg','results/v3/sglang/v6native1_audit.json','native')]:
-        audit=json.loads(Path(path).read_text())
-        for candidate in ['union64','packing_ready']:
-            pairs=[r for r in audit['pairs'] if r['regime']=='lowreuse' and r['baseline']==baseline and r['candidate']==candidate]
-            assert len(pairs)==3
-            gates[stack+'_'+candidate]=dict(per_seed_p95_delta_pct=[r['p95_delta_pct'] for r in pairs],passes=all(r['p95_delta_pct']<=5 for r in pairs),threshold_pct=5)
-        assert gates[stack+'_union64']['passes'],'Original-union primary fails existing low-reuse gate; inspect controls before full freeze'
+        audit=json.loads(Path(name).read_text());assert audit['complete'] and len(audit['runs'])==runs and audit['requests']==requests and audit['errors']==0,name
+    gates=lowreuse_gates({stack:json.loads(Path(path).read_text()) for stack,path in
+        [('main','results/v3/v6controls1_main_audit.json'),('sg','results/v3/sglang/v6native1_audit.json')]})
     # This is breadth evaluation of exposed QA. Both union variants remain fixed
     # treatments; the freeze does not select a winner from full-study outcomes.
     traces={s['trace'] for s in steps}|{'data/processed/v3/v5-dev4b3-qps4-s101.jsonl'}
@@ -94,12 +113,12 @@ def main():
     native=json.loads(Path('results/v3/sglang/v6native1_registration.json').read_text())
     for name in ['sglang','transformers']:assert native_tokens['package_versions'][name]==native['package_versions'][name]
     freeze=dict(status='frozen_prospective_full_study_not_completion',frozen_utc=datetime.now(timezone.utc).isoformat(),
-        lowreuse_gate_status=gates,actions=steps,actor_sha256={n:sha(n) for n in ACTORS},plan_sha256=sha(PLAN),
+        lowreuse_gate_status=gates,actions=steps,actor_sha256={n:sha(n) for n in ACTORS},analysis_source_sha256={n:sha(n) for n in ANALYSIS},plan_sha256=sha(PLAN),
         parent_v5_prompt_seal_sha256=sha('results/v3/v5_prompt_freeze.json'),
         prerequisite_audit_sha256={n:sha(n) for n,_,_ in PREREQUISITES},
         input_file_sha256={n:sha(n) for n in traces},input_manifest_sha256={n:sha(n) for n in manifests},
         preflight_artifact_sha256={str(n):sha(n) for n in preflight_files},tokenizer_source_sha256=native_tokens['native_source_sha256'],native_tokenizer_package_versions=native_tokens['package_versions'],
-        main_package_versions={n:importlib.metadata.version(n) for n in ['vllm','lmcache','torch','transformers','tokenizers','httpx']},native_package_versions=native['package_versions'],native_source_sha256=native['upstream_source_sha256'],
+        main_package_versions={n:importlib.metadata.version(n) for n in ['vllm','lmcache','torch','transformers','tokenizers','httpx','numpy','nltk','regex','PyYAML','psutil']},native_package_versions=native['package_versions'],native_source_sha256=native['upstream_source_sha256'],
         model_artifact_sha256=modelpins,model_revision=parent['model_revision'],source_data_sha256=parent['source_data_sha256'],
         transport=dict(read_s=3600,pool_s=3600,keepalive=0),host_payload_bytes=48002236416,
         expected_main_heap_bytes=48049946624,expected_native_host_bytes=48002236416,
