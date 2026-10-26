@@ -81,13 +81,15 @@ def main():
             by_category[str(category)] = dict(n=len(values), mean=statistics.mean(values))
         answerable = [r['score'] for r in per_request if r['category'] != 5]
         summaries.append(dict(run_id=run_id, answerable_n=len(answerable),
+                              protocol=summary['protocol'], prompt_version=summary['prompt_version'],
+                              trace_sha256=summary['trace_sha256'],
                               answerable_f1=statistics.mean(answerable) if answerable else None,
                               by_category=by_category,
                               output_budget_hits=sum(r['budget_hit'] for r in per_request),
                               per_request=per_request))
     result = dict(evaluator_url=EVALUATOR_URL, evaluator_sha256=EVALUATOR_SHA256,
                   nltk_version=version('nltk'), source_sha256=source_sha,
-                  scope='LoCoMo text-only full-context serving subset; raw budgeted outputs, no answer extraction; not leaderboard',
+                  scope='LoCoMo text-only serving subsets; protocol and prompt version per run; raw budgeted outputs, no answer extraction; not leaderboard',
                   runs=summaries)
     args.output.write_text(json.dumps(result, indent=2)+'\n')
     print('Wrote', args.output, 'runs', len(summaries))
