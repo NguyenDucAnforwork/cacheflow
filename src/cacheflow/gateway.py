@@ -74,7 +74,11 @@ def create_app(config_path: str | None = None) -> FastAPI:
         scheduler = scheduler_cls(**settings["scheduler"])
     trace = TraceWriter(os.environ.get("CACHEFLOW_TRACE", "/workspace/results/raw/gateway.jsonl"))
     upstream = settings.get("upstream", "http://127.0.0.1:8000").rstrip("/")
-    client = httpx.AsyncClient(timeout=httpx.Timeout(connect=30, read=600, write=30, pool=30), limits=httpx.Limits(max_connections=128))
+    # Fresh local connections avoid reusing sockets closed during long admission pauses.
+    # No retries: a failed POST is always reported and invalidates the run.
+    client = httpx.AsyncClient(timeout=httpx.Timeout(connect=30, read=600, write=30, pool=30),
+        limits=httpx.Limits(max_connections=128,
+            max_keepalive_connections=settings.get('upstream_keepalive_connections',128)))
     app = FastAPI(title="CacheFlow Gateway")
     app.state.scheduler = scheduler
 
@@ -92,6 +96,7 @@ def create_app(config_path: str | None = None) -> FastAPI:
     @app.get("/health")
     async def health() -> dict[str, Any]:
         return {"policy": scheduler.policy, "queue": scheduler.queue_depth, "active": scheduler.active_count,
+                'decision_stats': scheduler.decision_stats() if hasattr(scheduler, 'decision_stats') else None,
                 'residency': subscriber.stats() if subscriber else None}
 
     @app.post("/v1/completions")
@@ -133,6 +138,8 @@ def create_app(config_path: str | None = None) -> FastAPI:
         try:
             upstream_response = await stream_cm.__aenter__()
         except Exception as exc:
+            ticket.upstream_error_type = type(exc).__name__
+            ticket.upstream_error_detail = (repr(exc)+'; cause='+repr(exc.__cause__))[:500]
             await scheduler.finish(ticket, cancellation_reason="upstream_connect_error")
             await trace.append(_record(ticket, received_ns, len(token_ids), run_id=run_id, status="upstream_connect_error"))
             raise HTTPException(502, f"upstream connection failed: {type(exc).__name__}") from exc
@@ -195,6 +202,8 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         'dispatch_reason': ticket.dispatch_reason,
         'predicted_gpu_tokens': ticket.predicted_gpu_tokens,
         'reserved_active_tokens': ticket.reserved_active_tokens,
+        'upstream_error_type': ticket.upstream_error_type,
+        'upstream_error_detail': ticket.upstream_error_detail,
         "status": status,
     }
 

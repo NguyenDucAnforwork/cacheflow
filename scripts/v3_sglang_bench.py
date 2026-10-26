@@ -15,6 +15,8 @@ import httpx
 import psutil
 
 from cacheflow.collect_metrics import gpu_snapshot
+from v3_sglang_runtime import load as load_runtime
+from v3_model import get_model
 
 
 def parse_metrics(text):
@@ -40,9 +42,15 @@ def main():
         time.sleep(2)
         reset=client.post(args.url+'/flush_cache',params={'timeout':10});reset.raise_for_status()
         info=client.get(args.url+'/server_info').json()
-    assert info['max_total_tokens']==37440
+    runtime=load_runtime();model=get_model(runtime['model_key'])
+    gpu_bytes=runtime['gpu_kv_gib']*1024**3
+    assert info['max_total_tokens']==gpu_bytes//(16*model['bytes_per_token'])*16
     assert info['enable_hierarchical_cache'] and info['hicache_size']==16
-    assert Path(info['model_path']).name=='70d244cc86ccca08cf5af4e1e306ecf908b1ad5e'
+    assert info['model_path']==model['path']
+    assert info['schedule_policy']==runtime['schedule_policy']
+    assert info['hicache_io_backend']==runtime['io_backend']
+    assert info['attention_backend']==runtime['attention_backend']
+    assert info['max_running_requests']==runtime['max_running_requests']
     launcher=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v3_sglang'],text=True))
     assert launcher>0
     children=[psutil.Process(launcher),*psutil.Process(launcher).children(recursive=True)]
@@ -53,6 +61,7 @@ def main():
         'disable_decode_cuda_graph','disable_prefill_cuda_graph','cuda_graph_config','version']
     c=dict(run_id=args.run_id,engine_kind='sglang',cache_backend='upstream_hicache',
         source_head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        runtime=runtime, model=model, nominal_gpu_kv_bytes=gpu_bytes,
         server_config={k:info.get(k) for k in allow},launcher_pid=launcher,
         process_argv={str(x.pid):x.cmdline() for x in children},reset_status=reset.status_code,
         captured_utc=datetime.now(timezone.utc).isoformat())
@@ -82,7 +91,7 @@ def main():
             '--registry',str(base/'registry.csv'),'--capture-text','--engine-kind','sglang',
             '--engine-pid',str(launcher),'--model-revision',Path(info['model_path']).name,
             '--model-name',info['served_model_name'],'--mode','D0',
-            '--policy','sglang_'+info['schedule_policy'],'--gpu-kv-bytes','4294967296']
+            '--policy','sglang_'+info['schedule_policy'],'--gpu-kv-bytes',str(gpu_bytes)]
         subprocess.run(cmd,check=True,env=os.environ.copy())
         time.sleep(2)
     finally:

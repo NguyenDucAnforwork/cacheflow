@@ -1,0 +1,25 @@
+{
+  "scope": "CPU-only diagnostic, synthetic block contents with trace-derived lengths; cProfile adds overhead; not E2E",
+  "label": "after",
+  "active": 4,
+  "queued": 50,
+  "recent": 50,
+  "input_tokens_by_group": {
+    "conv-26": 19523,
+    "conv-30": 15209,
+    "conv-41": 29173
+  },
+  "repeat": 3,
+  "decision_ms": [
+    16.234119,
+    13.685179,
+    12.340377
+  ],
+  "median_ms": 13.685179,
+  "selected": [
+    "queue3",
+    "queue3",
+    "queue3"
+  ],
+  "profile": "         199854 function calls in 0.042 seconds\n\n   Ordered by: cumulative time\n   List reduced from 16 to 12 due to restriction <12>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.000    0.000    0.042    0.014 v3_memory_scheduler.py:54(_choose)\n        3    0.000    0.000    0.042    0.014 v3_memory_scheduler.py:63(_choose_impl)\n      150    0.000    0.000    0.041    0.000 v3_memory_scheduler.py:31(incremental_reservation)\n      150    0.021    0.000    0.041    0.000 {built-in method builtins.sum}\n   199134    0.020    0.000    0.020    0.000 v3_memory_scheduler.py:32(<genexpr>)\n        3    0.000    0.000    0.000    0.000 v3_memory_scheduler.py:18(reservation_state)\n       12    0.000    0.000    0.000    0.000 {method 'update' of 'set' objects}\n      162    0.000    0.000    0.000    0.000 v3_memory_scheduler.py:12(tail_reservation)\n        3    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}\n       48    0.000    0.000    0.000    0.000 <string>:2(__eq__)\n      168    0.000    0.000    0.000    0.000 {built-in method builtins.len}\n        3    0.000    0.000    0.000    0.000 {built-in method builtins.max}\n\n\n"
+}

@@ -38,12 +38,16 @@ PY
 CACHEFLOW_RESULTS_DIR="$root/results/v3" CACHEFLOW_GATEWAY_LOG="$root/results/v3/raw/gateway.jsonl" \
     CACHEFLOW_CAPTURE_TEXT=1 bash scripts/v2_run.sh "$id" "$trace" "$url"
 /venv/main/bin/python - "$id" <<'PY'
-import json,sys,urllib.request
+import json,os,sys,urllib.request
 from pathlib import Path
 health=json.load(urllib.request.urlopen('http://127.0.0.1:8100/health'))
 path=Path(f'results/v3/{sys.argv[1]}.setup.json')
 c=json.loads(path.read_text());c['gateway_after']=health
 path.write_text(json.dumps(c,indent=2)+'\n')
+summary=json.loads(Path(f'results/v3/raw/{sys.argv[1]}.summary.json').read_text())
+if summary['errors']:
+    Path(f'results/v3/{sys.argv[1]}.invalid').write_text(f"{summary['errors']} failed request(s); diagnostic only.\n")
+    assert os.environ.get('CACHEFLOW_ALLOW_FAILED_DIAGNOSTIC')=='1', 'request failure invalidates performance run'
 if c['runtime'].get('residency_events'):
     state=health['residency']
     assert state['subscriber_running'] and state['known'] and state['gaps']==0 and state['hash_contract_verified'], state

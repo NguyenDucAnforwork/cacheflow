@@ -35,6 +35,7 @@ def main():
     p.add_argument('--kv-events', action='store_true')
     p.add_argument('--residency-events', action='store_true')
     p.add_argument('--kv-capacity-tokens', type=int, default=37424)
+    p.add_argument('--keepalive-connections', type=int)
     args = p.parse_args()
     if args.command in ('configure', 'gateway'):
         c = dict(max_inflight=args.max_inflight, max_num_seqs=args.max_num_seqs,
@@ -42,14 +43,18 @@ def main():
                  enforce_eager=not args.cuda_graphs, profile=args.profile, kv_events=args.kv_events,
                  residency_events=args.residency_events, kv_capacity_tokens=args.kv_capacity_tokens)
         c['model_key'] = args.model
+        c['keepalive_connections'] = args.keepalive_connections if args.keepalive_connections is not None else 0
         if args.command == 'gateway':
             c = load() | {'max_inflight': args.max_inflight}
+            if args.keepalive_connections is not None:
+                c['keepalive_connections']=args.keepalive_connections
         MARKER.write_text(json.dumps(c, indent=2)+'\n')
         load()
         gateway = yaml.safe_load((ROOT/'configs/policies.yaml').read_text())
         gateway['scheduler']['max_inflight'] = c['max_inflight']
         gateway['scheduler']['policy'] = args.policy
         gateway['model'] = get_model(c['model_key'])['path']
+        gateway['upstream_keepalive_connections']=c.get('keepalive_connections',0)
         gateway['residency'] = dict(enabled=c.get('residency_events', False),
                                    endpoint='ipc:///tmp/cacheflow-v3-kv-events.sock',
                                    kv_capacity_tokens=c.get('kv_capacity_tokens', 37424), max_bypasses=4)

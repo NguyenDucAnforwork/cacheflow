@@ -1,0 +1,23 @@
+{
+  "reference_commit": "d946c93",
+  "checks": 270,
+  "matched_decisions": true,
+  "scope": "CPU-only microbenchmark; synthetic block contents at trace-derived sizes; no profiler enabled; not E2E latency",
+  "timings": {
+    "reference": {
+      "median_ms": 12.059165,
+      "max_ms": 13.660214,
+      "selected": "q2"
+    },
+    "optimized_uncached": {
+      "median_ms": 4.5695325,
+      "max_ms": 5.15075,
+      "selected": "q2"
+    },
+    "optimized_repeated": {
+      "median_ms": 0.0058355,
+      "max_ms": 0.013935,
+      "selected": "q2"
+    }
+  }
+}

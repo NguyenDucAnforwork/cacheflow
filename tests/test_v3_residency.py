@@ -92,3 +92,61 @@ def test_live_event_contract_accepts_bytes_rejects_legacy_ints():
     values['block_hashes']=[b'x'*32]
     with pytest.raises(ValueError,match='hash contract differs'):
         verify_event_hash_contract(SimpleNamespace(**values))
+
+
+def test_incremental_reservation_matches_full_union_for_shared_and_distinct_blocks():
+    import random
+    from cacheflow.v3_memory_scheduler import incremental_reservation, reservation_state
+    rng=random.Random(73)
+    for _ in range(100):
+        def ticket():
+            blocks=tuple(rng.randrange(12).to_bytes(2,'big') for _ in range(rng.randrange(8)))
+            return SimpleNamespace(engine_blocks=blocks,input_tokens=len(blocks)*16+rng.randrange(16),
+                                   output_budget=rng.choice([0,16,17,96]))
+        active=[ticket() for _ in range(rng.randrange(1,6))];new=ticket()
+        blocks,tails=reservation_state(active)
+        optimized=incremental_reservation(blocks,len(blocks)*16+tails,new)
+        assert optimized==reserved_tokens([*active,new])
+
+
+def test_packing_decision_cache_invalidates_queue_active_and_guard_changes():
+    import time
+    index=ResidencyIndex();index.known=True
+    scheduler=ResidencyScheduler(policy='packing_fifo',residency_index=index,
+        kv_capacity_tokens=256,max_inflight=4,max_bypasses=1,block_size=16,min_shared_tokens=16)
+    def t(name,start):
+        blocks=engine_block_hashes(list(range(start,start+160)))
+        return Ticket(request_id=name,blocks=(),arrival_ns=1,enqueued_ns=1,deadline_ns=2,group=name,
+            engine_blocks=blocks,input_tokens=160,output_budget=16)
+    active=t('active',0);head=t('head',500);back=t('back',0)
+    scheduler._active={'active':active};scheduler._queue=[head,back]
+    assert scheduler._choose(time.monotonic_ns()) is back
+    assert scheduler._choose(time.monotonic_ns()) is back
+    assert scheduler.decision_cache_hits==1
+    scheduler._bypasses['head']=1
+    assert scheduler._choose(time.monotonic_ns()) is None
+    scheduler._active.clear()
+    assert scheduler._choose(time.monotonic_ns()) is head
+    scheduler._queue.remove(head)
+    assert scheduler._choose(time.monotonic_ns()) is back
+    index.known=False
+    assert scheduler._choose(time.monotonic_ns()).dispatch_reason=='unknown_residency_fifo'
+
+
+def test_lpm_cached_choice_invalidates_when_kv_event_sequence_changes():
+    import time
+    index=ResidencyIndex()
+    a=engine_block_hashes(list(range(32)))
+    b=engine_block_hashes(list(range(100,132)))
+    index.apply(1,[event('AllBlocksCleared'),event('BlockStored',block_hashes=a,medium='GPU')])
+    scheduler=ResidencyScheduler(policy='lpm_real',residency_index=index,
+        kv_capacity_tokens=256,max_inflight=4)
+    def t(name,blocks):
+        return Ticket(request_id=name,blocks=(),arrival_ns=1,enqueued_ns=1,deadline_ns=2,group=None,
+            engine_blocks=blocks,input_tokens=32,output_budget=16)
+    qa=t('a',a);qb=t('b',b);scheduler._queue=[qa,qb]
+    assert scheduler._choose(time.monotonic_ns()) is qa
+    assert scheduler._choose(time.monotonic_ns()) is qa
+    index.apply(2,[event('BlockRemoved',block_hashes=a,medium='GPU'),
+                   event('BlockStored',block_hashes=b,medium='GPU')])
+    assert scheduler._choose(time.monotonic_ns()) is qb

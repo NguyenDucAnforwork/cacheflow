@@ -39,6 +39,8 @@ class Ticket:
     dispatch_reason: str | None = None
     predicted_gpu_tokens: int | None = None
     reserved_active_tokens: int | None = None
+    upstream_error_type: str | None = None
+    upstream_error_detail: str | None = None
 
 
 class AdmissionScheduler:

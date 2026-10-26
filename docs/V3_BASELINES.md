@@ -30,3 +30,17 @@ SGLang0.5.14 now serves the pinned 1.7B model with native HiRadixCache, kernel/p
 A first 60-QA replay completed but its RSS sampler failed on a transient child-process exit; it is explicitly invalidated for performance comparison. The corrected sampler handles process exits per member. New run `v3-sglang-lpm16-dev3-qps2-s101-r2` succeeds with exact prompt-token agreement and complete native metrics: p50 1.009s, p95 6.939s, p99 7.546s. Seeds102/103 are running. These are dev controls; further backend/concurrency tuning is needed before calling this the strongest supported SGLang configuration on SM86.
 
 **Native counter caveat:** `sglang:load_back_duration_seconds` is measured around `HiRadixCache.load_back`, whose controller queues asynchronous copy work and returns device indices. Its CPU wall duration is not the full H2D DMA duration. `load_back_tokens_total` is the source-labelled host promotion count, not vLLM's engine-consumed external-token counter. Preserve both meanings instead of merging them. Source inspected in the installed `sglang/srt/mem_cache/hiradix_cache.py` and `observability/metrics_collector.py`.
+
+## Paper feature audit and stronger tuning plan (~08:03 UTC)
+
+The [author's publication page](https://zhiqiangxie.com/publications/) links Strata to the HiCache blog; it does not provide a separate full scheduler artifact. Inspection of the installed upstream source supports this narrower mapping:
+
+| Component | Evidence in SGLang0.5.14 | Local baseline interpretation |
+| --- | --- | --- |
+| Hierarchical radix cache | `HiRadixCache`, host/device match lengths and promotion | Native upstream implementation |
+| GPU-assisted transfers | kernel/page_first backend | Native implementation; direct/page_first_direct is a tuning control |
+| Layerwise load overlap | `cache_controller.start_loading` uses a separate load stream and records one completion event per layer | Native mechanism; actual overlap still needs a CUDA timeline |
+| Cache-aware ordering | native LPM sorts total matched prefix tokens; DFS-weight groups radix subtrees | Strong upstream scheduling controls, not just gateway hints |
+| Published balanced-batch/delay-hit/bubble policies | No corresponding full strategy established by the inspected LPM path | Do not label measured LPM as the entire Strata scheduler |
+
+The installed LPM uses both host and GPU match information, whereas gateway `lpm_real` prioritizes observed GPU residency. They are distinct baselines. Native LPM switches to FCFS for queues above128; this matters for larger evaluations and must be recorded. Next tuning controls include direct vs kernel I/O, native FCFS/LPM/DFS-weight, and supported attention backends on SM86, with the same model and memory budget. The exact paper component mapping is based on [Strata](https://www.usenix.org/conference/osdi26/presentation/xie-zhiqiang) and inspected native source; it is not a claim that the complete published policy was reproduced.

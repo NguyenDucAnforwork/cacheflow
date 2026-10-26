@@ -82,6 +82,7 @@ async def replay(args: argparse.Namespace) -> dict:
             usage = None
             status = "ok"
             http_status = None
+            error_detail = None
             body = {"model": args.model_name, "prompt": row.prompt,
                     "max_tokens": row.max_tokens, "temperature": 0,
                     "stream": True, "add_special_tokens": False,
@@ -98,7 +99,7 @@ async def replay(args: argparse.Namespace) -> dict:
                     http_status = response.status_code
                     if response.status_code != 200:
                         status = f"http_{response.status_code}"
-                        await response.aread()
+                        error_detail = (await response.aread()).decode(errors='replace')[:500]
                     else:
                         async for line in response.aiter_lines():
                             if not line.startswith("data: ") or line == "data: [DONE]":
@@ -139,6 +140,7 @@ async def replay(args: argparse.Namespace) -> dict:
                 "output_tokens": output_tokens, "usage_reported": usage is not None,
                 "output_hash": hashlib.sha256(output.encode()).hexdigest(),
                 "status": status, "http_status": http_status,
+                'error_detail': error_detail,
                 "engine_request_id": engine_request_id,
             }
             records.append(record)
@@ -211,7 +213,7 @@ def main() -> None:
     parser.add_argument("--metrics-path", type=Path)
     parser.add_argument("--gateway-trace-path", type=Path)
     parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
-    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency", "sglang_lpm", "sglang_fcfs"])
+    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency", "sglang_lpm", "sglang_fcfs", "sglang_dfs-weight"])
     parser.add_argument('--engine-kind', choices=['vllm','sglang'], default='vllm')
     parser.add_argument("--gpu-kv-bytes", type=int)
     parser.add_argument("--engine-pid", type=int)

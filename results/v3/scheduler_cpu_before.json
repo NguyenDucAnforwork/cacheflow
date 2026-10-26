@@ -1,0 +1,25 @@
+{
+  "scope": "CPU-only diagnostic, synthetic block contents with trace-derived lengths; cProfile adds overhead; not E2E",
+  "label": "before",
+  "active": 4,
+  "queued": 50,
+  "recent": 50,
+  "input_tokens_by_group": {
+    "conv-26": 19523,
+    "conv-30": 15209,
+    "conv-41": 29173
+  },
+  "repeat": 3,
+  "decision_ms": [
+    16.084178,
+    12.846439,
+    12.728954
+  ],
+  "median_ms": 12.846439,
+  "selected": [
+    "queue3",
+    "queue3",
+    "queue3"
+  ],
+  "profile": "         2382 function calls in 0.042 seconds\n\n   Ordered by: cumulative time\n   List reduced from 16 to 12 due to restriction <12>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.005    0.002    0.042    0.014 v3_memory_scheduler.py:34(_choose)\n      150    0.001    0.000    0.024    0.000 v3_memory_scheduler.py:10(reserved_tokens)\n      750    0.023    0.000    0.023    0.000 {method 'update' of 'set' objects}\n      150    0.008    0.000    0.008    0.000 v3_residency.py:53(matched_tokens)\n        3    0.000    0.000    0.004    0.001 {built-in method builtins.any}\n        6    0.000    0.000    0.004    0.001 v3_memory_scheduler.py:47(<genexpr>)\n        3    0.000    0.000    0.004    0.001 v3_memory_scheduler.py:30(_cpu_potential)\n        3    0.000    0.000    0.004    0.001 {built-in method builtins.max}\n      153    0.000    0.000    0.004    0.000 v3_memory_scheduler.py:31(<genexpr>)\n      150    0.004    0.000    0.004    0.000 prefix.py:31(shared_prefix_tokens)\n      951    0.000    0.000    0.000    0.000 {built-in method builtins.len}\n       48    0.000    0.000    0.000    0.000 <string>:2(__eq__)\n\n\n"
+}
