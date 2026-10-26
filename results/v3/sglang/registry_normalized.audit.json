@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-26T20:06:13.024148+00:00",
+  "generated_utc": "2026-10-26T22:16:34.775358+00:00",
   "scope": "Derived canonical index from complete JSON ledgers; legacy CSV preserved. Not a count of independent questions or performance-eligible runs. Pre-replay failures require controller outcomes; missing source/metadata is not inferred.",
   "records": 305,
   "legacy_header_columns": 37,

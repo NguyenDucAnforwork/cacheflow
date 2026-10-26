@@ -1,6 +1,6 @@
 # V6 development evidence: complete main and native stages
 
-Latest: main24/1440and native60/2700development stages are complete and strictly audited, with separate warmups. Native controls retain lower-load/median/quality regressions. Main36controls and full30study remain pending; these development results do not complete the research goal.
+Latest (22:12 UTC): main24/1440, native60/2700 and main controls36/1260 are complete and strictly audited, with separate warmups. Full CPU preflight passed all1,986QA with0token-ID/semantic mismatches, and the30-arm full controller has started from a prospective seal. No full measured arm is complete at this checkpoint. Development gains retain median/quality/regime costs and do not complete the research goal.
 
 The registered main matrix completed24measured runs: **1,440/1,440 requests, zero errors**, plus1,440separate warmups. It reuses60previously exposed QA over3arrival schedules, with a fresh vLLM+LMCache process per arm, identical warmup/reset, pinned Qwen3-4B,6GiB GPU KV, observed16,039,018,496byte host heaps, max native sequences16/graphs, preparation worker and uniform180s transport/keepalive0. This is development evidence, not a full1,986QA result, semantic holdout or long-service liveness proof. V5 and shared-process pilot results are separate protocols.
 
@@ -205,3 +205,27 @@ All nine arms match the independent input-only page16 reference65122, so readine
 Mean total/admission/upstream-to-firsttext seconds are FIFO **12.569/.000029/12.484**, oldunion **12.569/.000031/12.488**, readiness **13.206/11.871/1.248**. Readiness moves waiting into frontend admission and increases total mean by .637s versus oldunion. Upstream includes queue/copy/compute/transport, not pure GPU time, and stage quantiles are never summed. Because readiness tests pending prefix/first text rather than a verified restore-pressure condition, it can change admission even when the declared CPU tier supplies no consumed tokens.
 
 This control supports original union's near-no-op behavior in this measured main GPU-fit regime and explicitly limits the extra gate: additional delay with no observed work reduction, mixed tail/quality differences. The registered methods are unchanged. It does not establish universal non-regression, quality equivalence or a native publication/pinning explanation. Full ten-conversation10GiB remains a larger-cache control, not GPU-fit. Main27/36controls1152requests now complete; abstention, the complete-stage audit and all full-study work remain open.
+
+
+## Main36-arm controls terminal; full pipeline launched
+
+The complete main controls audit now passes **36 measured arms,1,260/1,260successful requests, zero errors,2,160separate warmups**, with36distinct engine and36distinct LMCache PIDs. Actual source/config/entrypoint/prompt/output/reset/transport/observer/host contracts and native ITL coverage **36/36** pass. `v6controls1_main_audit.json` and `_quality.json` are authoritative and immutable prerequisites of the new full seal. Subset artifacts remain separately scoped; do not rerun or rewrite the seal-linked terminal audit.
+
+![Main control median and tail tradeoffs](../figures/v6controls1_main.png)
+
+The inspected PNG/SVG uses matched per-seed scheduled-arrival TTFT contrasts, showing p50 and p95 separately. `v6controls1_main_plot.json` links the complete audit, plot source and figure bytes. Low-reuse passes the declared5% p95 threshold for both methods at all seeds. Lower load preserves a large main union benefit versus FIFO; GPU-fit preserves old union's near-no-op behavior but exposes readiness median costs with no work saving. These remain conditional observations, not a universal policy win.
+
+The final main abstention subset has9arms108/108successful responses on12distinct category5QA, plus540warmups. Every arm scores **7/12=.583333**, no cap hits, answerableF1=nullbecause the stratum has no answerable questions. All nine main arms agree on the same seven correct questions, matching the completed native cohort's correct set; this is a fixed-cohort observation, not full446-question quality equivalence or a causal cross-engine timing comparison. Main old union has0output hash differences versus FIFO per seed; readiness also has0within-main pair differences.
+
+| Main abstention contrast vs FIFO, seeds101/102/103 | p50 change | p95 change |
+| --- | --- | --- |
+| Old union | −6.661/−5.765/−7.561% | +.087/−1.766/−.055% |
+| Ready union | −51.771/−50.141/−50.827% | +.438/+.096/+1.749% |
+
+Mean p50/p95 seconds are FIFO14.419/15.134, old13.459/15.044, ready7.081/15.249. Readiness reduces median substantially here while tails are slightly worse; the GPU-fit median result has the opposite sign. `v6controls1_main_waits.json` reconstructs additive stages for all36gateway arms/1260requests, preserving all latency and quality costs.
+
+The prospective full seal was written at **22:07:24UTC**, SHA `12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366`. It binds31actor/helper files,17analysis/evaluator sources, packages/model/input/protocol/prerequisites and the full30-arm graph. All four low-reuse gate records pass; original union and readiness remain separate treatments. Do not edit sealed sources/protocol or linked audits during execution.
+
+Full input preflight verifies all **1,986token vectors**, **50,522,325input tokens**, and identical nonarrival content across seeds901/902/903 in the pinned environments. Token-ID and semantic mismatches are0. The input-only page16 reference is18,195complete causal blocks+13,765private tail tokens=304,885new tokens under full retention/immediate publication assumptions; it is not a finite-cache scheduler or actual full prefill measurement.
+
+The first main full arm has observed host heap capacity **48,049,946,624bytes**, matching the source prediction; native48,002,236,416bytes remains an expected payload until its actual full arm is observed. Capacity is not physical RSS or actual cross-engine heap parity. The first60-request warmup completed without request errors; no1,986-request measured arm has reached complete per-run audit/archival at this checkpoint. Full quality1540answerable/446category5, performance/resources/fairness/nativeITL, all30arms and the final research completion audit remain pending.

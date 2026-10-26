@@ -1,0 +1,11 @@
+{
+  "started_utc": "2026-10-26T22:02:40.819031+00:00",
+  "cpu_only": true,
+  "source_sha256": "1b608f56707846bf5ca07ca3176508cb35936c1edc1d2320ddac924741eb78fe",
+  "worker_sha256": "cd3945f32ee24c908bbf35a0b442c64e67025bdc105a19728f12945eba19cbb7",
+  "trace_sha256": {
+    "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+    "data/processed/v3/v5-full4b-qps4-s903.jsonl.gz": "27fb4c04da39940497b5d62e7f781fcddc30b697b8c96a6522d5f816ec99f988"
+  }
+}

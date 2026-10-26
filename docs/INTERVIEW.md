@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 21:50 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main controls đã audit riêng low-load, low-reuse và GPU-fit; còn abstention và audit toàn bộ stage. Full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 22:12 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main controls đã audit đủ 36 arms / 1.260 request đo. Preflight đủ 1.986 QA đã pass và full controller đang chạy từ seal mới; chưa có full measured arm hoàn tất ở checkpoint này. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -758,7 +758,7 @@ Main repeat V5 seed702đã đứng yên gần29phút: GPU0%, engine0running/11wa
 
 ## 22. V6: readiness, capacity và giới hạn của bằng chứng hiện tại
 
-Phần này cập nhật bằng chứng V6. Các phần trước giữ bối cảnh V2–V5 và không được gộp số khác model, prompt hay protocol. Nguồn chính là [báo cáo V6](V6_DEV_EVIDENCE.md), audit main 24 arms và audit native 60 arms. Main controls và full 1.986 QA vẫn chưa hoàn tất.
+Phần này cập nhật bằng chứng V6. Các phần trước giữ bối cảnh V2–V5 và không được gộp số khác model, prompt hay protocol. Nguồn chính là [báo cáo V6](V6_DEV_EVIDENCE.md), audit main 24 arms và audit native 60 arms. Main controls đã hoàn tất 36 arms; full 1.986 QA đang chạy và chưa có full measured arm hoàn tất ở checkpoint này.
 
 ### 22.1. Logical sharing khác physical sharing như thế nào?
 
@@ -872,6 +872,12 @@ Readiness không tiết kiệm thêm compute ở control main này nhưng vẫn 
 
 **Đáp:** Không. Subset chỉ gồm 12 câu category5, không có answerable questions để tính F1. Accuracy category5 là 7/12 với mọi arm/seed và không có cap hit; cùng bảy câu được trả lời đúng dù raw outputs có khác. Null ở đây là “không áp dụng”, khác null do thiếu counter coverage. Mười hai câu lặp ba seed không trở thành 36 câu độc lập và chưa đại diện đủ 446 category5 của full.
 
+**Hỏi: Abstention control main đã cho kết quả gì?**
+
+**Đáp:** Chín main arms hoàn tất 108 request đo trên 12 câu category5, cộng 540 warmup riêng. Mọi arm đạt 7/12, không cap hit, cùng bảy câu đúng và cùng raw output hashes trong từng main pair. F1 answerable là null vì không có câu answerable. Native có cùng bộ bảy câu đúng trên cohort đó, nhưng không suy thành quality equivalence của 446 câu full hoặc gộp timing hai engine.
+
+Readiness giảm median khoảng 50–52% so FIFO trong control này, nhưng p95 tăng 0,10–1,75%. Ở GPU-fit nó lại tăng median. Vì thế không thể quảng bá một chiều “gate luôn cải thiện latency”; phải giữ cả stratum và quantile trong phát biểu.
+
 ### 22.6. Đo queue, counter, capacity và provenance đúng cách
 
 **Hỏi: Bypass tối đa tám lần có nghĩa request chỉ chờ tối đa 200 ms?**
@@ -959,3 +965,12 @@ Nếu stop/reload thực sự thất bại thì vẫn phải báo lỗi và gi�
 **Hỏi: Hiện nên trình bày contribution thế nào?**
 
 **Đáp:** Nêu một kết quả có điều kiện: admission theo causal-prefix union giảm mạnh CPU-source work và tail latency ở main memory-pressure dev; bổ sung readiness cho thấy một thay đổi prefill lặp lại trên native, đi kèm median/quality costs. Kèm bằng chứng allocation, counter/clock/source audits, controls và những lần thất bại. Không gọi đó là full Strata/Cake reproduction, SOTA, quality equivalence hay stall fix. Hoàn tất main controls, full serving/quality evaluation và requirement audit rồi mới quyết định kết luận nghiên cứu cuối cùng.
+
+
+### 22.8. Từ development sang full study: hiện đã chứng minh tới đâu?
+
+Main24/1.440, native60/2.700 và main controls36/1.260 đều đã audit hoàn chỉnh; warmups tính riêng. Full preflight đã so đủ 1.986 token vectors, tổng 50.522.325 input tokens, và mọi nội dung ngoài arrival của ba trace: không mismatch. Seal mới khóa code/model/input/config/package/protocol cùng các audit prerequisites trước khi controller full bắt đầu.
+
+Main CPU-tier capacity full đã quan sát 48.049.946.624 byte, xác nhận dự đoán làm tròn lazy heap. Native payload full 48.002.236.416 byte vẫn phải quan sát khi arm native chạy; chưa có actual heap parity giữa hai engine. Capacity không phải physical RSS.
+
+Warmup đầu 60 request đã thành công. Chưa có full measured arm hoàn tất tại checkpoint 22:12 UTC, nên chưa có kết luận full latency, quality của 1.540 answerable/446 category5 hay đủ 30 arms/59.580 requests. Có code, test xanh, seal hoặc preflight đúng không thay thế serving evidence. Chỉ sau per-run integrity/official quality audit mới archive raw; cuối study phải mở lại mọi archive và audit toàn bộ scope.

@@ -1,0 +1,10 @@
+{
+  "source_audit_sha256": "e0baf721db593ba8b5b4a122229fcee8d07cbfb20c1ea94af874ec03218e2d7a",
+  "analysis_source_sha256": "d4d38e9c9566e87e15e6e93ab6957264e94402e49653f412cec0798b646cb0c0",
+  "matplotlib_version": "3.10.8",
+  "figures_sha256": {
+    "figures/v6controls1_main.png": "2dbf2528fe2e257a8d04fcda5a718fa19394839e5122085a6c2911a8cb5f985f",
+    "figures/v6controls1_main.svg": "a6b86f9840b628fb589389336648ace00e0a630c60cf870dd12fcf06f8a5f012"
+  },
+  "scope": "Complete36-arm main controls only; no new inference, quality-equivalence or full-study claim."
+}

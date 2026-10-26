@@ -1,0 +1,47 @@
+{
+  "complete": true,
+  "cpu_only": true,
+  "requests": 1986,
+  "token_id_mismatches": 0,
+  "semantic_trace_mismatches": 0,
+  "inputs": {
+    "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz": {
+      "stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+      "uncompressed_sha256": "1855017432dd8ec138f6ef5a9f3494739aab5495ccb6f4f85e1342a743bb62a7",
+      "canonical_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+      "nonarrival_identity_sha256": "0f01436397c0bae69c10004360597e25acff40f8b751d8e8d2a374f467ddc45d",
+      "manifest_sha256": "4d8df5cb7a8753f30b80760d69b93d00b3218003d2bad7d1f13493058527c68b"
+    },
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz": {
+      "stored_sha256": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+      "uncompressed_sha256": "230819bf903f167c0831f7f37a3613c0d43f2b724c3f5b51439b2f7846455cbe",
+      "canonical_sha256": "8d1a292942c337d5a231f8aaca6520f2932f6705c9a4da886bdf3f360b5c359d",
+      "nonarrival_identity_sha256": "0f01436397c0bae69c10004360597e25acff40f8b751d8e8d2a374f467ddc45d",
+      "manifest_sha256": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf"
+    },
+    "data/processed/v3/v5-full4b-qps4-s903.jsonl.gz": {
+      "stored_sha256": "27fb4c04da39940497b5d62e7f781fcddc30b697b8c96a6522d5f816ec99f988",
+      "uncompressed_sha256": "698e53f81d485f55b950aeb8ffc89a8361f8b0bc52f0abbc2ecef290755886fb",
+      "canonical_sha256": "562e5fff6d8f283e43ebfc692c68d4ce4f020711c01c5cb2d166f28b0f3aa913",
+      "nonarrival_identity_sha256": "0f01436397c0bae69c10004360597e25acff40f8b751d8e8d2a374f467ddc45d",
+      "manifest_sha256": "b162968ebfba109f85734acf4b1774a7c1d6dc023a1bf38a93c33be4e2063b91"
+    }
+  },
+  "main_fingerprints_path": "results/v3/input_preflight/20261026T220240-457168/main.json",
+  "native_fingerprints_path": "results/v3/input_preflight/20261026T220240-457168/native.json",
+  "main_fingerprints_sha256": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+  "native_fingerprints_sha256": "e965684175202213e18e1fe1b136c51c57b1819da9466c5d307e1312d733b5b4",
+  "registration_path": "results/v3/input_preflight/20261026T220240-457168/registration.json",
+  "registration_sha256": "d2e2e9583ffff7e7c3710890492a253d4c4654d301e77b7e931cf159c5854bce",
+  "worker_sha256": "cd3945f32ee24c908bbf35a0b442c64e67025bdc105a19728f12945eba19cbb7",
+  "source_sha256": "1b608f56707846bf5ca07ca3176508cb35936c1edc1d2320ddac924741eb78fe",
+  "page16": {
+    "requests": 1986,
+    "input_tokens": 50522325,
+    "block_size": 16,
+    "distinct_complete_causal_blocks": 18195,
+    "private_partial_tail_tokens": 13765,
+    "input_only_minimum_new_tokens": 304885
+  },
+  "scope": "All1986input token vectors match main/native loaders; same QA/prompt/output budgets across3arrival traces. CPU-only provenance check, not model serving, actual KV contents, full benchmark quality/performance or production liveness."
+}
