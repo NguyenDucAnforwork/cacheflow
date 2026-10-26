@@ -1,0 +1,32 @@
+{
+  "bytes_per_kv_token": 114688,
+  "snapshots": [
+    {
+      "run_id": "v2-e2-b1-4g-dev3-qps02-s17",
+      "snapshot_path": "results/v2/raw/v2-e2-b1-4g-dev3-qps02-s17.engine_snapshot.prom",
+      "snapshot_sha256": "62e2777ea4861ff9ea26a3a0c75c38fb82045f107e6ef122fff4840855bd9a47",
+      "config": {
+        "block_size": 16,
+        "num_gpu_blocks": 2340,
+        "kv_cache_memory_bytes": 4294967296,
+        "capacity_tokens": 37440
+      }
+    },
+    {
+      "run_id": "v2-e2-b1-8g-dev3-qps02-s29",
+      "snapshot_path": "results/v2/raw/v2-e2-b1-8g-dev3-qps02-s29.engine_snapshot.prom",
+      "snapshot_sha256": "4bf9ad95ff63a0a3e98a91dd7722598e64eae9f15be6446f445b0b8540608220",
+      "config": {
+        "block_size": 16,
+        "num_gpu_blocks": 4681,
+        "kv_cache_memory_bytes": 8589934592,
+        "capacity_tokens": 74896
+      }
+    }
+  ],
+  "working_set_prefix_tokens": {
+    "dev3": 63688,
+    "holdout2": 47914
+  },
+  "note": "Capacity snapshots, not latency runs; trace has additional question/output branches."
+}
