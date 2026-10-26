@@ -1,0 +1,110 @@
+{
+  "arrival_ttft_p50_ms": {
+    "b2": 1242.0267795,
+    "b3": 1203.509439
+  },
+  "b2_run_id": "v2-e1-b2-2k-50ms-4pairs-r1",
+  "b3_run_id": "v2-e1-b3-2k-50ms-4pairs-r1",
+  "counter_deltas": {
+    "computed_prefill_tokens": {
+      "b2": 8284.0,
+      "b3": 8284.0,
+      "delta_b3_minus_b2": 0.0
+    },
+    "external_prefix_hits": {
+      "b2": 0.0,
+      "b3": 0.0,
+      "delta_b3_minus_b2": 0.0
+    },
+    "lmcache_chunks_loaded": {
+      "b2": null,
+      "b3": null,
+      "delta_b3_minus_b2": null
+    },
+    "prompt_tokens_cached": {
+      "b2": 8192.0,
+      "b3": 8192.0,
+      "delta_b3_minus_b2": 0.0
+    }
+  },
+  "engine_pid": 16390,
+  "follower_ttft_delta_median_ms": -30.247985000000085,
+  "lmcache_pid": 16283,
+  "note": "Run-level pilot contrast only; inspect resets, cache state and replicates before causal claims.",
+  "paired_requests": [
+    {
+      "b2_admission_wait_ms": 0.010334,
+      "b2_ttft_ms": 1761.213018,
+      "b3_admission_wait_ms": 76.083299,
+      "b3_delay_hit_candidate": true,
+      "b3_ttft_ms": 1734.283441,
+      "delta_b3_minus_b2_ms": -26.92957699999988,
+      "request_id": "probe-00-follower"
+    },
+    {
+      "b2_admission_wait_ms": 0.010227,
+      "b2_ttft_ms": 813.196373,
+      "b3_admission_wait_ms": 0.010634,
+      "b3_delay_hit_candidate": false,
+      "b3_ttft_ms": 769.827388,
+      "delta_b3_minus_b2_ms": -43.36898499999995,
+      "request_id": "probe-00-producer"
+    },
+    {
+      "b2_admission_wait_ms": 0.010228,
+      "b2_ttft_ms": 1732.781979,
+      "b3_admission_wait_ms": 82.98637,
+      "b3_delay_hit_candidate": true,
+      "b3_ttft_ms": 1704.108929,
+      "delta_b3_minus_b2_ms": -28.673050000000103,
+      "request_id": "probe-01-follower"
+    },
+    {
+      "b2_admission_wait_ms": 0.010156,
+      "b2_ttft_ms": 782.366508,
+      "b3_admission_wait_ms": 0.011515,
+      "b3_delay_hit_candidate": false,
+      "b3_ttft_ms": 736.137492,
+      "delta_b3_minus_b2_ms": -46.229016,
+      "request_id": "probe-01-producer"
+    },
+    {
+      "b2_admission_wait_ms": 0.011717,
+      "b2_ttft_ms": 1702.523881,
+      "b3_admission_wait_ms": 89.752942,
+      "b3_delay_hit_candidate": true,
+      "b3_ttft_ms": 1670.700961,
+      "delta_b3_minus_b2_ms": -31.822920000000067,
+      "request_id": "probe-02-follower"
+    },
+    {
+      "b2_admission_wait_ms": 0.043752,
+      "b2_ttft_ms": 638.65043,
+      "b3_admission_wait_ms": 0.021264,
+      "b3_delay_hit_candidate": false,
+      "b3_ttft_ms": 621.123746,
+      "delta_b3_minus_b2_ms": -17.526684000000046,
+      "request_id": "probe-02-producer"
+    },
+    {
+      "b2_admission_wait_ms": 0.010581,
+      "b2_ttft_ms": 1670.857186,
+      "b3_admission_wait_ms": 96.52666,
+      "b3_delay_hit_candidate": true,
+      "b3_ttft_ms": 1637.19149,
+      "delta_b3_minus_b2_ms": -33.665696000000025,
+      "request_id": "probe-03-follower"
+    },
+    {
+      "b2_admission_wait_ms": 0.052565,
+      "b2_ttft_ms": 524.491232,
+      "b3_admission_wait_ms": 0.112943,
+      "b3_delay_hit_candidate": false,
+      "b3_ttft_ms": 506.563798,
+      "delta_b3_minus_b2_ms": -17.92743399999995,
+      "request_id": "probe-03-producer"
+    }
+  ],
+  "requests": 8,
+  "trace_sha256": "65bc10f52e43461931728d6a69eb986eb5e609aacc8b3a2e0ac1c1dde263e904"
+}

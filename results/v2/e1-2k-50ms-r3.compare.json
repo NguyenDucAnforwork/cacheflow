@@ -1,0 +1,56 @@
+{
+  "arrival_ttft_p50_ms": {
+    "b2": 298.679779,
+    "b3": 278.694255
+  },
+  "b2_run_id": "v2-e1-b2-2k-50ms-r3",
+  "b3_run_id": "v2-e1-b3-2k-50ms-r3",
+  "counter_deltas": {
+    "computed_prefill_tokens": {
+      "b2": 2071.0,
+      "b3": 2071.0,
+      "delta_b3_minus_b2": 0.0
+    },
+    "external_prefix_hits": {
+      "b2": 0.0,
+      "b3": 0.0,
+      "delta_b3_minus_b2": 0.0
+    },
+    "lmcache_chunks_loaded": {
+      "b2": null,
+      "b3": null,
+      "delta_b3_minus_b2": null
+    },
+    "prompt_tokens_cached": {
+      "b2": 2048.0,
+      "b3": 2048.0,
+      "delta_b3_minus_b2": 0.0
+    }
+  },
+  "engine_pid": 15085,
+  "follower_ttft_delta_median_ms": 29.215543999999966,
+  "lmcache_pid": 14965,
+  "note": "Run-level pilot contrast only; inspect resets, cache state and replicates before causal claims.",
+  "paired_requests": [
+    {
+      "b2_admission_wait_ms": 0.026075,
+      "b2_ttft_ms": 273.828142,
+      "b3_admission_wait_ms": 183.805507,
+      "b3_delay_hit_candidate": true,
+      "b3_ttft_ms": 303.043686,
+      "delta_b3_minus_b2_ms": 29.215543999999966,
+      "request_id": "probe-00-follower"
+    },
+    {
+      "b2_admission_wait_ms": 0.049513,
+      "b2_ttft_ms": 323.531416,
+      "b3_admission_wait_ms": 0.03972,
+      "b3_delay_hit_candidate": false,
+      "b3_ttft_ms": 254.344824,
+      "delta_b3_minus_b2_ms": -69.18659199999999,
+      "request_id": "probe-00-producer"
+    }
+  ],
+  "requests": 2,
+  "trace_sha256": "a2e44487457bf1378c0ea6f955588add37208d199f0f939b484de12e502fbc16"
+}

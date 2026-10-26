@@ -2,7 +2,7 @@
 
 Current server changed on 2026-10-26. The 2026-10-25 status and trace notes below are historical for the previous host. See `docs/V2_HOST_2026_10_26.md` for the active setup; its model, packages and ignored traces must be recreated here before GPU runs.
 
-Status on new server: CPU-side runner, trace checks and counter analysis prepared; model weight shards and serving packages are still downloading; no GPU E1 run yet. The completed snapshot described in the historical gate section below was on the previous host. This document is separate from the V1 reproduction log. The owner waived old-baseline restoration.
+Status on new server at 2026-10-26 03:35 UTC: B1 and four matched E1 pairs completed, including a four-pair concurrency screen. See `docs/V2_HOST_2026_10_26.md` for exact measurements. The 2026-10-25 gate notes below refer to the previous host. The owner waived old-baseline restoration.
 
 ## Gate before GPU runs
 
@@ -44,6 +44,8 @@ A matched B2/B3 pilot can be validated with `python3 scripts/v2_compare_e1.py --
 `bash scripts/v2_auto_resume.sh UV_INSTALL_PID [MODEL_DOWNLOAD_PID]` waits up to twelve hours for the setup processes. After it exits, the script checks exact versions, installs this checkout and test dependencies into `/venv/main`, runs preflight and tests, regenerates the four ignored traces using `scripts/v2_prepare_traces.sh`, and rechecks them with the installed tokenizer. It refuses to touch V2 services if supervisor configs already exist or ports 8000/8100/18080 are in use. Only then does it install its V2 supervisor programs and run the one-request B1 full-context pilot at 32K and 8 GiB GPU KV. It stops its V2 services on exit and requires one successful request. The detached run log is `results/v2/auto_resume.log`; an active wait or a log entry is not a GPU result.
 
 The follow-on `scripts/v2_e1_after_b1.sh B1_WATCHER_PID` waits for the B1 watcher to finish, verifies the B1 one-request success, then runs the 2K/50 ms E1 B2 FIFO and B3 DHAS pair on the same serving engine. It resets caches between arms, validates matched artifacts with `v2_compare_e1.py`, and stops V2 services on exit. Its detached log is `results/v2/e1_after_b1.log`. A waiting follow-on job is not an E1 result.
+
+The 2K/50-ms one-pair E1 condition completed three matched comparisons. Follower arrival-TTFT differences (B3 minus B2) were -38.107, -98.918 and +29.216 ms; r3 reversed the arm order. All three pairs had equal B2/B3 computed-prefill (2,071 tokens) and cached-prompt (2,048 tokens) counters, with zero external prefix hits. Thus this condition has no measured incremental cache savings from DHAS, and its latency difference is not stable in sign. Screen a higher-concurrency trace before any B5 work. A four-pair 2K/50-ms screen also showed equal B2/B3 computed-prefill (8,284) and cached-prompt (8,192) counters across eight requests per arm. The next screen will use a larger prefix/working set. Run-level summaries and comparisons are under `results/v2/`; raw prompts remain ignored under `results/v2/raw/`.
 
 ## Decision rule
 
