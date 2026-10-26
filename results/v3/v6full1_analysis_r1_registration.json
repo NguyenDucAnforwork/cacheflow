@@ -1,0 +1,67 @@
+{
+  "kind": "analysis_only_duplicate_scalar_cli_correction",
+  "registered_utc": "2026-10-26T22:49:43.370591+00:00",
+  "retained_run_id": "v6full1-main-g6-fifo64-s901",
+  "reference_freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "source_sha256": {
+    "scripts/v6_full_analysis_r1.py": "5eb9505eaab83edc72a7c734ca5f4335880e0ad61cb9b98297fce1feebb1414f",
+    "scripts/v6_full_load_r1.py": "b23b0ce71499f47094f5580591af0eb13d5a3dffe3c938c88de8386bdf213fb4",
+    "scripts/v6_audit_full_run_r1.py": "eb8b12954127af0e4b2e11897e6d74b26d79b1504b51e15b175e92ba45405e69",
+    "scripts/v6_register_analysis_r1.py": "521849281da1b84ee494d46233458ad43921c23fa0facd84ac690a13ae4b7948",
+    "/venv/main/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py": "d9dad8c6754ecb1dd6033c89833b01b5f51b5ba55fb43d3d45de48add89e3e99",
+    "/venv/main/lib/python3.12/site-packages/vllm/utils/argparse_utils.py": "e00efebd4e4f459391769ab8a46af9401e830e3be5226abcacfdfd09a77c6a4d"
+  },
+  "retained_metadata_sha256": {
+    "results/v3/v6full1-main-g6-fifo64-s901-warm.v6_entrypoint.json": "80818dc02ed7e9e05c9c572f1d5a603de74a1f4d62219a098df93ef7555fbc7d",
+    "results/v3/v6full1-main-g6-fifo64-s901-warm.setup.json": "2ad8830db13d40cd5fe1ff10422f28f23af03ff554b754e5fc117cbb2686028a",
+    "results/v3/v6full1-main-g6-fifo64-s901-warm.metrics_summary.json": "bf8f9f830209c5a31123dbe3dba9c381487cf3e366e112170043c0466a80fbcd",
+    "results/v3/v6full1-main-g6-fifo64-s901-warm.itl_histogram.json": "112b7fb21e9b355c51cbf9f2c972953728e55192e725039020e811d29eb60c6c",
+    "results/v3/v6full1-main-g6-fifo64-s901.host_status.json": "fb39575b220e75d48fe34120863de67d24ed1eeb3d60346c74ba1fdb48a673a8",
+    "results/v3/v6full1-main-g6-fifo64-s901.v6_entrypoint.json": "a2632d385e09906e369160cd890ac8c1c1fa6c5b9ffd2bab9742c40278f38806",
+    "results/v3/v6full1-main-g6-fifo64-s901.setup.json": "7292f54f9b149a76d6e60ce4303c9699a3ac3c4ed308db71aad243c3fde20a98",
+    "results/v3/v6full1-main-g6-fifo64-s901.metrics_summary.json": "56f6fc2ddca55cf124bb68d75f44c8b2de7f28fc4d4cb9bd88c8fa5e796a55f2",
+    "results/v3/v6full1-main-g6-fifo64-s901.itl_histogram.json": "e53fbee992a80ee20a984f844ce68e3c365416a84369dcb39f396661b120ffed",
+    "results/v3/v6full1_interruption.json": "f2c6d27e82d390c8c458590d099c768233b2071a969b445d3c983acc1eff596a",
+    "results/v3/v6full1-main-g6-fifo64-s901.invalid": "6aa0aa30fdb479609af214ca74d0298bfcee0953adaa5427643608b1398eb3e7",
+    "results/v3/v6full1_execution.json": "5b1be33e5b374378c20c784efad56e1b4da583bd4625b13c13bcebc0a6129079"
+  },
+  "retained_raw_sha256": {
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.jsonl": "b5dc5b34beb71d8724a565f5622dfc87784337d28b7ad00dc2620b33208a385f",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.outputs.jsonl": "6fb0422b15939cd7bf06806d2b436a69af475cf2bc444bc29c0b7037465734c4",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.summary.json": "665bd0fbad46991c86a30627bf8953f46ebaba995712efd8c86a3912c92d56b0",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.metrics.jsonl": "e847211e6643c3a5194efae342af6b9f316e1480bddad0056be94fbb053f1a8e",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.gateway.jsonl": "19b2077935505401d53e111ec4a7ac43df076814a3dbb03e160544d9c9a6ff65",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.jsonl": "1f1951a0eb946db83c342187bdf9bbdd5265e730ff8a4b9273b23685673ac723",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.outputs.jsonl": "9750210dc1cac7bc471c2f564c328088cd717c4ac3ec22a6595994688d97e918",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.summary.json": "2c1afc094f3c644d2a201d89757a0a28faf8676704515e02afe4edeb038be8bf",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.metrics.jsonl": "c17a3e9189c4c4b2eb5bc07f77fe3613cc998486b4f5ca1968a69c37b11464c7",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.gateway.jsonl": "64bf5d4446255df02e55120e5baf06b59bb7ad17790e8757b5982ed2bc695b31"
+  },
+  "parser_proof": [
+    {
+      "run_id": "v6full1-main-g6-fifo64-s901-warm",
+      "all_max_num_seqs_values": [
+        "4",
+        "16"
+      ],
+      "installed_parser_max_num_seqs": 16,
+      "installed_parser_max_num_batched_tokens": 8192,
+      "installed_parser_gpu_kv_bytes": 6442450944,
+      "original_contract_rejects": true,
+      "corrected_contract_passes": true
+    },
+    {
+      "run_id": "v6full1-main-g6-fifo64-s901",
+      "all_max_num_seqs_values": [
+        "4",
+        "16"
+      ],
+      "installed_parser_max_num_seqs": 16,
+      "installed_parser_max_num_batched_tokens": 8192,
+      "installed_parser_gpu_kv_bytes": 6442450944,
+      "original_contract_rejects": true,
+      "corrected_contract_passes": true
+    }
+  ],
+  "scope": "Original study stopped at audit. Original sources/seal/marker retained; installed vLLM parser resolves duplicate store option to16. R1 checks the final explicit scalar option, retains every other original contract/request check, and permits only the exact hashed audit-stage interruption marker. No inference retry or full-study completion claim. No parser dispatch/server/model construction performed."
+}

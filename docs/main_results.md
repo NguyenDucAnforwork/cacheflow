@@ -1,10 +1,10 @@
 # CacheFlow: live results
 
-**Current research status16:36UTC:** V5 full study never started after the retained manual-abort stall. Separate off/on/off660requests completed without reproducing it; native snapshots reveal2.021GiB duplicated prefix allocation in a bundle restore. A new readiness+union candidate and gate-onlyFIFO baseline are in a prospective V6 development pilot, with no result/completion claim yet. Historical V5 numbers below are not V6 evidence.
+**Current V6 research status,22:56UTC:** Main development24/1440, native60/2700 and maincontrols36/1260 are completely audited. Full firstFIFO1986/1986success +60warmup now passes explicit R1 audit/quality/archival; original controller stopped on its auditor reading the first duplicate CLI flag rather than the effective final value. Original artifacts are preserved. A separately registered continuation has launched only the29unexecuted arms. See [current evidence](V6_DEV_EVIDENCE.md), [R1 correction/continuation](V6_FULL_ANALYSIS_R1.md) and [progress](PROGRESS.md). Full comparative research remains incomplete; historical V1–V5 sections below retain their own scopes.
 
-> **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. The stalled main repeat was manually aborted; no full study has started.
+> **Resource correction:** Main development actual heap16039018496bytes vsnative16000745472bytes (+.2392%); full main48049946624bytes is now observed. Full native48002236416bytes remains expected/unobserved. Equal configured payloads do not imply equal actual heaps or RSS. Use within-engine policy contrasts.
 
-Status: six-hour experiment matrix complete; GPU serving processes stopped. The original DHAS gain was not supported, while CPU KV tiering showed repeatable pressure-dependent benefits. Seed 11 guard holdout and all development results are labeled below.
+The executive findings immediately below describe the historical V1 experiment, not the current V6 full study.
 
 ## Executive findings
 

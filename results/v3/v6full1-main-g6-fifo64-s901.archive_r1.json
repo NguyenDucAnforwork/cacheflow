@@ -1,0 +1,87 @@
+{
+  "audit_path": "results/v3/v6full1-main-g6-fifo64-s901.full_audit_r1.json",
+  "audit_sha256": "0a98548fa26312812c42fb3ab2ae1b08b5b0c3374299fae8eec279014c010b1e",
+  "files": [
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.jsonl.gz",
+      "sha256": "b5dc5b34beb71d8724a565f5622dfc87784337d28b7ad00dc2620b33208a385f",
+      "archive_sha256": "eabf72d1b13c3795dbd321194c593dd2a7ef25cb0ac6fb1da3c66135aa85a8a9",
+      "bytes": 53616,
+      "archive_bytes": 9528
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.outputs.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.outputs.jsonl.gz",
+      "sha256": "6fb0422b15939cd7bf06806d2b436a69af475cf2bc444bc29c0b7037465734c4",
+      "archive_sha256": "ad785bcbec31dae31a367d46a2112ea3512d4d78938ea1e8f386f7704bb632ec",
+      "bytes": 11743,
+      "archive_bytes": 2609
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.summary.json",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.summary.json.gz",
+      "sha256": "665bd0fbad46991c86a30627bf8953f46ebaba995712efd8c86a3912c92d56b0",
+      "archive_sha256": "8a6136b85cfb3eecff3485de19d2bb85f28bdf44a3c3c618d51f9da5eb2cfa15",
+      "bytes": 1588,
+      "archive_bytes": 758
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.metrics.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.metrics.jsonl.gz",
+      "sha256": "e847211e6643c3a5194efae342af6b9f316e1480bddad0056be94fbb053f1a8e",
+      "archive_sha256": "2eb7a9c3fcd5d78da08cfda409dc4e332440b0b2ca33c75614c7def8d96b65ed",
+      "bytes": 97556,
+      "archive_bytes": 8127
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.gateway.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.gateway.jsonl.gz",
+      "sha256": "19b2077935505401d53e111ec4a7ac43df076814a3dbb03e160544d9c9a6ff65",
+      "archive_sha256": "48bc8b2bde3459eacd63bd7895ae104e3854d65cf07e1a2327009858ed086fa1",
+      "bytes": 54693,
+      "archive_bytes": 6566
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901.jsonl.gz",
+      "sha256": "1f1951a0eb946db83c342187bdf9bbdd5265e730ff8a4b9273b23685673ac723",
+      "archive_sha256": "3dace5a23443143df9a7773b5a49a7d4d0306ea5b84c56b642bf63e2cecf1b7b",
+      "bytes": 1763693,
+      "archive_bytes": 297777
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901.outputs.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901.outputs.jsonl.gz",
+      "sha256": "9750210dc1cac7bc471c2f564c328088cd717c4ac3ec22a6595994688d97e918",
+      "archive_sha256": "1bf32bfd73e4fcc4bd30f79198ebbb58a7955e7f0fdb8be2be234dd5d81cca50",
+      "bytes": 383755,
+      "archive_bytes": 64377
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901.summary.json",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901.summary.json.gz",
+      "sha256": "2c1afc094f3c644d2a201d89757a0a28faf8676704515e02afe4edeb038be8bf",
+      "archive_sha256": "787e167ed273baacf2f4885cd86fead42552aa73527863777a1c547d663afe3e",
+      "bytes": 1569,
+      "archive_bytes": 760
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901.metrics.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901.metrics.jsonl.gz",
+      "sha256": "c17a3e9189c4c4b2eb5bc07f77fe3613cc998486b4f5ca1968a69c37b11464c7",
+      "archive_sha256": "b7bfbd3a8eaa469bd4b8e731190c5ee1e2a5f54552af879fc7a45fedb1c76b26",
+      "bytes": 3237495,
+      "archive_bytes": 259906
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-fifo64-s901.gateway.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-fifo64-s901.gateway.jsonl.gz",
+      "sha256": "64bf5d4446255df02e55120e5baf06b59bb7ad17790e8757b5982ed2bc695b31",
+      "archive_sha256": "ac90ea77b2a863f3d9b41f3faa994de48300d35440f91860db745c2c123ccb53",
+      "bytes": 1835365,
+      "archive_bytes": 228562
+    }
+  ],
+  "scope": "Lossless private raw archive after complete per-run integrity/quality audit; original uncompressed SHA retained. Not additional benchmark evidence."
+}

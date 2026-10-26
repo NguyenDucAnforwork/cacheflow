@@ -1,5 +1,7 @@
 # V6 development evidence: complete main and native stages
 
+**Full update,22:56UTC:** FirstFIFO full arm1986/1986success0errors +60separatewarmup now passes explicit R1 integrity/quality/resource/fairness/ITL audit and verified ten-file archive. Original controller stopped on a duplicate scalar CLI parsing error; original seal/sources/marker remain intact. Installed vLLM parser resolves16sequences, not the first argv occurrence4. A separately registered continuation is starting only the29unexecuted arms, preserving the original full30-arm scope. Read [R1 amendment](V6_FULL_ANALYSIS_R1.md); no complete full comparison, readiness gain or quality-equivalence claim.
+
 Latest (22:12 UTC): main24/1440, native60/2700 and main controls36/1260 are complete and strictly audited, with separate warmups. Full CPU preflight passed all1,986QA with0token-ID/semantic mismatches, and the30-arm full controller has started from a prospective seal. No full measured arm is complete at this checkpoint. Development gains retain median/quality/regime costs and do not complete the research goal.
 
 The registered main matrix completed24measured runs: **1,440/1,440 requests, zero errors**, plus1,440separate warmups. It reuses60previously exposed QA over3arrival schedules, with a fresh vLLM+LMCache process per arm, identical warmup/reset, pinned Qwen3-4B,6GiB GPU KV, observed16,039,018,496byte host heaps, max native sequences16/graphs, preparation worker and uniform180s transport/keepalive0. This is development evidence, not a full1,986QA result, semantic holdout or long-service liveness proof. V5 and shared-process pilot results are separate protocols.
@@ -229,3 +231,14 @@ The prospective full seal was written at **22:07:24UTC**, SHA `12f86b1a0698cbb56
 Full input preflight verifies all **1,986token vectors**, **50,522,325input tokens**, and identical nonarrival content across seeds901/902/903 in the pinned environments. Token-ID and semantic mismatches are0. The input-only page16 reference is18,195complete causal blocks+13,765private tail tokens=304,885new tokens under full retention/immediate publication assumptions; it is not a finite-cache scheduler or actual full prefill measurement.
 
 The first main full arm has observed host heap capacity **48,049,946,624bytes**, matching the source prediction; native48,002,236,416bytes remains an expected payload until its actual full arm is observed. Capacity is not physical RSS or actual cross-engine heap parity. The first60-request warmup completed without request errors; no1,986-request measured arm has reached complete per-run audit/archival at this checkpoint. Full quality1540answerable/446category5, performance/resources/fairness/nativeITL, all30arms and the final research completion audit remain pending.
+
+
+## First full FIFO: one-arm diagnostic after explicit analysis correction
+
+![Full FIFO backlog and source accounting](../figures/v6full1_fifo_diagnostic.png)
+
+The full FIFO seed901 arm succeeds1986/1986 and passes the separate R1 audit after the original configuration validator stopped on a duplicate CLI flag. `v6full1_fifo_diagnostic_plot.json` links audit/archive/raw/source/PNG/SVG hashes. The figure was rendered from retained data and visually inspected; it is one baseline, not a full candidate comparison.
+
+Mean scheduled-arrival TTFT622.281s is dominated by arrival→gateway422.819s and gateway admission146.594s; upstream→first text52.764s also includes engine queue, transport, copy and compute. The connection limit256 shapes delivery despite nominal4QPS arrivals. The cumulative curves show offered arrivals finishing much earlier than serving; do not interpret the observed1.188req/s as a standalone throughput-capacity benchmark. The first interval has not been causally split among pool/socket/backpressure/task scheduling.
+
+The engine accounts50,522,325prompt tokens as49,331,488external consumed,589,712GPU local and601,125new prefill. These sum exactly, while physical DMA volume/duration remain different quantities. The sampled GPU curve is not copy/compute separation. AnswerableF1=.317162, category5=223/446=.5,20cap hits; no full candidate quality equivalence is established. Full input-only reference304,885newtokens assumes unlimited retention/immediate publication and is not a finite-cache optimum.

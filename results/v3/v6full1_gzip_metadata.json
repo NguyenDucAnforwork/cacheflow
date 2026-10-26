@@ -1,0 +1,37 @@
+{
+  "reference_freeze_path": "results/v3/v6full1_freeze.json",
+  "reference_freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "reference_preflight_path": "results/v3/v6full1_input_preflight.json",
+  "reference_preflight_sha256": "a13db4fe27865081644d4659129e0fc7482c036027ab86d6457226a11dfb3ad7",
+  "traces": {
+    "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz": {
+      "header_hex": "1f8b08086459df6a02ff76352d66756c6c34622d717073342d733930312e6a736f6e6c00",
+      "header_bytes": 36,
+      "mtime": 1793022308,
+      "stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+      "uncompressed_sha256": "1855017432dd8ec138f6ef5a9f3494739aab5495ccb6f4f85e1342a743bb62a7",
+      "canonical_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac"
+    },
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz": {
+      "header_hex": "1f8b0808365adf6a02ff76352d66756c6c34622d717073342d733930322e6a736f6e6c00",
+      "header_bytes": 36,
+      "mtime": 1793022518,
+      "stored_sha256": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+      "uncompressed_sha256": "230819bf903f167c0831f7f37a3613c0d43f2b724c3f5b51439b2f7846455cbe",
+      "canonical_sha256": "8d1a292942c337d5a231f8aaca6520f2932f6705c9a4da886bdf3f360b5c359d"
+    },
+    "data/processed/v3/v5-full4b-qps4-s903.jsonl.gz": {
+      "header_hex": "1f8b08084b5adf6a02ff76352d66756c6c34622d717073342d733930332e6a736f6e6c00",
+      "header_bytes": 36,
+      "mtime": 1793022539,
+      "stored_sha256": "27fb4c04da39940497b5d62e7f781fcddc30b697b8c96a6522d5f816ec99f988",
+      "uncompressed_sha256": "698e53f81d485f55b950aeb8ffc89a8361f8b0bc52f0abbc2ecef290755886fb",
+      "canonical_sha256": "562e5fff6d8f283e43ebfc692c68d4ce4f020711c01c5cb2d166f28b0f3aa913"
+    }
+  },
+  "recording_python": "3.12.15",
+  "recording_zlib": "1.3.2",
+  "producer_source_sha256": "e20555d1e094f27406c930ed4db2578f69cdc54612531a0b4e55ecf9fe1a925e",
+  "helper_source_sha256": "81d71e1d2f9a0bc5340b33b3db10551f8f00f62e7827b7158a942f42392c8622",
+  "scope": "Gzip storage metadata only. Default producer compression is level9. Regenerate with pinned producer/runtime, then restore to a new file; original stored SHA must match. Full regeneration is not proved by recording headers. No serving calls or original-file modification."
+}

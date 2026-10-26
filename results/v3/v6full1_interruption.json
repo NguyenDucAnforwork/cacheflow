@@ -1,0 +1,20 @@
+{
+  "error": "CalledProcessError(1, ['/venv/main/bin/python', 'scripts/v6_audit_full_run.py', 'v6full1-main-g6-fifo64-s901'])",
+  "phase": "audit",
+  "last_step": {
+    "engine": "main",
+    "arm": "fifo64",
+    "policy": "fifo",
+    "cap": 64,
+    "queue": 512,
+    "budget": 6,
+    "host_flag": 48,
+    "native_policy": null,
+    "seed": 901,
+    "requests": 1986,
+    "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+    "run_id": "v6full1-main-g6-fifo64-s901"
+  },
+  "completed_arms": 0,
+  "scope": "Study stopped; retain failed/unexecuted arms. No retries or successful-only complete-stage table."
+}

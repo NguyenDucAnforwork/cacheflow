@@ -261,3 +261,38 @@ The terminal main24 audit uses a legacy schema without a `complete` flag. The fr
 The main controls are now terminal:36arms1260/1260measured successes0errors plus2160separate warmups, with36fresh engine/LMCache units and native ITL coverage36/36. The automatic dependency produced `v6controls1_main_audit.json` / `_quality.json`; they are immutable prerequisites of the full seal. The separate abstention subset scores7/12 for all9arms, no cap hits, answerableF1=null; it is12unique QA, not full446. `scripts/v6_plot_main_controls.py` requires the complete stage and renders inspected median/p95 contrasts plus plot/audit/source SHA provenance. `v5_analyze_waits.py` reconstructs all36gateway arms in `_main_waits.json`.
 
 Full1,986-token parity and three-trace nonarrival identity preflight passed0mismatches. Seal `12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366` was written22:07:24UTC; actor/helper31and analysis/evaluator17source hashes are now frozen. The controller is running, so do not start another engine, change sealed files/protocol, rerun seal-linked audits or overwrite results. The first main host heap capacity is observed48049946624bytes and its60-request warmup succeeded; no full measured arm is complete at this checkpoint. Native full payload is still expected/unobserved. Per-run official quality/integrity/archive and final30-arm reopening audit remain mandatory before final claims.
+
+
+## Exact gzip storage metadata for regenerated full traces
+
+The three sealed V5 full traces have nonzero gzip timestamps and embedded original filenames. `v5_prepare_trace.py` writes via `gzip.open`, so recreating identical JSONL at another time/path can change the stored-file SHA even when plain/canonical data match. The namespace constructor deliberately still requires exact reference stored bytes.
+
+`results/v3/v6full1_gzip_metadata.json` records each original header, stored/plain/canonical SHA and the linked immutable freeze/preflight. Recording reads and verifies the existing compressed files; it changes no input. The current recording environment is Python3.12.15/zlib1.3.2; exact SHA verification, not a version hint, is the final criterion.
+
+After regenerating the same JSONL with the pinned producer/renderer/tokenizer/arrival settings into a separate gzip, restore only the storage header into a new destination. For a fresh checkout where the original destination is absent, an example is:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_trace_storage.py restore results/v3/v6full1_gzip_metadata.json data/processed/v3/v5-full4b-qps4-s901.jsonl.gz /tmp/v5-full4b-qps4-s901-regenerated.jsonl.gz data/processed/v3/v5-full4b-qps4-s901.jsonl.gz
+```
+
+The helper requires the same uncompressed-byte SHA, copies the regenerated DEFLATE stream unchanged with the captured header, and requires the original sealed stored SHA before exclusive atomic publication. Existing destinations/partials reject; an existing input is never overwritten. Payload changes and different compressed streams reject, with no fallback to weaker identity. Preserve the original sealed manifests. If compressor output differs, retain the original artifact or match the pinned producer/compressor; this helper is not QA generation and cannot repair changed input content.
+
+Small synthetic tests verify changed timestamp/filename restoration, exact byte equality, payload/compressor rejection and safe publication races. All three real sealed headers were captured against their stored SHA. Full1,986-QA regeneration from source has not been rerun during the active GPU study; header recording and small-copy tests do not prove that entire regeneration path. No additional serving requests are issued.
+
+
+### Full analysis correction R1 and continuation
+
+The original `v6full1` controller is terminal after its first1986/1986successful arm: its auditor read the first duplicate `--max-num-seqs` rather than the final effective value. Keep its seal/sources/invalid marker/interruption unchanged. The installed vLLM CLI parser proof, corrected audit, complete official quality and ten-file lossless archive are separately recorded. Read `docs/V6_FULL_ANALYSIS_R1.md` before interpreting eligibility. No inference was replayed to repair this error.
+
+The following commands were executed once on this instance; registration and result paths reject reuse. They are an execution record, not commands to rerun over existing artifacts:
+
+```bash
+LD_LIBRARY_PATH=/venv/main/lib/python3.12/site-packages/nvidia/cu13/lib PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_register_analysis_r1.py
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_audit_full_run_r1.py v6full1-main-g6-fifo64-s901
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_register_continuation_r1.py
+PYTHONPATH=src:scripts /venv/main/bin/python -u scripts/v6_continue_full_r1.py
+```
+
+After the corrected audit, `v6_raw_archive.archive` wrote `v6full1-main-g6-fifo64-s901.archive_r1.json` from its `.full_audit_r1.json`. The continuation registration reopened all ten archived files, rechecked warm/measured integrity/configuration and regenerated the complete official quality JSON in a temporary destination; it matched exactly. This registration seals the unchanged29-action suffix before serving. The continuation has its own execution/outcome/interruption ledgers and still requires the complete30-arm final `v6full1_audit_r1.json`; that final audit has not run. It does not retry the first FIFO or any later failed arm. `--plan` displays only the29unexecuted actions and never starts serving. The original reproduction namespace generator follows the original sealed pipeline; it does not automatically incorporate R1. Porting this explicit correction into a fresh reproduction namespace needs its own recorded transformation and preflight, not a claim that the old generator already reproduces R1.
+
+Validation at registration:133CPU tests pass, including actual captured argv/config rejection, exact loader-guard derivation, real archive expansion, unchanged serving/measurement/cleanup ASTs, fresh-process validation, and mocked continuation failure/no-retry behavior. Tests are not full-study completion or model-quality equivalence.

@@ -1,0 +1,37 @@
+{
+  "run_id": "v6full1-main-g6-fifo64-s901",
+  "complete_single_arm": true,
+  "full_study_complete": false,
+  "audit_sha256": "0a98548fa26312812c42fb3ab2ae1b08b5b0c3374299fae8eec279014c010b1e",
+  "archive_sha256": "ab593310076006d286cef1a44af374a2587721fc92df8b22689b8645d5d45101",
+  "source_sha256": "8cfdc923f69da4a0efbf5b37ec960aeb65c547c390f415f7692f998a4d7a1aa7",
+  "raw_sha256": {
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.jsonl": "b5dc5b34beb71d8724a565f5622dfc87784337d28b7ad00dc2620b33208a385f",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.outputs.jsonl": "6fb0422b15939cd7bf06806d2b436a69af475cf2bc444bc29c0b7037465734c4",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.summary.json": "665bd0fbad46991c86a30627bf8953f46ebaba995712efd8c86a3912c92d56b0",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.metrics.jsonl": "e847211e6643c3a5194efae342af6b9f316e1480bddad0056be94fbb053f1a8e",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901-warm.gateway.jsonl": "19b2077935505401d53e111ec4a7ac43df076814a3dbb03e160544d9c9a6ff65",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.jsonl": "1f1951a0eb946db83c342187bdf9bbdd5265e730ff8a4b9273b23685673ac723",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.outputs.jsonl": "9750210dc1cac7bc471c2f564c328088cd717c4ac3ec22a6595994688d97e918",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.summary.json": "2c1afc094f3c644d2a201d89757a0a28faf8676704515e02afe4edeb038be8bf",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.metrics.jsonl": "c17a3e9189c4c4b2eb5bc07f77fe3613cc998486b4f5ca1968a69c37b11464c7",
+    "results/v3/raw/v6full1-main-g6-fifo64-s901.gateway.jsonl": "64bf5d4446255df02e55120e5baf06b59bb7ad17790e8757b5982ed2bc695b31"
+  },
+  "mean_stages_seconds": {
+    "arrival_to_gateway": 422.81850338335,
+    "gateway_prepare": 0.09058920603575026,
+    "gateway_admission": 146.5941806723404,
+    "upstream_to_token": 52.76399154459164,
+    "return_stream": 0.013956848307150051
+  },
+  "source_tokens": {
+    "External KV consumed": 49331488.0,
+    "GPU-local reuse": 589712.0,
+    "New prefill": 601125.0
+  },
+  "figure_sha256": {
+    "figures/v6full1_fifo_diagnostic.png": "f7dd4f1526e1b4e78b4b3d52179a05ff50accb5b942aa560dac3e9d6d59e85a2",
+    "figures/v6full1_fifo_diagnostic.svg": "81753cef44ef5d2b1fe0f1788a55d58f1c1a5998d51a9473d6c6b56a12615ed1"
+  },
+  "scope": "Single full FIFO baseline; original sampled metrics and client/gateway timestamps. No candidate gain, root-cause attribution, exact DMA measurement, quality equivalence or completed study."
+}

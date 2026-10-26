@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 22:12 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main controls đã audit đủ 36 arms / 1.260 request đo. Preflight đủ 1.986 QA đã pass và full controller đang chạy từ seal mới; chưa có full measured arm hoàn tất ở checkpoint này. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 22:55 UTC:** V6 đã audit main 24 arms / 1.440 request đo, native 60 arms / 2.700 request đo và main controls 36 arms / 1.260 request đo, đều không lỗi; warmups tính riêng. Full FIFO đầu tiên hoàn tất và đã audit R1 đủ 1.986 QA. Controller gốc dừng vì auditor đọc sai giá trị CLI bị lặp; parser vLLM thật xác nhận cấu hình đúng. Phần tiếp tục 29 arms đã được đăng ký riêng và vừa khởi chạy; chưa có full comparison hoặc complete-study result. Phần 22 tổng hợp bằng chứng hiện tại; V2–V5 giữ phạm vi lịch sử.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -958,6 +958,12 @@ Test dùng ledger giả lập đã kiểm trường hợp mọi engine PID khác
 
 Nếu stop/reload thực sự thất bại thì vẫn phải báo lỗi và giữ raw; không được nhận cleanup thành công hay tiếp tục arm tiếp theo. Test chỉ kiểm control flow bằng mock, không chứng minh native inference không thể stall. Nó cũng không phát sinh stop/restart nào trên job GPU đang đo.
 
+**Hỏi: Tại sao regenerate cùng JSONL mà SHA file gzip lại khác?**
+
+**Đáp:** Gzip còn có header chứa timestamp và có thể có tên file. Ba full traces thật đang có các metadata này, nên đổi thời điểm hoặc tên output có thể đổi stored SHA dù plain/canonical data giống nhau. Vì vậy phải phân biệt hash của file nén, byte sau giải nén và canonical trace.
+
+Recipe hiện lưu header gốc và liên kết tới freeze/preflight. Công cụ chỉ phục hồi ra file mới: plain SHA phải đúng, DEFLATE không đổi, toàn bộ gzip cuối phải khớp SHA gốc rồi mới publish atomically. Nếu payload hoặc compressor output khác thì từ chối; không bỏ qua kiểm input. Các test nhỏ đã qua, nhưng chưa chạy lại toàn bộ source-to-1.986-QA generation trong lúc GPU study đang chạy. Tool metadata không thay thế bằng chứng serving hay tái lập full study.
+
 **Hỏi: Làm sao chạy lại khi registration cũ đã có trong repo?**
 
 **Đáp:** Tạo namespace độc lập từ reference seal. Công cụ sao controller/auditor/protocol, chỉ cho đổi namespace/path strings cùng import bootstrap cố định qua AST proof; action graph phải giữ model, policy, budget, seed và trace. Bản mới vẫn cần preflight/gate/seal riêng. Không xóa evidence cũ, không đổi ID để retry riêng request lỗi và không hứa bit-exact timing/outputs. CLI/import/plan của bundle sinh ra đã có CPU test; chưa có study reproduction GPU mới.
@@ -974,3 +980,54 @@ Main24/1.440, native60/2.700 và main controls36/1.260 đều đã audit hoàn c
 Main CPU-tier capacity full đã quan sát 48.049.946.624 byte, xác nhận dự đoán làm tròn lazy heap. Native payload full 48.002.236.416 byte vẫn phải quan sát khi arm native chạy; chưa có actual heap parity giữa hai engine. Capacity không phải physical RSS.
 
 Warmup đầu 60 request đã thành công. Chưa có full measured arm hoàn tất tại checkpoint 22:12 UTC, nên chưa có kết luận full latency, quality của 1.540 answerable/446 category5 hay đủ 30 arms/59.580 requests. Có code, test xanh, seal hoặc preflight đúng không thay thế serving evidence. Chỉ sau per-run integrity/official quality audit mới archive raw; cuối study phải mở lại mọi archive và audit toàn bộ scope.
+
+
+### 22.9. Audit full run bị lỗi: phân biệt lỗi serving và lỗi kiểm chứng
+
+**Hỏi: Full run đầu tiên thực sự đã xảy ra chuyện gì?**
+
+**Đáp:** FIFO seed901 hoàn tất 1.986/1.986 request đo, không có request lỗi, sau warmup riêng60/60. Controller dừng ở bước audit cấu hình trước khi chạy arm thứ hai. Đây là lỗi kiểm chứng cụ thể: argv có `--max-num-seqs 4` rồi `--max-num-seqs 16`; auditor dùng `list.index` nên đọc lần đầu. Parser của chính vLLM0.22.0 được chạy trên argv đã capture và trả về16, batch8192, GPU KV6GiB. Không khởi động server/model để kiểm tra parser.
+
+**Hỏi: Runtime JSON ghi16 chưa đủ chứng minh engine dùng16 sao?**
+
+**Đáp:** Chưa. JSON chỉ thể hiện ý định; wrapper có thể thêm default, environment override hoặc cờ lặp. Cần đối chiếu actual process argv và cách parser của phiên bản đang cài diễn giải nó. Ở đây launcher V2 thêm default4 trước khi nối override16 của V3. Với scalar store option này, giá trị cuối có hiệu lực. Không được áp dụng quy tắc đó cho mọi loại option: list/append action có thể cộng dồn giá trị. Auditor R1 chỉ xử lý ba integer scalar flags mà contract kiểm, vẫn từ chối nếu giá trị cuối sai dù runtime JSON đúng.
+
+**Hỏi: Sửa auditor sau khi thấy kết quả có làm mất tính minh bạch không?**
+
+**Đáp:** Phải phân biệt sửa phép đọc bằng chứng với đổi method sau kết quả. Source/seal/protocol/marker gốc được giữ nguyên; registration R1 ghi hash raw, setup, lỗi audit và bằng chứng parser thật. Bản sửa chỉ thay cách đọc cờ scalar lặp và cho phép phân tích đúng một marker audit-stage có hash khớp. Toàn bộ kiểm request/token/output/source/config/quality còn nguyên. Không xóa invalid marker, không chạy lại FIFO, không bỏ arm xấu, không đổi timeout hoặc threshold. Các arm chưa chạy được tiếp tục bằng controller/registration mới có tên riêng, vẫn giữ nguyên29action suffix đã seal. Chi tiết ở [amendment R1](V6_FULL_ANALYSIS_R1.md).
+
+**Hỏi: Audit lại có kiểm toàn bộ benchmark hay chỉ test synthetic?**
+
+**Đáp:** Cả1.986 outputs đã được chấm bằng evaluator chính thức, cùng1.986 request/gateway ledgers, token/source/config/host/resources/fairness/native ITL và60warmups. Sau đó10raw files được nén lossless, giải nén kiểm lại integrity/config của warm và measured, rồi chấm lại đầy đủ; quality JSON khớp hoàn toàn. CPU tests133/133 pass tại checkpoint này. Đây là bằng chứng cho một full arm và đường analysis/archival của nó, chưa chứng minh30arms hoàn tất.
+
+**Hỏi: Baseline full đầu tiên cho biết gì về chất lượng và latency?**
+
+**Đáp:** FIFO có TTFT p50/p95/p99 lần lượt619,640/1.119,934/1.159,416giây, makespan1.671,172giây, observed1,188request/s dưới arrival4QPS. Answerable F1 là0,317162 trên1.540QA; category5 đạt223/446=50%;20outputs chạm96-token cap. Đây là một baseline riêng, chưa có paired full result để nói method cải thiện latency hoặc giữ quality. So sánh với prompt cũ đã mâu thuẫn chỉ dẫn sẽ không chứng minh causal quality gain.
+
+**Hỏi: Tại sao TTFT rất lớn dù upstream trung bình khoảng53giây?**
+
+**Đáp:** TTFT tính từ scheduled arrival nên bao gồm cả backlog trước khi gateway nhận request. Mỗi request được nối các mốc timestamp rồi mới tổng hợp; trung bình các phần là:
+
+| Phần của TTFT | Trung bình giây |
+| --- | ---: |
+| Scheduled arrival → gateway nhận | 422,819 |
+| Gateway chuẩn bị prompt | 0,091 |
+| Chờ admission trong gateway | 146,594 |
+| Dispatch → upstream trả first text | 52,764 |
+| Chuyển first text về client | 0,014 |
+| Tổng | 622,281 |
+
+Client có giới hạn256connections và dùng keepalive0. Vì vậy offered arrival4QPS không có nghĩa engine hoặc gateway thực sự nhận4request/s đều đặn; pool/socket/backpressure và task scheduling có thể giữ request trước ingress. Mốc đầu chỉ đo toàn bộ scheduled-arrival→received, chưa tách riêng từng nguyên nhân. Không được nhận toàn bộ delay này là gateway policy hoặc GPU time, cũng không được bỏ nó khỏi E2E để làm số đẹp. Các mean cộng được vì đã reconcile từng request; p95 của từng stage không cộng thành p95 tổng.
+
+**Hỏi: Counter và profiling nói gì về CPU↔GPU trong full FIFO?**
+
+**Đáp:** Trong50.522.325prompt tokens, engine ghi601.125new-prefill,589.712GPU-local reuse và49.331.488external-KV consumption; tổng khớp. Không có preemption. Đây là token-source accounting, không phải số byte DMA thực hoặc thời gian copy. Sample window1.679,191giây cho GPU utilization weighted94,367% và power246,944W; không thể từ utilization cao suy ra PCIe không phải bottleneck, vì sampling không phân tách copy và compute. Native ITL histogram có coverage hợp lệ, mean17,970ms/update, p95 chỉ xác định trong bucket10–25ms. Không thay bucket bằng exact per-token percentile.
+
+Full input-only page reference304.885newtokens giả định giữ đủ prefix và publication ngay; FIFO tính601.125. Khoảng cách đó là cơ hội cần giải thích bằng finite-cache/runtime evidence, không chứng minh oracle là một scheduler khả thi hay rằng chênh lệch tương ứng từng ấy FLOP/time tiết kiệm được. Các diagnostics CPU↔GPU và temporal overlap trước đây vẫn giữ phạm vi riêng.
+
+
+Biểu đồ của đúng full FIFO arm này minh họa backlog và source accounting; mọi đường đều từ raw đã audit, không phải simulation:
+
+![Full FIFO timeline, queue và token sources](../figures/v6full1_fifo_diagnostic.png)
+
+Có thể tái tạo figure bằng `PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_plot_full_fifo_diagnostic.py` khi raw/archive riêng tư còn trên instance. Công cụ mở archive đúng byte, dùng audit R1 đã có và không gọi serving. PNG/SVG cùng source/audit/archive/raw hashes được lưu trong `v6full1_fifo_diagnostic_plot.json`; figure đã được kiểm tra bằng mắt.
