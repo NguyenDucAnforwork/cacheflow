@@ -1,0 +1,222 @@
+{
+  "trace_sha256": "ac0f095f048a44798be81542bcbd5452b792fd67b897a03b8d4fc86a713b2aa8",
+  "requests": 30,
+  "input_tokens": 719106,
+  "assumption": "Static no eviction; prior prompts fully materialized; no generated text; not a runtime simulation.",
+  "cached_block16": 670656,
+  "cached_chunk256": 666624,
+  "prefill_block16": 48450,
+  "prefill_chunk256": 52482,
+  "per_request": [
+    {
+      "request_id": "conv-49-q000",
+      "input_tokens": 21324,
+      "common_prefix_tokens": 0,
+      "cached_block16": 0,
+      "cached_chunk256": 0
+    },
+    {
+      "request_id": "conv-50-q000",
+      "input_tokens": 26610,
+      "common_prefix_tokens": 2,
+      "cached_block16": 0,
+      "cached_chunk256": 0
+    },
+    {
+      "request_id": "conv-49-q001",
+      "input_tokens": 21325,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q001",
+      "input_tokens": 26615,
+      "common_prefix_tokens": 26600,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q002",
+      "input_tokens": 21328,
+      "common_prefix_tokens": 21314,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q002",
+      "input_tokens": 26611,
+      "common_prefix_tokens": 26602,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q003",
+      "input_tokens": 21324,
+      "common_prefix_tokens": 21314,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q003",
+      "input_tokens": 26610,
+      "common_prefix_tokens": 26600,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q004",
+      "input_tokens": 21330,
+      "common_prefix_tokens": 21314,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q004",
+      "input_tokens": 26613,
+      "common_prefix_tokens": 26601,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q005",
+      "input_tokens": 21329,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q005",
+      "input_tokens": 26608,
+      "common_prefix_tokens": 26601,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q006",
+      "input_tokens": 21332,
+      "common_prefix_tokens": 21316,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q006",
+      "input_tokens": 26612,
+      "common_prefix_tokens": 26601,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q007",
+      "input_tokens": 21324,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q007",
+      "input_tokens": 26612,
+      "common_prefix_tokens": 26600,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q008",
+      "input_tokens": 21330,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q008",
+      "input_tokens": 26611,
+      "common_prefix_tokens": 26603,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q009",
+      "input_tokens": 21326,
+      "common_prefix_tokens": 21314,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q009",
+      "input_tokens": 26617,
+      "common_prefix_tokens": 26602,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q010",
+      "input_tokens": 21339,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q010",
+      "input_tokens": 26612,
+      "common_prefix_tokens": 26603,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q011",
+      "input_tokens": 21330,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q011",
+      "input_tokens": 26610,
+      "common_prefix_tokens": 26601,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q012",
+      "input_tokens": 21333,
+      "common_prefix_tokens": 21316,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q012",
+      "input_tokens": 26610,
+      "common_prefix_tokens": 26601,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q013",
+      "input_tokens": 21332,
+      "common_prefix_tokens": 21317,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q013",
+      "input_tokens": 26611,
+      "common_prefix_tokens": 26600,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    },
+    {
+      "request_id": "conv-49-q014",
+      "input_tokens": 21323,
+      "common_prefix_tokens": 21315,
+      "cached_block16": 21312,
+      "cached_chunk256": 21248
+    },
+    {
+      "request_id": "conv-50-q014",
+      "input_tokens": 26615,
+      "common_prefix_tokens": 26603,
+      "cached_block16": 26592,
+      "cached_chunk256": 26368
+    }
+  ]
+}
