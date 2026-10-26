@@ -1,0 +1,254 @@
+{
+  "scope": "V4 dev only;60 unique QA repeated3 seeds; native HiCache source semantics preserved",
+  "requests": 720,
+  "errors": 0,
+  "runs": [
+    {
+      "run_id": "v4-sg4b-fi-kernel-lpm16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "lpm",
+      "p50_ms": 4721.0270955,
+      "p95_ms": 20709.7640719,
+      "p99_ms": 22124.80343416,
+      "native_host_promoted_tokens": null,
+      "native_uncached_tokens": 82470.0,
+      "f1": 0.29951589820006796,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-fifo16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "fifo",
+      "p50_ms": 11122.221957,
+      "p95_ms": 20465.1624367,
+      "p99_ms": 21877.14713099,
+      "native_host_promoted_tokens": 34592.0,
+      "native_uncached_tokens": 82470.0,
+      "f1": 0.30032902970408465,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-packing16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "packing",
+      "p50_ms": 17111.728483,
+      "p95_ms": 19423.6639219,
+      "p99_ms": 20012.5882511,
+      "native_host_promoted_tokens": 145648.0,
+      "native_uncached_tokens": 77878.0,
+      "f1": 0.3076545657664628,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-packing_reuse16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "packing_reuse",
+      "p50_ms": 17011.548534,
+      "p95_ms": 19151.007990449998,
+      "p99_ms": 19680.27546913,
+      "native_host_promoted_tokens": 166560.0,
+      "native_uncached_tokens": 72278.0,
+      "f1": 0.30700517695250457,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-lpm16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "lpm",
+      "p50_ms": 6843.8370295,
+      "p95_ms": 23768.992164,
+      "p99_ms": 25499.59221332,
+      "native_host_promoted_tokens": 0.0,
+      "native_uncached_tokens": 93830.0,
+      "f1": 0.30532074150491123,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-fifo16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "fifo",
+      "p50_ms": 12675.705223,
+      "p95_ms": 23916.198394599996,
+      "p99_ms": 25645.427015319998,
+      "native_host_promoted_tokens": 34592.0,
+      "native_uncached_tokens": 93638.0,
+      "f1": 0.3077920621984062,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-packing16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "packing",
+      "p50_ms": 17681.6418645,
+      "p95_ms": 19886.345104099997,
+      "p99_ms": 20581.753065179997,
+      "native_host_promoted_tokens": 145648.0,
+      "native_uncached_tokens": 80342.0,
+      "f1": 0.309876787988685,
+      "cap_hits": 3
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-packing_reuse16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "packing_reuse",
+      "p50_ms": 16793.404077,
+      "p95_ms": 19137.4491432,
+      "p99_ms": 19824.712388699998,
+      "native_host_promoted_tokens": 166560.0,
+      "native_uncached_tokens": 72278.0,
+      "f1": 0.307949749924612,
+      "cap_hits": 3
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-lpm16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "lpm",
+      "p50_ms": 6882.4467,
+      "p95_ms": 24707.0389567,
+      "p99_ms": 26457.722813869997,
+      "native_host_promoted_tokens": 0.0,
+      "native_uncached_tokens": 95062.0,
+      "f1": 0.30365716082641175,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-fifo16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "fifo",
+      "p50_ms": 11782.449314,
+      "p95_ms": 23909.82075105,
+      "p99_ms": 25655.73867033,
+      "native_host_promoted_tokens": 34592.0,
+      "native_uncached_tokens": 92438.0,
+      "f1": 0.3134371640331492,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-packing16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "packing",
+      "p50_ms": 17254.679007,
+      "p95_ms": 19714.6043541,
+      "p99_ms": 20532.67011486,
+      "native_host_promoted_tokens": 145648.0,
+      "native_uncached_tokens": 80342.0,
+      "f1": 0.3070367901799763,
+      "cap_hits": 2
+    },
+    {
+      "run_id": "v4-sg4b-fi-kernel-packing_reuse16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "packing_reuse",
+      "p50_ms": 16708.482473,
+      "p95_ms": 19333.726587099998,
+      "p99_ms": 20202.3821913,
+      "native_host_promoted_tokens": 166560.0,
+      "native_uncached_tokens": 72278.0,
+      "f1": 0.3076785776259053,
+      "cap_hits": 3
+    }
+  ],
+  "contrasts": [
+    {
+      "seed": 101,
+      "policy": "fifo",
+      "p95_delta_pct": -1.1810932966246912,
+      "p99_delta_pct": -1.1193604675719948,
+      "quality_delta": 0.0008131315040166842
+    },
+    {
+      "seed": 101,
+      "policy": "packing",
+      "p95_delta_pct": -6.210114927118093,
+      "p99_delta_pct": -9.54682010778366,
+      "quality_delta": 0.008138667566394808
+    },
+    {
+      "seed": 101,
+      "policy": "packing_reuse",
+      "p95_delta_pct": -7.526672327305739,
+      "p99_delta_pct": -11.04881212754969,
+      "quality_delta": 0.007489278752436601
+    },
+    {
+      "seed": 102,
+      "policy": "fifo",
+      "p95_delta_pct": 0.6193204557614962,
+      "p99_delta_pct": 0.5719103300946937,
+      "quality_delta": 0.0024713206934949827
+    },
+    {
+      "seed": 102,
+      "policy": "packing",
+      "p95_delta_pct": -16.33492507006913,
+      "p99_delta_pct": -19.285952132093765,
+      "quality_delta": 0.004556046483773779
+    },
+    {
+      "seed": 102,
+      "policy": "packing_reuse",
+      "p95_delta_pct": -19.485651679480277,
+      "p99_delta_pct": -22.25478657519733,
+      "quality_delta": 0.0026290084197007624
+    },
+    {
+      "seed": 103,
+      "policy": "fifo",
+      "p95_delta_pct": -3.2266845373383424,
+      "p99_delta_pct": -3.031191116415999,
+      "quality_delta": 0.009780003206737442
+    },
+    {
+      "seed": 103,
+      "policy": "packing",
+      "p95_delta_pct": -20.206527424631602,
+      "p99_delta_pct": -22.394416710359867,
+      "quality_delta": 0.0033796293535645616
+    },
+    {
+      "seed": 103,
+      "policy": "packing_reuse",
+      "p95_delta_pct": -21.748103360410486,
+      "p99_delta_pct": -23.64277782550033,
+      "quality_delta": 0.004021416799493527
+    }
+  ],
+  "aggregate": [
+    {
+      "policy": "lpm",
+      "p50_ms": 6149.103608333334,
+      "p95_ms": 23061.931730866665,
+      "p99_ms": 24694.039487116665,
+      "native_host_promoted_tokens": null,
+      "native_uncached_tokens": 90454.0,
+      "f1": 0.30283126684379696
+    },
+    {
+      "policy": "fifo",
+      "p50_ms": 11860.125498,
+      "p95_ms": 22763.727194116665,
+      "p99_ms": 24392.77093888,
+      "native_host_promoted_tokens": 34592.0,
+      "native_uncached_tokens": 89515.33333333333,
+      "f1": 0.30718608531188
+    },
+    {
+      "policy": "packing",
+      "p50_ms": 17349.34978483333,
+      "p95_ms": 19674.8711267,
+      "p99_ms": 20375.670477046668,
+      "native_host_promoted_tokens": 145648.0,
+      "native_uncached_tokens": 79520.66666666667,
+      "f1": 0.30818938131170803
+    },
+    {
+      "policy": "packing_reuse",
+      "p50_ms": 16837.811694666667,
+      "p95_ms": 19207.394573583333,
+      "p99_ms": 19902.456683043332,
+      "native_host_promoted_tokens": 166560.0,
+      "native_uncached_tokens": 72278.0,
+      "f1": 0.30754450150100726
+    }
+  ]
+}

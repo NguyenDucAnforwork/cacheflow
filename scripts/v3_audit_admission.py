@@ -1,12 +1,14 @@
 """Reconstruct ingress queue/active intervals and actual head bypasses from raw logs."""
 import argparse
 import json
+import yaml
 from collections import Counter
 from pathlib import Path
 
 
 def audit(run_id):
-    path=Path('results/v3/raw')/f'{run_id}.gateway.jsonl'
+    native=(Path('results/v3/sglang')/f'{run_id}.setup.json').exists()
+    path=Path('results/v3/raw/sglang' if native else 'results/v3/raw')/f'{run_id}.gateway.jsonl'
     rows=[json.loads(l) for l in path.read_text().splitlines()]
     assert rows and all(r['status']=='ok' for r in rows)
     by={r['request_id']:r for r in rows};events=[]
@@ -28,11 +30,13 @@ def audit(run_id):
         else:
             assert rid in active;active.remove(rid)
     assert not queue and not active
-    setup=json.loads(Path(f'results/v3/{run_id}.setup.json').read_text())
-    cap=setup['runtime']['max_inflight'];policy=setup['gateway_config']
-    if 'policy: packing_fifo' in policy or 'policy: residency' in policy:
-        assert max_head_bypasses<=setup['runtime'].get('max_bypasses',4),(run_id,max_head_bypasses)
-    return dict(run_id=run_id,max_head_bypasses=max_head_bypasses,
+    setup=json.loads(Path(f'results/v3/{"sglang/" if native else ""}{run_id}.setup.json').read_text())
+    full_config=yaml.safe_load(setup['gateway_config'])
+    config=full_config['scheduler'] | {'max_bypasses':full_config.get('residency',{}).get('max_bypasses',4)}
+    cap=config['max_inflight'];policy=config['policy']
+    if policy in {'packing_fifo','packing','packing_reuse','residency'}:
+        assert max_head_bypasses<=config.get('max_bypasses',4),(run_id,max_head_bypasses)
+    return dict(run_id=run_id,policy=policy,configured_max_bypasses=config.get('max_bypasses'),max_head_bypasses=max_head_bypasses,
         queued_with_spare_slots_s=sum(v for (a,q),v in histogram.items() if q and a<cap),
         queued_with_at_most_one_active_s=sum(v for (a,q),v in histogram.items() if q and a<=1),
         active_request_seconds=sum(a*v for (a,q),v in histogram.items()),

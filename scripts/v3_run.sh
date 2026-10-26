@@ -35,6 +35,13 @@ assert model['path'] in actual_argv, 'engine/model mismatch'
 assert int(actual_value('--max-num-seqs'))==runtime['max_num_seqs']
 assert int(actual_value('--max-num-batched-tokens'))==runtime['max_num_batched_tokens']
 assert ('--enforce-eager' in actual_argv)==runtime['enforce_eager']
+actual_lmcache_argv=None
+if Path('.cacheflow-mode').read_text().strip()!='B1':
+    lm_pid=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v2_lmcache'],text=True))
+    assert lm_pid>0
+    actual_lmcache_argv=[x.decode() for x in Path(f'/proc/{lm_pid}/cmdline').read_bytes().split(b'\0') if x]
+    index=actual_lmcache_argv.index('--l1-size-gb')
+    assert float(actual_lmcache_argv[index+1])==runtime.get('cpu_l1_gib',16), 'CPU tier budget mismatch'
 public_env={}
 for item in Path(f'/proc/{pid}/environ').read_bytes().split(b'\0'):
     key,_,value=item.partition(b'=')
@@ -44,6 +51,7 @@ assert bool(runtime.get('batch_invariant',False))==(public_env.get('VLLM_BATCH_I
 c=dict(run_id=rid,trace_path=trace,runtime=runtime, model=model,
        actual_engine_env=public_env,
        actual_engine_argv_list=actual_argv,
+       actual_lmcache_argv_list=actual_lmcache_argv,
        gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text(),
        gpu_kv_bytes=int(Path('.cacheflow-v2-gpu-kv-bytes').read_text()),
        actual_engine_argv=Path(f'/proc/{pid}/cmdline').read_bytes().replace(b'\0',b' ').decode(),

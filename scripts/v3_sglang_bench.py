@@ -54,7 +54,7 @@ def main():
     runtime=load_runtime();model=get_model(runtime['model_key'])
     gpu_bytes=runtime['gpu_kv_gib']*1024**3
     assert info['max_total_tokens']==gpu_bytes//(16*model['bytes_per_token'])*16
-    assert info['enable_hierarchical_cache'] and info['hicache_size']==16
+    assert info['enable_hierarchical_cache'] and info['hicache_size']==runtime['host_kv_gib']
     assert info['model_path']==model['path']
     assert info['schedule_policy']==runtime['schedule_policy']
     assert info['hicache_io_backend']==runtime['io_backend']
@@ -63,6 +63,16 @@ def main():
     launcher=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v3_sglang'],text=True))
     assert launcher>0
     children=[psutil.Process(launcher),*psutil.Process(launcher).children(recursive=True)]
+    servers=[x for x in children if 'sglang.launch_server' in x.cmdline()]
+    assert len(servers)==1, 'expected one native Python launcher'
+    env=servers[0].environ()
+    public_env={key:env.get(key) for key in [
+        'IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD',
+        'IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD',
+        'CACHEFLOW_SGLANG_TRANSFER_PROFILE']}
+    assert public_env['IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD']==str(runtime['inbatch_check_threshold'])
+    assert public_env['IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD']==str(runtime['inbatch_deprioritize_threshold'])
+    assert (public_env['CACHEFLOW_SGLANG_TRANSFER_PROFILE']=='1')==runtime['profile_transfers']
     allow=['model_path','served_model_name','dtype','context_length','max_total_tokens',
         'max_running_requests','chunked_prefill_size','page_size','mem_fraction_static',
         'enable_hierarchical_cache','hicache_size','hicache_write_policy','hicache_io_backend',
@@ -74,7 +84,7 @@ def main():
         replay_url=replay_url,gateway_policy=args.gateway_policy,gateway_before=gateway_before,
         gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text() if args.gateway_policy else None,
         server_config={k:info.get(k) for k in allow},launcher_pid=launcher,
-        process_argv={str(x.pid):x.cmdline() for x in children},reset_status=reset.status_code,
+        process_argv={str(x.pid):x.cmdline() for x in children},public_server_env=public_env,reset_status=reset.status_code,
         captured_utc=datetime.now(timezone.utc).isoformat())
     c['package_versions']={name:importlib.metadata.version(name) for name in
         ['sglang','sglang-kernel','torch','transformers','flashinfer-python','flashinfer-cubin']}
@@ -84,6 +94,12 @@ def main():
                   'srt/mem_cache/hiradix_cache.py','srt/mem_cache/memory_pool_host.py']
     c['upstream_source_sha256']={name:hashlib.sha256((source_root/name).read_bytes()).hexdigest()
                                  for name in source_names}
+    c['frontend_source_sha256']={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in
+        ['scripts/v3_sglang_bench.py','src/cacheflow/v2_replay.py','src/cacheflow/collect_metrics.py']}
+    if runtime['profile_transfers']:
+        c['profiler_source_sha256']={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in
+            ['scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v3_sglang_transfer_profile.py',
+             'src/cacheflow/v4_sglang_admission_profile.py']}
     if args.gateway_policy:
         names=['src/cacheflow/gateway.py','src/cacheflow/v3_memory_scheduler.py',
                'src/cacheflow/scheduler.py','src/cacheflow/prefix.py']

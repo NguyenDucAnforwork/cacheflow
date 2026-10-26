@@ -1,6 +1,8 @@
-# Install in an isolated --system-site-packages env; --no-deps preserves the main stack.
+# Isolated --system-site-packages env; install --no-deps with a same-filesystem hardlink cache.
 distro==1.9.0
 easydict==1.13
+flashinfer-cubin==0.6.12
+flashinfer-python==0.6.12
 interegular==0.3.3
 llguidance==0.7.30
 openai==2.6.1

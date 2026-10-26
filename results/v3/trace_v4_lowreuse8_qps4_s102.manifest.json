@@ -1,0 +1,31 @@
+{
+  "abstention_style": "official",
+  "arrival": "low_reuse",
+  "excluded": {
+    "context_too_long": 0,
+    "no_evidence": 0
+  },
+  "max_model_len": 32768,
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "output_tokens": 96,
+  "prompt_version": "locomo-qwen-concise-v4",
+  "protocol": "p_qa",
+  "qps": 4.0,
+  "requests": 8,
+  "seed": 102,
+  "selected_samples": [
+    "conv-26",
+    "conv-30",
+    "conv-41",
+    "conv-42",
+    "conv-47",
+    "conv-48",
+    "conv-49",
+    "conv-50"
+  ],
+  "session_gap_ms": null,
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "system_instruction": "Answer the question using only the supplied conversation. Return only a concise answer, without explanation, reasoning, repetition, or restating the question. If the answer is not present in the conversation, answer \"No information available.\".",
+  "thinking": false,
+  "trace_sha256": "4e1cfbb8362b3ef4c6508f959c87b3d668a3ab78d1e324d259b41604db1d187b"
+}

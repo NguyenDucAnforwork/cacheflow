@@ -208,5 +208,29 @@
       "subscriber_error": null
     }
   },
-  "captured_utc": "2026-10-26T09:04:44.424193+00:00"
+  "captured_utc": "2026-10-26T09:04:44.424193+00:00",
+  "gateway_after": {
+    "policy": "packing",
+    "queue": 0,
+    "active": 0,
+    "decision_stats": {
+      "calls": 18383,
+      "cpu_ms": 1090.953308,
+      "wall_ms": 1090.926461,
+      "max_ms": 12.96859,
+      "cache_hits": 18212
+    },
+    "residency": {
+      "known": true,
+      "sequence": 270,
+      "gaps": 0,
+      "blocks": 2400,
+      "events": 8979,
+      "batches": 92,
+      "last_event_age_ms": 3687.4266,
+      "subscriber_running": true,
+      "hash_contract_verified": true,
+      "subscriber_error": null
+    }
+  }
 }

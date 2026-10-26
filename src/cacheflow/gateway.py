@@ -117,7 +117,7 @@ def create_app(config_path: str | None = None) -> FastAPI:
         arrival_header = request.headers.get("x-cacheflow-arrival-ns")
         try:
             arrival_ns = int(arrival_header) if arrival_header else received_ns
-            if arrival_ns > received_ns or received_ns - arrival_ns > 60_000_000_000:
+            if arrival_ns > received_ns or received_ns - arrival_ns > 3_600_000_000_000:
                 raise ValueError
         except ValueError:
             arrival_ns = received_ns

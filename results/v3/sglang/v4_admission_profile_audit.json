@@ -1,0 +1,1362 @@
+{
+  "scope": "Instrumented diagnostic; exact token-interval scheduling evidence, not a kernel-duration or overlap measurement",
+  "runs": [
+    {
+      "run_id": "v4-sgdiag-admission-native-s101",
+      "requests": 60,
+      "selected_prefill_chunks": 69,
+      "scheduled_prefill_tokens": 82470,
+      "native_uncached_prompt_tokens": 82470.0,
+      "scheduled_matches_native_uncached": true,
+      "selected_initial_host_hit_tokens": 0,
+      "native_load_calls": 0,
+      "native_load_tokens": 0,
+      "load_outcomes": [],
+      "by_conversation": [
+        {
+          "sample_id": "conv-26",
+          "common_prefix_tokens": 19504,
+          "scheduled_context_prefill_tokens": 19504,
+          "covered_context_positions": 19504,
+          "repeated_context_prefill_tokens": 0
+        },
+        {
+          "sample_id": "conv-30",
+          "common_prefix_tokens": 15188,
+          "scheduled_context_prefill_tokens": 20928,
+          "covered_context_positions": 15140,
+          "repeated_context_prefill_tokens": 5788
+        },
+        {
+          "sample_id": "conv-41",
+          "common_prefix_tokens": 29152,
+          "scheduled_context_prefill_tokens": 40800,
+          "covered_context_positions": 29104,
+          "repeated_context_prefill_tokens": 11696
+        }
+      ],
+      "reconstructed_prefill_batches": 27,
+      "same_batch_repeated_context_tokens": 16412,
+      "selected_segments": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "begin": 0,
+          "end": 8192,
+          "relative_ms": 122.457443,
+          "batch": 0,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "begin": 8192,
+          "end": 16384,
+          "relative_ms": 162.205961,
+          "batch": 1,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "begin": 16384,
+          "end": 19525,
+          "relative_ms": 1421.014241,
+          "batch": 2,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "begin": 48,
+          "end": 5088,
+          "relative_ms": 1421.736804,
+          "batch": 2,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "begin": 5088,
+          "end": 13280,
+          "relative_ms": 3210.693956,
+          "batch": 3,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "begin": 13280,
+          "end": 15209,
+          "relative_ms": 6338.82871,
+          "batch": 4,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19522,
+          "relative_ms": 6339.375541,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19528,
+          "relative_ms": 6342.805108,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19520,
+          "relative_ms": 6345.903472,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19521,
+          "relative_ms": 6349.037701,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19523,
+          "relative_ms": 6352.225427,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19523,
+          "relative_ms": 6355.47104,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19522,
+          "relative_ms": 6358.580677,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 6361.703573,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19529,
+          "relative_ms": 6364.847975,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "begin": 13280,
+          "end": 15209,
+          "relative_ms": 6367.532113,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "begin": 13280,
+          "end": 15210,
+          "relative_ms": 6370.221627,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "begin": 13280,
+          "end": 15209,
+          "relative_ms": 6372.84227,
+          "batch": 4,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19527,
+          "relative_ms": 8868.462965,
+          "batch": 5,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 8871.585715,
+          "batch": 5,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19527,
+          "relative_ms": 8874.822145,
+          "batch": 5,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 8956.020691,
+          "batch": 6,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19534,
+          "relative_ms": 8959.026751,
+          "batch": 6,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19523,
+          "relative_ms": 8962.159049,
+          "batch": 6,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 8962.551751,
+          "batch": 6,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 8965.127638,
+          "batch": 6,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 9111.583089,
+          "batch": 7,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 9114.123774,
+          "batch": 7,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15205,
+          "relative_ms": 9116.825066,
+          "batch": 7,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 9191.970893,
+          "batch": 8,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15208,
+          "relative_ms": 9194.534561,
+          "batch": 8,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15213,
+          "relative_ms": 9265.101866,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15206,
+          "relative_ms": 9410.618517,
+          "batch": 10,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19524,
+          "relative_ms": 9678.163829,
+          "batch": 11,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 9680.908422,
+          "batch": 11,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15208,
+          "relative_ms": 9683.544253,
+          "batch": 11,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15211,
+          "relative_ms": 9764.041169,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15207,
+          "relative_ms": 9979.333405,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15215,
+          "relative_ms": 10199.965397,
+          "batch": 14,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 10382.805305,
+          "batch": 15,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19521,
+          "relative_ms": 10461.927986,
+          "batch": 16,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15211,
+          "relative_ms": 10952.687347,
+          "batch": 17,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19522,
+          "relative_ms": 11654.757138,
+          "batch": 18,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15208,
+          "relative_ms": 11657.300448,
+          "batch": 18,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 48,
+          "end": 8240,
+          "relative_ms": 12525.468168,
+          "batch": 19,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 8240,
+          "end": 16432,
+          "relative_ms": 12580.036039,
+          "batch": 20,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 16432,
+          "end": 24624,
+          "relative_ms": 13822.009417,
+          "batch": 21,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 24624,
+          "end": 29180,
+          "relative_ms": 15649.393451,
+          "batch": 22,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "begin": 24624,
+          "end": 28256,
+          "relative_ms": 15649.896307,
+          "batch": 22,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29170,
+          "relative_ms": 18061.984701,
+          "batch": 23,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29170,
+          "relative_ms": 18066.637675,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29174,
+          "relative_ms": 18070.951011,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29172,
+          "relative_ms": 18075.607863,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29171,
+          "relative_ms": 18079.954982,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29169,
+          "relative_ms": 18084.408636,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29173,
+          "relative_ms": 18088.695363,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29171,
+          "relative_ms": 18093.227483,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29024,
+          "relative_ms": 18097.661688,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "begin": 29024,
+          "end": 29182,
+          "relative_ms": 23909.255574,
+          "batch": 24,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29169,
+          "relative_ms": 23915.055556,
+          "batch": 24,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29173,
+          "relative_ms": 23919.792352,
+          "batch": 24,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23924.822764,
+          "batch": 24,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23929.643259,
+          "batch": 24,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23934.591331,
+          "batch": 24,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29170,
+          "relative_ms": 24331.32928,
+          "batch": 25,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29170,
+          "relative_ms": 24335.924694,
+          "batch": 25,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 24423.328323,
+          "batch": 26,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 24427.767603,
+          "batch": 26,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29172,
+          "relative_ms": 24432.462148,
+          "batch": 26,
+          "host_hit_before": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v4-sgdiag-admission-q8-s101",
+      "requests": 60,
+      "selected_prefill_chunks": 68,
+      "scheduled_prefill_tokens": 75862,
+      "native_uncached_prompt_tokens": 75862.0,
+      "scheduled_matches_native_uncached": true,
+      "selected_initial_host_hit_tokens": 98288,
+      "native_load_calls": 5,
+      "native_load_tokens": 98288,
+      "load_outcomes": [
+        {
+          "kind": "load_back",
+          "loaded_tokens": 19456,
+          "mem_quota": null,
+          "monotonic_ns": 110920027741317,
+          "pid": 196719,
+          "requested_host_tokens": 19456,
+          "threshold": 10
+        },
+        {
+          "kind": "load_back",
+          "loaded_tokens": 15136,
+          "mem_quota": null,
+          "monotonic_ns": 110920080062911,
+          "pid": 196719,
+          "requested_host_tokens": 15136,
+          "threshold": 10
+        },
+        {
+          "kind": "load_back",
+          "loaded_tokens": 29104,
+          "mem_quota": null,
+          "monotonic_ns": 110923361345982,
+          "pid": 196719,
+          "requested_host_tokens": 29104,
+          "threshold": 10
+        },
+        {
+          "kind": "load_back",
+          "loaded_tokens": 19456,
+          "mem_quota": null,
+          "monotonic_ns": 110925755071708,
+          "pid": 196719,
+          "requested_host_tokens": 19456,
+          "threshold": 10
+        },
+        {
+          "kind": "load_back",
+          "loaded_tokens": 15136,
+          "mem_quota": null,
+          "monotonic_ns": 110925803333953,
+          "pid": 196719,
+          "requested_host_tokens": 15136,
+          "threshold": 10
+        }
+      ],
+      "by_conversation": [
+        {
+          "sample_id": "conv-26",
+          "common_prefix_tokens": 19504,
+          "scheduled_context_prefill_tokens": 19504,
+          "covered_context_positions": 19504,
+          "repeated_context_prefill_tokens": 0
+        },
+        {
+          "sample_id": "conv-30",
+          "common_prefix_tokens": 15188,
+          "scheduled_context_prefill_tokens": 15216,
+          "covered_context_positions": 15140,
+          "repeated_context_prefill_tokens": 76
+        },
+        {
+          "sample_id": "conv-41",
+          "common_prefix_tokens": 29152,
+          "scheduled_context_prefill_tokens": 39904,
+          "covered_context_positions": 29104,
+          "repeated_context_prefill_tokens": 10800
+        }
+      ],
+      "reconstructed_prefill_batches": 38,
+      "same_batch_repeated_context_tokens": 9928,
+      "selected_segments": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "begin": 0,
+          "end": 8192,
+          "relative_ms": 329.089128,
+          "batch": 0,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "begin": 8192,
+          "end": 16384,
+          "relative_ms": 404.474007,
+          "batch": 1,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "begin": 16384,
+          "end": 19525,
+          "relative_ms": 1654.18459,
+          "batch": 2,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "begin": 48,
+          "end": 5088,
+          "relative_ms": 1654.685438,
+          "batch": 2,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "begin": 5088,
+          "end": 13280,
+          "relative_ms": 3516.778495,
+          "batch": 3,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "begin": 13280,
+          "end": 15209,
+          "relative_ms": 5060.1403,
+          "batch": 4,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 48,
+          "end": 8240,
+          "relative_ms": 7597.80556,
+          "batch": 5,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 8240,
+          "end": 16432,
+          "relative_ms": 7638.956744,
+          "batch": 6,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 16432,
+          "end": 24624,
+          "relative_ms": 8888.086566,
+          "batch": 7,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "begin": 24624,
+          "end": 29180,
+          "relative_ms": 10720.552153,
+          "batch": 8,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "begin": 24624,
+          "end": 28256,
+          "relative_ms": 10721.070699,
+          "batch": 8,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29170,
+          "relative_ms": 13135.735725,
+          "batch": 9,
+          "host_hit_before": null
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29170,
+          "relative_ms": 13140.44735,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29174,
+          "relative_ms": 13144.981615,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29172,
+          "relative_ms": 13149.541659,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29171,
+          "relative_ms": 13154.073821,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29169,
+          "relative_ms": 13158.826241,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29173,
+          "relative_ms": 13163.589645,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "begin": 28256,
+          "end": 29171,
+          "relative_ms": 13168.405609,
+          "batch": 9,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19522,
+          "relative_ms": 19699.510554,
+          "batch": 10,
+          "host_hit_before": 19456
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 19751.817084,
+          "batch": 11,
+          "host_hit_before": 15136
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19528,
+          "relative_ms": 20005.987817,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19520,
+          "relative_ms": 20009.134477,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19521,
+          "relative_ms": 20012.332014,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 20014.770718,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 20017.433814,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 20020.000432,
+          "batch": 12,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19523,
+          "relative_ms": 20204.035436,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19523,
+          "relative_ms": 20207.135389,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19522,
+          "relative_ms": 20210.310402,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 20212.892814,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 20215.370097,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 20217.875295,
+          "batch": 13,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 20274.600226,
+          "batch": 14,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15205,
+          "relative_ms": 20277.244564,
+          "batch": 14,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19529,
+          "relative_ms": 20683.861117,
+          "batch": 15,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15208,
+          "relative_ms": 20809.577836,
+          "batch": 16,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19527,
+          "relative_ms": 20870.032964,
+          "batch": 17,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15213,
+          "relative_ms": 20913.34347,
+          "batch": 18,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 20956.968813,
+          "batch": 19,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15206,
+          "relative_ms": 21000.334525,
+          "batch": 20,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19527,
+          "relative_ms": 21081.639195,
+          "batch": 21,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15209,
+          "relative_ms": 21156.458069,
+          "batch": 22,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 21201.848568,
+          "batch": 23,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15208,
+          "relative_ms": 21250.255546,
+          "batch": 24,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29182,
+          "relative_ms": 23033.130077,
+          "batch": 25,
+          "host_hit_before": 29104
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29169,
+          "relative_ms": 23422.387147,
+          "batch": 26,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29173,
+          "relative_ms": 23426.777165,
+          "batch": 26,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23431.263349,
+          "batch": 26,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23435.837652,
+          "batch": 26,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23483.979607,
+          "batch": 27,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29170,
+          "relative_ms": 23542.478384,
+          "batch": 28,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29170,
+          "relative_ms": 23620.621332,
+          "batch": 29,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23688.726209,
+          "batch": 30,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29171,
+          "relative_ms": 23778.273751,
+          "batch": 31,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "begin": 29152,
+          "end": 29172,
+          "relative_ms": 23858.688356,
+          "batch": 32,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19534,
+          "relative_ms": 25426.820197,
+          "batch": 33,
+          "host_hit_before": 19456
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15211,
+          "relative_ms": 25475.101585,
+          "batch": 34,
+          "host_hit_before": 15136
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19523,
+          "relative_ms": 25728.887733,
+          "batch": 35,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19525,
+          "relative_ms": 25732.008012,
+          "batch": 35,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15207,
+          "relative_ms": 25734.528479,
+          "batch": 35,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15215,
+          "relative_ms": 25737.282486,
+          "batch": 35,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19524,
+          "relative_ms": 25927.770352,
+          "batch": 36,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19521,
+          "relative_ms": 25930.72025,
+          "batch": 36,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "begin": 19504,
+          "end": 19522,
+          "relative_ms": 25933.860221,
+          "batch": 36,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15210,
+          "relative_ms": 25936.429901,
+          "batch": 36,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15211,
+          "relative_ms": 25938.851576,
+          "batch": 36,
+          "host_hit_before": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "begin": 15184,
+          "end": 15208,
+          "relative_ms": 25987.845275,
+          "batch": 37,
+          "host_hit_before": 0
+        }
+      ]
+    }
+  ]
+}

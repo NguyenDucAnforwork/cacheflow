@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 MARKER=ROOT/'.cacheflow-sglang-runtime.json'
 DEFAULT=dict(model_key='qwen3-1.7b',gpu_kv_gib=4,max_running_requests=16,
     batch_tokens=8192,io_backend='kernel',attention_backend='triton',schedule_policy='lpm',graphs=True,
-    profile_transfers=False)
+    profile_transfers=False,host_kv_gib=16,inbatch_check_threshold=32,inbatch_deprioritize_threshold=32)
 
 
 def load():
@@ -25,12 +25,16 @@ def main():
     p.add_argument('--io-backend',choices=['kernel','direct'],default='kernel')
     p.add_argument('--attention-backend',choices=['triton','flashinfer'],default='triton')
     p.add_argument('--schedule-policy',choices=['lpm','fcfs','dfs-weight'],default='lpm')
+    p.add_argument('--host-kv-gib',type=int,choices=[16,32,48,64],default=16)
+    p.add_argument('--inbatch-check-threshold',type=int,default=32)
+    p.add_argument('--inbatch-deprioritize-threshold',type=int,default=32)
     p.add_argument('--profile-transfers',action='store_true')
     p.add_argument('--no-graphs',action='store_true');a=p.parse_args()
     if a.command=='configure':
         c=dict(model_key=a.model,gpu_kv_gib=a.gpu_kv_gib,max_running_requests=a.max_running_requests,
             batch_tokens=a.batch_tokens,io_backend=a.io_backend,attention_backend=a.attention_backend,
-            schedule_policy=a.schedule_policy,graphs=not a.no_graphs,profile_transfers=a.profile_transfers)
+            schedule_policy=a.schedule_policy,graphs=not a.no_graphs,profile_transfers=a.profile_transfers,host_kv_gib=a.host_kv_gib,
+            inbatch_check_threshold=a.inbatch_check_threshold,inbatch_deprioritize_threshold=a.inbatch_deprioritize_threshold)
         MARKER.write_text(json.dumps(c,indent=2)+'\n')
     c=load();model=get_model(c['model_key'])
     tokens=c['gpu_kv_gib']*1024**3//(16*model['bytes_per_token'])*16
@@ -45,7 +49,7 @@ def main():
             '--host','127.0.0.1','--port','8300','--dtype','bfloat16','--context-length','32768',
             '--max-total-tokens',str(tokens),'--max-running-requests',str(c['max_running_requests']),
             '--random-seed','0','--chunked-prefill-size',str(c['batch_tokens']),'--page-size','16',
-            '--mem-fraction-static','0.8','--enable-hierarchical-cache','--hicache-size','16',
+            '--mem-fraction-static','0.8','--enable-hierarchical-cache','--hicache-size',str(c['host_kv_gib']),
             '--hicache-write-policy','write_through','--hicache-io-backend',c['io_backend'],
             '--hicache-mem-layout','page_first_direct' if c['io_backend']=='direct' else 'page_first',
             '--schedule-policy',c['schedule_policy'],'--enable-metrics','--attention-backend',c['attention_backend']]

@@ -1,0 +1,61 @@
+{
+  "scope": "Static common-prefix geometry only; private QA suffixes/outputs are additional and evictable; not runtime residency",
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "requests": 1986,
+  "by_conversation": {
+    "conv-26": {
+      "questions": 199,
+      "common_prefix_tokens": 19504,
+      "cpu_chunk_aligned_tokens": 19456
+    },
+    "conv-30": {
+      "questions": 105,
+      "common_prefix_tokens": 15188,
+      "cpu_chunk_aligned_tokens": 15104
+    },
+    "conv-41": {
+      "questions": 193,
+      "common_prefix_tokens": 29152,
+      "cpu_chunk_aligned_tokens": 28928
+    },
+    "conv-42": {
+      "questions": 260,
+      "common_prefix_tokens": 25099,
+      "cpu_chunk_aligned_tokens": 25088
+    },
+    "conv-43": {
+      "questions": 242,
+      "common_prefix_tokens": 29415,
+      "cpu_chunk_aligned_tokens": 29184
+    },
+    "conv-44": {
+      "questions": 158,
+      "common_prefix_tokens": 28523,
+      "cpu_chunk_aligned_tokens": 28416
+    },
+    "conv-47": {
+      "questions": 190,
+      "common_prefix_tokens": 27239,
+      "cpu_chunk_aligned_tokens": 27136
+    },
+    "conv-48": {
+      "questions": 239,
+      "common_prefix_tokens": 26864,
+      "cpu_chunk_aligned_tokens": 26624
+    },
+    "conv-49": {
+      "questions": 196,
+      "common_prefix_tokens": 21366,
+      "cpu_chunk_aligned_tokens": 21248
+    },
+    "conv-50": {
+      "questions": 204,
+      "common_prefix_tokens": 26652,
+      "cpu_chunk_aligned_tokens": 26624
+    }
+  },
+  "shared_gpu_block_union_tokens": 248512,
+  "reusable_cpu_chunk_tokens": 247808,
+  "bytes_per_token": 147456,
+  "reusable_cpu_KV_GiB": 34.03125
+}

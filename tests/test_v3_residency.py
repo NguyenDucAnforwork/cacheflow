@@ -79,6 +79,32 @@ def test_unknown_residency_keeps_fifo():
     asyncio.run(scenario())
 
 
+def test_cancelled_head_releases_bypass_guard_and_preserves_progress():
+    async def scenario():
+        import pytest
+        s=ResidencyScheduler(policy='packing',residency_index=ResidencyIndex(),
+            kv_capacity_tokens=256,max_inflight=4,max_bypasses=1,
+            block_size=16,min_shared_tokens=16)
+        a=engine_block_hashes(list(range(160)))
+        b=engine_block_hashes(list(range(500,660)))
+        async def admit(name,blocks):
+            return await s.admit(name,tuple(x.hex() for x in blocks),
+                engine_blocks=blocks,input_tokens=160,output_budget=16)
+        first=await admit('active',a)
+        head=asyncio.create_task(admit('head',b))
+        await asyncio.sleep(.005)
+        back=await asyncio.wait_for(admit('back',a),1)
+        assert s._bypasses['head']==1
+        head.cancel()
+        with pytest.raises(asyncio.CancelledError):await head
+        assert 'head' not in s._bypasses
+        # The cancelled head must neither occupy the queue nor block later work.
+        next_ticket=await asyncio.wait_for(admit('next',a),1)
+        for ticket in [first,back,next_ticket]:await s.finish(ticket)
+        assert s.queue_depth==s.active_count==0 and not s._bypasses
+    asyncio.run(scenario())
+
+
 def test_live_event_contract_accepts_bytes_rejects_legacy_ints():
     import pytest
     from cacheflow.v3_residency import verify_event_hash_contract

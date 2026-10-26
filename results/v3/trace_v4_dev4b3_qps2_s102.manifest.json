@@ -1,0 +1,28 @@
+{
+  "abstention_style": "official",
+  "arrival": "interleaved",
+  "excluded": {
+    "context_too_long": 0,
+    "no_evidence": 0
+  },
+  "max_model_len": 32768,
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "output_tokens": 96,
+  "prompt_version": "locomo-qwen-concise-v4",
+  "protocol": "p_qa",
+  "qps": 2.0,
+  "requests": 60,
+  "seed": 102,
+  "selected_samples": [
+    "conv-26",
+    "conv-30",
+    "conv-41"
+  ],
+  "session_gap_ms": null,
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "system_instruction": "Answer the question using only the supplied conversation. Return only a concise answer, without explanation, reasoning, repetition, or restating the question. If the answer is not present in the conversation, answer \"No information available.\".",
+  "thinking": false,
+  "trace_sha256": "102eb9b074731f4d80eea082a0212ec2bf4eca7b41ebec775c09f3f40cb0e252",
+  "retimed_from_trace_sha256": "98dbd9ab1c7804a9d41a65bd389e409719c9a52bd1cc1f850e18a9a5e29be730",
+  "retiming": "Same random.expovariate arrival generator; prompt/order unchanged"
+}

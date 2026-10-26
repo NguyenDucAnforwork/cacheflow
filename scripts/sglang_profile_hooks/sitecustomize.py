@@ -7,7 +7,9 @@ import sys
 if os.environ.get('CACHEFLOW_SGLANG_TRANSFER_PROFILE')=='1':
     class TransferFinder(importlib.abc.MetaPathFinder):
         def find_spec(self,fullname,path=None,target=None):
-            if fullname!='sglang.srt.mem_cache.memory_pool_host':return None
+            targets={'sglang.srt.mem_cache.memory_pool_host','sglang.srt.mem_cache.hiradix_cache',
+                     'sglang.srt.managers.schedule_policy'}
+            if fullname not in targets:return None
             spec=importlib.machinery.PathFinder.find_spec(fullname,path)
             if spec is None:return None
             original=spec.loader
@@ -15,7 +17,10 @@ if os.environ.get('CACHEFLOW_SGLANG_TRANSFER_PROFILE')=='1':
                 def create_module(self,spec):return original.create_module(spec)
                 def exec_module(self,module):
                     original.exec_module(module)
-                    from cacheflow.v3_sglang_transfer_profile import install
+                    if fullname.endswith('memory_pool_host'):
+                        from cacheflow.v3_sglang_transfer_profile import install
+                    else:
+                        from cacheflow.v4_sglang_admission_profile import install
                     install(module)
                 def __getattr__(self,name):return getattr(original,name)
             spec.loader=Loader()

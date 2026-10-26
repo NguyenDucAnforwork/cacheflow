@@ -1,6 +1,7 @@
 """Residency-aware admission prototype; leaves all engine KV correctness to vLLM."""
 from __future__ import annotations
 
+import asyncio
 import time
 
 from .prefix import shared_prefix_tokens
@@ -123,7 +124,13 @@ class ResidencyScheduler(AdmissionScheduler):
         return chosen
 
     async def admit(self,*args,**kwargs):
-        ticket=await super().admit(*args,**kwargs)
+        try:
+            ticket=await super().admit(*args,**kwargs)
+        except asyncio.CancelledError:
+            request_id=args[0] if args else kwargs['request_id']
+            self._bypasses.pop(request_id,None)
+            self._decision_cache_key=None
+            raise
         if ticket.scheduler_head_id and ticket.scheduler_head_id!=ticket.request_id:
             head=ticket.scheduler_head_id;self._bypasses[head]=self._bypasses.get(head,0)+1
         else:self._bypasses.pop(ticket.request_id,None)

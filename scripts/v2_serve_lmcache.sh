@@ -10,8 +10,10 @@ export LMCACHE_DISABLE_BANNER=1
 root=${CACHEFLOW_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}
 command=(lmcache)
 chunk_size=256
+cpu_l1_gib=${CACHEFLOW_CPU_L1_GB:-16}
 if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
     chunk_size=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["chunk_size"])' "$root/.cacheflow-v3-runtime.json")
+    cpu_l1_gib=$(python -c 'import json,sys; print(json.load(open(sys.argv[1])).get("cpu_l1_gib",16))' "$root/.cacheflow-v3-runtime.json")
     if python -c 'import json,sys; sys.exit(not json.load(open(sys.argv[1])).get("kv_events"))' "$root/.cacheflow-v3-runtime.json"; then
         export PYTHONPATH="$root/src${PYTHONPATH:+:$PYTHONPATH}"
         export CACHEFLOW_KV_EVENTS="$root/results/v3/raw/kv_events.jsonl"
@@ -20,5 +22,5 @@ if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
 fi
 exec "${command[@]}" server --host 127.0.0.1 --port 5555 \
     --http-host 127.0.0.1 --http-port 18080 \
-    --l1-size-gb "${CACHEFLOW_CPU_L1_GB:-16}" --eviction-policy LRU \
+    --l1-size-gb "$cpu_l1_gib" --eviction-policy LRU \
     --chunk-size "$chunk_size" --supported-transfer-mode auto
