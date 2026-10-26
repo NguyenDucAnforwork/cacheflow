@@ -3,6 +3,8 @@
 Never starts serving, deletes old results, or changes shared actors. Generated
 controllers retain every policy/model/budget/timeout/trace choice. An AST proof
 permits only namespace/path string changes and a fixed import-path bootstrap.
+Opt-in analysis R1 additionally permits exactly the pinned scalar helper/call;
+serving actors and the30-action graph remain unchanged.
 """
 import argparse
 import ast
@@ -60,7 +62,61 @@ def plan_from_source(source):
     return scope['build_plan']()
 
 
-def prepare(namespace,reference,root=None):
+SCALAR_FLAGS="{'--max-num-seqs','--max-num-batched-tokens','--kv-cache-memory-bytes'}"
+SCALAR_ASSIGNMENT="argv=setup['actual_engine_argv_list'];lmargv=setup['actual_lmcache_argv_list']"
+
+
+def scalar_definition(root):
+    path=Path(root)/'scripts/v6_full_analysis_r1.py'
+    tree=ast.parse(path.read_text())
+    functions=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='scalar_argv']
+    assert len(functions)==1
+    return ast.unparse(functions[0])+'\n\n'
+
+
+def verify_r1_transform(original,generated,namespace,normalizer):
+    """Undo only the pinned scalar helper/call, then apply the original AST proof."""
+    actual=ast.parse(generated);bootstrap=ast.parse(BOOTSTRAP).body
+    assert ast.dump(ast.Module(body=actual.body[:3],type_ignores=[]))==ast.dump(ast.Module(body=bootstrap,type_ignores=[]))
+    assert ast.dump(actual.body[3])==ast.dump(ast.parse(normalizer).body[0]),'Scalar helper changed'
+    actual.body=actual.body[4:]
+    class Undo(ast.NodeTransformer):
+        found=0
+        def visit_Call(self,node):
+            if isinstance(node.func,ast.Name) and node.func.id=='scalar_argv':
+                assert len(node.args)==2 and not node.keywords
+                assert ast.dump(node.args[1])==ast.dump(ast.parse(SCALAR_FLAGS,mode='eval').body),'Audited flag set changed'
+                self.found+=1
+                return node.args[0]
+            return self.generic_visit(node)
+    undo=Undo();actual=undo.visit(actual);assert undo.found==1
+    expected=RewriteStrings(namespace).visit(copy.deepcopy(ast.parse(original)))
+    assert ast.dump(actual,include_attributes=False)==ast.dump(expected,include_attributes=False),'Change beyond scalar analysis correction'
+
+
+def r1_contract(original,namespace,normalizer):
+    generated=transformed(original,namespace)
+    assert generated.count(SCALAR_ASSIGNMENT)==1
+    generated=generated.replace(SCALAR_ASSIGNMENT,"argv=scalar_argv(setup['actual_engine_argv_list'], "+SCALAR_FLAGS+");lmargv=setup['actual_lmcache_argv_list']",1)
+    generated=BOOTSTRAP+normalizer+generated[len(BOOTSTRAP):]
+    verify_r1_transform(original,generated,namespace,normalizer);compile(generated,'namespace_r1_contract','exec')
+    return generated
+
+
+def r1_proof(root,reference):
+    root=Path(root);path=root/'results/v3/v6full1_analysis_r1_registration.json';proof=json.loads(path.read_text())
+    assert proof['kind']=='analysis_only_duplicate_scalar_cli_correction' and proof['reference_freeze_sha256']==sha(reference)
+    helper='scripts/v6_full_analysis_r1.py';assert sha(root/helper)==proof['source_sha256'][helper]
+    assert len(proof['parser_proof'])==2
+    for row in proof['parser_proof']:
+        assert row['installed_parser_max_num_seqs']==16 and row['installed_parser_max_num_batched_tokens']==8192
+        assert row['installed_parser_gpu_kv_bytes']==6*2**30 and row['original_contract_rejects'] is True and row['corrected_contract_passes'] is True
+    return dict(reference_registration_path='results/v3/v6full1_analysis_r1_registration.json',reference_registration_sha256=sha(path),
+        scalar_source_path=helper,scalar_source_sha256=sha(root/helper),
+        change='Copy exactly the pinned scalar_argv function and normalize the three audited main-engine scalar flags before the unchanged contract. Fresh namespace has no retained invalid-marker exception or reused measured arm.')
+
+
+def prepare(namespace,reference,root=None,*,analysis_r1=False):
     root=Path.cwd() if root is None else Path(root);mapping(namespace)
     reference=Path(reference);reference=reference if reference.is_absolute() else root/reference
     freeze=json.loads(reference.read_text());assert freeze['status']=='frozen_prospective_full_study_not_completion'
@@ -73,6 +129,9 @@ def prepare(namespace,reference,root=None):
     for base in [root/'results/v3',root/'results/v3/sglang']:
         assert not list(base.glob(namespace+'*')),'Namespace already has recorded results'
     contents={name:transformed((root/'scripts'/name).read_text(),namespace) for name in TEMPLATES}
+    revision=r1_proof(root,reference) if analysis_r1 else None
+    if analysis_r1:
+        contents['v6_full_contracts.py']=r1_contract((root/'scripts/v6_full_contracts.py').read_text(),namespace,scalar_definition(root))
     before=plan_from_source((root/'scripts/v6_full_plan.py').read_text());after=plan_from_source(contents['v6_full_plan.py'])
     assert before==freeze['actions'] and len(after)==30
     assert after==[dict(s,run_id=s['run_id'].replace('v6full1',namespace)) for s in before],'Execution graph changed beyond run IDs'
@@ -82,9 +141,10 @@ def prepare(namespace,reference,root=None):
     for name,source in contents.items():
         path=bundle/name;path.write_text(source);files.append(dict(parent_path='scripts/'+name,parent_sha256=sha(root/'scripts'/name),path=str(bundle_rel/name),sha256=sha(path)))
     original_doc=(root/'docs/V6_FULL_PROTOCOL.md').read_text()
-    doc.write_text(rewrite(original_doc,namespace)+f'\n\nNamespace reproduction of reference seal `{sha(reference)}`. Only run IDs/artifact paths/import lookup changed; model, policies, traces, budgets, arrival schedules, transport and acceptance gates remain identical. This preparation does not start GPU work or reproduce numerical outcomes. Results remain a separate experiment.\n')
+    difference=('Only run IDs/artifact paths/import lookup changed' if not analysis_r1 else 'Run IDs/artifact paths/import lookup changed; the separately recorded R1 scalar CLI interpretation correction is embedded in the analysis contract, with an AST proof permitting exactly that helper/call. No retained invalid marker is exempted and all30arms are fresh')
+    doc.write_text(rewrite(original_doc,namespace)+f'\n\nNamespace reproduction of reference seal `{sha(reference)}`. {difference}; model, policies, traces, budgets, arrival schedules, transport and acceptance gates remain identical. This preparation does not start GPU work or reproduce numerical outcomes. Results remain a separate experiment.\n'+(f'\nR1 analysis lineage: `{revision["reference_registration_sha256"]}`; scalar helper source `{revision["scalar_source_sha256"]}`. The generated contract is hashed by this namespace’s own future full seal.\n' if revision else ''))
     manifest=dict(generator_sha256=sha(__file__),bootstrap_sha256=hashlib.sha256(BOOTSTRAP.encode()).hexdigest(),namespace=namespace,reference_freeze_path=str(reference),reference_freeze_sha256=sha(reference),files=files,
-        protocol_path=str(doc_rel),protocol_sha256=sha(doc),actions=after,ast_proof='Only constant string metadata rewrites plus fixed import-path bootstrap; full action graph identical except run IDs.',
+        protocol_path=str(doc_rel),protocol_sha256=sha(doc),actions=after,analysis_revision=revision,ast_proof=('Only constant string metadata rewrites plus fixed import-path bootstrap; full action graph identical except run IDs.' if not analysis_r1 else 'Same metadata proof for7modules; contract permits exactly the pinned scalar helper and one normalization call, then must reduce to the original AST. All30actions identical except IDs.'),
         commands=dict(plan=f'PYTHONPATH=src /venv/main/bin/python {bundle_rel}/v6_full.py --plan',
             freeze=f'PYTHONPATH=src /venv/main/bin/python {bundle_rel}/v6_freeze_full.py',
             execute=f'PYTHONPATH=src /venv/main/bin/python {bundle_rel}/v6_full.py'),
@@ -93,10 +153,10 @@ def prepare(namespace,reference,root=None):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('namespace');p.add_argument('--reference-freeze',type=Path,default=Path('results/v3/v6full1_freeze.json'));p.add_argument('--plan',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('namespace');p.add_argument('--reference-freeze',type=Path,default=Path('results/v3/v6full1_freeze.json'));p.add_argument('--plan',action='store_true');p.add_argument('--analysis-r1',action='store_true');a=p.parse_args()
     mapping(a.namespace)
-    if a.plan:print(json.dumps(dict(namespace=a.namespace,reference_freeze=str(a.reference_freeze),templates=TEMPLATES,operation='prepare source/protocol copies only; no serving or deletion'),indent=2));return
-    result=prepare(a.namespace,a.reference_freeze)
+    if a.plan:print(json.dumps(dict(namespace=a.namespace,reference_freeze=str(a.reference_freeze),templates=TEMPLATES,analysis_r1=a.analysis_r1,operation='prepare source/protocol copies only; no serving or deletion'),indent=2));return
+    result=prepare(a.namespace,a.reference_freeze,analysis_r1=a.analysis_r1)
     print(json.dumps(dict(namespace=a.namespace,commands=result['commands'],scope=result['scope']),indent=2))
 
 

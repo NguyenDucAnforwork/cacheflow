@@ -202,16 +202,16 @@ The native primary subset now has independently audited seed101/102/103blocks. `
 
 ## Full input preflight and independent execution namespaces
 
-The full freezer now invokes `scripts/v6_full_input_preflight.py` after development gates pass and services are idle. It streams1,986prompts through the pinned main and native tokenizer loaders, compares every token ID, and checks the same prompt/input/output budgets across all3arrival traces. `--plan` is read-only. The current2-prompt smoke has `complete_trace=false`; it cannot satisfy full preflight. Attempt fingerprints and registration are retained, with exact hashes linked into the final full seal. This CPU stage is not model serving or a benchmark result.
+The full freezer now invokes `scripts/v6_full_input_preflight.py` after development gates pass and services are idle. It streams1,986prompts through the pinned main and native tokenizer loaders, compares every token ID, and checks the same prompt/input/output budgets across all3arrival traces. `--plan` is read-only. The historical2-prompt smoke has `complete_trace=false` and cannot satisfy full preflight; the actual complete1,986-QA preflight now exists and is bound by the original full seal. Attempt fingerprints and registration are retained, with exact hashes linked into the final full seal. This CPU stage is not model serving or a benchmark result.
 
 Once `results/v3/v6full1_freeze.json` exists and its reference source/input/model evidence still matches the checkout, these commands prepare a new independent execution namespace from the repository root:
 
 ```bash
-PYTHONPATH=src /venv/main/bin/python scripts/v6_reproduce_namespace.py v6repeat1 --reference-freeze results/v3/v6full1_freeze.json
+PYTHONPATH=src /venv/main/bin/python scripts/v6_reproduce_namespace.py v6repeat1 --reference-freeze results/v3/v6full1_freeze.json --analysis-r1
 PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat1/v6_full.py --plan
 ```
 
-Preparation writes copied controller/audit/preflight modules, a separate protocol and `namespace_manifest.json`. It never calls supervisor or removes earlier results. An AST check permits only namespace/path string replacements and a fixed import-path bootstrap; the30-arm graph must preserve every setting except run IDs. Parent/transformed/generator/protocol/reference hashes are recorded. An existing namespace or changed reference evidence is rejected. Commit the generated bundle/protocol as the new study provenance.
+Preparation writes copied controller/audit/preflight modules, a separate protocol and `namespace_manifest.json`. It never calls supervisor or removes earlier results. The default AST check permits only namespace/path string replacements and a fixed import-path bootstrap. With the explicit `--analysis-r1` flag above, the contract additionally permits exactly the pinned scalar helper/call described below; the30-arm graph must preserve every serving setting except run IDs. Parent/transformed/generator/protocol/reference hashes are recorded. An existing namespace or changed reference evidence is rejected. Commit the generated bundle/protocol as the new study provenance.
 
 After all serving services are idle, the new namespace requires its own prospective seal and execution:
 
@@ -220,7 +220,7 @@ PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat1/v6_freeze_f
 PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat1/v6_full.py
 ```
 
-The independent run preserves original development prerequisites/gates and model/prompt/budget/arrival/transport/method settings. It repeats the full study rather than overwriting or stitching selected earlier arms. Numerical timing and ordinary temperature0outputs can still differ between runs. CPU tests verify source/plan equivalence, actual generated CLI imports and collision/algorithm-change rejection; no additional reproduction GPU study has been executed. The original full study itself remains unrun at this checkpoint.
+The independent run preserves original development prerequisites/gates and model/prompt/budget/arrival/transport/method settings. It repeats the full study rather than overwriting or stitching selected earlier arms. Numerical timing and ordinary temperature0outputs can still differ between runs. CPU tests verify source/plan equivalence, actual generated CLI imports and collision/algorithm-change rejection; no additional reproduction GPU study has been executed. The original full study is now live: three full main arms atseed901have passed corrected audits; the complete30-arm study remains unfinished.
 
 Digest identities are typed by representation: registration `trace_sha256` is a file-byte hash, replay/manifest `trace_sha256` is canonical V2TraceRow-array identity. Use `v6_trace_hashes.scan` for stored/uncompressed/canonical hashes rather than comparing these strings across domains. The unsealed native auditor/fullpreflight comparison bug was corrected before their terminal execution, without replaying GPU requests; completed main/nativeprimary audits were not affected. `v6_audit_native_subset.py REGIME` verifies complete3seed controls while the overallstage may still be live. `v6_plot_native_controls.py` renders the inspected DFS/load/reuse/GPUfit comparisons.
 
@@ -293,7 +293,7 @@ PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_register_continuation_r1
 PYTHONPATH=src:scripts /venv/main/bin/python -u scripts/v6_continue_full_r1.py
 ```
 
-After the corrected audit, `v6_raw_archive.archive` wrote `v6full1-main-g6-fifo64-s901.archive_r1.json` from its `.full_audit_r1.json`. The continuation registration reopened all ten archived files, rechecked warm/measured integrity/configuration and regenerated the complete official quality JSON in a temporary destination; it matched exactly. This registration seals the unchanged29-action suffix before serving. The continuation has its own execution/outcome/interruption ledgers and still requires the complete30-arm final `v6full1_audit_r1.json`; that final audit has not run. It does not retry the first FIFO or any later failed arm. `--plan` displays only the29unexecuted actions and never starts serving. The original reproduction namespace generator follows the original sealed pipeline; it does not automatically incorporate R1. Porting this explicit correction into a fresh reproduction namespace needs its own recorded transformation and preflight, not a claim that the old generator already reproduces R1.
+After the corrected audit, `v6_raw_archive.archive` wrote `v6full1-main-g6-fifo64-s901.archive_r1.json` from its `.full_audit_r1.json`. The continuation registration reopened all ten archived files, rechecked warm/measured integrity/configuration and regenerated the complete official quality JSON in a temporary destination; it matched exactly. This registration seals the unchanged29-action suffix before serving. The continuation has its own execution/outcome/interruption ledgers and still requires the complete30-arm final `v6full1_audit_r1.json`; that final audit has not run. It does not retry the first FIFO or any later failed arm. `--plan` displays only the29unexecuted actions and never starts serving. The default reproduction mode follows the original sealed pipeline. The later opt-in `--analysis-r1` mode below records the exact scalar-analysis correction for a fresh namespace; it does not import the retained-run invalid-marker exception. This still requires new namespace provenance/preflight/seal and is not another completed GPU reproduction.
 
 Validation at registration:133CPU tests pass, including actual captured argv/config rejection, exact loader-guard derivation, real archive expansion, unchanged serving/measurement/cleanup ASTs, fresh-process validation, and mocked continuation failure/no-retry behavior. Tests are not full-study completion or model-quality equivalence.
 
@@ -322,3 +322,32 @@ PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_plot_full_checkpoint.py 
 ```
 
 These exact output paths now exist and reject overwrite. Use a new checkpoint/figure path for a later exact audited prefix. The observer requires source/registration/outcome/audit/archive/setup/quality identities and reopens exact raw bytes before including a complete arm. It never uses successful-only quantiles from an incomplete arm, rehashes no model weights and performs no serving calls. Its report always has `complete=false`; the terminal30-arm auditor remains necessary. The39primary planned contrasts stay separate from three supplemental FIFO-to-bundle baseline-strength pairs; only completed matched pairs are shown. Only a full three-seed group gets an exploratory run interval. At checkpoint02there are two completedarms, zero primary pairs and one supplemental pair. The PNG/SVG was rendered and visually inspected, with checkpoint/source/figure hashes in its adjacent JSON proof.
+
+
+### Fresh namespace with the R1 analysis correction
+
+Use `--analysis-r1` for a new full study that needs corrected duplicate-scalar CLI interpretation from its first arm:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_reproduce_namespace.py v6repeat_r1 --reference-freeze results/v3/v6full1_freeze.json --analysis-r1
+PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat_r1/v6_full.py --plan
+```
+
+Choose an unused namespace. Preparation checks the reference actor/analysis/input/model/preflight/prerequisite hashes and rejects existing namespaces/results. This can hash8GBof weights and is intended outside measurement. It writes eight source copies, a separate protocol and a namespace manifest. The original source/protocol/seal/results are untouched. Seven modules retain the metadata-only AST proof; the contract additionally embeds the exact `scalar_argv` function whose source hash is bound by the actual R1 parser-proof registration and calls it once for the three audited main-engine scalar flags. Removing precisely that helper/call must recover the original contract AST. Changed budgets, flag sets, helper implementation or other analysis checks reject. The new namespace’s own future full seal hashes the revised contract. The action graph remains all30fresh arms/59,580requests, with the same policies/order/resources/transport.
+
+A fresh namespace has no prior failed arm to salvage: its loader keeps the original strict invalid-marker rejection, and all thirty arm IDs are new. It does not reuse the first FIFO, import the current continuation’s29-arm suffix, or carry an exception permitting old marked runs. This separates reproducing the corrected method/evaluation from replaying an incident-handling exception. Namespace preparation and `--plan` do not freeze or start an engine. The generated manifest lists the explicit future freeze/execute commands; those require the real idle-services/full-token-preflight/new-seal gates.
+
+Actual preparation has been queued, not completed: `v6_after_input_reproduction.py` waiterPID470335/tool42345waits for exact input-regenerationPID465732birth1793055851.57, then requires its complete1986QA/three-seedfrom-source result and idle services before preparing `v6repro_r1_reference` and testing its generated `--plan`. Registration is `results/v3/v6full1_r1_namespace_preparation_registration.json`; its `.result.json` must be inspected before claiming actual namespace preparation. It schedules no new GPU execution or automatic freeze. Changed proof/source, missing input result or an existing namespace yields a retained failure, not a silent retry.
+
+Validation:147CPU tests pass. New tests exercise the actual generated controller/auditor CLI imports under projected reference fixtures, exact30-action equality, AST drift rejection, actual captured duplicate-CLI configuration and wrong effective-value rejection, plus complete-input/seed-label/hash proof gates. They do not constitute an actual reference-weight verification, complete input regeneration or fresh GPU result. The default mode remains faithful to the original sealed analysis for historical use; it does not silently change behavior.
+
+
+### Full checkpoint03 and chooser-cost supplement
+
+`v6full1_checkpoint_03.json` now contains three complete1986QAarms and the first two registered primary pairs (originalunion versus FIFO and bundle, seed901), with all three archives reopened. `figures/v6full1_checkpoint_03.*` was rendered and visually inspected. It retains the union-versus-bundle regression, all per-question score/hash changes and decode/source/queue tradeoffs; it is not a complete study or a three-seed interval.
+
+```bash
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_full_gateway_costs.py results/v3/v6full1_checkpoint_03.json --output results/v3/v6full1_checkpoint_03_gateway_costs.json
+```
+
+This output already exists and rejects overwrite. The supplement binds each completed setup to its audited hash, verifies the captured/current chooser source, checks fresh zero counters and retains missing FIFO/bundle instrumentation as null. Union records2,519,889calls,2,514,189cachehits and124.810thread-CPU seconds. The counters include key construction and both hit/miss branches; they exclude next-timeout/condition handling and other gateway work, so they cannot be labelled total gateway CPU or allocated entirely to cache hits. No serving/profiler call or inference rerun is performed.

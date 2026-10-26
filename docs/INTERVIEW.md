@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 23:18 UTC:** Main24/1.440, native60/2.700 và maincontrols36/1.260 đã audit. Full FIFO64 và bundle16 seed901 hiện đã audit đủ1.986QA mỗi arm, không lỗi request; warmups tính riêng. Bundle là baseline mạnh: p95 thấp hơn FIFO75,264% nhưng decode và source compute có đánh đổi. Union đã qua warmup và đang đo, chưa có full primary candidate comparison. Các phần V2–V5 giữ phạm vi lịch sử; không gộp khác prompt/model/protocol.
+**Cập nhật 26/10/2026, 23:36 UTC:** Ba full main arms seed901 đã audit đủ1.986QA mỗi arm, không lỗi request; warmups tính riêng. Originalunion giảm p95so vớiFIFO69,435% nhưng **thua bundle23,566%**. Captured chooser counters ghi124,810giâythreadCPU; chưa chứng minh đây là nguyên nhân regression hoặc speedup có thể thu hồi. Readiness đang đo, chưa có full replicated/native conclusion. Tests147/147pass. Các phần V2–V5 giữ scope lịch sử.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -1079,3 +1079,45 @@ Có thể tái tạo figure bằng `PYTHONPATH=src:scripts /venv/main/bin/python
 **Đáp:** Chỉ cho thấy cải thiện66,027–75,767% ở cả mười nhóm trong đúng seed này. Nó không tự chứng minh starvation freedom, deadline guarantee hoặc hiệu quả ở load khác. Scheduled-arrival mean TTFT622,281→186,770giây còn chứa backlog trước gateway; không bỏ phần đó để chỉ báo upstream52,764→3,600giây. Một seed không có run-level confidence interval đáng tin cho reproducibility; vẫn cần các arrival seeds còn lại và toàn bộ controls.
 
 ![Hai baseline full ở seed901](../figures/v6full1_checkpoint_02.png)
+
+
+### 22.12. Tái lập bản sửa analysis mà không mang ngoại lệ lịch sử sang study mới
+
+**Hỏi: Vì sao không copy nguyên continuation R1 sang một lần chạy độc lập?**
+
+**Đáp:** Continuation hiện tại xử lý một sự cố cụ thể: FIFO đã chạy xong nhưng auditor bị lỗi. Nó giữ nguyên marker, kiểm hash rồi tái dùng đúng raw đó và chỉ chạy29arms còn lại. Một study độc lập chưa có arm cũ để tái dùng. Nếu copy cả ngoại lệ, ta có nguy cơ cho phép một marked run không thuộc lịch sử mới. Vì vậy namespace mới vẫn chạy đủ30arms với IDs mới, giữ strict invalid-marker rejection, chỉ mang sang sửa đổi cách hiểu ba scalar CLI flags.
+
+**Hỏi: Làm sao kiểm rằng constructor không âm thầm thay method hoặc budget?**
+
+**Đáp:** Bảy source copies chỉ được đổi constant metadata paths/runIDs cùng bootstrap import cố định. Contract được phép thêm đúng hàm `scalar_argv` đã pin bởi R1 parser-proof registration và đúng một lời gọi chuẩn hóa ba flags. Khi bỏ đúng helper/call đó, AST phải khớp contract gốc sau metadata rewrite. Plan của cả30arms phải khớp từng trường, chỉ khác IDs. Test cố ý đổi budget, flag set hoặc helper và xác nhận bị từ chối. Actual captured argv4rồi16 được contract sinh ra nhận đúng; thêm override4ởcuối vẫn bị từ chối. Đây là provenance/equivalence check có phạm vi cụ thể, không phải chứng minh mọi điều kiện đúng đắn của inference bằng AST.
+
+**Hỏi: Đã tái lập được performance độc lập chưa?**
+
+**Đáp:** Chưa. Test đã chạy CLI `--plan` và auditor `--help` trong projected namespace fixtures; chúng không tải weights hoặc serving. Job thật hiện chờ full controller kết thúc, đợi input tái tạo từ LoCoMo pass và services idle, rồi mới kiểm reference nặng, tạo namespace và chạy `--plan`. Nó không tự freeze hay chạy thêm30GPUarms. Chỉ khi có `.result.json` thật mới nói namespace preparation đã pass; performance/outputs và một study độc lập vẫn cần bằng chứng riêng. Lần serving đang chạy vẫn phải hoàn tất nguyên30-arm scope trước khi kết luận nghiên cứu.
+
+
+### 22.13. Khi full benchmark bác bỏ kết luận từ development
+
+**Hỏi: Union thắng FIFO gần70% rồi, vì sao vẫn nói chưa đạt mục tiêu?**
+
+**Đáp:** Vì baseline mạnh hơn cũng được đo. Ở fullseed901, FIFO/bundle/union có p95lần lượt1.119,934/277,028/342,312giây. Union nhanh hơnFIFO69,435% nhưng chậm hơnbundle23,566%, và p95kém bundle ở cả mười conversation. Development60QA từng có union tốt hơnbundle; nó không bảo đảm full1.986QA với working set/backlog khác. Cần giữ regression, tiếp tục readiness/native/các arrival seeds, rồi mới kết luận hoặc đăng ký một cải tiến mới. Không đổi baseline, bỏ run xấu hay sửa policy đang seal để cứu claim.
+
+**Hỏi: Union có điểm nào tốt hơn bundle trong pair này không?**
+
+**Đáp:** Có: new-prefill930.965→674.901tokens (−27,505%), nativeITLmean52,885→40,015ms/update và clientTPOTproxy p95137,329→105,178ms. Nhưng externalKVconsumption4.017.024→6.531.328tokens (+62,591%), meanE2E186,770→219,429giây và p95xấu hơn. Đây là đánh đổi cụ thể, chưa phải một chiến thắng latency tổng thể. Không chọn chỉ metric thuận lợi.
+
+**Hỏi: Memoization hit99,77% thì scheduler đã gần như miễn phí chưa?**
+
+**Đáp:** Chưa. Fullunion ghi2.519.889chooser calls cho1.986requests, trong đó2.514.189cachehits nhưng tổng124,810giâythreadCPU. Mỗi lần gọi vẫn phải dựng key từ queue/active/bypass/recent state trước khi biết có cache hit hay không. Key có thể tốnO(queue length). Thêm nữa, mỗi waiter bị đánh thức có thể hỏi cùng một chooser; `notify_all` và timeout tạo nhiều lời gọi cho cùng trạng thái.
+
+Đây là phần source được kiểm và counter thật, nhưng không có CPU split riêng cho hit/miss nên không được nói toàn bộ124,810giây nằm ở cache hits. Counter cũng không bao gồm `_next_timeout`, condition handling, tokenizer, HTTP hay toàn bộ processCPU. Max101,850ms là wall time của một call, không phải maxCPU. RatioCPU/runwall14,618% cũng không cho phép trừ124,810giây khỏi latency để dự đoán speedup: CPU có thể chồng với GPU/I/O và việc dispatch thay đổi batching.
+
+**Hỏi: Nếu muốn tối ưu cache key bằng version counter thì phải giữ invariant gì?**
+
+**Đáp:** Đó là hướng chưa triển khai/đo ở checkpoint này. Phải invalidate khi queue, active requests, bypass counts, recent history hoặc readiness/residency state mà policy phụ thuộc thay đổi; bao gồm enqueue, dispatch, first text, finish và cancellation. Bỏ sót một event có thể trả winner/None đã stale, vi phạm fairness hoặc giữ queue vô hạn. Cần kiểm cùng chuỗi events cho cùng lựa chọn, thử lỗi/cancel, profile CPU thật, rồi đăng ký study mới so với cả oldunion và bundle. Không sửa source của study đang chạy hoặc dùng testCPU để nhận E2Espeedup.
+
+**Hỏi: Category5accuracy bằng nhau đã bảo đảm cùng behavior chưa?**
+
+**Đáp:** Không. FIFO vàunion đều đúng223/446, nhưng hai câu từng đúng trở thành sai và hai câu từng sai trở thành đúng. Union còn khác179outputhash so vớiFIFO. So vớibundle, union khác182hash, scores tăng55/giảm55/bằngnhau1.876 và F1giảm.000996. Phải xem paired per-question outcomes, không chỉ so mean hoặc tổng accuracy.
+
+![Ba full main arms seed901, gồm regression so với bundle](../figures/v6full1_checkpoint_03.png)

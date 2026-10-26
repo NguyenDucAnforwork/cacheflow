@@ -1,0 +1,34 @@
+{
+  "checkpoint_path": "results/v3/v6full1_checkpoint_03.json",
+  "checkpoint_sha256": "6a9ed5ee1ae0f5d258221337cf058f2921bb73c3451bc4cf128344b6b3530e65",
+  "source_sha256": "26987380dc7f5d2812e272272ab2173dd0f8cf774bceab7ca5703a8cae5a6a87",
+  "runs": [
+    "v6full1-main-g6-fifo64-s901",
+    "v6full1-main-g6-bundle16-s901",
+    "v6full1-main-g6-union64-s901"
+  ],
+  "complete_study": false,
+  "arrival_seed": 901,
+  "source_counts": {
+    "New prefill": [
+      601125.0,
+      930965.0,
+      674901.0
+    ],
+    "GPU local": [
+      589712.0,
+      45574336.0,
+      43316096.0
+    ],
+    "External consumed": [
+      49331488.0,
+      4017024.0,
+      6531328.0
+    ]
+  },
+  "figure_sha256": {
+    "figures/v6full1_checkpoint_03.png": "e24ae200c7de73beca6cff8b23c7b90e0b9434a1a6128d50c4879902ec9b185f",
+    "figures/v6full1_checkpoint_03.svg": "1901ec7f75e2d2bc236422216bc34dc5e50080ab08b5295e2f1a4860912f29ca"
+  },
+  "scope": "Audited full single-seed main-stack subset, all QA and category scores; descriptive intervals only where native histogram buckets identify a range. No incomplete-arm quantiles, model calls, terminal-study claim or quality equivalence."
+}

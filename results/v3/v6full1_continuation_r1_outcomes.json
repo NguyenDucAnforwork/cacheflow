@@ -11,6 +11,12 @@
       "complete": true,
       "audit_sha256": "3193916f9ada5f422fa262b8f56caa2de7e0b7f6fd28dda09da9f29445a28eab",
       "archive_sha256": "7074f6546ae73caabfbc7ffa78e2813dc6c99f44c0138a73b5a446fa151b7f98"
+    },
+    {
+      "run_id": "v6full1-main-g6-union64-s901",
+      "complete": true,
+      "audit_sha256": "550917c67bb6f6e0cb7d8ca565d4d1ff0f7cb90740dc485ba1adc7830ae13dc5",
+      "archive_sha256": "dbd1ee833accb62cb908b1f619b0c3568450eababb9762a4d45acac948893eb4"
     }
   ]
 }

@@ -1,5 +1,8 @@
 # V6 development evidence: complete main and native stages
 
+**Full update,23:36UTC:** Three mainseed901arms now pass R1audits and verified archives:5958/5958success0errors +180separatewarmups. The first registered primary result is mixed: originalunion p95−69.435%vsFIFO but **+23.566%vsbundle**, with worse per-conversationp95 in allten groups versusbundle. This does not confirm development superiority over the stronger baseline. Union uses27.505%lessnewprefill thanbundle but62.591%moreexternalconsumedtokens; decode improves versusbundle. Its captured chooser counters total124.810thread-CPUseconds. Readiness is now measuring after60/60warmup; remaining27fullarms/native/seedcomparisons remain open. The earlier updates below are historical.
+
+
 **Full update,23:18UTC:** FIFO64 and bundle16 seed901 now both pass complete1986QAper-runR1audits and lossless archives:3972measured successes0errors +120separatewarmups. `v6full1_checkpoint_02.json` reopens/verifies the exact audited prefix. Supplemental bundlevsFIFO p95−75.264%, externalconsumption−91.857%, butnewprefill+54.870%, nativeITLmean17.970→52.885ms/update and outputhashes163/1986different. This is a baseline-strength diagnostic, not one of the39registered primary candidate contrasts or a complete study. Originalunion warmup60/60passes and its full measurement is live. The prior one-arm update below is historical.
 
 
@@ -275,3 +278,37 @@ Bundle p95/p99 improve75.264/75.637%, externalconsumption falls91.857%, butnewpr
 MeanTTFT falls622.281→186.770s. Arrival→gateway422.819→95.487s, preparation.091→.222s, admission146.594→87.457s, upstream52.764→3.600s and return.014→.005s. Client connectioncap256/backpressure shapes ingress; upstream includes queue/copy/compute/transport. All stages reconcile per request, while stage quantiles do not add. Per-conversation p95 improves in all ten observed groups, by66.027–75.767%; this is descriptive, not a universal fairness/low-load claim.
 
 Paired output hashes differ163/1986. Official per-QAscores improve53, decrease57 and tie1876; category5gains two correct responses. The slightly higher mean F1 is not quality equivalence and does not establish cache correctness by itself. This is one arrival seed on the same semantic dataset, with no run-level interval. The paper-method/main/native candidate comparisons and remaining arrival schedules are still required.
+
+
+## Full checkpoint03: original union loses to bundle at seed901
+
+![Three full main arms, seed901](../figures/v6full1_checkpoint_03.png)
+
+All three audited arms contain the same1,986QA and identical scheduled arrivals/resource/transport configuration apart from their declared admission policy/cap. `v6full1_checkpoint_03.json` reopens all three ten-file archives, checks request/config/output/quality identities and reports exactly the completed registered prefix. The first two of39primary comparisons are available; the other37are pending. One arrival seed is not a stable replicated result.
+
+| Full seed901 observation | FIFO64 | Bundle16 | Original union64 |
+| --- | ---: | ---: | ---: |
+| TTFTp50,seconds |619.640|202.700|225.031|
+| TTFTp95,seconds |1119.934|277.028|342.312|
+| TTFTp99,seconds |1159.416|282.469|345.373|
+| Makespan,seconds |1671.172|792.337|853.819|
+| Newly computed prompt tokens |601125|930965|674901|
+| Engine-consumed external KV tokens |49331488|4017024|6531328|
+| Native update ITL mean,ms |17.970|52.885|40.015|
+| Native update ITLp95bucket,ms |10–25|75–100|50–75|
+| Client TPOTproxy p95,ms |63.732|137.329|105.178|
+| AnswerableF1 |.317162|.319006|.318010|
+| Category5correct /446 |223|225|223|
+|96-token cap hits |20|18|16|
+
+Originalunion improves p95/p99 versusFIFO69.435/70.211%, but regresses versusbundle23.566/22.270%; p50 is11.017%worse thanbundle. Its p95 is worse in everyconversation versusbundle, by2.049–28.778%. Thus development results cannot establish that union beats the strong baseline on full breadth. Retain this failure; do not remove bundle, relabel it as the method, change the frozen settings, or call the research complete from the FIFO contrast.
+
+Compared withbundle, union computes27.505%fewer prompt tokens but consumes62.591%moreexternalKV. Both match the50,522,325prompt-token accounting and have0preemptions. Union's upstream-to-first-text mean is lower3.600→2.447s and native decode improves, yet meanE2ETTFT rises186.770→219.429s. Arrival→gateway rises95.487→119.229s and gateway admission87.457→97.555s; prepare.222→.191s/return.005→.006s. These additive per-request stages retain the frontend costs and do not causally split the regression among admission/cap/transfer/CPU/timing effects.
+
+Union versusbundle changes182outputhashes; official scores improve55/decrease55/tie1876, answerableF1 falls.000996and category5drops two correct. VersusFIFO,179hashes differ and category5mean is still.5despite two formerly correct/two formerly incorrect questions exchanging correctness. Equal accuracy therefore does not mean equal per-question behavior. No quality-equivalence claim.
+
+### Measured chooser overhead and a source-level lead
+
+`v6full1_checkpoint_03_gateway_costs.json` verifies chooser counters against hash-bound completed setup snapshots and the unchanged source. Originalunion records2,519,889calls,2,514,189cachehits(99.7738%),5,700misses,124.810thread-CPUseconds and126.193summedwallseconds. Mean CPU49.530microseconds/call; maximumcallwall101.850ms. The0.14618CPU-seconds/run-wall-second ratio is a one-thread-equivalent descriptor, not14.6%causally blocked wall time or time guaranteed recoverable by optimization. FIFO/bundle missing counters remain null, notzero.
+
+The unchanged `_choose` implementation builds queue/active/bypass/recent tuples before testing its cache key. `AdmissionScheduler.admit` calls the chooser from each awakened waiter, and condition notifications/periodic timeouts can wake many waiters. A cache hit can therefore still involve queue-length work; `_next_timeout` also scans queue deadlines outside the instrumented chooser region. This is a concrete code-level hypothesis for further CPU profiling, not a measured hit/miss CPU breakdown or proof that it caused the full regression. No frozen implementation was changed, no future speedup is subtracted from observed latency, and no new candidate has been measured. Readiness and the remaining native/arrival comparisons must continue under the original sealed graph.

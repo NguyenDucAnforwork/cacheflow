@@ -1,0 +1,27 @@
+{
+  "kind": "prepare_r1_namespace_after_verified_from_source_inputs",
+  "registered_utc": "2026-10-26T23:27:43.546860+00:00",
+  "after_pid": 465732,
+  "after_create_time": 1793055851.57,
+  "after_argv": [
+    "/venv/main/bin/python",
+    "-u",
+    "scripts/v6_regenerate_full_inputs.py",
+    "execute",
+    "results/v3/v6full1_input_regeneration_registration.json"
+  ],
+  "namespace": "v6repro_r1_reference",
+  "input_registration_path": "results/v3/v6full1_input_regeneration_registration.json",
+  "input_registration_sha256": "83283d246c8af15bc85557e59f449f6ff79ee4ac78e22c245cd312b5c23ef200",
+  "reference_freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "analysis_registration_sha256": "a2036d631c058886ef5eefd733c0bf4d7252a4d42f533c5efd3d340a5d0299ff",
+  "source_sha256": {
+    "/workspace/cacheflow-e1/scripts/v6_after_input_reproduction.py": "c6b33cd002cdfedf2482548ebae220ee813284cc92aee9e4dbde78a634ca65d4",
+    "scripts/v6_reproduce_namespace.py": "4be62d7b4ab3a7fb5d4823296c291e8e04130bb87fd00433093d2a161bb29b3d",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "scripts/v6_full_analysis_r1.py": "5eb9505eaab83edc72a7c734ca5f4335880e0ad61cb9b98297fce1feebb1414f",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v4_services.py": "db097bd99a7602bf4ac9a3fa12a5eb51f2e8dc982441ec8dfe17deedc83c5556"
+  },
+  "scope": "Wait for exact input-reproduction process, require complete actual1986QA/3seedproof, idle services, then prepare8source/protocol copies and run only generated--plan. No newseal, GPUengine, inference, invalid-marker exemption or replacement of the original30-arm study."
+}
