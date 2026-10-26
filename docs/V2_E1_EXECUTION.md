@@ -1,5 +1,7 @@
 # V2 E1 feasibility execution protocol
 
+Current server changed on 2026-10-26. The 2026-10-25 status and trace notes below are historical for the previous host. See `docs/V2_HOST_2026_10_26.md` for the active setup; its model, packages and ignored traces must be recreated here before GPU runs.
+
 Status: CPU-side runner and counter analysis prepared on the new server; pinned model snapshot complete, serving package installation pending; no GPU E1 run yet. This document is separate from the V1 reproduction log. The owner waived old-baseline restoration.
 
 ## Gate before GPU runs
