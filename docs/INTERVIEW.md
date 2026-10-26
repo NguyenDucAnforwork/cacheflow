@@ -851,3 +851,11 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Ba seed có làm kết luận readiness mạnh hơn chưa?**
 
 **Đáp:** Phần compute đã lặp rõ hơn: cả6lượt có gate đều65122token, còn9lượt native/FIFO/union cũ đều69650. Ready union giảm p95so native13,7/26,5/21,7%, nhưng median tăng khoảng168–278%. So union cũ, p95giảm2,2–5,7% ở cả3seed, song interval thăm dò vẫn cắt0và F1 giảm ở cả3seed. Tôi có thể nói đã quan sát tác động lên compute và một tradeoff tail/median/quality trên dev; vẫn chưa thể nói tốt hơn toàn diện, quality-equivalent hay đã sửa stall. Controls và full benchmark còn đang chờ.
+
+**Hỏi: Cùng số token có đủ để so hai engine không?**
+
+**Đáp:** Không. Hai vector có thể dài bằng nhau nhưng token ID khác, dẫn đến input model và cache prefix khác. Tôi đã kiểm60prompt bằng native tokenizer loader và main encoder, tất cả ID khớp. Preflight full mới sẽ kiểm1.986prompt cùng artifact/source/package hashes trước khi GPU chạy; còn kiểm ba seed có cùng prompt/output budget, chỉ khác arrival. Test cố ý thay hash vector nhưng giữ nguyên chiều dài để chắc verifier từ chối. Hai prompt smoke đã chạy chỉ xác nhận đường code, không được ghi thành full parity.
+
+**Hỏi: Làm sao chạy lại khi repo đã có registration của thí nghiệm cũ?**
+
+**Đáp:** Giữ nguyên registration cũ và tạo namespace độc lập. Công cụ mới kiểm reference seal rồi sao controller/auditor/protocol sang đường dẫn mới; AST chỉ cho đổi chuỗi namespace/path cùng bootstrap import cố định. Kế hoạch phải giữ nguyên model,policy,budget,seed,trace và chỉ khác run ID. Bản mới vẫn phải qua gate, preflight và freeze riêng trước GPU. Đây là lặp toàn study có provenance, không phải sửa ID để retry riêng request lỗi hay ghép số đẹp. Unit test còn gọi CLI của bản sinh ra để bắt lỗi import/path như lần pilot trước; nó không chứng minh kết quả GPU đã lặp.

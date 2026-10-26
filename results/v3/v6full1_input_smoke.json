@@ -1,0 +1,121 @@
+{
+  "cpu_only": true,
+  "complete_trace": false,
+  "prompts_checked": 2,
+  "token_id_mismatches": 0,
+  "main": {
+    "cpu_only": true,
+    "complete_trace": false,
+    "backend": "main",
+    "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "tokenizer_class": "Qwen2Tokenizer",
+    "trace_path": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+    "trace_stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+    "trace_uncompressed_sha256": "f761f402b2b4b2628dfb0452e9ff218eb2ddd34f2dbf02a93a6e8ddc25936ce0",
+    "manifest_sha256": "4d8df5cb7a8753f30b80760d69b93d00b3218003d2bad7d1f13493058527c68b",
+    "package_versions": {
+      "transformers": "5.6.2",
+      "tokenizers": "0.22.2"
+    },
+    "native_source_sha256": {},
+    "tokenizer_artifact_sha256": {
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/config.json": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    "source_sha256": "177c584c4e564031c37d1e542bf1819af29a5ca4f4953f1fc48001f51ef271dd",
+    "oracle_source_sha256": "7b68d52b32ba78294167b6b252a853717e0098a82508b1776825ae0da8197d40",
+    "page16": {
+      "requests": 2,
+      "input_tokens": 34736,
+      "block_size": 16,
+      "distinct_complete_causal_blocks": 2167,
+      "private_partial_tail_tokens": 16,
+      "input_only_minimum_new_tokens": 34688
+    },
+    "requests": [
+      {
+        "request_id": "conv-26-q000",
+        "sample_id": "conv-26",
+        "qa_index": 0,
+        "input_tokens": 19526,
+        "max_tokens": 96,
+        "prompt_sha256": "ce4c4ab75a68db5eab8c2cd6bc275dcd771c3c947b06e8c6611cbb505680bc2b",
+        "token_ids_u32le_sha256": "d62326402e4a554dc8f1049cfaca22d50cc6f18445987ef08a1e03a87da779ec"
+      },
+      {
+        "request_id": "conv-30-q000",
+        "sample_id": "conv-30",
+        "qa_index": 0,
+        "input_tokens": 15210,
+        "max_tokens": 96,
+        "prompt_sha256": "1e4b7f2462ebe6a717869f1efca2275786ff58cadb5c28b1429bc30c7242ed12",
+        "token_ids_u32le_sha256": "9221bc4994fcad96ae4e3cb58729df82b9a88a67fdbf872209874c8f6c486e25"
+      }
+    ],
+    "scope": "CPU input/tokenizer parity and exact input-only full-retention causal-block reference. No model weights loaded, GPU engine, serving performance, runtime publication/eviction/IO simulation, or quality evaluation."
+  },
+  "native": {
+    "cpu_only": true,
+    "complete_trace": false,
+    "backend": "native",
+    "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "tokenizer_class": "Qwen2Tokenizer",
+    "trace_path": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+    "trace_stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+    "trace_uncompressed_sha256": "f761f402b2b4b2628dfb0452e9ff218eb2ddd34f2dbf02a93a6e8ddc25936ce0",
+    "manifest_sha256": "4d8df5cb7a8753f30b80760d69b93d00b3218003d2bad7d1f13493058527c68b",
+    "package_versions": {
+      "transformers": "5.8.1",
+      "tokenizers": "0.22.2",
+      "sglang": "0.5.14"
+    },
+    "native_source_sha256": {
+      "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/utils/hf_transformers/tokenizer.py": "ba68d62e62d8d34c762b3d25b2ff8c51dd568e80a5c2a18c0047203a5d5e9096",
+      "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py": "f7b0f64fc2f46dd0339e3e26f9481ac4b0fdb0ad31d501d925d8cada2bac9da2"
+    },
+    "tokenizer_artifact_sha256": {
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/config.json": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    "source_sha256": "177c584c4e564031c37d1e542bf1819af29a5ca4f4953f1fc48001f51ef271dd",
+    "oracle_source_sha256": "7b68d52b32ba78294167b6b252a853717e0098a82508b1776825ae0da8197d40",
+    "page16": {
+      "requests": 2,
+      "input_tokens": 34736,
+      "block_size": 16,
+      "distinct_complete_causal_blocks": 2167,
+      "private_partial_tail_tokens": 16,
+      "input_only_minimum_new_tokens": 34688
+    },
+    "requests": [
+      {
+        "request_id": "conv-26-q000",
+        "sample_id": "conv-26",
+        "qa_index": 0,
+        "input_tokens": 19526,
+        "max_tokens": 96,
+        "prompt_sha256": "ce4c4ab75a68db5eab8c2cd6bc275dcd771c3c947b06e8c6611cbb505680bc2b",
+        "token_ids_u32le_sha256": "d62326402e4a554dc8f1049cfaca22d50cc6f18445987ef08a1e03a87da779ec"
+      },
+      {
+        "request_id": "conv-30-q000",
+        "sample_id": "conv-30",
+        "qa_index": 0,
+        "input_tokens": 15210,
+        "max_tokens": 96,
+        "prompt_sha256": "1e4b7f2462ebe6a717869f1efca2275786ff58cadb5c28b1429bc30c7242ed12",
+        "token_ids_u32le_sha256": "9221bc4994fcad96ae4e3cb58729df82b9a88a67fdbf872209874c8f6c486e25"
+      }
+    ],
+    "scope": "CPU input/tokenizer parity and exact input-only full-retention causal-block reference. No model weights loaded, GPU engine, serving performance, runtime publication/eviction/IO simulation, or quality evaluation."
+  },
+  "scope": "Two-prompt CPU smoke on existing full-s901trace. Not full1986QApreflight, modelserving, GPUcapacity, quality or performance evidence; fullfreezer rejects incomplete fingerprints."
+}

@@ -198,4 +198,26 @@ After full completion, `scripts/v6_audit_full.py` reopens all raw archives and v
 
 The native primary subset now has independently audited seed101/102/103blocks. `scripts/v6_audit_native_checkpoint.py --seed SEED` verifies one completed block against its separately named official-quality artifact; `scripts/v6_analyze_native_primary.py` combines the3audits without claiming the complete60-arm stage. `scripts/v6_plot_native_primary.py` renders the inspected primary tradeoff plot. These are read-only with respect to serving; they never replay requests.
 
-`PYTHONPATH=src /venv/main/bin/python scripts/v6_input_oracle.py` reconstructs exact causal block-prefix counts from the60-QA input trace using the pinned local tokenizer. `scripts/v6_native_tokenizer_parity.py` runs under `/venv/sglang-baseline/bin/python` with the serving wrapper's existing cu13 library path, compares native-loader token vectors onCPU and writes provenance. It does not start a GPU engine. The current parity covers60development prompts; a full1,986-QA cross-environment input preflight remains useful before full freeze. Published registration files intentionally block overwriting their namespaces; a namespace-safe fresh replay entrypoint still needs to be provided for reproducing execution from a checkout that already contains recorded registrations. Do not remove original evidence to bypass those guards.
+`PYTHONPATH=src /venv/main/bin/python scripts/v6_input_oracle.py` reconstructs exact causal block-prefix counts from the60-QA input trace using the pinned local tokenizer. `scripts/v6_native_tokenizer_parity.py` runs under `/venv/sglang-baseline/bin/python` with the serving wrapper's existing cu13 library path, compares native-loader token vectors onCPU and writes provenance. It does not start a GPU engine. The current parity covers60development prompts; the full1,986-QA cross-environment preflight is now mandatory before full freeze. Published registrations intentionally block overwrite; use the independent namespace constructor below once the reference full seal exists. Do not remove original evidence to bypass those guards.
+
+## Full input preflight and independent execution namespaces
+
+The full freezer now invokes `scripts/v6_full_input_preflight.py` after development gates pass and services are idle. It streams1,986prompts through the pinned main and native tokenizer loaders, compares every token ID, and checks the same prompt/input/output budgets across all3arrival traces. `--plan` is read-only. The current2-prompt smoke has `complete_trace=false`; it cannot satisfy full preflight. Attempt fingerprints and registration are retained, with exact hashes linked into the final full seal. This CPU stage is not model serving or a benchmark result.
+
+Once `results/v3/v6full1_freeze.json` exists and its reference source/input/model evidence still matches the checkout, these commands prepare a new independent execution namespace from the repository root:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_reproduce_namespace.py v6repeat1 --reference-freeze results/v3/v6full1_freeze.json
+PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat1/v6_full.py --plan
+```
+
+Preparation writes copied controller/audit/preflight modules, a separate protocol and `namespace_manifest.json`. It never calls supervisor or removes earlier results. An AST check permits only namespace/path string replacements and a fixed import-path bootstrap; the30-arm graph must preserve every setting except run IDs. Parent/transformed/generator/protocol/reference hashes are recorded. An existing namespace or changed reference evidence is rejected. Commit the generated bundle/protocol as the new study provenance.
+
+After all serving services are idle, the new namespace requires its own prospective seal and execution:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat1/v6_freeze_full.py
+PYTHONPATH=src /venv/main/bin/python scripts/reproductions/v6repeat1/v6_full.py
+```
+
+The independent run preserves original development prerequisites/gates and model/prompt/budget/arrival/transport/method settings. It repeats the full study rather than overwriting or stitching selected earlier arms. Numerical timing and ordinary temperature0outputs can still differ between runs. CPU tests verify source/plan equivalence, actual generated CLI imports and collision/algorithm-change rejection; no additional reproduction GPU study has been executed. The original full study itself remains unrun at this checkpoint.

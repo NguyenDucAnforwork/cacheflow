@@ -2,6 +2,8 @@
 import hashlib
 import json
 import importlib.metadata
+import subprocess
+import sys
 from datetime import datetime,timezone
 from pathlib import Path
 from v5_verify import verify
@@ -15,7 +17,7 @@ ACTORS=['scripts/v6_full.py','scripts/v6_full_plan.py','scripts/v6_freeze_full.p
     'scripts/v6_v2_run.sh','scripts/v6_sglang_bench.py','scripts/v6_native_metrics.py',
     'scripts/v5_full_histograms.py','scripts/v3_sglang_runtime.py','scripts/v3_serve_sglang.sh',
     'scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v4_sglang_delayhit.py',
-    'scripts/v6_raw_archive.py']
+    'scripts/v6_raw_archive.py','scripts/v6_token_fingerprints.py','scripts/v6_full_input_preflight.py','scripts/v6_input_oracle.py']
 PREREQUISITES=[('results/v3/v6dev1_main_audit.json',24,1440),
     ('results/v3/sglang/v6native1_audit.json',60,2700),
     ('results/v3/v6controls1_main_audit.json',36,1260)]
@@ -30,8 +32,12 @@ def verify_full():
     assert freeze['actions']==build_plan() and freeze['plan_sha256']==sha(PLAN)
     assert all(importlib.metadata.version(n)==v for n,v in freeze['main_package_versions'].items())
     assert freeze['parent_v5_prompt_seal_sha256']==sha('results/v3/v5_prompt_freeze.json')
-    for key in ['actor_sha256','input_manifest_sha256','input_file_sha256','model_artifact_sha256','prerequisite_audit_sha256']:
+    for key in ['actor_sha256','input_manifest_sha256','input_file_sha256','model_artifact_sha256','tokenizer_source_sha256','preflight_artifact_sha256','prerequisite_audit_sha256']:
         for name,digest in freeze[key].items():assert sha(name)==digest,(key,name)
+    expected=freeze['native_tokenizer_package_versions']
+    versions=json.loads(subprocess.check_output(['/venv/sglang-baseline/bin/python','-c',
+        'import importlib.metadata as m,json,sys;print(json.dumps({n:m.version(n) for n in json.loads(sys.argv[1])}))',json.dumps(list(expected))],text=True))
+    assert versions==expected
     return parent,seal,freeze
 
 
@@ -68,13 +74,31 @@ def main():
     traces|={model['adoption'],'data/raw/locomo10.json'}
     from v4_services import service_pid
     for name in ['cacheflow_v2_gateway','cacheflow_v2_vllm','cacheflow_v2_lmcache','cacheflow_v3_sglang']:assert service_pid(name)==0,name
+    from v6_full_input_preflight import compare
+    preflightpath=Path('results/v3/v6full1_input_preflight.json')
+    if not preflightpath.exists():subprocess.run([sys.executable,'scripts/v6_full_input_preflight.py'],check=True)
+    preflight=json.loads(preflightpath.read_text());assert preflight['complete'] and preflight['requests']==1986 and preflight['token_id_mismatches']==preflight['semantic_trace_mismatches']==0
+    assert preflight['source_sha256']==sha('scripts/v6_full_input_preflight.py') and preflight['worker_sha256']==sha('scripts/v6_token_fingerprints.py')
+    mp=Path(preflight['main_fingerprints_path']);np=Path(preflight['native_fingerprints_path'])
+    assert sha(mp)==preflight['main_fingerprints_sha256'] and sha(np)==preflight['native_fingerprints_sha256']
+    main_tokens=json.loads(mp.read_text());native_tokens=json.loads(np.read_text());compare(main_tokens,native_tokens)
+    for report in [main_tokens,native_tokens]:
+        assert report['source_sha256']==preflight['worker_sha256'] and report['oracle_source_sha256']==sha('scripts/v6_input_oracle.py')
+    assert all(importlib.metadata.version(n)==v for n,v in main_tokens['package_versions'].items())
+    assert main_tokens['model_revision']==parent['model_revision']
+    for name,digest in main_tokens['tokenizer_artifact_sha256'].items():assert modelpins[name]==digest,name
+    for trace,proof in preflight['inputs'].items():assert sha(trace)==proof['stored_sha256'] and sha(Path(trace).with_suffix('.manifest.json'))==proof['manifest_sha256']
+    preflight_files=[preflightpath,mp,np,Path(preflight['registration_path'])]
+    assert sha(preflight_files[-1])==preflight['registration_sha256']
     native=json.loads(Path('results/v3/sglang/v6native1_registration.json').read_text())
+    for name in ['sglang','transformers']:assert native_tokens['package_versions'][name]==native['package_versions'][name]
     freeze=dict(status='frozen_prospective_full_study_not_completion',frozen_utc=datetime.now(timezone.utc).isoformat(),
         lowreuse_gate_status=gates,actions=steps,actor_sha256={n:sha(n) for n in ACTORS},plan_sha256=sha(PLAN),
         parent_v5_prompt_seal_sha256=sha('results/v3/v5_prompt_freeze.json'),
         prerequisite_audit_sha256={n:sha(n) for n,_,_ in PREREQUISITES},
         input_file_sha256={n:sha(n) for n in traces},input_manifest_sha256={n:sha(n) for n in manifests},
-        main_package_versions={n:importlib.metadata.version(n) for n in ['vllm','lmcache','torch','transformers','httpx']},native_package_versions=native['package_versions'],native_source_sha256=native['upstream_source_sha256'],
+        preflight_artifact_sha256={str(n):sha(n) for n in preflight_files},tokenizer_source_sha256=native_tokens['native_source_sha256'],native_tokenizer_package_versions=native_tokens['package_versions'],
+        main_package_versions={n:importlib.metadata.version(n) for n in ['vllm','lmcache','torch','transformers','tokenizers','httpx']},native_package_versions=native['package_versions'],native_source_sha256=native['upstream_source_sha256'],
         model_artifact_sha256=modelpins,model_revision=parent['model_revision'],source_data_sha256=parent['source_data_sha256'],
         transport=dict(read_s=3600,pool_s=3600,keepalive=0),host_payload_bytes=48002236416,
         expected_main_heap_bytes=48049946624,expected_native_host_bytes=48002236416,
