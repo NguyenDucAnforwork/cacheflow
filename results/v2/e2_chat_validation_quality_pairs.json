@@ -1,0 +1,24 @@
+{
+  "note": "Repeated seeds reuse the same QA; these are paired run-level scores, not new independent QA samples.",
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "pairs": [
+    {
+      "b1": "v2-e2-chat-val2-s71-b1-4g",
+      "b2": "v2-e2-chat-val2-s71-b2-4g",
+      "requests": 30,
+      "b1_f1": 0.11346718987810207,
+      "b2_f1": 0.11338989519211173,
+      "delta_f1": -7.72946859903395e-05,
+      "b1_budget_hits": 8,
+      "b2_budget_hits": 9,
+      "score_changed_requests": [
+        {
+          "request_id": "conv-47-q002",
+          "b1_score": 0.028985507246376815,
+          "b2_score": 0.02666666666666666,
+          "delta": -0.002318840579710154
+        }
+      ]
+    }
+  ]
+}

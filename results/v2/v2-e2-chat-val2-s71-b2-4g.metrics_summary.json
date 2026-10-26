@@ -1,0 +1,29 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l1_evicted_chunks_total": null,
+      "lmcache_mp_l1_read_chunks_total": 2940.0,
+      "lmcache_mp_l1_write_chunks_total": 216.0,
+      "lmcache_mp_num_chunks_loaded_total": 1820.0
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 462480.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 5342528.0,
+      "vllm:prompt_tokens_cached_total": 752640.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 462480.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 290160.0,
+      "vllm:prompt_tokens_source_local_compute_total": 58082.0,
+      "vllm:prompt_tokens_total": 810722.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 58082.0,
+      "vllm:request_queue_time_seconds_sum": 15.971053347966517
+    }
+  },
+  "duration_s": 175.020879144,
+  "first_timestamp_ns": 91581429926387,
+  "host_memory_available_min_bytes": 172776984576,
+  "last_timestamp_ns": 91756450805531,
+  "metrics_path": "/workspace/cacheflow-e1/results/v2/raw/v2-e2-chat-val2-s71-b2-4g.metrics.jsonl",
+  "samples": 176,
+  "vram_peak_mib": 8453.0
+}
