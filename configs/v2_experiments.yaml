@@ -68,3 +68,16 @@ e2_current_host_2026_10_26:
     url: https://raw.githubusercontent.com/snap-research/locomo/3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376/task_eval/evaluation.py
     sha256: 8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd
     output_processing: whole_raw_generation_no_extraction
+  supplemental_chat_validation:
+    sample_ids: [conv-47, conv-48]
+    questions_per_sample: 15
+    seed: 71
+    prompt_version: locomo-qwen-chat-v2
+    thinking: false
+    gpu_kv_gib: 4
+    note: single exploratory pair, separate from main serving and quality protocol
+  supplemental_session:
+    trace: data/processed/v2/locomo_dev_2conv_session.jsonl
+    protocol: p_session
+    gpu_kv_gib: 4
+    note: single exploratory pair, existing 2-QPS open-loop dev trace
