@@ -38,6 +38,7 @@ def main():
     p.add_argument('--keepalive-connections', type=int)
     p.add_argument('--max-bypasses', type=int)
     p.add_argument('--batch-invariant', action='store_true')
+    p.add_argument('--upstream')
     args = p.parse_args()
     if args.command in ('configure', 'gateway'):
         c = dict(max_inflight=args.max_inflight, max_num_seqs=args.max_num_seqs,
@@ -48,18 +49,22 @@ def main():
         c['keepalive_connections'] = args.keepalive_connections if args.keepalive_connections is not None else 0
         c['max_bypasses'] = args.max_bypasses if args.max_bypasses is not None else 4
         c['batch_invariant'] = args.batch_invariant
+        c['upstream'] = args.upstream or 'http://127.0.0.1:8000'
         if args.command == 'gateway':
             c = load() | {'max_inflight': args.max_inflight}
             if args.keepalive_connections is not None:
                 c['keepalive_connections']=args.keepalive_connections
             if args.max_bypasses is not None:
                 c['max_bypasses']=args.max_bypasses
+            if args.upstream is not None:
+                c['upstream']=args.upstream
         MARKER.write_text(json.dumps(c, indent=2)+'\n')
         load()
         gateway = yaml.safe_load((ROOT/'configs/policies.yaml').read_text())
         gateway['scheduler']['max_inflight'] = c['max_inflight']
         gateway['scheduler']['policy'] = args.policy
         gateway['model'] = get_model(c['model_key'])['path']
+        gateway['upstream'] = c.get('upstream','http://127.0.0.1:8000')
         gateway['upstream_keepalive_connections']=c.get('keepalive_connections',0)
         gateway['residency'] = dict(enabled=c.get('residency_events', False),
                                    endpoint='ipc:///tmp/cacheflow-v3-kv-events.sock',

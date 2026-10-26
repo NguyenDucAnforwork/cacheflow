@@ -90,9 +90,9 @@ class ResidencyScheduler(AdmissionScheduler):
             chosen=max(self._queue,key=lambda t:self.residency.matched_tokens(t.engine_blocks))
             chosen.scheduler_head_id=None;chosen.dispatch_reason='actual_gpu_lpm';return chosen
         if self.policy=='packing_reuse':
-            completed_groups={t.group for t in self._recent if t.group is not None}
-            if not any(t.group in completed_groups for t in self._queue if t.group is not None):
-                oldest.dispatch_reason='no_completed_prefix_reuse_fifo';return oldest
+            observed_groups={t.group for t in [*self._recent,*self._active.values()] if t.group is not None}
+            if not any(t.group in observed_groups for t in self._queue if t.group is not None):
+                oldest.dispatch_reason='no_observed_prefix_reuse_fifo';return oldest
         active=list(self._active.values())
         if not active:
             oldest.dispatch_reason='oldest_start';return oldest
@@ -103,12 +103,18 @@ class ResidencyScheduler(AdmissionScheduler):
                 oldest.dispatch_reason='no_migration_fifo';return oldest
         active_blocks,active_tails=reservation_state(active)
         active_reserved=len(active_blocks)*16+active_tails
-        fitting=[t for t in self._queue
-                 if incremental_reservation(active_blocks,active_reserved,t)<=self.kv_capacity_tokens]
-        if oldest in fitting:
+        if incremental_reservation(active_blocks,active_reserved,oldest)<=self.kv_capacity_tokens:
             oldest.dispatch_reason='oldest_fits';return oldest
         if self._bypasses.get(oldest.request_id,0)>=self.max_bypasses:
             return None  # drain existing work before this oldest request
+        if self.policy in PACKING_POLICIES:
+            chosen=next((t for t in self._queue[1:]
+                if incremental_reservation(active_blocks,active_reserved,t)<=self.kv_capacity_tokens),None)
+            if chosen:
+                chosen.scheduler_head_id=oldest.request_id;chosen.dispatch_reason='compatible_backfill'
+            return chosen
+        fitting=[t for t in self._queue[1:]
+                 if incremental_reservation(active_blocks,active_reserved,t)<=self.kv_capacity_tokens]
         if self.policy=='residency':
             fitting=[t for t in fitting if gpu[t.request_id]>=1024 or any(t.group and t.group==a.group for a in active)]
         if not fitting:return None
@@ -121,6 +127,6 @@ class ResidencyScheduler(AdmissionScheduler):
         if ticket.scheduler_head_id and ticket.scheduler_head_id!=ticket.request_id:
             head=ticket.scheduler_head_id;self._bypasses[head]=self._bypasses.get(head,0)+1
         else:self._bypasses.pop(ticket.request_id,None)
-        ticket.predicted_gpu_tokens=self.residency.matched_tokens(ticket.engine_blocks)
+        ticket.predicted_gpu_tokens=self.residency.matched_tokens(ticket.engine_blocks) if self.residency.known else None
         ticket.reserved_active_tokens=reserved_tokens(self._active.values())
         return ticket

@@ -152,7 +152,7 @@ def test_lpm_cached_choice_invalidates_when_kv_event_sequence_changes():
     assert scheduler._choose(time.monotonic_ns()) is qb
 
 
-def test_pure_packing_ignores_observer_bootstrap_and_reuse_gate_keeps_cold_fifo():
+def test_pure_packing_ignores_observer_bootstrap_and_accepts_inflight_reuse():
     import time
     def t(name,group,start):
         keys=engine_block_hashes(list(range(start,start+160)))
@@ -164,7 +164,21 @@ def test_pure_packing_ignores_observer_bootstrap_and_reuse_gate_keeps_cold_fifo(
             kv_capacity_tokens=256,max_inflight=4)
         s._active={'a':active};s._queue=[head,back]
         chosen=s._choose(time.monotonic_ns())
-        assert chosen is (back if policy=='packing' else head)
+        assert chosen is back
         if policy=='packing_reuse':
             s._recent.append(t('completed','group-a',0))
             assert s._choose(time.monotonic_ns()) is back
+
+
+def test_reuse_gate_keeps_distinct_cold_prefixes_fifo_then_uses_completed_prefix():
+    import time
+    def t(name,group,start,n):
+        return Ticket(request_id=name,blocks=(),arrival_ns=1,enqueued_ns=1,deadline_ns=2,group=group,
+            engine_blocks=engine_block_hashes(list(range(start,start+n))),input_tokens=n,output_budget=16)
+    active=t('active','a',0,160);head=t('head','b',500,160);small=t('small','c',1000,32)
+    s=ResidencyScheduler(policy='packing_reuse',residency_index=ResidencyIndex(),
+        kv_capacity_tokens=256,max_inflight=4)
+    s._active={'active':active};s._queue=[head,small]
+    assert s._choose(time.monotonic_ns()) is head
+    s._recent.append(t('done','b',500,160))
+    assert s._choose(time.monotonic_ns()) is small

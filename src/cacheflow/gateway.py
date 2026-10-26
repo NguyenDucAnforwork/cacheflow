@@ -59,13 +59,13 @@ def create_app(config_path: str | None = None) -> FastAPI:
     tokenizer = AutoTokenizer.from_pretrained(model, local_files_only=True, trust_remote_code=False)
     from .v3_scheduler import BaselineScheduler, V3_POLICIES
     from .v3_residency import ResidencyIndex, ResidencySubscriber, engine_block_hashes
-    from .v3_memory_scheduler import ResidencyScheduler, RESIDENCY_POLICIES
+    from .v3_memory_scheduler import ResidencyScheduler, RESIDENCY_POLICIES, PURE_PACKING_POLICIES
     residency_config = settings.get('residency', {})
     residency = ResidencyIndex()
     subscriber = ResidencySubscriber(residency, residency_config.get('endpoint', 'tcp://127.0.0.1:5557')) if residency_config.get('enabled') else None
     scheduler_cls = BaselineScheduler if settings["scheduler"]["policy"] in V3_POLICIES else AdmissionScheduler
     if settings['scheduler']['policy'] in RESIDENCY_POLICIES:
-        if subscriber is None:
+        if subscriber is None and settings['scheduler']['policy'] not in PURE_PACKING_POLICIES:
             raise ValueError('residency policies require a real KV-event subscriber')
         scheduler = ResidencyScheduler(**settings['scheduler'], residency_index=residency,
             kv_capacity_tokens=residency_config['kv_capacity_tokens'],
@@ -125,12 +125,12 @@ def create_app(config_path: str | None = None) -> FastAPI:
         token_ids = tokenizer.encode(prompt, add_special_tokens=False)
         tokenize_end = time.monotonic_ns()
         blocks = prefix_blocks(token_ids, block_size=scheduler.block_size, namespace=model)
-        engine_blocks = engine_block_hashes(token_ids) if subscriber else ()
+        engine_blocks = engine_block_hashes(token_ids) if subscriber or scheduler.policy in PURE_PACKING_POLICIES else ()
         hash_end = time.monotonic_ns()
         ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns,
             engine_blocks=engine_blocks, input_tokens=len(token_ids), output_budget=int(payload.get('max_tokens', 96)))
         if subscriber:
-            ticket.predicted_gpu_tokens = residency.matched_tokens(engine_blocks)
+            ticket.predicted_gpu_tokens = residency.matched_tokens(engine_blocks) if residency.known else None
         ticket.tokenize_ms = (tokenize_end-tokenize_start)/1e6
         ticket.prefix_hash_ms = (hash_end-tokenize_end)/1e6
         headers = {"content-type": "application/json"}

@@ -18,6 +18,7 @@ import psutil
 from cacheflow.collect_metrics import gpu_snapshot
 from v3_sglang_runtime import load as load_runtime
 from v3_model import get_model
+from v2_extract_gateway import extract as extract_gateway
 
 
 def parse_metrics(text):
@@ -31,7 +32,10 @@ def parse_metrics(text):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('run_id');p.add_argument('trace',type=Path)
-    p.add_argument('--url',default='http://127.0.0.1:8300');args=p.parse_args()
+    p.add_argument('--url',default='http://127.0.0.1:8300')
+    p.add_argument('--replay-url');p.add_argument('--gateway-policy');args=p.parse_args()
+    replay_url=args.replay_url or args.url
+    assert bool(args.gateway_policy)==bool(args.replay_url), 'gateway mode requires replay URL and policy together'
     assert re.fullmatch(r'[A-Za-z0-9._-]+',args.run_id)
     base=Path('results/v3/sglang');raw=Path('results/v3/raw/sglang')
     base.mkdir(parents=True,exist_ok=True);raw.mkdir(parents=True,exist_ok=True)
@@ -43,6 +47,10 @@ def main():
         time.sleep(2)
         reset=client.post(args.url+'/flush_cache',params={'timeout':10});reset.raise_for_status()
         info=client.get(args.url+'/server_info').json()
+        gateway_before=client.get(replay_url+'/health').json() if args.gateway_policy else None
+        if gateway_before:
+            assert gateway_before['active']==gateway_before['queue']==0
+            assert gateway_before['policy']==args.gateway_policy
     runtime=load_runtime();model=get_model(runtime['model_key'])
     gpu_bytes=runtime['gpu_kv_gib']*1024**3
     assert info['max_total_tokens']==gpu_bytes//(16*model['bytes_per_token'])*16
@@ -63,6 +71,8 @@ def main():
     c=dict(run_id=args.run_id,engine_kind='sglang',cache_backend='upstream_hicache',
         source_head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
         runtime=runtime, model=model, nominal_gpu_kv_bytes=gpu_bytes,
+        replay_url=replay_url,gateway_policy=args.gateway_policy,gateway_before=gateway_before,
+        gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text() if args.gateway_policy else None,
         server_config={k:info.get(k) for k in allow},launcher_pid=launcher,
         process_argv={str(x.pid):x.cmdline() for x in children},reset_status=reset.status_code,
         captured_utc=datetime.now(timezone.utc).isoformat())
@@ -74,6 +84,10 @@ def main():
                   'srt/mem_cache/hiradix_cache.py','srt/mem_cache/memory_pool_host.py']
     c['upstream_source_sha256']={name:hashlib.sha256((source_root/name).read_bytes()).hexdigest()
                                  for name in source_names}
+    if args.gateway_policy:
+        names=['src/cacheflow/gateway.py','src/cacheflow/v3_memory_scheduler.py',
+               'src/cacheflow/scheduler.py','src/cacheflow/prefix.py']
+        c['gateway_source_sha256']={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in names}
     setup.write_text(json.dumps(c,indent=2)+'\n')
     stop=threading.Event();samples=[];collector_error=[]
     def sample():
@@ -95,12 +109,12 @@ def main():
         except Exception as e:collector_error.append(repr(e))
     thread=threading.Thread(target=sample);thread.start()
     try:
-        cmd=[sys.executable,'-m','cacheflow.v2_replay','--trace',str(args.trace),'--url',args.url,
+        cmd=[sys.executable,'-m','cacheflow.v2_replay','--trace',str(args.trace),'--url',replay_url,
             '--run-id',args.run_id,'--output',str(raw/f'{args.run_id}.jsonl'),
             '--registry',str(base/'registry.csv'),'--capture-text','--engine-kind','sglang',
             '--engine-pid',str(launcher),'--model-revision',Path(info['model_path']).name,
-            '--model-name',info['served_model_name'],'--mode','D0',
-            '--policy','sglang_'+info['schedule_policy'],'--gpu-kv-bytes',str(gpu_bytes)]
+            '--model-name',info['served_model_name'],'--mode','SG',
+            '--policy',args.gateway_policy or 'sglang_'+info['schedule_policy'],'--gpu-kv-bytes',str(gpu_bytes)]
         subprocess.run(cmd,check=True,env=os.environ.copy())
         time.sleep(2)
     finally:
@@ -116,7 +130,22 @@ def main():
         if name.startswith('sglang:') and name.endswith(('_total','_sum','_count'))}
     (base/f'{args.run_id}.metrics_summary.json').write_text(json.dumps(dict(
         counter_deltas=deltas,samples=len(samples),scope='native source labels; load_back tokens are not vLLM engine-consumed-source tokens'),indent=2)+'\n')
+    total=sum(x['input_tokens'] for x in requests)
+    assert deltas['sglang:prompt_tokens_total']==total
+    assert deltas['sglang:cached_tokens_total']+deltas['sglang:uncached_prompt_tokens_histogram_sum']==total
+    if args.gateway_policy:
+        extract_gateway(Path('results/v3/raw/gateway.jsonl'),raw/f'{args.run_id}.jsonl',
+                        args.run_id,raw/f'{args.run_id}.gateway.jsonl')
+        with httpx.Client(timeout=10) as client:after=client.get(replay_url+'/health').json()
+        assert after['active']==after['queue']==0
+        c['gateway_after']=after;setup.write_text(json.dumps(c,indent=2)+'\n')
     print('Verified SGLang replay',args.run_id,flush=True)
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except Exception as exc:
+        if len(sys.argv)>1 and re.fullmatch(r'[A-Za-z0-9._-]+',sys.argv[1]):
+            path=Path('results/v3/sglang')/(sys.argv[1]+'.invalid');path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text('Run failed integrity/replay checks: '+repr(exc)+'\n')
+        raise
