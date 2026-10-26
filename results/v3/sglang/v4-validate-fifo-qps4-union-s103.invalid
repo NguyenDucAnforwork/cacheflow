@@ -1,0 +1,1 @@
+Interrupted during controlled orchestration stop after shell variable-scope fault; no complete request summary. Raw partial metrics/setup retained. Replace with a new run ID; do not compute a successful-only percentile.

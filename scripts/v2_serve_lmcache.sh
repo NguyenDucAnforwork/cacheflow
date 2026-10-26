@@ -13,7 +13,7 @@ chunk_size=256
 cpu_l1_gib=${CACHEFLOW_CPU_L1_GB:-16}
 if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
     chunk_size=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["chunk_size"])' "$root/.cacheflow-v3-runtime.json")
-    cpu_l1_gib=$(python -c 'import json,sys; print(json.load(open(sys.argv[1])).get("cpu_l1_gib",16))' "$root/.cacheflow-v3-runtime.json")
+    cpu_l1_gib=$(PYTHONPATH="$root/src${PYTHONPATH:+:$PYTHONPATH}" python -c 'import json,sys; from cacheflow.v4_resources import lmcache_gib_flag; c=json.load(open(sys.argv[1])); print(lmcache_gib_flag(c["cpu_l1_bytes"]) if c.get("cpu_l1_bytes") is not None else c.get("cpu_l1_gib",16))' "$root/.cacheflow-v3-runtime.json")
     if python -c 'import json,sys; sys.exit(not json.load(open(sys.argv[1])).get("kv_events"))' "$root/.cacheflow-v3-runtime.json"; then
         export PYTHONPATH="$root/src${PYTHONPATH:+:$PYTHONPATH}"
         export CACHEFLOW_KV_EVENTS="$root/results/v3/raw/kv_events.jsonl"

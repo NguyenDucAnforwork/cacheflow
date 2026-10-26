@@ -90,3 +90,49 @@ The native same-batch guard component is now activated through an opt-in import 
 Three measured guard arms complete180/180, plus60 warmup: native LPM p50/p95/p99=4.294/17.262/18.369s; FIFO64-worker3.695/18.083/19.278s; packing64-worker13.490/16.049/16.410s. Packing vs native guard p95-7.03%, p99-10.66%, **median+214.16%**, F1-.001 approximately. All arms compute69590 uncached tokens. Host promotions native/FIFO/packing=26448/0/90144. Thus the residual scheduling contrast is not saved compute or universally less transfer; ordering, fairness and migration timing need explanation. It remains a one-seed pilot and must be repeated before freeze. `v4_guard_component_pilot_*` stores audits, quality and matched pairs.
 
 Pipeline tool42783 continues into main vLLM/LMCache V4 validation:18 runs with balanced ordering, FIFO16/FIFO64/actual-GPU-LPM16/bundle16/DHAS16/packing64 and serial CPU preparation across all arms. SGLang is stopped. No full/held-out GPU evaluation or method freeze yet.
+
+## Audited V4 dev and prospective boundary, 2026-10-26 12:59 UTC
+
+The method/configuration is now frozen revision1, before the first conv43/44 GPU replay. See `V4_CONFIRMATION_PLAN.md`, `results/v3/v4_method_freeze.json` and `scripts/v4_verify_freeze.py`. Nothing in the following dev table is an independent held-out or full-benchmark result.
+
+The main-stack matrix has18 measured runs,1080/1080 successes, all strict source/token/output/reset audits passing.60 unique QA are repeated under three arrival seeds; uncertainty is serving-run variation, not180 independent semantic examples. Means below average the three run-level quantiles, not pooled-request quantiles.
+
+| Main-stack arm | p50(s) | p95(s) | p99(s) | Engine-consumed CPU tokens/run | Answerable F1 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| FIFO16 |25.427|36.703|37.493|918373|.307944|
+| FIFO64 |25.472|36.679|37.456|918373|.307944|
+| actual-GPU LPM16 |22.426|35.672|36.968|429056|.306287|
+| bundle16 |19.596|27.948|28.462|307819|.306302|
+| fixed DHAS16 |25.578|36.904|37.712|918379|.307944|
+| union64 |15.463|19.615|20.289|75349|.309299|
+
+Source: `v4_vllm_dev_audit.json`, `v4_vllm_dev_quality.json`, `v4_vllm_dev_findings.json`. No broad quality-equivalence claim follows from nearby means. Token-source reduction is not direct measured DMA reduction. All arms use serial CPU preparation, native maxseq16/graphs/batch8192, GPU6GiB and historical main16GiB CPU, with real byte-hash residency publisher/subscriber uniformly enabled.
+
+![Run-level latency and the native-engine median tradeoff](../results/v3/figures/v4_dev_tradeoffs.png)
+
+Reproduce the figure: `PYTHONPATH=src /venv/main/bin/python scripts/v4_plot_dev.py`. Dots show the three main-stack run-level quantiles; native bars show each seed's paired relative change. SVG is retained beside PNG.
+
+SGLang validation completes33 measured runs/1668 successful requests with guard enabled and profiler disabled. The corrected Bash matrix uses function-local policy variables and an actual dry-run path. Eight already-complete runs were verified against recorded actual policy, source, trace and fresh state; `v4_validation_aliases.json` maps misleading names without renaming raw evidence. The interrupted last child retains `.invalid`. All33 official quality and strict integrity audits pass.
+
+| Contrast, union vs baseline | p95 change by seed101/102/103 | Interpretation |
+| --- | --- | --- |
+| native LPM,4QPS |−11.269/−20.622/−16.922%|Tail gain with large median cost|
+| FIFO64+LPM,4QPS |−10.893/−20.999/−17.082%|Same-backend gateway control|
+| native DFS,4QPS |−10.816/−22.218/−17.428%|Strong native-ordering control|
+| low-reuse |+.227/+.006/+.141%|Within declared5% regression gate|
+| GPU-fit10GiB |+1.192/+.476/+.514%|Small regressions; no universal win|
+| native LPM,2QPS |+2.309/−.434/+11.865%|One substantial lower-load tail regression|
+
+Source: `sglang/v4_validation_audit.json` and `v4_validation_quality.json`. Missing host-promotion counters stay null. Primary4QPS and secondary2QPS were fixed before held-out GPU use; these negative controls do not authorize retuning on held-out.
+
+### Corrected resource units
+
+Earlier native sections calling HiCache16/48 **GiB** used the wrong unit. Installed HiCache interprets its flag as decimalGB, then rounds MHA capacity up one16-token page. LMCache's flag isGiB. Historical main16GiB and native16GB are valid within-stack controls, but are not exactly equal host budgets across engines. Prospective revision1 uses actual payload16000745472bytes for16GB native and48002236416bytes for48GB native; equivalent LMCache flags14.90185546875/44.70556640625GiB. See `src/cacheflow/v4_resources.py`, `v4_validation_resource_units.json` and actual argv in each setup. Correction occurred before held-out GPU evaluation; version0 CPU-only traces/seal are retained as superseded.
+
+### Direct CPU-hot profiling coverage audit
+
+`v4_steady_profile_audit.json` reconciles three off/GPU-only-profiler/off phases,12 requests each,4-token diagnostic output. Every phase promotes238400tokens/35153510400KV bytes, independently matched by12 CUDA-event hook records; uncached compute254tokens. Summed load-stream spans2958.74/2952.02/2957.89ms, with TTFT p95 approximately492.00/491.98/493.35ms. This is near-identical diagnostic work with a small profiler perturbation, not main QA performance.
+
+The profile contains603 ordinary GPU memcpy events, but all visible HtoD copies total only22864bytes, including input/index tensors. That is at most0.0000651% of expected KV payload. It cannot represent bulk Direct restore.444 CUDA runtime events are labelled `INVALID`; the installed Direct path references batched-copy API. Those facts suggest a coverage gap, but do not prove every invalid label is that API. **DMA/model overlap remains null.** CPU launch clock plus CUDA-event elapsed time cannot produce an absolute GPU interval. Load-stream spans include enqueue gaps/dependencies and are not pure PCIe busy time. Reproduce: `PYTHONPATH=src /venv/main/bin/python scripts/v4_audit_steady_profile.py`.
+
+A separate kernel-I/O off/on/off diagnostic is scheduled after all frozen full unprofiled runs, using a unique artifact namespace. It is a diagnostic backend variation and will not replace the primary Direct serving measurements or justify an overlap claim before its actual timeline is inspected.

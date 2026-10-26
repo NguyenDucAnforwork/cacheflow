@@ -1,0 +1,38 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 19.0,
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 207.8460362782671,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 15.0,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 117.69207857779224,
+      "lmcache_mp_l1_evicted_chunks_total": 0.0,
+      "lmcache_mp_l1_read_chunks_total": 4712.0,
+      "lmcache_mp_l1_write_chunks_total": 253.0,
+      "lmcache_mp_num_chunks_loaded_total": 1223.0
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 312224.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 8140992.0,
+      "vllm:prompt_tokens_cached_total": 1210720.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 312224.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 898496.0,
+      "vllm:prompt_tokens_source_local_compute_total": 67398.0,
+      "vllm:prompt_tokens_total": 1278118.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 67398.0,
+      "vllm:request_prefill_time_seconds_count": 60.0,
+      "vllm:request_prefill_time_seconds_sum": 39.93546626808529,
+      "vllm:request_queue_time_seconds_count": 60.0,
+      "vllm:request_queue_time_seconds_sum": 228.33193651004694,
+      "vllm:time_to_first_token_seconds_count": 60.0,
+      "vllm:time_to_first_token_seconds_sum": 326.4717106819153
+    }
+  },
+  "duration_s": 42.005142715,
+  "first_timestamp_ns": 114474542812431,
+  "host_memory_available_min_bytes": 212379090944,
+  "last_timestamp_ns": 114516547955146,
+  "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v4-vllm-dev-bundle_wave16-thread-qps4-s102.metrics.jsonl",
+  "samples": 43,
+  "vram_peak_mib": 15999.0
+}

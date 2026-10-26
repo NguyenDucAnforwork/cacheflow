@@ -1,0 +1,20 @@
+{
+  "reason": "Source audit: native HiCache decimal GB plus16-token round-up; LMCache CLI multipliesGiB. Historical within-stack comparisons remain matched; old cross-stack host labels corrected.",
+  "model_bytes_per_token": 147456,
+  "sglang_source": "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/mem_cache/pool_host/base.py:61",
+  "lmcache_source": "/venv/main/lib/python3.12/site-packages/lmcache/v1/distributed/config.py:561",
+  "regimes": [
+    {
+      "native_gb": 16,
+      "pool_bytes": 16000745472,
+      "lmcache_gib_flag": "14.90185546875"
+    },
+    {
+      "native_gb": 48,
+      "pool_bytes": 48002236416,
+      "lmcache_gib_flag": "44.70556640625"
+    }
+  ],
+  "historical_main_cpu_bytes": 17179869184,
+  "historical_sglang_nominal_cpu_bytes": 16000000000
+}

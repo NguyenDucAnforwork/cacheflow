@@ -41,7 +41,8 @@ if Path('.cacheflow-mode').read_text().strip()!='B1':
     assert lm_pid>0
     actual_lmcache_argv=[x.decode() for x in Path(f'/proc/{lm_pid}/cmdline').read_bytes().split(b'\0') if x]
     index=actual_lmcache_argv.index('--l1-size-gb')
-    assert float(actual_lmcache_argv[index+1])==runtime.get('cpu_l1_gib',16), 'CPU tier budget mismatch'
+    expected_bytes=runtime.get('cpu_l1_bytes') or runtime.get('cpu_l1_gib',16)*(1<<30)
+    assert int(float(actual_lmcache_argv[index+1])*(1<<30))==expected_bytes, 'CPU tier byte budget mismatch'
 public_env={}
 for item in Path(f'/proc/{pid}/environ').read_bytes().split(b'\0'):
     key,_,value=item.partition(b'=')

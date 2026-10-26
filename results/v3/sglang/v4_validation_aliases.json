@@ -1,0 +1,13 @@
+{
+  "reason": "Original shell policy variable escaped function scope, changing run labels. These8 complete runs retain correct LPM/guard runtime, gateway policy, fresh state and exact trace SHA. No raw files are renamed. Interrupted last union run is invalid; replacement has its canonical validate2 ID.",
+  "aliases": {
+    "v4-validate2-lpm-qps4-native-s101": "v4-validate-lpm-qps4-native-s101",
+    "v4-validate2-lpm-qps4-fifo-s101": "v4-validate-lpm-qps4-fifo-s101",
+    "v4-validate2-lpm-qps4-union-s101": "v4-validate-lpm-qps4-union-s101",
+    "v4-validate2-lpm-qps4-native-s102": "v4-validate-packing_reuse-qps4-native-s102",
+    "v4-validate2-lpm-qps4-fifo-s102": "v4-validate-packing_reuse-qps4-fifo-s102",
+    "v4-validate2-lpm-qps4-union-s102": "v4-validate-packing_reuse-qps4-union-s102",
+    "v4-validate2-lpm-qps4-native-s103": "v4-validate-fifo-qps4-native-s103",
+    "v4-validate2-lpm-qps4-fifo-s103": "v4-validate-fifo-qps4-fifo-s103"
+  }
+}

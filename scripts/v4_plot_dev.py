@@ -1,23 +1,33 @@
-"""Plot audited per-run latency tradeoffs; no request-level pseudo-replication."""
+"""Run-level dev repetitions; show median tradeoff alongside tail improvement."""
 import json
 from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import numpy as np
 
-runs=json.loads(Path('results/v3/sglang/v4_direct_repl_audit.json').read_text())['runs']
-by={r['run_id']:r for r in runs}
-fig,axes=plt.subplots(1,3,figsize=(11,3.6),sharex=True)
-for ax,metric in zip(axes,['p50_ms','p95_ms','p99_ms']):
-    for seed,color in zip([101,102,103],['#0072B2','#D55E00','#009E73']):
-        values=[by[f'v4-sgdirect-repl-{arm}-s{seed}'][metric]/1000 for arm in ['native','q4','q8']]
-        ax.plot(range(3),values,'o-',color=color,label=f'seed {seed}',lw=1.5)
-    ax.set_title(metric.replace('_ms','').upper()+' arrival TTFT')
-    ax.set_xticks(range(3),['Native LPM','Packing q4','Packing q8'],rotation=15)
-    ax.set_ylabel('seconds');ax.set_ylim(bottom=0);ax.grid(axis='y',alpha=.2)
-axes[0].legend(frameon=False,fontsize=8)
-fig.suptitle('DEV ONLY: Qwen3-4B / HiCache Direct / GPU KV 6 GiB / CPU 16 GiB\n60 unique QA, 3 arrival seeds at 4 QPS; tail gains have a median cost',fontsize=10)
-fig.tight_layout()
-for suffix in ['png','svg']:fig.savefig(f'results/v3/sglang/v4_direct_dev_tradeoff.{suffix}',dpi=160)
-svg=Path('results/v3/sglang/v4_direct_dev_tradeoff.svg')
+main=json.loads(Path('results/v3/v4_vllm_dev_audit.json').read_text())['runs']
+sg=json.loads(Path('results/v3/sglang/v4_validation_audit.json').read_text())['pairs']
+fig,axes=plt.subplots(1,2,figsize=(12,4.5),layout='constrained')
+ax=axes[0]
+arms=['fifo64','lpm_real16','bundle_wave16','packing_reuse64']
+for offset,key,label,color in [(-.17,'p50_ms','p50','#4477aa'),(.17,'p95_ms','p95','#cc6677')]:
+    values=[[r[key]/1000 for r in main if r['arm']==a] for a in arms]
+    x=np.arange(len(arms))+offset
+    ax.bar(x,[np.mean(v) for v in values],width=.32,label=label,color=color,alpha=.75)
+    for xx,v in zip(x,values):ax.scatter([xx]*len(v),v,s=14,color='#222222',zorder=3)
+ax.set_xticks(range(4),['FIFO64','GPU-LPM16','Bundle16','Union64'])
+ax.set_ylabel('Arrival TTFT (seconds)');ax.set_title('vLLM + LMCache: pressure dev');ax.legend()
+ax=axes[1]
+selected=[r for r in sg if '-qps4-native-' in r['a'] and '-lpm-qps4-' in r['canonical_b']]
+assert len(selected)==3
+for offset,key,label,color in [(-.17,'p50_ms_delta_pct','p50','#4477aa'),(.17,'p95_ms_delta_pct','p95','#cc6677')]:
+    ax.bar(np.arange(3)+offset,[r[key] for r in selected],width=.32,color=color,alpha=.75,label=label)
+ax.set_xticks(range(3),['Seed101','Seed102','Seed103']);ax.axhline(0,color='black',lw=.7)
+ax.set_ylabel('Union vs native LPM change (%)');ax.set_title('HiCache Direct + guard: median cost');ax.legend()
+for ax in axes:ax.grid(axis='y',alpha=.2);ax.set_axisbelow(True)
+fig.suptitle('Development only: 60 unique QA, three arrival schedules per contrast',fontsize=12)
+for suffix in ['png','svg']:fig.savefig(f'results/v3/figures/v4_dev_tradeoffs.{suffix}',dpi=160)
+
+svg=Path('results/v3/figures/v4_dev_tradeoffs.svg')
 svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')

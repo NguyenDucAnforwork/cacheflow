@@ -6,7 +6,7 @@
 
 CacheFlow nghiên cứu cách phục vụ nhiều câu hỏi dùng lại các lịch sử hội thoại dài. Thay vì prefill lại toàn bộ lịch sử mỗi lần, engine có thể tái dùng KV cache của prefix giống hệt về token. GPU nhanh nhưng bộ nhớ hạn chế; CPU RAM giữ được nhiều KV hơn nhưng cần chuyển lại qua PCIe. Project đặt câu hỏi: khi nào tier CPU thực sự giúp, khi nào scheduling có thể tránh việc tính/chuyển dữ liệu thừa, và lợi ích đó còn giữ được khi tính toàn bộ thời gian từ lúc request đến hay không?
 
-Stack baseline hiện tại là Qwen3-1.7B BF16 trên RTX 3090, vLLM làm inference engine, LMCache giữ CPU KV, và gateway Python điều khiển admission. LoCoMo cung cấp hội thoại thật và QA; arrival là workload được xây dựng có công bố seed, không phải trace production. Đóng góp V2 hiện mới là xác nhận cơ chế và phát hiện bẫy đo counter; V3 phải đi xa hơn bằng profiling và so sánh baseline mạnh.
+Stack V4 hiện tại là Qwen3-4B BF16 trên RTX 3090, vLLM làm inference engine, LMCache giữ CPU KV, và gateway Python điều khiển admission. LoCoMo cung cấp hội thoại thật và QA; arrival là workload được xây dựng có công bố seed, không phải trace production. V2 xác nhận cơ chế tiering và bẫy đo counter. V4 bổ sung admission theo hợp bộ nhớ prefix, đối chiếu vLLM/LMCache và SGLang/HiCache đã tune; full benchmark và audit cuối vẫn chưa hoàn tất.
 
 **Câu hỏi: Trong phỏng vấn, nên nói gì là phần mình làm?**
 
@@ -206,7 +206,7 @@ Băng thông đã đạt phần đáng kể giới hạn link; cải thiện ker
 
 **Câu hỏi: Model lớn hơn làm capacity planning thay đổi gì?**
 
-Model 4B đang chuẩn bị có 36 layer thay vì 28. Với 8 KV head, head dimension 128 và BF16, KV là 144 KiB/token; context 32K cần 4.5 GiB KV. Vì vậy không được bê nguyên budget 4 GiB từ model 1.7B rồi gọi OOM là method failure. Model và checkpoint phải được pin/verify trước khi dùng; tại checkpoint này weights 4B vẫn đang tải, chưa có kết quả GPU của nó.
+Model 4B hiện dùng có 36 layer thay vì 28. Với 8 KV head, head dimension 128 và BF16, KV là 144 KiB/token; context 32K cần 4.5 GiB KV. Vì vậy không được bê nguyên budget 4 GiB từ model 1.7B rồi gọi OOM là method failure. Model và checkpoint phải được pin/verify trước khi dùng; đoạn này ban đầu được viết trước khi tải xong, còn hiện tại cả ba shard đã được kiểm SHA và các lượt GPU dev/held-out đang được đánh giá.
 
 **Câu hỏi: Một baseline cache-aware mạnh có thể vẫn làm hại fairness như thế nào?**
 
@@ -280,7 +280,7 @@ LPM tối ưu mức trùng prefix tại thời điểm chọn, không trực ti�
 
 **Hỏi: Đã chạy được baseline của hệ thống khác trên chính dữ liệu này chưa?**
 
-Đã chạy upstream SGLang0.5.14 với HiCache/LPM trên cùng model 1.7B, prompt V3 và dev trace 60 QA. Một run hợp lệ đã kiểm tra token prompt, capture output và native metrics; p95 khoảng 6,94 giây ở seed101. Cấu hình có decode CUDA graphs, cache GPU37.440 token và CPU16 GiB. Đây là kết quả dev ban đầu, còn cần thêm seed và tune backend. Không gọi nó là toàn bộ Strata: việc dùng HiCache không tự động tái hiện mọi thành phần scheduler trong paper.
+Đã chạy upstream SGLang0.5.14 với HiCache/LPM trên cùng model 1.7B, prompt V3 và dev trace 60 QA. Một run hợp lệ đã kiểm tra token prompt, capture output và native metrics; p95 khoảng 6,94 giây ở seed101. Cấu hình có decode CUDA graphs, cache GPU37.440 token và CPU16 GB thập phân (đơn vị native HiCache). Đây là kết quả dev ban đầu, còn cần thêm seed và tune backend. Không gọi nó là toàn bộ Strata: việc dùng HiCache không tự động tái hiện mọi thành phần scheduler trong paper.
 
 **Hỏi: Vì sao không so trực tiếp counter giữa SGLang và vLLM?**
 
@@ -342,7 +342,7 @@ Có. Official evaluator của category5 chấm abstention bằng cụm “no inf
 
 ## 14. Kết quả 4B trên HiCache và cách giải thích tradeoff
 
-Các số dưới đây là **dev V4**, chưa phải confirmation hay toàn LoCoMo. Cùng60 QA được chạy theo ba arrival seed, model Qwen3-4B, GPU KV6GiB, CPU16GiB, FlashInfer/kernel, native LPM16, decode graphs. Gateway giữ nguyên native LPM bên trong. Nguồn: `results/v3/sglang/v4_gateway_dev_analysis.json` và `v4_gateway_dev_quality.json`.
+Các số dưới đây là **dev V4**, chưa phải confirmation hay toàn LoCoMo. Cùng60 QA được chạy theo ba arrival seed, model Qwen3-4B, GPU KV6GiB, CPU16GB thập phân, FlashInfer/kernel, native LPM16, decode graphs. Gateway giữ nguyên native LPM bên trong. Nguồn: `results/v3/sglang/v4_gateway_dev_analysis.json` và `v4_gateway_dev_quality.json`.
 
 | Policy | Mean p50 TTFT | Mean p95 TTFT | Mean p99 TTFT | Mean answerable F1 |
 | --- | ---: | ---: | ---: | ---: |
@@ -395,7 +395,7 @@ Chỉ được báo hook quan sát0 lời gọi trong cửa sổ đã instrument
 
 **Hỏi: Tại sao phải nâng CPU tier khi chạy toàn bộ1.986 QA?**
 
-Phân tích token của mười conversation cho thấy247.808token prefix dùng chung, làm tròn theo chunk256, tương đương34,03125GiB ở144KiB/token. CPU16GiB của dev không giữ được toàn bộ hotset đó. Cấu hình48GiB được chuẩn bị cho full benchmark và phải áp dụng giống nhau cho baseline/candidate. Phần QA suffix/output riêng còn cần bộ nhớ hoặc bị eviction;34GiB không phải peak toàn hệ thống. Đổi host budget tạo một regime khác: không được gán mọi khác biệt dev/full cho số conversation hoặc scheduler.
+Phân tích token của mười conversation cho thấy247.808token prefix dùng chung, làm tròn theo chunk256, tương đương34,03125GiB ở144KiB/token. CPU native16GB của dev không giữ được toàn bộ hotset đó. Cấu hình native48GB (payload sau làm tròn48.002.236.416byte, khoảng44,706GiB) được chuẩn bị cho full benchmark và phải áp dụng giống nhau cho baseline/candidate. Phần QA suffix/output riêng còn cần bộ nhớ hoặc bị eviction;34GiB không phải peak toàn hệ thống. Đổi host budget tạo một regime khác: không được gán mọi khác biệt dev/full cho số conversation hoặc scheduler.
 
 **Hỏi: Vì sao không tăng GPU KV cho vừa tất cả?**
 
@@ -486,3 +486,36 @@ Trên dev seed101, ba arm đo chính thức đều60/60 thành công. Native gua
 **Hỏi: Vì sao không gọi baseline này là Strata rồi công bố thắng paper?**
 
 Paper còn có transient nodes xuyên qua in-queue/in-flight, balanced-batch formation và bubble filling. Guard ở đây chỉ xử lý trùng compute giữa các request được chọn trong cùng batch, dùng Python và giữ native LPM. Hiệu năng trên RTX3090/LoCoMo của component adaptation không đồng nghĩa hiệu năng hệ thống Strata đầy đủ. Tên baseline, component scope, source/env hashes và những phần chưa tái hiện đều phải công khai.
+
+
+## 18. GB, GiB và một phép so sánh có thể sai từ cấu hình
+
+**Hỏi: Hai engine đều ghi CPU cache16, tại sao chưa chắc cùng ngân sách?**
+
+**Đáp:** HiCache chuyển16 thành16 tỷ byte, chia cho byte/token rồi làm tròn lên một page16token. LMCache nhận16 theoGiB, tức16×2^30byte. Với Qwen3-4B144KiB/token, pool native16GB thực là16.000.745.472byte; flag LMCache khớp là14,90185546875GiB. Chênh lệch đơn vị khoảng7% có thể đổi eviction, hit rate và latency. Bởi vậy phải kiểm mã nguồn parser và argv thực tế, không chỉ tên flag trong script.
+
+Các phép so baseline/candidate trong từng engine dev dùng cùng ngân sách nên vẫn có giá trị. Tuy nhiên không được gọi ngân sách CPU của hai engine dev lịch sử là bằng nhau. Trước held-out, revision1 đã sửa cấu hình bằng byte; thuật toán/cap/bypass giữ nguyên. Full dùng48.002.236.416byte ở cả hai stack. Seal revision0 và trace CPU cũ được giữ lại để audit; chúng chưa được chạy GPU.
+
+**Hỏi: Vì sao không sửa trực tiếp cấu hình sau khi nhìn held-out?**
+
+**Đáp:** Khi đã dùng kết quả để chọn phương pháp, tập đó trở thành dev. Chúng tôi khóa source, prompt, ngân sách, cap64 và bypass8 bằng SHA trước lần chạy GPU đầu của conv43/44. Nếu kết quả xấu, phải báo kết quả xấu; một phương pháp sửa tiếp cần protocol và tập xác nhận mới.
+
+## 19. Kết quả tốt phải đi kèm điều kiện áp dụng
+
+**Hỏi: Số liệu dev mạnh nhất hiện tại là gì?**
+
+**Đáp:** Trên vLLM/LMCache,18 lượt đo gồm6 policy×3 arrival seed,60 QA duy nhất, tất cả1080 request thành công. P95 trung bình FIFO64/bundle16/union64 lần lượt36,679/27,948/19,615giây. Union p50=15,463giây so với FIFO64=25,472giây. CPU KV engine thực sự tiêu thụ giảm từ khoảng918.373 xuống75.349token/run. Đây là token-source accounting; chưa được đổi trực tiếp thành byte DMA vì engine có thể đọc thêm chunk hoặc dùng đường truyền khác.
+
+Trên SGLang/HiCache Direct đã bật cùng guard cho mọi arm,33 lượt validation/1668request thành công. P95 union so với nativeLPM giảm11,27–20,62% theo seed; nativeDFS cũng có tail kém hơn union trong dev này. Nhưng median tăng đáng kể: policy có thể trì hoãn nhóm nhanh để nhóm bị pressure được tiến lên. Low-reuse chỉ tăng p95 tối đa khoảng0,23%, GPU-fit khoảng1,19%; ở2QPS có seed tăng p95 tới11,87%. Tôi sẽ trình bày cả các điểm này thay vì nói scheduler luôn thắng.
+
+**Hỏi: Ba seed có nghĩa là180 câu hỏi độc lập?**
+
+**Đáp:** Không. Vẫn60 câu hỏi, chỉ đổi lịch đến và thứ tự chạy policy. Phải giữ paired contrast theo seed và conversation. Ba lần thắng giúp đánh giá độ ổn định serving, không tạo thêm độ đa dạng ngữ nghĩa. Held-out40QA và full1986QA vẫn cần được báo riêng; full còn chứa lại dev/held-out nên không phải1986 câu xác nhận độc lập.
+
+**Hỏi: CUDA trace ít memcpy có chứng minh ít PCIe traffic không?**
+
+**Đáp:** Chưa. Trong diagnostic CPU-hot Direct, counter ghi238.400token được promote, tương ứng35.153.510.400byte KV payload cho mỗi phase12request. Nhưng trace GPU-only không thể hiện đầy đủ bulk transfer dưới dạng event memcpy thông thường. Direct có đường batched-copy; công cụ có thể thiếu coverage API đó. Cần đối chiếu CUDA-event hook và counter trước khi tính overlap. Không được lấy thời gian launch trên CPU cộng duration CUDA rồi gán thành một khoảng GPU tuyệt đối: chúng thuộc hai clock khác nhau.
+
+**Hỏi: Làm sao biết profiler không phá kết quả?**
+
+**Đáp:** Chạy off/on/off cùng prompt và trạng thái CPU-hot, tắt stack/shape, chỉ thu hoạt động GPU. P95 khoảng492/492/493ms, cùng238.400token promote và254token compute mỗi phase. Chênh lệch nhỏ cho thấy overhead thấp trong diagnostic này; không chứng minh profiler hoàn toàn không ảnh hưởng mọi workload. Các lượt này chỉ sinh4token để soi đường truyền, tách khỏi QA cap96 và bảng latency chính.

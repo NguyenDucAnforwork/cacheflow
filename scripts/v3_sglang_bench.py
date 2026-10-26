@@ -40,7 +40,7 @@ def main():
     base=Path('results/v3/sglang');raw=Path('results/v3/raw/sglang')
     base.mkdir(parents=True,exist_ok=True);raw.mkdir(parents=True,exist_ok=True)
     setup=base/f'{args.run_id}.setup.json'
-    assert not setup.exists(), 'run ID already exists'
+    if setup.exists():raise FileExistsError('run ID already exists: '+args.run_id)
     gateway_reset=None
     if args.gateway_policy:
         with httpx.Client(timeout=10) as client:
@@ -183,7 +183,7 @@ def main():
 if __name__=='__main__':
     try:main()
     except Exception as exc:
-        if len(sys.argv)>1 and re.fullmatch(r'[A-Za-z0-9._-]+',sys.argv[1]):
+        if not isinstance(exc,FileExistsError) and len(sys.argv)>1 and re.fullmatch(r'[A-Za-z0-9._-]+',sys.argv[1]):
             path=Path('results/v3/sglang')/(sys.argv[1]+'.invalid');path.parent.mkdir(parents=True,exist_ok=True)
             path.write_text('Run failed integrity/replay checks: '+repr(exc)+'\n')
         raise

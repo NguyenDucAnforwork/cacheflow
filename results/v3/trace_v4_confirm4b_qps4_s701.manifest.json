@@ -1,0 +1,30 @@
+{
+  "abstention_style": "official",
+  "arrival": "interleaved",
+  "excluded": {
+    "context_too_long": 0,
+    "no_evidence": 0
+  },
+  "max_model_len": 32768,
+  "method_freeze_sha256": "e0877762debd93717e4cb3433578b0d3017b022962415245a0ff8b334c81c998",
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "output_tokens": 96,
+  "parent_trace_sha256": "0a75c2878ed35847713dddd0e2af05b3127ad01b55838df121cc08a121eb573d",
+  "prompt_version": "locomo-qwen-concise-v4",
+  "protocol": "p_qa",
+  "qps": 4,
+  "requests": 40,
+  "retimed_from_trace_sha256": "7949349fb57e5b0494d260b349aada1f3926069759201911bb65599086c44163",
+  "retiming": "Same random.expovariate arrival generator; prompt/order unchanged",
+  "scope": "Prospective conversation-disjoint V4 confirmation; CPU preparation only",
+  "seed": 701,
+  "selected_samples": [
+    "conv-43",
+    "conv-44"
+  ],
+  "session_gap_ms": null,
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "system_instruction": "Answer the question using only the supplied conversation. Return only a concise answer, without explanation, reasoning, repetition, or restating the question. If the answer is not present in the conversation, answer \"No information available.\".",
+  "thinking": false,
+  "trace_sha256": "7f332373ad4bcd571c40e4a483dabfbf3aa2b8152c799564094e834b6ec076e5"
+}

@@ -1,0 +1,232 @@
+{
+  "scope": "Dev only;60 unique QA repeated3 arrival seeds; no individual-request independence assumption; CPU source tokens are not direct DMA bytes",
+  "aggregate": [
+    {
+      "arm": "fifo16",
+      "p50_ms": 25427.027541333333,
+      "p95_ms": 36702.86397286667,
+      "p99_ms": 37492.9071536,
+      "computed_tokens": 71750.0,
+      "consumed_cpu_tokens": 918373.3333333334,
+      "f1": 0.30794448621380793,
+      "budget_hits": 6
+    },
+    {
+      "arm": "fifo64",
+      "p50_ms": 25471.909580166666,
+      "p95_ms": 36678.77341035,
+      "p99_ms": 37455.93730744,
+      "computed_tokens": 71750.0,
+      "consumed_cpu_tokens": 918373.3333333334,
+      "f1": 0.30794448621380793,
+      "budget_hits": 6
+    },
+    {
+      "arm": "lpm_real16",
+      "p50_ms": 22426.145039833336,
+      "p95_ms": 35671.51036085,
+      "p99_ms": 36967.57504848333,
+      "computed_tokens": 69542.0,
+      "consumed_cpu_tokens": 429056.0,
+      "f1": 0.3062873412145577,
+      "budget_hits": 9
+    },
+    {
+      "arm": "bundle_wave16",
+      "p50_ms": 19595.8206755,
+      "p95_ms": 27948.3811048,
+      "p99_ms": 28461.619383456666,
+      "computed_tokens": 67286.0,
+      "consumed_cpu_tokens": 307818.6666666667,
+      "f1": 0.3063021166282693,
+      "budget_hits": 8
+    },
+    {
+      "arm": "dhas16",
+      "p50_ms": 25577.93718,
+      "p95_ms": 36903.654631150006,
+      "p99_ms": 37711.83632598667,
+      "computed_tokens": 71750.0,
+      "consumed_cpu_tokens": 918378.6666666666,
+      "f1": 0.30794448621380793,
+      "budget_hits": 6
+    },
+    {
+      "arm": "packing_reuse64",
+      "p50_ms": 15462.7242145,
+      "p95_ms": 19615.295616116666,
+      "p99_ms": 20288.91755266,
+      "computed_tokens": 65616.66666666667,
+      "consumed_cpu_tokens": 75349.33333333333,
+      "f1": 0.3092990878563733,
+      "budget_hits": 9
+    }
+  ],
+  "paired_contrasts": [
+    {
+      "a": "v4-vllm-dev-fifo16-thread-qps4-s101",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s101",
+      "seed": 101,
+      "p50_ms_delta_pct": -38.340965777573885,
+      "p95_ms_delta_pct": -47.69130263153439,
+      "p99_ms_delta_pct": -46.967171874284844,
+      "consumed_cpu_tokens_delta_pct": -93.24192480574236,
+      "f1_delta": 0.0013000207458792046,
+      "hash_mismatches": 9
+    },
+    {
+      "a": "v4-vllm-dev-fifo64-thread-qps4-s101",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s101",
+      "seed": 101,
+      "p50_ms_delta_pct": -38.656417175496614,
+      "p95_ms_delta_pct": -47.62162878349855,
+      "p99_ms_delta_pct": -46.961551543674574,
+      "consumed_cpu_tokens_delta_pct": -93.2420425442952,
+      "f1_delta": 0.0013000207458792046,
+      "hash_mismatches": 7
+    },
+    {
+      "a": "v4-vllm-dev-lpm_real16-thread-qps4-s101",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s101",
+      "seed": 101,
+      "p50_ms_delta_pct": -33.0320952422211,
+      "p95_ms_delta_pct": -43.299717740472445,
+      "p99_ms_delta_pct": -43.24879338404528,
+      "consumed_cpu_tokens_delta_pct": -85.5347553699284,
+      "f1_delta": 0.00298445619347254,
+      "hash_mismatches": 8
+    },
+    {
+      "a": "v4-vllm-dev-bundle_wave16-thread-qps4-s101",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s101",
+      "seed": 101,
+      "p50_ms_delta_pct": -22.74943508839905,
+      "p95_ms_delta_pct": -27.53166503262706,
+      "p99_ms_delta_pct": -25.5062675079613,
+      "consumed_cpu_tokens_delta_pct": -80.7388648890213,
+      "f1_delta": 0.002887809434731714,
+      "hash_mismatches": 12
+    },
+    {
+      "a": "v4-vllm-dev-dhas16-thread-qps4-s101",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s101",
+      "seed": 101,
+      "p50_ms_delta_pct": -39.26931923844563,
+      "p95_ms_delta_pct": -48.3005304190249,
+      "p99_ms_delta_pct": -47.58069527460469,
+      "consumed_cpu_tokens_delta_pct": -93.24192480574236,
+      "f1_delta": 0.0013000207458792046,
+      "hash_mismatches": 9
+    },
+    {
+      "a": "v4-vllm-dev-fifo16-thread-qps4-s102",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s102",
+      "seed": 102,
+      "p50_ms_delta_pct": -38.66946353224978,
+      "p95_ms_delta_pct": -45.51925703308732,
+      "p99_ms_delta_pct": -43.742385545853246,
+      "consumed_cpu_tokens_delta_pct": -89.4978919126102,
+      "f1_delta": 0.0013818920909084431,
+      "hash_mismatches": 8
+    },
+    {
+      "a": "v4-vllm-dev-fifo64-thread-qps4-s102",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s102",
+      "seed": 102,
+      "p50_ms_delta_pct": -38.651729256641765,
+      "p95_ms_delta_pct": -45.40927873270545,
+      "p99_ms_delta_pct": -43.63082055668153,
+      "consumed_cpu_tokens_delta_pct": -89.4978919126102,
+      "f1_delta": 0.0013818920909084431,
+      "hash_mismatches": 8
+    },
+    {
+      "a": "v4-vllm-dev-lpm_real16-thread-qps4-s102",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s102",
+      "seed": 102,
+      "p50_ms_delta_pct": -28.073628743854627,
+      "p95_ms_delta_pct": -43.88334114884276,
+      "p99_ms_delta_pct": -43.24916604584884,
+      "consumed_cpu_tokens_delta_pct": -77.5208830548926,
+      "f1_delta": 0.0030663275385017785,
+      "hash_mismatches": 10
+    },
+    {
+      "a": "v4-vllm-dev-bundle_wave16-thread-qps4-s102",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s102",
+      "seed": 102,
+      "p50_ms_delta_pct": -20.37897373567138,
+      "p95_ms_delta_pct": -29.173823002463283,
+      "p99_ms_delta_pct": -27.51847766769592,
+      "consumed_cpu_tokens_delta_pct": -69.10935738444194,
+      "f1_delta": 0.003051552124790191,
+      "hash_mismatches": 10
+    },
+    {
+      "a": "v4-vllm-dev-dhas16-thread-qps4-s102",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s102",
+      "seed": 102,
+      "p50_ms_delta_pct": -38.85646505733573,
+      "p95_ms_delta_pct": -45.53314025266737,
+      "p99_ms_delta_pct": -43.832666457861194,
+      "consumed_cpu_tokens_delta_pct": -89.4980748793533,
+      "f1_delta": 0.0013818920909084431,
+      "hash_mismatches": 6
+    },
+    {
+      "a": "v4-vllm-dev-fifo16-thread-qps4-s103",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s103",
+      "seed": 103,
+      "p50_ms_delta_pct": -40.520854810354656,
+      "p95_ms_delta_pct": -46.40800825582853,
+      "p99_ms_delta_pct": -46.927180172437296,
+      "consumed_cpu_tokens_delta_pct": -92.6462133486646,
+      "f1_delta": 0.0013818920909084431,
+      "hash_mismatches": 6
+    },
+    {
+      "a": "v4-vllm-dev-fifo64-thread-qps4-s103",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s103",
+      "seed": 103,
+      "p50_ms_delta_pct": -40.556772323723564,
+      "p95_ms_delta_pct": -46.4878893143991,
+      "p99_ms_delta_pct": -46.878851169838484,
+      "consumed_cpu_tokens_delta_pct": -92.6460852294505,
+      "f1_delta": 0.0013818920909084431,
+      "hash_mismatches": 7
+    },
+    {
+      "a": "v4-vllm-dev-lpm_real16-thread-qps4-s103",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s103",
+      "seed": 103,
+      "p50_ms_delta_pct": -31.980173705243487,
+      "p95_ms_delta_pct": -47.79405393392431,
+      "p99_ms_delta_pct": -48.75666238615102,
+      "consumed_cpu_tokens_delta_pct": -84.25939737470168,
+      "f1_delta": 0.00298445619347254,
+      "hash_mismatches": 8
+    },
+    {
+      "a": "v4-vllm-dev-bundle_wave16-thread-qps4-s103",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s103",
+      "seed": 103,
+      "p50_ms_delta_pct": -20.134780398654595,
+      "p95_ms_delta_pct": -32.70992910439852,
+      "p99_ms_delta_pct": -33.005779949752764,
+      "consumed_cpu_tokens_delta_pct": -76.63178873941206,
+      "f1_delta": 0.003051552124790191,
+      "hash_mismatches": 12
+    },
+    {
+      "a": "v4-vllm-dev-dhas16-thread-qps4-s103",
+      "b": "v4-vllm-dev-packing_reuse64-thread-qps4-s103",
+      "seed": 103,
+      "p50_ms_delta_pct": -40.514089576017184,
+      "p95_ms_delta_pct": -46.62500319343702,
+      "p99_ms_delta_pct": -47.13330622557043,
+      "consumed_cpu_tokens_delta_pct": -92.6462133486646,
+      "f1_delta": 0.0013818920909084431,
+      "hash_mismatches": 6
+    }
+  ]
+}

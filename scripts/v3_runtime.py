@@ -20,6 +20,7 @@ def load():
     assert 1<=c.get('max_queue',64)<=4096
     assert 0<=c.get('max_bypasses',4)<=4096
     assert c.get('cpu_l1_gib',16) in [16,32,48,64]
+    assert c.get('cpu_l1_bytes') is None or 0<c['cpu_l1_bytes']<2**53
     c.setdefault('model_key', 'qwen3-1.7b')
     return c
 
@@ -43,6 +44,7 @@ def main():
     p.add_argument('--batch-invariant', action='store_true')
     p.add_argument('--upstream')
     p.add_argument('--cpu-l1-gib',type=int,choices=[16,32,48,64],default=16)
+    p.add_argument('--cpu-l1-bytes',type=int)
     p.add_argument('--max-queue',type=int)
     p.add_argument('--prepare-in-thread',action=argparse.BooleanOptionalAction,default=None)
     args = p.parse_args()
@@ -57,6 +59,7 @@ def main():
         c['batch_invariant'] = args.batch_invariant
         c['upstream'] = args.upstream or 'http://127.0.0.1:8000'
         c['cpu_l1_gib'] = args.cpu_l1_gib
+        c['cpu_l1_bytes'] = args.cpu_l1_bytes
         c['max_queue'] = args.max_queue if args.max_queue is not None else 64
         c['prepare_in_thread'] = bool(args.prepare_in_thread)
         if args.command == 'gateway':

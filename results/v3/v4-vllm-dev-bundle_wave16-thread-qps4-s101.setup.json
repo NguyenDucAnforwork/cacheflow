@@ -253,5 +253,25 @@
       "subscriber_error": null
     }
   },
-  "captured_utc": "2026-10-26T11:21:06.317302+00:00"
+  "captured_utc": "2026-10-26T11:21:06.317302+00:00",
+  "gateway_after": {
+    "policy": "bundle_wave",
+    "queue": 0,
+    "active": 0,
+    "completed_history_requests": 60,
+    "prepare_mode": "thread",
+    "decision_stats": null,
+    "residency": {
+      "known": true,
+      "sequence": 632,
+      "gaps": 0,
+      "blocks": 2715,
+      "events": 21846,
+      "batches": 116,
+      "last_event_age_ms": 2883.773183,
+      "subscriber_running": true,
+      "hash_contract_verified": true,
+      "subscriber_error": null
+    }
+  }
 }

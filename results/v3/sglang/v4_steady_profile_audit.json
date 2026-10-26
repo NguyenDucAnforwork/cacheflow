@@ -1,0 +1,60 @@
+{
+  "scope": "Direct CPU-hot diagnostic; closed-loop12 requests/phase,4 generated tokens; not main performance",
+  "setup_sha256": "36518c8dd558c457ae7a71a77e17b6a63c40892a0eae41fdf1e085e0a3865bf3",
+  "trace_sha256": "f82de3014c89a10287ba4d1791450a0b0b8960db114aa4e13017a11abfba9a03",
+  "phases": [
+    {
+      "phase": "off_before",
+      "requests": 12,
+      "host_promoted_tokens": 238400.0,
+      "expected_payload_bytes": 35153510400,
+      "cuda_event_payload_bytes": 35153510400,
+      "summed_load_stream_span_ms": 2958.736328125,
+      "median_effective_GB_s": 11.878513822171303,
+      "ttft_p50_ms": 342.58837300000005,
+      "ttft_p95_ms": 491.99785075
+    },
+    {
+      "phase": "gpu_profile",
+      "requests": 12,
+      "host_promoted_tokens": 238400.0,
+      "expected_payload_bytes": 35153510400,
+      "cuda_event_payload_bytes": 35153510400,
+      "summed_load_stream_span_ms": 2952.015335083008,
+      "median_effective_GB_s": 11.900010532573777,
+      "ttft_p50_ms": 343.640209,
+      "ttft_p95_ms": 491.98097125000004
+    },
+    {
+      "phase": "off_after",
+      "requests": 12,
+      "host_promoted_tokens": 238400.0,
+      "expected_payload_bytes": 35153510400,
+      "cuda_event_payload_bytes": 35153510400,
+      "summed_load_stream_span_ms": 2957.8936157226562,
+      "median_effective_GB_s": 11.896907536496895,
+      "ttft_p50_ms": 344.2476725,
+      "ttft_p95_ms": 493.3541679
+    }
+  ],
+  "profiler_p95_delta_vs_off_mean_pct": -0.14107406527713584,
+  "trace_categories": {
+    "overhead": 275,
+    "cuda_runtime": 31971,
+    "ac2g": 69273,
+    "gpu_memcpy": 603,
+    "kernel": 32303,
+    "gpu_memset": 4072,
+    "cuda_driver": 324,
+    "": 58,
+    "Trace": 1
+  },
+  "visible_h2d_copy_events": 240,
+  "visible_h2d_copy_bytes": 22864,
+  "visible_h2d_sum_duration_ms": 0.8102079999999999,
+  "visible_h2d_bytes_fraction_of_expected_kv": 6.50404461456003e-07,
+  "invalid_cuda_runtime_events": 444,
+  "dma_model_overlap": null,
+  "overlap_unavailable_reason": "Ordinary gpu_memcpy coverage accounts for <1% of independently verified KV payload. CPU launch and CUDA elapsed duration cannot locate the copy on the GPU absolute timeline.",
+  "interpretation": "CUDA events measure load-stream span, including enqueue gaps/dependencies between events; not pure PCIe busy time. Small off/on/off difference is diagnostic-specific. Batched Direct copy API is a possible coverage cause, not proven by INVALID labels alone."
+}
