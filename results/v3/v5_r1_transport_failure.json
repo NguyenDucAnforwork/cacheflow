@@ -1,0 +1,14 @@
+{
+  "run_id": "v5-dev-lpm-g6-qps4-fifo-s102",
+  "performance_valid": false,
+  "attempts": 60,
+  "successes": 59,
+  "errors": 1,
+  "status": "exception:ReadError",
+  "latency_to_failure_ms": 6.535569,
+  "http_status": null,
+  "gateway_rows": 59,
+  "failed_request_reached_gateway_log": false,
+  "cause_status": "Local replay-to-gateway ReadError before gateway log; exact socket cause unproven. Fresh-client-connection control is a mitigation to validate, not a proven root cause.",
+  "revision2": "All arms rerun under new IDs with client keepalive0; same model/prompt/method/caps/budgets; no request retry or stitching"
+}

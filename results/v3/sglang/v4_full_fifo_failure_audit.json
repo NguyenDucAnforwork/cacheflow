@@ -1,0 +1,67 @@
+{
+  "run_id": "v4c1-full-sg-g6-qps4-fifo-s901",
+  "performance_valid": false,
+  "scope": "All1986 attempted QA; errors retained. No success-only latency quantiles reported.",
+  "requests": 1986,
+  "successes": 1960,
+  "errors": 26,
+  "statuses": {
+    "ok": 1960,
+    "exception:ReadTimeout": 26
+  },
+  "duration_s": 1051.185618433,
+  "trace_sha256": "0a75c2878ed35847713dddd0e2af05b3127ad01b55838df121cc08a121eb573d",
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "prompt_version": "locomo-qwen-concise-v4",
+  "invalid_reason": "Run failed integrity/replay checks: AssertionError()\n",
+  "failure_completion_latency_ms_range": [
+    600353.898129,
+    839976.72398
+  ],
+  "failed_http_status_counts": {
+    "None": 26
+  },
+  "by_conversation": {
+    "conv-26": {
+      "requests": 199,
+      "errors": 0
+    },
+    "conv-30": {
+      "requests": 105,
+      "errors": 26
+    },
+    "conv-41": {
+      "requests": 193,
+      "errors": 0
+    },
+    "conv-42": {
+      "requests": 260,
+      "errors": 0
+    },
+    "conv-43": {
+      "requests": 242,
+      "errors": 0
+    },
+    "conv-44": {
+      "requests": 158,
+      "errors": 0
+    },
+    "conv-47": {
+      "requests": 190,
+      "errors": 0
+    },
+    "conv-48": {
+      "requests": 239,
+      "errors": 0
+    },
+    "conv-49": {
+      "requests": 196,
+      "errors": 0
+    },
+    "conv-50": {
+      "requests": 204,
+      "errors": 0
+    }
+  },
+  "inference": "PoolTimeout is a client connection-pool acquisition timeout, not an engine HTTP error. Other failures require separate diagnosis. This report preserves the failure without rerunning jobs or changing the method."
+}

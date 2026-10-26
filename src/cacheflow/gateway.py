@@ -79,7 +79,7 @@ def create_app(config_path: str | None = None) -> FastAPI:
     upstream = settings.get("upstream", "http://127.0.0.1:8000").rstrip("/")
     # Fresh local connections avoid reusing sockets closed during long admission pauses.
     # No retries: a failed POST is always reported and invalidates the run.
-    client = httpx.AsyncClient(timeout=httpx.Timeout(connect=30, read=600, write=30, pool=30),
+    client = httpx.AsyncClient(timeout=httpx.Timeout(connect=30, read=float(settings.get("http_read_timeout_s",600)), write=30, pool=30),
         limits=httpx.Limits(max_connections=128,
             max_keepalive_connections=settings.get('upstream_keepalive_connections',128)))
     app = FastAPI(title="CacheFlow Gateway")
@@ -105,6 +105,7 @@ def create_app(config_path: str | None = None) -> FastAPI:
     async def health() -> dict[str, Any]:
         return {"policy": scheduler.policy, "queue": scheduler.queue_depth, "active": scheduler.active_count,
                 'completed_history_requests': len(scheduler._recent),
+                'upstream_read_timeout_s': client.timeout.read,
                 'prepare_mode': 'thread' if prepare_pool else 'inline',
                 'decision_stats': scheduler.decision_stats() if hasattr(scheduler, 'decision_stats') else None,
                 'residency': subscriber.stats() if subscriber else None}

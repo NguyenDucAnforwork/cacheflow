@@ -1,0 +1,37 @@
+{
+  "abstention_style": "official_consistent_system_and_user",
+  "arrival": "low_reuse",
+  "excluded": {
+    "context_too_long": 0,
+    "no_evidence": 0
+  },
+  "input_token_delta_max": 1,
+  "input_token_delta_min": 1,
+  "max_model_len": 32768,
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "output_tokens": 96,
+  "parent_method_freeze_sha256": "aed9f4901e1c2eb82bf2d5e4d0a27d51447e458ab765c6080e43491cf5b264a6",
+  "parent_v4_trace_sha256": "4e1cfbb8362b3ef4c6508f959c87b3d668a3ab78d1e324d259b41604db1d187b",
+  "prompt_repair": "Only canonical user instruction footer changes; conversation/QA/order/offset/output budget unchanged",
+  "prompt_version": "locomo-qwen-concise-v5",
+  "protocol": "p_qa",
+  "qps": 4.0,
+  "renderer_sha256": "1ba44b62cb6e359d049f2b3a273036fec73ba682ee8fd541bf26ecafa9680587",
+  "requests": 8,
+  "seed": 102,
+  "selected_samples": [
+    "conv-26",
+    "conv-30",
+    "conv-41",
+    "conv-42",
+    "conv-47",
+    "conv-48",
+    "conv-49",
+    "conv-50"
+  ],
+  "session_gap_ms": null,
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "system_instruction": "Answer the question using only the supplied conversation. Return only a concise answer, without explanation, reasoning, repetition, or restating the question. If the answer is not present in the conversation, answer \"No information available.\".",
+  "thinking": false,
+  "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822"
+}

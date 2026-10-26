@@ -8,6 +8,7 @@ import csv
 import hashlib
 import gzip
 import json
+import os
 import subprocess
 import sys
 import time
@@ -73,8 +74,8 @@ async def replay(args: argparse.Namespace) -> dict:
     base_ns = time.monotonic_ns() + 2_000_000_000
     records: list[dict] = []
     outputs: list[dict] = []
-    timeout = httpx.Timeout(connect=30, read=600, write=30, pool=600)
-    async with httpx.AsyncClient(timeout=timeout, limits=httpx.Limits(max_connections=256)) as client:
+    timeout = httpx.Timeout(connect=30, read=float(os.environ.get("CACHEFLOW_REQUEST_READ_TIMEOUT_S",600)), write=30, pool=float(os.environ.get("CACHEFLOW_REQUEST_POOL_TIMEOUT_S",600)))
+    async with httpx.AsyncClient(timeout=timeout, limits=httpx.Limits(max_connections=256, max_keepalive_connections=int(os.environ.get("CACHEFLOW_CLIENT_KEEPALIVE_CONNECTIONS",20)))) as client:
         async def send(row: V2TraceRow) -> None:
             due_ns = base_ns + row.offset_ms * 1_000_000
             delay = (due_ns - time.monotonic_ns()) / 1e9
@@ -166,6 +167,8 @@ async def replay(args: argparse.Namespace) -> dict:
     duration_s = (max(record["complete_ns"] for record in records) - base_ns) / 1e9
     summary = {
         "run_id": args.run_id, "git_sha": git_sha, "trace_sha256": trace_sha,
+        "request_read_timeout_s": timeout.read, "request_pool_timeout_s": timeout.pool,
+        "client_keepalive_connections": int(os.environ.get("CACHEFLOW_CLIENT_KEEPALIVE_CONNECTIONS",20)),
         "started_utc": started_utc, "finished_utc": datetime.now(timezone.utc).isoformat(),
         "mode": args.mode, "policy": args.policy, "gpu_kv_bytes": args.gpu_kv_bytes,
         "engine_pid": args.engine_pid, "lmcache_pid": args.lmcache_pid,

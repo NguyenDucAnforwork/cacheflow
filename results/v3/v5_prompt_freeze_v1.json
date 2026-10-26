@@ -1,0 +1,61 @@
+{
+  "status": "frozen_prompt_and_timeout_repair_not_completion",
+  "frozen_utc": "2026-10-26T13:57:48.568454+00:00",
+  "parent_method_freeze_sha256": "aed9f4901e1c2eb82bf2d5e4d0a27d51447e458ab765c6080e43491cf5b264a6",
+  "prompt_version": "locomo-qwen-concise-v5",
+  "method_parameters": {
+    "policy": "packing_reuse",
+    "max_inflight": 64,
+    "max_bypasses": 8,
+    "block_tokens": 16,
+    "group_min_tokens": 1024,
+    "output_budget": 96,
+    "safety_tokens": 16,
+    "prepare_workers": 1,
+    "prepare_in_thread": true,
+    "keepalive_connections": 0
+  },
+  "transport": {
+    "client_read_s": 3600,
+    "client_pool_s": 3600,
+    "gateway_read_s": 3600
+  },
+  "semantic_holdout_status": "Conversations previously exposed under V4; method parameters unchanged; protocol-repair repeats, not fresh semantic confirmation",
+  "source_sha256": {
+    "src/cacheflow/v5_prompt.py": "1ba44b62cb6e359d049f2b3a273036fec73ba682ee8fd541bf26ecafa9680587",
+    "scripts/v5_prepare_trace.py": "e20555d1e094f27406c930ed4db2578f69cdc54612531a0b4e55ecf9fe1a925e",
+    "scripts/v5_prepare_matrix.py": "2949c549fddc7a9ae83c46bdde15fd6879f5e722dfcff97017f698ee6d7ecbc5",
+    "scripts/v5_validate.py": "e3805728d8b7c1354fabab364ec239cd58769dd9748e72d2eac5075a58a6987a",
+    "scripts/v5_confirm.py": "dee25074bf45783b12e36db2a4c0ad588fc5d031ab88642e1a786d5c2d448a97",
+    "scripts/v5_full.py": "c15f2b3ccb0cb192c008f70905b17afc228c383d29aeb2ab1a6112c303cc9862",
+    "scripts/v5_verify.py": "1bb0cb82578b7ba85eea4aecd0fd880eddfc69917ff978540838738e1c4c15b9",
+    "scripts/v5_method_proof.py": "ce655c6963f707ff9f5e959d6176c58c7d2a208c58740ecc871f7a425b0b8864",
+    "scripts/v4_confirm.py": "b46ebdcdc22b055aceae239b175a9a9dbce040ee3bdc81d5d08a2af9c20b0098",
+    "src/cacheflow/gateway.py": "0c05c0b19f5aabdd5a999122ac1a6c43883cf80538aecad753cda70421508890",
+    "src/cacheflow/v2_replay.py": "d0e8c102ca239eb9ea93054e86e716ca012462fc495308c4aaeb57d82d9d426b"
+  },
+  "input_manifest_sha256": {
+    "results/v3/trace_v5-abstention12-qps4-s101.manifest.json": "61a63fa0b2def5bd7a86e907a4bbfaf9983e6683fe9fec0c7b153d5b741c1d16",
+    "results/v3/trace_v5-abstention12-qps4-s102.manifest.json": "5b954195dbee4baac624ed75aca2cf24c22ab4d62af0c35db9b5532193641efb",
+    "results/v3/trace_v5-abstention12-qps4-s103.manifest.json": "54a2e82248ce9c8045d25f6bb9cb2f037865a9236c9cc9aa0a506fb16e0ba36c",
+    "results/v3/trace_v5-confirm4b-qps2-s701.manifest.json": "d5940c301604fa36cd57dcda21760fb4a694700d7e0332b9296ba1d5d3d78e4b",
+    "results/v3/trace_v5-confirm4b-qps2-s702.manifest.json": "c3bc21e88aecd8b424e917f22f9f2acfff4b6c7da9fae6293845a14d83bfe074",
+    "results/v3/trace_v5-confirm4b-qps2-s703.manifest.json": "6f53d6d57215a215db15a9558b8e2e370a985de85a99a55abc79458adeb5612a",
+    "results/v3/trace_v5-confirm4b-qps4-s701.manifest.json": "0ff0738a5af04261628fec61628f9475faf6804ee9c6b16cb5982ffff7ae12c0",
+    "results/v3/trace_v5-confirm4b-qps4-s702.manifest.json": "f3584f59651937f40f1d417ac83ed1441802c36d15b725284b645a089a4b14b1",
+    "results/v3/trace_v5-confirm4b-qps4-s703.manifest.json": "ba12b0b985d8b5b92fd855bceddcd1d05fa2c26f6edc9e447b4ba1439cf0fcc2",
+    "results/v3/trace_v5-dev4b3-qps2-s101.manifest.json": "accf6879be0bb77f6241437db0b731b104ef83099cc04ca4e60052babc82d895",
+    "results/v3/trace_v5-dev4b3-qps2-s102.manifest.json": "7949420ec681f529c923a1b6307a5c254df566eaefb11b5bd6d2669a9522679f",
+    "results/v3/trace_v5-dev4b3-qps2-s103.manifest.json": "d483ff0a4a69a431427721aff328d9b20eacdc68a3ad64747394012a1d9c007d",
+    "results/v3/trace_v5-dev4b3-qps4-s101.manifest.json": "e1f7b492d18ad8efda201aeaca437ba4a107aa85ef277091375dd443626f3cc8",
+    "results/v3/trace_v5-dev4b3-qps4-s102.manifest.json": "d613cb6b03e223a2a7a2e539d31f6a35288a7437df84553edd07cace0a43b1bd",
+    "results/v3/trace_v5-dev4b3-qps4-s103.manifest.json": "ac24fad046f75c0cb5c87e33a46430d415cdd0858117abdf0002f68ae4449047",
+    "results/v3/trace_v5-full4b-qps4-s901.manifest.json": "4d8df5cb7a8753f30b80760d69b93d00b3218003d2bad7d1f13493058527c68b",
+    "results/v3/trace_v5-full4b-qps4-s902.manifest.json": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf",
+    "results/v3/trace_v5-full4b-qps4-s903.manifest.json": "b162968ebfba109f85734acf4b1774a7c1d6dc023a1bf38a93c33be4e2063b91",
+    "results/v3/trace_v5-lowreuse8-qps4-s101.manifest.json": "52ad019b2665eaff6e7dd50f2a74d480a3b7fc48d3d847c90d365ae094a9ce67",
+    "results/v3/trace_v5-lowreuse8-qps4-s102.manifest.json": "770c5ff7922b990d0afd53281dfae3fc8ed57f2f0b0089c4293f79886e4fc465",
+    "results/v3/trace_v5-lowreuse8-qps4-s103.manifest.json": "63407e220c0e1b22bf818ea26ba583b8212a4c359472ac5161cc6b6f0a52b047"
+  },
+  "plan_sha256": "9204105857d416128aeb1140c0bed409d17a2259b4756533660db362d2f26123"
+}

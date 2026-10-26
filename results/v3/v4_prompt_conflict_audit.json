@@ -1,0 +1,13 @@
+{
+  "scope": "Immutable V4 protocol diagnosis. Format diagnostic only; official evaluator scores are unchanged. No semantic abstention equivalence or corrected leaderboard score.",
+  "trace_sha256": "0a75c2878ed35847713dddd0e2af05b3127ad01b55838df121cc08a121eb573d",
+  "requests": 1986,
+  "conflicting_instructions": 1986,
+  "system_abstention": "No information available.",
+  "user_abstention": "I don't know",
+  "category5_requests": 446,
+  "exact_legacy_response": 155,
+  "contains_legacy_response": 165,
+  "official_accepted_phrase": 4,
+  "status": "V4 retained as historical conflicting-prompt protocol; V5 must validate consistent instructions prospectively with unchanged method"
+}

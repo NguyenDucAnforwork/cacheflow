@@ -11,6 +11,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 from v4_full import build_plan
+from v4_full_contracts import audit_configuration
 from v4_verify_freeze import verify
 from v4_audit_sglang_runs import audit as audit_sg
 from v3_analyze_runs import load as load_main
@@ -59,6 +60,7 @@ def main():
         raw=Path('results/v3/raw/sglang' if kind=='sg' else 'results/v3/raw')
         setup=json.loads((base/f'{rid}.setup.json').read_text());setups[rid]=setup
         s=json.loads((raw/f'{rid}.summary.json').read_text());runtime=setup['runtime']
+        audit_configuration(step,setup,freeze)
         manifest=json.loads(Path(step['trace']).with_suffix('.manifest.json').read_text())
         assert s['requests']==s['successes']==1986 and not s['errors']
         assert s['trace_sha256']==manifest['trace_sha256'] and manifest['requests']==1986

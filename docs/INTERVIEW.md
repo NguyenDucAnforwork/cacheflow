@@ -1,12 +1,12 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026:** V4 dùng Qwen3-4B; dev và held-out đã được audit, full benchmark đang chạy. Phần 18–20 trình bày cấu hình và kết quả mới nhất. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
+**Cập nhật 26/10/2026:** V5 dùng Qwen3-4B và đang revalidate protocol đã sửa. V4 có lỗi chỉ dẫn abstention mâu thuẫn; các số V4 dưới đây giữ phạm vi lịch sử, không gộp với V5. Phần21 giải thích lỗi, timeout và profiling mới nhất; phần18–20 là các bài học/cấu hình V4. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
 
 ## 1. Kể project trong hai phút
 
 CacheFlow nghiên cứu cách phục vụ nhiều câu hỏi dùng lại các lịch sử hội thoại dài. Thay vì prefill lại toàn bộ lịch sử mỗi lần, engine có thể tái dùng KV cache của prefix giống hệt về token. GPU nhanh nhưng bộ nhớ hạn chế; CPU RAM giữ được nhiều KV hơn nhưng cần chuyển lại qua PCIe. Project đặt câu hỏi: khi nào tier CPU thực sự giúp, khi nào scheduling có thể tránh việc tính/chuyển dữ liệu thừa, và lợi ích đó còn giữ được khi tính toàn bộ thời gian từ lúc request đến hay không?
 
-Stack V4 hiện tại là Qwen3-4B BF16 trên RTX 3090, vLLM làm inference engine, LMCache giữ CPU KV, và gateway Python điều khiển admission. LoCoMo cung cấp hội thoại thật và QA; arrival là workload được xây dựng có công bố seed, không phải trace production. V2 xác nhận cơ chế tiering và bẫy đo counter. V4 bổ sung admission theo hợp bộ nhớ prefix, đối chiếu vLLM/LMCache và SGLang/HiCache đã tune; full benchmark và audit cuối vẫn chưa hoàn tất.
+Stack hiện tại là Qwen3-4B BF16 trên RTX 3090, vLLM làm inference engine, LMCache giữ CPU KV, và gateway Python điều khiển admission. LoCoMo cung cấp hội thoại thật và QA; arrival là workload được xây dựng có công bố seed, không phải trace production. V2 xác nhận cơ chế tiering và bẫy đo counter. V4 bổ sung admission theo hợp bộ nhớ prefix, đối chiếu vLLM/LMCache và SGLang/HiCache đã tune. V5 giữ phương pháp đó, sửa mâu thuẫn chỉ dẫn trong prompt và mở rộng timeout đo lường; full benchmark và audit cuối vẫn chưa hoàn tất.
 
 **Câu hỏi: Trong phỏng vấn, nên nói gì là phần mình làm?**
 
@@ -595,3 +595,37 @@ NativeLPM/HiCache đầu tiên đã chạy đủ1.986QA, không lỗi. Trace ph�
 **Hỏi: P95 hơn1.000giây mà không lỗi, có mâu thuẫn với timeout600giây không?**
 
 **Đáp:**Không thể xem một timeout ở client như deadline E2E của mọi request. Arrival-TTFT cộng cả chờ từ lịch đến, transport/pool, native queue và execution. Timeout được áp dụng ở các công đoạn cụ thể, với phạm vi khác tổng thời gian đó. Bằng chứng của lượt này là toàn bộ1.986request thành công, không phải suy luận từ tên cấu hình. Nếu cần SLO tổng600giây, phải định nghĩa và đo deadline từ scheduled arrival một cách tường minh.
+
+## 21. Tự phản biện: phát hiện một sửa lỗi chưa đủ triệt để
+
+**Hỏi: Điểm abstention rất thấp có hoàn toàn do model không biết từ chối không?**
+
+**Đáp:** Chưa thể kết luận như vậy. Khi kiểm tra V4 full prompt, tôi phát hiện system yêu cầu `No information available.` nhưng footer user vẫn yêu cầu `I don't know`. Tôi đã sửa system trước đó nhưng bỏ sót renderer phía trong. Cả1.986prompt đều có mâu thuẫn này. Trong446câu category5 của native full,155output đúng nguyên văn câu trả lời legacy,165output chứa nó, còn evaluator chỉ nhận4output theo hai phrase mà nó quy định.
+
+Điểm official0,009 vẫn là số đúng cho output V4 theo evaluator đã pin; cách diễn giải “model hầu như không abstain” thì quá mạnh. Các con số phrase ở trên chỉ là diagnostic về format, không phải thang đo semantic mới. Tôi giữ nguyên output/score cũ, sửa cả system và user trong versionV5, rồi đo lại mọi arm. Không thay `I don't know` thành phrase được chấm điểm trong output sau khi model đã trả lời.
+
+**Hỏi: Sửa prompt có lén làm thay đổi nội dung hội thoại không?**
+
+**Đáp:** Renderer chỉ bỏ đúng footer cấu trúc ở cuối canonical context và thêm footer nhất quán. Nếu hội thoại hoặc câu hỏi có trích dẫn cùng chuỗi chữ, nội dung đó được giữ nguyên. Test còn thay gold answer, category và evidence trong object rồi kiểm prompt không đổi. Toàn bộ1.986QA vẫn fit, tăng đúng1token; cần tokenize và kiểm lại token với server thay vì mặc định thay vài chữ là miễn phí.
+
+**Hỏi: Nếu tập xác nhận đã được xem rồi, V5 có thể gọi nó là held-out mới không?**
+
+**Đáp:** Không. Conv43/44 đã được chạy dướiV4. V5 là lặp kiểm chứng protocol sửa, không tạo ra tập semantic chưa từng thấy. Thuật toán admission/cap/bypass đã khóa trước V4 exposure và giữ nguyên; bản sửa phrase áp dụng toàn cục, không dùng gold hay evidence từng câu. Tôi công bố cả lịch sử exposure và các version, không gộp bảng V4/V5 để tạo một claim mạnh hơn dữ liệu.
+
+**Hỏi: Tại sao phải sửa timeout bên cạnh prompt?**
+
+**Đáp:** Đó là lỗi đo riêng. FullFIFO64 V4 có26ReadTimeout, cả26ởconv30, nhóm có prompt ngắn nhất khoảng15.209token median. Gateway ghi17lần timeout khi chờ upstream và9lần client hủy. NativeLPM ưu tiên chiều dài prefix và có queue/ràng buộc khác tùy visibility; sự tập trung lỗi ở một nhóm là tín hiệu cần audit fairness, chưa đủ để quy toàn bộ nguyên nhân cho một dòng sort.
+
+Để chấm đủ output và đo toàn bộ backlog trong V5, tất cả arm dùng cùng read/pool timeout3600giây; policy, connection limits, ngân sách KV và output cap giữ nguyên. Default lịch sử600giây vẫn được giữ để tái lập V4. Health/summary ghi timeout thật; source proof chỉ cho phép đúng các thay đổi transport/telemetry được liệt kê. Một response sau900giây dưới timeout mới không phải đã đạtSLO600giây, và lỗi V4 không bị xóa khỏi báo cáo.
+
+**Hỏi: Vậy có đo được overlap thật chưa?**
+
+**Đáp:** Đã đo được overlap theo thời gian giữa kernel I/O GPU-assisted và một tập kernel model trong diagnostic kernel/page_first. Có432kernel per-layer khớp12promotion×36layer; counter/event ledger khớp35,15GB payload. Hợp interval I/O dài3,120giây, giao với GEMM/GEMV/attention khoảng0,306giây, tức9,8% thời gian I/O-kernel. Tất cả interval dùng cùng clock GPU.
+
+Đây chưa phải phần PCIe bận thuần hay số giây latency được che hữu ích. Nó cũng không thay thế diagnostic Direct: đường Direct có thiếu coverage bulk-copy trong traceMemcpy thông thường, nên DMA overlap vẫn chưa xác nhận. Off/on/off kiểm tra perturbation riêng: p95 khoảng507/518/513ms, chỉ4output token và12request mỗi phase. Bảng serving chính phải lấy từ các lượt không bật profiler.
+
+**Hỏi: Khi một lượt đo chỉ lỗi một request thì có chạy lại riêng request đó không?**
+
+**Đáp:** Không ghép request chạy lại vào bảng latency của lượt cũ. V5 revision1 FIFO seed102 có một `ReadError` sau6,536ms; gateway chỉ ghi59request thành công và không có request lỗi trong log. Pipeline dừng, giữ marker invalid và toàn bộ raw. Điều này phân biệt lỗi transport trước gateway với timeout dài khi request đã vào hệ thống, nhưng chưa chứng minh chính xác socket nào gây lỗi.
+
+Revision2 dùng kết nối client mới cho mọi arm, giữ max connections256, cùng prompt/phương pháp/ngân sách và timeout3600giây. Đây là một control/mitigation cần đo lại, không phải tuyên bố đã tìm ra nguyên nhân. Cả ma trận được chạy dưới namespace mới; bốn lượt revision1 thành công cũng không được trộn vào primary revision2. Seal/plan/source revision1 được lưu theo SHA để bảo toàn lịch sử. Nếu lỗi tái diễn, tiếp tục chẩn đoán thay vì lặp retry cho tới khi bảng xanh.

@@ -1,0 +1,70 @@
+{
+  "scope": "Kernel/page_first CPU-hot closed-loop12request/4output-token diagnostic; not primary Direct performance. GPU-assisted I/O kernel/model temporal overlap, not pure DMA or bus occupancy.",
+  "setup_sha256": "ea44407a1ec39c6cc5e2d35ae154433140e36ffacfc8e4daca62844a837f0330",
+  "trace_sha256": "da004c24115630c88f379ff8322aa2ba51e15033dc15eeeb649767f7a69773a2",
+  "requests": 12,
+  "host_promoted_tokens": 238400.0,
+  "payload_bytes": 35153510400,
+  "transfer_kernel_count": 432,
+  "transfer_kernel_names": {
+    "void (anonymous namespace)::hicache_transfer_per_layer<long, 2048l, 1u, 2u, 1024u, false>((anonymous namespace)::HicacheKernelParams)": 432
+  },
+  "heavy_model_kernel_count": 11292,
+  "heavy_model_kernel_union_s": 1.0110804201103747,
+  "transfer_kernel_union_s": 3.120311137288809,
+  "overlap_s": 0.30635473504662514,
+  "fraction_of_transfer_kernel_time_overlapping_heavy_model": 0.09818082927230525,
+  "load_stream_span_sum_s": 3.1226068267822265,
+  "phases": [
+    {
+      "phase": "off_before",
+      "profiled": false,
+      "start_ns": 123180749337222,
+      "end_ns": 123185622177393,
+      "requests": 12,
+      "ttft_p50_ms": 354.2193285,
+      "ttft_p95_ms": 506.54520114999997,
+      "wall_s": 4.872840171,
+      "host_promoted_tokens": 238400.0,
+      "uncached_tokens": 254.0,
+      "profile_payload": null
+    },
+    {
+      "phase": "gpu_profile",
+      "profiled": true,
+      "start_ns": 123201139059218,
+      "end_ns": 123206154559829,
+      "requests": 12,
+      "ttft_p50_ms": 361.82075299999997,
+      "ttft_p95_ms": 518.22755165,
+      "wall_s": 5.015500611,
+      "host_promoted_tokens": 238400.0,
+      "uncached_tokens": 254.0,
+      "profile_payload": {
+        "output_dir": "/workspace/cacheflow-e1/results/v3/raw/v4_kernel_gpu_steady",
+        "activities": [
+          "GPU"
+        ],
+        "with_stack": false,
+        "record_shapes": false,
+        "profile_by_stage": false,
+        "profile_prefix": "steady-cpu-hot"
+      }
+    },
+    {
+      "phase": "off_after",
+      "profiled": false,
+      "start_ns": 123224300276821,
+      "end_ns": 123229222596896,
+      "requests": 12,
+      "ttft_p50_ms": 356.328353,
+      "ttft_p95_ms": 512.5485478,
+      "wall_s": 4.922320075,
+      "host_promoted_tokens": 238400.0,
+      "uncached_tokens": 254.0,
+      "profile_payload": null
+    }
+  ],
+  "profiler_p95_delta_vs_off_mean_pct": 1.7036071870608405,
+  "limitations": "Intersection proves co-running intervals on the GPU timeline, not useful work hiding, pure PCIe time or causal E2E speedup. Classification intentionally covers GEMM/GEMV/attention rather than all model kernels. Closed-loop cache-hot sequence is not pressure-benchmark concurrency."
+}

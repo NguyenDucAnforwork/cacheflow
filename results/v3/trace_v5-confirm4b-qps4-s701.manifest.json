@@ -1,0 +1,35 @@
+{
+  "abstention_style": "official_consistent_system_and_user",
+  "arrival": "interleaved",
+  "excluded": {
+    "context_too_long": 0,
+    "no_evidence": 0
+  },
+  "input_token_delta_max": 1,
+  "input_token_delta_min": 1,
+  "max_model_len": 32768,
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "output_tokens": 96,
+  "parent_method_freeze_sha256": "aed9f4901e1c2eb82bf2d5e4d0a27d51447e458ab765c6080e43491cf5b264a6",
+  "parent_trace_sha256": "0a75c2878ed35847713dddd0e2af05b3127ad01b55838df121cc08a121eb573d",
+  "parent_v4_trace_sha256": "7f332373ad4bcd571c40e4a483dabfbf3aa2b8152c799564094e834b6ec076e5",
+  "prompt_repair": "Only canonical user instruction footer changes; conversation/QA/order/offset/output budget unchanged",
+  "prompt_version": "locomo-qwen-concise-v5",
+  "protocol": "p_qa",
+  "qps": 4,
+  "renderer_sha256": "1ba44b62cb6e359d049f2b3a273036fec73ba682ee8fd541bf26ecafa9680587",
+  "requests": 40,
+  "retimed_from_trace_sha256": "7949349fb57e5b0494d260b349aada1f3926069759201911bb65599086c44163",
+  "retiming": "Same random.expovariate arrival generator; prompt/order unchanged",
+  "scope": "Prospective conversation-disjoint V4 confirmation; CPU preparation only",
+  "seed": 701,
+  "selected_samples": [
+    "conv-43",
+    "conv-44"
+  ],
+  "session_gap_ms": null,
+  "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "system_instruction": "Answer the question using only the supplied conversation. Return only a concise answer, without explanation, reasoning, repetition, or restating the question. If the answer is not present in the conversation, answer \"No information available.\".",
+  "thinking": false,
+  "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+}
