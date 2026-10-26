@@ -1,0 +1,632 @@
+{
+  "run_id": "v4c1-full-sg-g6-qps4-native-s901",
+  "prompt_version": "locomo-qwen-concise-v4",
+  "trace_sha256": "0a75c2878ed35847713dddd0e2af05b3127ad01b55838df121cc08a121eb573d",
+  "request_file_sha256": "373dc7b7c2407a60a0f0a85e5711dbddaf8bea7bee77a7b5e988aaca01725e20",
+  "scope": "Descriptive scheduled-arrival TTFT thresholds, failures included in all attempt denominators. Failed runs/groups omit latency quantiles; SLO goodput uses the entire run duration. Not saturation throughput or a causal fairness guarantee.",
+  "attempts": 1986,
+  "successes": 1986,
+  "errors": 0,
+  "success_fraction": 1.0,
+  "complete_success_quantiles": {
+    "p50_ms": 494661.377367,
+    "p95_ms": 1059892.93476125,
+    "p99_ms": 1189283.6205574502
+  },
+  "qos": [
+    {
+      "arrival_ttft_threshold_s": 1,
+      "successful_within_threshold": 8,
+      "fraction_of_all_attempts": 0.004028197381671702,
+      "goodput_requests_per_s": 0.005435441849428573
+    },
+    {
+      "arrival_ttft_threshold_s": 5,
+      "successful_within_threshold": 46,
+      "fraction_of_all_attempts": 0.023162134944612285,
+      "goodput_requests_per_s": 0.031253790634214296
+    },
+    {
+      "arrival_ttft_threshold_s": 10,
+      "successful_within_threshold": 62,
+      "fraction_of_all_attempts": 0.03121852970795569,
+      "goodput_requests_per_s": 0.04212467433307144
+    },
+    {
+      "arrival_ttft_threshold_s": 30,
+      "successful_within_threshold": 81,
+      "fraction_of_all_attempts": 0.04078549848942598,
+      "goodput_requests_per_s": 0.0550338487254643
+    },
+    {
+      "arrival_ttft_threshold_s": 60,
+      "successful_within_threshold": 84,
+      "fraction_of_all_attempts": 0.04229607250755287,
+      "goodput_requests_per_s": 0.057072139419000016
+    },
+    {
+      "arrival_ttft_threshold_s": 300,
+      "successful_within_threshold": 744,
+      "fraction_of_all_attempts": 0.37462235649546827,
+      "goodput_requests_per_s": 0.5054960919968573
+    },
+    {
+      "arrival_ttft_threshold_s": 600,
+      "successful_within_threshold": 1139,
+      "fraction_of_all_attempts": 0.5735146022155085,
+      "goodput_requests_per_s": 0.773871033312393
+    }
+  ],
+  "per_conversation": [
+    {
+      "sample_id": "conv-26",
+      "median_prompt_tokens": 19525.0,
+      "attempts": 199,
+      "successes": 199,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 515358.461544,
+        "p95_ms": 1083258.8110446,
+        "p99_ms": 1160460.9889004605
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 1,
+          "fraction_of_all_attempts": 0.005025125628140704,
+          "goodput_requests_per_s": 0.0006794302311785716
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 12,
+          "fraction_of_all_attempts": 0.06030150753768844,
+          "goodput_requests_per_s": 0.00815316277414286
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 17,
+          "fraction_of_all_attempts": 0.08542713567839195,
+          "goodput_requests_per_s": 0.011550313930035716
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.10552763819095477,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.10552763819095477,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 71,
+          "fraction_of_all_attempts": 0.35678391959798994,
+          "goodput_requests_per_s": 0.048239546413678586
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 112,
+          "fraction_of_all_attempts": 0.5628140703517588,
+          "goodput_requests_per_s": 0.07609618589200003
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-30",
+      "median_prompt_tokens": 15209.0,
+      "attempts": 105,
+      "successes": 105,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 240554.918249,
+        "p95_ms": 952716.8272344,
+        "p99_ms": 1255396.7799974398
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 3,
+          "fraction_of_all_attempts": 0.02857142857142857,
+          "goodput_requests_per_s": 0.002038290693535715
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 10,
+          "fraction_of_all_attempts": 0.09523809523809523,
+          "goodput_requests_per_s": 0.006794302311785716
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 17,
+          "fraction_of_all_attempts": 0.1619047619047619,
+          "goodput_requests_per_s": 0.011550313930035716
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.2,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.2,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 57,
+          "fraction_of_all_attempts": 0.5428571428571428,
+          "goodput_requests_per_s": 0.038727523177178584
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 77,
+          "fraction_of_all_attempts": 0.7333333333333333,
+          "goodput_requests_per_s": 0.05231612780075001
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-41",
+      "median_prompt_tokens": 29175.0,
+      "attempts": 193,
+      "successes": 193,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 459081.325859,
+        "p95_ms": 1061747.2563341998,
+        "p99_ms": 1117193.9859906393
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 4,
+          "fraction_of_all_attempts": 0.02072538860103627,
+          "goodput_requests_per_s": 0.0027177209247142863
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 15,
+          "fraction_of_all_attempts": 0.07772020725388601,
+          "goodput_requests_per_s": 0.010191453467678574
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 17,
+          "fraction_of_all_attempts": 0.08808290155440414,
+          "goodput_requests_per_s": 0.011550313930035716
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.10880829015544041,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.10880829015544041,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 71,
+          "fraction_of_all_attempts": 0.36787564766839376,
+          "goodput_requests_per_s": 0.048239546413678586
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 119,
+          "fraction_of_all_attempts": 0.616580310880829,
+          "goodput_requests_per_s": 0.08085219751025002
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-42",
+      "median_prompt_tokens": 25121.0,
+      "attempts": 260,
+      "successes": 260,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 537625.506742,
+        "p95_ms": 1064942.79698995,
+        "p99_ms": 1196226.0022473207
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 9,
+          "fraction_of_all_attempts": 0.03461538461538462,
+          "goodput_requests_per_s": 0.006114872080607145
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 11,
+          "fraction_of_all_attempts": 0.04230769230769231,
+          "goodput_requests_per_s": 0.0074737325429642875
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 18,
+          "fraction_of_all_attempts": 0.06923076923076923,
+          "goodput_requests_per_s": 0.01222974416121429
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 21,
+          "fraction_of_all_attempts": 0.08076923076923077,
+          "goodput_requests_per_s": 0.014268034854750004
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 96,
+          "fraction_of_all_attempts": 0.36923076923076925,
+          "goodput_requests_per_s": 0.06522530219314288
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 139,
+          "fraction_of_all_attempts": 0.5346153846153846,
+          "goodput_requests_per_s": 0.09444080213382146
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-43",
+      "median_prompt_tokens": 29439.0,
+      "attempts": 242,
+      "successes": 242,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 543886.685945,
+        "p95_ms": 1052963.79028595,
+        "p99_ms": 1138243.34960418
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 88,
+          "fraction_of_all_attempts": 0.36363636363636365,
+          "goodput_requests_per_s": 0.0597898603437143
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 133,
+          "fraction_of_all_attempts": 0.5495867768595041,
+          "goodput_requests_per_s": 0.09036422074675002
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-44",
+      "median_prompt_tokens": 28546.0,
+      "attempts": 158,
+      "successes": 158,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 411541.008355,
+        "p95_ms": 1065363.2381125002,
+        "p99_ms": 1123749.6695866901
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 66,
+          "fraction_of_all_attempts": 0.4177215189873418,
+          "goodput_requests_per_s": 0.044842395257785723
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 98,
+          "fraction_of_all_attempts": 0.620253164556962,
+          "goodput_requests_per_s": 0.06658416265550002
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-47",
+      "median_prompt_tokens": 27263.0,
+      "attempts": 190,
+      "successes": 190,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 541884.818671,
+        "p95_ms": 1081631.7432025,
+        "p99_ms": 1163871.3305688894
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 68,
+          "fraction_of_all_attempts": 0.35789473684210527,
+          "goodput_requests_per_s": 0.046201255720142866
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 104,
+          "fraction_of_all_attempts": 0.5473684210526316,
+          "goodput_requests_per_s": 0.07066074404257144
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-48",
+      "median_prompt_tokens": 26888.0,
+      "attempts": 239,
+      "successes": 239,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 587850.224792,
+        "p95_ms": 1048448.7270356,
+        "p99_ms": 1164517.9283316203
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 71,
+          "fraction_of_all_attempts": 0.29707112970711297,
+          "goodput_requests_per_s": 0.048239546413678586
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 125,
+          "fraction_of_all_attempts": 0.5230125523012552,
+          "goodput_requests_per_s": 0.08492877889732145
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-49",
+      "median_prompt_tokens": 21389.0,
+      "attempts": 196,
+      "successes": 196,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 474742.5599545,
+        "p95_ms": 1064989.15009375,
+        "p99_ms": 1180430.7097052506
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 82,
+          "fraction_of_all_attempts": 0.41836734693877553,
+          "goodput_requests_per_s": 0.055713278956642874
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 118,
+          "fraction_of_all_attempts": 0.6020408163265306,
+          "goodput_requests_per_s": 0.08017276727907145
+        }
+      ]
+    },
+    {
+      "sample_id": "conv-50",
+      "median_prompt_tokens": 26675.0,
+      "attempts": 204,
+      "successes": 204,
+      "errors": 0,
+      "success_fraction": 1.0,
+      "complete_success_quantiles": {
+        "p50_ms": 503780.5552345,
+        "p95_ms": 1043200.61627485,
+        "p99_ms": 1110648.31174765
+      },
+      "qos": [
+        {
+          "arrival_ttft_threshold_s": 1,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 5,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 10,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 30,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 60,
+          "successful_within_threshold": 0,
+          "fraction_of_all_attempts": 0.0,
+          "goodput_requests_per_s": 0.0
+        },
+        {
+          "arrival_ttft_threshold_s": 300,
+          "successful_within_threshold": 74,
+          "fraction_of_all_attempts": 0.3627450980392157,
+          "goodput_requests_per_s": 0.0502778371072143
+        },
+        {
+          "arrival_ttft_threshold_s": 600,
+          "successful_within_threshold": 114,
+          "fraction_of_all_attempts": 0.5588235294117647,
+          "goodput_requests_per_s": 0.07745504635435717
+        }
+      ]
+    }
+  ]
+}

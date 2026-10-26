@@ -216,3 +216,21 @@ TTFT p95 off/on/off506.545/518.228/512.549ms; profiler delta vs mean-off is diag
 Revision1 stops after four measured runs240/240 and one FIFO60-request run59/60. Failure is `ReadError` after6.536ms, no HTTP status, no matching gateway row; the other59 gateway rows are allok. This is not a3600s timeout and not proof of a scheduler failure or a particular socket-reuse cause. `v5_r1_transport_failure.json` preserves exact scope. All revision1 raw/invalid/config artifacts remain, and all11 original sealed source files are archived with exact SHA under `protocol_sources/v5_r1/`.
 
 Revision2 freezes14:08:39UTC before its first GPU use, with client keepalive0 uniformly, max concurrent connections256 unchanged, default legacy behavior still600s/keepalive20, no retries. New `v5r2-*` namespaces rerun the entire fixed matrix; old successes are diagnostic rather than a replacement for failed repetitions. Exact enumerated source proof extends only measurement transport/telemetry; candidate/admission parameters are unchanged.49CPU tests pass. The fresh-client control is a mitigation to validate, not a proven root cause. Pipeline281126/tool32102 is live; revision1 pipeline is terminal. The full research objective remains incomplete.
+
+## V5 revision2 primary SG dev block audited,14:19UTC
+
+Nine clean measured arms complete540/540 requests, zero errors, plus60warmup. The previously failing FIFO seed102 now completes60/60 under the uniform fresh-client control; this verifies a measured mitigation outcome, not a proven socket root cause. `v5r2_primary_sg_audit.json` checks all source-token/output/freshness contracts and same-backend contrasts; `v5r2_primary_sg_quality.json` uses the pinned official evaluator.
+
+| Arm,3-seed mean of run quantiles | p50(s) | p95(s) | p99(s) | Answerable F1 |
+| --- | ---: | ---: | ---: | ---: |
+| nativeLPM+guard |4.894|19.043|20.024|.316569|
+| FIFO64+LPM+guard |4.994|19.163|20.143|.316542|
+| union64+LPM+guard |13.564|16.803|17.180|.316405|
+
+Paired union-vs-native p95 changes−10.054/−6.923/−17.571%, p99−13.761/−7.281/−20.640%, but median+286.17/+125.09/+163.08%. F1 deltas+.001587/0/−.002080; nearby means are not quality equivalence. All nine compute69650uncached tokens, while union promotes90144tokens per run and native reportsnull/26448/26448. Do not interpret this tail gain as avoided compute or universally fewer transfers. Union reaches actual bypass8, FIFO0. This60-QA dev block has no category5; the fixed abstention stratum, other controls, main engine, repair repeats and full study remain pending.
+
+Full audit import preflight caught and repaired an incorrect local module reference before GPU completion; analysis entrypoints now import safely without run data.52CPU tests pass, including whole-attempt SLO accounting and no successful-only quantiles for failed runs. Algorithm/renderer/source seal remains unchanged and verified.
+
+### Descriptive whole-attempt QoS on historical V4 full evidence
+
+`v5_analyze_qos.py` reports all thresholds1/5/10/30/60/300/600seconds, counting every failed attempt as a nonattainment. These are descriptive reporting points, not a newly selected acceptance gate or a change to the old timeout. Native full has1986/1986 success but1139/1986(57.35%) receive their first token within600s of scheduled arrival. FailedFIFO has1960/1986 success and1794/1986(90.33%) within600s; it receives no complete-success latency quantiles from this analysis. Forconv30, native77/105(73.33%) meet600s vsFIFO58/105(55.24%), with26FIFO errors. Aggregate attainment can improve while one group gets worse. This is not a valid successful-only latency win or a causal fairness proof. Per-conversation/raw-hash evidence lives in `v4_full_native_qos.json` and `v4_full_fifo_failed_qos.json`.

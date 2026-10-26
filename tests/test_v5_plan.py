@@ -11,3 +11,9 @@ def test_repair_plans_keep_repetitions_baselines_and_do_not_touch_runtime():
         assert len(measured)==len({r['run_id'] for r in measured})==expected
         assert all('/v5-' in r['trace'] for r in measured)
     assert {str(p):p.read_bytes() for p in markers if p.exists()}==before
+
+
+def test_audit_entrypoints_import_without_gpu_or_run_artifacts():
+    # Catch bad local imports before many hours of GPU measurements complete.
+    code="import sys; sys.path[:0]=['src','scripts']; import v5_audit_full,v5_audit_validation,v5_audit_confirmation"
+    subprocess.run(['/venv/main/bin/python','-c',code],check=True)

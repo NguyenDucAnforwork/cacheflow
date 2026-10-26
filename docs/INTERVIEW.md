@@ -629,3 +629,17 @@ NativeLPM/HiCache đầu tiên đã chạy đủ1.986QA, không lỗi. Trace ph�
 **Đáp:** Không ghép request chạy lại vào bảng latency của lượt cũ. V5 revision1 FIFO seed102 có một `ReadError` sau6,536ms; gateway chỉ ghi59request thành công và không có request lỗi trong log. Pipeline dừng, giữ marker invalid và toàn bộ raw. Điều này phân biệt lỗi transport trước gateway với timeout dài khi request đã vào hệ thống, nhưng chưa chứng minh chính xác socket nào gây lỗi.
 
 Revision2 dùng kết nối client mới cho mọi arm, giữ max connections256, cùng prompt/phương pháp/ngân sách và timeout3600giây. Đây là một control/mitigation cần đo lại, không phải tuyên bố đã tìm ra nguyên nhân. Cả ma trận được chạy dưới namespace mới; bốn lượt revision1 thành công cũng không được trộn vào primary revision2. Seal/plan/source revision1 được lưu theo SHA để bảo toàn lịch sử. Nếu lỗi tái diễn, tiếp tục chẩn đoán thay vì lặp retry cho tới khi bảng xanh.
+
+### 21.1. Khi aggregate tốt hơn nhưng một nhóm bị bỏ lại
+
+**Hỏi: Tất cả request thành công có nghĩa đã đạt SLO chưa?**
+
+**Đáp:** Không. Full native V4 thành công1.986/1.986, nhưng chỉ1.139request, khoảng57,35%, nhận token đầu trong600giây từ scheduled arrival. Timeout của từng công đoạn không phải deadline E2E. Muốn đánh giá SLO phải định nghĩa mốc bắt đầu, deadline và mẫu số rõ ràng.
+
+**Hỏi: FIFO full có một số chỉ số aggregate tốt hơn thì có thể kết luận công bằng hơn không?**
+
+**Đáp:** Không. Nếu tính cả lỗi là không đạt mốc600giây, FIFO có1.794/1.986(90,33%) đạt mốc này, cao hơn native. Nhưng riêngconv30, FIFO chỉ58/105(55,24%), thấp hơn native77/105(73,33%) và có26lỗi. Các nhóm khác có thể bù aggregate, che khuất một nhóm bị chờ rất lâu. Tôi báo từng conversation, tổng lỗi và toàn bộ các mốc đã định; không lấy p95 chỉ trên1.960request thành công để tuyên bố một lượt hợp lệ.
+
+**Hỏi: V5 đã loại bỏ mọi tradeoff latency chưa?**
+
+**Đáp:** Chưa. Primary dev SGLang revision2 có540/540request thành công: p95 trung bình native/FIFO/union là19,043/19,163/16,803giây. Nhưng p50 native4,894giây cònunion13,564giây. Cả chín lượt đều compute69.650token; union còn có nhiều promotion hơn ở block nhỏ này. Vì vậy lời giải thích đúng không phải “luôn ít transfer/compute hơn”. Đây là tail/median tradeoff phụ thuộc engine, queue và working set; full study cùng các control mới quyết định phạm vi claim.

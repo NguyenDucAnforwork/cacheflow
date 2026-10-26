@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 from v5_full import build_plan
-from v5r2_full_contracts import audit_configuration
+from v4_full_contracts import audit_configuration
 from v5_verify import verify
 from v4_audit_sglang_runs import audit as audit_sg
 from v3_analyze_runs import load as load_main
