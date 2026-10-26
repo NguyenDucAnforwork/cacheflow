@@ -1,0 +1,10 @@
+{
+  "registered_utc": "2026-10-26T15:16:28.323991+00:00",
+  "observer_pid": 302759,
+  "observer_created_utc": "2026-10-26T15:08:42.100000+00:00",
+  "pipeline_pid": 281126,
+  "source_path": "scripts/v5_full_histograms.py",
+  "source_sha256": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8",
+  "scope": "Supplemental passive native ITL observer registered before first full run. Two GET /metrics calls per measured full arm, intended outside request window. No engine resets or runtime/method parameter changes. Counter/clock/PID coverage failures remain null; downstream histogram validation rejects incomplete/nonmonotonic buckets.",
+  "main_metrics_limitation": "Frozen main sampler omits native ITL; exact individual client token timestamps were not retained. This supplemental observation does not alter frozen actors or primary metrics."
+}

@@ -1,0 +1,2108 @@
+{
+  "source_audit_sha256": "f214c479d62a0175a7ca6b87e4c83aa466105465945894d6795eccaaf91fc87b",
+  "scope": "57 audited V5 revision2 dev/control runs. Client TPOT proxies are request-level averages, not individual-token ITL. Generated-token volume varies with batching/answers. No throughput-capacity or quality-equivalence inference.",
+  "runs": [
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-native-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "abdf455ed4e997d652cea50e91772bf0f20d362c9d6ac8f4fb3e959efdd90c85",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 4626.804379,
+        "p95": 19216.0239071,
+        "p99": 20527.74798428
+      },
+      "after_first_to_close_ms": {
+        "p50": 581.4194485,
+        "p95": 2294.9846372999978,
+        "p99": 3440.065638259999
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 46.47694185384616,
+        "p95": 65.00096200714282,
+        "p99": 239.92431662975702
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1424,
+      "workload_output_tokens_per_s": 59.313417672024386,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1364.0,
+      "native_itl_mean_ms": 37.1111823306203,
+      "native_itl_sample_endpoints_ns": [
+        124332551499040,
+        124360230272762
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-fifo-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "7737fa0f2274688fd2ac4f0bc056a0cd14c3ab81f9affb93bfc68a694433fd29",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 4691.8681125,
+        "p95": 19275.88625135,
+        "p99": 20583.556113
+      },
+      "after_first_to_close_ms": {
+        "p50": 593.6912335,
+        "p95": 2300.758408599998,
+        "p99": 3454.2495117699987
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 44.37139121428571,
+        "p95": 68.57662282499996,
+        "p99": 241.07386041282155
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1424,
+      "workload_output_tokens_per_s": 59.16261376899479,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1364.0,
+      "native_itl_mean_ms": 36.57675097580452,
+      "native_itl_sample_endpoints_ns": [
+        124379157443922,
+        124406871924050
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-union-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "3291f5b05e2e92639fa9cef178d4c980ccad91a9eb29cfd7ae76dcee17602445",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 14244.2479815,
+        "p95": 16985.0306683,
+        "p99": 18141.252411189995
+      },
+      "after_first_to_close_ms": {
+        "p50": 408.350254,
+        "p95": 2212.64299595,
+        "p99": 2440.87203051
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 30.434066987068967,
+        "p95": 70.29408101814514,
+        "p99": 206.54904957499895
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1484,
+      "workload_output_tokens_per_s": 55.88035666649061,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1424.0,
+      "native_itl_mean_ms": 29.78881228164334,
+      "native_itl_sample_endpoints_ns": [
+        124425731609998,
+        124455909515678
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-union-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "3ff8f455641f6822c1a5eac51eca2d32200bc68ab825f744a691f45f3c1a1fe1",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 14239.5663015,
+        "p95": 17219.8874326,
+        "p99": 18898.285493679996
+      },
+      "after_first_to_close_ms": {
+        "p50": 445.1018245,
+        "p95": 1977.7292922499996,
+        "p99": 2401.7076453099994
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 30.72269255263158,
+        "p95": 69.29741897137093,
+        "p99": 202.698814262499
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1391,
+      "workload_output_tokens_per_s": 53.19310080705478,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1331.0,
+      "native_itl_mean_ms": 30.278401147241997,
+      "native_itl_sample_endpoints_ns": [
+        124475124149474,
+        124504835714283
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-fifo-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "7ae23b129c05354232f61896fc438990a82093daef76ad5d54589d9dd04630a8",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 6817.5660745000005,
+        "p95": 19001.862289049997,
+        "p99": 20071.61830618
+      },
+      "after_first_to_close_ms": {
+        "p50": 590.6298254999999,
+        "p95": 2043.778547749998,
+        "p99": 3237.572066609997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 47.31396578571429,
+        "p95": 73.87233517499999,
+        "p99": 206.823769512338
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 56.525046800665216,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1333.0,
+      "native_itl_mean_ms": 36.375707086036904,
+      "native_itl_sample_endpoints_ns": [
+        124523971290285,
+        124552875778594
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-native-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "e1552df639535713a829f8433909a4e12fe8dbf438b0bad8b782e1bd7b3a0d45",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 6746.633322,
+        "p95": 18782.986103549996,
+        "p99": 19850.30617279
+      },
+      "after_first_to_close_ms": {
+        "p50": 572.9315750000001,
+        "p95": 2051.1564871999985,
+        "p99": 3206.376270679997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 45.4943561,
+        "p95": 63.60301961428567,
+        "p99": 206.61822936975736
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 57.002464274146845,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1333.0,
+      "native_itl_mean_ms": 35.92709385003407,
+      "native_itl_sample_endpoints_ns": [
+        124564418430406,
+        124592191253236
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-fifo-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "ed1a6e3ef308e174369c3ba8517f25caede5dd0b816c79b1964e3e28515cd0b7",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 6428.822566999999,
+        "p95": 21364.4702966,
+        "p99": 22470.22812288
+      },
+      "after_first_to_close_ms": {
+        "p50": 521.7498935,
+        "p95": 2042.9206971999988,
+        "p99": 2996.689689169997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 43.201684925,
+        "p95": 80.10605506666666,
+        "p99": 201.23899175161216
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1397,
+      "workload_output_tokens_per_s": 51.33736256523313,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1337.0,
+      "native_itl_mean_ms": 32.53610497410653,
+      "native_itl_sample_endpoints_ns": [
+        124611565323808,
+        124642683302432
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-native-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "03e7b4855eca359e008a7573fd9f1bdeef6c8e380eb0cd9e69b6e0b8a1ba8429",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 6346.886227999999,
+        "p95": 21272.014473699997,
+        "p99": 22382.37826096
+      },
+      "after_first_to_close_ms": {
+        "p50": 522.1165185,
+        "p95": 2035.970970599999,
+        "p99": 2988.782648209997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 43.4714804,
+        "p95": 79.31650284166666,
+        "p99": 201.74905479048314
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1397,
+      "workload_output_tokens_per_s": 51.50671757912675,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1337.0,
+      "native_itl_mean_ms": 32.43542576535275,
+      "native_itl_sample_endpoints_ns": [
+        124654478093785,
+        124685583035099
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps4-union-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "304bcb5bd4aef496be11a30d7a1c4e295ebe1d904db9bb33f305e3d9b5d3315e",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 14226.3407105,
+        "p95": 17429.9202282,
+        "p99": 18635.935726359992
+      },
+      "after_first_to_close_ms": {
+        "p50": 450.009946,
+        "p95": 1979.4418139999996,
+        "p99": 2476.51274386
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 31.956675374999996,
+        "p95": 74.4255394330645,
+        "p99": 221.42413737166572
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1395,
+      "workload_output_tokens_per_s": 51.42965261922725,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1335.0,
+      "native_itl_mean_ms": 31.079703131078023,
+      "native_itl_sample_endpoints_ns": [
+        124704087994939,
+        124734665458644
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps2-native-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16063fa305259ca6f0083ccf606c1c31663388c22bb970bd58b1a850ee37da24",
+      "request_file_sha256": "5afad81e07788fd4fa9ee72458d586c740755a0cdf5442fb99c7e324560b66d7",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 6200.6522475,
+        "p95": 14601.229919299994,
+        "p99": 17622.678845349998
+      },
+      "after_first_to_close_ms": {
+        "p50": 410.4553015,
+        "p95": 1780.3985664999996,
+        "p99": 2225.171702839997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 26.77194293083671,
+        "p95": 78.64955665000001,
+        "p99": 185.61446465983786
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1401,
+      "workload_output_tokens_per_s": 50.460285713212954,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1341.0,
+      "native_itl_mean_ms": 26.874676354353245,
+      "native_itl_sample_endpoints_ns": [
+        124747471788434,
+        124779438712313
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps2-union-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16063fa305259ca6f0083ccf606c1c31663388c22bb970bd58b1a850ee37da24",
+      "request_file_sha256": "419e2fe5102833992214eae7860f819a30fa07e4895a02a78e80a7cdcc478ed7",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 7717.0455265,
+        "p95": 14524.204526499998,
+        "p99": 16195.472411149993
+      },
+      "after_first_to_close_ms": {
+        "p50": 512.3075670000001,
+        "p95": 2102.06376315,
+        "p99": 2527.4264335499993
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 31.503668743055556,
+        "p95": 83.4470058595238,
+        "p99": 252.90740552083258
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1477,
+      "workload_output_tokens_per_s": 54.25975848467849,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1417.0,
+      "native_itl_mean_ms": 31.01409743890796,
+      "native_itl_sample_endpoints_ns": [
+        124798180259680,
+        124829167987180
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps2-union-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "31f3135c0811f8923b65d55a89e8e4529fabfbcc679d28d60172cd309f0b9d7d",
+      "request_file_sha256": "e94088523fbd7eacaf64b9496f1ad28bad98be08b0e5c1c78692cf5ada2f794e",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 7745.523950000001,
+        "p95": 16414.7340267,
+        "p99": 18402.793267689998
+      },
+      "after_first_to_close_ms": {
+        "p50": 501.8733475,
+        "p95": 1881.5496898499994,
+        "p99": 2321.901616009999
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 22.891341117836255,
+        "p95": 128.65450020833316,
+        "p99": 301.45296319499954
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1425,
+      "workload_output_tokens_per_s": 48.889791759564794,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1365.0,
+      "native_itl_mean_ms": 28.625041809013613,
+      "native_itl_sample_endpoints_ns": [
+        124847652898313,
+        124880423039232
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps2-native-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "31f3135c0811f8923b65d55a89e8e4529fabfbcc679d28d60172cd309f0b9d7d",
+      "request_file_sha256": "e55d5f0f0e61d109e2b2d6bc878adf8df63fb02d0c27939fab06f1db7800b71d",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 4958.863434,
+        "p95": 16174.740218899999,
+        "p99": 18519.78902353
+      },
+      "after_first_to_close_ms": {
+        "p50": 423.74575600000003,
+        "p95": 1772.18463765,
+        "p99": 2222.9311357999964
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 26.138111541666667,
+        "p95": 59.0643846,
+        "p99": 190.6852920216927
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1403,
+      "workload_output_tokens_per_s": 48.68052075139276,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1343.0,
+      "native_itl_mean_ms": 26.14689402757521,
+      "native_itl_sample_endpoints_ns": [
+        124892990926775,
+        124925211581762
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps2-native-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c9a41f1e5931f4dd5e0550b8c6de3c31023c503c7db15225c4b1689797481421",
+      "request_file_sha256": "ccffef0ebb14cfe5646f01cc9161eff883bf4f171514f990276a723a8356f251",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 3443.4947435,
+        "p95": 14835.632485899994,
+        "p99": 17858.783876179998
+      },
+      "after_first_to_close_ms": {
+        "p50": 396.76479500000005,
+        "p95": 1878.39359715,
+        "p99": 2347.3365758699965
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 27.32869057222222,
+        "p95": 63.7255141375,
+        "p99": 190.0107057094347
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1461,
+      "workload_output_tokens_per_s": 43.25152430840891,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1401.0,
+      "native_itl_mean_ms": 25.7410365786893,
+      "native_itl_sample_endpoints_ns": [
+        124937249947612,
+        124974605680252
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lpm-g6-qps2-union-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c9a41f1e5931f4dd5e0550b8c6de3c31023c503c7db15225c4b1689797481421",
+      "request_file_sha256": "9743155cf499ccf343ef030e65df011588cf1aabd97fc788caa86c5e0f06b565",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 7461.4118605,
+        "p95": 16108.01491735,
+        "p99": 17754.802061689992
+      },
+      "after_first_to_close_ms": {
+        "p50": 416.51941,
+        "p95": 1754.2148560999985,
+        "p99": 2491.9561354999996
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 31.953311785511364,
+        "p95": 76.69974433369175,
+        "p99": 212.22035707833234
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1437,
+      "workload_output_tokens_per_s": 42.2618171118911,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1377.0,
+      "native_itl_mean_ms": 28.793481123343614,
+      "native_itl_sample_endpoints_ns": [
+        124993426471606,
+        125031171588323
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lowreuse-g6-qps4-native-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+      "request_file_sha256": "22cd7a6a818078dd54a8ba1d00be70472ec583f8bf3eaadc0d618eb979adb1b5",
+      "requests": 8,
+      "completion_latency_ms": {
+        "p50": 23073.0398895,
+        "p95": 42720.01822579999,
+        "p99": 44650.106131559995
+      },
+      "after_first_to_close_ms": {
+        "p50": 139.819955,
+        "p95": 1731.9115217499987,
+        "p99": 2334.723906749999
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 16.119915607142858,
+        "p95": 58.97687969838706,
+        "p99": 75.93542762999996
+      },
+      "proxy_eligible_requests": 8,
+      "single_token_responses": 0,
+      "generated_tokens": 103,
+      "workload_output_tokens_per_s": 2.171134829107183,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 95.0,
+      "native_itl_mean_ms": 36.93591526335742,
+      "native_itl_sample_endpoints_ns": [
+        125043237711012,
+        125094030785135
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lowreuse-g6-qps4-union-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+      "request_file_sha256": "a4c540bc57bf7b76924dcd30f56ca00e178d435d4f4c7f19fbefb16550fa0469",
+      "requests": 8,
+      "completion_latency_ms": {
+        "p50": 23166.0920445,
+        "p95": 43015.472358549996,
+        "p99": 44942.31907251
+      },
+      "after_first_to_close_ms": {
+        "p50": 169.146229,
+        "p95": 1728.860839949999,
+        "p99": 2330.1301303899995
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 16.178716816666665,
+        "p95": 60.67521982903223,
+        "p99": 76.14659113999998
+      },
+      "proxy_eligible_requests": 8,
+      "single_token_responses": 0,
+      "generated_tokens": 103,
+      "workload_output_tokens_per_s": 2.157880114871126,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 95.0,
+      "native_itl_mean_ms": 37.4354369998113,
+      "native_itl_sample_endpoints_ns": [
+        125113427232111,
+        125165137820810
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lowreuse-g6-qps4-union-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+      "request_file_sha256": "42afc6dcd198d73c8abc5d171fd7cfdbd9b60efbded234b1aec74c26c17c4ef6",
+      "requests": 8,
+      "completion_latency_ms": {
+        "p50": 24084.0558555,
+        "p95": 43521.19703685,
+        "p99": 45405.03758817
+      },
+      "after_first_to_close_ms": {
+        "p50": 140.23632849999998,
+        "p95": 1726.0414157499988,
+        "p99": 2326.1383383499997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 16.121085161904762,
+        "p95": 58.24684569959675,
+        "p99": 75.55033866249998
+      },
+      "proxy_eligible_requests": 8,
+      "single_token_responses": 0,
+      "generated_tokens": 103,
+      "workload_output_tokens_per_s": 2.1767615907256403,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 95.0,
+      "native_itl_mean_ms": 36.795176210580394,
+      "native_itl_sample_endpoints_ns": [
+        125183602684972,
+        125234290940722
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lowreuse-g6-qps4-native-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+      "request_file_sha256": "a36334e7d3b35f27463527b28e260c2437f126e6fa3fb624499bc8afbd823ae3",
+      "requests": 8,
+      "completion_latency_ms": {
+        "p50": 24015.905114499998,
+        "p95": 43479.80816279999,
+        "p99": 45368.63390775999
+      },
+      "after_first_to_close_ms": {
+        "p50": 140.43017600000002,
+        "p95": 1731.826249699999,
+        "p99": 2334.6030811399996
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 16.12799994047619,
+        "p95": 58.390371701209645,
+        "p99": 75.81477857249999
+      },
+      "proxy_eligible_requests": 8,
+      "single_token_responses": 0,
+      "generated_tokens": 103,
+      "workload_output_tokens_per_s": 2.178380132213658,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 95.0,
+      "native_itl_mean_ms": 36.881315945892744,
+      "native_itl_sample_endpoints_ns": [
+        125246615043905,
+        125297256731190
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lowreuse-g6-qps4-native-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+      "request_file_sha256": "c026b327eccc8307826a017b5059148517dcc595e29f47ebf5a1928429120fc7",
+      "requests": 8,
+      "completion_latency_ms": {
+        "p50": 23885.759880999998,
+        "p95": 43658.48384935,
+        "p99": 45595.89864587
+      },
+      "after_first_to_close_ms": {
+        "p50": 139.8478685,
+        "p95": 1730.4418427999985,
+        "p99": 2332.785282959999
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 16.08560682142857,
+        "p95": 58.363573956451575,
+        "p99": 75.75971202999997
+      },
+      "proxy_eligible_requests": 8,
+      "single_token_responses": 0,
+      "generated_tokens": 103,
+      "workload_output_tokens_per_s": 2.1372730052673368,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 95.0,
+      "native_itl_mean_ms": 36.842644926908086,
+      "native_itl_sample_endpoints_ns": [
+        125309455284259,
+        125361231324607
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-lowreuse-g6-qps4-union-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+      "request_file_sha256": "a1839c140564ad14b8caefbf47d329f502bd897b74bbf9c623fa714aa33f2c2a",
+      "requests": 8,
+      "completion_latency_ms": {
+        "p50": 23952.2109465,
+        "p95": 43696.68971545,
+        "p99": 45631.56493829
+      },
+      "after_first_to_close_ms": {
+        "p50": 138.6579615,
+        "p95": 1727.1810022499988,
+        "p99": 2327.4606500499995
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 16.069594816666665,
+        "p95": 58.22042909879029,
+        "p99": 75.58035838749998
+      },
+      "proxy_eligible_requests": 8,
+      "single_token_responses": 0,
+      "generated_tokens": 103,
+      "workload_output_tokens_per_s": 2.135720530037405,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 95.0,
+      "native_itl_mean_ms": 36.792618295141054,
+      "native_itl_sample_endpoints_ns": [
+        125380231396195,
+        125431956228828
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-native-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "2e1348f451f0594caaf4af63d2313837dcd0e593ce856bc4aa5c63e3f3855d08",
+      "request_file_sha256": "97bcc90a48fdfbb3a65ef5eb2d6c4aedf6e3840b7f38a3e0c92b65d7a31ed1b0",
+      "requests": 12,
+      "completion_latency_ms": {
+        "p50": 8373.417297,
+        "p95": 16249.9734831,
+        "p99": 16302.213168620001
+      },
+      "after_first_to_close_ms": {
+        "p50": 244.805791,
+        "p95": 4369.219911449998,
+        "p99": 5628.501733490002
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 23.1833305,
+        "p95": 762.8587796375,
+        "p99": 768.8353655275
+      },
+      "proxy_eligible_requests": 12,
+      "single_token_responses": 0,
+      "generated_tokens": 90,
+      "workload_output_tokens_per_s": 4.86329125707347,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 78.0,
+      "native_itl_mean_ms": 222.65971201294377,
+      "native_itl_sample_endpoints_ns": [
+        125444039633207,
+        125465934534825
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-union-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "2e1348f451f0594caaf4af63d2313837dcd0e593ce856bc4aa5c63e3f3855d08",
+      "request_file_sha256": "887e902dc87a870bfe7b82cce2fb376667b1053c60679d7a72aec1a2079d9a85",
+      "requests": 12,
+      "completion_latency_ms": {
+        "p50": 15011.236828500001,
+        "p95": 16332.2452287,
+        "p99": 16396.178568940002
+      },
+      "after_first_to_close_ms": {
+        "p50": 244.21473,
+        "p95": 4969.051640999999,
+        "p99": 5613.755885800001
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 26.2510555,
+        "p95": 898.4871028374997,
+        "p99": 1041.6364259675001
+      },
+      "proxy_eligible_requests": 12,
+      "single_token_responses": 0,
+      "generated_tokens": 90,
+      "workload_output_tokens_per_s": 4.748220775266365,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 78.0,
+      "native_itl_mean_ms": 235.73444933329787,
+      "native_itl_sample_endpoints_ns": [
+        125485585922227,
+        125508612156972
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-union-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "345f49f8e677050e9e528849c2c3d7877b3008d93a403c90762b4ceb6b760ec4",
+      "request_file_sha256": "e4ae93619427d99c6aeb6d433fcd9179b7c9c43684f0fe0c436ab76d8fe048a8",
+      "requests": 12,
+      "completion_latency_ms": {
+        "p50": 16026.6125945,
+        "p95": 16991.684858700002,
+        "p99": 17081.328754140002
+      },
+      "after_first_to_close_ms": {
+        "p50": 92.43720250000001,
+        "p95": 4822.890412399999,
+        "p99": 5525.157108080001
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 20.655926875,
+        "p95": 723.0577732166663,
+        "p99": 965.5441766433337
+      },
+      "proxy_eligible_requests": 12,
+      "single_token_responses": 0,
+      "generated_tokens": 90,
+      "workload_output_tokens_per_s": 4.824442216980413,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 78.0,
+      "native_itl_mean_ms": 156.18209125629315,
+      "native_itl_sample_endpoints_ns": [
+        125527273100796,
+        125549340409282
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-native-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "345f49f8e677050e9e528849c2c3d7877b3008d93a403c90762b4ceb6b760ec4",
+      "request_file_sha256": "0107ce508bb14f76187ffe9731195a0ae30f8c061720a051381827956219a6d8",
+      "requests": 12,
+      "completion_latency_ms": {
+        "p50": 8461.085182499999,
+        "p95": 16929.856673299997,
+        "p99": 17126.33868826
+      },
+      "after_first_to_close_ms": {
+        "p50": 88.713009,
+        "p95": 4856.080246549999,
+        "p99": 5588.01548531
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 19.830766750000002,
+        "p95": 726.5990224041664,
+        "p99": 966.8218276808337
+      },
+      "proxy_eligible_requests": 12,
+      "single_token_responses": 0,
+      "generated_tokens": 90,
+      "workload_output_tokens_per_s": 4.952054669705028,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 78.0,
+      "native_itl_mean_ms": 157.33022405094323,
+      "native_itl_sample_endpoints_ns": [
+        125561735239348,
+        125583667754307
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-native-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "efd76e8e772c3c5f058aa98526d84fcdf684fcb07ac9f8b53a25a5b56a0ba7d7",
+      "request_file_sha256": "ca1705e92617ccc596fd94052a1a858ce13a7bb65927b91df94e5742f4345abc",
+      "requests": 12,
+      "completion_latency_ms": {
+        "p50": 8433.635161999999,
+        "p95": 17126.14776645,
+        "p99": 17240.81209249
+      },
+      "after_first_to_close_ms": {
+        "p50": 88.8305365,
+        "p95": 4872.687901799999,
+        "p99": 5610.758080360001
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 20.725537250000002,
+        "p95": 728.8741820916663,
+        "p99": 969.3435166183336
+      },
+      "proxy_eligible_requests": 12,
+      "single_token_responses": 0,
+      "generated_tokens": 90,
+      "workload_output_tokens_per_s": 4.706096576918062,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 78.0,
+      "native_itl_mean_ms": 157.89798771770737,
+      "native_itl_sample_endpoints_ns": [
+        125595350848895,
+        125618391608917
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-abstention-g6-qps4-union-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "efd76e8e772c3c5f058aa98526d84fcdf684fcb07ac9f8b53a25a5b56a0ba7d7",
+      "request_file_sha256": "217d144529986d85924ef92b617624569e01c0b87e69d3b5f7b18cfcb49f4d22",
+      "requests": 12,
+      "completion_latency_ms": {
+        "p50": 15808.784421,
+        "p95": 17172.21570815,
+        "p99": 17232.36117683
+      },
+      "after_first_to_close_ms": {
+        "p50": 93.252347,
+        "p95": 4835.566582849999,
+        "p99": 5542.289475770001
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 20.23944575,
+        "p95": 724.8074206291662,
+        "p99": 967.5178453258336
+      },
+      "proxy_eligible_requests": 12,
+      "single_token_responses": 0,
+      "generated_tokens": 90,
+      "workload_output_tokens_per_s": 4.581175893128319,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 78.0,
+      "native_itl_mean_ms": 156.47289729419683,
+      "native_itl_sample_endpoints_ns": [
+        125636797372852,
+        125660259720755
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-dfs-g6-qps4-native-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "0a506fdd4397a5962160e3fb95d88b22f5929ce69a922b509ec2bead9ea52037",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 4634.9040345,
+        "p95": 19211.60049035,
+        "p99": 20519.091595619997
+      },
+      "after_first_to_close_ms": {
+        "p50": 525.2657320000001,
+        "p95": 2303.950092799998,
+        "p99": 3416.442004909999
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 42.8365243,
+        "p95": 60.51113554107142,
+        "p99": 241.5971590609667
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1433,
+      "workload_output_tokens_per_s": 59.68779408195408,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1373.0,
+      "native_itl_mean_ms": 36.80689569484202,
+      "native_itl_sample_endpoints_ns": [
+        125766610686873,
+        125794159149225
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-dfs-g6-qps4-union-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "70474883cfa65b656a74447a3cbfb1048e478f5126c36bfd2c2c8dea95d4431d",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 14045.3598385,
+        "p95": 16783.2772063,
+        "p99": 17920.724762249996
+      },
+      "after_first_to_close_ms": {
+        "p50": 466.41701550000005,
+        "p95": 1958.4403426999997,
+        "p99": 2516.80374456
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 31.161354511363637,
+        "p95": 77.8797388095238,
+        "p99": 204.63031888338605
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1432,
+      "workload_output_tokens_per_s": 54.33087808742575,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1372.0,
+      "native_itl_mean_ms": 31.026265244370034,
+      "native_itl_sample_endpoints_ns": [
+        125812816749582,
+        125842613758186
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-dfs-g6-qps4-union-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "f2e6f73abeb005afcc95cfa8080fa05b1f2df318323f01957d1b5b069c561913",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 14130.0625065,
+        "p95": 17033.786222799998,
+        "p99": 18695.603256619994
+      },
+      "after_first_to_close_ms": {
+        "p50": 483.051254,
+        "p95": 1973.4011664999994,
+        "p99": 2496.29791665
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 32.8443315375,
+        "p95": 74.54430350340499,
+        "p99": 224.21344470916574
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1397,
+      "workload_output_tokens_per_s": 53.636926894846376,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1337.0,
+      "native_itl_mean_ms": 31.576899536934953,
+      "native_itl_sample_endpoints_ns": [
+        125861461353876,
+        125890917910716
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-dfs-g6-qps4-native-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "d6303afd356fe5b3faaa5aa7e470bc29b18e5c7a9d0764f15c820768ee219d25",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 5491.305365,
+        "p95": 22094.8671187,
+        "p99": 23511.89421695
+      },
+      "after_first_to_close_ms": {
+        "p50": 554.2490359999999,
+        "p95": 2296.6091844499992,
+        "p99": 3067.122069469997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 46.0994058,
+        "p95": 74.41650897499997,
+        "p99": 241.56233076370864
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1413,
+      "workload_output_tokens_per_s": 54.37981637682398,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1353.0,
+      "native_itl_mean_ms": 34.503098398163786,
+      "native_itl_sample_endpoints_ns": [
+        125903100457703,
+        125932854636149
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-dfs-g6-qps4-native-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "04441110dfc6cca3b04f8a9d9422941dbc2da919b07a797a72da687d1574b23f",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 6314.607798999999,
+        "p95": 21534.45727565,
+        "p99": 22622.18217971
+      },
+      "after_first_to_close_ms": {
+        "p50": 461.4370255,
+        "p95": 2040.466832599999,
+        "p99": 2982.637684909997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 41.441040674999996,
+        "p95": 71.96316259999999,
+        "p99": 204.20680013112826
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1400,
+      "workload_output_tokens_per_s": 51.10123669147324,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1340.0,
+      "native_itl_mean_ms": 32.245662268194714,
+      "native_itl_sample_endpoints_ns": [
+        125944524611982,
+        125975369131506
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-dfs-g6-qps4-union-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "eab9fd5d070fb040253d197e8210fd099a1d1d8f2a280b9256ad2cc97251ca1d",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 14198.001398,
+        "p95": 17338.345561000002,
+        "p99": 18568.960586569992
+      },
+      "after_first_to_close_ms": {
+        "p50": 502.7250385,
+        "p95": 1950.0064725499994,
+        "p99": 2488.2848947899997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 33.39067761538462,
+        "p95": 75.5290896048387,
+        "p99": 217.4823299141657
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1419,
+      "workload_output_tokens_per_s": 52.573803792390976,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1359.0,
+      "native_itl_mean_ms": 31.207918090043975,
+      "native_itl_sample_endpoints_ns": [
+        125993502218907,
+        126024113334355
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-gpufit-g10-qps4-native-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "acd0261726a9f6e1270aca66fdde9543170d449c480045e9c8a7cd3091302e42",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 10816.891993500001,
+        "p95": 15123.833976349999,
+        "p99": 17204.017153159995
+      },
+      "after_first_to_close_ms": {
+        "p50": 1048.654052,
+        "p95": 7062.025725499999,
+        "p99": 11344.36019374
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 59.2665130248708,
+        "p95": 965.2339825142857,
+        "p99": 1333.316566891665
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1419,
+      "workload_output_tokens_per_s": 70.34187286140181,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1359.0,
+      "native_itl_mean_ms": 96.0266649718834,
+      "native_itl_sample_endpoints_ns": [
+        126126775404906,
+        126151021806424
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-gpufit-g10-qps4-union-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "c459f888beea34813e0b0799c9197450a4300cac1cc11d98f9f09933c68b82ff",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 10884.5230725,
+        "p95": 15179.92960815,
+        "p99": 17265.988355729995
+      },
+      "after_first_to_close_ms": {
+        "p50": 1046.6762045,
+        "p95": 6910.006315599999,
+        "p99": 11243.393274139999
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 59.00054271673126,
+        "p95": 944.9780401785714,
+        "p99": 1305.1214340749982
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1419,
+      "workload_output_tokens_per_s": 70.14787605865145,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1359.0,
+      "native_itl_mean_ms": 95.21670311192021,
+      "native_itl_sample_endpoints_ns": [
+        126169455087175,
+        126193565405806
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-gpufit-g10-qps4-union-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "b32723b19e260c21938b8bbaf3db53190bee2ae18ccfbef170036468402ef352",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 11256.4105375,
+        "p95": 15726.8335725,
+        "p99": 17702.23076787999
+      },
+      "after_first_to_close_ms": {
+        "p50": 1040.4982555,
+        "p95": 7701.2103893999965,
+        "p99": 11333.42740078
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 59.994596445438276,
+        "p95": 958.9547971071429,
+        "p99": 1324.2414575783316
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1426,
+      "workload_output_tokens_per_s": 70.75527252021078,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1366.0,
+      "native_itl_mean_ms": 100.36370707616585,
+      "native_itl_sample_endpoints_ns": [
+        126211846391607,
+        126236229937714
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-gpufit-g10-qps4-native-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "b6ee5794858b3806e6f5f30332790acb60abc43e660595ea0375b422b5f38562",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 11152.117835000001,
+        "p95": 15621.655136349998,
+        "p99": 17598.92787029999
+      },
+      "after_first_to_close_ms": {
+        "p50": 1041.6142995,
+        "p95": 7709.870853999996,
+        "p99": 11354.18384899
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 58.77877809069768,
+        "p95": 960.1431024999999,
+        "p99": 1326.115876574165
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1426,
+      "workload_output_tokens_per_s": 71.12660787184342,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1366.0,
+      "native_itl_mean_ms": 100.3468516912326,
+      "native_itl_sample_endpoints_ns": [
+        126247962868393,
+        126272308236651
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-gpufit-g10-qps4-native-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "3c5a594e5cfb7c816382ebe69c756e91ca24da905dcc436a72f7a71be733641a",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 11239.617946,
+        "p95": 16292.2930183,
+        "p99": 17556.64314179999
+      },
+      "after_first_to_close_ms": {
+        "p50": 1045.7403835,
+        "p95": 7689.367352399996,
+        "p99": 11350.653105020001
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 58.20651283741259,
+        "p95": 962.7973581785714,
+        "p99": 1321.6293889699982
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1426,
+      "workload_output_tokens_per_s": 68.06860690203753,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1366.0,
+      "native_itl_mean_ms": 100.08578575951712,
+      "native_itl_sample_endpoints_ns": [
+        126283513439547,
+        126307835052636
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-gpufit-g10-qps4-union-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "f6c343449fd614472d6f673a42842947df90c9ec73e19a8e4367807a75ba48be",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 11386.369087,
+        "p95": 16447.69959375,
+        "p99": 17706.43906122999
+      },
+      "after_first_to_close_ms": {
+        "p50": 1046.8449645,
+        "p95": 7749.4805282499965,
+        "p99": 11386.9013899
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 57.351461842105266,
+        "p95": 965.0038231214286,
+        "p99": 1335.771324639165
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1426,
+      "workload_output_tokens_per_s": 67.56778688242034,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_observation_count": 1366.0,
+      "native_itl_mean_ms": 100.45664132748526,
+      "native_itl_sample_endpoints_ns": [
+        126326476728452,
+        126350931286566
+      ],
+      "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-fifo16-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "ac002f99a6e03dbd058f403ec20083179757824523574e5a300f3aa2c2fa151b",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 24552.101104,
+        "p95": 37989.14753525,
+        "p99": 39027.203375089994
+      },
+      "after_first_to_close_ms": {
+        "p50": 180.957302,
+        "p95": 1635.7176515499998,
+        "p99": 2161.847964079997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 14.951428279757085,
+        "p95": 19.311846034878048,
+        "p99": 48.55759624930498
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1399,
+      "workload_output_tokens_per_s": 27.265947867378657,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-fifo64-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "a3f9dca7c2269d13d51fa6318d8eb5a76fa3a2791a132e7e015a1cdbea934888",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 24565.6791055,
+        "p95": 37919.65328975,
+        "p99": 38862.37890838
+      },
+      "after_first_to_close_ms": {
+        "p50": 180.559075,
+        "p95": 1641.8913999,
+        "p99": 2166.319440439997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 15.065641854545454,
+        "p95": 19.505779201585366,
+        "p99": 48.85985968863501
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 27.235237215434317,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-lpm16-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "d46108fcc53a7f524fdbe6019fb5a83545a0d4b49326449540a351aa4c44683c",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 23413.799112499997,
+        "p95": 36030.903765450006,
+        "p99": 36810.251048269994
+      },
+      "after_first_to_close_ms": {
+        "p50": 411.433515,
+        "p95": 1585.3790690999992,
+        "p99": 2773.0981746099997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 18.888818969512194,
+        "p95": 50.875653175000004,
+        "p99": 67.97221713645149
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1419,
+      "workload_output_tokens_per_s": 33.66136864095371,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-bundle16-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "1f066e264ec3fce65b4502cc5f691f45086eeda1e1bb61ca97e059efde055adf",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 20564.864074999998,
+        "p95": 27548.4441728,
+        "p99": 28593.80247185999
+      },
+      "after_first_to_close_ms": {
+        "p50": 353.330244,
+        "p95": 2641.0391131,
+        "p99": 3016.255231209998
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 30.456522982142857,
+        "p95": 51.50499138499994,
+        "p99": 84.40080105870966
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1443,
+      "workload_output_tokens_per_s": 38.87841207019576,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-dhas16-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "0569e58845906fb1ef4c322c562205791d82797448d00c432527d72866efcea8",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 24697.586134999998,
+        "p95": 38177.7458824,
+        "p99": 39128.952662519994
+      },
+      "after_first_to_close_ms": {
+        "p50": 179.4381755,
+        "p95": 1639.92800995,
+        "p99": 2168.8684500599966
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 15.111038715789473,
+        "p95": 19.34226862134146,
+        "p99": 48.97585551096751
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 27.095426294607073,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-union64-s101",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+      "request_file_sha256": "10587db8eb6cb74438cf20e7fb5fab1ad194c5f2b9e3075989223c37602e21e8",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 16015.439214,
+        "p95": 21495.235622849996,
+        "p99": 22085.67404735
+      },
+      "after_first_to_close_ms": {
+        "p50": 773.0421429999999,
+        "p95": 2739.72637345,
+        "p99": 3969.0928046499967
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 38.43811468653846,
+        "p95": 116.69602063571425,
+        "p99": 162.9179530529998
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1423,
+      "workload_output_tokens_per_s": 44.93195660868914,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-union64-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "cb3e8bed19cef7bcc9bf35773aba8341d2f593fb5e8fefdcf00429b0495af117",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 16860.290527,
+        "p95": 21605.542675099998,
+        "p99": 22459.419706629997
+      },
+      "after_first_to_close_ms": {
+        "p50": 746.337973,
+        "p95": 2752.12422025,
+        "p99": 3792.378722909997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 43.118831809210526,
+        "p95": 111.37410314833329,
+        "p99": 140.3448684957142
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1405,
+      "workload_output_tokens_per_s": 43.3003679346108,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-dhas16-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "4dd8b9371659f58d0d2cf990f0b5e8f12e917fe1a9a2b4cc8d67c1a179ad7bb3",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 25637.1009745,
+        "p95": 36286.8680819,
+        "p99": 37067.67292421
+      },
+      "after_first_to_close_ms": {
+        "p50": 178.0375355,
+        "p95": 1639.4535061499998,
+        "p99": 2175.5772241499967
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 14.952738909446692,
+        "p95": 19.37171391445122,
+        "p99": 48.904173952952625
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1399,
+      "workload_output_tokens_per_s": 27.333751361086126,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-bundle16-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "f34a0599a7249bd7da8e5f5d3616a9aa561dcdb7287270943050d92d05fd3d21",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 20538.4590195,
+        "p95": 28020.881568599998,
+        "p99": 29342.109161339995
+      },
+      "after_first_to_close_ms": {
+        "p50": 356.857017,
+        "p95": 2612.9661652,
+        "p99": 2961.397540729998
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 29.928979552777776,
+        "p95": 52.77208535113629,
+        "p99": 81.70190280118277
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1406,
+      "workload_output_tokens_per_s": 38.1371863052804,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-lpm16-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "3e1dd0d14639d18c337aa15fcecc5afd66a8dd364e3fc14c8553ac742d4c3ad7",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 22385.375948,
+        "p95": 35970.4176965,
+        "p99": 36973.160145789996
+      },
+      "after_first_to_close_ms": {
+        "p50": 408.796987,
+        "p95": 1576.121538549999,
+        "p99": 2773.2839015599993
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 19.288715314024387,
+        "p95": 49.942459015,
+        "p99": 65.73540173009664
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1404,
+      "workload_output_tokens_per_s": 33.826362368231244,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-fifo64-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "2b34b91ddaf127426c170257f7ec079d50e5f89027d35620102ce991e027f91c",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 25580.953688,
+        "p95": 36179.2692627,
+        "p99": 36964.00147256
+      },
+      "after_first_to_close_ms": {
+        "p50": 179.956895,
+        "p95": 1639.5090896999998,
+        "p99": 2167.4439232999966
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 14.920900644669366,
+        "p95": 19.24804511164634,
+        "p99": 48.75921249337446
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1399,
+      "workload_output_tokens_per_s": 27.38596135946332,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-fifo16-s102",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+      "request_file_sha256": "a0dde1bd8d5cce910f313369acab4513d7d37ab58fcb340de19acf36dd2291bd",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 25689.438113,
+        "p95": 36353.63867955,
+        "p99": 37043.03082879
+      },
+      "after_first_to_close_ms": {
+        "p50": 182.2293635,
+        "p95": 1631.5927407999998,
+        "p99": 2166.7166841699964
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 14.816976214285715,
+        "p95": 19.356074431158536,
+        "p99": 49.059744072729295
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 27.22501897690094,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-lpm16-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "271413ab598ef5a27a9e71783cf20cf9bb20aaeddc1b66951022c7b26a0d8690",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 22928.780172500003,
+        "p95": 36774.9508042,
+        "p99": 37903.25723073
+      },
+      "after_first_to_close_ms": {
+        "p50": 404.34475599999996,
+        "p95": 1582.4225100999993,
+        "p99": 2774.2745403599997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 18.915917926136363,
+        "p95": 50.768408465,
+        "p99": 66.25640404119342
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1419,
+      "workload_output_tokens_per_s": 33.14938865664413,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-bundle16-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "80f8fa970359fb3335a10038c51daa20466c5bd6f2414e8d61a513ebb8a31551",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 20099.364702,
+        "p95": 28554.37866625,
+        "p99": 30118.997269739997
+      },
+      "after_first_to_close_ms": {
+        "p50": 390.1282635,
+        "p95": 2667.1359692,
+        "p99": 3056.7360423599976
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 29.02875010753968,
+        "p95": 52.542407512121216,
+        "p99": 74.92911149679024
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1422,
+      "workload_output_tokens_per_s": 37.295383051049285,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-dhas16-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "92666a60510f0432eba683466b2d1cb605f7c63132fe78e1dcb042191641b0b2",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 25763.7284155,
+        "p95": 35407.243270700004,
+        "p99": 36102.5032033
+      },
+      "after_first_to_close_ms": {
+        "p50": 180.9053315,
+        "p95": 1629.6656467999999,
+        "p99": 2161.2333755099967
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 14.831088093280282,
+        "p95": 19.346086000365855,
+        "p99": 48.68997843473923
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1399,
+      "workload_output_tokens_per_s": 26.77380561982272,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-union64-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "301f7af49bd7cbea3daf52bbeaa53d7b423690832899fd055d45d3512c343656",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 16314.936279,
+        "p95": 20697.46161975,
+        "p99": 21316.558942829997
+      },
+      "after_first_to_close_ms": {
+        "p50": 805.5985579999999,
+        "p95": 2615.1774193499996,
+        "p99": 3811.325821929997
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 43.2293902375,
+        "p95": 124.94821961714287,
+        "p99": 160.25148264428543
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1405,
+      "workload_output_tokens_per_s": 42.59618769870733,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-fifo16-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "5f7d5a2f9ee63675580b40215f660a589f6b616e0f0a2d0925f1b4a68cd1794f",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 25774.450662000003,
+        "p95": 35323.5381087,
+        "p99": 36013.02770005
+      },
+      "after_first_to_close_ms": {
+        "p50": 180.6255645,
+        "p95": 1641.78495705,
+        "p99": 2164.1810719599966
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 15.153972428571429,
+        "p95": 19.150022985731706,
+        "p99": 48.32470001642656
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 26.729346832762058,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    },
+    {
+      "run_id": "v5r2-dev-main-qps4-fifo64-s103",
+      "prompt_version": "locomo-qwen-concise-v5",
+      "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+      "request_file_sha256": "01505a5f4c6add368b34b24861f8abe7a4a1ca6a2ed91359878ac2c3c362a943",
+      "requests": 60,
+      "completion_latency_ms": {
+        "p50": 25704.897816999997,
+        "p95": 35255.82990329999,
+        "p99": 35944.94527655
+      },
+      "after_first_to_close_ms": {
+        "p50": 182.994737,
+        "p95": 1637.1542360499998,
+        "p99": 2171.6254962299968
+      },
+      "client_tpot_proxy_ms": {
+        "p50": 15.038354977272729,
+        "p95": 19.38501250115854,
+        "p99": 49.02783108945387
+      },
+      "proxy_eligible_requests": 60,
+      "single_token_responses": 0,
+      "generated_tokens": 1393,
+      "workload_output_tokens_per_s": 26.76693045278646,
+      "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+      "native_itl_mean_ms": null,
+      "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+    }
+  ],
+  "pairs": [
+    {
+      "a": "v5r2-dev-lpm-g6-qps4-native-s101",
+      "b": "v5r2-dev-lpm-g6-qps4-union-s101",
+      "completion_p95_delta_pct": -11.610066939892194,
+      "generated_tokens_a": 1424,
+      "generated_tokens_b": 1484
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps4-fifo-s101",
+      "b": "v5r2-dev-lpm-g6-qps4-union-s101",
+      "completion_p95_delta_pct": -11.884566827061228,
+      "generated_tokens_a": 1424,
+      "generated_tokens_b": 1484
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps4-native-s102",
+      "b": "v5r2-dev-lpm-g6-qps4-union-s102",
+      "completion_p95_delta_pct": -8.321885893609693,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1391
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps4-fifo-s102",
+      "b": "v5r2-dev-lpm-g6-qps4-union-s102",
+      "completion_p95_delta_pct": -9.377895857485907,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1391
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps4-native-s103",
+      "b": "v5r2-dev-lpm-g6-qps4-union-s103",
+      "completion_p95_delta_pct": -18.061732001218,
+      "generated_tokens_a": 1397,
+      "generated_tokens_b": 1395
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps4-fifo-s103",
+      "b": "v5r2-dev-lpm-g6-qps4-union-s103",
+      "completion_p95_delta_pct": -18.416323989208173,
+      "generated_tokens_a": 1397,
+      "generated_tokens_b": 1395
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps2-native-s101",
+      "b": "v5r2-dev-lpm-g6-qps2-union-s101",
+      "completion_p95_delta_pct": -0.5275267441558706,
+      "generated_tokens_a": 1401,
+      "generated_tokens_b": 1477
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps2-native-s102",
+      "b": "v5r2-dev-lpm-g6-qps2-union-s102",
+      "completion_p95_delta_pct": 1.4837567995037881,
+      "generated_tokens_a": 1403,
+      "generated_tokens_b": 1425
+    },
+    {
+      "a": "v5r2-dev-lpm-g6-qps2-native-s103",
+      "b": "v5r2-dev-lpm-g6-qps2-union-s103",
+      "completion_p95_delta_pct": 8.576529734470672,
+      "generated_tokens_a": 1461,
+      "generated_tokens_b": 1437
+    },
+    {
+      "a": "v5r2-dev-dfs-g6-qps4-native-s101",
+      "b": "v5r2-dev-dfs-g6-qps4-union-s101",
+      "completion_p95_delta_pct": -12.639880187336539,
+      "generated_tokens_a": 1433,
+      "generated_tokens_b": 1432
+    },
+    {
+      "a": "v5r2-dev-dfs-g6-qps4-native-s102",
+      "b": "v5r2-dev-dfs-g6-qps4-union-s102",
+      "completion_p95_delta_pct": -22.90613864618608,
+      "generated_tokens_a": 1413,
+      "generated_tokens_b": 1397
+    },
+    {
+      "a": "v5r2-dev-dfs-g6-qps4-native-s103",
+      "b": "v5r2-dev-dfs-g6-qps4-union-s103",
+      "completion_p95_delta_pct": -19.485569851786945,
+      "generated_tokens_a": 1400,
+      "generated_tokens_b": 1419
+    },
+    {
+      "a": "v5r2-dev-gpufit-g10-qps4-native-s101",
+      "b": "v5r2-dev-gpufit-g10-qps4-union-s101",
+      "completion_p95_delta_pct": 0.37090880452483876,
+      "generated_tokens_a": 1419,
+      "generated_tokens_b": 1419
+    },
+    {
+      "a": "v5r2-dev-gpufit-g10-qps4-native-s102",
+      "b": "v5r2-dev-gpufit-g10-qps4-union-s102",
+      "completion_p95_delta_pct": 0.6732861225777764,
+      "generated_tokens_a": 1426,
+      "generated_tokens_b": 1426
+    },
+    {
+      "a": "v5r2-dev-gpufit-g10-qps4-native-s103",
+      "b": "v5r2-dev-gpufit-g10-qps4-union-s103",
+      "completion_p95_delta_pct": 0.9538655809556262,
+      "generated_tokens_a": 1426,
+      "generated_tokens_b": 1426
+    },
+    {
+      "a": "v5r2-dev-lowreuse-g6-qps4-native-s101",
+      "b": "v5r2-dev-lowreuse-g6-qps4-union-s101",
+      "completion_p95_delta_pct": 0.6916058209253562,
+      "generated_tokens_a": 103,
+      "generated_tokens_b": 103
+    },
+    {
+      "a": "v5r2-dev-lowreuse-g6-qps4-native-s102",
+      "b": "v5r2-dev-lowreuse-g6-qps4-union-s102",
+      "completion_p95_delta_pct": 0.09519102268122914,
+      "generated_tokens_a": 103,
+      "generated_tokens_b": 103
+    },
+    {
+      "a": "v5r2-dev-lowreuse-g6-qps4-native-s103",
+      "b": "v5r2-dev-lowreuse-g6-qps4-union-s103",
+      "completion_p95_delta_pct": 0.08751074872832554,
+      "generated_tokens_a": 103,
+      "generated_tokens_b": 103
+    },
+    {
+      "a": "v5r2-dev-abstention-g6-qps4-native-s101",
+      "b": "v5r2-dev-abstention-g6-qps4-union-s101",
+      "completion_p95_delta_pct": 0.506288491397,
+      "generated_tokens_a": 90,
+      "generated_tokens_b": 90
+    },
+    {
+      "a": "v5r2-dev-abstention-g6-qps4-native-s102",
+      "b": "v5r2-dev-abstention-g6-qps4-union-s102",
+      "completion_p95_delta_pct": 0.36520206043748615,
+      "generated_tokens_a": 90,
+      "generated_tokens_b": 90
+    },
+    {
+      "a": "v5r2-dev-abstention-g6-qps4-native-s103",
+      "b": "v5r2-dev-abstention-g6-qps4-union-s103",
+      "completion_p95_delta_pct": 0.26899184993747216,
+      "generated_tokens_a": 90,
+      "generated_tokens_b": 90
+    },
+    {
+      "a": "v5r2-dev-main-qps4-fifo16-s101",
+      "b": "v5r2-dev-main-qps4-union64-s101",
+      "completion_p95_delta_pct": -43.417430983665426,
+      "generated_tokens_a": 1399,
+      "generated_tokens_b": 1423
+    },
+    {
+      "a": "v5r2-dev-main-qps4-fifo64-s101",
+      "b": "v5r2-dev-main-qps4-union64-s101",
+      "completion_p95_delta_pct": -43.31373375541823,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1423
+    },
+    {
+      "a": "v5r2-dev-main-qps4-lpm16-s101",
+      "b": "v5r2-dev-main-qps4-union64-s101",
+      "completion_p95_delta_pct": -40.34222465587513,
+      "generated_tokens_a": 1419,
+      "generated_tokens_b": 1423
+    },
+    {
+      "a": "v5r2-dev-main-qps4-bundle16-s101",
+      "b": "v5r2-dev-main-qps4-union64-s101",
+      "completion_p95_delta_pct": -21.97295975039726,
+      "generated_tokens_a": 1443,
+      "generated_tokens_b": 1423
+    },
+    {
+      "a": "v5r2-dev-main-qps4-dhas16-s101",
+      "b": "v5r2-dev-main-qps4-union64-s101",
+      "completion_p95_delta_pct": -43.69694929328101,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1423
+    },
+    {
+      "a": "v5r2-dev-main-qps4-fifo16-s102",
+      "b": "v5r2-dev-main-qps4-union64-s102",
+      "completion_p95_delta_pct": -40.56841774341077,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-fifo64-s102",
+      "b": "v5r2-dev-main-qps4-union64-s102",
+      "completion_p95_delta_pct": -40.281981600510605,
+      "generated_tokens_a": 1399,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-lpm16-s102",
+      "b": "v5r2-dev-main-qps4-union64-s102",
+      "completion_p95_delta_pct": -39.93524663128317,
+      "generated_tokens_a": 1404,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-bundle16-s102",
+      "b": "v5r2-dev-main-qps4-union64-s102",
+      "completion_p95_delta_pct": -22.894850320087656,
+      "generated_tokens_a": 1406,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-dhas16-s102",
+      "b": "v5r2-dev-main-qps4-union64-s102",
+      "completion_p95_delta_pct": -40.45905911103718,
+      "generated_tokens_a": 1399,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-fifo16-s103",
+      "b": "v5r2-dev-main-qps4-union64-s103",
+      "completion_p95_delta_pct": -41.40603482001616,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-fifo64-s103",
+      "b": "v5r2-dev-main-qps4-union64-s103",
+      "completion_p95_delta_pct": -41.29350613354108,
+      "generated_tokens_a": 1393,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-lpm16-s103",
+      "b": "v5r2-dev-main-qps4-union64-s103",
+      "completion_p95_delta_pct": -43.71858787806677,
+      "generated_tokens_a": 1419,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-bundle16-s103",
+      "b": "v5r2-dev-main-qps4-union64-s103",
+      "completion_p95_delta_pct": -27.51562952335056,
+      "generated_tokens_a": 1422,
+      "generated_tokens_b": 1405
+    },
+    {
+      "a": "v5r2-dev-main-qps4-dhas16-s103",
+      "b": "v5r2-dev-main-qps4-union64-s103",
+      "completion_p95_delta_pct": -41.54455498974855,
+      "generated_tokens_a": 1399,
+      "generated_tokens_b": 1405
+    }
+  ]
+}

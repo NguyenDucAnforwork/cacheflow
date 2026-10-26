@@ -1,0 +1,509 @@
+{
+  "scope": "Conditional serving-run variability across3 paired arrival schedules on fixed QA/model/host. Same serving process is reused within a backend; these are not independent host/process or semantic-data replications. n3 intervals are assumption-dependent descriptors, not robust population inference or quality-equivalence tests.",
+  "comparisons": [
+    {
+      "baseline": "v5r2-dev-lpm-g6-qps4-native",
+      "candidate": "v5r2-dev-lpm-g6-qps4-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 183.84065113052608,
+          "exploratory_t95_low_pct": 42.35452869134371,
+          "exploratory_t95_high_pct": 465.9497873010066,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            286.17427884536875,
+            125.08724333935616,
+            163.08104404708916
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -11.63061024149252,
+          "exploratory_t95_low_pct": -24.365854326358246,
+          "exploratory_t95_high_pct": 3.248988624624196,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -10.05423560841816,
+            -6.922789334302804,
+            -17.570722918101957
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -14.067512100217872,
+          "exploratory_t95_low_pct": -29.177469556141634,
+          "exploratory_t95_high_pct": 4.266148503404207,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -13.761243366596753,
+            -7.2813204624797345,
+            -20.639858693887824
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-lpm-g6-qps4-fifo",
+      "candidate": "v5r2-dev-lpm-g6-qps4-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 177.92675606861218,
+          "exploratory_t95_low_pct": 41.21586993735955,
+          "exploratory_t95_high_pct": 446.9872598107096,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            275.5584158659516,
+            120.82901124799719,
+            158.85553086285995
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -12.191883983344562,
+          "exploratory_t95_low_pct": -24.293974686138398,
+          "exploratory_t95_high_pct": 1.8448030580029542,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -10.319790878312663,
+            -8.03218190498306,
+            -17.91354849146409
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -14.58791677489844,
+          "exploratory_t95_low_pct": -28.981730702142766,
+          "exploratory_t95_high_pct": 2.723201128076304,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -13.995345478511034,
+            -8.340508918441547,
+            -20.957886107986056
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-lpm-g6-qps2-native",
+      "candidate": "v5r2-dev-lpm-g6-qps2-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 79.71906430080762,
+          "exploratory_t95_low_pct": -27.247875406522894,
+          "exploratory_t95_high_pct": 343.9587469594492,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            35.74554212015211,
+            57.692400992411066,
+            171.1727868535537
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 2.892868428884444,
+          "exploratory_t95_low_pct": -8.330989613260801,
+          "exploratory_t95_high_pct": 15.49096394581814,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.6044156477073015,
+            -0.24525293108238477,
+            8.543846837840906
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -6.178206490812692,
+          "exploratory_t95_low_pct": -17.322661863375885,
+          "exploratory_t95_high_pct": 6.46846083426661,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -11.528420503624591,
+            -3.609705265166485,
+            -3.1556913736640047
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-dfs-g6-qps4-native",
+      "candidate": "v5r2-dev-dfs-g6-qps4-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 208.8471415318594,
+          "exploratory_t95_low_pct": 96.90576154924067,
+          "exploratory_t95_high_pct": 384.4274544427024,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            275.7093497228308,
+            198.37239417580577,
+            162.79682656350184
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -18.051723772307984,
+          "exploratory_t95_low_pct": -30.47836321288172,
+          "exploratory_t95_high_pct": -3.4038856528412995,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -12.078506980209946,
+            -22.905936301767472,
+            -18.809825407197234
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -20.151407742549257,
+          "exploratory_t95_low_pct": -29.16308908810454,
+          "exploratory_t95_high_pct": -9.993284526104997,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -15.631174928732205,
+            -22.865635102425564,
+            -21.77026079099035
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-gpufit-g10-qps4-native",
+      "candidate": "v5r2-dev-gpufit-g10-qps4-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 1.4537181949511073,
+          "exploratory_t95_low_pct": 0.727256157625526,
+          "exploratory_t95_high_pct": 2.185419599572164,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            1.7926812492458088,
+            1.268787304956076,
+            1.3005355327846635
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.7494914113725443,
+          "exploratory_t95_low_pct": 0.17483320170198646,
+          "exploratory_t95_high_pct": 1.3274461781461906,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.5303626465843481,
+            0.726026235037458,
+            0.9926196194776749
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.6835094818389557,
+          "exploratory_t95_low_pct": 0.09213143996500872,
+          "exploratory_t95_high_pct": 1.2783815844685218,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.4553417991295605,
+            0.6640309324130289,
+            0.9317219790748066
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-lowreuse-g6-qps4-native",
+      "candidate": "v5r2-dev-lowreuse-g6-qps4-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.32171141048540147,
+          "exploratory_t95_low_pct": 0.14688229794969768,
+          "exploratory_t95_high_pct": 0.4968457269165105,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.4029123635419074,
+            0.28566578016777644,
+            0.27660555254382935
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.2782619319763111,
+          "exploratory_t95_low_pct": -0.5126806285370483,
+          "exploratory_t95_high_pct": 1.0754926319026505,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.6480416756994734,
+            0.09639196699111618,
+            0.09137176584981255
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.2708286563262437,
+          "exploratory_t95_low_pct": -0.5396280921944201,
+          "exploratory_t95_high_pct": 1.0878894435069635,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.6497978627507894,
+            0.0816567362438736,
+            0.0821022214560152
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-abstention-g6-qps4-native",
+      "candidate": "v5r2-dev-abstention-g6-qps4-union",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 102.09920102339763,
+          "exploratory_t95_low_pct": 81.19111222329494,
+          "exploratory_t95_high_pct": 125.41992569679992,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            112.58699588418608,
+            96.34448983761308,
+            97.75996522715911
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 2.6050847264952477,
+          "exploratory_t95_low_pct": 1.0967413323864144,
+          "exploratory_t95_high_pct": 4.135932305848506,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            2.1728014538341833,
+            2.3388839522761717,
+            3.307219354967139
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 1.9337232477202604,
+          "exploratory_t95_low_pct": 0.8618215401860638,
+          "exploratory_t95_high_pct": 3.017016513061659,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            1.518812007469239,
+            2.3845194948089565,
+            1.8996845332096113
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-main-qps4-fifo16",
+      "candidate": "v5r2-dev-main-qps4-union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -38.735498129827725,
+          "exploratory_t95_low_pct": -41.609093458934616,
+          "exploratory_t95_high_pct": -35.72048437438321,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -37.83613317698254,
+            -38.28254701984067,
+            -40.06497319632969
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -45.04132130664475,
+          "exploratory_t95_low_pct": -49.134667683208164,
+          "exploratory_t95_high_pct": -40.61856619931415,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -46.97290804828464,
+            -43.86582746229186,
+            -44.232174225044695
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -44.344052374821885,
+          "exploratory_t95_low_pct": -49.356763481363025,
+          "exploratory_t95_high_pct": -38.835178811752236,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -46.272488953374435,
+            -42.05904774338657,
+            -44.6200710394099
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-main-qps4-fifo64",
+      "candidate": "v5r2-dev-main-qps4-union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -38.60458199476309,
+          "exploratory_t95_low_pct": -41.331181109100484,
+          "exploratory_t95_high_pct": -35.75126577803898,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -37.88061236275689,
+            -38.02795221217848,
+            -39.884720767164694
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -44.87226101062177,
+          "exploratory_t95_low_pct": -49.11066145768553,
+          "exploratory_t95_high_pct": -40.280858562269785,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -46.86256753597693,
+            -43.57935039308279,
+            -44.11800606208236
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -44.18407706444241,
+          "exploratory_t95_low_pct": -49.31001965776018,
+          "exploratory_t95_high_pct": -38.539781785000315,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -46.13475294911146,
+            -41.82841294917077,
+            -44.50488413212813
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-main-qps4-lpm16",
+      "candidate": "v5r2-dev-main-qps4-union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -31.26976308749334,
+          "exploratory_t95_low_pct": -36.125474563784906,
+          "exploratory_t95_high_pct": -26.044922701359074,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -32.64322191672818,
+            -28.903522519633874,
+            -32.202429125274335
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -43.80293334312936,
+          "exploratory_t95_low_pct": -48.61500119043586,
+          "exploratory_t95_high_pct": -38.54022819887752,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -42.9337485433377,
+            -42.332985269526134,
+            -46.0695398471299
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -43.99753352455926,
+          "exploratory_t95_low_pct": -50.854070225811896,
+          "exploratory_t95_high_pct": -36.18441515415046,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -42.87627810825695,
+            -41.72483073641764,
+            -47.237978752160615
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-main-qps4-bundle16",
+      "candidate": "v5r2-dev-main-qps4-union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -21.261072211810873,
+          "exploratory_t95_low_pct": -24.896645812586854,
+          "exploratory_t95_high_pct": -17.449509195519887,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -22.909409191120524,
+            -20.013544754185787,
+            -20.831819266516803
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -27.86026550951421,
+          "exploratory_t95_low_pct": -34.768483615083774,
+          "exploratory_t95_high_pct": -20.220445870837338,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -25.700069239440694,
+            -26.645575716549498,
+            -31.11750065578044
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -27.059719647582707,
+          "exploratory_t95_low_pct": -37.086415833902755,
+          "exploratory_t95_high_pct": -15.435043664922588,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -24.19983090758837,
+            -24.830108414851047,
+            -31.893558972364854
+          ]
+        }
+      }
+    },
+    {
+      "baseline": "v5r2-dev-main-qps4-dhas16",
+      "candidate": "v5r2-dev-main-qps4-union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -38.80981938105127,
+          "exploratory_t95_low_pct": -41.38163283311358,
+          "exploratory_t95_high_pct": -36.12517057120122,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -38.23814273207762,
+            -38.154984300747195,
+            -40.01810891334612
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -45.11568020754813,
+          "exploratory_t95_low_pct": -49.61501448893216,
+          "exploratory_t95_high_pct": -40.21455938657701,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -47.23385808670244,
+            -43.751209409815104,
+            -44.2972895347591
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -44.45082652253166,
+          "exploratory_t95_low_pct": -49.80719346960009,
+          "exploratory_t95_high_pct": -38.52285043752291,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -46.50517956565822,
+            -41.98935098275813,
+            -44.7651287759674
+          ]
+        }
+      }
+    }
+  ]
+}

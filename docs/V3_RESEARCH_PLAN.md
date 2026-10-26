@@ -166,3 +166,21 @@ The defect is system-only phrase repair with an unchanged legacy user footer. Co
 V4 FIFO26ReadTimeouts allconv30 are separate from the prompt defect, diagnosed after deciding to repair the prompt. V5 uniformly uses3600s read/pool allowances and records actual values, preserving original600s defaults and the failed600s run. This prevents measurement censoring but is not a scheduler or SLO improvement. `v5_method_proof.py` reconstructs exact permitted timeout/telemetry diffs from original committed sourceSHA; scheduler/hash/residency/admission sources stay unchanged. The V5 seal also hashes21 input manifests and the new controllers/renderer/plan. Use `v5_verify.py` for the current tree.
 
 V5 pipelinePID278871/tool66829 is live.57validation runs2820requests→27protocol-repair repeats1080requests→17full runs33762requests, with strict audits between stages. First three seed101 primarySG arms complete180/180 without errors, plus60warmup; actual client/gateway timeout3600s verified.49CPU tests pass. These are early validation data, not completion or proof of strong contribution. Required final scope is unchanged: strong recent-baseline grounding, full data, quality/fairness/source proof, unprofiled comparisons, report/figures and accessible Vietnamese interview documentation.
+
+### Current requirement audit, V5 revision2 validation complete,15:16UTC
+
+Previous user-facing turn only summarized status (no research progress); this continuation adds authoritative analyses/figure and verifies live repair repeats. The goal remains incomplete.
+
+| Requirement | Inspected evidence | Current judgment / next evidence |
+| --- | --- | --- |
+| At least five more hours from05:59UTC | Current clock15:16UTC | Time condition elapsed; not evidence of research success |
+| RQ0 actual opportunity, no unsupported adaptive delay-hit | Historical fixed-DHAS negatives; exact duplicate-prefill/source diagnostics; unchanged fixed union algorithm | Mechanism scope documented; do not reinterpret nativeSG equal-compute gain as avoided compute |
+| Strong competitive baselines | V5 validation57runs2820success: actualGPU-LPM/bundle/DHAS/FIFO/union; nativeLPM/DFS/guard, load/reuse/GPU-fit controls | Complete dev audit;27repair repeats and17full arms still required |
+| Recent paper grounding | `V3_BASELINES.md` primary-source applicability/implementation matrix | Partial native component adaptation is not a full Strata/Cake reproduction or latest-policy sweep |
+| CPU↔GPU profiling | Direct event/payload reconciliation with missing bulk timeline coverage; kernel diagnostic432I/O kernels,9.818% temporal overlap | Complete scoped diagnostics, no pureDMA or causal latency-hiding claim |
+| Primary and secondary serving metrics | `v5r2_main_dev_findings.json`, `_validation_secondary_metrics.json`, `_validation_run_intervals.json`; main figure visually inspected | Completion gain and worsening decode proxy both reported; full native histogram observer registered, coverage not yet proved |
+| Quality, errors, fairness | Complete dev official scores/cap/source/transport audits; all57noerrors; both earlier failures preserved | Full category5, per-category deltas, per-conversation waits/SLO and all33762requests required; no quality-equivalence claim |
+| Freeze / comparability | `v5_verify.py` passes; exact enumerated transport changes; all19 main source contracts, actual byte budgets | Never pool V4/V5; repaired repeats are not a new semantic holdout |
+| Reproducibility and interview | New repeatable main/secondary/interval/plot scripts; INTERVIEW21.4–21.6 | Final report/reproduce consolidation, full figures, tests and final completion audit remain |
+
+Main dev p95 vsFIFO64 improves43.6–46.9%, vsbundle25.7–31.1%; completion p95 also improves40.3–43.3% vsFIFO. CPU-consumed tokens decrease90.8%, not directDMA bytes. Client TPOT proxy p95 worsens19.38→117.67ms/token; exact native ITL unavailable retrospectively. SGnative4QPS exploratory n3 log-ratio interval crosses0, and native median/lower-load regressions remain explicit. Keep the conditional-pressure research question; do not redefine the target as a universal latency win or dev-only completion.

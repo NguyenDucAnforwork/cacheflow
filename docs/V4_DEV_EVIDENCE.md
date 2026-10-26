@@ -262,3 +262,52 @@ NativeDFS paired union p95 changes−12.079/−22.906/−18.810%; F1 deltas−.0
 Shared `v5_audit_contracts.py` now checks actual client keepalive/read/pool, gateway upstream read, intended policy/cap, model/prompt/trace identity, fresh history/decision state, exact CPU payload and mandatory serving-source fingerprints. Omitting source coverage or using the revision1 transport fails the contract. Dev, repaired-protocol-repeat and full auditors all use the shared check. Main source coverage requires all19 parent-selected files with the exact allowed transport patches; native coverage includes the measured frontend/overlay and gateway sources where applicable.57CPU tests pass; serving sources and experiment seal remain unchanged.
 
 Main vLLM/LMCache startup/warmup succeeds60/60, actual byte budget and all19 source fingerprints verified, real GPU-event observer `known=true`, hash contract verified, gaps0. The first main measuredFIFO16 arm is live. Main comparisons,27repair-repeat runs and17full runs remain required. Reproduce completed native blocks with `v5_analyze_controls.py dfs` / `gpufit` and aggregate with `v5_audit_sg_complete.py`.
+
+
+## V5 revision2 complete validation, main mechanism and decode tradeoff,15:16UTC
+
+`v5r2_validation_audit.json` accepts all57 measured runs2820/2820success, no errors. This includes18 main runs1080requests under the same actual16GB CPU payload as nativeSG controls. All19 selected source fingerprints, fresh gateway state, real GPU-event observer/hash/sequence and exact budgets pass. Same60uniqueQA are repeated across three arrival schedules, not180independent examples.
+
+| Main arm | Mean run p50 / p95 / p99 (seconds) | CPU-consumed / newly computed tokens | Mean answerable F1 |
+| --- | --- | --- | --- |
+| FIFO16 |25.184 /36.074 /36.796|918496 /71810|.313862|
+| FIFO64 |25.130 /35.963 /36.691|918496 /71810|.313862|
+| Actual-GPU LPM16 |22.444 /35.259 /36.552|429083 /69602|.317538|
+| Bundle16 |19.592 /27.469 /28.069|300155 /67319|.317180|
+| Fixed-DHAS16 |25.213 /36.125 /36.868|918496 /71810|.313862|
+| Fixed union64 |15.428 /19.817 /20.478|84443 /65725|.318350|
+
+Paired union p95 vsFIFO64 changes−46.863/−43.579/−44.118%; vsbundle−25.700/−26.646/−31.118%. CPU source tokens fall~90.8% vsFIFO, whileGPU-source hits rise287872→1128011. Source tokens show less consumed CPU KV, not a direct measurement of transferred bus bytes or a causal isolation of every component. Mean LPM preemptions1/run; others0. All arms have12 cap hits in180responses. Small mean score differences are not quality equivalence. Source: `v5r2_main_dev_findings.json`.
+
+### Completion and streaming are separate objectives
+
+From captured request clocks, `v5_analyze_decode.py` derives scheduled-arrival→response-close completion, first-text→response-close, generated tokens/full makespan and a client TPOT proxy. Only outputs with at least2tokens enter `(complete−first)/(output_tokens−1)`; one-token outputs are excluded rather than assigned0. Stream chunks, special-token accounting and final close overhead prevent identifying this with exact ITL. NativeSG sum/count are retained only for an observed sample window; no query-start timestamps or token join establish exact full-run coverage. The frozen main sampler omitted ITL entirely.
+
+Mean run completion p95 FIFO64/bundle/union is36.452/28.041/21.266s. Paired union changes vsFIFO−43.314/−40.282/−41.294%, vsbundle−21.973/−22.895/−27.516%. Thus the benefit does survive through response completion in this dev regime. However mean run p95 client TPOT proxy is19.380/52.273/117.673ms/token respectively. This is a material streaming tradeoff. More concurrent admitted work can interfere with decode, but these observations alone do not isolate its causal mechanism. Output volumes differ by run: FIFO1393/1399/1393tokens, bundle1443/1406/1422, union1423/1405/1405. Workload tokens/s is not saturated serving capacity.
+
+NativeSG primary completion p95 is19.757s native vs17.212s union; paired deltas−11.610/−8.322/−18.062%. Mean proxy p95 is69.307 vs71.339ms/token. The nativeSG median/mean TTFT penalties and equal computed-token counts remain; do not transfer main-engine avoided-transfer explanation to nativeSG.
+
+For full runs, the separately registered `v5_full_histograms.py` observes native histogram endpoints with explicit clock/PID/prompt-token coverage proof. Missing/invalid coverage remainsnull. `v5_analyze_histograms.py` checks cumulative bucket monotonicity/completeness and returns p50/p95/p99 bucket bounds, never interpolated exact token quantiles. This supplemental passive measurement does not change frozen serving sources or primary metrics, and does not turn a histogram into a per-request decode trace.
+
+### Uncertainty that respects the unit of repetition
+
+`v5_run_intervals.py` computes paired log ratios across exactly3arrival schedules and an exploratory95%Student-t(df2) interval. It does not bootstrap180dependent responses. SGnative4QPS geometric p95 change−11.631%, interval[−24.366,+3.249]%; the interval crosses0 despite three negative point estimates. MainFIFO64 geometric change−44.872%, interval[−49.111,−40.281]%; bundle−27.860%, interval[−34.768,−20.220]%. With n3 and sharedQA/host/process, normality and independence are unverified; these descriptors do not establish population significance, new semantic generalization or quality equivalence. Full main supplement and10GiB control have one seed and cannot support such intervals.
+
+Reproduce the summaries/figure:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_main.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_decode.py --validation --output results/v3/v5r2_validation_secondary_metrics.json
+PYTHONPATH=src /venv/main/bin/python scripts/v5_run_intervals.py
+PYTHONPATH=src /venv/main/bin/python scripts/v5_plot_main.py
+```
+
+![V5 main latency, completion, source and decode tradeoffs](../results/v3/figures/v5r2_main_tradeoffs.png)
+
+All27 repaired-protocol repeats and17full arms remain required before the final research judgment. Eleven nativeSG repeat runs440/440 are complete at15:16UTC; pipeline281126/child301560 is live. This is not a completed-repeat audit.
+
+Native ITL source audit: `v5_native_itl_semantics.json` retains SHA of installed native metrics/statistics sources. SG0.5.14 emits token-weighted average intervals between tokenizer-manager updates; a multi-token update repeats the same averaged interval. vLLM0.22.0 emits intervals between engine-core output updates after prefill. Neither is a client individual-token timestamp trace. Within-engine policy contrasts remain meaningful under the pinned definitions; cross-engine histogram pooling is unsupported.
+
+`v5_analyze_waits.py` reconstructs every request across all39 validation gateway arms with additive error<1e-6ms. Mean mainFIFO64/bundle/union arrivalTTFT is25.447/19.891/15.248s. Mean admission wait is0.000/14.176/11.866s and upstream-to-token25.365/5.634/3.299s. Union therefore moves substantial waiting to ingress while still reducing total arrival latency in this main regime. Upstream spans include engine queue/copy/compute/transport; do not relabel them GPU compute or add stage p95s. CPU worker queue and CPU execution are already included in preparation.
+
+In nativeSG primary, direct native meanTTFT7.156s vsunion13.298s; gatewayFIFO7.269s. Union mean admission10.709s and upstream-to-token2.503s. Thus the lower tail percentile comes at higher median **and mean** latency, not merely a visually large p50. `v5r2_validation_waits.json` retains all stages and explicit native-without-gateway exclusions. Reproduce with `PYTHONPATH=src /venv/main/bin/python scripts/v5_analyze_waits.py results/v3/v5r2_validation_audit.json --output results/v3/v5r2_validation_waits.json`.

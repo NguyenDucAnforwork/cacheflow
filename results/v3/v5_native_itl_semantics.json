@@ -1,0 +1,32 @@
+{
+  "scope": "Source audit of installed pinned baseline native ITL semantics; not a cross-engine latency comparison.",
+  "versions": {
+    "sglang": "0.5.14",
+    "vllm": "0.22.0"
+  },
+  "source_sha256": {
+    "sglang_tokenizer_manager": {
+      "path": "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py",
+      "sha256": "f7b0f64fc2f46dd0339e3e26f9481ac4b0fdb0ad31d501d925d8cada2bac9da2"
+    },
+    "sglang_metrics_collector": {
+      "path": "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/observability/metrics_collector.py",
+      "sha256": "899d29d7b8ecdcb42bc937d38d5f71391cb97b6856943a9fac33acb5d9c5e62f"
+    },
+    "sglang_time_stats": {
+      "path": "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/observability/req_time_stats.py",
+      "sha256": "f475b4a6efc880f8cbb3f1d80fefaecd9d238856d6391b01b42e39bc19d55c48"
+    },
+    "vllm_stats": {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/metrics/stats.py",
+      "sha256": "08eb6bb969ad47e4207ba5568beaec35bdb09192b6db046f046dab4892ac1bf3"
+    },
+    "vllm_loggers": {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/metrics/loggers.py",
+      "sha256": "d1998a556e7decf9d11869f4b62a0a34977be9b147b3db1352d4baae10f5551b"
+    }
+  },
+  "sglang": "Tokenizer-manager updates after initial TTFT take elapsed interval divided by newly observed completion-token count. Histogram increments bucket weight by number of new tokens and sum by full elapsed interval. Thus a multi-token update contributes a repeated averaged interval, not separately timed token arrivals.",
+  "vllm": "IterationStats update_from_output appends engine_core_timestamp minus prior last_token_ts for non-prefilling output updates. Logger observes these update intervals individually. It is engine-update timing, not client chunk arrival; multi-token/speculative output would require extra interpretation.",
+  "interpretation": "Compare policies within the same pinned engine. Never pool native histograms across engines or equate them to request-level client TPOT proxies. Bucket boundaries provide bounds, not exact quantiles. Measurement window coverage and counter monotonicity must be verified separately."
+}

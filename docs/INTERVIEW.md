@@ -663,3 +663,55 @@ V5 đã hoàn tất39lượt validation SGLang,1.740request không lỗi. So nat
 **Hỏi: Tại sao test xanh vẫn chưa đủ chứng minh benchmark đúng cấu hình?**
 
 **Đáp:** Test kiểm logic mà nó bao phủ. Một run còn cần actualargv, health/config và fingerprint source từ process thật. Audit V5 yêu cầu client keepalive0, read/pool3600giây, đúng policy/cap, byte budget, fresh history và source hash. Thiếu fingerprint của replay hoặc dùng transport revision cũ sẽ bị từ chối, dù các request đều trả200. Khi warmup vLLM mới chạy60/60, tôi còn kiểm subscriber có `known=true`, hash contract đã xác minh và không mất sequence. Đây mới là bằng chứng cho phép dùng actual-GPU LPM làm baseline; process sống hoặc một con sốhit không đủ.
+
+### 21.4. TTFT tốt hơn nhưng stream có thể chậm hơn
+
+**Hỏi: Kết quả mới nhất trên vLLM/LMCache là gì?**
+
+**Đáp:** Ma trận V5 dev có18lượt,1.080request thành công, so sánh sáu policy qua ba lịch arrival. P95 TTFT trung bình FIFO64 khoảng35,96giây, GPU-LPM16 khoảng35,26giây, bundle16 khoảng27,47giây, union64 khoảng19,82giây. Union giảm p95 khoảng44–47% soFIFO64 và26–31% sobundle theo từng seed. Counter engine cho biết CPU KV được tiêu thụ giảm từ khoảng918nghìn xuống84nghìn token mỗi lượt; đây là cơ chế khác rõ với nativeSG, nơi compute bằng nhau và promotion của union còn cao hơn.
+
+Tôi chưa gọi đây là kết quả toàn LoCoMo: dev chỉ có60câu hỏi cố định. Full1986QA, chất lượng từng nhóm và fairness vẫn phải kiểm. F1 trung bình union khoảng.3184, FIFO.3139, bundle.3172; các giá trị gần nhau không chứng minh hai hệ thống tương đương chất lượng.
+
+**Hỏi: Có phải chỉ đẩy công việc sang sau token đầu để lấy TTFT đẹp?**
+
+**Đáp:** Đây là câu cần kiểm trực tiếp. Tôi đo thêm từ scheduled arrival đến lúc response đóng. P95 completion trung bình FIFO64/bundle/union lần lượt36,45/28,04/21,27giây; union vẫn cải thiện khoảng40–43% soFIFO ở từng seed. Vì vậy lợi ích dev không chỉ nằm ở token đầu.
+
+Nhưng trải nghiệm streaming có đánh đổi khác. Proxy thời gian trung bình mỗi token của từng request là `(thời điểm đóng response − thời điểm text đầu tiên)/(số output token − 1)`. P95 của proxy, lấy trung bình ba lượt, tăng từ19,38ms/token của FIFO64 lên117,67ms/token của union; bundle khoảng52,27. Một hệ thống có thể bắt đầu và kết thúc sớm hơn nhưng các token ở giữa giãn hơn. Chưa đo đủ để quy nguyên nhân cho một kernel cụ thể; concurrency, prefill/decode interference, batching và output khác nhau đều cần xem.
+
+**Hỏi: Vì sao không gọi117,67ms là p95 ITL?**
+
+**Đáp:** Vì phép tính đã lấy trung bình trong từng request rồi mới lấy p95 giữa các request. ITL đo khoảng cách giữa hai token liên tiếp; hai phân phối có đơn vị quan sát khác nhau. Client còn nhận stream theo chunk, có thời gian metadata/đóng response và cách đếm special token. Request chỉ có một token bị loại khỏi proxy, không gán0để làm đẹp bảng. Không lưu từng timestamp token thì không thể dựng lại chính xác ITL sau này.
+
+Với full study, một observer bổ sung chụp native ITL histogram trước/sau mỗi lượt. Chỉ chấp nhận khi clock nằm ngoài cửa sổ request, PID không đổi và tổng prompt-token tăng đúng ledger. Histogram chỉ cho khoảng chứa quantile theo ranh giới bucket; không tự nội suy thành một p95 chính xác. Thiếu coverage thì ghi null. Đây là quan sát nhẹ qua metrics endpoint, không bật GPU profiler trong bảng latency chính.
+
+**Hỏi: Vậy khi chọn policy cho sản phẩm, nên tối ưu chỉ số nào?**
+
+**Đáp:** Tùy yêu cầu: người dùng chat quan tâm cả lúc bắt đầu lẫn độ đều của stream; tác vụ batch có thể quan tâm completion và throughput hơn. Tôi sẽ đặt deadline TTFT, completion và streaming cụ thể, kiểm tỉ lệ đạt từng yêu cầu trên mọi request, rồi xem từng conversation. Không chọn policy chỉ vì một ô p95 tốt; một nhóm bị bỏ lại hoặc stream chậm hơn có thể làm policy không phù hợp sản phẩm.
+
+### 21.5. Ba seed không phải hàng trăm thí nghiệm độc lập
+
+**Hỏi: Có180request mỗi policy thì confidence interval đã chắc chưa?**
+
+**Đáp:** Chưa. Đó là60câu hỏi chạy lại theo ba lịch arrival; request trong một lượt dùng chung engine, cache, batch và queue. Nếu bootstrap180request như180thí nghiệm độc lập sẽ đánh giá thấp bất định. Tôi báo delta từng cặp seed trước, sau đó thêm interval thăm dò trên ba log-ratio của run. Giả định độc lập/phân phối của mô hình thống kê chưa được xác minh với n=3, nhất là khi tái sử dụng process.
+
+Ví dụ SGnative4QPS có ba delta p95 đều âm, nhưng interval thăm dò khoảng[−24,37%,+3,25%] vẫn qua0. MainFIFO64 khoảng[−49,11%,−40,28%] hẹp hơn trong điều kiện đã đo. Không dùng hai interval này để tuyên bố chắc chắn cho host khác, câu hỏi mới hoặc chất lượng tương đương. Control full một seed không được gắn interval ba seed từ dev.
+
+**Hỏi: Có thể lấy trung bình p95 của các run thay cho p95 của toàn bộ request không?**
+
+**Đáp:** Có thể báo trung bình p95 nếu ghi đúng tên và mục đích: nó tóm tắt các lượt đo. Nó không bằng p95 khi gộp request. Tôi giữ cả quantile từng run, paired delta và định nghĩa aggregate trong artifact để reviewer tái tính. Tương tự, throughput tính bằng tổng output token chia toàn thời gian workload có thể bị giới hạn bởi lịch arrival; không tự gọi đó là capacity tối đa của engine.
+
+### 21.6. Nêu đóng góp mà không vượt bằng chứng
+
+**Hỏi: Nếu trình bày project trong hai phút, nên nói gì ở checkpoint này?**
+
+**Đáp:** “Tôi nghiên cứu admission cho conversational QA có prefix dài và working set lớn hơn GPU KV. Tôi xây policy gom reuse bằng union các block prefix, giữ ngân sách và giới hạn bypass để tiến triển. Tôi đo trên vLLM/LMCache và native HiCache, với baseline FIFO, GPU-LPM thật, bundle, fixed DHAS và native LPM/DFS cùng một component guard. Tôi kiểm nguồn KV và budget bằng byte, giữ cả failed runs, chấm câu trả lời bằng evaluator cố định. Dev cho lợi ích tail rõ trên main stack, nhưng nativeSG có median penalty và lower-load regression; streaming proxy của main cũng xấu hơn. Tôi đang kiểm full benchmark trước khi chốt phạm vi đóng góp.”
+
+Điểm cần tránh là nói đã triển khai đầy đủ Strata hoặc đã thắng mọi baseline mới. Component guard chỉ chuyển thể một phần, SGLang version được pin vì tương thích môi trường, và các policy upstream mới chưa được đo phải ghi rõ. Một kết quả có điều kiện, có cơ chế đo được và giới hạn trung thực sẽ chịu được câu hỏi sâu hơn một lời hứa thắng mọi trường hợp.
+
+**Hỏi: Native ITL histogram có định nghĩa giống nhau giữa hai engine không?**
+
+**Đáp:** Không được mặc định như vậy. Source SGLang0.5.14 lấy thời gian từ lần cập nhật trước chia số token mới, rồi cộng số token đó vào bucket chứa giá trị trung bình. Nếu một cập nhật có nhiều token thì histogram không biết timestamp riêng của từng token. Source vLLM0.22.0 ghi khoảng giữa các output-update timestamp từ engine core sau prefill. Cả hai đều khác clock nhận chunk của client. Tôi lưu SHA source và mô tả trong `results/v3/v5_native_itl_semantics.json`, so policy trong từng engine và không gộp hai histogram thành một bảng xếp hạng token latency.
+
+**Hỏi: Làm sao chứng minh không chỉ chuyển queue từ engine ra gateway?**
+
+**Đáp:** Tôi giữ scheduled arrival làm mốc chung, tái dựng từng request qua nhận ở gateway, chuẩn bị, chờ admission, upstream token đầu rồi client nhận text đầu. Tổng các đoạn khớp arrivalTTFT trong sai số nhỏ hơn1e-6ms ở cả39gateway arm của validation. MainFIFO64 có meanTTFT25,45giây; union15,25giây dù khoảng11,87giây nằm ở admission. Lợi ích tổng vẫn còn. Nhưng SGnative mean7,16giây cònunion13,30giây, nên tail tốt hơn không đủ để gọi trải nghiệm trung bình tốt hơn. Tôi cộng thời gian từng request hoặc mean của các đoạn, không cộng p95 các đoạn vì request ở p95 của mỗi đoạn có thể khác nhau. Đoạn upstream vẫn gồm queue, copy, compute và transport; chưa có GPU timeline thì không được gọi đó là GPU compute thuần.
