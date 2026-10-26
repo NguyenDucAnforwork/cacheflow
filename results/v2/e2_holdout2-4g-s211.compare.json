@@ -1,0 +1,391 @@
+{
+  "b1_run_id": "v2-e2-b1-4g-holdout2-qps02-s211",
+  "b2_run_id": "v2-e2-b2-4g-holdout2-qps02-s211",
+  "trace_sha256": "f462ab319ae45c15b27686bff4bc3d5bce4e96f98b0db029c8de81062b62a4ce",
+  "gpu_kv_bytes": 4294967296,
+  "requests": 30,
+  "errors": 0,
+  "output_hash_matches": 15,
+  "latency": {
+    "arrival_ttft_p50_ms": {
+      "b1": 1792.1497585,
+      "b2": 519.8620825,
+      "delta": -1272.287676,
+      "relative_change_pct": -70.99226333991663
+    },
+    "arrival_ttft_p95_ms": {
+      "b1": 6162.135124750001,
+      "b2": 3252.54306845,
+      "delta": -2909.5920563000004,
+      "relative_change_pct": -47.21727124440562
+    },
+    "arrival_ttft_p99_ms": {
+      "b1": 6287.91831309,
+      "b2": 4650.4710147800015,
+      "delta": -1637.4472983099986,
+      "relative_change_pct": -26.04116683420028
+    },
+    "requests_per_s": {
+      "b1": 0.15654881525811384,
+      "b2": 0.15740913540151116,
+      "delta": 0.0008603201433973195,
+      "relative_change_pct": 0.5495539151662232
+    }
+  },
+  "counters": {
+    "computed_prefill_tokens": {
+      "b1": 344450.0,
+      "b2": 52482.0,
+      "delta": -291968.0
+    },
+    "gpu_prefix_hit_tokens": {
+      "b1": 6476256.0,
+      "b2": 6419456.0,
+      "delta": -56800.0
+    },
+    "external_prefix_hit_tokens": {
+      "b1": 0.0,
+      "b2": 291968.0,
+      "delta": 291968.0
+    },
+    "cached_prompt_tokens": {
+      "b1": 374656.0,
+      "b2": 666624.0,
+      "delta": 291968.0
+    },
+    "l1_read_chunks": {
+      "b1": null,
+      "b2": 2604.0,
+      "delta": null
+    },
+    "l1_write_chunks": {
+      "b1": null,
+      "b2": 198.0,
+      "delta": null
+    },
+    "loaded_chunks": {
+      "b1": null,
+      "b2": 1161.0,
+      "delta": null
+    },
+    "actual_external_tokens": {
+      "b1": 0.0,
+      "b2": 291968.0,
+      "delta": 291968.0
+    },
+    "actual_gpu_cached_tokens": {
+      "b1": 374656.0,
+      "b2": 374656.0,
+      "delta": 0.0
+    },
+    "preemptions": {
+      "b1": 0.0,
+      "b2": 0.0,
+      "delta": 0.0
+    }
+  },
+  "paired_requests": [
+    {
+      "request_id": "conv-49-q000",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 2337.118825,
+      "b2_ttft_ms": 2378.577612,
+      "delta_b2_minus_b1_ms": 41.45878700000003,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q001",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 6236.671948,
+      "b2_ttft_ms": 5205.30221,
+      "delta_b2_minus_b1_ms": -1031.3697380000003,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q002",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1509.475142,
+      "b2_ttft_ms": 535.471508,
+      "delta_b2_minus_b1_ms": -974.003634,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q003",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1508.884538,
+      "b2_ttft_ms": 519.531578,
+      "delta_b2_minus_b1_ms": -989.35296,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q004",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1558.766145,
+      "b2_ttft_ms": 471.919291,
+      "delta_b2_minus_b1_ms": -1086.8468540000001,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q005",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 4163.603725,
+      "b2_ttft_ms": 1893.734133,
+      "delta_b2_minus_b1_ms": -2269.869592,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q006",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1515.97013,
+      "b2_ttft_ms": 465.794538,
+      "delta_b2_minus_b1_ms": -1050.175592,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q007",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1517.876517,
+      "b2_ttft_ms": 439.749256,
+      "delta_b2_minus_b1_ms": -1078.1272609999999,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q008",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1508.163379,
+      "b2_ttft_ms": 471.75965,
+      "delta_b2_minus_b1_ms": -1036.403729,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q009",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 3882.547345,
+      "b2_ttft_ms": 1880.301468,
+      "delta_b2_minus_b1_ms": -2002.2458769999998,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q010",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 4057.602914,
+      "b2_ttft_ms": 483.265817,
+      "delta_b2_minus_b1_ms": -3574.337097,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q011",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1515.819764,
+      "b2_ttft_ms": 457.364496,
+      "delta_b2_minus_b1_ms": -1058.4552680000002,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q012",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1489.325388,
+      "b2_ttft_ms": 443.163051,
+      "delta_b2_minus_b1_ms": -1046.162337,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q013",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 4146.906971,
+      "b2_ttft_ms": 2057.852788,
+      "delta_b2_minus_b1_ms": -2089.054183,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-49-q014",
+      "sample_id": "conv-49",
+      "b1_ttft_ms": 1519.34738,
+      "b2_ttft_ms": 547.639229,
+      "delta_b2_minus_b1_ms": -971.7081509999999,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q000",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 3299.524787,
+      "b2_ttft_ms": 3292.091192,
+      "delta_b2_minus_b1_ms": -7.433594999999968,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q001",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1743.103426,
+      "b2_ttft_ms": 480.476359,
+      "delta_b2_minus_b1_ms": -1262.627067,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q002",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1780.238,
+      "b2_ttft_ms": 522.7197,
+      "delta_b2_minus_b1_ms": -1257.5183000000002,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q003",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 2698.745924,
+      "b2_ttft_ms": 705.556561,
+      "delta_b2_minus_b1_ms": -1993.189363,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q004",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1830.802972,
+      "b2_ttft_ms": 511.425104,
+      "delta_b2_minus_b1_ms": -1319.377868,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q005",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1804.363741,
+      "b2_ttft_ms": 520.192587,
+      "delta_b2_minus_b1_ms": -1284.171154,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q006",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1827.523155,
+      "b2_ttft_ms": 491.865695,
+      "delta_b2_minus_b1_ms": -1335.6574600000001,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q007",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1763.214483,
+      "b2_ttft_ms": 468.251536,
+      "delta_b2_minus_b1_ms": -1294.962947,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q008",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1792.970963,
+      "b2_ttft_ms": 511.398228,
+      "delta_b2_minus_b1_ms": -1281.572735,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q009",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 6308.849927,
+      "b2_ttft_ms": 3204.206473,
+      "delta_b2_minus_b1_ms": -3104.643454,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q010",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1791.328554,
+      "b2_ttft_ms": 513.544991,
+      "delta_b2_minus_b1_ms": -1277.783563,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q011",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1784.853768,
+      "b2_ttft_ms": 480.685564,
+      "delta_b2_minus_b1_ms": -1304.168204,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q012",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1787.662327,
+      "b2_ttft_ms": 590.957985,
+      "delta_b2_minus_b1_ms": -1196.704342,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q013",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 6071.034563,
+      "b2_ttft_ms": 2866.103759,
+      "delta_b2_minus_b1_ms": -3204.930804,
+      "output_hash_equal": true,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    },
+    {
+      "request_id": "conv-50-q014",
+      "sample_id": "conv-50",
+      "b1_ttft_ms": 1807.108492,
+      "b2_ttft_ms": 577.485501,
+      "delta_b2_minus_b1_ms": -1229.6229910000002,
+      "output_hash_equal": false,
+      "b1_output_tokens": 64,
+      "b2_output_tokens": 64
+    }
+  ],
+  "note": "Cold-start different-engine comparison; output agreement is not a QA score.",
+  "seed": 211
+}
