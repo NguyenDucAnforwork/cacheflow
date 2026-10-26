@@ -127,5 +127,32 @@
     "session_gap_ms": null,
     "prompt_version": "locomo-text-v1",
     "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4"
+  },
+  "e2_validation_chat_s71.manifest": {
+    "arrival": "interleaved",
+    "chat_template": "pinned tokenizer apply_chat_template; one exact user message",
+    "excluded": {
+      "context_too_long": 0,
+      "no_evidence": 0
+    },
+    "max_model_len": 32768,
+    "output_tokens": 64,
+    "prompt_version": "locomo-qwen-chat-v2",
+    "protocol": "p_qa",
+    "qps": 0.2,
+    "requests": 30,
+    "seed": 71,
+    "selected_samples": [
+      "conv-47",
+      "conv-48"
+    ],
+    "session_gap_ms": null,
+    "shared_prefix_tokens": {
+      "conv-47": 27190,
+      "conv-48": 26815
+    },
+    "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+    "thinking": false,
+    "trace_sha256": "b594c38780e02238be2d247a2c2091c1d0f64554c3c3c44d8009e7ceb7a00339"
   }
 }

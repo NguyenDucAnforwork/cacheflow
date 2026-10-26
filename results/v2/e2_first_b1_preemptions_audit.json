@@ -1,0 +1,10 @@
+{
+  "run_id": "v2-e2-b1-4g-dev3-qps02-s17",
+  "engine_pid": 21504,
+  "snapshot_path": "results/v2/raw/v2-e2-b1-4g-dev3-qps02-s17.engine_snapshot.prom",
+  "snapshot_sha256": "62e2777ea4861ff9ea26a3a0c75c38fb82045f107e6ef122fff4840855bd9a47",
+  "snapshot_mtime_utc": "2026-10-26T03:58:13.321116+00:00",
+  "replay_finished_utc": "2026-10-26T03:58:12.902036+00:00",
+  "num_preemptions_total": 0.0,
+  "note": "Separate raw snapshot after replay and before serving restart; original sampled delta remains null."
+}
