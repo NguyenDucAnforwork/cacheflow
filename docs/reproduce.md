@@ -250,3 +250,6 @@ The main low-reuse subset is now complete in `v6controls1_main_lowreuse_subset_a
 
 
 The main GPU-fit subset now passes all nine arms/540measured responses plus540separate warmups (`v6controls1_main_gpufit_subset_audit.json`, `_quality.json`, `_waits.json`). Every arm computes65122tokens, consumes0engine-labelled CPU-source tokens, records0preemptions and has valid native ITL coverage. Old union has identical outputs/scores to FIFO; readiness increases median7–9%, changes outputs and has mixed p95/F1 changes with no observed work saving. Keep this separate from native GPU-fit and the full10GiB larger-cache control. The complete main36-arm audit and abstention are still pending; these subsets cannot replace the full prerequisite.
+
+
+The final full auditor now independently checks both process layers:30distinct positive engine PIDs and12distinct positive main LMCache PIDs, with native LMCache IDs absent. A reused/missing CPU-tier PID rejects the stage even if all engine PIDs differ. Projected-ledger CPU tests cover this condition along with invalid IDs, incomplete graphs and reused engines; these tests are not actual48GB/full GPU evidence. The prospective analysis seal already covers the final auditor, and namespace copies retain the same check automatically.

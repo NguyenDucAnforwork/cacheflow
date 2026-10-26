@@ -15,6 +15,20 @@ from v5_run_intervals import paired_log_interval
 def read(path):return json.loads(Path(path).read_text())
 
 
+def fresh_process_units(runs):
+    """Verify the registered 12 main / 18 native process units independently."""
+    assert len(runs)==30 and all(r['engine'] in {'main','sg'} for r in runs)
+    engines=[r['engine_pid'] for r in runs]
+    caches=[r['lmcache_pid'] for r in runs if r['engine']=='main']
+    assert len(caches)==12
+    for name,pids,count in [('engine',engines,30),('lmcache',caches,12)]:
+        assert all(isinstance(pid,int) and not isinstance(pid,bool) and pid>0 for pid in pids),(name,'Missing/invalid process identity')
+        assert len(set(pids))==count,(name,'Process retained across full arms')
+    assert all(r['lmcache_pid'] is None for r in runs if r['engine']=='sg')
+    return dict(distinct_engine_pids=30,distinct_main_lmcache_pids=12,
+        scope='Captured supervisor PID units; warm/measured identity is checked per arm. Unique numeric PIDs are not a proof of native liveness or stable identities of all descendants.')
+
+
 def main():
     parent,seal,freeze=verify_full();base=Path('results/v3');execution=read(base/'v6full1_execution.json')
     assert execution['freeze_sha256']==sha(PATH)
@@ -54,6 +68,7 @@ def main():
             source_counters=counters,host=a['host'],resource=a['resource'],per_conversation=a['fairness']['by_conversation'],
             max_head_bypasses=(a['fairness']['admission'] or {}).get('max_head_bypasses'),waits=a['waits']))
     assert len(pids)==len(runs)==30 and len(evaluator_hashes)==1
+    process_units=fresh_process_units(runs)
     by={r['run_id']:r for r in runs};pairs=[]
     def pair(a,b):
         aa=by[a];bb=by[b];ar=maps[a];br=maps[b];assert aa['engine']==bb['engine'] and aa['budget']==bb['budget'] and aa['seed']==bb['seed']
@@ -84,7 +99,7 @@ def main():
     for (engine,budget,baseline,candidate),pp in groups.items():
         pp.sort(key=lambda p:p['seed']);assert len(pp) in {1,3}
         intervals.append(dict(engine=engine,budget=budget,baseline=baseline,candidate=candidate,metrics={k:paired_log_interval([by[p['a']][k] for p in pp],[by[p['b']][k] for p in pp]) for k in ['p50_ms','p95_ms','p99_ms']}))
-    result=dict(complete=True,freeze_sha256=sha(PATH),requests=59580,errors=0,separate_warmup_requests=1800,
+    result=dict(complete=True,freeze_sha256=sha(PATH),requests=59580,errors=0,separate_warmup_requests=1800,process_units=process_units,
         unique_qa=1986,runs=runs,pairs=pairs,exploratory_run_intervals=intervals,
         scope=freeze['scope'],limitations='Means/intervals concern repeated serving schedules on one fixed dataset/model/host. n3log-ratio t intervals have unverified assumptions; single-seed larger-cache control has no interval. These are not1986independent system replicates, fresh semantic holdout, quality equivalence, exact token ITL, production liveness or a SOTA result.')
     (base/'v6full1_audit.json').write_text(json.dumps(result,indent=2)+'\n');print('Full study audited',result['requests'],'requests',flush=True)

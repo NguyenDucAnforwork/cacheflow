@@ -930,6 +930,12 @@ Ví dụ integration check trước freeze bắt được main audit đặt tên
 
 **Đáp:** Main khởi động engine mới cho từng policy/seed sau một anomaly chưa giải thích. Native dev dùng engine mới theo regime/seed rồi flush/restart gateway giữa các arm trong block. Hai cách có state history và đơn vị lặp khác nhau nên được báo riêng. Full dự kiến fresh engine cho từng arm, warmup giống nhau rồi reset; cả hai vẫn chưa chứng minh service chạy lâu không stall.
 
+**Hỏi: Engine PID khác nhau đã chứng minh mỗi arm có fresh CPU tier chưa?**
+
+**Đáp:** Chưa. vLLM và LMCache là các process riêng. Nếu chỉ kiểm engine mới mà CPU-tier process bị giữ lại, lịch sử allocator/cache có thể khác protocol dù đã gọi reset. Final full auditor vì vậy yêu cầu 30 engine PID riêng và 12 LMCache PID riêng cho 12 main arms, đồng thời warmup/measurement của một arm phải cùng process. Native arms dùng HiCache, không có LMCache PID.
+
+Test dùng ledger giả lập đã kiểm trường hợp mọi engine PID khác nhưng LMCache PID trùng và xác nhận bị từ chối. Nó không chứng minh full GPU đã chạy. Numeric PID cũng không chứng minh identity của mọi child process hoặc service không thể stall; phải giữ scope của bằng chứng.
+
 **Hỏi: Nén raw có làm mất khả năng kiểm chứng không?**
 
 **Đáp:** Công cụ chỉ nén sau complete per-run integrity/official quality audit, kiểm gzip roundtrip SHA rồi lưu manifest gồm raw/compressed/audit hashes trước khi thu hồi bản plain dư. Đã thử riêng trên bản sao một run native 60 QA thật và một run main gồm 60 request đo + 60 warmup. Main có 10 raw files, gồm cả hai gateway log. Sau giải nén, mọi byte, full official-quality JSON, integrity của cả warm/measured, fairness, decode, native histogram, additive waits và sampled resources đều khớp. Raw gốc không đổi và không phát sinh inference mới. Đây là kiểm đường archival, không phải full GPU success hay thêm 120 mẫu độc lập.
