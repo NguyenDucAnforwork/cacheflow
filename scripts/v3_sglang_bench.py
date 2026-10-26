@@ -1,6 +1,7 @@
 """Run an upstream SGLang/HiCache arm with native metrics and captured QA outputs."""
 import argparse
 import hashlib
+import importlib.metadata
 import json
 import os
 import re
@@ -65,6 +66,14 @@ def main():
         server_config={k:info.get(k) for k in allow},launcher_pid=launcher,
         process_argv={str(x.pid):x.cmdline() for x in children},reset_status=reset.status_code,
         captured_utc=datetime.now(timezone.utc).isoformat())
+    c['package_versions']={name:importlib.metadata.version(name) for name in
+        ['sglang','sglang-kernel','torch','transformers','flashinfer-python','flashinfer-cubin']}
+    import sglang
+    source_root=Path(sglang.__file__).parent
+    source_names=['srt/managers/schedule_policy.py','srt/managers/cache_controller.py',
+                  'srt/mem_cache/hiradix_cache.py','srt/mem_cache/memory_pool_host.py']
+    c['upstream_source_sha256']={name:hashlib.sha256((source_root/name).read_bytes()).hexdigest()
+                                 for name in source_names}
     setup.write_text(json.dumps(c,indent=2)+'\n')
     stop=threading.Event();samples=[];collector_error=[]
     def sample():

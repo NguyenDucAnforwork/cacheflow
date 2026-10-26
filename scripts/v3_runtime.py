@@ -25,7 +25,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('command', choices=['configure', 'gateway', 'validate', 'vllm-args', 'model-path', 'model-name'])
     p.add_argument('--model', choices=list(MODELS), default='qwen3-1.7b')
-    p.add_argument('--policy', choices=['fifo','static_group','dhas','dhas_guarded','lpm_hint','bundle_wave','lpm_real','packing_fifo','residency'],default='fifo')
+    p.add_argument('--policy', choices=['fifo','static_group','dhas','dhas_guarded','lpm_hint','bundle_wave','lpm_real','packing_fifo','residency','packing','packing_reuse'],default='fifo')
     p.add_argument('--max-inflight', type=int, default=16)
     p.add_argument('--max-num-seqs', type=int, default=4)
     p.add_argument('--max-num-batched-tokens', type=int, default=8192)
@@ -36,6 +36,8 @@ def main():
     p.add_argument('--residency-events', action='store_true')
     p.add_argument('--kv-capacity-tokens', type=int, default=37424)
     p.add_argument('--keepalive-connections', type=int)
+    p.add_argument('--max-bypasses', type=int)
+    p.add_argument('--batch-invariant', action='store_true')
     args = p.parse_args()
     if args.command in ('configure', 'gateway'):
         c = dict(max_inflight=args.max_inflight, max_num_seqs=args.max_num_seqs,
@@ -44,10 +46,14 @@ def main():
                  residency_events=args.residency_events, kv_capacity_tokens=args.kv_capacity_tokens)
         c['model_key'] = args.model
         c['keepalive_connections'] = args.keepalive_connections if args.keepalive_connections is not None else 0
+        c['max_bypasses'] = args.max_bypasses if args.max_bypasses is not None else 4
+        c['batch_invariant'] = args.batch_invariant
         if args.command == 'gateway':
             c = load() | {'max_inflight': args.max_inflight}
             if args.keepalive_connections is not None:
                 c['keepalive_connections']=args.keepalive_connections
+            if args.max_bypasses is not None:
+                c['max_bypasses']=args.max_bypasses
         MARKER.write_text(json.dumps(c, indent=2)+'\n')
         load()
         gateway = yaml.safe_load((ROOT/'configs/policies.yaml').read_text())
@@ -57,7 +63,7 @@ def main():
         gateway['upstream_keepalive_connections']=c.get('keepalive_connections',0)
         gateway['residency'] = dict(enabled=c.get('residency_events', False),
                                    endpoint='ipc:///tmp/cacheflow-v3-kv-events.sock',
-                                   kv_capacity_tokens=c.get('kv_capacity_tokens', 37424), max_bypasses=4)
+                                   kv_capacity_tokens=c.get('kv_capacity_tokens', 37424), max_bypasses=c.get('max_bypasses',4))
         (ROOT/'.cacheflow-policy').write_text(args.policy+'\n')
         (ROOT/'.cacheflow-v3-gateway.yaml').write_text(yaml.safe_dump(gateway))
     c = load()

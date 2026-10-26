@@ -1,0 +1,4654 @@
+{
+  "runs": [
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s101",
+      "max_head_bypasses": 14,
+      "queued_with_spare_slots_s": 19.421837191999998,
+      "queued_with_at_most_one_active_s": 1.441289643,
+      "active_request_seconds": 349.181451359,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s102",
+      "max_head_bypasses": 14,
+      "queued_with_spare_slots_s": 21.134857294000003,
+      "queued_with_at_most_one_active_s": 2.4620347799999998,
+      "active_request_seconds": 368.97296399100003,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s103",
+      "max_head_bypasses": 14,
+      "queued_with_spare_slots_s": 21.275380609000003,
+      "queued_with_at_most_one_active_s": 1.4782236869999998,
+      "active_request_seconds": 372.663383011,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s101",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 1.1980485309999998,
+      "queued_with_at_most_one_active_s": 0.00011233900000000001,
+      "active_request_seconds": 675.193168342,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-26-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-26-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s102",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 1.555498089,
+      "queued_with_at_most_one_active_s": 7.5059e-05,
+      "active_request_seconds": 705.8400872649997,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-26-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-26-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s103",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 0.958535472,
+      "queued_with_at_most_one_active_s": 6.4342e-05,
+      "active_request_seconds": 694.6190789990002,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-26-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-26-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 0.077468916,
+      "queued_with_at_most_one_active_s": 6.6784e-05,
+      "active_request_seconds": 670.3244692879999,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-26-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-26-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 0.07955082900000002,
+      "queued_with_at_most_one_active_s": 7.8538e-05,
+      "active_request_seconds": 696.5336609850002,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-26-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-26-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 0.06201175500000001,
+      "queued_with_at_most_one_active_s": 5.5462e-05,
+      "active_request_seconds": 688.586128405,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-41-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-41-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-26-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-41-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-41-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-41-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-26-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-41-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-41-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s101",
+      "max_head_bypasses": 29,
+      "queued_with_spare_slots_s": 0.19812932699999994,
+      "queued_with_at_most_one_active_s": 5.8415e-05,
+      "active_request_seconds": 588.2291627420001,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 15
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 16
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 17
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 18
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 19
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 20
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 21
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 22
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 23
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 24
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 25
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 26
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 27
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 28
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 29
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 29
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s102",
+      "max_head_bypasses": 29,
+      "queued_with_spare_slots_s": 0.21566031299999994,
+      "queued_with_at_most_one_active_s": 6.9135e-05,
+      "active_request_seconds": 620.4392535340002,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 15
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 16
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 17
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 18
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 19
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 20
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 21
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 22
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 23
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 24
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 25
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 26
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 27
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 28
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 29
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 29
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s103",
+      "max_head_bypasses": 29,
+      "queued_with_spare_slots_s": 0.2208808450000001,
+      "queued_with_at_most_one_active_s": 6.8254e-05,
+      "active_request_seconds": 592.0677247920001,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-41-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 5
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 6
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 7
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 8
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 9
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 10
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 11
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 12
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 13
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 14
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 15
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 16
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 17
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 18
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 19
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 20
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 21
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 22
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 23
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 24
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 25
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 26
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 27
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 28
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 29
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 29
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-30-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-30-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s101",
+      "max_head_bypasses": 4,
+      "queued_with_spare_slots_s": 32.47843971,
+      "queued_with_at_most_one_active_s": 4.777862493,
+      "active_request_seconds": 160.557235767,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-41-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-26-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-30-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-41-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-26-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-30-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-41-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s102",
+      "max_head_bypasses": 4,
+      "queued_with_spare_slots_s": 32.928684577,
+      "queued_with_at_most_one_active_s": 4.284219158,
+      "active_request_seconds": 243.22731377600002,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s103",
+      "max_head_bypasses": 4,
+      "queued_with_spare_slots_s": 32.36731116,
+      "queued_with_at_most_one_active_s": 4.468017792,
+      "active_request_seconds": 239.51457955700002,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q001",
+          "head_id": "conv-26-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q001",
+          "head_id": "conv-30-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q001",
+          "head_id": "conv-41-q001",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q002",
+          "head_id": "conv-26-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q002",
+          "head_id": "conv-30-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q002",
+          "head_id": "conv-41-q002",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q004",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q005",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-41-q006",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q003",
+          "head_id": "conv-26-q003",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q003",
+          "head_id": "conv-30-q003",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q004",
+          "head_id": "conv-26-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q004",
+          "head_id": "conv-30-q004",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q005",
+          "head_id": "conv-26-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q005",
+          "head_id": "conv-30-q005",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q006",
+          "head_id": "conv-26-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q006",
+          "head_id": "conv-30-q006",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q007",
+          "head_id": "conv-26-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q007",
+          "head_id": "conv-30-q007",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q008",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q008",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q009",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q009",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q007",
+          "head_id": "conv-41-q007",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q008",
+          "head_id": "conv-41-q008",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q009",
+          "head_id": "conv-41-q009",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q011",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q012",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-41-q013",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-26-q010",
+          "head_id": "conv-26-q010",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-30-q010",
+          "head_id": "conv-30-q010",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q011",
+          "head_id": "conv-26-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q011",
+          "head_id": "conv-30-q011",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q012",
+          "head_id": "conv-26-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q012",
+          "head_id": "conv-30-q012",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q013",
+          "head_id": "conv-26-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q013",
+          "head_id": "conv-30-q013",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q014",
+          "head_id": "conv-26-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q014",
+          "head_id": "conv-30-q014",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q015",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-30-q015",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-26-q016",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q016",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q014",
+          "head_id": "conv-41-q014",
+          "bypasses_for_head": 4
+        },
+        {
+          "request_id": "conv-41-q015",
+          "head_id": "conv-41-q015",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q016",
+          "head_id": "conv-41-q016",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 1
+        },
+        {
+          "request_id": "conv-41-q018",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 2
+        },
+        {
+          "request_id": "conv-41-q019",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-26-q017",
+          "head_id": "conv-26-q017",
+          "bypasses_for_head": 3
+        },
+        {
+          "request_id": "conv-30-q017",
+          "head_id": "conv-30-q017",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q018",
+          "head_id": "conv-26-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q018",
+          "head_id": "conv-30-q018",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-26-q019",
+          "head_id": "conv-26-q019",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q019",
+          "head_id": "conv-30-q019",
+          "bypasses_for_head": 0
+        }
+      ]
+    }
+  ]
+}

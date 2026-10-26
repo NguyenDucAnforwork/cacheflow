@@ -6,7 +6,9 @@ import time
 from .prefix import shared_prefix_tokens
 from .scheduler import AdmissionScheduler
 
-RESIDENCY_POLICIES={'lpm_real','packing_fifo','residency'}
+RESIDENCY_POLICIES={'lpm_real','packing_fifo','residency','packing','packing_reuse'}
+PURE_PACKING_POLICIES={'packing','packing_reuse'}
+PACKING_POLICIES={'packing_fifo',*PURE_PACKING_POLICIES}
 
 
 def tail_reservation(ticket, block_size=16):
@@ -60,10 +62,11 @@ class ResidencyScheduler(AdmissionScheduler):
             # Prompt/budget fields are immutable. LPM/residency additionally depend
             # on the event sequence; packing only needs the known/unknown gate.
             key=None
-            if self.residency.known:
+            if self.residency.known or self.policy in PURE_PACKING_POLICIES:
                 key=(tuple(t.request_id for t in self._queue),tuple(self._active),
                      tuple(self._bypasses.items()),
-                     self.residency.last_sequence if self.policy!='packing_fifo' else None)
+                     self.residency.last_sequence if self.policy not in PACKING_POLICIES else None,
+                     (len(self._recent),self._recent[-1].request_id if self._recent else None) if self.policy=='packing_reuse' else None)
                 if key==self._decision_cache_key:
                     self.decision_cache_hits+=1
                     return self._decision_cache_value
@@ -81,11 +84,15 @@ class ResidencyScheduler(AdmissionScheduler):
         if len(self._active)>=self.max_inflight or not self._queue:return None
         oldest=self._queue[0]
         oldest.scheduler_head_id=None
-        if not self.residency.known:
+        if not self.residency.known and self.policy not in PURE_PACKING_POLICIES:
             oldest.dispatch_reason='unknown_residency_fifo';return oldest
         if self.policy=='lpm_real':
             chosen=max(self._queue,key=lambda t:self.residency.matched_tokens(t.engine_blocks))
             chosen.scheduler_head_id=None;chosen.dispatch_reason='actual_gpu_lpm';return chosen
+        if self.policy=='packing_reuse':
+            completed_groups={t.group for t in self._recent if t.group is not None}
+            if not any(t.group in completed_groups for t in self._queue if t.group is not None):
+                oldest.dispatch_reason='no_completed_prefix_reuse_fifo';return oldest
         active=list(self._active.values())
         if not active:
             oldest.dispatch_reason='oldest_start';return oldest
@@ -105,7 +112,7 @@ class ResidencyScheduler(AdmissionScheduler):
         if self.policy=='residency':
             fitting=[t for t in fitting if gpu[t.request_id]>=1024 or any(t.group and t.group==a.group for a in active)]
         if not fitting:return None
-        chosen=fitting[0] if self.policy=='packing_fifo' else max(fitting,key=lambda t:gpu[t.request_id])
+        chosen=fitting[0] if self.policy in PACKING_POLICIES else max(fitting,key=lambda t:gpu[t.request_id])
         chosen.scheduler_head_id=oldest.request_id;chosen.dispatch_reason='compatible_backfill'
         return chosen
 

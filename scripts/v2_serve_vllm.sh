@@ -38,6 +38,7 @@ args=(
 if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
     export PYTHONHASHSEED=0
     export VLLM_KV_EVENTS_USE_INT_BLOCK_HASHES=0
+    export VLLM_BATCH_INVARIANT=$("$venv/bin/python" -c 'import json,sys;print(int(json.load(open(sys.argv[1])).get("batch_invariant",False)))' "$root/.cacheflow-v3-runtime.json")
     "$venv/bin/python" "$root/scripts/v3_runtime.py" validate >/dev/null
     mapfile -t v3_args < <("$venv/bin/python" "$root/scripts/v3_runtime.py" vllm-args)
     args+=("${v3_args[@]}")

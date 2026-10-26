@@ -25,7 +25,25 @@ gpu_bytes=int(Path('.cacheflow-v2-gpu-kv-bytes').read_text())
 capacity=(gpu_bytes//(16*model['bytes_per_token'])-1)*16
 assert runtime['kv_capacity_tokens']==capacity, ('reservation capacity mismatch', runtime['kv_capacity_tokens'], capacity)
 pid=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v2_vllm'],text=True))
+actual_argv=[x.decode() for x in Path(f'/proc/{pid}/cmdline').read_bytes().split(b'\0') if x]
+def actual_value(flag):
+    positions=[i for i,x in enumerate(actual_argv) if x==flag]
+    assert positions, ('missing engine option',flag)
+    return actual_argv[positions[-1]+1]
+assert int(actual_value('--kv-cache-memory-bytes'))==gpu_bytes, 'engine/marker KV budget mismatch'
+assert model['path'] in actual_argv, 'engine/model mismatch'
+assert int(actual_value('--max-num-seqs'))==runtime['max_num_seqs']
+assert int(actual_value('--max-num-batched-tokens'))==runtime['max_num_batched_tokens']
+assert ('--enforce-eager' in actual_argv)==runtime['enforce_eager']
+public_env={}
+for item in Path(f'/proc/{pid}/environ').read_bytes().split(b'\0'):
+    key,_,value=item.partition(b'=')
+    if key in [b'PYTHONHASHSEED',b'VLLM_KV_EVENTS_USE_INT_BLOCK_HASHES',b'VLLM_BATCH_INVARIANT']:
+        public_env[key.decode()]=value.decode()
+assert bool(runtime.get('batch_invariant',False))==(public_env.get('VLLM_BATCH_INVARIANT','0')=='1')
 c=dict(run_id=rid,trace_path=trace,runtime=runtime, model=model,
+       actual_engine_env=public_env,
+       actual_engine_argv_list=actual_argv,
        gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text(),
        gpu_kv_bytes=int(Path('.cacheflow-v2-gpu-kv-bytes').read_text()),
        actual_engine_argv=Path(f'/proc/{pid}/cmdline').read_bytes().replace(b'\0',b' ').decode(),
@@ -48,6 +66,14 @@ summary=json.loads(Path(f'results/v3/raw/{sys.argv[1]}.summary.json').read_text(
 if summary['errors']:
     Path(f'results/v3/{sys.argv[1]}.invalid').write_text(f"{summary['errors']} failed request(s); diagnostic only.\n")
     assert os.environ.get('CACHEFLOW_ALLOW_FAILED_DIAGNOSTIC')=='1', 'request failure invalidates performance run'
+else:
+    sys.path.insert(0,'scripts')
+    from v3_analyze_runs import load
+    try:
+        load(sys.argv[1])
+    except Exception as exc:
+        Path(f'results/v3/{sys.argv[1]}.invalid').write_text('Integrity audit failed: '+repr(exc)+'\n')
+        raise
 if c['runtime'].get('residency_events'):
     state=health['residency']
     assert state['subscriber_running'] and state['known'] and state['gaps']==0 and state['hash_contract_verified'], state

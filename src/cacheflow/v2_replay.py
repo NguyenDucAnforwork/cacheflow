@@ -6,6 +6,7 @@ import argparse
 import asyncio
 import csv
 import hashlib
+import gzip
 import json
 import subprocess
 import sys
@@ -37,7 +38,10 @@ def _package_version(name: str) -> str | None:
 
 
 def load_trace(path: Path) -> list[V2TraceRow]:
-    rows = [V2TraceRow(**json.loads(line)) for line in path.read_text().splitlines() if line.strip()]
+    if path.suffix=='.gz':
+        with gzip.open(path,'rt',encoding='utf-8') as file:text=file.read()
+    else:text=path.read_text()
+    rows = [V2TraceRow(**json.loads(line)) for line in text.splitlines() if line.strip()]
     if not rows:
         raise ValueError("empty trace")
     if len({row.request_id for row in rows}) != len(rows):
@@ -213,7 +217,7 @@ def main() -> None:
     parser.add_argument("--metrics-path", type=Path)
     parser.add_argument("--gateway-trace-path", type=Path)
     parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
-    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency", "sglang_lpm", "sglang_fcfs", "sglang_dfs-weight"])
+    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency", "packing", "packing_reuse", "sglang_lpm", "sglang_fcfs", "sglang_dfs-weight"])
     parser.add_argument('--engine-kind', choices=['vllm','sglang'], default='vllm')
     parser.add_argument("--gpu-kv-bytes", type=int)
     parser.add_argument("--engine-pid", type=int)

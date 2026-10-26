@@ -1,0 +1,109 @@
+{
+  "checks": [
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s102",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s103",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s102",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s103",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s102",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s103",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s101",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s102",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s103",
+      "status": "passed",
+      "engine_runtime_matches": true,
+      "graph_enabled": true,
+      "model_key": "qwen3-4b"
+    }
+  ]
+}

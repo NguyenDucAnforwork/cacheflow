@@ -1,0 +1,6210 @@
+{
+  "scope": "Dev only,60 unique QA repeated across3 arrival seeds; not fresh confirmation or whole LoCoMo",
+  "model": "Qwen3-4B",
+  "requests": 900,
+  "errors": 0,
+  "runs": [
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "fifo",
+      "p50_ms": 23470.2480985,
+      "p95_ms": 35471.8087399,
+      "p99_ms": 36181.823946569995,
+      "new_prefill": 71506.0,
+      "cpu_consumed_tokens": 859648.0,
+      "gpu_consumed_tokens": 347024.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.31467274917891297,
+      "cap_hits": 3,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "lpm_real",
+      "p50_ms": 21468.5107475,
+      "p95_ms": 33008.7469061,
+      "p99_ms": 34128.257945029996,
+      "new_prefill": 69074.0,
+      "cpu_consumed_tokens": 370704.0,
+      "gpu_consumed_tokens": 838400.0,
+      "preemptions": 1.0,
+      "quality_f1": 0.3110635952609355,
+      "cap_hits": 2,
+      "decision_stats": {
+        "calls": 9216,
+        "cpu_ms": 228.925108,
+        "wall_ms": 228.319682,
+        "max_ms": 12.563362,
+        "cache_hits": 8973
+      }
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "bundle_wave",
+      "p50_ms": 17556.6490055,
+      "p95_ms": 25355.4684428,
+      "p99_ms": 25415.19394021,
+      "new_prefill": 66770.0,
+      "cpu_consumed_tokens": 185968.0,
+      "gpu_consumed_tokens": 1025440.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.3233183719628015,
+      "cap_hits": 2,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "packing_fifo",
+      "p50_ms": 18385.0294225,
+      "p95_ms": 24096.820764149998,
+      "p99_ms": 24531.710207109998,
+      "new_prefill": 66354.0,
+      "cpu_consumed_tokens": 161552.0,
+      "gpu_consumed_tokens": 1050272.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.32400373922711617,
+      "cap_hits": 3,
+      "decision_stats": {
+        "calls": 11736,
+        "cpu_ms": 1018.070498,
+        "wall_ms": 1017.264865,
+        "max_ms": 16.594776,
+        "cache_hits": 11566
+      }
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s101",
+      "seed": 101,
+      "policy": "dhas",
+      "p50_ms": 23579.2626305,
+      "p95_ms": 35914.876218850004,
+      "p99_ms": 36678.038688459994,
+      "new_prefill": 71506.0,
+      "cpu_consumed_tokens": 830784.0,
+      "gpu_consumed_tokens": 375888.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.31467274917891297,
+      "cap_hits": 3,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "fifo",
+      "p50_ms": 25217.9349485,
+      "p95_ms": 34591.1138316,
+      "p99_ms": 35108.74803305,
+      "new_prefill": 71762.0,
+      "cpu_consumed_tokens": 865200.0,
+      "gpu_consumed_tokens": 341216.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.31467274917891297,
+      "cap_hits": 3,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "lpm_real",
+      "p50_ms": 21996.5324835,
+      "p95_ms": 34760.6829934,
+      "p99_ms": 36032.997287109996,
+      "new_prefill": 69602.0,
+      "cpu_consumed_tokens": 429040.0,
+      "gpu_consumed_tokens": 779536.0,
+      "preemptions": 1.0,
+      "quality_f1": 0.31114296034030064,
+      "cap_hits": 2,
+      "decision_stats": {
+        "calls": 9456,
+        "cpu_ms": 241.654746,
+        "wall_ms": 241.14386,
+        "max_ms": 12.245994,
+        "cache_hits": 9201
+      }
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "bundle_wave",
+      "p50_ms": 18753.4583595,
+      "p95_ms": 26683.92952565,
+      "p99_ms": 27314.35767479,
+      "new_prefill": 67330.0,
+      "cpu_consumed_tokens": 235808.0,
+      "gpu_consumed_tokens": 975040.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.3237190990552579,
+      "cap_hits": 1,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "packing_fifo",
+      "p50_ms": 19879.033026999998,
+      "p95_ms": 23576.8607184,
+      "p99_ms": 24196.8589411,
+      "new_prefill": 66882.0,
+      "cpu_consumed_tokens": 251424.0,
+      "gpu_consumed_tokens": 959872.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.3052302619276022,
+      "cap_hits": 3,
+      "decision_stats": {
+        "calls": 10994,
+        "cpu_ms": 963.475424,
+        "wall_ms": 963.492968,
+        "max_ms": 16.549978,
+        "cache_hits": 10830
+      }
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s102",
+      "seed": 102,
+      "policy": "dhas",
+      "p50_ms": 25879.619677000002,
+      "p95_ms": 35289.9172473,
+      "p99_ms": 35806.24636601,
+      "new_prefill": 71810.0,
+      "cpu_consumed_tokens": 918464.0,
+      "gpu_consumed_tokens": 287904.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.31467274917891297,
+      "cap_hits": 3,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "fifo",
+      "p50_ms": 24600.483740000003,
+      "p95_ms": 32681.655051299997,
+      "p99_ms": 33803.41928854,
+      "new_prefill": 71458.0,
+      "cpu_consumed_tokens": 864144.0,
+      "gpu_consumed_tokens": 342576.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.31467274917891297,
+      "cap_hits": 3,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-lpm_real16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "lpm_real",
+      "p50_ms": 21076.268882,
+      "p95_ms": 33351.85112855,
+      "p99_ms": 34827.655844709996,
+      "new_prefill": 69026.0,
+      "cpu_consumed_tokens": 375152.0,
+      "gpu_consumed_tokens": 834000.0,
+      "preemptions": 1.0,
+      "quality_f1": 0.31169197994814374,
+      "cap_hits": 2,
+      "decision_stats": {
+        "calls": 9274,
+        "cpu_ms": 248.174896,
+        "wall_ms": 247.030022,
+        "max_ms": 12.658164,
+        "cache_hits": 9032
+      }
+    },
+    {
+      "run_id": "v3-opt4b-bundle_wave16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "bundle_wave",
+      "p50_ms": 18118.169858499998,
+      "p95_ms": 27276.534793349998,
+      "p99_ms": 28275.48097425,
+      "new_prefill": 66850.0,
+      "cpu_consumed_tokens": 267984.0,
+      "gpu_consumed_tokens": 943344.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.3124072968224031,
+      "cap_hits": 1,
+      "decision_stats": null
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "packing_fifo",
+      "p50_ms": 19442.4355965,
+      "p95_ms": 23303.7812388,
+      "p99_ms": 23635.75699592,
+      "new_prefill": 66882.0,
+      "cpu_consumed_tokens": 251328.0,
+      "gpu_consumed_tokens": 959968.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.32115907204814165,
+      "cap_hits": 2,
+      "decision_stats": {
+        "calls": 11147,
+        "cpu_ms": 978.81312,
+        "wall_ms": 978.234474,
+        "max_ms": 15.290382,
+        "cache_hits": 10983
+      }
+    },
+    {
+      "run_id": "v3-opt4b-dhas16-dev3-qps4-s103",
+      "seed": 103,
+      "policy": "dhas",
+      "p50_ms": 25060.878332499997,
+      "p95_ms": 33139.002438,
+      "p99_ms": 34185.32222179,
+      "new_prefill": 71762.0,
+      "cpu_consumed_tokens": 865136.0,
+      "gpu_consumed_tokens": 341280.0,
+      "preemptions": 0.0,
+      "quality_f1": 0.31467274917891297,
+      "cap_hits": 3,
+      "decision_stats": null
+    }
+  ],
+  "contrasts": [
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "b": "v3-opt4b-lpm_real16-dev3-qps4-s101",
+      "trace_sha256": "80f33d4622501102f58cc8a6d7b2d034e9e45f564db7eed0188694c92e22ee6e",
+      "p50_delta_pct": -8.52882910567926,
+      "p95_delta_pct": -6.943716492893282,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5271.526587,
+          "b_ms": 5293.262807,
+          "delta_ms": 21.736219999999776,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 14462.076968,
+          "b_ms": 14632.425029,
+          "delta_ms": 170.3480610000006,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 14346.606511,
+          "b_ms": 14517.892619,
+          "delta_ms": 171.28610800000024,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 15254.467922,
+          "b_ms": 15437.85914,
+          "delta_ms": 183.39121800000066,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 15626.401019,
+          "b_ms": 15801.108585,
+          "delta_ms": 174.70756599999913,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 18142.947611,
+          "b_ms": 18405.247756,
+          "delta_ms": 262.30014500000107,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 19648.399212,
+          "b_ms": 18304.555158,
+          "delta_ms": -1343.844054000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 21622.029988,
+          "b_ms": 17593.878145,
+          "delta_ms": -4028.1518429999996,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 22618.574015,
+          "b_ms": 20193.693904,
+          "delta_ms": -2424.8801109999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 23178.15122,
+          "b_ms": 19339.264151,
+          "delta_ms": -3838.8870690000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 23540.402306,
+          "b_ms": 18701.967113,
+          "delta_ms": -4838.435193000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 24787.329356,
+          "b_ms": 18238.322601,
+          "delta_ms": -6549.0067549999985,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 27294.003479,
+          "b_ms": 19399.411383,
+          "delta_ms": -7894.592096,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 28592.124784,
+          "b_ms": 19093.950668,
+          "delta_ms": -9498.174115999998,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 30117.435599,
+          "b_ms": 20282.399353,
+          "delta_ms": -9835.036246,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31403.291309,
+          "b_ms": 20330.273496,
+          "delta_ms": -11073.017812999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32696.288458,
+          "b_ms": 21284.347373,
+          "delta_ms": -11411.941084999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 33582.42989,
+          "b_ms": 20907.463377,
+          "delta_ms": -12674.966513,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 35328.692418,
+          "b_ms": 20229.462496,
+          "delta_ms": -15099.229921999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 35500.325382,
+          "b_ms": 21652.674122,
+          "delta_ms": -13847.651260000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7493.147886,
+          "b_ms": 7483.969869,
+          "delta_ms": -9.178017000000182,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 14597.948692,
+          "b_ms": 14768.808965,
+          "delta_ms": 170.86027300000023,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 14204.217681,
+          "b_ms": 14374.239523,
+          "delta_ms": 170.0218420000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 15395.674036,
+          "b_ms": 15571.413136,
+          "delta_ms": 175.73909999999887,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 15766.983289,
+          "b_ms": 15937.066247,
+          "delta_ms": 170.08295800000087,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 18306.557278,
+          "b_ms": 34373.356856,
+          "delta_ms": 16066.799577999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 19649.190917,
+          "b_ms": 33957.934973,
+          "delta_ms": 14308.744056000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 21686.908716,
+          "b_ms": 33533.793345,
+          "delta_ms": 11846.884628999996,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 22443.183943,
+          "b_ms": 32981.112883,
+          "delta_ms": 10537.928940000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 22913.598127,
+          "b_ms": 31887.471872,
+          "delta_ms": 8973.873744999997,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 23599.417691,
+          "b_ms": 31505.799063,
+          "delta_ms": 7906.381372,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 24977.540527,
+          "b_ms": 31099.044328,
+          "delta_ms": 6121.503800999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27462.626917,
+          "b_ms": 30645.59375,
+          "delta_ms": 3182.9668329999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 28845.570723,
+          "b_ms": 30332.901638,
+          "delta_ms": 1487.3309149999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 30307.372411,
+          "b_ms": 30075.143413,
+          "delta_ms": -232.22899799999868,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31613.338877,
+          "b_ms": 29967.371367,
+          "delta_ms": -1645.9675099999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32870.226126,
+          "b_ms": 29240.694949,
+          "delta_ms": -3629.5311770000008,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 33700.777127,
+          "b_ms": 28643.920533,
+          "delta_ms": -5056.856594000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 35108.182925,
+          "b_ms": 27519.147467,
+          "delta_ms": -7589.035458000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 35788.659253,
+          "b_ms": 26936.401429,
+          "delta_ms": -8852.257823999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 14818.544055,
+          "b_ms": 14978.128623,
+          "delta_ms": 159.58456800000022,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 15278.704627,
+          "b_ms": 15463.490025,
+          "delta_ms": 184.785398,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 15070.943892,
+          "b_ms": 15256.38063,
+          "delta_ms": 185.43673800000033,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 15078.423168,
+          "b_ms": 15246.739024,
+          "delta_ms": 168.31585600000108,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 16643.594228,
+          "b_ms": 16815.654739,
+          "delta_ms": 172.06051099999968,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 19087.581089,
+          "b_ms": 20482.6363,
+          "delta_ms": 1395.055210999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 21359.064821,
+          "b_ms": 22018.295551,
+          "delta_ms": 659.2307299999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 22193.11095,
+          "b_ms": 21730.546103,
+          "delta_ms": -462.5648469999978,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 23174.100695,
+          "b_ms": 22607.302952,
+          "delta_ms": -566.7977430000028,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 23400.093891,
+          "b_ms": 23432.888443,
+          "delta_ms": 32.794551999999385,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 24482.199959,
+          "b_ms": 25710.724309,
+          "delta_ms": 1228.5243499999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 25428.472519,
+          "b_ms": 26933.698197,
+          "delta_ms": 1505.2256780000025,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 28346.567687,
+          "b_ms": 28707.019149,
+          "delta_ms": 360.4514620000009,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 29521.765245,
+          "b_ms": 28192.760171,
+          "delta_ms": -1329.005073999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31019.720771,
+          "b_ms": 28092.119412,
+          "delta_ms": -2927.6013590000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32691.140451,
+          "b_ms": 25669.378566,
+          "delta_ms": -7021.761885,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 33480.713054,
+          "b_ms": 24966.716801,
+          "delta_ms": -8513.996253000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 35102.22685,
+          "b_ms": 26484.06172,
+          "delta_ms": -8618.165129999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 35470.307864,
+          "b_ms": 25587.397248,
+          "delta_ms": -9882.910616000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 36747.59753,
+          "b_ms": 25276.796094,
+          "delta_ms": -11470.801435999998,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -5.6756840245879125,
+      "quality_f1_delta": -0.003609153917977448
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "b": "v3-opt4b-bundle_wave16-dev3-qps4-s101",
+      "trace_sha256": "80f33d4622501102f58cc8a6d7b2d034e9e45f564db7eed0188694c92e22ee6e",
+      "p50_delta_pct": -25.196150752994996,
+      "p95_delta_pct": -28.51938104222119,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5271.526587,
+          "b_ms": 5302.720039,
+          "delta_ms": 31.193451999999525,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 14462.076968,
+          "b_ms": 14672.686844,
+          "delta_ms": 210.60987600000044,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 14346.606511,
+          "b_ms": 14561.014117,
+          "delta_ms": 214.40760600000067,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 15254.467922,
+          "b_ms": 15488.457101,
+          "delta_ms": 233.98917900000015,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 15626.401019,
+          "b_ms": 14902.142682,
+          "delta_ms": -724.2583370000011,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 18142.947611,
+          "b_ms": 17384.119922,
+          "delta_ms": -758.8276889999979,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 19648.399212,
+          "b_ms": 21450.229819,
+          "delta_ms": 1801.8306069999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 21622.029988,
+          "b_ms": 22016.785564,
+          "delta_ms": 394.7555760000032,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 22618.574015,
+          "b_ms": 21756.116049,
+          "delta_ms": -862.4579659999981,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 23178.15122,
+          "b_ms": 21061.59348,
+          "delta_ms": -2116.55774,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 23540.402306,
+          "b_ms": 20282.889842,
+          "delta_ms": -3257.5124639999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 24787.329356,
+          "b_ms": 19739.1733,
+          "delta_ms": -5048.156056,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 27294.003479,
+          "b_ms": 19390.446698,
+          "delta_ms": -7903.556780999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 28592.124784,
+          "b_ms": 18975.547723,
+          "delta_ms": -9616.577061,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 30117.435599,
+          "b_ms": 18723.834881,
+          "delta_ms": -11393.600718000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31403.291309,
+          "b_ms": 18648.116969,
+          "delta_ms": -12755.174340000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32696.288458,
+          "b_ms": 17993.429547,
+          "delta_ms": -14702.858911,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 33582.42989,
+          "b_ms": 17455.740642,
+          "delta_ms": -16126.689247999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 35328.692418,
+          "b_ms": 16669.017643,
+          "delta_ms": -18659.674775,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 35500.325382,
+          "b_ms": 15577.311175,
+          "delta_ms": -19923.014207,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7493.147886,
+          "b_ms": 7496.372685,
+          "delta_ms": 3.22479900000053,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 14597.948692,
+          "b_ms": 14809.257931,
+          "delta_ms": 211.30923900000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 14204.217681,
+          "b_ms": 14415.967199,
+          "delta_ms": 211.74951800000053,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 15395.674036,
+          "b_ms": 15682.154331,
+          "delta_ms": 286.4802949999994,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 15766.983289,
+          "b_ms": 14726.044716,
+          "delta_ms": -1040.9385729999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 18306.557278,
+          "b_ms": 17975.897191,
+          "delta_ms": -330.6600870000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 19649.190917,
+          "b_ms": 18290.385256,
+          "delta_ms": -1358.8056609999985,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 21686.908716,
+          "b_ms": 17961.719031,
+          "delta_ms": -3725.189685000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 22443.183943,
+          "b_ms": 17657.557369,
+          "delta_ms": -4785.626574000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 22913.598127,
+          "b_ms": 16563.875317,
+          "delta_ms": -6349.722809999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 23599.417691,
+          "b_ms": 16182.186852,
+          "delta_ms": -7417.230838999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 24977.540527,
+          "b_ms": 15775.471304,
+          "delta_ms": -9202.069223,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27462.626917,
+          "b_ms": 15323.597173,
+          "delta_ms": -12139.029744000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 28845.570723,
+          "b_ms": 15010.911122,
+          "delta_ms": -13834.659601000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 30307.372411,
+          "b_ms": 14753.214453,
+          "delta_ms": -15554.157958,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31613.338877,
+          "b_ms": 14645.511221,
+          "delta_ms": -16967.827655999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32870.226126,
+          "b_ms": 13919.425375,
+          "delta_ms": -18950.800751000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 33700.777127,
+          "b_ms": 13322.7614,
+          "delta_ms": -20378.015727,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 35108.182925,
+          "b_ms": 12198.013451,
+          "delta_ms": -22910.169474000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 35788.659253,
+          "b_ms": 11615.304219,
+          "delta_ms": -24173.355034,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 14818.544055,
+          "b_ms": 15023.675387,
+          "delta_ms": 205.13133199999902,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 15278.704627,
+          "b_ms": 15499.865831,
+          "delta_ms": 221.161204,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 15070.943892,
+          "b_ms": 15292.372925,
+          "delta_ms": 221.42903300000035,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 15078.423168,
+          "b_ms": 15947.455849,
+          "delta_ms": 869.0326810000006,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 16643.594228,
+          "b_ms": 15853.951399,
+          "delta_ms": -789.6428290000022,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 19087.581089,
+          "b_ms": 20769.453427,
+          "delta_ms": 1681.872338000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 21359.064821,
+          "b_ms": 25479.761169,
+          "delta_ms": 4120.696348000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 22193.11095,
+          "b_ms": 25370.325188,
+          "delta_ms": 3177.2142380000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 23174.100695,
+          "b_ms": 25057.667123,
+          "delta_ms": 1883.5664279999983,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 23400.093891,
+          "b_ms": 25366.153564,
+          "delta_ms": 1966.0596729999997,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 24482.199959,
+          "b_ms": 25354.906068,
+          "delta_ms": 872.7061089999988,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 25428.472519,
+          "b_ms": 24922.247266,
+          "delta_ms": -506.2252530000005,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 28346.567687,
+          "b_ms": 24619.567468,
+          "delta_ms": -3727.0002189999977,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 29521.765245,
+          "b_ms": 24104.876766,
+          "delta_ms": -5416.8884789999975,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31019.720771,
+          "b_ms": 24004.179797,
+          "delta_ms": -7015.540974,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32691.140451,
+          "b_ms": 23658.474312,
+          "delta_ms": -9032.666139,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 33480.713054,
+          "b_ms": 22957.584032,
+          "delta_ms": -10523.129022000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 35102.22685,
+          "b_ms": 22102.891967,
+          "delta_ms": -12999.334883,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 35470.307864,
+          "b_ms": 21206.501333,
+          "delta_ms": -14263.806531000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 36747.59753,
+          "b_ms": 20895.733464,
+          "delta_ms": -15851.864065999998,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -29.757012864412722,
+      "quality_f1_delta": 0.008645622783888529
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "b": "v3-opt4b-packing_fifo16-dev3-qps4-s101",
+      "trace_sha256": "80f33d4622501102f58cc8a6d7b2d034e9e45f564db7eed0188694c92e22ee6e",
+      "p50_delta_pct": -21.666659230266085,
+      "p95_delta_pct": -32.067685240293365,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5271.526587,
+          "b_ms": 5339.646357,
+          "delta_ms": 68.11976999999933,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 14462.076968,
+          "b_ms": 14689.214322,
+          "delta_ms": 227.1373540000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 14346.606511,
+          "b_ms": 14526.879188,
+          "delta_ms": 180.27267700000084,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 15254.467922,
+          "b_ms": 14454.029768,
+          "delta_ms": -800.4381539999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 15626.401019,
+          "b_ms": 18327.472582,
+          "delta_ms": 2701.0715629999977,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 18142.947611,
+          "b_ms": 17884.644406,
+          "delta_ms": -258.30320500000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 19648.399212,
+          "b_ms": 18184.846782,
+          "delta_ms": -1463.5524299999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 21622.029988,
+          "b_ms": 17745.981701,
+          "delta_ms": -3876.048286999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 22618.574015,
+          "b_ms": 17485.53221,
+          "delta_ms": -5133.041804999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 23178.15122,
+          "b_ms": 16494.056633,
+          "delta_ms": -6684.094587,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 23540.402306,
+          "b_ms": 15715.582912,
+          "delta_ms": -7824.819394,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 24787.329356,
+          "b_ms": 21258.015056,
+          "delta_ms": -3529.314299999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 27294.003479,
+          "b_ms": 21726.239055,
+          "delta_ms": -5567.764424000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 28592.124784,
+          "b_ms": 21578.319434,
+          "delta_ms": -7013.805349999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 30117.435599,
+          "b_ms": 21327.045887,
+          "delta_ms": -8790.389712,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31403.291309,
+          "b_ms": 21251.639013,
+          "delta_ms": -10151.652296,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32696.288458,
+          "b_ms": 20597.41113,
+          "delta_ms": -12098.877327999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 33582.42989,
+          "b_ms": 20060.016933,
+          "delta_ms": -13522.412957,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 35328.692418,
+          "b_ms": 24346.81092,
+          "delta_ms": -10981.881497999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 35500.325382,
+          "b_ms": 23640.070647,
+          "delta_ms": -11860.254735000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7493.147886,
+          "b_ms": 7543.955601,
+          "delta_ms": 50.80771499999992,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 14597.948692,
+          "b_ms": 15228.369992,
+          "delta_ms": 630.4213,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 14204.217681,
+          "b_ms": 14833.701794,
+          "delta_ms": 629.4841130000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 15395.674036,
+          "b_ms": 14394.35155,
+          "delta_ms": -1001.3224860000009,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 15766.983289,
+          "b_ms": 18947.343411,
+          "delta_ms": 3180.360122000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 18306.557278,
+          "b_ms": 18442.586263,
+          "delta_ms": 136.02898500000083,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 19649.190917,
+          "b_ms": 17933.73862,
+          "delta_ms": -1715.4522969999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 21686.908716,
+          "b_ms": 17605.257512,
+          "delta_ms": -4081.6512040000016,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 22443.183943,
+          "b_ms": 17052.789201,
+          "delta_ms": -5390.394742,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 22913.598127,
+          "b_ms": 15959.327677,
+          "delta_ms": -6954.270450000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 23599.417691,
+          "b_ms": 15580.547116,
+          "delta_ms": -8018.870574999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 24977.540527,
+          "b_ms": 21432.9421,
+          "delta_ms": -3544.598427000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27462.626917,
+          "b_ms": 21888.011465,
+          "delta_ms": -5574.615452000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 28845.570723,
+          "b_ms": 21575.735916,
+          "delta_ms": -7269.834806999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 30307.372411,
+          "b_ms": 21318.343525,
+          "delta_ms": -8989.028886,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31613.338877,
+          "b_ms": 21210.929008,
+          "delta_ms": -10402.409869,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32870.226126,
+          "b_ms": 20484.723572,
+          "delta_ms": -12385.502554000002,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 33700.777127,
+          "b_ms": 19888.303608,
+          "delta_ms": -13812.473519000003,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 35108.182925,
+          "b_ms": 24128.05557,
+          "delta_ms": -10980.127355,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 35788.659253,
+          "b_ms": 23545.399138,
+          "delta_ms": -12243.260114999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 14818.544055,
+          "b_ms": 15074.143788,
+          "delta_ms": 255.5997329999991,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 15278.704627,
+          "b_ms": 16776.767337,
+          "delta_ms": 1498.062710000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 15070.943892,
+          "b_ms": 16570.170962,
+          "delta_ms": 1499.2270700000008,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 15078.423168,
+          "b_ms": 15330.53256,
+          "delta_ms": 252.1093920000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 16643.594228,
+          "b_ms": 15235.878515,
+          "delta_ms": -1407.7157130000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 19087.581089,
+          "b_ms": 14595.216077,
+          "delta_ms": -4492.365012,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 21359.064821,
+          "b_ms": 14113.547245,
+          "delta_ms": -7245.517576,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 22193.11095,
+          "b_ms": 13824.790036,
+          "delta_ms": -8368.320913999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 23174.100695,
+          "b_ms": 20560.551896,
+          "delta_ms": -2613.548799,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 23400.093891,
+          "b_ms": 19624.584527,
+          "delta_ms": -3775.5093640000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 24482.199959,
+          "b_ms": 19238.843256,
+          "delta_ms": -5243.356703000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 25428.472519,
+          "b_ms": 18806.209171,
+          "delta_ms": -6622.263348,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 28346.567687,
+          "b_ms": 18503.810424,
+          "delta_ms": -9842.757263,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 29521.765245,
+          "b_ms": 17991.040838,
+          "delta_ms": -11530.724406999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31019.720771,
+          "b_ms": 17890.3733,
+          "delta_ms": -13129.347471000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32691.140451,
+          "b_ms": 24797.784791,
+          "delta_ms": -7893.355660000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 33480.713054,
+          "b_ms": 24095.176827,
+          "delta_ms": -9385.536227,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 35102.22685,
+          "b_ms": 23240.497362,
+          "delta_ms": -11861.729488,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 35470.307864,
+          "b_ms": 22343.809293,
+          "delta_ms": -13126.498571000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 36747.59753,
+          "b_ms": 22033.143948,
+          "delta_ms": -14714.453581999998,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -32.198801687454505,
+      "quality_f1_delta": 0.009330990048203203
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s101",
+      "b": "v3-opt4b-dhas16-dev3-qps4-s101",
+      "trace_sha256": "80f33d4622501102f58cc8a6d7b2d034e9e45f564db7eed0188694c92e22ee6e",
+      "p50_delta_pct": 0.46447967461822337,
+      "p95_delta_pct": 1.2490693164220357,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5271.526587,
+          "b_ms": 5312.009521,
+          "delta_ms": 40.48293399999966,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 14462.076968,
+          "b_ms": 14701.967931,
+          "delta_ms": 239.89096299999983,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 14346.606511,
+          "b_ms": 14592.317303,
+          "delta_ms": 245.71079199999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 15254.467922,
+          "b_ms": 15535.749333,
+          "delta_ms": 281.28141099999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 15626.401019,
+          "b_ms": 14889.726329,
+          "delta_ms": -736.6746900000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 18142.947611,
+          "b_ms": 18114.430456,
+          "delta_ms": -28.517155000001367,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 19648.399212,
+          "b_ms": 19613.196568,
+          "delta_ms": -35.20264400000087,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 21622.029988,
+          "b_ms": 21610.152593,
+          "delta_ms": -11.877394999999524,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 22618.574015,
+          "b_ms": 22612.249858,
+          "delta_ms": -6.324156999999104,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 23178.15122,
+          "b_ms": 23287.683053,
+          "delta_ms": 109.53183300000092,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 23540.402306,
+          "b_ms": 23641.400759,
+          "delta_ms": 100.99845300000015,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 24787.329356,
+          "b_ms": 24891.741892,
+          "delta_ms": 104.41253599999982,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 27294.003479,
+          "b_ms": 27432.5853,
+          "delta_ms": 138.58182099999976,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 28592.124784,
+          "b_ms": 28908.657979,
+          "delta_ms": 316.533195,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 30117.435599,
+          "b_ms": 30388.930341,
+          "delta_ms": 271.49474199999895,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31403.291309,
+          "b_ms": 31667.797879,
+          "delta_ms": 264.5065700000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32696.288458,
+          "b_ms": 32999.645824,
+          "delta_ms": 303.3573660000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 33582.42989,
+          "b_ms": 33913.932275,
+          "delta_ms": 331.5023849999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 35328.692418,
+          "b_ms": 35752.635547,
+          "delta_ms": 423.9431289999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 35500.325382,
+          "b_ms": 35943.442488,
+          "delta_ms": 443.1171059999979,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7493.147886,
+          "b_ms": 7516.099964,
+          "delta_ms": 22.952078000000256,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 14597.948692,
+          "b_ms": 14838.706553,
+          "delta_ms": 240.75786100000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 14204.217681,
+          "b_ms": 14444.688971,
+          "delta_ms": 240.4712899999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 15395.674036,
+          "b_ms": 15655.454809,
+          "delta_ms": 259.7807730000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 15766.983289,
+          "b_ms": 15974.148024,
+          "delta_ms": 207.1647350000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 18306.557278,
+          "b_ms": 18275.689234,
+          "delta_ms": -30.868043999998918,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 19649.190917,
+          "b_ms": 19634.875933,
+          "delta_ms": -14.31498400000055,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 21686.908716,
+          "b_ms": 21675.230185,
+          "delta_ms": -11.678531000001385,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 22443.183943,
+          "b_ms": 22436.821401,
+          "delta_ms": -6.362541999998939,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 22913.598127,
+          "b_ms": 22940.505533,
+          "delta_ms": 26.907405999998446,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 23599.417691,
+          "b_ms": 23685.178062,
+          "delta_ms": 85.7603710000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 24977.540527,
+          "b_ms": 25080.085088,
+          "delta_ms": 102.5445609999988,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27462.626917,
+          "b_ms": 27606.197729,
+          "delta_ms": 143.5708119999981,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 28845.570723,
+          "b_ms": 29079.066467,
+          "delta_ms": 233.49574399999983,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 30307.372411,
+          "b_ms": 30564.696938,
+          "delta_ms": 257.32452700000067,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31613.338877,
+          "b_ms": 31917.76696,
+          "delta_ms": 304.4280830000025,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32870.226126,
+          "b_ms": 33178.316943,
+          "delta_ms": 308.0908169999966,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 33700.777127,
+          "b_ms": 34017.355669,
+          "delta_ms": 316.57854199999565,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 35108.182925,
+          "b_ms": 35525.38179,
+          "delta_ms": 417.1988649999985,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 35788.659253,
+          "b_ms": 36216.354619,
+          "delta_ms": 427.6953659999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 14818.544055,
+          "b_ms": 15058.923434,
+          "delta_ms": 240.37937899999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 15278.704627,
+          "b_ms": 15535.622245,
+          "delta_ms": 256.9176180000013,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 15070.943892,
+          "b_ms": 15327.924518,
+          "delta_ms": 256.9806260000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 15078.423168,
+          "b_ms": 15563.541704,
+          "delta_ms": 485.11853599999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 16643.594228,
+          "b_ms": 16597.371963,
+          "delta_ms": -46.222265000000334,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 19087.581089,
+          "b_ms": 19062.689088,
+          "delta_ms": -24.892001000000164,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 21359.064821,
+          "b_ms": 21345.388529,
+          "delta_ms": -13.676292000000103,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 22193.11095,
+          "b_ms": 22185.855524,
+          "delta_ms": -7.255425999999716,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 23174.100695,
+          "b_ms": 23181.581777,
+          "delta_ms": 7.481081999998423,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 23400.093891,
+          "b_ms": 23517.124502,
+          "delta_ms": 117.03061099999832,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 24482.199959,
+          "b_ms": 24588.847856,
+          "delta_ms": 106.64789699999892,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 25428.472519,
+          "b_ms": 25552.475696,
+          "delta_ms": 124.00317700000232,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 28346.567687,
+          "b_ms": 28508.048033,
+          "delta_ms": 161.48034600000028,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 29521.765245,
+          "b_ms": 29792.00221,
+          "delta_ms": 270.23696500000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31019.720771,
+          "b_ms": 31283.801279,
+          "delta_ms": 264.0805079999991,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32691.140451,
+          "b_ms": 32997.285278,
+          "delta_ms": 306.1448270000037,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 33480.713054,
+          "b_ms": 33799.216527,
+          "delta_ms": 318.50347299999703,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 35102.22685,
+          "b_ms": 35521.522961,
+          "delta_ms": 419.2961110000033,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 35470.307864,
+          "b_ms": 35913.372731,
+          "delta_ms": 443.06486700000096,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 36747.59753,
+          "b_ms": 37342.413325,
+          "delta_ms": 594.8157950000023,
+          "hash_equal": true
+        }
+      ],
+      "p99_delta_pct": 1.371447560583916,
+      "quality_f1_delta": 0.0
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "b": "v3-opt4b-lpm_real16-dev3-qps4-s102",
+      "trace_sha256": "92cb68f075a83b538905605155cb60c8d13733b55cb890bf496c042a76db84ba",
+      "p50_delta_pct": -12.774251625197463,
+      "p95_delta_pct": 0.49021018122028526,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5280.47989,
+          "b_ms": 5285.287021,
+          "delta_ms": 4.807131000000481,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15605.262757,
+          "b_ms": 15585.026531,
+          "delta_ms": -20.236226000000897,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16535.950604,
+          "b_ms": 16493.857705,
+          "delta_ms": -42.092899000002944,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17425.417621,
+          "b_ms": 17386.279912,
+          "delta_ms": -39.13770899999872,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 17873.608317,
+          "b_ms": 17833.235256,
+          "delta_ms": -40.373060999998415,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 17359.703996,
+          "b_ms": 17319.886074,
+          "delta_ms": -39.817922000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 20737.35699,
+          "b_ms": 19621.591075,
+          "delta_ms": -1115.765915,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 22627.774954,
+          "b_ms": 19420.719913,
+          "delta_ms": -3207.0550409999996,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23603.381977,
+          "b_ms": 21416.185599,
+          "delta_ms": -2187.1963780000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24391.267928,
+          "b_ms": 20782.828296,
+          "delta_ms": -3608.4396320000014,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 25344.882337,
+          "b_ms": 21937.43638,
+          "delta_ms": -3407.445957,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 26338.108459,
+          "b_ms": 21225.744148,
+          "delta_ms": -5112.3643109999975,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28348.433788,
+          "b_ms": 21029.468908,
+          "delta_ms": -7318.9648799999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 29795.05804,
+          "b_ms": 20832.860855,
+          "delta_ms": -8962.197185,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 31008.127268,
+          "b_ms": 21702.891977,
+          "delta_ms": -9305.235291,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31394.21632,
+          "b_ms": 20887.603938,
+          "delta_ms": -10506.612382,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32526.640984,
+          "b_ms": 20136.753803,
+          "delta_ms": -12389.887181000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 32846.023305,
+          "b_ms": 20749.241759,
+          "delta_ms": -12096.781546000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 34496.087766,
+          "b_ms": 19971.661666,
+          "delta_ms": -14524.426099999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 34588.710769,
+          "b_ms": 21062.105712,
+          "delta_ms": -13526.605056999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7308.570078,
+          "b_ms": 7311.984398,
+          "delta_ms": 3.4143199999998615,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15593.472882,
+          "b_ms": 15571.568752,
+          "delta_ms": -21.904130000000805,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16586.097843,
+          "b_ms": 16560.666239,
+          "delta_ms": -25.431604000001244,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 17365.673789,
+          "b_ms": 17337.017232,
+          "delta_ms": -28.656557000002067,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 17743.990934,
+          "b_ms": 17699.993492,
+          "delta_ms": -43.997441999999864,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 20119.577639,
+          "b_ms": 36532.457758,
+          "delta_ms": 16412.880118999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 20778.725756,
+          "b_ms": 35685.914587,
+          "delta_ms": 14907.188831,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 22769.694785,
+          "b_ms": 35207.815454,
+          "delta_ms": 12438.120669000004,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23633.701352,
+          "b_ms": 34737.149706,
+          "delta_ms": 11103.448353999996,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24595.094524,
+          "b_ms": 34140.424633,
+          "delta_ms": 9545.330109000002,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 25245.097996,
+          "b_ms": 33724.712128,
+          "delta_ms": 8479.614131999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 26374.742266,
+          "b_ms": 33061.011142,
+          "delta_ms": 6686.268876000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 28603.508923,
+          "b_ms": 32293.298383,
+          "delta_ms": 3689.78946,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 29822.365837,
+          "b_ms": 31764.578513,
+          "delta_ms": 1942.2126759999992,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 31047.32073,
+          "b_ms": 31274.685679,
+          "delta_ms": 227.3649489999989,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31223.470463,
+          "b_ms": 30014.023384,
+          "delta_ms": -1209.4470790000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32067.36357,
+          "b_ms": 28864.404309,
+          "delta_ms": -3202.959261,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32631.602719,
+          "b_ms": 27963.729378,
+          "delta_ms": -4667.873340999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 34452.080249,
+          "b_ms": 27213.072742,
+          "delta_ms": -7239.007506999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 34636.772021,
+          "b_ms": 26123.351939,
+          "delta_ms": -8513.420081999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15635.933055,
+          "b_ms": 15602.183307,
+          "delta_ms": -33.74974800000018,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16111.783939,
+          "b_ms": 16078.59843,
+          "delta_ms": -33.18550900000082,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17144.988599,
+          "b_ms": 17123.309668,
+          "delta_ms": -21.678930999998556,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17755.240527,
+          "b_ms": 17725.971854,
+          "delta_ms": -29.26867300000231,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 18581.156355,
+          "b_ms": 18535.687727,
+          "delta_ms": -45.468627999998716,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20375.014169,
+          "b_ms": 22055.628587,
+          "delta_ms": 1680.614418000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22481.041956,
+          "b_ms": 23023.105687,
+          "delta_ms": 542.0637309999984,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23186.686732,
+          "b_ms": 23429.463026,
+          "delta_ms": 242.77629400000296,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24405.335079,
+          "b_ms": 24460.738081,
+          "delta_ms": 55.403001999999105,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 25190.771901,
+          "b_ms": 26125.810268,
+          "delta_ms": 935.038367000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 26101.274608,
+          "b_ms": 27857.540261,
+          "delta_ms": 1756.2656529999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26871.828136,
+          "b_ms": 28854.276278,
+          "delta_ms": 1982.448142000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 29449.938558,
+          "b_ms": 30271.397981,
+          "delta_ms": 821.4594229999966,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 30570.948627,
+          "b_ms": 29658.89903,
+          "delta_ms": -912.0495970000011,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31539.782033,
+          "b_ms": 29033.239171,
+          "delta_ms": -2506.5428619999984,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32354.283614,
+          "b_ms": 25676.920618,
+          "delta_ms": -6677.362996,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32816.121956,
+          "b_ms": 24634.259546,
+          "delta_ms": -8181.862410000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34290.352808,
+          "b_ms": 26011.773642,
+          "delta_ms": -8278.579166000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 34879.350243,
+          "b_ms": 25319.096197,
+          "delta_ms": -9560.254046000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 35438.857048,
+          "b_ms": 24268.460449,
+          "delta_ms": -11170.396599,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": 2.6325326473901844,
+      "quality_f1_delta": -0.0035297888386123244
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "b": "v3-opt4b-bundle_wave16-dev3-qps4-s102",
+      "trace_sha256": "92cb68f075a83b538905605155cb60c8d13733b55cb890bf496c042a76db84ba",
+      "p50_delta_pct": -25.634440735142416,
+      "p95_delta_pct": -22.859004611544353,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5280.47989,
+          "b_ms": 5290.421864,
+          "delta_ms": 9.9419740000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15605.262757,
+          "b_ms": 15545.092541,
+          "delta_ms": -60.17021600000044,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16535.950604,
+          "b_ms": 16464.629672,
+          "delta_ms": -71.32093200000236,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17425.417621,
+          "b_ms": 17348.58549,
+          "delta_ms": -76.83213099999921,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 17873.608317,
+          "b_ms": 17805.324083,
+          "delta_ms": -68.28423399999883,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 17359.703996,
+          "b_ms": 17291.956407,
+          "delta_ms": -67.7475889999987,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 20737.35699,
+          "b_ms": 22998.734338,
+          "delta_ms": 2261.377347999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 22627.774954,
+          "b_ms": 23803.4927,
+          "delta_ms": 1175.7177459999984,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23603.381977,
+          "b_ms": 23512.832322,
+          "delta_ms": -90.54965500000253,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24391.267928,
+          "b_ms": 22744.13902,
+          "delta_ms": -1647.1289080000024,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 25344.882337,
+          "b_ms": 22548.429524,
+          "delta_ms": -2796.452813,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 26338.108459,
+          "b_ms": 21734.761913,
+          "delta_ms": -4603.346546000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28348.433788,
+          "b_ms": 20872.052734,
+          "delta_ms": -7476.381053999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 29795.05804,
+          "b_ms": 20546.336562,
+          "delta_ms": -9248.721478,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 31008.127268,
+          "b_ms": 19951.615717,
+          "delta_ms": -11056.511551,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31394.21632,
+          "b_ms": 18980.935095,
+          "delta_ms": -12413.281224999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32526.640984,
+          "b_ms": 18132.16694,
+          "delta_ms": -14394.474044000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 32846.023305,
+          "b_ms": 17001.444074,
+          "delta_ms": -15844.579231000003,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 34496.087766,
+          "b_ms": 16082.727719,
+          "delta_ms": -18413.360046999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 34588.710769,
+          "b_ms": 14898.000377,
+          "delta_ms": -19690.710391999997,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7308.570078,
+          "b_ms": 7310.054168,
+          "delta_ms": 1.4840899999999237,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15593.472882,
+          "b_ms": 15536.170278,
+          "delta_ms": -57.30260400000043,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16586.097843,
+          "b_ms": 16512.198905,
+          "delta_ms": -73.89893799999845,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 17365.673789,
+          "b_ms": 17304.221256,
+          "delta_ms": -61.452532999999676,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 17743.990934,
+          "b_ms": 17666.21011,
+          "delta_ms": -77.7808240000013,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 20119.577639,
+          "b_ms": 20121.005144,
+          "delta_ms": 1.4275049999996554,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 20778.725756,
+          "b_ms": 20137.751084,
+          "delta_ms": -640.9746720000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 22769.694785,
+          "b_ms": 20028.622212,
+          "delta_ms": -2741.0725730000013,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23633.701352,
+          "b_ms": 19557.962297,
+          "delta_ms": -4075.739055000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24595.094524,
+          "b_ms": 18961.299102,
+          "delta_ms": -5633.795421999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 25245.097996,
+          "b_ms": 18545.617617,
+          "delta_ms": -6699.4803790000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 26374.742266,
+          "b_ms": 17882.302654,
+          "delta_ms": -8492.439612000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 28603.508923,
+          "b_ms": 17114.619322,
+          "delta_ms": -11488.889601000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 29822.365837,
+          "b_ms": 16585.926793,
+          "delta_ms": -13236.439044000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 31047.32073,
+          "b_ms": 16094.212855,
+          "delta_ms": -14953.107875,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31223.470463,
+          "b_ms": 14833.49386,
+          "delta_ms": -16389.976603000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32067.36357,
+          "b_ms": 13683.777174,
+          "delta_ms": -18383.586396,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32631.602719,
+          "b_ms": 12783.100503,
+          "delta_ms": -19848.502216,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 34452.080249,
+          "b_ms": 12032.341987,
+          "delta_ms": -22419.738262,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 34636.772021,
+          "b_ms": 10942.615752,
+          "delta_ms": -23694.156269,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15635.933055,
+          "b_ms": 15578.101642,
+          "delta_ms": -57.831412999999884,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16111.783939,
+          "b_ms": 16043.088932,
+          "delta_ms": -68.69500700000026,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17144.988599,
+          "b_ms": 17075.689667,
+          "delta_ms": -69.29893200000151,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17755.240527,
+          "b_ms": 17688.420373,
+          "delta_ms": -66.82015400000091,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 18581.156355,
+          "b_ms": 18489.826459,
+          "delta_ms": -91.32989599999928,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20375.014169,
+          "b_ms": 22517.573289,
+          "delta_ms": 2142.5591200000017,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22481.041956,
+          "b_ms": 26908.660189,
+          "delta_ms": 4427.618232999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23186.686732,
+          "b_ms": 26672.101596,
+          "delta_ms": 3485.414864000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24405.335079,
+          "b_ms": 26545.977562,
+          "delta_ms": 2140.6424829999996,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 25190.771901,
+          "b_ms": 27426.323225,
+          "delta_ms": 2235.551324,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 26101.274608,
+          "b_ms": 27236.551106,
+          "delta_ms": 1135.2764979999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26871.828136,
+          "b_ms": 26623.833464,
+          "delta_ms": -247.99467200000072,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 29449.938558,
+          "b_ms": 25925.189852,
+          "delta_ms": -3524.748706000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 30570.948627,
+          "b_ms": 25312.443727,
+          "delta_ms": -5258.5049,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31539.782033,
+          "b_ms": 24686.813412,
+          "delta_ms": -6852.968621,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32354.283614,
+          "b_ms": 23447.102214,
+          "delta_ms": -8907.181400000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32816.121956,
+          "b_ms": 22404.345341,
+          "delta_ms": -10411.776615000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34290.352808,
+          "b_ms": 21363.75593,
+          "delta_ms": -12926.596878000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 34879.350243,
+          "b_ms": 20671.005351,
+          "delta_ms": -14208.344892000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 35438.857048,
+          "b_ms": 19620.235512,
+          "delta_ms": -15818.621535999999,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -22.200707216681902,
+      "quality_f1_delta": 0.00904634987634495
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "b": "v3-opt4b-packing_fifo16-dev3-qps4-s102",
+      "trace_sha256": "92cb68f075a83b538905605155cb60c8d13733b55cb890bf496c042a76db84ba",
+      "p50_delta_pct": -21.171051207813374,
+      "p95_delta_pct": -31.841279141286726,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5280.47989,
+          "b_ms": 5291.949792,
+          "delta_ms": 11.46990200000073,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15605.262757,
+          "b_ms": 15574.007951,
+          "delta_ms": -31.254806000000826,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16535.950604,
+          "b_ms": 16484.830947,
+          "delta_ms": -51.11965700000292,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17425.417621,
+          "b_ms": 20178.831046,
+          "delta_ms": 2753.413424999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 17873.608317,
+          "b_ms": 19226.649685,
+          "delta_ms": 1353.041368000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 17359.703996,
+          "b_ms": 19369.680239,
+          "delta_ms": 2009.976243000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 20737.35699,
+          "b_ms": 18630.147055,
+          "delta_ms": -2107.209934999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 22627.774954,
+          "b_ms": 18076.797981,
+          "delta_ms": -4550.976973000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23603.381977,
+          "b_ms": 17786.399091,
+          "delta_ms": -5816.982886000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24391.267928,
+          "b_ms": 17017.950167,
+          "delta_ms": -7373.317761000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 25344.882337,
+          "b_ms": 22911.116215,
+          "delta_ms": -2433.766122000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 26338.108459,
+          "b_ms": 22715.551229,
+          "delta_ms": -3622.5572299999985,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28348.433788,
+          "b_ms": 23077.282119,
+          "delta_ms": -5271.151668999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 29795.05804,
+          "b_ms": 22870.969403,
+          "delta_ms": -6924.088637000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 31008.127268,
+          "b_ms": 22156.578714,
+          "delta_ms": -8851.548554,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31394.21632,
+          "b_ms": 21186.14779,
+          "delta_ms": -10208.06853,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32526.640984,
+          "b_ms": 20340.019361,
+          "delta_ms": -12186.621623000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 32846.023305,
+          "b_ms": 23994.509915,
+          "delta_ms": -8851.513390000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 34496.087766,
+          "b_ms": 23561.310264,
+          "delta_ms": -10934.777501999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 34588.710769,
+          "b_ms": 22276.006509,
+          "delta_ms": -12312.704259999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7308.570078,
+          "b_ms": 7324.124234,
+          "delta_ms": 15.554156000000148,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15593.472882,
+          "b_ms": 15565.760293,
+          "delta_ms": -27.712589000000662,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16586.097843,
+          "b_ms": 16551.542196,
+          "delta_ms": -34.555647000001045,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 17365.673789,
+          "b_ms": 20597.042069,
+          "delta_ms": 3231.368279999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 17743.990934,
+          "b_ms": 19552.366321,
+          "delta_ms": 1808.375387,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 20119.577639,
+          "b_ms": 19337.750253,
+          "delta_ms": -781.8273860000008,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 20778.725756,
+          "b_ms": 18395.481023,
+          "delta_ms": -2383.2447329999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 22769.694785,
+          "b_ms": 18014.141383,
+          "delta_ms": -4755.553402000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23633.701352,
+          "b_ms": 17543.714249,
+          "delta_ms": -6089.9871029999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24595.094524,
+          "b_ms": 16947.237592,
+          "delta_ms": -7647.856931999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 25245.097996,
+          "b_ms": 23426.914749,
+          "delta_ms": -1818.1832470000008,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 26374.742266,
+          "b_ms": 23006.506247,
+          "delta_ms": -3368.236019,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 28603.508923,
+          "b_ms": 22612.468289,
+          "delta_ms": -5991.040634000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 29822.365837,
+          "b_ms": 22083.802924,
+          "delta_ms": -7738.562913000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 31047.32073,
+          "b_ms": 22010.868066,
+          "delta_ms": -9036.452664,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31223.470463,
+          "b_ms": 20752.69465,
+          "delta_ms": -10470.775813,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32067.36357,
+          "b_ms": 19603.373253,
+          "delta_ms": -12463.990317,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32631.602719,
+          "b_ms": 23872.319352,
+          "delta_ms": -8759.283367,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 34452.080249,
+          "b_ms": 23121.666097,
+          "delta_ms": -11330.414151999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 34636.772021,
+          "b_ms": 22032.323627,
+          "delta_ms": -12604.448393999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15635.933055,
+          "b_ms": 15604.58952,
+          "delta_ms": -31.343534999999974,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16111.783939,
+          "b_ms": 16066.838679,
+          "delta_ms": -44.94526000000042,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17144.988599,
+          "b_ms": 17110.268449,
+          "delta_ms": -34.72015000000101,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17755.240527,
+          "b_ms": 16753.992196,
+          "delta_ms": -1001.2483310000025,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 18581.156355,
+          "b_ms": 15775.321207,
+          "delta_ms": -2805.8351479999983,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20375.014169,
+          "b_ms": 15297.882458,
+          "delta_ms": -5077.131710999998,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22481.041956,
+          "b_ms": 14624.187706,
+          "delta_ms": -7856.85425,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23186.686732,
+          "b_ms": 21607.870316,
+          "delta_ms": -1578.8164159999978,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24405.335079,
+          "b_ms": 21078.414007,
+          "delta_ms": -3326.921072000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 25190.771901,
+          "b_ms": 20706.774555,
+          "delta_ms": -4483.997346,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 26101.274608,
+          "b_ms": 20137.09822,
+          "delta_ms": -5964.176388,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26871.828136,
+          "b_ms": 19524.407798,
+          "delta_ms": -7347.420338,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 29449.938558,
+          "b_ms": 18825.71555,
+          "delta_ms": -10624.223008,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 30570.948627,
+          "b_ms": 18212.998248,
+          "delta_ms": -12357.950379000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31539.782033,
+          "b_ms": 24488.044125,
+          "delta_ms": -7051.737907999999,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32354.283614,
+          "b_ms": 23447.695321,
+          "delta_ms": -8906.588293,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32816.121956,
+          "b_ms": 22405.048129,
+          "delta_ms": -10411.073827000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34290.352808,
+          "b_ms": 21364.373164,
+          "delta_ms": -12925.979644000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 34879.350243,
+          "b_ms": 20671.675276,
+          "delta_ms": -14207.674966999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 35438.857048,
+          "b_ms": 19620.967834,
+          "delta_ms": -15817.889213999999,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -31.080256925362228,
+      "quality_f1_delta": -0.00944248725131075
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s102",
+      "b": "v3-opt4b-dhas16-dev3-qps4-s102",
+      "trace_sha256": "92cb68f075a83b538905605155cb60c8d13733b55cb890bf496c042a76db84ba",
+      "p50_delta_pct": 2.623865633134881,
+      "p95_delta_pct": 2.0201818857351173,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5280.47989,
+          "b_ms": 5286.035304,
+          "delta_ms": 5.555414000000383,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15605.262757,
+          "b_ms": 15593.557137,
+          "delta_ms": -11.705620000000636,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16535.950604,
+          "b_ms": 16505.427202,
+          "delta_ms": -30.523402000002534,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17425.417621,
+          "b_ms": 17401.867767,
+          "delta_ms": -23.549854000000778,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 17873.608317,
+          "b_ms": 17785.674262,
+          "delta_ms": -87.9340549999979,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 17359.703996,
+          "b_ms": 20276.790823,
+          "delta_ms": 2917.086826999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 20737.35699,
+          "b_ms": 21416.371993,
+          "delta_ms": 679.0150030000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 22627.774954,
+          "b_ms": 23301.282001,
+          "delta_ms": 673.5070469999991,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23603.381977,
+          "b_ms": 24266.983059,
+          "delta_ms": 663.6010819999974,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24391.267928,
+          "b_ms": 25049.442814,
+          "delta_ms": 658.1748860000007,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 25344.882337,
+          "b_ms": 26014.085567,
+          "delta_ms": 669.2032299999992,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 26338.108459,
+          "b_ms": 27003.540232,
+          "delta_ms": 665.4317730000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28348.433788,
+          "b_ms": 29027.81581,
+          "delta_ms": 679.3820220000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 29795.05804,
+          "b_ms": 30467.316032,
+          "delta_ms": 672.2579919999989,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 31008.127268,
+          "b_ms": 31674.570178,
+          "delta_ms": 666.4429100000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 31394.21632,
+          "b_ms": 32084.855183,
+          "delta_ms": 690.6388630000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 32526.640984,
+          "b_ms": 33212.325507,
+          "delta_ms": 685.6845229999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 32846.023305,
+          "b_ms": 33529.827531,
+          "delta_ms": 683.8042260000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 34496.087766,
+          "b_ms": 35186.637812,
+          "delta_ms": 690.5500460000039,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 34588.710769,
+          "b_ms": 35287.529507,
+          "delta_ms": 698.8187380000018,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7308.570078,
+          "b_ms": 7306.782659,
+          "delta_ms": -1.7874189999993177,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15593.472882,
+          "b_ms": 15588.483403,
+          "delta_ms": -4.989478999999847,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16586.097843,
+          "b_ms": 16571.875098,
+          "delta_ms": -14.222744999999122,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 17365.673789,
+          "b_ms": 17361.763593,
+          "delta_ms": -3.910196000000724,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 17743.990934,
+          "b_ms": 17656.487088,
+          "delta_ms": -87.50384599999961,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 20119.577639,
+          "b_ms": 20515.992512,
+          "delta_ms": 396.41487300000153,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 20778.725756,
+          "b_ms": 21455.31554,
+          "delta_ms": 676.5897839999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 22769.694785,
+          "b_ms": 23444.824189,
+          "delta_ms": 675.1294039999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23633.701352,
+          "b_ms": 24299.096709,
+          "delta_ms": 665.3953570000012,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24595.094524,
+          "b_ms": 25252.603827,
+          "delta_ms": 657.5093029999989,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 25245.097996,
+          "b_ms": 25907.706154,
+          "delta_ms": 662.6081579999991,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 26374.742266,
+          "b_ms": 27053.89401,
+          "delta_ms": 679.1517439999989,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 28603.508923,
+          "b_ms": 29261.488198,
+          "delta_ms": 657.9792749999979,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 29822.365837,
+          "b_ms": 30492.730757,
+          "delta_ms": 670.36492,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 31047.32073,
+          "b_ms": 31729.097429,
+          "delta_ms": 681.7766990000018,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 31223.470463,
+          "b_ms": 31919.901993,
+          "delta_ms": 696.431529999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 32067.36357,
+          "b_ms": 32751.634276,
+          "delta_ms": 684.2707059999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32631.602719,
+          "b_ms": 33298.034949,
+          "delta_ms": 666.4322300000022,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 34452.080249,
+          "b_ms": 35122.585479,
+          "delta_ms": 670.5052300000025,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 34636.772021,
+          "b_ms": 35335.284313,
+          "delta_ms": 698.5122919999994,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15635.933055,
+          "b_ms": 15610.605951,
+          "delta_ms": -25.327103999999963,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16111.783939,
+          "b_ms": 16092.082494,
+          "delta_ms": -19.701445000000604,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17144.988599,
+          "b_ms": 17122.778441,
+          "delta_ms": -22.210158000001684,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17755.240527,
+          "b_ms": 17750.655724,
+          "delta_ms": -4.584803000001557,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 18581.156355,
+          "b_ms": 18443.294909,
+          "delta_ms": -137.86144599999898,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20375.014169,
+          "b_ms": 21047.281398,
+          "delta_ms": 672.267229000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22481.041956,
+          "b_ms": 23148.5964,
+          "delta_ms": 667.5544439999976,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23186.686732,
+          "b_ms": 23854.340252,
+          "delta_ms": 667.6535200000035,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24405.335079,
+          "b_ms": 25058.484405,
+          "delta_ms": 653.1493259999988,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 25190.771901,
+          "b_ms": 25851.5332,
+          "delta_ms": 660.7612990000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 26101.274608,
+          "b_ms": 26759.426963,
+          "delta_ms": 658.152355000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26871.828136,
+          "b_ms": 27541.96632,
+          "delta_ms": 670.1381839999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 29449.938558,
+          "b_ms": 30115.508488,
+          "delta_ms": 665.5699299999978,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 30570.948627,
+          "b_ms": 31248.222638,
+          "delta_ms": 677.2740109999977,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 31539.782033,
+          "b_ms": 32225.296391,
+          "delta_ms": 685.5143580000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 32354.283614,
+          "b_ms": 33048.060163,
+          "delta_ms": 693.776549000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32816.121956,
+          "b_ms": 33509.44708,
+          "delta_ms": 693.3251239999954,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34290.352808,
+          "b_ms": 34980.858673,
+          "delta_ms": 690.5058649999992,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 34879.350243,
+          "b_ms": 35577.628701,
+          "delta_ms": 698.2784580000007,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 35438.857048,
+          "b_ms": 36135.232762,
+          "delta_ms": 696.3757140000016,
+          "hash_equal": true
+        }
+      ],
+      "p99_delta_pct": 1.9866795942236504,
+      "quality_f1_delta": 0.0
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "b": "v3-opt4b-lpm_real16-dev3-qps4-s103",
+      "trace_sha256": "d1673e734c3ae2bbe82449f3a890b503f768d4530ff39c9206472e3dfd9c5cf7",
+      "p50_delta_pct": -14.325794952843484,
+      "p95_delta_pct": 2.0506797351541817,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5327.185073,
+          "b_ms": 5318.41685,
+          "delta_ms": -8.768223000000035,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15414.211537,
+          "b_ms": 15467.430465,
+          "delta_ms": 53.21892800000023,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16624.521247,
+          "b_ms": 16665.443714,
+          "delta_ms": 40.922467000000324,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17279.817767,
+          "b_ms": 17330.628205,
+          "delta_ms": 50.81043800000043,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 16713.957789,
+          "b_ms": 16765.402294,
+          "delta_ms": 51.44450499999948,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 19350.343848,
+          "b_ms": 19479.872802,
+          "delta_ms": 129.52895400000125,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 21097.321332,
+          "b_ms": 19622.430044,
+          "delta_ms": -1474.891287999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 23166.023065,
+          "b_ms": 18987.48199,
+          "delta_ms": -4178.541075000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23630.474681,
+          "b_ms": 21032.611449,
+          "delta_ms": -2597.8632319999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24146.388054,
+          "b_ms": 20140.659286,
+          "delta_ms": -4005.728768000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 24891.374118,
+          "b_ms": 21073.178875,
+          "delta_ms": -3818.1952429999983,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 25551.888988,
+          "b_ms": 20041.249446,
+          "delta_ms": -5510.639541999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28224.52467,
+          "b_ms": 20512.454555,
+          "delta_ms": -7712.070114999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 27790.227399,
+          "b_ms": 18485.004638,
+          "delta_ms": -9305.222761,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 29003.383239,
+          "b_ms": 18006.19596,
+          "delta_ms": -10997.187278999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 30035.258776,
+          "b_ms": 17771.413378,
+          "delta_ms": -12263.845397999998,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 31281.026687,
+          "b_ms": 18981.330953,
+          "delta_ms": -12299.695734,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 31990.811906,
+          "b_ms": 18372.346021,
+          "delta_ms": -13618.465884999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 32994.242525,
+          "b_ms": 16959.829871,
+          "delta_ms": -16034.412654,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 32624.884744,
+          "b_ms": 17810.193297,
+          "delta_ms": -14814.691446999997,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7388.0602,
+          "b_ms": 7420.739115,
+          "delta_ms": 32.678915000000416,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15574.873491,
+          "b_ms": 15620.426281,
+          "delta_ms": 45.55278999999973,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16831.762368,
+          "b_ms": 16887.095505,
+          "delta_ms": 55.33313700000144,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 16992.124163,
+          "b_ms": 17042.679701,
+          "delta_ms": 50.555538000000524,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 16877.340749,
+          "b_ms": 16928.46251,
+          "delta_ms": 51.12176100000215,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 19561.62646,
+          "b_ms": 34909.99349,
+          "delta_ms": 15348.367030000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 21186.550805,
+          "b_ms": 34770.438159,
+          "delta_ms": 13583.887353999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 23038.823575,
+          "b_ms": 34150.419182,
+          "delta_ms": 11111.595607,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23518.254912,
+          "b_ms": 33309.821231,
+          "delta_ms": 9791.566319000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24331.961595,
+          "b_ms": 32588.183589,
+          "delta_ms": 8256.221994,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 24345.611185,
+          "b_ms": 31526.447631,
+          "delta_ms": 7180.8364459999975,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 25664.740436,
+          "b_ms": 31052.775572,
+          "delta_ms": 5388.035135999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27424.290587,
+          "b_ms": 29836.022577,
+          "delta_ms": 2411.73199,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 27876.802993,
+          "b_ms": 28541.326348,
+          "delta_ms": 664.5233549999975,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 29042.525971,
+          "b_ms": 27983.465433,
+          "delta_ms": -1059.060537999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 30237.646558,
+          "b_ms": 27735.870428,
+          "delta_ms": -2501.776130000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 31530.334528,
+          "b_ms": 27054.180913,
+          "delta_ms": -4476.153614999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32261.78718,
+          "b_ms": 26311.479644,
+          "delta_ms": -5950.307536,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 32208.080806,
+          "b_ms": 23690.87054,
+          "delta_ms": -8517.210266000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 32592.246809,
+          "b_ms": 22806.173948,
+          "delta_ms": -9786.072861,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15473.348142,
+          "b_ms": 15503.78863,
+          "delta_ms": 30.440487999998368,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16195.652667,
+          "b_ms": 16231.894832,
+          "delta_ms": 36.24216499999966,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17284.716675,
+          "b_ms": 17339.883487,
+          "delta_ms": 55.16681199999948,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17939.987499,
+          "b_ms": 18006.100516,
+          "delta_ms": 66.11301699999967,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 17416.054545,
+          "b_ms": 17482.731388,
+          "delta_ms": 66.6768430000011,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20481.047366,
+          "b_ms": 21743.115532,
+          "delta_ms": 1262.068166000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22974.944323,
+          "b_ms": 23092.420584,
+          "delta_ms": 117.4762609999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23306.787683,
+          "b_ms": 23116.404477,
+          "delta_ms": -190.3832059999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24314.111961,
+          "b_ms": 24706.308163,
+          "delta_ms": 392.1962020000028,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 24855.356295,
+          "b_ms": 24081.251361,
+          "delta_ms": -774.1049340000027,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 25127.582326,
+          "b_ms": 25602.352234,
+          "delta_ms": 474.76990800000203,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26199.526493,
+          "b_ms": 26930.250292,
+          "delta_ms": 730.7237989999994,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 27785.141735,
+          "b_ms": 27330.611098,
+          "delta_ms": -454.53063699999984,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 28459.685916,
+          "b_ms": 26272.102027,
+          "delta_ms": -2187.5838889999977,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 29771.742515,
+          "b_ms": 25981.446496,
+          "delta_ms": -3790.2960190000013,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 31585.400769,
+          "b_ms": 23666.868435,
+          "delta_ms": -7918.5323339999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32016.117845,
+          "b_ms": 22593.22612,
+          "delta_ms": -9422.891725000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34040.649494,
+          "b_ms": 24504.696459,
+          "delta_ms": -9535.953034999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 32665.203079,
+          "b_ms": 21843.041941,
+          "delta_ms": -10822.161138,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 33638.5644,
+          "b_ms": 21079.358889,
+          "delta_ms": -12559.205511000004,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": 3.02997914923131,
+      "quality_f1_delta": -0.0029807692307692313
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "b": "v3-opt4b-bundle_wave16-dev3-qps4-s103",
+      "trace_sha256": "d1673e734c3ae2bbe82449f3a890b503f768d4530ff39c9206472e3dfd9c5cf7",
+      "p50_delta_pct": -26.350351277685913,
+      "p95_delta_pct": -16.53869808449311,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5327.185073,
+          "b_ms": 5369.499316,
+          "delta_ms": 42.314243000000715,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15414.211537,
+          "b_ms": 15453.056291,
+          "delta_ms": 38.84475400000156,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16624.521247,
+          "b_ms": 16651.01822,
+          "delta_ms": 26.496973000001162,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17279.817767,
+          "b_ms": 17309.399021,
+          "delta_ms": 29.581254000000627,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 16713.957789,
+          "b_ms": 16743.987682,
+          "delta_ms": 30.029892999998992,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 19350.343848,
+          "b_ms": 19373.65313,
+          "delta_ms": 23.309281999998348,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 21097.321332,
+          "b_ms": 23726.053461,
+          "delta_ms": 2628.732129,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 23166.023065,
+          "b_ms": 23677.871306,
+          "delta_ms": 511.8482409999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23630.474681,
+          "b_ms": 23551.972698,
+          "delta_ms": -78.50198299999829,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24146.388054,
+          "b_ms": 22515.319227,
+          "delta_ms": -1631.0688269999991,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 24891.374118,
+          "b_ms": 22111.650339,
+          "delta_ms": -2779.723779,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 25551.888988,
+          "b_ms": 21212.112999,
+          "delta_ms": -4339.775988999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28224.52467,
+          "b_ms": 20997.403103,
+          "delta_ms": -7227.121566999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 27790.227399,
+          "b_ms": 18816.710892,
+          "delta_ms": -8973.516507,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 29003.383239,
+          "b_ms": 18233.011043,
+          "delta_ms": -10770.372196,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 30035.258776,
+          "b_ms": 17894.303871,
+          "delta_ms": -12140.954904999999,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 31281.026687,
+          "b_ms": 17165.592776,
+          "delta_ms": -14115.433911,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 31990.811906,
+          "b_ms": 16420.879414,
+          "delta_ms": -15569.932492,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 32994.242525,
+          "b_ms": 14859.160549,
+          "delta_ms": -18135.081976,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 32624.884744,
+          "b_ms": 13199.438264,
+          "delta_ms": -19425.44648,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7388.0602,
+          "b_ms": 7431.817206,
+          "delta_ms": 43.75700599999982,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15574.873491,
+          "b_ms": 15617.670842,
+          "delta_ms": 42.79735099999925,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16831.762368,
+          "b_ms": 16894.086626,
+          "delta_ms": 62.324258000000555,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 16992.124163,
+          "b_ms": 17038.633181,
+          "delta_ms": 46.50901800000065,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 16877.340749,
+          "b_ms": 16924.112559,
+          "delta_ms": 46.771810000002006,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 19561.62646,
+          "b_ms": 20023.158098,
+          "delta_ms": 461.5316380000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 21186.550805,
+          "b_ms": 20583.938613,
+          "delta_ms": -602.6121920000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 23038.823575,
+          "b_ms": 20072.279521,
+          "delta_ms": -2966.544053999998,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23518.254912,
+          "b_ms": 19231.609976,
+          "delta_ms": -4286.644936000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24331.961595,
+          "b_ms": 18725.696464,
+          "delta_ms": -5606.265131,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 24345.611185,
+          "b_ms": 17664.033512,
+          "delta_ms": -6681.577673,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 25664.740436,
+          "b_ms": 17190.286566,
+          "delta_ms": -8474.453870000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27424.290587,
+          "b_ms": 15974.01297,
+          "delta_ms": -11450.277617,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 27876.802993,
+          "b_ms": 14679.393112,
+          "delta_ms": -13197.409881000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 29042.525971,
+          "b_ms": 14119.797231,
+          "delta_ms": -14922.728739999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 30237.646558,
+          "b_ms": 13872.079916,
+          "delta_ms": -16365.566642,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 31530.334528,
+          "b_ms": 13190.984494,
+          "delta_ms": -18339.350034,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32261.78718,
+          "b_ms": 12448.267888,
+          "delta_ms": -19813.519291999997,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 32208.080806,
+          "b_ms": 9827.618227,
+          "delta_ms": -22380.462579,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 32592.246809,
+          "b_ms": 8942.888982,
+          "delta_ms": -23649.357827,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15473.348142,
+          "b_ms": 15508.624514,
+          "delta_ms": 35.276371999998446,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16195.652667,
+          "b_ms": 16223.366367,
+          "delta_ms": 27.713700000000244,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17284.716675,
+          "b_ms": 17338.945159,
+          "delta_ms": 54.2284839999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17939.987499,
+          "b_ms": 18004.352138,
+          "delta_ms": 64.36463899999944,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 17416.054545,
+          "b_ms": 17480.677565,
+          "delta_ms": 64.62302000000273,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20481.047366,
+          "b_ms": 22931.790819,
+          "delta_ms": 2450.743453000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22974.944323,
+          "b_ms": 28042.477636,
+          "delta_ms": 5067.533313,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23306.787683,
+          "b_ms": 27260.052192,
+          "delta_ms": 3953.2645090000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24314.111961,
+          "b_ms": 28610.778461,
+          "delta_ms": 4296.666500000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 24855.356295,
+          "b_ms": 27589.704219,
+          "delta_ms": 2734.347923999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 25127.582326,
+          "b_ms": 26797.081407,
+          "delta_ms": 1669.4990810000018,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26199.526493,
+          "b_ms": 26481.441746,
+          "delta_ms": 281.9152529999992,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 27785.141735,
+          "b_ms": 24804.087862,
+          "delta_ms": -2981.0538730000007,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 28459.685916,
+          "b_ms": 23745.38591,
+          "delta_ms": -4714.300005999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 29771.742515,
+          "b_ms": 23454.678025,
+          "delta_ms": -6317.064490000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 31585.400769,
+          "b_ms": 23220.554828,
+          "delta_ms": -8364.845941,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32016.117845,
+          "b_ms": 22146.94017,
+          "delta_ms": -9869.177674999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34040.649494,
+          "b_ms": 21657.315915,
+          "delta_ms": -12383.333578999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 32665.203079,
+          "b_ms": 18995.62898,
+          "delta_ms": -13669.574098999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 33638.5644,
+          "b_ms": 18231.987579,
+          "delta_ms": -15406.576821000002,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -16.353192755751998,
+      "quality_f1_delta": -0.0022654523565098783
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "b": "v3-opt4b-packing_fifo16-dev3-qps4-s103",
+      "trace_sha256": "d1673e734c3ae2bbe82449f3a890b503f768d4530ff39c9206472e3dfd9c5cf7",
+      "p50_delta_pct": -20.96726307504717,
+      "p95_delta_pct": -28.69461108312802,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5327.185073,
+          "b_ms": 5319.504997,
+          "delta_ms": -7.680075999999644,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15414.211537,
+          "b_ms": 15453.030229,
+          "delta_ms": 38.81869200000074,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16624.521247,
+          "b_ms": 16654.508003,
+          "delta_ms": 29.986755999998422,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17279.817767,
+          "b_ms": 19378.164571,
+          "delta_ms": 2098.3468040000007,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 16713.957789,
+          "b_ms": 19259.511879,
+          "delta_ms": 2545.5540900000015,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 19350.343848,
+          "b_ms": 19443.454867,
+          "delta_ms": 93.11101899999994,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 21097.321332,
+          "b_ms": 19318.130741,
+          "delta_ms": -1779.1905909999987,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 23166.023065,
+          "b_ms": 18950.715257,
+          "delta_ms": -4215.307808000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23630.474681,
+          "b_ms": 18166.28653,
+          "delta_ms": -5464.1881509999985,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24146.388054,
+          "b_ms": 17133.642936,
+          "delta_ms": -7012.745117999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 24891.374118,
+          "b_ms": 22819.284787,
+          "delta_ms": -2072.089330999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 25551.888988,
+          "b_ms": 22291.702801,
+          "delta_ms": -3260.1861869999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28224.52467,
+          "b_ms": 23296.793887,
+          "delta_ms": -4927.730782999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 27790.227399,
+          "b_ms": 21238.194932,
+          "delta_ms": -6552.032467000001,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 29003.383239,
+          "b_ms": 20532.126676,
+          "delta_ms": -8471.256562999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 30035.258776,
+          "b_ms": 20195.331484,
+          "delta_ms": -9839.927292,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 31281.026687,
+          "b_ms": 19467.031531,
+          "delta_ms": -11813.995156,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 31990.811906,
+          "b_ms": 23299.170561,
+          "delta_ms": -8691.641345,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 32994.242525,
+          "b_ms": 22196.026025,
+          "delta_ms": -10798.216500000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 32624.884744,
+          "b_ms": 20451.226626,
+          "delta_ms": -12173.658118,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7388.0602,
+          "b_ms": 7416.181392,
+          "delta_ms": 28.12119200000052,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15574.873491,
+          "b_ms": 15618.904617,
+          "delta_ms": 44.03112599999986,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16831.762368,
+          "b_ms": 16898.256091,
+          "delta_ms": 66.49372299999959,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 16992.124163,
+          "b_ms": 20003.173299,
+          "delta_ms": 3011.049135999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 16877.340749,
+          "b_ms": 19889.078722,
+          "delta_ms": 3011.7379729999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 19561.62646,
+          "b_ms": 19379.804266,
+          "delta_ms": -181.8221940000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 21186.550805,
+          "b_ms": 19132.425362,
+          "delta_ms": -2054.125442999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 23038.823575,
+          "b_ms": 18621.005872,
+          "delta_ms": -4417.817702999997,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23518.254912,
+          "b_ms": 17780.577371,
+          "delta_ms": -5737.677541000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24331.961595,
+          "b_ms": 17063.039954,
+          "delta_ms": -7268.921641000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 24345.611185,
+          "b_ms": 22875.036651,
+          "delta_ms": -1470.574534000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 25664.740436,
+          "b_ms": 22648.728348,
+          "delta_ms": -3016.0120879999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27424.290587,
+          "b_ms": 21802.078443,
+          "delta_ms": -5622.212144000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 27876.802993,
+          "b_ms": 20507.412578,
+          "delta_ms": -7369.390415000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 29042.525971,
+          "b_ms": 20368.435057,
+          "delta_ms": -8674.090914,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 30237.646558,
+          "b_ms": 20122.719849,
+          "delta_ms": -10114.926709,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 31530.334528,
+          "b_ms": 19441.416326,
+          "delta_ms": -12088.918202,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32261.78718,
+          "b_ms": 23648.574163,
+          "delta_ms": -8613.213016999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 32208.080806,
+          "b_ms": 21027.911198,
+          "delta_ms": -11180.169608,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 32592.246809,
+          "b_ms": 20143.534625,
+          "delta_ms": -12448.712184,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15473.348142,
+          "b_ms": 15497.186884,
+          "delta_ms": 23.83874199999991,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16195.652667,
+          "b_ms": 16231.040408,
+          "delta_ms": 35.38774100000046,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17284.716675,
+          "b_ms": 17338.135423,
+          "delta_ms": 53.41874800000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17939.987499,
+          "b_ms": 16577.342156,
+          "delta_ms": -1362.6453430000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 17416.054545,
+          "b_ms": 16052.673498,
+          "delta_ms": -1363.381046999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20481.047366,
+          "b_ms": 15991.410036,
+          "delta_ms": -4489.63733,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22974.944323,
+          "b_ms": 15721.731401,
+          "delta_ms": -7253.212922000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23306.787683,
+          "b_ms": 22103.340241,
+          "delta_ms": -1203.447441999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24314.111961,
+          "b_ms": 21372.866066,
+          "delta_ms": -2941.245895,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 24855.356295,
+          "b_ms": 20747.231625,
+          "delta_ms": -4108.124670000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 25127.582326,
+          "b_ms": 19560.559746,
+          "delta_ms": -5567.022580000001,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26199.526493,
+          "b_ms": 19244.907671,
+          "delta_ms": -6954.618822,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 27785.141735,
+          "b_ms": 17567.20613,
+          "delta_ms": -10217.935605000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 28459.685916,
+          "b_ms": 16508.485988,
+          "delta_ms": -11951.199927999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 29771.742515,
+          "b_ms": 23626.850151,
+          "delta_ms": -6144.892364000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 31585.400769,
+          "b_ms": 23391.384117,
+          "delta_ms": -8194.016651999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32016.117845,
+          "b_ms": 22317.720152,
+          "delta_ms": -9698.397692999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34040.649494,
+          "b_ms": 21828.038214,
+          "delta_ms": -12212.611279999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 32665.203079,
+          "b_ms": 19166.399482,
+          "delta_ms": -13498.803596999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 33638.5644,
+          "b_ms": 18402.703657,
+          "delta_ms": -15235.860743000005,
+          "hash_equal": false
+        }
+      ],
+      "p99_delta_pct": -30.078798259521122,
+      "quality_f1_delta": 0.006486322869228678
+    },
+    {
+      "a": "v3-opt4b-fifo16-dev3-qps4-s103",
+      "b": "v3-opt4b-dhas16-dev3-qps4-s103",
+      "trace_sha256": "d1673e734c3ae2bbe82449f3a890b503f768d4530ff39c9206472e3dfd9c5cf7",
+      "p50_delta_pct": 1.8714859324143962,
+      "p95_delta_pct": 1.3994009360361659,
+      "paired_requests": [
+        {
+          "request_id": "conv-26-q000",
+          "sample_id": "conv-26",
+          "a_ms": 5327.185073,
+          "b_ms": 5316.657787,
+          "delta_ms": -10.527285999999549,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q001",
+          "sample_id": "conv-26",
+          "a_ms": 15414.211537,
+          "b_ms": 15468.15567,
+          "delta_ms": 53.944133000000875,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q002",
+          "sample_id": "conv-26",
+          "a_ms": 16624.521247,
+          "b_ms": 16677.332584,
+          "delta_ms": 52.811336999999185,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q003",
+          "sample_id": "conv-26",
+          "a_ms": 17279.817767,
+          "b_ms": 17319.525599,
+          "delta_ms": 39.70783200000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q004",
+          "sample_id": "conv-26",
+          "a_ms": 16713.957789,
+          "b_ms": 16754.114074,
+          "delta_ms": 40.156285000000935,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q005",
+          "sample_id": "conv-26",
+          "a_ms": 19350.343848,
+          "b_ms": 17680.363793,
+          "delta_ms": -1669.980055,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q006",
+          "sample_id": "conv-26",
+          "a_ms": 21097.321332,
+          "b_ms": 21513.757734,
+          "delta_ms": 416.43640199999936,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q007",
+          "sample_id": "conv-26",
+          "a_ms": 23166.023065,
+          "b_ms": 23615.129589,
+          "delta_ms": 449.1065239999989,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q008",
+          "sample_id": "conv-26",
+          "a_ms": 23630.474681,
+          "b_ms": 24087.580503,
+          "delta_ms": 457.10582200000135,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q009",
+          "sample_id": "conv-26",
+          "a_ms": 24146.388054,
+          "b_ms": 24600.321479,
+          "delta_ms": 453.93342499999926,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q010",
+          "sample_id": "conv-26",
+          "a_ms": 24891.374118,
+          "b_ms": 25345.301275,
+          "delta_ms": 453.9271570000019,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q011",
+          "sample_id": "conv-26",
+          "a_ms": 25551.888988,
+          "b_ms": 26024.239497,
+          "delta_ms": 472.3505089999999,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q012",
+          "sample_id": "conv-26",
+          "a_ms": 28224.52467,
+          "b_ms": 28685.044051,
+          "delta_ms": 460.5193810000019,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q013",
+          "sample_id": "conv-26",
+          "a_ms": 27790.227399,
+          "b_ms": 28259.617317,
+          "delta_ms": 469.38991800000076,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q014",
+          "sample_id": "conv-26",
+          "a_ms": 29003.383239,
+          "b_ms": 29467.51934,
+          "delta_ms": 464.13610100000005,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q015",
+          "sample_id": "conv-26",
+          "a_ms": 30035.258776,
+          "b_ms": 30507.376793,
+          "delta_ms": 472.1180170000007,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q016",
+          "sample_id": "conv-26",
+          "a_ms": 31281.026687,
+          "b_ms": 31758.005487,
+          "delta_ms": 476.97879999999714,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q017",
+          "sample_id": "conv-26",
+          "a_ms": 31990.811906,
+          "b_ms": 32461.094468,
+          "delta_ms": 470.2825620000003,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q018",
+          "sample_id": "conv-26",
+          "a_ms": 32994.242525,
+          "b_ms": 33459.4336,
+          "delta_ms": 465.1910749999952,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-26-q019",
+          "sample_id": "conv-26",
+          "a_ms": 32624.884744,
+          "b_ms": 33078.793584,
+          "delta_ms": 453.90884000000005,
+          "hash_equal": false
+        },
+        {
+          "request_id": "conv-30-q000",
+          "sample_id": "conv-30",
+          "a_ms": 7388.0602,
+          "b_ms": 7422.511553,
+          "delta_ms": 34.45135300000038,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q001",
+          "sample_id": "conv-30",
+          "a_ms": 15574.873491,
+          "b_ms": 15630.501971,
+          "delta_ms": 55.6284799999994,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q002",
+          "sample_id": "conv-30",
+          "a_ms": 16831.762368,
+          "b_ms": 16902.751516,
+          "delta_ms": 70.98914800000057,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q003",
+          "sample_id": "conv-30",
+          "a_ms": 16992.124163,
+          "b_ms": 16991.777328,
+          "delta_ms": -0.3468350000002829,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q004",
+          "sample_id": "conv-30",
+          "a_ms": 16877.340749,
+          "b_ms": 17755.323575,
+          "delta_ms": 877.9828259999995,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q005",
+          "sample_id": "conv-30",
+          "a_ms": 19561.62646,
+          "b_ms": 20252.771033,
+          "delta_ms": 691.1445730000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q006",
+          "sample_id": "conv-30",
+          "a_ms": 21186.550805,
+          "b_ms": 21603.925754,
+          "delta_ms": 417.3749490000009,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q007",
+          "sample_id": "conv-30",
+          "a_ms": 23038.823575,
+          "b_ms": 23476.794584,
+          "delta_ms": 437.9710090000008,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q008",
+          "sample_id": "conv-30",
+          "a_ms": 23518.254912,
+          "b_ms": 23957.082921,
+          "delta_ms": 438.82800900000075,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q009",
+          "sample_id": "conv-30",
+          "a_ms": 24331.961595,
+          "b_ms": 24805.164282,
+          "delta_ms": 473.2026870000009,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q010",
+          "sample_id": "conv-30",
+          "a_ms": 24345.611185,
+          "b_ms": 24810.128627,
+          "delta_ms": 464.51744199999666,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q011",
+          "sample_id": "conv-30",
+          "a_ms": 25664.740436,
+          "b_ms": 26129.840337,
+          "delta_ms": 465.0999010000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q012",
+          "sample_id": "conv-30",
+          "a_ms": 27424.290587,
+          "b_ms": 27891.229586,
+          "delta_ms": 466.9389990000018,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q013",
+          "sample_id": "conv-30",
+          "a_ms": 27876.802993,
+          "b_ms": 28322.887941,
+          "delta_ms": 446.0849479999997,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q014",
+          "sample_id": "conv-30",
+          "a_ms": 29042.525971,
+          "b_ms": 29503.470138,
+          "delta_ms": 460.94416700000147,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q015",
+          "sample_id": "conv-30",
+          "a_ms": 30237.646558,
+          "b_ms": 30691.813255,
+          "delta_ms": 454.16669700000057,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q016",
+          "sample_id": "conv-30",
+          "a_ms": 31530.334528,
+          "b_ms": 32011.063713,
+          "delta_ms": 480.72918500000014,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q017",
+          "sample_id": "conv-30",
+          "a_ms": 32261.78718,
+          "b_ms": 32712.463612,
+          "delta_ms": 450.6764320000002,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q018",
+          "sample_id": "conv-30",
+          "a_ms": 32208.080806,
+          "b_ms": 32655.50541,
+          "delta_ms": 447.4246039999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-30-q019",
+          "sample_id": "conv-30",
+          "a_ms": 32592.246809,
+          "b_ms": 33064.295138,
+          "delta_ms": 472.0483290000011,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q000",
+          "sample_id": "conv-41",
+          "a_ms": 15473.348142,
+          "b_ms": 15510.021419,
+          "delta_ms": 36.67327699999987,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q001",
+          "sample_id": "conv-41",
+          "a_ms": 16195.652667,
+          "b_ms": 16242.334467,
+          "delta_ms": 46.681800000000294,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q002",
+          "sample_id": "conv-41",
+          "a_ms": 17284.716675,
+          "b_ms": 17347.745846,
+          "delta_ms": 63.02917100000195,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q003",
+          "sample_id": "conv-41",
+          "a_ms": 17939.987499,
+          "b_ms": 17529.888484,
+          "delta_ms": -410.0990149999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q004",
+          "sample_id": "conv-41",
+          "a_ms": 17416.054545,
+          "b_ms": 18502.633979,
+          "delta_ms": 1086.5794339999993,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q005",
+          "sample_id": "conv-41",
+          "a_ms": 20481.047366,
+          "b_ms": 20893.676508,
+          "delta_ms": 412.6291420000016,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q006",
+          "sample_id": "conv-41",
+          "a_ms": 22974.944323,
+          "b_ms": 23395.843998,
+          "delta_ms": 420.89967500000057,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q007",
+          "sample_id": "conv-41",
+          "a_ms": 23306.787683,
+          "b_ms": 23757.896752,
+          "delta_ms": 451.1090690000019,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q008",
+          "sample_id": "conv-41",
+          "a_ms": 24314.111961,
+          "b_ms": 24767.622199,
+          "delta_ms": 453.5102380000026,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q009",
+          "sample_id": "conv-41",
+          "a_ms": 24855.356295,
+          "b_ms": 25311.628038,
+          "delta_ms": 456.2717429999975,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q010",
+          "sample_id": "conv-41",
+          "a_ms": 25127.582326,
+          "b_ms": 25596.388595,
+          "delta_ms": 468.8062690000006,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q011",
+          "sample_id": "conv-41",
+          "a_ms": 26199.526493,
+          "b_ms": 26666.628123,
+          "delta_ms": 467.1016299999974,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q012",
+          "sample_id": "conv-41",
+          "a_ms": 27785.141735,
+          "b_ms": 28250.945306,
+          "delta_ms": 465.8035710000004,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q013",
+          "sample_id": "conv-41",
+          "a_ms": 28459.685916,
+          "b_ms": 28914.797646,
+          "delta_ms": 455.11173000000053,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q014",
+          "sample_id": "conv-41",
+          "a_ms": 29771.742515,
+          "b_ms": 30240.600508,
+          "delta_ms": 468.8579929999978,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q015",
+          "sample_id": "conv-41",
+          "a_ms": 31585.400769,
+          "b_ms": 32061.839868,
+          "delta_ms": 476.43909899999926,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q016",
+          "sample_id": "conv-41",
+          "a_ms": 32016.117845,
+          "b_ms": 32489.902286,
+          "delta_ms": 473.7844409999998,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q017",
+          "sample_id": "conv-41",
+          "a_ms": 34040.649494,
+          "b_ms": 34505.982926,
+          "delta_ms": 465.33343199999945,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q018",
+          "sample_id": "conv-41",
+          "a_ms": 32665.203079,
+          "b_ms": 33122.13764,
+          "delta_ms": 456.93456100000185,
+          "hash_equal": true
+        },
+        {
+          "request_id": "conv-41-q019",
+          "sample_id": "conv-41",
+          "a_ms": 33638.5644,
+          "b_ms": 33962.490207,
+          "delta_ms": 323.9258069999996,
+          "hash_equal": true
+        }
+      ],
+      "p99_delta_pct": 1.1297760442224636,
+      "quality_f1_delta": 0.0
+    }
+  ],
+  "aggregate": [
+    {
+      "policy": "fifo",
+      "p50_ms": 24429.55559566667,
+      "p95_ms": 34248.192540933334,
+      "p99_ms": 35031.33042272,
+      "cpu_consumed_tokens": 862997.3333333334,
+      "new_prefill": 71575.33333333333,
+      "quality_f1": 0.31467274917891297
+    },
+    {
+      "policy": "lpm_real",
+      "p50_ms": 21513.770704333332,
+      "p95_ms": 33707.093676016666,
+      "p99_ms": 34996.30369228333,
+      "cpu_consumed_tokens": 391632.0,
+      "new_prefill": 69234.0,
+      "quality_f1": 0.3112995118497933
+    },
+    {
+      "policy": "bundle_wave",
+      "p50_ms": 18142.759074499998,
+      "p95_ms": 26438.644253933333,
+      "p99_ms": 27001.67752975,
+      "cpu_consumed_tokens": 229920.0,
+      "new_prefill": 66983.33333333333,
+      "quality_f1": 0.3198149226134875
+    },
+    {
+      "policy": "packing_fifo",
+      "p50_ms": 19235.499348666664,
+      "p95_ms": 23659.15424045,
+      "p99_ms": 24121.442048043333,
+      "cpu_consumed_tokens": 221434.66666666666,
+      "new_prefill": 66706.0,
+      "quality_f1": 0.31679769106762
+    },
+    {
+      "policy": "dhas",
+      "p50_ms": 24839.920213333335,
+      "p95_ms": 34781.26530138333,
+      "p99_ms": 35556.53575875333,
+      "cpu_consumed_tokens": 871461.3333333334,
+      "new_prefill": 71692.66666666667,
+      "quality_f1": 0.31467274917891297
+    }
+  ]
+}

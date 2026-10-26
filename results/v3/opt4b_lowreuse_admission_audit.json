@@ -1,0 +1,154 @@
+{
+  "runs": [
+    {
+      "run_id": "v3-opt4b-packing_fifo16-lowreuse8-qps4-s101",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 40.3619805,
+      "queued_with_at_most_one_active_s": 26.139459093000003,
+      "active_request_seconds": 78.268719113,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "head_id": "conv-42-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "head_id": "conv-47-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "head_id": "conv-48-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-49-q000",
+          "head_id": "conv-49-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-50-q000",
+          "head_id": "conv-50-q000",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-lowreuse8-qps4-s102",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 0.0009418159999999999,
+      "queued_with_at_most_one_active_s": 6.589700000000001e-05,
+      "active_request_seconds": 204.567581111,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "head_id": "conv-42-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "head_id": "conv-47-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "head_id": "conv-48-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-49-q000",
+          "head_id": "conv-49-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-50-q000",
+          "head_id": "conv-50-q000",
+          "bypasses_for_head": 0
+        }
+      ]
+    },
+    {
+      "run_id": "v3-opt4b-packing_fifo16-lowreuse8-qps4-s103",
+      "max_head_bypasses": 0,
+      "queued_with_spare_slots_s": 0.000218693,
+      "queued_with_at_most_one_active_s": 8.2222e-05,
+      "active_request_seconds": 205.705772615,
+      "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+      "decisions": [
+        {
+          "request_id": "conv-26-q000",
+          "head_id": "conv-26-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-30-q000",
+          "head_id": "conv-30-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-41-q000",
+          "head_id": "conv-41-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-42-q000",
+          "head_id": "conv-42-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-47-q000",
+          "head_id": "conv-47-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-48-q000",
+          "head_id": "conv-48-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-49-q000",
+          "head_id": "conv-49-q000",
+          "bypasses_for_head": 0
+        },
+        {
+          "request_id": "conv-50-q000",
+          "head_id": "conv-50-q000",
+          "bypasses_for_head": 0
+        }
+      ]
+    }
+  ]
+}

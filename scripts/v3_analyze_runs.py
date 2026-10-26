@@ -67,7 +67,9 @@ def main():
         c=run['metrics']['counter_deltas']['vllm']
         setup=json.loads(Path(f'results/v3/{s["run_id"]}.setup.json').read_text())
         rows.append(dict(run_id=s['run_id'],policy=s['policy'],cap=setup['runtime']['max_inflight'],
-            profiled=setup['runtime']['profile'],p50_ms=s['arrival_ttft_p50_ms'],p95_ms=s['arrival_ttft_p95_ms'],
+            profiled=setup['runtime']['profile'] or setup['runtime'].get('kv_events',False),
+            batch_invariant=setup['runtime'].get('batch_invariant',False),
+            p50_ms=s['arrival_ttft_p50_ms'],p95_ms=s['arrival_ttft_p95_ms'],
             p99_ms=s['arrival_ttft_p99_ms'],requests_per_s=s['requests_per_s'],requests=s['requests'],
             new_prefill=c['vllm:request_prefill_kv_computed_tokens_sum'],
             cpu_tokens=c['vllm:prompt_tokens_source_external_kv_transfer_total'],

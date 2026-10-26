@@ -150,3 +150,21 @@ def test_lpm_cached_choice_invalidates_when_kv_event_sequence_changes():
     index.apply(2,[event('BlockRemoved',block_hashes=a,medium='GPU'),
                    event('BlockStored',block_hashes=b,medium='GPU')])
     assert scheduler._choose(time.monotonic_ns()) is qb
+
+
+def test_pure_packing_ignores_observer_bootstrap_and_reuse_gate_keeps_cold_fifo():
+    import time
+    def t(name,group,start):
+        keys=engine_block_hashes(list(range(start,start+160)))
+        return Ticket(request_id=name,blocks=(),arrival_ns=1,enqueued_ns=1,deadline_ns=2,group=group,
+            engine_blocks=keys,input_tokens=160,output_budget=16)
+    active=t('a','group-a',0);head=t('b','group-b',500);back=t('c','group-a',0)
+    for policy in ['packing','packing_reuse']:
+        s=ResidencyScheduler(policy=policy,residency_index=ResidencyIndex(),
+            kv_capacity_tokens=256,max_inflight=4)
+        s._active={'a':active};s._queue=[head,back]
+        chosen=s._choose(time.monotonic_ns())
+        assert chosen is (back if policy=='packing' else head)
+        if policy=='packing_reuse':
+            s._recent.append(t('completed','group-a',0))
+            assert s._choose(time.monotonic_ns()) is back
