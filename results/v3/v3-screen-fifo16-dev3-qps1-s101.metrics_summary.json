@@ -1,0 +1,29 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l1_evicted_chunks_total": null,
+      "lmcache_mp_l1_read_chunks_total": 4712.0,
+      "lmcache_mp_l1_write_chunks_total": 250.0,
+      "lmcache_mp_num_chunks_loaded_total": 4178.0
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 1063984.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 10026288.0,
+      "vllm:prompt_tokens_cached_total": 1206416.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 1063984.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 142432.0,
+      "vllm:prompt_tokens_source_local_compute_total": 71762.0,
+      "vllm:prompt_tokens_total": 1278178.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 71762.0,
+      "vllm:request_queue_time_seconds_sum": 78.37783903392847
+    }
+  },
+  "duration_s": 52.005760152,
+  "first_timestamp_ns": 96356616153590,
+  "host_memory_available_min_bytes": 213159153664,
+  "last_timestamp_ns": 96408621913742,
+  "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v3-screen-fifo16-dev3-qps1-s101.metrics.jsonl",
+  "samples": 53,
+  "vram_peak_mib": 8881.0
+}

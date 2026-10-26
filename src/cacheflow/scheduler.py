@@ -30,6 +30,8 @@ class Ticket:
     recent_match: bool = False
     readiness_guard_bypassed: bool = False
     readiness_estimate_ms: float | None = None
+    tokenize_ms: float | None = None
+    prefix_hash_ms: float | None = None
 
 
 class AdmissionScheduler:

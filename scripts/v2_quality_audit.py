@@ -45,6 +45,7 @@ def main():
     p.add_argument('--source', type=Path, default=Path('data/raw/locomo10.json'))
     p.add_argument('--evaluator', type=Path, default=Path('data/processed/v2/evaluator/evaluation.py'))
     p.add_argument('--run-ids', nargs='+', required=True)
+    p.add_argument('--raw-dir', type=Path, default=Path('results/v2/raw'))
     p.add_argument('--output', type=Path, default=Path('results/v2/e2_quality.json'))
     args = p.parse_args()
     score = evaluator(args.evaluator)
@@ -52,7 +53,7 @@ def main():
     source_sha = hashlib.sha256(args.source.read_bytes()).hexdigest()
     summaries = []
     for run_id in args.run_ids:
-        base = Path('results/v2/raw')
+        base = args.raw_dir
         summary = json.loads((base / f'{run_id}.summary.json').read_text())
         if summary['source_sha256'] != source_sha or summary['errors']:
             raise ValueError('source mismatch or failed run')

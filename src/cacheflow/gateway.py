@@ -57,7 +57,9 @@ def create_app(config_path: str | None = None) -> FastAPI:
         settings["scheduler"]["policy"] = os.environ["CACHEFLOW_POLICY"]
     model = settings["model"]
     tokenizer = AutoTokenizer.from_pretrained(model, local_files_only=True, trust_remote_code=False)
-    scheduler = AdmissionScheduler(**settings["scheduler"])
+    from .v3_scheduler import BaselineScheduler, V3_POLICIES
+    scheduler_cls = BaselineScheduler if settings["scheduler"]["policy"] in V3_POLICIES else AdmissionScheduler
+    scheduler = scheduler_cls(**settings["scheduler"])
     trace = TraceWriter(os.environ.get("CACHEFLOW_TRACE", "/workspace/results/raw/gateway.jsonl"))
     upstream = settings.get("upstream", "http://127.0.0.1:8000").rstrip("/")
     client = httpx.AsyncClient(timeout=httpx.Timeout(connect=30, read=600, write=30, pool=30), limits=httpx.Limits(max_connections=128))
@@ -94,9 +96,14 @@ def create_app(config_path: str | None = None) -> FastAPI:
                 raise ValueError
         except ValueError:
             arrival_ns = received_ns
+        tokenize_start = time.monotonic_ns()
         token_ids = tokenizer.encode(prompt, add_special_tokens=False)
+        tokenize_end = time.monotonic_ns()
         blocks = prefix_blocks(token_ids, block_size=scheduler.block_size, namespace=model)
+        hash_end = time.monotonic_ns()
         ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns)
+        ticket.tokenize_ms = (tokenize_end-tokenize_start)/1e6
+        ticket.prefix_hash_ms = (hash_end-tokenize_end)/1e6
         headers = {"content-type": "application/json"}
         stream_cm = client.stream("POST", upstream + "/v1/completions", content=body, headers=headers)
         try:
@@ -146,6 +153,8 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         "received_ns": received_ns,
         "enqueue_ns": ticket.enqueued_ns,
         "ingress_prepare_ms": (ticket.enqueued_ns - received_ns) / 1e6,
+        "tokenize_ms": ticket.tokenize_ms,
+        "prefix_hash_ms": ticket.prefix_hash_ms,
         "dispatch_ns": ticket.dispatch_ns,
         "admission_wait_ms": (ticket.dispatch_ns - ticket.enqueued_ns) / 1e6 if ticket.dispatch_ns else None,
         "admission_deadline_ns": ticket.deadline_ns,

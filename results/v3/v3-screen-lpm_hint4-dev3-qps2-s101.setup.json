@@ -1,0 +1,19 @@
+{
+  "run_id": "v3-screen-lpm_hint4-dev3-qps2-s101",
+  "trace_path": "data/processed/v3/dev3-qps2-s101.jsonl",
+  "runtime": {
+    "max_inflight": 4,
+    "max_num_seqs": 4,
+    "max_num_batched_tokens": 8192,
+    "chunk_size": 256,
+    "enforce_eager": true,
+    "profile": false,
+    "kv_events": false
+  },
+  "gateway_config": "model: /workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e\nscheduler:\n  block_size: 256\n  group_window_ms: 30\n  max_inflight: 4\n  max_queue: 64\n  max_wait_ms: 200\n  min_shared_tokens: 1024\n  policy: lpm_hint\n  store_grace_ms: 20\nupstream: http://127.0.0.1:8000\n",
+  "gpu_kv_bytes": 4294967296,
+  "actual_engine_argv": "/venv/main/bin/python /venv/main/bin/vllm serve /workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e --served-model-name cacheflow-qwen3-1.7b --host 127.0.0.1 --port 8000 --dtype bfloat16 --max-model-len 32768 --max-num-seqs 4 --kv-cache-memory-bytes 4294967296 --generation-config vllm --enable-prefix-caching --max-num-seqs 4 --max-num-batched-tokens 8192 --enforce-eager --kv-transfer-config {\"kv_connector\":\"LMCacheMPConnector\",\"kv_connector_module_path\":\"lmcache.integration.vllm.lmcache_mp_connector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"lmcache.mp.host\":\"127.0.0.1\",\"lmcache.mp.port\":5555}} ",
+  "source_head": "35ae1e53a2047a3d3f2e9624a428b661c9624019",
+  "source_diff_sha256": "853329c89513b26bd5dd0f8f2c54431138ebc7303f959582f28bf20eb22a0f55",
+  "captured_utc": "2026-10-26T06:38:11.232236+00:00"
+}

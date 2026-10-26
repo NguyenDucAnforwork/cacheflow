@@ -1,0 +1,137 @@
+{
+  "profile_trace": "results/v3/raw/torch_profiles/rank0.1792995515589652422.pt.trace.json.gz",
+  "event_trace": "results/v3/raw/kv_events.jsonl",
+  "kernel_window_wall_s": [
+    1792995504.6417432,
+    1792995512.9568737
+  ],
+  "kernel_window_duration_s": 8.315130472183228,
+  "model_kernel_union_s": 6.42676854133606,
+  "top_kernels_s": [
+    [
+      "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<128, 64, 128, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 64, 128, 4, cutlass::bfloat16_t> >, true, false, false, false, true, false, false, false>(flash::Flash_fwd_params)",
+      3.019030998000002
+    ],
+    [
+      "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+      1.626541304000001
+    ],
+    [
+      "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+      1.0365878729999995
+    ],
+    [
+      "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<128, 64, 128, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 64, 128, 4, cutlass::bfloat16_t> >, false, false, false, false, true, false, true, false>(flash::Flash_fwd_params)",
+      0.17776407199999994
+    ],
+    [
+      "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &(c10::BFloat16 vllm::silu_kernel<c10::BFloat16>(c10::BFloat16 const&)), &(__nv_bfloat162 vllm::packed_silu_kernel<__nv_bfloat162>(__nv_bfloat162 const&)), true, true, false, false>(c10::BFloat16*, c10::BFloat16 const*, int, float)",
+      0.08177238999999917
+    ],
+    [
+      "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8::Params)",
+      0.07966823000000006
+    ],
+    [
+      "std::enable_if<(((8)>(0)))&&vllm::_typeConvert<c10::BFloat16>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, 8>(c10::BFloat16*, long, c10::BFloat16*, c10::BFloat16 const*, float, int, int)",
+      0.07895975400000113
+    ],
+    [
+      "void vllm::rms_norm_kernel<c10::BFloat16, 8, 3>(c10::BFloat16*, c10::BFloat16 const*, long, long, long, long, long, c10::BFloat16 const*, float, int, int)",
+      0.053601778999999655
+    ],
+    [
+      "ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_tn",
+      0.047704235
+    ],
+    [
+      "ampere_bf16_s16816gemm_bf16_64x64_ldg8_f2f_stages_64x5_tn",
+      0.044255948000000045
+    ],
+    [
+      "void vllm::rotary_embedding_kernel<c10::BFloat16, c10::BFloat16, true>(long const*, c10::BFloat16*, c10::BFloat16*, c10::BFloat16 const*, int, long, long, long, int, int, int, long, bool)",
+      0.03551662199999913
+    ],
+    [
+      "void gemv2T_kernel_val<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, 128, 16, 4, 4, false, false, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float> >(cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>, float, float)",
+      0.033869132999999996
+    ],
+    [
+      "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x5_tn",
+      0.029129864000000023
+    ],
+    [
+      "void vllm::reshape_and_cache_flash_kernel<__nv_bfloat16, __nv_bfloat16, (vllm::Fp8KVCacheDataType)0>(__nv_bfloat16 const*, __nv_bfloat16 const*, __nv_bfloat16*, __nv_bfloat16*, long const*, long, long, long, long, long, int, int, int, float const*, float const*, int)",
+      0.02822150100000069
+    ],
+    [
+      "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, false, true, true, false, 7, false, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float> >(cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16 const>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>)",
+      0.014590364000000012
+    ]
+  ],
+  "kv_phases": {
+    "mp.lookup_prefetch": {
+      "events": 60,
+      "sum_duration_s": 0.37595152854919434,
+      "median_duration_s": 0.005836009979248047,
+      "max_duration_s": 0.012433052062988281,
+      "median_GB_s": null,
+      "total_bytes": 0,
+      "union_s_in_kernel_window": 0.03351449966430664,
+      "overlap_with_model_kernels_s": 0.013910531997680664
+    },
+    "mp.store": {
+      "events": 10,
+      "sum_duration_s": 1.0887808799743652,
+      "median_duration_s": 0.14371728897094727,
+      "max_duration_s": 0.1524665355682373,
+      "median_GB_s": 6.529784289531282,
+      "total_bytes": 7281311744,
+      "union_s_in_kernel_window": 1.0887808799743652,
+      "overlap_with_model_kernels_s": 1.0495519638061523
+    },
+    "mp.request": {
+      "events": 60,
+      "sum_duration_s": 173.51730060577393,
+      "median_duration_s": 1.173783302307129,
+      "max_duration_s": 31.7961003780365,
+      "median_GB_s": null,
+      "total_bytes": 0,
+      "union_s_in_kernel_window": 8.315130472183228,
+      "overlap_with_model_kernels_s": 6.42676854133606
+    },
+    "mp.retrieve": {
+      "events": 56,
+      "sum_duration_s": 10.729141473770142,
+      "median_duration_s": 0.19484615325927734,
+      "max_duration_s": 0.26848578453063965,
+      "median_GB_s": 11.34733442515925,
+      "total_bytes": 121727090688,
+      "union_s_in_kernel_window": 0.26877474784851074,
+      "overlap_with_model_kernels_s": 0.04503965377807617
+    }
+  },
+  "ingress": {
+    "ingress_prepare_ms": {
+      "n": 60,
+      "median": 92.57491350000001,
+      "max": 136.440725
+    },
+    "tokenize_ms": {
+      "n": 60,
+      "median": 83.6588845,
+      "max": 123.294142
+    },
+    "prefix_hash_ms": {
+      "n": 60,
+      "median": 7.616607999999999,
+      "max": 11.752446
+    },
+    "admission_wait_ms": {
+      "n": 60,
+      "median": 17804.7853845,
+      "max": 20271.409763
+    }
+  },
+  "warning": "Instrumented diagnostic only. PyTorch profiling adds substantial overhead; use unprofiled runs for performance claims. Transfer events cover full run; overlap is clipped to CUDA trace window."
+}

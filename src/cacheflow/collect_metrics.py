@@ -39,6 +39,10 @@ NAMES = (
     "lmcache_mp_num_finished_retrieves_total",
     "lmcache_mp_l0_l1_retrieve_throughput_GB_per_second_sum",
     "lmcache_mp_l0_l1_retrieve_throughput_GB_per_second_count",
+    "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum",
+    "lmcache_mp_l0_l1_load_throughput_GB_per_second_count",
+    "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum",
+    "lmcache_mp_l0_l1_store_throughput_GB_per_second_count",
 )
 
 

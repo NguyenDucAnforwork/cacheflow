@@ -7,7 +7,18 @@ if [[ -d "$cu13_lib" ]]; then
     export LD_LIBRARY_PATH="$cu13_lib:${LD_LIBRARY_PATH:-}"
 fi
 export LMCACHE_DISABLE_BANNER=1
-exec lmcache server --host 127.0.0.1 --port 5555 \
+root=${CACHEFLOW_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}
+command=(lmcache)
+chunk_size=256
+if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
+    chunk_size=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["chunk_size"])' "$root/.cacheflow-v3-runtime.json")
+    if python -c 'import json,sys; sys.exit(not json.load(open(sys.argv[1])).get("kv_events"))' "$root/.cacheflow-v3-runtime.json"; then
+        export PYTHONPATH="$root/src${PYTHONPATH:+:$PYTHONPATH}"
+        export CACHEFLOW_KV_EVENTS="$root/results/v3/raw/kv_events.jsonl"
+        command=(python -m cacheflow.v3_lmcache_profile)
+    fi
+fi
+exec "${command[@]}" server --host 127.0.0.1 --port 5555 \
     --http-host 127.0.0.1 --http-port 18080 \
     --l1-size-gb "${CACHEFLOW_CPU_L1_GB:-16}" --eviction-policy LRU \
-    --chunk-size 256 --supported-transfer-mode auto
+    --chunk-size "$chunk_size" --supported-transfer-mode auto

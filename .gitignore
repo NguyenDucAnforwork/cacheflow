@@ -25,3 +25,8 @@ data/processed/v2/
 results/v2/raw/
 *.egg-info/
 .cacheflow-v2-gpu-kv-bytes
+# V3 research inputs and private generated/profile artifacts
+data/processed/v3/
+results/v3/raw/
+.cacheflow-v3-runtime.json
+.cacheflow-v3-gateway.yaml

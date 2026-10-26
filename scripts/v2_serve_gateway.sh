@@ -8,5 +8,9 @@ export PYTHONPATH="$root/src${PYTHONPATH:+:$PYTHONPATH}"
 export CACHEFLOW_POLICY_CONFIG="$root/configs/policies.yaml"
 export CACHEFLOW_POLICY="$(cat "$root/.cacheflow-policy" 2>/dev/null || printf fifo)"
 export CACHEFLOW_TRACE="$root/results/v2/raw/gateway.jsonl"
+if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
+    export CACHEFLOW_POLICY_CONFIG="$root/.cacheflow-v3-gateway.yaml"
+    export CACHEFLOW_TRACE="$root/results/v3/raw/gateway.jsonl"
+fi
 mkdir -p "$root/results/v2/raw"
 exec uvicorn --factory cacheflow.gateway:create_app --host 127.0.0.1 --port 8100 --no-access-log

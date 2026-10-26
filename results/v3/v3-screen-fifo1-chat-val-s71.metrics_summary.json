@@ -1,0 +1,29 @@
+{
+  "counter_deltas": {
+    "lmcache": {
+      "lmcache_mp_l1_evicted_chunks_total": 0.0,
+      "lmcache_mp_l1_read_chunks_total": 2940.0,
+      "lmcache_mp_l1_write_chunks_total": 217.0,
+      "lmcache_mp_num_chunks_loaded_total": 1820.0
+    },
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 462480.0,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:prefix_cache_hits_total": 290160.0,
+      "vllm:prompt_tokens_cached_total": 752640.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 462480.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 290160.0,
+      "vllm:prompt_tokens_source_local_compute_total": 58082.0,
+      "vllm:prompt_tokens_total": 810722.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 58082.0,
+      "vllm:request_queue_time_seconds_sum": 5.5948839289776515
+    }
+  },
+  "duration_s": 175.019481264,
+  "first_timestamp_ns": 95596651103141,
+  "host_memory_available_min_bytes": 213288951808,
+  "last_timestamp_ns": 95771670584405,
+  "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v3-screen-fifo1-chat-val-s71.metrics.jsonl",
+  "samples": 176,
+  "vram_peak_mib": 8453.0
+}

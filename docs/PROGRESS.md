@@ -1,4 +1,6 @@
-# CacheFlow V2 progress and server handoff
+# CacheFlow research progress and server handoff
+
+**V3 active from 2026-10-26 05:59 UTC.** Owner explicitly rejected V2 as a sufficiently strong research contribution and requires at least five additional hours (earliest completion ~10:59 UTC), competitive strong baselines, careful profiling, and `docs/INTERVIEW.md`. Branch `feat/cacheflow-v3-competitive`; read `docs/V3_RESEARCH_PLAN.md` and `docs/V3_BASELINES.md`. V2 values below are preserved baseline history, not a completion claim for the new goal. V2 supervisor programs are currently reused for V3 experiments with an ignored `.cacheflow-v3-runtime.json` marker; inspect health and live handles before starting/stopping anything. Raw V3 artifacts are in `results/v3/raw/`.
 
 Updated: **2026-10-26 05:15 UTC**. Current `optim` host. The owner’s 90-minute continuation produced a measured contribution aligned with RQ1/RQ3 and a cache-metric audit relevant to RQ0. All experiments finished around 05:10 UTC; V2 services are stopped. No credentials are stored here.
 

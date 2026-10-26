@@ -26,9 +26,16 @@ args=(
     "$model" --served-model-name cacheflow-qwen3-1.7b
     --host 127.0.0.1 --port 8000 --dtype bfloat16
     --max-model-len "$max_model_len" --max-num-seqs "$max_num_seqs"
-    --kv-cache-memory-bytes "$gpu_kv_bytes" --enforce-eager
+    --kv-cache-memory-bytes "$gpu_kv_bytes"
     --generation-config vllm --enable-prefix-caching
 )
+if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
+    "$venv/bin/python" "$root/scripts/v3_runtime.py" validate >/dev/null
+    mapfile -t v3_args < <("$venv/bin/python" "$root/scripts/v3_runtime.py" vllm-args)
+    args+=("${v3_args[@]}")
+else
+    args+=(--enforce-eager)
+fi
 case "$mode" in
     B1) ;;
     B2|B3)

@@ -84,6 +84,9 @@ async def replay(args: argparse.Namespace) -> dict:
                     "max_tokens": row.max_tokens, "temperature": 0,
                     "stream": True, "add_special_tokens": False,
                     "stream_options": {"include_usage": True}}
+            engine_request_id = f"{args.run_id}-{row.request_id}" if args.engine_request_ids else None
+            if engine_request_id:
+                body["request_id"] = engine_request_id
             headers = {"X-Cacheflow-Request-ID": row.request_id,
                        "X-Cacheflow-Arrival-Ns": str(due_ns),
                        "X-Cacheflow-Run-ID": args.run_id}
@@ -134,6 +137,7 @@ async def replay(args: argparse.Namespace) -> dict:
                 "output_tokens": output_tokens, "usage_reported": usage is not None,
                 "output_hash": hashlib.sha256(output.encode()).hexdigest(),
                 "status": status, "http_status": http_status,
+                "engine_request_id": engine_request_id,
             }
             records.append(record)
             if args.capture_text:
@@ -198,10 +202,11 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--registry", type=Path, default=Path("results/v2/registry.csv"))
     parser.add_argument("--capture-text", action="store_true")
+    parser.add_argument("--engine-request-ids", action="store_true")
     parser.add_argument("--metrics-path", type=Path)
     parser.add_argument("--gateway-trace-path", type=Path)
     parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
-    parser.add_argument("--policy", choices=["fifo", "dhas"])
+    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave"])
     parser.add_argument("--gpu-kv-bytes", type=int)
     parser.add_argument("--engine-pid", type=int)
     parser.add_argument("--lmcache-pid", type=int)
