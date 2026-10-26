@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 20:39 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 20:50 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -871,6 +871,18 @@ Trong main, readiness so union cũ có p95 −0,44/−0,84/+4,58%, median tăng 
 **Hỏi: Upstream TTFT giảm 2,44 xuống 0,65 s thì có thể quảng bá nhanh hơn 3,7 lần?**
 
 **Đáp:** Không nếu delay đã chuyển ra trước upstream. Native primary old union có mean admission 10,62 s, readiness 12,48 s; total mean TTFT là 13,15 và 13,21 s. Tôi đối chiếu từng request để các stage cộng đúng vào tổng rồi mới lấy mean. Quantile của các stage không cộng được; upstream còn chứa queue/copy/compute/transport, không phải pure GPU time.
+
+**Hỏi: GPU utilization cao hơn có phải method tốt hơn không?**
+
+**Đáp:** Không. Resource supplement đã đối chiếu đủ 24 main arms: union cũ có mean sampled GPU utilization khoảng 80,1%, readiness 85,0%, nhưng readiness chưa cải thiện p95 ổn định so union cũ. Sample window trung bình là 36,0 và 36,7 s. Utilization không phân biệt model work hữu ích, việc tính/chuyển thừa hay thời gian phục vụ đúng request cần ưu tiên.
+
+Board-energy estimate từ mẫu khoảng 1 Hz tăng 5,1–9,4% ở ba seed readiness so union cũ. Đây chỉ là mô tả cửa sổ lấy mẫu có margin, clock/temperature khác nhau và không đo host energy; chưa phải chứng minh gate gây tăng năng lượng hoặc một kết luận energy efficiency.
+
+**Hỏi: CPU time tăng là CPU của gateway hay engine?**
+
+**Đáp:** Phải đọc nguồn. Sampled vLLM process-tree CPU mean tăng 35,6 lên 38,9 CPU-second; nó không bao gồm gateway. Counter riêng quanh scheduler chooser cho union cũ khoảng 0,49 s, readiness 1,30 s mỗi lượt 60 QA; mean chênh khoảng 0,81 s. Counter này gồm cache-hit calls, không gồm tokenize/HTTP/toàn bộ gateway, và không cộng thẳng vào TTFT của mỗi request. Thiếu counter ở FIFO/bundle không có nghĩa CPU bằng 0.
+
+Đây là overhead thực đã quan sát để cân nhắc cùng work saving. Chưa sửa scheduler giữa các arm đã đăng ký để làm số đẹp hơn; tối ưu tương lai cần phiên bản, equivalence check và GPU comparisons riêng.
 
 **Hỏi: Counter promotion=null có nghĩa là không transfer?**
 

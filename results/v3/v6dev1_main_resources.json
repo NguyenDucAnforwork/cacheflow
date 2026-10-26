@@ -1,0 +1,3135 @@
+{
+  "complete_resource_supplement": true,
+  "source_main_audit_sha256": "4478f68ec3554f7e2676fb4cf5626e80898bb1a339d4c5b2f4827cb50ecc36a7",
+  "registration_sha256": "6a63a9d49636850a46dd2e68f9580d5cf02bb4b984cb2b10fcc8659430504dac",
+  "requests": 1440,
+  "errors": 0,
+  "runs": [
+    {
+      "run_id": "v6dev1-main-fifo16-s101",
+      "arm": "fifo16",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.006776355,
+        "first_sample_ns": 134961134309350,
+        "last_sample_ns": 135016141085705,
+        "gpu_time_weighted_util_pct": 91.03634878537684,
+        "gpu_time_weighted_power_w": 257.1595653924663,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.780000000000015,
+            "summed_rss_peak_bytes": 3670036480,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.6799999999999997,
+            "summed_rss_peak_bytes": 16976343040,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 673.1459202766418,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.59417567399214,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 35980000.0,
+            "vllm:request_queue_time_seconds_sum": 625.1885561420058
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 628.8357741382148,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.78935954905327,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14145.518701092391,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1681.3631874639602,
+        "temperature_c": 60.94545359846874
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.057905338,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "8b01a50d19680c7965407096e45e98f894476c30bef9b334a5b92b9bf7bed253",
+      "setup_sha256": "6e70a31b25181a11b2ab7f67f32857abf310fb75fdbfa9ca78ade0df125614b9"
+    },
+    {
+      "run_id": "v6dev1-main-fifo64-s101",
+      "arm": "fifo64",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.006912827,
+        "first_sample_ns": 135196844614372,
+        "last_sample_ns": 135251851527199,
+        "gpu_time_weighted_util_pct": 86.76358233564389,
+        "gpu_time_weighted_power_w": 255.899955194387,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.81999999999999,
+            "summed_rss_peak_bytes": 3676528640,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.599999999999998,
+            "summed_rss_peak_bytes": 16976838656,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 1519.2704725265503,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.593703927093884,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 38147840.0,
+            "vllm:request_queue_time_seconds_sum": 1440.8195111190435
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 618.9997253666587,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.83211815084103,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14076.26652781085,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1663.908378981041,
+        "temperature_c": 61.618175575767076
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.129229273,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "5c5ade044ea1e37b3150ae2006ca6fee2e4b88f50aa369b11c756b52bb44c6ee",
+      "setup_sha256": "0a12ee2e4d0af8e4b97e652478f58086ba5e72990c96423060a8e42fd62b8f34"
+    },
+    {
+      "run_id": "v6dev1-main-lpm16-s101",
+      "arm": "lpm16",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 47,
+        "sample_window_s": 46.005692564,
+        "first_sample_ns": 135432984088217,
+        "last_sample_ns": 135478989780781,
+        "gpu_time_weighted_util_pct": 89.49991716770712,
+        "gpu_time_weighted_power_w": 260.3133828849946,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 49.06999999999998,
+            "summed_rss_peak_bytes": 3671433216,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.3299999999999983,
+            "summed_rss_peak_bytes": 16989888512,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 429072.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 69602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 429072.0,
+            "vllm:time_to_first_token_seconds_sum": 582.4282817840576,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 1.0,
+            "vllm:prompt_tokens_cached_total": 1208576.0,
+            "vllm:request_prefill_time_seconds_sum": 31.008607064082753,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 779504.0,
+            "vllm:prompt_tokens_source_local_compute_total": 69602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 23233360.0,
+            "vllm:request_queue_time_seconds_sum": 526.9280191149446
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 251.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 38.0,
+            "lmcache_mp_num_chunks_loaded_total": 1694.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 396.9581645873925,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 103.72344269098116,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 13.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 11975.89746330188,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1642.4993926648324,
+        "temperature_c": 61.99999188052654
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 10833,
+        "cpu_ms": 268.294712,
+        "wall_ms": 267.713997,
+        "max_ms": 12.732333,
+        "cache_hits": 10579
+      },
+      "request_duration_s": 42.285604438,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "aafec7716987b832905ebc821cb89aacf13d890e8acc4926cafee56b91fe250a",
+      "setup_sha256": "10668f45069b5e0b83f5c5a3f47f27c62a170531c66698b7d12804f64fcd8f65"
+    },
+    {
+      "run_id": "v6dev1-main-bundle16-s101",
+      "arm": "bundle16",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 42,
+        "sample_window_s": 41.004840161,
+        "first_sample_ns": 135661032171531,
+        "last_sample_ns": 135702037011692,
+        "gpu_time_weighted_util_pct": 83.29266756316768,
+        "gpu_time_weighted_power_w": 253.37164819408795,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 41.00999999999999,
+            "summed_rss_peak_bytes": 3701469184,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.8900000000000006,
+            "summed_rss_peak_bytes": 16997515264,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 289072.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 67378.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 289072.0,
+            "vllm:time_to_first_token_seconds_sum": 319.6430296897888,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1210800.0,
+            "vllm:request_prefill_time_seconds_sum": 39.58836212736787,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 921728.0,
+            "vllm:prompt_tokens_source_local_compute_total": 67378.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 9605232.0,
+            "vllm:request_queue_time_seconds_sum": 219.3211570258136
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 254.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 18.0,
+            "lmcache_mp_num_chunks_loaded_total": 1133.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 197.3366236294653,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 124.81821644242227,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 16.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 10389.4639355277,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1600.6087580928736,
+        "temperature_c": 61.46340955436947
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 36.84233067,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "4ea09981543a0f040a2e918eb6a168eef2cd911ea71baa0d88bc46ce9300820c",
+      "setup_sha256": "27b1052fc905c72d61a5643279840ea2e808e70f34513e1b016130710df88ca2"
+    },
+    {
+      "run_id": "v6dev1-main-dhas16-s101",
+      "arm": "dhas16",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.006870045,
+        "first_sample_ns": 135882509488187,
+        "last_sample_ns": 135937516358232,
+        "gpu_time_weighted_util_pct": 88.32721800164735,
+        "gpu_time_weighted_power_w": 255.84590214250065,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.96000000000001,
+            "summed_rss_peak_bytes": 3664470016,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.7300000000000004,
+            "summed_rss_peak_bytes": 16976928768,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 676.5130562782288,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.701708337903256,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 35698448.0,
+            "vllm:request_queue_time_seconds_sum": 629.28954815201
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 615.8485768405096,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.75872100682625,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14073.28229069832,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1657.9081881946588,
+        "temperature_c": 61.818173936477066
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.395007858,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "de4471bea80b1ba8a6ae0a8a1cfce1fc0df84f7ea34f2108ad9ff8ce6a22d1b7",
+      "setup_sha256": "b3916eb756da202296e75182ead57892c96936a951db7d0eac9204d2e2b06831"
+    },
+    {
+      "run_id": "v6dev1-main-union64-s101",
+      "arm": "union64",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 37,
+        "sample_window_s": 36.004765574,
+        "first_sample_ns": 136118857327153,
+        "last_sample_ns": 136154862092727,
+        "gpu_time_weighted_util_pct": 76.7499264393072,
+        "gpu_time_weighted_power_w": 251.12686652086353,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 35.519999999999996,
+            "summed_rss_peak_bytes": 3728732160,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.8500000000000014,
+            "summed_rss_peak_bytes": 17000574976,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 62080.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 65602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 62080.0,
+            "vllm:time_to_first_token_seconds_sum": 192.69266867637634,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1212576.0,
+            "vllm:request_prefill_time_seconds_sum": 80.66841068913345,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 1150496.0,
+            "vllm:prompt_tokens_source_local_compute_total": 65602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 1753472.0,
+            "vllm:request_queue_time_seconds_sum": 44.522822747792816
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 256.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 5.0,
+            "lmcache_mp_num_chunks_loaded_total": 244.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 53.75222512872426,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 138.79899988701538,
+            "lmcache_mp_l1_read_chunks_total": 4096.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 18.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 9041.76395841688,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1578.333099502852,
+        "temperature_c": 61.13888386149113
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 10119,
+        "cpu_ms": 518.983327,
+        "wall_ms": 518.162483,
+        "max_ms": 10.092879,
+        "cache_hits": 9958
+      },
+      "request_duration_s": 32.429024486,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "6c77f282f793255e58e5fae0af2d27b28cd1865b750961bda18b5244ed0396d0",
+      "setup_sha256": "325354b2be8b3c1d87c57ac052bf1828dab3de6f800b85c881244613b66f2a39"
+    },
+    {
+      "run_id": "v6dev1-main-ready_fifo-s101",
+      "arm": "ready_fifo",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.006847957,
+        "first_sample_ns": 136334503246368,
+        "last_sample_ns": 136389510094325,
+        "gpu_time_weighted_util_pct": 89.74552596607712,
+        "gpu_time_weighted_power_w": 256.2451209494338,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.849999999999994,
+            "summed_rss_peak_bytes": 3674624000,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.6300000000000026,
+            "summed_rss_peak_bytes": 16976445440,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 144.22648525238037,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.650654889963334,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 33925600.0,
+            "vllm:request_queue_time_seconds_sum": 112.76570435214671
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 630.0450972202013,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.32062202522175,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14095.23640778858,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1664.4558344714026,
+        "temperature_c": 61.81818942707247
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 16693,
+        "cpu_ms": 1222.828635,
+        "wall_ms": 1221.520952,
+        "max_ms": 13.14967,
+        "cache_hits": 16465,
+        "readiness_blocked_decisions": 168,
+        "readiness_gate": "At most one admitted request without first text per shared prefix; not a physical pin guarantee"
+      },
+      "request_duration_s": 50.954797842,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "0f4ddba945de4be2869e84bcca72be02d2f3ba8fe39975e772eedf9ca2234b4e",
+      "setup_sha256": "caad8834d2af0b4e4b49b310122e6d8db61837ce19a6a6d599a4dc5059f141a5"
+    },
+    {
+      "run_id": "v6dev1-main-packing_ready-s101",
+      "arm": "packing_ready",
+      "seed": 101,
+      "requests": 60,
+      "resource": {
+        "samples": 38,
+        "sample_window_s": 37.004735081999996,
+        "first_sample_ns": 136568102083504,
+        "last_sample_ns": 136605106818586,
+        "gpu_time_weighted_util_pct": 82.75667953409078,
+        "gpu_time_weighted_power_w": 267.382408362434,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 39.139999999999986,
+            "summed_rss_peak_bytes": 3661668352,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.7600000000000016,
+            "summed_rss_peak_bytes": 16981708800,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 76064.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 65602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 76064.0,
+            "vllm:time_to_first_token_seconds_sum": 41.961098432540894,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1212576.0,
+            "vllm:request_prefill_time_seconds_sum": 25.543640913965646,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 1136512.0,
+            "vllm:prompt_tokens_source_local_compute_total": 65602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 1138096.0,
+            "vllm:request_queue_time_seconds_sum": 9.171630410972284
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 256.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 5.0,
+            "lmcache_mp_num_chunks_loaded_total": 299.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 54.61639373220987,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 143.65576172128422,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 18.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 9894.41518703901,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1572.9732177452752,
+        "temperature_c": 62.18918596194479
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 12329,
+        "cpu_ms": 1264.39242,
+        "wall_ms": 1262.295539,
+        "max_ms": 13.943638,
+        "cache_hits": 12114,
+        "readiness_blocked_decisions": 1955,
+        "readiness_gate": "At most one admitted request without first text per shared prefix; not a physical pin guarantee"
+      },
+      "request_duration_s": 32.538524839,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "f6f4fb171d92a4de372438ac4bedd22622b911a230c1208905188f1d7f95148e",
+      "setup_sha256": "4b48c59c0007dfa64a374fd286cefa7346019a16d1adbf42453daaec13a8ae9c"
+    },
+    {
+      "run_id": "v6dev1-main-packing_ready-s102",
+      "arm": "packing_ready",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 37,
+        "sample_window_s": 36.004508588,
+        "first_sample_ns": 136782919863843,
+        "last_sample_ns": 136818924372431,
+        "gpu_time_weighted_util_pct": 86.69438246823712,
+        "gpu_time_weighted_power_w": 267.92816511985467,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 38.790000000000006,
+            "summed_rss_peak_bytes": 3657166848,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.7799999999999976,
+            "summed_rss_peak_bytes": 16982376448,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 76064.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 65602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 76064.0,
+            "vllm:time_to_first_token_seconds_sum": 42.05875277519226,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1212576.0,
+            "vllm:request_prefill_time_seconds_sum": 25.553033957025036,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 1136512.0,
+            "vllm:prompt_tokens_source_local_compute_total": 65602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 1138096.0,
+            "vllm:request_queue_time_seconds_sum": 8.020018354844069
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 256.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 5.0,
+            "lmcache_mp_num_chunks_loaded_total": 299.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 52.183750507269906,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 138.98910894757876,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 18.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 9646.62192202489,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1644.9990550702862,
+        "temperature_c": 62.4999926463654
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 11625,
+        "cpu_ms": 1344.551988,
+        "wall_ms": 1341.716805,
+        "max_ms": 14.063215,
+        "cache_hits": 11403,
+        "readiness_blocked_decisions": 2096,
+        "readiness_gate": "At most one admitted request without first text per shared prefix; not a physical pin guarantee"
+      },
+      "request_duration_s": 32.164146766,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "7af2b9209081002f70bd6e4f44c4308e92f6f02930bdf28a7461a5efa814349a",
+      "setup_sha256": "7fc489fe6b3b19f8d6cc69bd8d7b524e3082b176fe9ed644774777742ece1f2d"
+    },
+    {
+      "run_id": "v6dev1-main-ready_fifo-s102",
+      "arm": "ready_fifo",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.005926812,
+        "first_sample_ns": 136995766952856,
+        "last_sample_ns": 137050772879668,
+        "gpu_time_weighted_util_pct": 87.8362755999589,
+        "gpu_time_weighted_power_w": 258.3569958639378,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.230000000000004,
+            "summed_rss_peak_bytes": 3642564608,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.6900000000000013,
+            "summed_rss_peak_bytes": 16976154624,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 145.03810501098633,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.582415846030926,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 35341008.0,
+            "vllm:request_queue_time_seconds_sum": 112.43351599891321
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 623.8215980636513,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.51338236245964,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14211.16600585995,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1683.8165089115307,
+        "temperature_c": 62.236350552994665
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 16033,
+        "cpu_ms": 1219.805529,
+        "wall_ms": 1218.598403,
+        "max_ms": 11.753456,
+        "cache_hits": 15805,
+        "readiness_blocked_decisions": 168,
+        "readiness_gate": "At most one admitted request without first text per shared prefix; not a physical pin guarantee"
+      },
+      "request_duration_s": 50.894186861,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "91cafbd2018fdb13eaf28bf698a661b9eace93aa7d31ee7fecbd550191c56eb1",
+      "setup_sha256": "57a8ecadc290fe5e943d892c83f672551dd829a72e18bdf86e9e3ccafda17d60"
+    },
+    {
+      "run_id": "v6dev1-main-union64-s102",
+      "arm": "union64",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 37,
+        "sample_window_s": 36.004425515,
+        "first_sample_ns": 137231539629811,
+        "last_sample_ns": 137267544055326,
+        "gpu_time_weighted_util_pct": 81.75007569790966,
+        "gpu_time_weighted_power_w": 254.89294342367484,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 35.97,
+            "summed_rss_peak_bytes": 3714560000,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.8100000000000023,
+            "summed_rss_peak_bytes": 16996859904,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 102656.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 65826.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 102656.0,
+            "vllm:time_to_first_token_seconds_sum": 194.26068234443665,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1212352.0,
+            "vllm:request_prefill_time_seconds_sum": 75.32311445736559,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 1109696.0,
+            "vllm:prompt_tokens_source_local_compute_total": 65826.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 1516240.0,
+            "vllm:request_queue_time_seconds_sum": 55.70130530698225
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 256.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 9.0,
+            "lmcache_mp_num_chunks_loaded_total": 405.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 96.03517099530961,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 139.1773974610574,
+            "lmcache_mp_l1_read_chunks_total": 4096.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 18.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 9177.27399579681,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1612.4990232207015,
+        "temperature_c": 61.694450365097005
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 9404,
+        "cpu_ms": 481.03322,
+        "wall_ms": 485.245525,
+        "max_ms": 10.477072,
+        "cache_hits": 9244
+      },
+      "request_duration_s": 32.129782516,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "4d1044ec2afc962cdddca1aa091dde619fd94c6bf8e79e3ead7bd378b6f61aa6",
+      "setup_sha256": "4ce65e1bff81c410f217321cb22fa5f589cd8e4f2a7dd72e23423690bade28f6"
+    },
+    {
+      "run_id": "v6dev1-main-dhas16-s102",
+      "arm": "dhas16",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.00689848,
+        "first_sample_ns": 137449588353872,
+        "last_sample_ns": 137504595252352,
+        "gpu_time_weighted_util_pct": 88.10910936758565,
+        "gpu_time_weighted_power_w": 256.03834478761416,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.75999999999999,
+            "summed_rss_peak_bytes": 3669352448,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.6900000000000013,
+            "summed_rss_peak_bytes": 16976666624,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 684.3852145671844,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.664477961166995,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 36035456.0,
+            "vllm:request_queue_time_seconds_sum": 641.4744324788335
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 623.3744856640316,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.82047513177956,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14083.875238719529,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1672.0919707369403,
+        "temperature_c": 61.98182453391072
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.107061185,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "34844d86b0c236a50fd2817ddfecb8e9cbd6342dcc37686a776598b67022466a",
+      "setup_sha256": "95fbf0c0790edd824c894f501384cc7642133d45ab376cbbee784a96016a96e2"
+    },
+    {
+      "run_id": "v6dev1-main-bundle16-s102",
+      "arm": "bundle16",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 42,
+        "sample_window_s": 41.004948693,
+        "first_sample_ns": 137685947087126,
+        "last_sample_ns": 137726952035819,
+        "gpu_time_weighted_util_pct": 80.53663751206587,
+        "gpu_time_weighted_power_w": 255.6121940291947,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 41.28,
+            "summed_rss_peak_bytes": 3720073216,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.0500000000000043,
+            "summed_rss_peak_bytes": 17000189952,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 312272.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 67458.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 312272.0,
+            "vllm:time_to_first_token_seconds_sum": 333.6038610935211,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1210720.0,
+            "vllm:request_prefill_time_seconds_sum": 40.16999054129701,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 898448.0,
+            "vllm:prompt_tokens_source_local_compute_total": 67458.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 8932544.0,
+            "vllm:request_queue_time_seconds_sum": 236.12297271675197
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 254.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 19.0,
+            "lmcache_mp_num_chunks_loaded_total": 1224.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 210.54131559232474,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 124.9310866590363,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 16.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 10481.36490147229,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1672.3162271471447,
+        "temperature_c": 61.80487410488173
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 36.891655438,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "6473db9f6ff37883da5bc22b4df46315f252af6b836e91560b0b96b7c2e4d868",
+      "setup_sha256": "96419e9ca9c43ec5a0afd4f42bd595433b2bc04dad20e4abd2ff26c588373bc8"
+    },
+    {
+      "run_id": "v6dev1-main-lpm16-s102",
+      "arm": "lpm16",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 47,
+        "sample_window_s": 46.005446398,
+        "first_sample_ns": 137905353963790,
+        "last_sample_ns": 137951359410188,
+        "gpu_time_weighted_util_pct": 84.93475444504914,
+        "gpu_time_weighted_power_w": 262.99265801289926,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 48.58999999999999,
+            "summed_rss_peak_bytes": 3667914752,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.25,
+            "summed_rss_peak_bytes": 16988459008,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 429088.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 69602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 429088.0,
+            "vllm:time_to_first_token_seconds_sum": 585.8630447387695,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 1.0,
+            "vllm:prompt_tokens_cached_total": 1208576.0,
+            "vllm:request_prefill_time_seconds_sum": 31.072957472933922,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 779488.0,
+            "vllm:prompt_tokens_source_local_compute_total": 69602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 22138112.0,
+            "vllm:request_queue_time_seconds_sum": 535.5411673839553
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 251.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 38.0,
+            "lmcache_mp_num_chunks_loaded_total": 1694.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 415.3100004321062,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 103.86559181183901,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 13.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 12099.09463127998,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1634.6749981239038,
+        "temperature_c": 62.34783008093355
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 9980,
+        "cpu_ms": 257.586551,
+        "wall_ms": 257.394738,
+        "max_ms": 11.452038,
+        "cache_hits": 9721
+      },
+      "request_duration_s": 41.617975208,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "8bd72604033c9fbae23dc82669accbd44008c0d03136a14bad33a1181f9e5c6c",
+      "setup_sha256": "3972544fc1315e980306186c545f50332db9246b8bd5401203e8f6d851dc3905"
+    },
+    {
+      "run_id": "v6dev1-main-fifo64-s102",
+      "arm": "fifo64",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.006853398,
+        "first_sample_ns": 138127284925997,
+        "last_sample_ns": 138182291779395,
+        "gpu_time_weighted_util_pct": 86.5636149187935,
+        "gpu_time_weighted_power_w": 258.97138414076716,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.790000000000006,
+            "summed_rss_peak_bytes": 3673296896,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.610000000000003,
+            "summed_rss_peak_bytes": 16976510976,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 1522.5315804481506,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.601065668015508,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 38054544.0,
+            "vllm:request_queue_time_seconds_sum": 1445.3789152780373
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 622.3974310868196,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.78959231034904,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14245.20096170832,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1657.636202016334,
+        "temperature_c": 62.45454054205015
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 50.875280652,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "d413fc51763153520a369af47dd72b21a8b194cf10acfc8984f0e8485f3cb988",
+      "setup_sha256": "5618e75659152dd0a9635b54c403a1d6bca820cf670ef813519d45eabf55cbf9"
+    },
+    {
+      "run_id": "v6dev1-main-fifo16-s102",
+      "arm": "fifo16",
+      "seed": 102,
+      "requests": 60,
+      "resource": {
+        "samples": 56,
+        "sample_window_s": 55.006946439000004,
+        "first_sample_ns": 138364496396410,
+        "last_sample_ns": 138419503342849,
+        "gpu_time_weighted_util_pct": 89.58171797711921,
+        "gpu_time_weighted_power_w": 258.496891762592,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.58999999999999,
+            "summed_rss_peak_bytes": 3663450112,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.66,
+            "summed_rss_peak_bytes": 16976605184,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 684.2724893093109,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.657553675118834,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 35736816.0,
+            "vllm:request_queue_time_seconds_sum": 642.6293129109545
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 627.6757678354015,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.78361611587384,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14219.12467983288,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1679.1810370364776,
+        "temperature_c": 62.090905526187406
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 50.958637491,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "3ccb19369a2ad46e83d1dca41e6f25cccd450f0014a705c931f325855408a6bc",
+      "setup_sha256": "cd703377c02f3a3865188a71d63bffe9802a1b8f19e40620b7a64db344c75ab3"
+    },
+    {
+      "run_id": "v6dev1-main-dhas16-s103",
+      "arm": "dhas16",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 57,
+        "sample_window_s": 56.006551115,
+        "first_sample_ns": 138598214651239,
+        "last_sample_ns": 138654221202354,
+        "gpu_time_weighted_util_pct": 86.62492359986841,
+        "gpu_time_weighted_power_w": 253.85772673596222,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.71000000000001,
+            "summed_rss_peak_bytes": 3668164608,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.759999999999998,
+            "summed_rss_peak_bytes": 16977002496,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 682.5371124744415,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.690228210936766,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 34814272.0,
+            "vllm:request_queue_time_seconds_sum": 642.7531456489523
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 630.7977507090328,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.77296344610191,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14217.69574837537,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1633.659720255299,
+        "temperature_c": 61.80356454134428
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.792741193,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "cd090c8298c568ba415e7e8dec506ed84b7de15fed18ec5c2cba8bc54a9ec202",
+      "setup_sha256": "a9b76b99354e8a598eee2177ecc45d4dd054d8b8af620e7eba40961f3a47954b"
+    },
+    {
+      "run_id": "v6dev1-main-union64-s103",
+      "arm": "union64",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 37,
+        "sample_window_s": 36.004575178,
+        "first_sample_ns": 138833035021421,
+        "last_sample_ns": 138869039596599,
+        "gpu_time_weighted_util_pct": 81.77770995109836,
+        "gpu_time_weighted_power_w": 251.00994212433613,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 35.32000000000002,
+            "summed_rss_peak_bytes": 3709153280,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.7399999999999984,
+            "summed_rss_peak_bytes": 16995745792,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 62096.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 65602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 62096.0,
+            "vllm:time_to_first_token_seconds_sum": 184.42962980270386,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1212576.0,
+            "vllm:request_prefill_time_seconds_sum": 77.45128515167744,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 1150480.0,
+            "vllm:prompt_tokens_source_local_compute_total": 65602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 1753648.0,
+            "vllm:request_queue_time_seconds_sum": 44.285439818922896
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 255.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 5.0,
+            "lmcache_mp_num_chunks_loaded_total": 244.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 52.418127851581175,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 131.945718121584,
+            "lmcache_mp_l1_read_chunks_total": 4096.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 17.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 9037.50633164109,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1564.997956551226,
+        "temperature_c": 61.305550119494875
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 9662,
+        "cpu_ms": 474.706673,
+        "wall_ms": 474.518667,
+        "max_ms": 9.541261,
+        "cache_hits": 9500
+      },
+      "request_duration_s": 32.417279631,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "cdb2c6853eccd6877d8c2f6a73cc21dd7bd0a48d80ece16e6eb55ae8f4935d96",
+      "setup_sha256": "06291deb74e7d3f930098d6afe9a489ddf7ab4e5e292f23fece0adb861951f02"
+    },
+    {
+      "run_id": "v6dev1-main-ready_fifo-s103",
+      "arm": "ready_fifo",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 57,
+        "sample_window_s": 56.006922449,
+        "first_sample_ns": 139049389466072,
+        "last_sample_ns": 139105396388521,
+        "gpu_time_weighted_util_pct": 84.82150693887701,
+        "gpu_time_weighted_power_w": 253.02827884817776,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.670000000000016,
+            "summed_rss_peak_bytes": 3662069760,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.7399999999999984,
+            "summed_rss_peak_bytes": 16976801792,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 144.6221058368683,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.645000147953397,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 33459968.0,
+            "vllm:request_queue_time_seconds_sum": 113.18141348505742
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 629.1326046209855,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.6253084075331,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14171.335190853839,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1659.6438360194106,
+        "temperature_c": 61.803575117236306
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 16601,
+        "cpu_ms": 1260.518479,
+        "wall_ms": 1257.979491,
+        "max_ms": 12.545119,
+        "cache_hits": 16373,
+        "readiness_blocked_decisions": 168,
+        "readiness_gate": "At most one admitted request without first text per shared prefix; not a physical pin guarantee"
+      },
+      "request_duration_s": 51.796221303,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "05f0c625c70eca8fa6f44a8d0b51eb6655f548d792332d93ede41c81b9bded20",
+      "setup_sha256": "8f5f3b31ebf464a1999fa636534d15ab55d31b6676b97c762768b0f216d4fc49"
+    },
+    {
+      "run_id": "v6dev1-main-packing_ready-s103",
+      "arm": "packing_ready",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 38,
+        "sample_window_s": 37.004523818,
+        "first_sample_ns": 139290805262245,
+        "last_sample_ns": 139327809786063,
+        "gpu_time_weighted_util_pct": 85.6486806486704,
+        "gpu_time_weighted_power_w": 263.24654223953104,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 38.829999999999984,
+            "summed_rss_peak_bytes": 3669880832,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 2.700000000000003,
+            "summed_rss_peak_bytes": 16981999616,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 76064.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 65602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 76064.0,
+            "vllm:time_to_first_token_seconds_sum": 42.321401596069336,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1212576.0,
+            "vllm:request_prefill_time_seconds_sum": 25.644728399900487,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 1136512.0,
+            "vllm:prompt_tokens_source_local_compute_total": 65602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 1138096.0,
+            "vllm:request_queue_time_seconds_sum": 9.12936534587061
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 256.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 5.0,
+            "lmcache_mp_num_chunks_loaded_total": 299.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 54.027323588905574,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 148.35723172143065,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 18.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 9741.31294230887,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1583.1087630350492,
+        "temperature_c": 62.00000092712989
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 11846,
+        "cpu_ms": 1284.943488,
+        "wall_ms": 1283.53417,
+        "max_ms": 13.39086,
+        "cache_hits": 11631,
+        "readiness_blocked_decisions": 2035,
+        "readiness_gate": "At most one admitted request without first text per shared prefix; not a physical pin guarantee"
+      },
+      "request_duration_s": 33.120514396,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "a86d7c441b248a1d0798f0aca664c27d747b00719f5544c2bf82e28515b7909d",
+      "setup_sha256": "eaf227bcf04cebe232ce3c9d22b5803679ea049103a15b9f3d71ede1c45fe0f4"
+    },
+    {
+      "run_id": "v6dev1-main-fifo16-s103",
+      "arm": "fifo16",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 57,
+        "sample_window_s": 56.006458451,
+        "first_sample_ns": 139505626757266,
+        "last_sample_ns": 139561633215717,
+        "gpu_time_weighted_util_pct": 87.78564359664871,
+        "gpu_time_weighted_power_w": 254.7283154620769,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.670000000000016,
+            "summed_rss_peak_bytes": 3653275648,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.7600000000000016,
+            "summed_rss_peak_bytes": 16976777216,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 687.0210518836975,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.65090519801015,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 36436288.0,
+            "vllm:request_queue_time_seconds_sum": 648.0244271990668
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 616.4242959741136,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.78018377290522,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14266.43081622003,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1648.9265876386812,
+        "temperature_c": 61.85712630572774
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.997043096,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "e08eebfd72dbd025315d46bde350c7351c248ac32214f0c73a91ad090784bfd6",
+      "setup_sha256": "d59c0fba8cc4924799295ca11958a855cdbad47d32a1777cd7b995600547599d"
+    },
+    {
+      "run_id": "v6dev1-main-fifo64-s103",
+      "arm": "fifo64",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 57,
+        "sample_window_s": 56.006680426,
+        "first_sample_ns": 139739796260972,
+        "last_sample_ns": 139795802941398,
+        "gpu_time_weighted_util_pct": 88.78570912316687,
+        "gpu_time_weighted_power_w": 251.78212677430446,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 57.829999999999984,
+            "summed_rss_peak_bytes": 3671199744,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.419999999999998,
+            "summed_rss_peak_bytes": 16976637952,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 918496.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 71810.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 918496.0,
+            "vllm:time_to_first_token_seconds_sum": 1506.3701238632202,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1206368.0,
+            "vllm:request_prefill_time_seconds_sum": 23.5648557098757,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 287872.0,
+            "vllm:prompt_tokens_source_local_compute_total": 71810.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 38943232.0,
+            "vllm:request_queue_time_seconds_sum": 1427.315819680196
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 248.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 57.0,
+            "lmcache_mp_num_chunks_loaded_total": 3605.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 614.723276969381,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 82.81594684825457,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 10.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 14101.481111227089,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1661.2492385648075,
+        "temperature_c": 61.73215323406249
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 51.977949583,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "f367fc179712081ffbe00bc15baa6ec116d5d08324158c57a1a3d542ada6daa3",
+      "setup_sha256": "7feca058cc3dfa8481bb385d757692357f5d0dba0e493620ec3e09384a8316fa"
+    },
+    {
+      "run_id": "v6dev1-main-lpm16-s103",
+      "arm": "lpm16",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 48,
+        "sample_window_s": 47.006055847,
+        "first_sample_ns": 139975880548635,
+        "last_sample_ns": 140022886604482,
+        "gpu_time_weighted_util_pct": 88.14889133644354,
+        "gpu_time_weighted_power_w": 256.96871708295913,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 48.77000000000001,
+            "summed_rss_peak_bytes": 3683258368,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.1000000000000014,
+            "summed_rss_peak_bytes": 16989716480,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 429088.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 69602.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 429088.0,
+            "vllm:time_to_first_token_seconds_sum": 585.6354987621307,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 1.0,
+            "vllm:prompt_tokens_cached_total": 1208576.0,
+            "vllm:request_prefill_time_seconds_sum": 31.007043731980957,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 779488.0,
+            "vllm:prompt_tokens_source_local_compute_total": 69602.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 21884544.0,
+            "vllm:request_queue_time_seconds_sum": 538.5063432938477
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 251.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 38.0,
+            "lmcache_mp_num_chunks_loaded_total": 1694.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 421.0747859622144,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 103.85881002692265,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 13.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 12079.085866133519,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1613.296973237543,
+        "temperature_c": 61.70212521285396
+      },
+      "gateway_scheduler_decision_stats": {
+        "calls": 10006,
+        "cpu_ms": 256.317502,
+        "wall_ms": 255.969885,
+        "max_ms": 12.340501,
+        "cache_hits": 9748
+      },
+      "request_duration_s": 42.53287484,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "1942fe5127786cf149709293abf204967aff57e075e8ba5959110cd10805507b",
+      "setup_sha256": "0083230d017bf7acf1b0ddd973d3b585d39e887c08af2bae6b1a7a53be7699f2"
+    },
+    {
+      "run_id": "v6dev1-main-bundle16-s103",
+      "arm": "bundle16",
+      "seed": 103,
+      "requests": 60,
+      "resource": {
+        "samples": 43,
+        "sample_window_s": 42.005322137,
+        "first_sample_ns": 140202982655938,
+        "last_sample_ns": 140244987978075,
+        "gpu_time_weighted_util_pct": 80.45241029258197,
+        "gpu_time_weighted_power_w": 248.29677118254614,
+        "vram_peak_mib": 15997.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 41.21000000000001,
+            "summed_rss_peak_bytes": 3693924352,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 3.030000000000001,
+            "summed_rss_peak_bytes": 16996634624,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 322320.0,
+            "vllm:request_queue_time_seconds_count": 60.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 67202.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 322320.0,
+            "vllm:time_to_first_token_seconds_sum": 337.64687728881836,
+            "vllm:request_prefill_time_seconds_count": 60.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:prompt_tokens_cached_total": 1210976.0,
+            "vllm:request_prefill_time_seconds_sum": 40.61241931133554,
+            "vllm:prompt_tokens_total": 1278178.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 888656.0,
+            "vllm:prompt_tokens_source_local_compute_total": 67202.0,
+            "vllm:time_to_first_token_seconds_count": 60.0,
+            "vllm:prefix_cache_hits_total": 8196816.0,
+            "vllm:request_queue_time_seconds_sum": 243.69717612926615
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_write_chunks_total": 254.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 18.0,
+            "lmcache_mp_num_chunks_loaded_total": 1263.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 200.6545227044727,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 124.92037584487602,
+            "lmcache_mp_l1_read_chunks_total": 4712.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 16.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "sampled_board_energy_estimate_j": 10429.78585909983,
+      "sampled_gpu_environment": {
+        "sm_clock_mhz": 1604.285849283999,
+        "temperature_c": 61.238097384478586
+      },
+      "gateway_scheduler_decision_stats": null,
+      "request_duration_s": 38.316455411,
+      "process_sample_evidence": {
+        "vllm": {
+          "observed_process_counts": [
+            3
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        },
+        "lmcache": {
+          "observed_process_counts": [
+            1
+          ],
+          "complete_cpu_samples": true,
+          "monotonic_cpu_samples": true,
+          "identity_scope": "Counts and aggregate CPU samples do not prove stable identities of every descendant."
+        }
+      },
+      "metrics_file_sha256": "cc9a934ae7a95c3363f0fb5e1459662b82adc322382a9cb1cf6b83d79e0ad406",
+      "setup_sha256": "8c11718cc15cc38a128c7860620c516753f3223ff62a48db1d92c97a7f935b1c"
+    }
+  ],
+  "aggregate": [
+    {
+      "arm": "fifo16",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            55.006776355,
+            55.006946439000004,
+            56.006458451
+          ],
+          "observed_runs": 3,
+          "mean": 55.340060415
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            91.03634878537684,
+            89.58171797711921,
+            87.78564359664871
+          ],
+          "observed_runs": 3,
+          "mean": 89.46790345304825
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            257.1595653924663,
+            258.496891762592,
+            254.7283154620769
+          ],
+          "observed_runs": 3,
+          "mean": 256.7949242057117
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            14145.518701092391,
+            14219.12467983288,
+            14266.43081622003
+          ],
+          "observed_runs": 3,
+          "mean": 14210.3580657151
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1681.3631874639602,
+            1679.1810370364776,
+            1648.9265876386812
+          ],
+          "observed_runs": 3,
+          "mean": 1669.823604046373
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            60.94545359846874,
+            62.090905526187406,
+            61.85712630572774
+          ],
+          "observed_runs": 3,
+          "mean": 61.63116181012796
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            57.780000000000015,
+            57.58999999999999,
+            57.670000000000016
+          ],
+          "observed_runs": 3,
+          "mean": 57.68000000000001
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            3.6799999999999997,
+            3.66,
+            3.7600000000000016
+          ],
+          "observed_runs": 3,
+          "mean": 3.7000000000000006
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3670036480,
+            3663450112,
+            3653275648
+          ],
+          "observed_runs": 3,
+          "mean": 3662254080
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16976343040,
+            16976605184,
+            16976777216
+          ],
+          "observed_runs": 3,
+          "mean": 16976575146.666666
+        }
+      }
+    },
+    {
+      "arm": "fifo64",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            55.006912827,
+            55.006853398,
+            56.006680426
+          ],
+          "observed_runs": 3,
+          "mean": 55.340148883666664
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            86.76358233564389,
+            86.5636149187935,
+            88.78570912316687
+          ],
+          "observed_runs": 3,
+          "mean": 87.37096879253475
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            255.899955194387,
+            258.97138414076716,
+            251.78212677430446
+          ],
+          "observed_runs": 3,
+          "mean": 255.55115536981953
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            14076.26652781085,
+            14245.20096170832,
+            14101.481111227089
+          ],
+          "observed_runs": 3,
+          "mean": 14140.98286691542
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1663.908378981041,
+            1657.636202016334,
+            1661.2492385648075
+          ],
+          "observed_runs": 3,
+          "mean": 1660.9312731873943
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            61.618175575767076,
+            62.45454054205015,
+            61.73215323406249
+          ],
+          "observed_runs": 3,
+          "mean": 61.93495645062657
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            57.81999999999999,
+            57.790000000000006,
+            57.829999999999984
+          ],
+          "observed_runs": 3,
+          "mean": 57.813333333333325
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            3.599999999999998,
+            3.610000000000003,
+            3.419999999999998
+          ],
+          "observed_runs": 3,
+          "mean": 3.543333333333333
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3676528640,
+            3673296896,
+            3671199744
+          ],
+          "observed_runs": 3,
+          "mean": 3673675093.3333335
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16976838656,
+            16976510976,
+            16976637952
+          ],
+          "observed_runs": 3,
+          "mean": 16976662528
+        }
+      }
+    },
+    {
+      "arm": "lpm16",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            46.005692564,
+            46.005446398,
+            47.006055847
+          ],
+          "observed_runs": 3,
+          "mean": 46.33906493633333
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            89.49991716770712,
+            84.93475444504914,
+            88.14889133644354
+          ],
+          "observed_runs": 3,
+          "mean": 87.52785431639994
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            260.3133828849946,
+            262.99265801289926,
+            256.96871708295913
+          ],
+          "observed_runs": 3,
+          "mean": 260.0915859936177
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            11975.89746330188,
+            12099.09463127998,
+            12079.085866133519
+          ],
+          "observed_runs": 3,
+          "mean": 12051.35932023846
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1642.4993926648324,
+            1634.6749981239038,
+            1613.296973237543
+          ],
+          "observed_runs": 3,
+          "mean": 1630.157121342093
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            61.99999188052654,
+            62.34783008093355,
+            61.70212521285396
+          ],
+          "observed_runs": 3,
+          "mean": 62.01664905810468
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            268.294712,
+            257.586551,
+            256.317502
+          ],
+          "observed_runs": 3,
+          "mean": 260.73292166666664
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            12.732333,
+            11.452038,
+            12.340501
+          ],
+          "observed_runs": 3,
+          "mean": 12.174957333333333
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            49.06999999999998,
+            48.58999999999999,
+            48.77000000000001
+          ],
+          "observed_runs": 3,
+          "mean": 48.809999999999995
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            3.3299999999999983,
+            3.25,
+            3.1000000000000014
+          ],
+          "observed_runs": 3,
+          "mean": 3.2266666666666666
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3671433216,
+            3667914752,
+            3683258368
+          ],
+          "observed_runs": 3,
+          "mean": 3674202112
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16989888512,
+            16988459008,
+            16989716480
+          ],
+          "observed_runs": 3,
+          "mean": 16989354666.666666
+        }
+      }
+    },
+    {
+      "arm": "bundle16",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            41.004840161,
+            41.004948693,
+            42.005322137
+          ],
+          "observed_runs": 3,
+          "mean": 41.33837033033333
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            83.29266756316768,
+            80.53663751206587,
+            80.45241029258197
+          ],
+          "observed_runs": 3,
+          "mean": 81.42723845593851
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            253.37164819408795,
+            255.6121940291947,
+            248.29677118254614
+          ],
+          "observed_runs": 3,
+          "mean": 252.42687113527626
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            10389.4639355277,
+            10481.36490147229,
+            10429.78585909983
+          ],
+          "observed_runs": 3,
+          "mean": 10433.538232033274
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1600.6087580928736,
+            1672.3162271471447,
+            1604.285849283999
+          ],
+          "observed_runs": 3,
+          "mean": 1625.736944841339
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            61.46340955436947,
+            61.80487410488173,
+            61.238097384478586
+          ],
+          "observed_runs": 3,
+          "mean": 61.502127014576594
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            41.00999999999999,
+            41.28,
+            41.21000000000001
+          ],
+          "observed_runs": 3,
+          "mean": 41.166666666666664
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            2.8900000000000006,
+            3.0500000000000043,
+            3.030000000000001
+          ],
+          "observed_runs": 3,
+          "mean": 2.990000000000002
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3701469184,
+            3720073216,
+            3693924352
+          ],
+          "observed_runs": 3,
+          "mean": 3705155584
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16997515264,
+            17000189952,
+            16996634624
+          ],
+          "observed_runs": 3,
+          "mean": 16998113280
+        }
+      }
+    },
+    {
+      "arm": "dhas16",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            55.006870045,
+            55.00689848,
+            56.006551115
+          ],
+          "observed_runs": 3,
+          "mean": 55.34010654666667
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            88.32721800164735,
+            88.10910936758565,
+            86.62492359986841
+          ],
+          "observed_runs": 3,
+          "mean": 87.68708365636714
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            255.84590214250065,
+            256.03834478761416,
+            253.85772673596222
+          ],
+          "observed_runs": 3,
+          "mean": 255.247324555359
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            14073.28229069832,
+            14083.875238719529,
+            14217.69574837537
+          ],
+          "observed_runs": 3,
+          "mean": 14124.95109259774
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1657.9081881946588,
+            1672.0919707369403,
+            1633.659720255299
+          ],
+          "observed_runs": 3,
+          "mean": 1654.5532930622994
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            61.818173936477066,
+            61.98182453391072,
+            61.80356454134428
+          ],
+          "observed_runs": 3,
+          "mean": 61.86785433724402
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            null,
+            null,
+            null
+          ],
+          "observed_runs": 0,
+          "mean": null
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            57.96000000000001,
+            57.75999999999999,
+            57.71000000000001
+          ],
+          "observed_runs": 3,
+          "mean": 57.81
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            3.7300000000000004,
+            3.6900000000000013,
+            3.759999999999998
+          ],
+          "observed_runs": 3,
+          "mean": 3.7266666666666666
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3664470016,
+            3669352448,
+            3668164608
+          ],
+          "observed_runs": 3,
+          "mean": 3667329024
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16976928768,
+            16976666624,
+            16977002496
+          ],
+          "observed_runs": 3,
+          "mean": 16976865962.666666
+        }
+      }
+    },
+    {
+      "arm": "union64",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            36.004765574,
+            36.004425515,
+            36.004575178
+          ],
+          "observed_runs": 3,
+          "mean": 36.00458875566667
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            76.7499264393072,
+            81.75007569790966,
+            81.77770995109836
+          ],
+          "observed_runs": 3,
+          "mean": 80.09257069610507
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            251.12686652086353,
+            254.89294342367484,
+            251.00994212433613
+          ],
+          "observed_runs": 3,
+          "mean": 252.34325068962482
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            9041.76395841688,
+            9177.27399579681,
+            9037.50633164109
+          ],
+          "observed_runs": 3,
+          "mean": 9085.514761951594
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1578.333099502852,
+            1612.4990232207015,
+            1564.997956551226
+          ],
+          "observed_runs": 3,
+          "mean": 1585.2766930915932
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            61.13888386149113,
+            61.694450365097005,
+            61.305550119494875
+          ],
+          "observed_runs": 3,
+          "mean": 61.379628115361
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            518.983327,
+            481.03322,
+            474.706673
+          ],
+          "observed_runs": 3,
+          "mean": 491.5744066666667
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            10.092879,
+            10.477072,
+            9.541261
+          ],
+          "observed_runs": 3,
+          "mean": 10.037070666666667
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            35.519999999999996,
+            35.97,
+            35.32000000000002
+          ],
+          "observed_runs": 3,
+          "mean": 35.60333333333334
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            2.8500000000000014,
+            2.8100000000000023,
+            2.7399999999999984
+          ],
+          "observed_runs": 3,
+          "mean": 2.8000000000000007
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3728732160,
+            3714560000,
+            3709153280
+          ],
+          "observed_runs": 3,
+          "mean": 3717481813.3333335
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            17000574976,
+            16996859904,
+            16995745792
+          ],
+          "observed_runs": 3,
+          "mean": 16997726890.666666
+        }
+      }
+    },
+    {
+      "arm": "ready_fifo",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            55.006847957,
+            55.005926812,
+            56.006922449
+          ],
+          "observed_runs": 3,
+          "mean": 55.33989907266667
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            89.74552596607712,
+            87.8362755999589,
+            84.82150693887701
+          ],
+          "observed_runs": 3,
+          "mean": 87.46776950163768
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            256.2451209494338,
+            258.3569958639378,
+            253.02827884817776
+          ],
+          "observed_runs": 3,
+          "mean": 255.8767985538498
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            14095.23640778858,
+            14211.16600585995,
+            14171.335190853839
+          ],
+          "observed_runs": 3,
+          "mean": 14159.245868167456
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1664.4558344714026,
+            1683.8165089115307,
+            1659.6438360194106
+          ],
+          "observed_runs": 3,
+          "mean": 1669.3053931341146
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            61.81818942707247,
+            62.236350552994665,
+            61.803575117236306
+          ],
+          "observed_runs": 3,
+          "mean": 61.95270503243448
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            1222.828635,
+            1219.805529,
+            1260.518479
+          ],
+          "observed_runs": 3,
+          "mean": 1234.3842143333334
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            13.14967,
+            11.753456,
+            12.545119
+          ],
+          "observed_runs": 3,
+          "mean": 12.482748333333333
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            57.849999999999994,
+            57.230000000000004,
+            57.670000000000016
+          ],
+          "observed_runs": 3,
+          "mean": 57.583333333333336
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            3.6300000000000026,
+            3.6900000000000013,
+            3.7399999999999984
+          ],
+          "observed_runs": 3,
+          "mean": 3.6866666666666674
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3674624000,
+            3642564608,
+            3662069760
+          ],
+          "observed_runs": 3,
+          "mean": 3659752789.3333335
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16976445440,
+            16976154624,
+            16976801792
+          ],
+          "observed_runs": 3,
+          "mean": 16976467285.333334
+        }
+      }
+    },
+    {
+      "arm": "packing_ready",
+      "seeds": [
+        101,
+        102,
+        103
+      ],
+      "metrics": {
+        "sample_window_s": {
+          "per_run": [
+            37.004735081999996,
+            36.004508588,
+            37.004523818
+          ],
+          "observed_runs": 3,
+          "mean": 36.67125582933333
+        },
+        "gpu_util_pct": {
+          "per_run": [
+            82.75667953409078,
+            86.69438246823712,
+            85.6486806486704
+          ],
+          "observed_runs": 3,
+          "mean": 85.03324755033277
+        },
+        "gpu_board_power_w": {
+          "per_run": [
+            267.382408362434,
+            267.92816511985467,
+            263.24654223953104
+          ],
+          "observed_runs": 3,
+          "mean": 266.1857052406066
+        },
+        "gpu_board_energy_estimate_j": {
+          "per_run": [
+            9894.41518703901,
+            9646.62192202489,
+            9741.31294230887
+          ],
+          "observed_runs": 3,
+          "mean": 9760.78335045759
+        },
+        "gpu_sm_clock_mhz": {
+          "per_run": [
+            1572.9732177452752,
+            1644.9990550702862,
+            1583.1087630350492
+          ],
+          "observed_runs": 3,
+          "mean": 1600.3603452835368
+        },
+        "gpu_temperature_c": {
+          "per_run": [
+            62.18918596194479,
+            62.4999926463654,
+            62.00000092712989
+          ],
+          "observed_runs": 3,
+          "mean": 62.22972651181336
+        },
+        "gateway_decision_cpu_ms": {
+          "per_run": [
+            1264.39242,
+            1344.551988,
+            1284.943488
+          ],
+          "observed_runs": 3,
+          "mean": 1297.962632
+        },
+        "gateway_decision_run_max_ms": {
+          "per_run": [
+            13.943638,
+            14.063215,
+            13.39086
+          ],
+          "observed_runs": 3,
+          "mean": 13.799237666666667
+        },
+        "vram_peak_mib": {
+          "per_run": [
+            15997.0,
+            15997.0,
+            15997.0
+          ],
+          "observed_runs": 3,
+          "mean": 15997.0
+        },
+        "vllm_sampled_cpu_s": {
+          "per_run": [
+            39.139999999999986,
+            38.790000000000006,
+            38.829999999999984
+          ],
+          "observed_runs": 3,
+          "mean": 38.919999999999995
+        },
+        "lmcache_sampled_cpu_s": {
+          "per_run": [
+            2.7600000000000016,
+            2.7799999999999976,
+            2.700000000000003
+          ],
+          "observed_runs": 3,
+          "mean": 2.7466666666666675
+        },
+        "vllm_summed_rss_peak_bytes": {
+          "per_run": [
+            3661668352,
+            3657166848,
+            3669880832
+          ],
+          "observed_runs": 3,
+          "mean": 3662905344
+        },
+        "lmcache_summed_rss_peak_bytes": {
+          "per_run": [
+            16981708800,
+            16982376448,
+            16981999616
+          ],
+          "observed_runs": 3,
+          "mean": 16982028288
+        }
+      }
+    }
+  ],
+  "analysis_source_sha256": {
+    "scripts/v6_analyze_main_resources.py": "ce1368b251d3b44c1727c73eaa25bc8be7ac0a7429736c5f23203645508f96ec",
+    "scripts/v6_main_resources.py": "51c0a0f3cf32dc624272896794b59cfd58c1ccee05896e8eaaace97134537544",
+    "scripts/v3_analyze_runs.py": "7d095e4facce7dd42dd23eb0f170fc76679b477b4b249f5a518ee6abfd2eab37",
+    "src/cacheflow/collect_metrics.py": "405c632abdf0b53e0dde1419955072a7b3f5bc94021a53829131a82b52eee7e9",
+    "src/cacheflow/v2_metrics.py": "e207097e327a1d43b0cdac55caf91f1f41ec8a617e4f74e99a0c8197990080d9"
+  },
+  "scope": "All24audited main development arms,60exposed QA repeated3schedules; no new serving. Left-endpoint1Hz sampled-window GPU utilization/power/board-energy estimates include pre/post-request margins. Not kernel busy-time, exact energy, host energy, physical system memory or throughput capacity. CPU is sampled process-tree endpoint delta; counts cannot prove every descendant identity stable. Gateway decision CPU is separate instrumented thread CPU around chooser calls, including cache hits; excludes tokenizer, HTTP and other gateway work. Missing decision counters are not zero. Summed RSS double-counts shared pages and omits gateway/client. Missing runs are not averaged away. Not the full benchmark or cross-engine comparison."
+}

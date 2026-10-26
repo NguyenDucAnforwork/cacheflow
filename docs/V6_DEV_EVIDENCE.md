@@ -144,3 +144,26 @@ Per-request additive wait reconstruction (`v6controls1_main_lowload_subset_waits
 Main union therefore retains a large low-load benefit against its FIFO reference, whereas native LPM has a much stronger low-load median and a different admission effect. The figure shows matched contrasts within each protocol; it does not compare engine speed causally. This narrows any portable contribution claim: the beneficial memory-pressure admission regime and its latency/quality costs must be measured for each stack. The readiness increment remains unproven as a stable improvement.
 
 The subset auditor also rejects the still-incomplete low-reuse regime before producing a success table; it writes only a separately named incomplete record. All ten active serving actors and the native audit SHA referenced by the live registration remain unchanged. Main low-reuse/GPU-fit/abstention controls and the prospective full study remain open.
+
+
+## Main resource supplement: all 24 completed development arms
+
+`v6_analyze_main_resources.py` independently reopens all24 audited main request/output/metric ledgers (1,440 measured responses), checks request hashes against the original audit, validates measured sampler/summary source fingerprints, reconciles strict sampled counter endpoints with both source accounting and original per-run totals, and requires sampling to bracket every scheduled arrival/completion. `v6dev1_main_resources.json` records raw/setup/source hashes, every run and missing-aware aggregates. It issues no serving requests and changes no measurement actor.
+
+| Mean of three run observations | FIFO64 | Bundle16 | Old union64 | Ready union |
+| --- | ---: | ---: | ---: | ---: |
+| Sample window s | 55.340 | 41.338 | 36.005 | 36.671 |
+| Time-weighted GPU utilization % | 87.371 | 81.427 | 80.093 | 85.033 |
+| Time-weighted GPU board power W | 255.551 | 252.427 | 252.343 | 266.186 |
+| Sampled-window board-energy estimate kJ | 14.141 | 10.434 | 9.086 | 9.761 |
+| Sampled vLLM process-tree CPU s | 57.813 | 41.167 | 35.603 | 38.920 |
+| Sampled LMCache process-tree CPU s | 3.543 | 2.990 | 2.800 | 2.747 |
+| Instrumented scheduler decision CPU ms | Not instrumented | Not instrumented | 491.574 | 1297.963 |
+
+Readiness versus old union has sampled board-energy increases **+9.430/+5.114/+7.788%**, and sampled vLLM CPU increases **+10.191/+7.840/+9.938%** across seeds101/102/103. These are descriptive within-stack observations, not causal energy-efficiency estimates: windows include pre/post-request margins, power is sampled at approximately1Hz, clocks/temperature are not fixed, and host energy is absent. Mean sampled clocks are1585.3MHz old versus1600.4MHz ready, temperatures61.38 versus62.23C. These differences and varying run lengths remain visible rather than assuming equal execution conditions beyond the registered protocol.
+
+Gateway chooser CPU is a different instrumented quantity: old union .519/.481/.475s, readiness1.264/1.345/1.285s over each60-QA run. It includes decision-cache hits and excludes preparation, HTTP and other gateway work. Mean increases by .806s; this is not a timing decomposition of the TTFT difference or proof that those CPU cycles cause the tail outcome. Max observed chooser call is9.54–10.48ms old versus13.39–14.06ms ready. There are161/160/162 non-cache-hit decisions old versus215/222/215 ready, while readiness blocked-decision counts1955/2096/2035 are predicate evaluations, not independent requests. FIFO/bundle missing chooser counters are not treated as zero. Existing registered schedulers remain unchanged.
+
+All24 sampled process-count sequences are three vLLM processes and one LMCache process, with monotonic aggregate CPU samples; counts alone do not prove stable descendant identities. Sampled VRAM peak is15997MiB in every arm, consistent with a largely preallocated engine footprint rather than evidence of identical live KV occupancy. Mean summed RSS peaks vary approximately3.66–3.72GB for vLLM and16.98–17.00GB for LMCache; these sums double-count shared pages and omit gateway/client, so are not physical system memory. GPU utilization is not a percentage of useful model work, kernel busy time or achieved request capacity.
+
+Union's lower sampled utilization coexists with a shorter window and much lower tails than FIFO; readiness's higher utilization coexists with mixed tail gains and worse decode/median/resource observations versus old union. Optimizing utilization alone would miss that tradeoff. The supplement strengthens resource reporting; it does not complete main controls or replace the pending full benchmark, quality/fairness review and final research audit.
