@@ -2,7 +2,7 @@
 
 Current server changed on 2026-10-26. The 2026-10-25 status and trace notes below are historical for the previous host. See `docs/V2_HOST_2026_10_26.md` for the active setup; its model, packages and ignored traces must be recreated here before GPU runs.
 
-Status: CPU-side runner and counter analysis prepared on the new server; pinned model snapshot complete, serving package installation pending; no GPU E1 run yet. This document is separate from the V1 reproduction log. The owner waived old-baseline restoration.
+Status on new server: CPU-side runner, trace checks and counter analysis prepared; model weight shards and serving packages are still downloading; no GPU E1 run yet. The completed snapshot described in the historical gate section below was on the previous host. This document is separate from the V1 reproduction log. The owner waived old-baseline restoration.
 
 ## Gate before GPU runs
 
@@ -36,6 +36,8 @@ bash scripts/v2_run.sh v2-e1-b3-2k-50ms-r1 data/processed/v2/e1_2k_50ms_1pair.js
 ```
 
 `v2_run.sh` starts the one-second collector before replay and keeps it alive for two seconds afterward. It writes per-request rows and a run summary under `results/v2/raw/`, appends `results/v2/registry.csv`, and writes counter deltas to `results/v2/<run_id>.metrics_summary.json`. For gateway runs it also extracts the matching request IDs into `<run_id>.gateway.jsonl` and rejects a missing or duplicate gateway row. `v2_metrics.py` rejects counter decreases, which indicate a process restart invalidating the run. The run summary records mode, policy, GPU KV bytes, model revision, dependency versions, trace SHA, source SHA where available, error count, and arrival-based TTFT. Counters absent at a healthy baseline are treated as zero when they first appear; missing data after an endpoint error remains null. This distinction was checked against a historical 256-chunk LMCache restore log.
+
+A matched B2/B3 pilot can be validated with `python3 scripts/v2_compare_e1.py --b2 v2-e1-b2-2k-50ms-r1 --b3 v2-e1-b3-2k-50ms-r1 --output results/v2/e1-2k-50ms-r1.compare.json`. The validator rejects failed or unmatched runs, prompt or token mismatches and serving PID changes, then reports per-request arrival TTFT, admission waits and counter deltas. It does not turn a single pilot into a causal result.
 
 ## Server auto-resume
 
