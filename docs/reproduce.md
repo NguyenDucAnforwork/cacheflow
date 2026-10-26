@@ -312,3 +312,13 @@ PYTHONPATH=src:scripts nice -n 10 /venv/main/bin/python -u scripts/v6_regenerate
 Registration rejects overwrite and records the parent's PID, creation time and argv plus code/data/metadata/tokenizer/package pins. The waiter performs no heavy generation while that controller lives. It starts only after the registered process ends and all serving services are idle. An unrelated reused PID is never controlled; active services still block generation. Errors are preserved in `.failure.json`; existing terminal attempts cannot silently rerun.
 
 Each gzip input is about57MiB. Generation/restoration proceeds one seed at a time, requiring space for two copies plus64MiB margin. After exact hash checks and a per-seed proof, only the new verified duplicates are released. Frozen serving inputs stay unchanged. The final `v6full1_input_regeneration_registration.result.json` must be inspected before claiming from-source reproduction; it does not exist yet. A successful result would prove input identity, not fresh GPU performance/output reproduction or completion of the research goal. Tests138/138pass at this checkpoint; the five new tests use small synthetic sources and process fixtures.
+
+
+### Immutable interim full checkpoints
+
+```bash
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_full_checkpoint.py --output results/v3/v6full1_checkpoint_02.json
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_plot_full_checkpoint.py results/v3/v6full1_checkpoint_02.json --output-prefix figures/v6full1_checkpoint_02
+```
+
+These exact output paths now exist and reject overwrite. Use a new checkpoint/figure path for a later exact audited prefix. The observer requires source/registration/outcome/audit/archive/setup/quality identities and reopens exact raw bytes before including a complete arm. It never uses successful-only quantiles from an incomplete arm, rehashes no model weights and performs no serving calls. Its report always has `complete=false`; the terminal30-arm auditor remains necessary. The39primary planned contrasts stay separate from three supplemental FIFO-to-bundle baseline-strength pairs; only completed matched pairs are shown. Only a full three-seed group gets an exploratory run interval. At checkpoint02there are two completedarms, zero primary pairs and one supplemental pair. The PNG/SVG was rendered and visually inspected, with checkpoint/source/figure hashes in its adjacent JSON proof.

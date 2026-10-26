@@ -1,0 +1,30 @@
+{
+  "checkpoint_path": "results/v3/v6full1_checkpoint_02.json",
+  "checkpoint_sha256": "4efbe50deeb3c6d105fc979fc9de499041b8f1be9d1edc67ff1786c4831e868f",
+  "source_sha256": "26987380dc7f5d2812e272272ab2173dd0f8cf774bceab7ca5703a8cae5a6a87",
+  "runs": [
+    "v6full1-main-g6-fifo64-s901",
+    "v6full1-main-g6-bundle16-s901"
+  ],
+  "complete_study": false,
+  "arrival_seed": 901,
+  "source_counts": {
+    "New prefill": [
+      601125.0,
+      930965.0
+    ],
+    "GPU local": [
+      589712.0,
+      45574336.0
+    ],
+    "External consumed": [
+      49331488.0,
+      4017024.0
+    ]
+  },
+  "figure_sha256": {
+    "figures/v6full1_checkpoint_02.png": "2a2ddd52b345bbfcca2b86c364bdf95a52dda77150b50f6747199185e73b4eb8",
+    "figures/v6full1_checkpoint_02.svg": "e3e0a8723cbfbedbd1199a626030d1ca0db65cc419f5427b63381360d07ee413"
+  },
+  "scope": "Audited full single-seed main-stack subset, all QA and category scores; descriptive intervals only where native histogram buckets identify a range. No incomplete-arm quantiles, model calls, terminal-study claim or quality equivalence."
+}

@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 22:55 UTC:** V6 đã audit main 24 arms / 1.440 request đo, native 60 arms / 2.700 request đo và main controls 36 arms / 1.260 request đo, đều không lỗi; warmups tính riêng. Full FIFO đầu tiên hoàn tất và đã audit R1 đủ 1.986 QA. Controller gốc dừng vì auditor đọc sai giá trị CLI bị lặp; parser vLLM thật xác nhận cấu hình đúng. Phần tiếp tục 29 arms đã được đăng ký riêng và vừa khởi chạy; chưa có full comparison hoặc complete-study result. Phần 22 tổng hợp bằng chứng hiện tại; V2–V5 giữ phạm vi lịch sử.
+**Cập nhật 26/10/2026, 23:18 UTC:** Main24/1.440, native60/2.700 và maincontrols36/1.260 đã audit. Full FIFO64 và bundle16 seed901 hiện đã audit đủ1.986QA mỗi arm, không lỗi request; warmups tính riêng. Bundle là baseline mạnh: p95 thấp hơn FIFO75,264% nhưng decode và source compute có đánh đổi. Union đã qua warmup và đang đo, chưa có full primary candidate comparison. Các phần V2–V5 giữ phạm vi lịch sử; không gộp khác prompt/model/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -1050,3 +1050,32 @@ Có thể tái tạo figure bằng `PYTHONPATH=src:scripts /venv/main/bin/python
 **Hỏi: Phần này đã chứng minh tái lập full benchmark chưa?**
 
 **Đáp:** Chưa. Tại checkpoint23:08UTC, mới có code, test trên nguồn synthetic nhỏ và một waiter đang chờ full controller kết thúc. Chưa có kết quả tái tạo1.986QA thật. Ngay cả khi final input report pass, nó chỉ chứng minh dựng lại đúng input; performance, floating-point batching và output model của một lần serving mới vẫn cần bằng chứng riêng. Cũng không được gọi ba arrival seeds là ba bộ QA độc lập: cả ba vẫn là cùng1.986câu hỏi.
+
+
+### 22.11. Baseline bundle rất mạnh: đọc kết quả mà không chọn counter thuận lợi
+
+**Hỏi: Kết quả full mới đã chứng minh union tốt hơn chưa?**
+
+**Đáp:** Chưa. Hai arm đã hoàn tất là FIFO64 và bundle16, mỗi arm1.986QA ở seed901. Đây là hai baseline. Union/readiness và native LPM/DFS full còn phải chạy/audit. Observer hiện ghi0/39primary pairs hoàn tất; phép FIFO→bundle được tách rõ thành baseline-strength diagnostic. Không được đổi một baseline thắng FIFO thành kết luận method của mình đã thắng baseline mạnh.
+
+**Hỏi: Có thể nhanh hơn dù tính nhiều prefill hơn không?**
+
+**Đáp:** Có, và full pair này là ví dụ thật. Bundle giảm p95TTFT1.119,934→277,028giây, nhưng new-prefill601.125→930.965tokens (+54,870%). Đồng thời engine-consumed externalKV49.331.488→4.017.024tokens (−91,857%) và GPU-local reuse tăng mạnh. Thời gian tổng phụ thuộc cả việc tính, chuyển, batching và queue; một counter đơn lẻ không đủ dự đoán latency. Counter cho thấy sự đánh đổi này, chưa tách được đóng góp causal của từng thành phần.
+
+**Hỏi: Có phải giảm CPU-KV consumption thì mọi metric đều tốt hơn không?**
+
+**Đáp:** Không. Native output-update ITL mean tăng17,970→52,885ms; p95 chỉ biết nằm trong bucket10–25→75–100ms. Client TPOT proxy p95 cũng tăng63,732→137,329ms/request-average. Chúng là hai phép đo khác nhau, không trộn thành exact per-token ITL. LMCache evicted-chunk counter tăng0→2.625 trong bundle dù E2E nhanh hơn; nó không phải số prompt hoặc số byte DMA và chưa chứng minh là nguyên nhân extra-prefill. Vì thế báo cáo đồng thời TTFT, completion, decode, token sources và quality.
+
+**Hỏi: So sánh FIFO64 và bundle16 có cô lập được hiệu quả sắp xếp không?**
+
+**Đáp:** Không hoàn toàn: admission cap cũng đổi64→16 theo hai cấu hình baseline đã định. So sánh cho biết hiệu năng của hai baseline configurations, không phải ordering-only ablation. Ở development có FIFO16/FIFO64 nhưng chỉ60QA; không dùng nó thay cho full FIFO16control để nhận causal claim trên1.986QA. Các method chính phải cạnh tranh với baseline bundle đã tune này, không chỉ FIFO dễ thắng hơn.
+
+**Hỏi: F1 bundle cao hơn một chút có thể nói quality được giữ nguyên không?**
+
+**Đáp:** Chưa. Mean answerableF1 .317162→.319006, category5 đúng223→225trên446QA, nhưng163outputhash khác. Score từng câu tăng53, giảm57, bằng nhau1.876; số output chạm96-token cap20→18. Mean cao hơn không có nghĩa từng câu đều tốt hơn hoặc quality tương đương. Temperature0 cũng không tự bảo đảm bit-exact giữa batch schedules; numerical/batching effects là khả năng cần kiểm, không phải nguyên nhân đã được chứng minh ở pair này.
+
+**Hỏi: Cả mười conversation đều giảm p95 thì đã chứng minh fairness chưa?**
+
+**Đáp:** Chỉ cho thấy cải thiện66,027–75,767% ở cả mười nhóm trong đúng seed này. Nó không tự chứng minh starvation freedom, deadline guarantee hoặc hiệu quả ở load khác. Scheduled-arrival mean TTFT622,281→186,770giây còn chứa backlog trước gateway; không bỏ phần đó để chỉ báo upstream52,764→3,600giây. Một seed không có run-level confidence interval đáng tin cho reproducibility; vẫn cần các arrival seeds còn lại và toàn bộ controls.
+
+![Hai baseline full ở seed901](../figures/v6full1_checkpoint_02.png)

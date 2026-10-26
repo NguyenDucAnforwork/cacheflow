@@ -1,5 +1,8 @@
 # V6 development evidence: complete main and native stages
 
+**Full update,23:18UTC:** FIFO64 and bundle16 seed901 now both pass complete1986QAper-runR1audits and lossless archives:3972measured successes0errors +120separatewarmups. `v6full1_checkpoint_02.json` reopens/verifies the exact audited prefix. Supplemental bundlevsFIFO p95−75.264%, externalconsumption−91.857%, butnewprefill+54.870%, nativeITLmean17.970→52.885ms/update and outputhashes163/1986different. This is a baseline-strength diagnostic, not one of the39registered primary candidate contrasts or a complete study. Originalunion warmup60/60passes and its full measurement is live. The prior one-arm update below is historical.
+
+
 **Full update,22:56UTC:** FirstFIFO full arm1986/1986success0errors +60separatewarmup now passes explicit R1 integrity/quality/resource/fairness/ITL audit and verified ten-file archive. Original controller stopped on a duplicate scalar CLI parsing error; original seal/sources/marker remain intact. Installed vLLM parser resolves16sequences, not the first argv occurrence4. A separately registered continuation is starting only the29unexecuted arms, preserving the original full30-arm scope. Read [R1 amendment](V6_FULL_ANALYSIS_R1.md); no complete full comparison, readiness gain or quality-equivalence claim.
 
 Latest (22:12 UTC): main24/1440, native60/2700 and main controls36/1260 are complete and strictly audited, with separate warmups. Full CPU preflight passed all1,986QA with0token-ID/semantic mismatches, and the30-arm full controller has started from a prospective seal. No full measured arm is complete at this checkpoint. Development gains retain median/quality/regime costs and do not complete the research goal.
@@ -242,3 +245,33 @@ The full FIFO seed901 arm succeeds1986/1986 and passes the separate R1 audit aft
 Mean scheduled-arrival TTFT622.281s is dominated by arrival→gateway422.819s and gateway admission146.594s; upstream→first text52.764s also includes engine queue, transport, copy and compute. The connection limit256 shapes delivery despite nominal4QPS arrivals. The cumulative curves show offered arrivals finishing much earlier than serving; do not interpret the observed1.188req/s as a standalone throughput-capacity benchmark. The first interval has not been causally split among pool/socket/backpressure/task scheduling.
 
 The engine accounts50,522,325prompt tokens as49,331,488external consumed,589,712GPU local and601,125new prefill. These sum exactly, while physical DMA volume/duration remain different quantities. The sampled GPU curve is not copy/compute separation. AnswerableF1=.317162, category5=223/446=.5,20cap hits; no full candidate quality equivalence is established. Full input-only reference304,885newtokens assumes unlimited retention/immediate publication and is not a finite-cache optimum.
+
+
+## Full checkpoint02: two strong baselines, no completed primary candidate pair
+
+![Full seed901 baseline tradeoffs](../figures/v6full1_checkpoint_02.png)
+
+The interim observer requires the exact completed prefix of the registered30-arm graph, verifies outcome/audit/archive/setup/quality/source identities, reopens raw archives and rechecks request/config/token/output accounting. Failed or partial arms have no percentiles in this report. It preserves the39predefined primary comparisons separately from three supplemental FIFO-to-bundle baseline-strength contrasts. At this checkpoint only one supplemental contrast is available; none of the39primary candidate comparisons is complete. The30-arm terminal auditor remains mandatory. No model weights are rehashed and no serving endpoint is queried by this observer.
+
+Both runs contain the same1,986QA and scheduled arrivals, fresh engine+LMCache units, observed48,049,946,624byte heaps,6GiB GPU KV, graphs/native16sequences, batch8192, no event observer,3600s transport/keepalive0 and separate60QA warmup/reset. FIFO admissioncap64 differs from bundlecap16 by design. This compares the two defined baseline configurations, not an isolated causal effect of ordering with cap held constant. Development FIFO16does not substitute for a full FIFO16control.
+
+| Full seed901 observation | FIFO64 | Bundle16 |
+| --- | ---: | ---: |
+| Arrival TTFT p50 / p95 / p99, seconds | 619.640 /1119.934 /1159.416 | 202.700 /277.028 /282.469 |
+| Makespan, seconds | 1671.172 | 792.337 |
+| Engine new-prefill tokens | 601125 | 930965 |
+| Engine-consumed external KV tokens | 49331488 | 4017024 |
+| GPU-local reuse tokens | 589712 | 45574336 |
+| Native output-update ITL mean, ms | 17.970 | 52.885 |
+| Native output-update ITL p95 bucket, ms | 10–25 | 75–100 |
+| Client request TPOT proxy p95, ms | 63.732 | 137.329 |
+| Answerable F1,1540QA | .317162 | .319006 |
+| Category5 correct,446QA | 223 | 225 |
+|96-token cap hits |20|18|
+| LMCache L1 evicted-chunk counter delta |0|2625|
+
+Bundle p95/p99 improve75.264/75.637%, externalconsumption falls91.857%, butnewprefill rises54.870%. Its GPU-local reuse becomes dominant and its completed run is faster despite more source-labelled compute. This disproves treating a lower new-prefill count as a sufficient latency predictor in this observed pair; it does not causally allocate the gain among fewer restores, cap changes, batching, decode shape, eviction and scheduling. LMCache eviction deltas describe their own lifecycle, not unique prompt bytes or a one-to-one explanation of the extra compute. Native ITL and client proxy both retain the decode cost; bucket ranges are not confidence intervals or exact per-token percentiles.
+
+MeanTTFT falls622.281→186.770s. Arrival→gateway422.819→95.487s, preparation.091→.222s, admission146.594→87.457s, upstream52.764→3.600s and return.014→.005s. Client connectioncap256/backpressure shapes ingress; upstream includes queue/copy/compute/transport. All stages reconcile per request, while stage quantiles do not add. Per-conversation p95 improves in all ten observed groups, by66.027–75.767%; this is descriptive, not a universal fairness/low-load claim.
+
+Paired output hashes differ163/1986. Official per-QAscores improve53, decrease57 and tie1876; category5gains two correct responses. The slightly higher mean F1 is not quality equivalence and does not establish cache correctness by itself. This is one arrival seed on the same semantic dataset, with no run-level interval. The paper-method/main/native candidate comparisons and remaining arrival schedules are still required.
