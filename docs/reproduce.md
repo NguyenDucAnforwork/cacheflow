@@ -296,3 +296,19 @@ PYTHONPATH=src:scripts /venv/main/bin/python -u scripts/v6_continue_full_r1.py
 After the corrected audit, `v6_raw_archive.archive` wrote `v6full1-main-g6-fifo64-s901.archive_r1.json` from its `.full_audit_r1.json`. The continuation registration reopened all ten archived files, rechecked warm/measured integrity/configuration and regenerated the complete official quality JSON in a temporary destination; it matched exactly. This registration seals the unchanged29-action suffix before serving. The continuation has its own execution/outcome/interruption ledgers and still requires the complete30-arm final `v6full1_audit_r1.json`; that final audit has not run. It does not retry the first FIFO or any later failed arm. `--plan` displays only the29unexecuted actions and never starts serving. The original reproduction namespace generator follows the original sealed pipeline; it does not automatically incorporate R1. Porting this explicit correction into a fresh reproduction namespace needs its own recorded transformation and preflight, not a claim that the old generator already reproduces R1.
 
 Validation at registration:133CPU tests pass, including actual captured argv/config rejection, exact loader-guard derivation, real archive expansion, unchanged serving/measurement/cleanup ASTs, fresh-process validation, and mocked continuation failure/no-retry behavior. Tests are not full-study completion or model-quality equivalence.
+
+
+### Queued full input regeneration from the official source (not complete)
+
+`scripts/v6_regenerate_full_inputs.py` closes a different gap from token parity over existing inputs: it reconstructs the1,986rows from `data/raw/locomo10.json`, the pinned V5 renderer/tokenizer and published conversation/QA order, then regenerates arrival schedules901/902/903. Frozen trace prompt text is never a generation input. Acceptance requires exact per-QAprompt/token fingerprints and all three plain/canonical/stored gzip identities. The original sealed manifests and gzip-header recipe remain reference metadata; they are not rewritten.
+
+This job was registered and launched once while controller463549was confirmed live:
+
+```bash
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_regenerate_full_inputs.py register 463549 results/v3/v6full1_input_regeneration_registration.json
+PYTHONPATH=src:scripts nice -n 10 /venv/main/bin/python -u scripts/v6_regenerate_full_inputs.py execute results/v3/v6full1_input_regeneration_registration.json
+```
+
+Registration rejects overwrite and records the parent's PID, creation time and argv plus code/data/metadata/tokenizer/package pins. The waiter performs no heavy generation while that controller lives. It starts only after the registered process ends and all serving services are idle. An unrelated reused PID is never controlled; active services still block generation. Errors are preserved in `.failure.json`; existing terminal attempts cannot silently rerun.
+
+Each gzip input is about57MiB. Generation/restoration proceeds one seed at a time, requiring space for two copies plus64MiB margin. After exact hash checks and a per-seed proof, only the new verified duplicates are released. Frozen serving inputs stay unchanged. The final `v6full1_input_regeneration_registration.result.json` must be inspected before claiming from-source reproduction; it does not exist yet. A successful result would prove input identity, not fresh GPU performance/output reproduction or completion of the research goal. Tests138/138pass at this checkpoint; the five new tests use small synthetic sources and process fixtures.

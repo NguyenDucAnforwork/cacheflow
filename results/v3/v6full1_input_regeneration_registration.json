@@ -1,0 +1,55 @@
+{
+  "kind": "cpu_only_from_official_source_full_input_regeneration",
+  "registered_utc": "2026-10-26T23:04:07.459096+00:00",
+  "after_pid": 463549,
+  "after_create_time": 1793055203.06,
+  "after_argv": [
+    "/venv/main/bin/python",
+    "-u",
+    "scripts/v6_continue_full_r1.py"
+  ],
+  "source_sha256": {
+    "/workspace/cacheflow-e1/scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "src/cacheflow/locomo.py": "599855840e4d59ab86cd3f88c6dd0b869fb4d1f6aec1970c4176d611494d559f",
+    "src/cacheflow/v5_prompt.py": "1ba44b62cb6e359d049f2b3a273036fec73ba682ee8fd541bf26ecafa9680587",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v6_trace_hashes.py": "2942e34c564721ddbaafaf6441b0e4596fb8c37edaca7c347f926c1a4b9e7c00",
+    "scripts/v6_trace_storage.py": "81d71e1d2f9a0bc5340b33b3db10551f8f00f62e7827b7158a942f42392c8622",
+    "scripts/v4_services.py": "db097bd99a7602bf4ac9a3fa12a5eb51f2e8dc982441ec8dfe17deedc83c5556",
+    "scripts/v3_model.py": "8768571e71c61c635934d51708d9c2add24d19a69809b4d9975b4e0bf84a41e1"
+  },
+  "reference_metadata_sha256": {
+    "results/v3/v6full1_freeze.json": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+    "results/v3/v6full1_gzip_metadata.json": "8a0ec89990c9f42b035c7dd484a022e8c5b1fec9aaea8f69da909c91a8effa1f",
+    "results/v3/v6full1_input_preflight.json": "a13db4fe27865081644d4659129e0fc7482c036027ab86d6457226a11dfb3ad7",
+    "results/v3/input_preflight/20261026T220240-457168/main.json": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+    "results/v3/v6full1_continuation_r1_registration.json": "3cb2807b2f20f495a8fcde3dbb52950aa8398ed30149fe346a965bb5404ca175",
+    "data/processed/v3/v5-full4b-qps4-s901.jsonl.manifest.json": "4d8df5cb7a8753f30b80760d69b93d00b3218003d2bad7d1f13493058527c68b",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.manifest.json": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf",
+    "data/processed/v3/v5-full4b-qps4-s903.jsonl.manifest.json": "b162968ebfba109f85734acf4b1774a7c1d6dc023a1bf38a93c33be4e2063b91"
+  },
+  "official_source_path": "data/raw/locomo10.json",
+  "official_source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+  "tokenizer_artifact_sha256": {
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/config.json": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "package_versions": {
+    "vllm": "0.22.0",
+    "lmcache": "0.5.3",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.6.2",
+    "tokenizers": "0.22.2",
+    "httpx": "0.28.1",
+    "numpy": "2.2.6",
+    "nltk": "3.9.2",
+    "regex": "2026.9.29",
+    "PyYAML": "6.0.3",
+    "psutil": "7.2.2"
+  },
+  "scope": "Queued CPU-only verification after the exact live controller terminates and all serving services are idle. No model weights, GPU calls, original input writes, serving retries or full-study completion claim. Preparation/unit tests are not a completed1986QAregeneration result."
+}

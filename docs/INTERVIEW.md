@@ -1031,3 +1031,22 @@ Biểu đồ của đúng full FIFO arm này minh họa backlog và source accou
 ![Full FIFO timeline, queue và token sources](../figures/v6full1_fifo_diagnostic.png)
 
 Có thể tái tạo figure bằng `PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_plot_full_fifo_diagnostic.py` khi raw/archive riêng tư còn trên instance. Công cụ mở archive đúng byte, dùng audit R1 đã có và không gọi serving. PNG/SVG cùng source/audit/archive/raw hashes được lưu trong `v6full1_fifo_diagnostic_plot.json`; figure đã được kiểm tra bằng mắt.
+
+
+### 22.10. Tái tạo input từ nguồn gốc khác gì kiểm lại input đang có?
+
+**Hỏi: Đã kiểm parity1.986token vectors rồi, vì sao vẫn cần tái tạo trace?**
+
+**Đáp:** Parity kiểm hai tokenizer đọc cùng bộ prompt đang lưu và cho cùng token ID. Nó chưa chứng minh người khác có thể dựng lại bộ prompt đó từ LoCoMo gốc. Phép kiểm mới bắt đầu từ JSON chính thức, render lại từng câu hỏi bằng renderer/tokenizer đã pin, sắp thứ tự round-robin và tạo lại lịch arrival của ba seed. Nó chỉ đọc frozen trace để kiểm hash đích, không lấy prompt từ trace cũ làm dữ liệu sinh. Mọi fingerprint prompt/token, plain JSONL, canonical trace và gzip lưu trữ phải khớp trước khi chấp nhận.
+
+**Hỏi: Vì sao không chạy kiểm đầy đủ ngay trong lúc GPU benchmark đang chạy?**
+
+**Đáp:** Tokenization khoảng50triệuinput tokens, đọc/ghi/nén dữ liệu là công việc CPU/I/O đáng kể. Chạy nó đồng thời có thể làm nhiễu đo gateway/engine. Vì vậy job chỉ chờ một controller đã được xác minh bằng PID, birth time và argv; khi process đó kết thúc còn phải kiểm tất cả serving services đã idle rồi mới làm việc nặng. PID bị tái sử dụng không được xem là cùng process. Đây là kiểm lifecycle, không có thêm GPU engine hoặc lệnh dừng benchmark.
+
+**Hỏi: Disk gần đầy thì có thể kiểm bit-exact mà không xóa bằng chứng không?**
+
+**Đáp:** Mỗi full gzip khoảng57MiB. Tạo ba bản sinh lại và ba bản phục hồi cùng lúc cần hơn340MiB, vượt free space hiện tại. Công cụ xử lý từng seed: tạo một bản gzip mới, phục hồi header vào một bản mới khác, kiểm plain/canonical/storedSHA, ghi proof nhỏ, rồi chỉ thu hồi hai bản duplicate vừa tạo đã xác minh. Input gốc và raw serving archive không bị ghi đè hoặc xóa. Nếu thiếu chỗ, payload/compressor khác hoặc hash sai, job dừng và giữ bằng chứng lỗi; không nới SHA để nhận kết quả.
+
+**Hỏi: Phần này đã chứng minh tái lập full benchmark chưa?**
+
+**Đáp:** Chưa. Tại checkpoint23:08UTC, mới có code, test trên nguồn synthetic nhỏ và một waiter đang chờ full controller kết thúc. Chưa có kết quả tái tạo1.986QA thật. Ngay cả khi final input report pass, nó chỉ chứng minh dựng lại đúng input; performance, floating-point batching và output model của một lần serving mới vẫn cần bằng chứng riêng. Cũng không được gọi ba arrival seeds là ba bộ QA độc lập: cả ba vẫn là cùng1.986câu hỏi.
