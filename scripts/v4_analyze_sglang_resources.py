@@ -49,18 +49,26 @@ def analyze(samples):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('run_id');p.add_argument('--live-pid',type=int)
+    p.add_argument('--allow-failed',action='store_true')
     p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    assert not (a.live_pid and a.allow_failed),'Live and terminal-failure modes are distinct'
+    summary=None
     if a.live_pid:
         process=psutil.Process(a.live_pid)
         cmd=process.cmdline();assert process.is_running() and 'cacheflow.v2_replay' in cmd and a.run_id in cmd
     base=Path('results/v3/raw/sglang');path=base/f'{a.run_id}.metrics.jsonl'
     if not a.live_pid:
         summary=json.loads((base/f'{a.run_id}.summary.json').read_text())
-        assert not summary['errors'] and summary['requests']==summary['successes']
+        if a.allow_failed:
+            assert summary['errors']>0 and Path(f'results/v3/sglang/{a.run_id}.invalid').exists()
+            assert summary['requests']==summary['successes']+summary['errors']
+        else:assert not summary['errors'] and summary['requests']==summary['successes']
     raw=path.read_bytes();lines=raw.splitlines(keepends=True)
     if a.live_pid and lines and not lines[-1].endswith(b'\n'):lines=lines[:-1]
     samples=[json.loads(line) for line in lines]
     result=dict(run_id=a.run_id,live_snapshot=bool(a.live_pid),
+        terminal_request_errors=summary['errors'] if summary else None,
+        invalid_marker=Path(f'results/v3/sglang/{a.run_id}.invalid').exists(),
         source_prefix_sha256=hashlib.sha256(b''.join(lines)).hexdigest(),
         scope='Existing 1Hz observations, left-endpoint weighted. Live snapshots are incomplete and not performance results. Summed RSS double-counts shared pages; load_back CPU duration is enqueue-path time, not DMA. Missing endpoint counters remain null.',
         **analyze(samples))

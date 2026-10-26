@@ -1,0 +1,43 @@
+{
+  "scope": "Named runs only; missing source counters remain null; profiling flags recorded",
+  "runs": [
+    {
+      "run_id": "v4c1-full-sg-g6-qps4-native-s901",
+      "requests": 1986,
+      "errors": 0,
+      "trace_sha256": "0a75c2878ed35847713dddd0e2af05b3127ad01b55838df121cc08a121eb573d",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v4",
+      "gateway_policy": null,
+      "gateway_prepare_mode": null,
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 48,
+        "inbatch_check_threshold": 32,
+        "inbatch_deprioritize_threshold": 32,
+        "same_batch_guard": true
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "32",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null,
+        "CACHEFLOW_SG_SAME_BATCH_GUARD": "1"
+      },
+      "p50_ms": 494661.377367,
+      "p95_ms": 1059892.93476125,
+      "p99_ms": 1189283.6205574502,
+      "native_uncached_tokens": 309299.0,
+      "native_host_promoted_tokens": 41138064.0,
+      "admission": null
+    }
+  ]
+}

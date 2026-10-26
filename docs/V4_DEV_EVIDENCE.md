@@ -174,3 +174,25 @@ At698.42s of the first measured sample window,857 requests had completed, native
 Source reinspection distinguishes gauge `sglang:num_retracted_reqs` from counter `sglang:num_retracted_requests_total`. Missing first-endpoint host-promotion counters stay null in the strict resource delta; absolute endpoint values are retained separately. The frozen benchmark's legacy summary can use a missing-first-as-zero convention for later-created series; the resource audit explicitly discloses its endpoint coverage instead of silently strengthening that convention. Two CPU tests cover irregular time weighting, missing baseline counters and counter reset rejection;44 tests pass overall.
 
 Prepared `v4_analyze_kernel_overlap.py` only accepts the separate kernel/page_first diagnostic, requires12 host promotions and432 per-layer I/O kernels, checks source token coverage, and intersects GPU-clock I/O intervals with GEMM/GEMV/attention intervals. Unknown kernel naming/counts cause rejection for manual inspection. This code has compiled but has **not** run on a kernel trace yet. The full driver's separate diagnostic is still scheduled after all unprofiled full runs. Follow-on `v4_after_full.py` waits on verified driverPID269852 and will run resource/timeline analyses only if the full audit and diagnostic exist; it never retries or restarts GPU work.
+
+## First complete full-data baseline,13:30UTC
+
+`v4c1-full-sg-g6-qps4-native-s901` finishes1986/1986 requests, zero errors, strict prompt/output/source-token audit passed. This is **one native baseline**, not a complete17-run study or candidate contrast. Source: `sglang/v4_full_first_native_audit.json`, `v4_full_first_native_quality.json`, run setup/metrics and `.resources.json`. The pipeline has advanced toFIFO64 on the same nativeLPM process. No method or timeout change was needed; the failure-audit contingency remains unused.
+
+| Quantity | Measured value |
+| --- | ---: |
+| Scheduled arrival span |510.151s|
+| Complete-run makespan |1471.821s|
+| Achieved completion rate |1.349requests/s|
+| Arrival-TTFT p50/p95/p99 |494.661/1059.893/1189.284s|
+| Prompt tokens |50520339|
+| Native cached / uncached tokens |50211040 /309299|
+| Answerable F1,1540QA |.319602|
+| Category5 score,446QA |.008969|
+| Output cap96 hits |23/1986|
+
+The resource observation window includes setup/replay/drain and lasts1478.774s, so it is not identical to replay makespan. Sampled native queue>128 for94.47% of that window, peak255; time-weighted GPU utilization82.03%, VRAM peak16034MiB. These are sample estimates, not exact scheduler or SM timelines. The first host-promotion endpoint is absent, last41138064tokens; strict endpoint delta staysnull, while the frozen benchmark's missing-first-as-zero convention reports41138064. Preserve both provenance interpretations. No direct-DMA byte/bandwidth claim is derived from that counter or the7.943s CPU enqueue histogram.
+
+Full category scores:1=.254807(n282),2=.166211(n321),3=.142834(n96),4=.420054(n841),5=.008969(n446). Near-zero category5 performance is a clear absolute abstention limitation, even though all prompts fit and integrity checks pass. It cannot be hidden by the answerable mean, and this single arm does not establish quality preservation by scheduling.
+
+Cached tokens exceed99% but arrival tail is very large under offered4QPS. This establishes why queue/load/source accounting must accompany cache-hit ratios, and why the separately plannedDFS andFIFO64 native controls matter. It does not yet show union admission wins full-data comparisons. All1986 requests succeeded; do not infer a client timeout merely from E2E latency exceeding one configured per-phase timeout.

@@ -579,3 +579,19 @@ Ngược lại, hai prefix hoàn toàn khác nhau dài28.000 và22.000token cầ
 **Hỏi: Vì sao giá trị cuối counter lớn hơn0 nhưng delta vẫn đểnull?**
 
 **Đáp:** Nếu series không có ở đầu cửa sổ, không thể chỉ từ hai endpoint chứng minh baseline bằng0. Analyzer giữ giá trị đầu/cuối, đồng thời để delta nghiêm ngặt lànull. Nếu mã nguồn chứng minh exporter tạo series lười khi lần đầu observe/inc, có thể bổ sung diễn giải có điều kiện, nhưng phải ghi rõ giả định. Trong full native run đầu, `load_back_tokens_total` có giá trị cuối nhưng không có series ở mẫu đầu; công cụ theo dõi giữ cả hai thông tin. Một gauge cũng không được trừ như counter: `num_retracted_reqs` là gauge, còn `num_retracted_requests_total` mới là counter tương ứng trong phiên bản đã pin.
+
+### 20.1. Full baseline đầu tiên:99% cached vẫn có thể rất chậm
+
+NativeLPM/HiCache đầu tiên đã chạy đủ1.986QA, không lỗi. Trace phát request trong510,151giây, nhưng hệ thống mất1.471,821giây để hoàn tất. Arrival-TTFT p50/p95 là494,661/1.059,893giây. Đây là một baseline đang bị backlog ở4QPS, chưa phải kết quả so với candidate; pipeline còn phải chạyFIFO64, union vàDFS theo protocol đã khóa.
+
+**Hỏi: Cache hit hơn99% thì tại sao TTFT vẫn rất cao?**
+
+**Đáp:**50.211.040 trong50.520.339prompt token được native báo cached, nhưng “cached” không có nghĩa mọi KV đang ở GPU và dùng được miễn phí. CPU-backed KV có thể phải nạp lại quaPCIe; queue và decode cũng giữ tài nguyên. Hơn94% cửa sổ lấy mẫu có queue trên128, là điều kiện khiến LPM bản đang pin chuyển sangFCFS. Cần đo thêm nguồn token và đối chứngDFS/FIFO64 trước khi nói cơ chế nào gây từng phần latency. Counter hit cao một mình không chứng minh hệ thống nhanh.
+
+**Hỏi: Full QA có tốt không?**
+
+**Đáp:**Baseline này có F1 khoảng0,320 trên1.540câu có đáp án, nhưng điểm category5 chỉ0,009 trên446câu adversarial. Có23output chạm cap96. Đây là kết quả text-only, budgeted generation theo evaluator gốc; không phải chất lượng leaderboard hay bảo đảm abstention. Cần báo riêng category5 và so output thay đổi theo từng policy. Một bảng serving latency xanh không làm hạn chế hallucination biến mất.
+
+**Hỏi: P95 hơn1.000giây mà không lỗi, có mâu thuẫn với timeout600giây không?**
+
+**Đáp:**Không thể xem một timeout ở client như deadline E2E của mọi request. Arrival-TTFT cộng cả chờ từ lịch đến, transport/pool, native queue và execution. Timeout được áp dụng ở các công đoạn cụ thể, với phạm vi khác tổng thời gian đó. Bằng chứng của lượt này là toàn bộ1.986request thành công, không phải suy luận từ tên cấu hình. Nếu cần SLO tổng600giây, phải định nghĩa và đo deadline từ scheduled arrival một cách tường minh.
