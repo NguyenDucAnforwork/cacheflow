@@ -183,3 +183,25 @@ Both treatments pass the declared<=5% gate at all three seeds. Every measured ar
 Mean run p50/p95 seconds are FIFO24.531/44.294, oldunion24.518/44.285, readiness24.539/44.311. Readiness versus oldunion p95 changes+.045768/+.096571/+.031433%, consistent with negligible additional timing differences in this control; no adaptive scheduling or universal no-regression claim follows. `v6controls1_main_lowreuse_subset_waits.json` verifies per-request additive stage reconstruction for all72responses. Do not add stage quantiles or interpret upstream as pure GPU time.
 
 Together with the completed native low-reuse control, the observed primary low-reuse<=5% condition now holds on both stacks. **This does not authorize a premature full seal:** the freezer still requires the complete36-arm main controls audit, including GPU-fit/abstention, then full CPU token-ID preflight. Main18/36arms612requests are complete at this checkpoint; the30-arm full study and final research conclusion remain unexecuted/unproven.
+
+
+## Main GPU-fit control: complete nine-arm subset
+
+`v6controls1_main_gpufit_subset_audit.json` verifies **9 fresh engine/LMCache arms,540/540 measured successes, zero errors,540 separate warmups**, using the same60exposed QA at GPU10GiB across three arrival schedules. Config/source/observer/transport/input/token/output/warmup contracts, observed host heap16039018496bytes, official quality and native histogram coverage9/9 pass. `v6controls1_main_gpufit_subset_waits.json` reconstructs every measured request's additive stages.
+
+| Mean of three run values | FIFO64 | Old union64 | Ready union |
+| --- | ---: | ---: | ---: |
+| TTFT p50 s | 12.526 | 12.524 | 13.522 |
+| TTFT p95 s | 14.529 | 14.537 | 14.682 |
+| New-prefill source tokens | 65122 | 65122 | 65122 |
+| Engine-consumed CPU KV tokens | 0 | 0 | 0 |
+| Answerable F1 | .310808 | .310808 | .312178 |
+| Cap hits across180responses | 12 | 12 | 12 |
+
+Old union versus FIFO p95 changes **+.339/−.062/−.094%**, with identical output hashes/quality at every seed. Ready versus FIFO p95 changes **+3.384/+.198/−.291%**, median **+8.802/+7.015/+8.059%**. Versus old union, ready p95 changes+3.035/+.260/−.197%, median+8.625/+7.007/+8.296%. Ready changes3/4/3output hashes and F1 by+.002574/+.003787/−.002251versus either reference; equal cap totals and nearby scores are not quality equivalence. All arms record0preemptions.
+
+All nine arms match the independent input-only page16 reference65122, so readiness saves no additional observed prefill in this main GPU-fit control. Main CPU-source consumption0 does not prove absent backup/store or every physical IO operation. Native GPU-fit has a different result: the readiness ablation still reduces observed native prefill relative to its native reference, while increasing median and changing outputs. Keep these as separate within-stack observations; an aggregate cross-engine transfer/compute percentage would be invalid.
+
+Mean total/admission/upstream-to-firsttext seconds are FIFO **12.569/.000029/12.484**, oldunion **12.569/.000031/12.488**, readiness **13.206/11.871/1.248**. Readiness moves waiting into frontend admission and increases total mean by .637s versus oldunion. Upstream includes queue/copy/compute/transport, not pure GPU time, and stage quantiles are never summed. Because readiness tests pending prefix/first text rather than a verified restore-pressure condition, it can change admission even when the declared CPU tier supplies no consumed tokens.
+
+This control supports original union's near-no-op behavior in this measured main GPU-fit regime and explicitly limits the extra gate: additional delay with no observed work reduction, mixed tail/quality differences. The registered methods are unchanged. It does not establish universal non-regression, quality equivalence or a native publication/pinning explanation. Full ten-conversation10GiB remains a larger-cache control, not GPU-fit. Main27/36controls1152requests now complete; abstention, the complete-stage audit and all full-study work remain open.

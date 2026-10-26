@@ -1,0 +1,28 @@
+{
+  "gateway_pid": 436429,
+  "gateway_argv": [
+    "/venv/main/bin/python",
+    "/venv/main/bin/uvicorn",
+    "--factory",
+    "cacheflow.v6_gateway:create_app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8100",
+    "--no-access-log"
+  ],
+  "source_sha256": {
+    "scripts/v6_main_controls.py": "3e46444a6dd77dfcd940abdb0b150abb8df5a5dff5d61b53ac1e7231f9121f30",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v6_replay.py": "ee31f9a31493766cfa93cafd56c2490e902b2bf329faa299d3ba210e79f73f46",
+    "scripts/v6_run.sh": "799b3748b59d99918aa3526aca8b524b84794fa6b34e79f3ec22f16b3d99e300",
+    "scripts/v6_v2_run.sh": "3bc9bf82aa548034beab6579298ed8a3300614a795cc72f67fa26047e596cf0e",
+    "scripts/v6_native_metrics.py": "79dfcc5fae25256a208a055a22528bd9888d56a50471f52619e0260a941dceea",
+    "scripts/v5_full_histograms.py": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8"
+  },
+  "native_probe": false,
+  "upstream_profile": false
+}

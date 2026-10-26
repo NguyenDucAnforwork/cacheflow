@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 21:03 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 21:33 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main controls đã audit riêng low-load, low-reuse và GPU-fit; còn abstention và audit toàn bộ stage. Full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -859,6 +859,14 @@ Trong main, readiness so union cũ có p95 −0,44/−0,84/+4,58%, median tăng 
 **Hỏi: GPU-fit có làm method thành no-op không?**
 
 **Đáp:** Union cũ gần native: p95 tăng khoảng 0,1–0,9%, outputs/F1 giống nhau. Readiness vẫn đổi thứ tự vào engine vì gate dựa trên pending prefix/first text, không dựa trên API báo CPU restore. Ở 10 GiB dev, nó giảm p95 khoảng 4–6% nhưng tăng median 22–32%, thay đổi outputs và tăng F1 khoảng .0175–.0251. Cap hits là hai thay vì ba mỗi run. Không tự gán gain đó cho tiết kiệm CPU copy; full ten-conversation 10 GiB cũng chỉ là larger-cache control, không phải GPU-fit.
+
+**Hỏi: Main GPU-fit có cùng kết quả với native không?**
+
+**Đáp:** Main đã audit chín fresh-engine arms, 540 request đo và 540 warmup riêng ở 10 GiB. FIFO, union cũ và readiness đều compute đúng 65.122 token, engine-consumed CPU KV bằng 0 và không preemption. Union cũ gần như FIFO: p95 +0,339/−0,062/−0,094%, output hashes và scores giống nhau trong mỗi seed.
+
+Readiness không tiết kiệm thêm compute ở control main này nhưng vẫn tăng median khoảng 7–9%; p95 +3,384/+0,198/−0,291% so FIFO. Nó đổi 3/4/3 outputs, F1 có seed tăng và seed giảm dù cap hits giống nhau. Mean total TTFT tăng 12,569 lên 13,206 s; upstream giảm 12,488 xuống 1,248 s nhưng admission tăng lên 11,871 s. Frontend delay vẫn phải tính vào trải nghiệm client.
+
+Đây là ví dụ gate có chi phí khi không còn cơ hội tiết kiệm work đã đo. Native GPU-fit lại có prefill khác giữa các policy nên không gộp tỷ lệ hai engine. Không sửa rule giữa các arm để che control bất lợi; một policy thích nghi theo pressure thực cần được thiết kế, freeze và đánh giá riêng.
 
 **Hỏi: Answerable F1=null trong abstention test có phải model được 0 điểm?**
 

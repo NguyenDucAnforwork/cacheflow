@@ -1,0 +1,4971 @@
+{
+  "subset_complete": true,
+  "overall_main_controls_complete": false,
+  "regime": "gpufit",
+  "registration_sha256": "5e269b7f6c6701d766530fb016710bd807f060e86bc84d0c887dda84d3ad046c",
+  "quality_sha256": "80c5df0bf9494480691b8396f39d97bdd68d1f203569b69bbc073b7886b19324",
+  "artifact_sha256": {
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101-warm.metrics.jsonl": "330166f8882f2240ef24d00ef938bcd6e86dbba8a7ef0dab029ad2b10ae166a2",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101-warm.jsonl": "2b84dc902f5d3ca1cfab7bd6a2d09bc336e01ad7b0835fb3751c52cd83d9154d",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101-warm.outputs.jsonl": "0eee5006fa5a9c42d8f0e97d52d5af4965c7e7561a3ea0e2765d0da410ca4bce",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101-warm.summary.json": "44598947bc33701300c763fbdfe0b88a804fad0d6c37574fa9081d773410046b",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101-warm.gateway.jsonl": "c582b901d9bf7afcb5ecc99b6133a32098e266cba0f12ef7a04ee86cf1ed4f27",
+    "results/v3/v6controls1-main-gpufit-fifo64-s101-warm.setup.json": "f89faa52de32505d58e7d4ccf58c5ab4a0df52597bd5de78bd2e29b53f331900",
+    "results/v3/v6controls1-main-gpufit-fifo64-s101-warm.v6_entrypoint.json": "7ce7e21e16c6c0c282a07c33c4b5e9bd435d3e5bb010cd93a0b7a98f4987b32a",
+    "results/v3/v6controls1-main-gpufit-fifo64-s101-warm.metrics_summary.json": "535b2f967be28186bd8a03b38a959177f149fd11645bb9b09de4b4567a0ef27f",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101.jsonl": "eb555df9d546d9fd3f181ce53a9c984feee607dc169b85b3d092a9bc04668b3f",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101.metrics.jsonl": "670f3f74310a5acce700e881ebbf6e721d23ac71c5e03010331cfe436549d8ed",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101.outputs.jsonl": "f13a406ce9e5530ecb62031577cfa5ffa401036df35cbb86ac75d3d82e704747",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101.summary.json": "fc7560ff408de2339e0e46d00dc052ee371d96416b63bcb8866cede3f3996a6b",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s101.gateway.jsonl": "ef59f8f583999fc586b1406fbb738bff70d61048f063e4b4534fedac7dfdaedf",
+    "results/v3/v6controls1-main-gpufit-fifo64-s101.setup.json": "7ca9d791c078c3f989521667d22db9305bcb1b5dedc31de037fb32aff8ffbcb1",
+    "results/v3/v6controls1-main-gpufit-fifo64-s101.v6_entrypoint.json": "af177b2dc3c961a89f3706341d408dec92971c7f5f63e737d232e9a19f02ddc9",
+    "results/v3/v6controls1-main-gpufit-fifo64-s101.metrics_summary.json": "f5077e9bb913b6769682c015fc8d62419bc6752b0906f14d7688fe59eac271d1",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101-warm.metrics.jsonl": "4beda542e8d4a525bc7aadc43556c32831590e0879ce41f1667dff4f99666032",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101-warm.jsonl": "ede40e8fa11255007e4c76283ef0c8a0d850632af18c53918522346690f7e1dc",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101-warm.outputs.jsonl": "f7aac7f9c17bb8b3176b476ee3328776b1e466fa3d02519039d03cb5c286c8d7",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101-warm.summary.json": "acb59ffd3decbe309f4ff28f0889855357f98f53c244cfde6b9a4432e64e6985",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101-warm.gateway.jsonl": "f014aa46469227c19f62d8a16ccde0de6bc9b9ff8ea56c7dea5d143a64ba9fc8",
+    "results/v3/v6controls1-main-gpufit-union64-s101-warm.setup.json": "ca82d36407d6593e40a3058e3c7997ea3e2669651eed084e75fc42b81094db5c",
+    "results/v3/v6controls1-main-gpufit-union64-s101-warm.v6_entrypoint.json": "6b8fac1c46a0eacc01d220e33bf88334934812fe7548e86b3838ff86ef1cf841",
+    "results/v3/v6controls1-main-gpufit-union64-s101-warm.metrics_summary.json": "b8686c53755a87d12cb794fd46625dcfe3fc24ead7a4470dc1fceebf8575e7de",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101.metrics.jsonl": "2e4c203747048967746adc1f560b65fb5e5b7dbb5e12b28d092cfabc1a701f7b",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101.jsonl": "92d48d21f805f46a6793366d5c6e96304712911e7ef7ac4d65217a4b08515362",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101.outputs.jsonl": "ab9888f1a5f10be35e1a2167e351499bb523532dba7e6b3d94acdea3ff491e19",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101.summary.json": "3aa0bc2c9bb0b9c464d7babc63e29ef631b8089f135efc77a82f52e3d96cfc20",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s101.gateway.jsonl": "ec011b01dcf40b201ce3e663ecf81ea5b84b21074d0c1725278d095056055dfb",
+    "results/v3/v6controls1-main-gpufit-union64-s101.setup.json": "34cfe15e7e5abfbc1cfffdcc33087f96b9a2638fc80ceaab7c7b912ce7b787b0",
+    "results/v3/v6controls1-main-gpufit-union64-s101.v6_entrypoint.json": "197943b9605f6a008d4aab3dfb982b342fed200494bdb1f5ee8e2265c05d2edd",
+    "results/v3/v6controls1-main-gpufit-union64-s101.metrics_summary.json": "47cf12b31b5a8f9e9b856a72eb91d83bbc9f6edba3714e4e166ca3c97f83d56f",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101-warm.metrics.jsonl": "0b8e4d577dc6a9338b1276fc2252ae6f5a4a03868fdd362180c4d896177dd82a",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101-warm.jsonl": "b88cab2bd6284300bff5687977d951f77860798175d410e90c9b28fec8f852cb",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101-warm.outputs.jsonl": "b5390211274208471e1679d85f496ff746eadbede1fdba631d3a59f1b7921346",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101-warm.summary.json": "30053d84b559e7acfe832bd85ef71bc0657630047ea073a36bdca57d4c128230",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101-warm.gateway.jsonl": "cb90765dd61efcca8bd9744176fdf5f15dc9a8cc3387d260f059a34a1eeb0db2",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s101-warm.setup.json": "5d82d8cfcdcb43b0a08760aba373dce5ea89afc993ffc734d85e1ade69ee10df",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s101-warm.v6_entrypoint.json": "38960e7498c233fb30ab24cd6ff505d0c322e23b5dac857183b86eeeec60082d",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s101-warm.metrics_summary.json": "9f291e61200ec1c7653298669346b8604030763b0dc467ae23452178ec111f75",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101.metrics.jsonl": "6eab35726e6c4a1ed78265e1a007e2e02bf1afefdaf78e178cf4ede12c73b210",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101.jsonl": "c40fa509c104bf4806f7397b8c590fcd53e22a6fdfc1c07b6c3735eec49b4956",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101.outputs.jsonl": "338c4ce41edb4d65777c2a5f924d2ec5cfb6ad0271c743aae62dcd8d74f64315",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101.summary.json": "e9cf246166a6e70aeedb9ece206cde729dbdeac5025b7dcf0626a4441909aa0b",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s101.gateway.jsonl": "95d8dc2c8e9f41df0a57c96f25acd77171b195e3e8cf7922c8369fd270932368",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s101.setup.json": "78edec2c993102f6cef5f7a02f9539d7d394b1c9839645c9bff06686124b8333",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s101.v6_entrypoint.json": "fd1698e7e798764f80d837d145c0473b943098f014dca9ce82c5e6f5ae280351",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s101.metrics_summary.json": "92c1dac64a2cd86af7f22760de7e30ebc1cb93b6aeea117d6d1c9680d9c0dd6a",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102-warm.metrics.jsonl": "4ccda8a788e0f662e91adafb6e34580f4e3d8427edf10c12342f58f125038552",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102-warm.jsonl": "e1bf3f4cd82b64845e5364d1e6e0a23007d8a74f1f30003c9914fffd64427c65",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102-warm.outputs.jsonl": "ddccb5753d7f049a5d481c918733a5ddcda963c909008248ec7d329af3f7a9c8",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102-warm.summary.json": "5305ea093e505f3a44f095aa3a5e03ace8fceb7c3e3e581e7fc83ee6c0d244e7",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102-warm.gateway.jsonl": "b95c3c512e75de866537a57dc0738953f58ba929b811a66e524cd24fbc4d8e08",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s102-warm.setup.json": "ef6ee68b46ac144754ac059f9c80d041b379cc495b0e032b74300ccbaaaecfc5",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s102-warm.v6_entrypoint.json": "f9eebf833c99d52aa40d942dfe15a766eaf0f5f98e8d66e2f3933e90f0559518",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s102-warm.metrics_summary.json": "9d6b16cc8dea1563965fc4118211af280d4c69f7c23a4427ae786f0ef019da4b",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102.metrics.jsonl": "0b12644a41c8d37ca65c6777b74221c5055c1497b02a892e13ac4049efd66f39",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102.jsonl": "34fc75bb3af706d42c81241f57b58e60cd2da3aedb37c7f3b31914e880f6332c",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102.outputs.jsonl": "b72b1bfeab73c1bf7c9ea98df5057bc1382d31d6be64dbfc8db1416a30edc350",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102.summary.json": "3bff2b47656ba4072294d6f3d23f0b2b6f33595794e4e0715bb246541ab12245",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s102.gateway.jsonl": "6dc3d7346a5f8e32bbc7ad476b068deeb134fe002fc148b19d4b07233ecd1cee",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s102.setup.json": "a93c3affeee5c1a75da606ea6c6cc347a39cec25fd2fdc0582d825afd080f24d",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s102.v6_entrypoint.json": "9122a124ab1e15694690b15c09b9a9ae6187201d9e8a0878ceab6ef7b3009c89",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s102.metrics_summary.json": "ce3aa118b7ba8711b08de02180924db7bbcd1a93870fe9ac2e5c169be8b6b64d",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102-warm.metrics.jsonl": "78b3baef21858882ec56726244f4fc4d4d4fd842fb5c59a87cd1e48b236ebd7a",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102-warm.jsonl": "797a4ce7243101261541b943f702b22935c5f0f4d4277283fac4ef0d59879777",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102-warm.outputs.jsonl": "9520b2769ac224910fa4d9bd8bf680ff0c232a08935b2f9d120b8b576fd08517",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102-warm.summary.json": "b8de91312c57d170a6e019203d522695351fb376b6e4b6dc100de5b4efe32631",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102-warm.gateway.jsonl": "20838dbc677e1e83f438f325df220fe2cc0c2f6ef2b1d7046226786b59647e9e",
+    "results/v3/v6controls1-main-gpufit-union64-s102-warm.setup.json": "28489b9d0afa9a43b552820126488cc8bd43c47948a9d4f53ca07770e5ba5335",
+    "results/v3/v6controls1-main-gpufit-union64-s102-warm.v6_entrypoint.json": "c9c1fc14266956dac001734e5adbc525a2e8435c129b7543ae0508b37f84a503",
+    "results/v3/v6controls1-main-gpufit-union64-s102-warm.metrics_summary.json": "9d16e43d2e050ff7bacdf30b0a122ded3288b7adaf4cc12eb04c4993ece97c41",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102.metrics.jsonl": "27ac2181dc7c61371bd043d14765ffbba8315ef4a0f29cfdd82bfe194b5a26dd",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102.jsonl": "9430354bb524e44aa9a60ee949c769b866a77283b03b43bcfc7689494334ba1d",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102.outputs.jsonl": "104de642c661174ab6daf2d0410914ddd6db12d1ff8b6b03046398cccf67e648",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102.summary.json": "5d2b00789754341d8af9d51955c3480f7c895f07d85b0353d39dbe3827281cde",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s102.gateway.jsonl": "cb4210354ddd1170e609781b3df0db4b8eea9ccfb0c8538ab7af7734134e9004",
+    "results/v3/v6controls1-main-gpufit-union64-s102.setup.json": "b718461a21ada596242f01f4f92530fbbdff37d97f30b7d2304c8ea7ffd4b660",
+    "results/v3/v6controls1-main-gpufit-union64-s102.v6_entrypoint.json": "05526f847fc50d36ef360be162f888080f8f225c2a454e9c2c22728ee4ad1390",
+    "results/v3/v6controls1-main-gpufit-union64-s102.metrics_summary.json": "e889961835419f98c548811d8543a1cdd3d03afb938d3de54773e62686ca3e5d",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102-warm.metrics.jsonl": "1a09e8f2049461c697c5714954cd913442a9cb2960e99dbe0390251441387316",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102-warm.jsonl": "81d3264b7273d4f61f3515ee8c4cf44530ac65b6c98110ff9427e032980d965d",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102-warm.outputs.jsonl": "db1fd95618f4352d2c9538c6be1112da6589e146e4c951539fe01903331f847b",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102-warm.summary.json": "fe1b677312fd3f051d179bb1263477af4d770f2c602de92e8dad02806c649d35",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102-warm.gateway.jsonl": "82539842ace0b97496af8d830b6f862211f07a58feec7d6f94629417fc7f4e92",
+    "results/v3/v6controls1-main-gpufit-fifo64-s102-warm.setup.json": "1fe92e5fe6fb3617b646b9e731076940998cd34cd45226995ca96a8789925486",
+    "results/v3/v6controls1-main-gpufit-fifo64-s102-warm.v6_entrypoint.json": "2014752b7cd9c055a7321373cea3015d779e4801fddb0fabef320b569187941c",
+    "results/v3/v6controls1-main-gpufit-fifo64-s102-warm.metrics_summary.json": "6743cc6b5e209eb1d67c5c5e1da677f99be5da817c65fcf29ed3aa461a7f1cba",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102.metrics.jsonl": "88f698b4323a5ed397284bc4b38bbaa5208765df15a3bffcdbe1597861e98101",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102.jsonl": "b522b98bdf076c0ee862385fb92add36006a91e54ba31776b7a3d250222ff402",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102.outputs.jsonl": "db22f1a8696723b0520e90fec11f5af94deacf794547ab197a7f87b00a8c3f0c",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102.summary.json": "a70c9db54768215b02c95052a918b072503e80c8d7dd61ef52901e927c09ae3e",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s102.gateway.jsonl": "74a8f02fa0aff6d9303eff3a7ac3dcdf17c199b01be4cb36919218be0f60b882",
+    "results/v3/v6controls1-main-gpufit-fifo64-s102.setup.json": "46941fbc6da9d7206db1e436087e0bd53ad8468f334cb890a9af9de2c809e7eb",
+    "results/v3/v6controls1-main-gpufit-fifo64-s102.v6_entrypoint.json": "bef2f09af1e16948fc634255b12426ad2165b0631668bfa9731a22b2e477c494",
+    "results/v3/v6controls1-main-gpufit-fifo64-s102.metrics_summary.json": "3c79176837499b7abc1721839f5c0ac3323a61d9fdf49334c7157c77f7b504cd",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103-warm.metrics.jsonl": "0b20aad980f728bb08afe4840912382feab68908f15b55482be2ac2cececebd0",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103-warm.jsonl": "7565a1b3be605bc015455809ebcd8f115ce354b9cc90fe3c59ce0b8337130993",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103-warm.outputs.jsonl": "cb3b1bc09d275616bcf1d223a3c117e016f58c880df413e390adb20a2388151e",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103-warm.summary.json": "03f810b688f8d6216a1e58749ee7a220c87a6aa29d29d119ac7ab58709639eac",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103-warm.gateway.jsonl": "72bf66b10061591273f7b293058ce986fc778d7925505ede816216edaceac424",
+    "results/v3/v6controls1-main-gpufit-union64-s103-warm.setup.json": "2730eb981abbebb7af80fc89e36460fcd0bafa52d64cd851536b92092b07f390",
+    "results/v3/v6controls1-main-gpufit-union64-s103-warm.v6_entrypoint.json": "80668e0ddc6ebd94a65d4dd3aa406658b65a8c3df7b79faf4f94460f22d19fa0",
+    "results/v3/v6controls1-main-gpufit-union64-s103-warm.metrics_summary.json": "25b01f20314ed814d925f5166d382da0048158a00f56df3960776232a2432b43",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103.metrics.jsonl": "dd5cbf2c66db9310c5a96ac30ec254a40f58b860bd8da9c393667500969e2637",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103.jsonl": "51ed8b314f0583adb21fd7eb735de4a33bc9bdabf67e53f25953b0ff8b954c3e",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103.outputs.jsonl": "81fdf972fb385fb9b72374c930fe44ef0a7280a185c791b748f65e7e88b0fd8f",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103.summary.json": "63e6f95fdd5abe0a01ed1e1499c29652f11ebbdd6c7630343a792e92b8d3179d",
+    "results/v3/raw/v6controls1-main-gpufit-union64-s103.gateway.jsonl": "e79434ee83818609a64d9ce1e01adf48569779b848bc4f0a7c7e24456f927866",
+    "results/v3/v6controls1-main-gpufit-union64-s103.setup.json": "ea5114015728d9a8464250583154866e300c02237d552fe9685f599cb773bb90",
+    "results/v3/v6controls1-main-gpufit-union64-s103.v6_entrypoint.json": "a94151ca1cf5067748625eaf4d858bc5dd1cdcdd72ce153139b20522ba181965",
+    "results/v3/v6controls1-main-gpufit-union64-s103.metrics_summary.json": "7b60966c475510eef956f67da9cd5a29d0ca349537c3289024a58d063f55c12e",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103-warm.metrics.jsonl": "bedf89f88ae4d999ff17f8229d0842df9402dfad6066b9efe547ce64288af9a3",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103-warm.jsonl": "b5d28aef0fccabdbdf2b34bc9930ab47fac939feb5be3561ac6288e282668a28",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103-warm.outputs.jsonl": "20a822ad1a37f6529d5282c1045a477974a1be423ede1c308f838a746c9989c7",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103-warm.summary.json": "a28e5e5d10d6a60f22a1d5c87ca2eb875f6beac2983f2430e838e04e33238208",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103-warm.gateway.jsonl": "7432f970de406f8703f06254947b9af8ae3120ec6f499a47a9157b478d9e4c70",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s103-warm.setup.json": "2474a317c7465f83c785c101d036029ca2f87545896a3cfd54202412265a6744",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s103-warm.v6_entrypoint.json": "6a09c5dc366e4eaa3833ca278a1bccc8322f6cdaadff2d014856d113043a831c",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s103-warm.metrics_summary.json": "b5ae35453d4d7a0b031fbe18063a8b3f0ee169de0910ae71f3f548113ca14cfa",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103.metrics.jsonl": "d78d79d2903e3d6eb5c7a8276ed1d09032a94588b1331adbdae12daf1b2fec1e",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103.jsonl": "02840713842c787c92f9d4422b70b3b2c529dee40fe8e46c11c44d343d41b871",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103.outputs.jsonl": "60b06842c985ce27e191311b260dd29e6b719cde6df0b9a1bc51c1436937e057",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103.summary.json": "5909d68341a020ffd06aaecd0e3ba6f96766efd09bfbe76bfa5d8dd693c4925c",
+    "results/v3/raw/v6controls1-main-gpufit-packing_ready-s103.gateway.jsonl": "79e3460200a218990b9ca7f71c8730e648b5ba91305227fe238eb14c56a0f9f6",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s103.setup.json": "f0864193f5b119e669ee749f6abde3f7e4ff68b436929be5f118dac637eadf9d",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s103.v6_entrypoint.json": "087b72ed6df3c9b6d1763b4817238c87843e1149ffc8bf2468b8ddced21afc02",
+    "results/v3/v6controls1-main-gpufit-packing_ready-s103.metrics_summary.json": "d8593180d44a84c241dca1eb2125d7deeccf6cfa3dba124467c2232223418974",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103-warm.metrics.jsonl": "572f93bb6315cceb3dc9ae945f64bbb49b59d3a7529da9565c11c333e184cbb9",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103-warm.jsonl": "4f08450ef88f92c89f8c9d466ae127a6b3e63ef8d1afabe3935ea318cd113acd",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103-warm.outputs.jsonl": "775003ebe8a8dc14978b6ad5e9f397c9938bd4f99d5b3b9da48b8fd0df072f2b",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103-warm.summary.json": "5bfc6277731dd70009d9aa8ba9e5f006791a4ff5ffc353abfcef94193e2ab722",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103-warm.gateway.jsonl": "4a9462c350d54464f78b895f24033e089858e6cc0d405de90c24b84341a63449",
+    "results/v3/v6controls1-main-gpufit-fifo64-s103-warm.setup.json": "a0bdf712636b0dad7479a4ea12ee5652111f3e036c852394759d68033c0f289b",
+    "results/v3/v6controls1-main-gpufit-fifo64-s103-warm.v6_entrypoint.json": "bc0e103c57eb36ec1915643b294a49f5df8d0b4fc3608b3af3d6dd58a773187d",
+    "results/v3/v6controls1-main-gpufit-fifo64-s103-warm.metrics_summary.json": "91bad250739abe2a34393826722a1b8c22e9d3bb4b500f0c46e632440ec3562f",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103.metrics.jsonl": "3944387c32c4ffce83bb57af4cd6d5f4819c1235230bf8ca7a5f2ddfce3c1423",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103.jsonl": "659f0ffe57c76244c64583e1a4bd7a532e4f8ab043859e5711f71c1f356a620c",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103.outputs.jsonl": "e01f5980b904ea6a8b074a9d11a2606d3cff2ec763d7a3697c2c44fe94dd2af5",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103.summary.json": "04158f7319ddf336b54c42dffd8821c6c96de810fd8475a100ba473871802bdc",
+    "results/v3/raw/v6controls1-main-gpufit-fifo64-s103.gateway.jsonl": "c29e9ab392b640624caeb1839230ee8932ba579be48fda4675e5aae2aef469c7",
+    "results/v3/v6controls1-main-gpufit-fifo64-s103.setup.json": "61fb208d632c44d7e1b2155d4a6d91196cc505baf60ba6e47433836e38091f60",
+    "results/v3/v6controls1-main-gpufit-fifo64-s103.v6_entrypoint.json": "6bd3d4151f8646f3dac672a5ad754e20e06d2487e7420194d86b64253d139093",
+    "results/v3/v6controls1-main-gpufit-fifo64-s103.metrics_summary.json": "e3f3c7fe4c622d5435cfa45ec6c33b6b8f3bed20e56ccadfea23c8ccea0dd5c1"
+  },
+  "analysis_source_sha256": {
+    "scripts/v6_audit_main_controls_subset.py": "1f0ea671f9976ff616b1ec3c0e2cb87aac48d55e97f94fc4ff575540ea16d888",
+    "scripts/v3_analyze_runs.py": "7d095e4facce7dd42dd23eb0f170fc76679b477b4b249f5a518ee6abfd2eab37",
+    "scripts/v6_analyze_fairness.py": "1e62346d7249242fe8cad9ea2fa9e2fc1c9f2b4c7a9d9fd7c1c59c2e7353c0df",
+    "scripts/v5_analyze_decode.py": "d291c5dda7be6714cdbcd033b52d058cbd53db884b28cc19981dd88b1b0f2725",
+    "scripts/v5_analyze_histograms.py": "ff26dcdf211500c32ff8dd1deedaedb0469707575066d2337a41c2c6ddd10a8d"
+  },
+  "scope": "One complete nine-arm control, three arrival seeds on exposed QA; fresh engine/LMCache per arm. Not the full36-arm stage or full1986QA benchmark.",
+  "requests": 540,
+  "errors": 0,
+  "separate_warmup_requests": 540,
+  "runs": [
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "fifo64",
+      "seed": 101,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6controls1-main-gpufit-fifo64-s101",
+      "engine_pid": 433288,
+      "lmcache_pid": 433174,
+      "p50_ms": 12363.081720999999,
+      "p95_ms": 14021.53938205,
+      "p99_ms": 14436.511005729999,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s101",
+        "snapshot_sha256": "9d3be0bb6afbad3d575a7c14ca3d1c4069d383abef95c9a2d6a82b3d3c9935af",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 138.6832662077801,
+        "itl_observations": 1346.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s101",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+        "request_file_sha256": "eb555df9d546d9fd3f181ce53a9c984feee607dc169b85b3d092a9bc04668b3f",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14908.7421545,
+          "p95": 20102.22586195,
+          "p99": 24734.77647612999
+        },
+        "after_first_to_close_ms": {
+          "p50": 1924.9305215,
+          "p95": 9085.687559549991,
+          "p99": 13240.19397657999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 144.230618725,
+          "p95": 213.3857759374999,
+          "p99": 615.9570441800956
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1406,
+        "workload_output_tokens_per_s": 48.41919183697784,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s101",
+        "request_file_sha256": "eb555df9d546d9fd3f181ce53a9c984feee607dc169b85b3d092a9bc04668b3f",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12322.3912385,
+              "p95": 13965.8107026,
+              "p99": 14131.24418292,
+              "max": 14172.602553
+            },
+            "completion_latency_ms": {
+              "p50": 15266.331560999999,
+              "p95": 20241.578396350003,
+              "p99": 23070.951697669996,
+              "max": 23778.295023
+            },
+            "admission_wait_ms": {
+              "p50": 0.027892,
+              "p95": 0.041337700000000026,
+              "p99": 0.06998513999999995,
+              "max": 0.077147
+            },
+            "preparation_ms": {
+              "p50": 58.934493,
+              "p95": 131.31337805000007,
+              "p99": 194.2225460099999,
+              "max": 209.949838
+            },
+            "admission_deadline_overrun_requests": 1
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12297.091947,
+              "p95": 14016.095412249999,
+              "p99": 14018.65454885,
+              "max": 14019.294333
+            },
+            "completion_latency_ms": {
+              "p50": 15223.408562,
+              "p95": 19070.124400550005,
+              "p99": 24702.96617290999,
+              "max": 26111.176616
+            },
+            "admission_wait_ms": {
+              "p50": 0.0271115,
+              "p95": 0.0383507,
+              "p99": 0.03861974,
+              "max": 0.038687
+            },
+            "preparation_ms": {
+              "p50": 42.733943999999994,
+              "p95": 144.06161100000006,
+              "p99": 195.4481749999999,
+              "max": 208.294816
+            },
+            "admission_deadline_overrun_requests": 1
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12579.2325645,
+              "p95": 14101.799633600001,
+              "p99": 14673.385291519999,
+              "max": 14816.281706
+            },
+            "completion_latency_ms": {
+              "p50": 14281.1933245,
+              "p95": 19683.3482415,
+              "p99": 20729.6651163,
+              "max": 20991.244335
+            },
+            "admission_wait_ms": {
+              "p50": 0.027077,
+              "p95": 0.028398050000000005,
+              "p99": 0.033490809999999996,
+              "max": 0.034764
+            },
+            "preparation_ms": {
+              "p50": 81.9933475,
+              "p95": 171.13240195,
+              "p99": 172.97041559000002,
+              "max": 173.429919
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-fifo64-s101",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.001730526,
+          "queued_with_at_most_one_active_s": 0.00011583399999999999,
+          "active_request_seconds": 935.952179754,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31080849849237696,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.35451344813646735
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.1692857142857143
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "union64",
+      "seed": 101,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6controls1-main-gpufit-union64-s101",
+      "engine_pid": 434600,
+      "lmcache_pid": 434484,
+      "p50_ms": 12383.3089975,
+      "p95_ms": 14069.121824549999,
+      "p99_ms": 14451.975573469997,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-union64-s101",
+        "snapshot_sha256": "ff0398881f7bde313f05aa2b49d8efb6ca6caca71464dcbdf036f63198ba94d3",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 139.04330538710155,
+        "itl_observations": 1346.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-union64-s101",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+        "request_file_sha256": "92d48d21f805f46a6793366d5c6e96304712911e7ef7ac4d65217a4b08515362",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14933.510323499999,
+          "p95": 20130.388605099997,
+          "p99": 24785.934471419994
+        },
+        "after_first_to_close_ms": {
+          "p50": 1924.403936,
+          "p95": 9123.805054749993,
+          "p99": 13265.413926959991
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 147.60011035,
+          "p95": 214.74676463749987,
+          "p99": 615.4338062687086
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1406,
+        "workload_output_tokens_per_s": 48.3336530327749,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-union64-s101",
+        "request_file_sha256": "92d48d21f805f46a6793366d5c6e96304712911e7ef7ac4d65217a4b08515362",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12340.589749,
+              "p95": 14008.05670875,
+              "p99": 14152.055652949999,
+              "max": 14188.055389
+            },
+            "completion_latency_ms": {
+              "p50": 15293.113865,
+              "p95": 20269.724102650005,
+              "p99": 23117.671671729997,
+              "max": 23829.658564
+            },
+            "admission_wait_ms": {
+              "p50": 0.032022999999999996,
+              "p95": 0.051871150000000005,
+              "p99": 0.05660062999999999,
+              "max": 0.057783
+            },
+            "preparation_ms": {
+              "p50": 55.8390135,
+              "p95": 123.65046425000006,
+              "p99": 178.6677496499999,
+              "max": 192.422071
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12319.208931000001,
+              "p95": 14033.187678600001,
+              "p99": 14060.208286919998,
+              "max": 14066.963439
+            },
+            "completion_latency_ms": {
+              "p50": 15254.859811499999,
+              "p95": 19113.858046150002,
+              "p99": 24752.40267002999,
+              "max": 26162.038826
+            },
+            "admission_wait_ms": {
+              "p50": 0.031281,
+              "p95": 0.04167545000000001,
+              "p99": 0.047184689999999994,
+              "max": 0.048562
+            },
+            "preparation_ms": {
+              "p50": 43.96252,
+              "p95": 134.18546150000003,
+              "p99": 179.7443074999999,
+              "max": 191.134019
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12601.3806515,
+              "p95": 14146.2127503,
+              "p99": 14694.65307486,
+              "max": 14831.763156
+            },
+            "completion_latency_ms": {
+              "p50": 14314.200509999999,
+              "p95": 19734.2710324,
+              "p99": 20781.213096879997,
+              "max": 21042.948613
+            },
+            "admission_wait_ms": {
+              "p50": 0.031711500000000004,
+              "p95": 0.06230410000000001,
+              "p99": 0.06751921999999999,
+              "max": 0.068823
+            },
+            "preparation_ms": {
+              "p50": 80.63421650000001,
+              "p95": 156.4073059,
+              "p99": 157.97930358,
+              "max": 158.372303
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-union64-s101",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.002009922,
+          "queued_with_at_most_one_active_s": 9.2873e-05,
+          "active_request_seconds": 938.124228697,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31080849849237696,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.35451344813646735
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.1692857142857143
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "packing_ready",
+      "seed": 101,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6controls1-main-gpufit-packing_ready-s101",
+      "engine_pid": 435876,
+      "lmcache_pid": 435764,
+      "p50_ms": 13451.314502,
+      "p95_ms": 14496.0714159,
+      "p99_ms": 14788.60962127,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s101",
+        "snapshot_sha256": "9f9f991b08902ebb4673cf0201a599606dfe7866879b2f5e1248a18aa8ea04b5",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 112.25238063192144,
+        "itl_observations": 1331.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 50.0,
+            "upper_ms": 75.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s101",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd",
+        "request_file_sha256": "c40fa509c104bf4806f7397b8c590fcd53e22a6fdfc1c07b6c3735eec49b4956",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14988.468370499999,
+          "p95": 19499.172010899998,
+          "p99": 23456.31207368
+        },
+        "after_first_to_close_ms": {
+          "p50": 1466.678504,
+          "p95": 7885.590450099994,
+          "p99": 10723.925422579996
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 118.85358522083334,
+          "p95": 166.30959456249997,
+          "p99": 512.1856646340633
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1391,
+        "workload_output_tokens_per_s": 48.17940620310542,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s101",
+        "request_file_sha256": "c40fa509c104bf4806f7397b8c590fcd53e22a6fdfc1c07b6c3735eec49b4956",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13211.852866500001,
+              "p95": 13862.5496325,
+              "p99": 13959.6699337,
+              "max": 13983.950009
+            },
+            "completion_latency_ms": {
+              "p50": 14891.865130999999,
+              "p95": 19623.108293100006,
+              "p99": 22657.256537819994,
+              "max": 23415.793599
+            },
+            "admission_wait_ms": {
+              "p50": 12679.251481,
+              "p95": 13277.0549481,
+              "p99": 13291.22039202,
+              "max": 13294.761753
+            },
+            "preparation_ms": {
+              "p50": 65.67911000000001,
+              "p95": 130.94058380000007,
+              "p99": 202.48457915999987,
+              "max": 220.370578
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13102.3713265,
+              "p95": 13803.165528649999,
+              "p99": 14147.11078893,
+              "max": 14233.097104
+            },
+            "completion_latency_ms": {
+              "p50": 15182.6990975,
+              "p95": 18480.875832650006,
+              "p99": 22507.870484129995,
+              "max": 23514.619147
+            },
+            "admission_wait_ms": {
+              "p50": 12526.713077,
+              "p95": 13238.59662795,
+              "p99": 13252.775855990001,
+              "max": 13256.320663
+            },
+            "preparation_ms": {
+              "p50": 46.558257,
+              "p95": 138.07200375000008,
+              "p99": 208.34748234999986,
+              "max": 225.916352
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13647.1041475,
+              "p95": 14701.29707635,
+              "p99": 14885.623560069998,
+              "max": 14931.705181
+            },
+            "completion_latency_ms": {
+              "p50": 14988.468370499999,
+              "p95": 18816.51517505,
+              "p99": 20512.957399009996,
+              "max": 20937.067955
+            },
+            "admission_wait_ms": {
+              "p50": 12995.226702,
+              "p95": 13884.57258195,
+              "p99": 13959.27108119,
+              "max": 13977.945706
+            },
+            "preparation_ms": {
+              "p50": 87.6120665,
+              "p95": 172.83219830000002,
+              "p99": 176.34547006,
+              "max": 177.223788
+            },
+            "admission_deadline_overrun_requests": 19
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-packing_ready-s101",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 2,
+          "queued_with_spare_slots_s": 23.907130946000002,
+          "queued_with_at_most_one_active_s": 0.000130955,
+          "active_request_seconds": 222.90593182700002,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31338202790414166,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.36048105256954494
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.17271708683473389
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "packing_ready",
+      "seed": 102,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6controls1-main-gpufit-packing_ready-s102",
+      "engine_pid": 437159,
+      "lmcache_pid": 437042,
+      "p50_ms": 13505.849717000001,
+      "p95_ms": 14767.0423791,
+      "p99_ms": 14995.38915259,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s102",
+        "snapshot_sha256": "00618bdcaa1c02f7d302307e91f2f35b63b7f5fdbac9f3e1dc5e916463d609e6",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 109.43995073330403,
+        "itl_observations": 1339.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 50.0,
+            "upper_ms": 75.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s102",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+        "request_file_sha256": "34fc75bb3af706d42c81241f57b58e60cd2da3aedb37c7f3b31914e880f6332c",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 15131.440389,
+          "p95": 19114.40036799999,
+          "p99": 23721.757223639997
+        },
+        "after_first_to_close_ms": {
+          "p50": 1475.4775144999999,
+          "p95": 7692.039229149995,
+          "p99": 10621.354984459995
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 107.77530275000001,
+          "p95": 152.03004231249994,
+          "p99": 510.5244781739988
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1399,
+        "workload_output_tokens_per_s": 49.14676536891769,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s102",
+        "request_file_sha256": "34fc75bb3af706d42c81241f57b58e60cd2da3aedb37c7f3b31914e880f6332c",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13264.2821,
+              "p95": 14599.6534057,
+              "p99": 14728.33546114,
+              "max": 14760.505975
+            },
+            "completion_latency_ms": {
+              "p50": 14914.4125605,
+              "p95": 19219.470450350003,
+              "p99": 22669.564935669994,
+              "max": 23532.088557
+            },
+            "admission_wait_ms": {
+              "p50": 12611.919189,
+              "p95": 14099.406378849999,
+              "p99": 14109.48481257,
+              "max": 14112.004421
+            },
+            "preparation_ms": {
+              "p50": 64.012396,
+              "p95": 90.60742305000002,
+              "p99": 107.60385100999997,
+              "max": 111.852958
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13452.151108,
+              "p95": 14495.10457835,
+              "p99": 14520.48338527,
+              "max": 14526.828087
+            },
+            "completion_latency_ms": {
+              "p50": 15317.142461,
+              "p95": 18922.472285450003,
+              "p99": 22980.25050588999,
+              "max": 23994.695061
+            },
+            "admission_wait_ms": {
+              "p50": 12798.469218499999,
+              "p95": 13920.06098305,
+              "p99": 13989.027214209998,
+              "max": 14006.268772
+            },
+            "preparation_ms": {
+              "p50": 46.848656000000005,
+              "p95": 64.09527140000003,
+              "p99": 88.14094787999996,
+              "max": 94.152367
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13830.417718,
+              "p95": 14949.15730495,
+              "p99": 15046.75787219,
+              "max": 15071.158014
+            },
+            "completion_latency_ms": {
+              "p50": 15131.440389,
+              "p95": 18299.04510395,
+              "p99": 20804.358548789995,
+              "max": 21430.68691
+            },
+            "admission_wait_ms": {
+              "p50": 13208.792354500001,
+              "p95": 14306.68384365,
+              "p99": 14341.49404233,
+              "max": 14350.196592
+            },
+            "preparation_ms": {
+              "p50": 93.2346625,
+              "p95": 130.7186321,
+              "p99": 132.52448482,
+              "max": 132.975948
+            },
+            "admission_deadline_overrun_requests": 19
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-packing_ready-s102",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 1,
+          "queued_with_spare_slots_s": 24.415403589,
+          "queued_with_at_most_one_active_s": 0.000156473,
+          "active_request_seconds": 219.977177496,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31459584676501934,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.36048105256954494
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.283209832035919
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.17271708683473389
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "union64",
+      "seed": 102,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6controls1-main-gpufit-union64-s102",
+      "engine_pid": 438446,
+      "lmcache_pid": 438335,
+      "p50_ms": 12621.470478,
+      "p95_ms": 14728.76957505,
+      "p99_ms": 15205.41411461,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-union64-s102",
+        "snapshot_sha256": "417e8dc2935fafe358af5a209390aa6764de94565ebd46ea266760f5775c7670",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 138.54678378380416,
+        "itl_observations": 1346.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-union64-s102",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+        "request_file_sha256": "9430354bb524e44aa9a60ee949c769b866a77283b03b43bcfc7689494334ba1d",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14863.617738500001,
+          "p95": 20112.113635999995,
+          "p99": 25309.74839490999
+        },
+        "after_first_to_close_ms": {
+          "p50": 1934.4791019999998,
+          "p95": 9092.122311699994,
+          "p99": 13225.22198113999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 145.06015939999997,
+          "p95": 213.53473137499986,
+          "p99": 614.4292426312569
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1406,
+        "workload_output_tokens_per_s": 48.78375232191608,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-union64-s102",
+        "request_file_sha256": "9430354bb524e44aa9a60ee949c769b866a77283b03b43bcfc7689494334ba1d",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12584.872115999999,
+              "p95": 14512.7652015,
+              "p99": 14964.989255499999,
+              "max": 15078.045269
+            },
+            "completion_latency_ms": {
+              "p50": 15030.7458145,
+              "p95": 20237.429295050002,
+              "p99": 23389.876539809993,
+              "max": 24177.988351
+            },
+            "admission_wait_ms": {
+              "p50": 0.030032,
+              "p95": 0.03578330000000003,
+              "p99": 0.07129505999999994,
+              "max": 0.080173
+            },
+            "preparation_ms": {
+              "p50": 57.924068500000004,
+              "p95": 86.19982710000001,
+              "p99": 98.29401261999998,
+              "max": 101.317559
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12597.282666,
+              "p95": 14302.82620135,
+              "p99": 14736.061166669999,
+              "max": 14844.369908
+            },
+            "completion_latency_ms": {
+              "p50": 15649.500893,
+              "p95": 19980.632532800006,
+              "p99": 25546.82946815999,
+              "max": 26938.378702
+            },
+            "admission_wait_ms": {
+              "p50": 0.029304999999999998,
+              "p95": 0.040278,
+              "p99": 0.043089999999999996,
+              "max": 0.043793
+            },
+            "preparation_ms": {
+              "p50": 43.800706,
+              "p95": 55.79026440000003,
+              "p99": 80.47462967999995,
+              "max": 86.645721
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12769.683337999999,
+              "p95": 14755.98612915,
+              "p99": 15262.15801783,
+              "max": 15388.70099
+            },
+            "completion_latency_ms": {
+              "p50": 14351.8174285,
+              "p95": 19397.595461700002,
+              "p99": 21216.859228339996,
+              "max": 21671.67517
+            },
+            "admission_wait_ms": {
+              "p50": 0.030465,
+              "p95": 0.0454783,
+              "p99": 0.04738285999999999,
+              "max": 0.047859
+            },
+            "preparation_ms": {
+              "p50": 84.4477265,
+              "p95": 100.24546405000001,
+              "p99": 110.18518560999998,
+              "max": 112.670116
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-union64-s102",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.001849328,
+          "queued_with_at_most_one_active_s": 0.000123966,
+          "active_request_seconds": 937.055683919,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31080849849237696,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.35451344813646735
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.1692857142857143
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "fifo64",
+      "seed": 102,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl",
+      "run_id": "v6controls1-main-gpufit-fifo64-s102",
+      "engine_pid": 439719,
+      "lmcache_pid": 439605,
+      "p50_ms": 12620.5280605,
+      "p95_ms": 14737.92801855,
+      "p99_ms": 15214.59662594,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s102",
+        "snapshot_sha256": "74e964f1db45c84e7d1368e346ae48eeef70688014d9c6dfcf2cd64bb21c7ffe",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 138.43468924585878,
+        "itl_observations": 1346.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s102",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "c05895290d7c7ffb9b5f8f681a1143b91ad54af1714808fc73b274f4ff39277e",
+        "request_file_sha256": "b522b98bdf076c0ee862385fb92add36006a91e54ba31776b7a3d250222ff402",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14854.2194435,
+          "p95": 20105.477256199993,
+          "p99": 25301.83741742999
+        },
+        "after_first_to_close_ms": {
+          "p50": 1931.3604839999998,
+          "p95": 9086.977884699993,
+          "p99": 13213.585197199991
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 146.14378805,
+          "p95": 213.16413954999987,
+          "p99": 614.0974728099666
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1406,
+        "workload_output_tokens_per_s": 48.79873805208374,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s102",
+        "request_file_sha256": "b522b98bdf076c0ee862385fb92add36006a91e54ba31776b7a3d250222ff402",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12590.195481,
+              "p95": 14521.8950434,
+              "p99": 14974.156472679999,
+              "max": 15087.22183
+            },
+            "completion_latency_ms": {
+              "p50": 15025.5825005,
+              "p95": 20230.802148900002,
+              "p99": 23382.382565779993,
+              "max": 24170.27767
+            },
+            "admission_wait_ms": {
+              "p50": 0.0288485,
+              "p95": 0.03440095000000004,
+              "p99": 0.07904258999999993,
+              "max": 0.090203
+            },
+            "preparation_ms": {
+              "p50": 59.2128785,
+              "p95": 85.36865500000003,
+              "p99": 115.82931819999995,
+              "max": 123.444484
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12593.1478035,
+              "p95": 14311.93604095,
+              "p99": 14745.21777059,
+              "max": 14853.538203
+            },
+            "completion_latency_ms": {
+              "p50": 15645.718860500001,
+              "p95": 19973.588596950005,
+              "p99": 25538.861313789992,
+              "max": 26930.179493
+            },
+            "admission_wait_ms": {
+              "p50": 0.029796,
+              "p95": 0.04263870000000001,
+              "p99": 0.045917339999999994,
+              "max": 0.046737
+            },
+            "preparation_ms": {
+              "p50": 46.80789,
+              "p95": 74.11068315000001,
+              "p99": 87.72751422999997,
+              "max": 91.131722
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12766.008116,
+              "p95": 14765.1457116,
+              "p99": 15271.34279352,
+              "max": 15397.892064
+            },
+            "completion_latency_ms": {
+              "p50": 14356.436312,
+              "p95": 19387.809408200003,
+              "p99": 21208.585734439996,
+              "max": 21663.779816
+            },
+            "admission_wait_ms": {
+              "p50": 0.029515,
+              "p95": 0.0323598,
+              "p99": 0.03246316,
+              "max": 0.032489
+            },
+            "preparation_ms": {
+              "p50": 93.6243765,
+              "p95": 127.24502629999999,
+              "p99": 127.55105246000001,
+              "max": 127.627559
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-fifo64-s102",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.0016698,
+          "queued_with_at_most_one_active_s": 0.00013694,
+          "active_request_seconds": 936.4050375749999,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31080849849237696,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.35451344813646735
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.1692857142857143
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "union64",
+      "seed": 103,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6controls1-main-gpufit-union64-s103",
+      "engine_pid": 441000,
+      "lmcache_pid": 440882,
+      "p50_ms": 12566.778824,
+      "p95_ms": 14813.50737935,
+      "p99_ms": 15028.847164099998,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-union64-s103",
+        "snapshot_sha256": "800e57a7e7929bb2a430552dac6ba19641862dd4901986491e7f34f259dfff33",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 138.49813613166978,
+        "itl_observations": 1346.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-union64-s103",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "51ed8b314f0583adb21fd7eb735de4a33bc9bdabf67e53f25953b0ff8b954c3e",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14575.709096,
+          "p95": 20357.512294099997,
+          "p99": 25773.107297279992
+        },
+        "after_first_to_close_ms": {
+          "p50": 1932.6426390000001,
+          "p95": 9088.826963449992,
+          "p99": 13221.04630928999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 145.21269945,
+          "p95": 212.64183994999988,
+          "p99": 614.4571075454828
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1406,
+        "workload_output_tokens_per_s": 47.2538967520383,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-union64-s103",
+        "request_file_sha256": "51ed8b314f0583adb21fd7eb735de4a33bc9bdabf67e53f25953b0ff8b954c3e",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12636.5358125,
+              "p95": 14598.31782825,
+              "p99": 14833.933427249998,
+              "max": 14892.837327
+            },
+            "completion_latency_ms": {
+              "p50": 14933.0254135,
+              "p95": 20532.26182455,
+              "p99": 24090.05454490999,
+              "max": 24979.502725
+            },
+            "admission_wait_ms": {
+              "p50": 0.028343,
+              "p95": 0.04078035000000002,
+              "p99": 0.06288646999999996,
+              "max": 0.068413
+            },
+            "preparation_ms": {
+              "p50": 58.8966905,
+              "p95": 142.66581675000003,
+              "p99": 188.27332174999992,
+              "max": 199.675198
+            },
+            "admission_deadline_overrun_requests": 1
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12424.562179,
+              "p95": 14564.28461305,
+              "p99": 14779.42026101,
+              "max": 14833.204173
+            },
+            "completion_latency_ms": {
+              "p50": 15565.052066,
+              "p95": 19579.449699750006,
+              "p99": 25447.98884634999,
+              "max": 26915.123633
+            },
+            "admission_wait_ms": {
+              "p50": 0.02756,
+              "p95": 0.040796000000000006,
+              "p99": 0.04594879999999999,
+              "max": 0.047237
+            },
+            "preparation_ms": {
+              "p50": 45.887707500000005,
+              "p95": 102.49434740000001,
+              "p99": 118.81080867999997,
+              "max": 122.889924
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12707.659607,
+              "p95": 14833.07560255,
+              "p99": 15146.27003011,
+              "max": 15224.568637
+            },
+            "completion_latency_ms": {
+              "p50": 14281.585852,
+              "p95": 18250.3581232,
+              "p99": 20837.681317439998,
+              "max": 21484.512116
+            },
+            "admission_wait_ms": {
+              "p50": 0.0289225,
+              "p95": 0.03804980000000001,
+              "p99": 0.04341235999999999,
+              "max": 0.044753
+            },
+            "preparation_ms": {
+              "p50": 85.18073849999999,
+              "p95": 135.60062940000003,
+              "p99": 167.25810107999996,
+              "max": 175.172469
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-union64-s103",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.001803525,
+          "queued_with_at_most_one_active_s": 0.00011564999999999999,
+          "active_request_seconds": 920.549501889,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31080849849237696,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.35451344813646735
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.1692857142857143
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "packing_ready",
+      "seed": 103,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6controls1-main-gpufit-packing_ready-s103",
+      "engine_pid": 442267,
+      "lmcache_pid": 442147,
+      "p50_ms": 13609.338981500001,
+      "p95_ms": 14784.274877599999,
+      "p99_ms": 15050.23730538,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s103",
+        "snapshot_sha256": "e8120aad2c00784d3b05f2a2813ea7533537f69040872eed2988ce287c3140e8",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 110.0275358022883,
+        "itl_observations": 1345.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 50.0,
+            "upper_ms": 75.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s103",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "02840713842c787c92f9d4422b70b3b2c529dee40fe8e46c11c44d343d41b871",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 15013.530210500001,
+          "p95": 20313.612488949995,
+          "p99": 23858.746137049995
+        },
+        "after_first_to_close_ms": {
+          "p50": 1725.1620644999998,
+          "p95": 7960.763867199998,
+          "p99": 10497.068293619997
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 114.09864184722223,
+          "p95": 153.93332273363637,
+          "p99": 505.69459774561165
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1405,
+        "workload_output_tokens_per_s": 47.348510466553954,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-packing_ready-s103",
+        "request_file_sha256": "02840713842c787c92f9d4422b70b3b2c529dee40fe8e46c11c44d343d41b871",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13798.892809500001,
+              "p95": 14656.77113945,
+              "p99": 14753.86926309,
+              "max": 14778.143794
+            },
+            "completion_latency_ms": {
+              "p50": 15051.558347999999,
+              "p95": 20478.664127850003,
+              "p99": 23859.880808769994,
+              "max": 24705.184979
+            },
+            "admission_wait_ms": {
+              "p50": 12935.778575,
+              "p95": 14180.303297049999,
+              "p99": 14207.24342821,
+              "max": 14213.978461
+            },
+            "preparation_ms": {
+              "p50": 69.877441,
+              "p95": 176.9160007,
+              "p99": 184.78766574,
+              "max": 186.755582
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13282.667183,
+              "p95": 14521.25330525,
+              "p99": 14700.61846185,
+              "max": 14745.459751
+            },
+            "completion_latency_ms": {
+              "p50": 15495.621770000002,
+              "p95": 19184.095388450005,
+              "p99": 22453.253376889992,
+              "max": 23270.542874
+            },
+            "admission_wait_ms": {
+              "p50": 12363.724685000001,
+              "p95": 13963.16591445,
+              "p99": 14137.714224489999,
+              "max": 14181.351302
+            },
+            "preparation_ms": {
+              "p50": 48.993274,
+              "p95": 109.05232925000004,
+              "p99": 152.45454984999992,
+              "max": 163.305105
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13712.969884,
+              "p95": 15012.9542589,
+              "p99": 15091.662912580001,
+              "max": 15111.340076
+            },
+            "completion_latency_ms": {
+              "p50": 14922.995394000001,
+              "p95": 18266.989548800004,
+              "p99": 20776.719670559996,
+              "max": 21404.152201
+            },
+            "admission_wait_ms": {
+              "p50": 12763.1703325,
+              "p95": 14381.8625802,
+              "p99": 14505.83901204,
+              "max": 14536.83312
+            },
+            "preparation_ms": {
+              "p50": 92.9848875,
+              "p95": 151.26432665,
+              "p99": 152.53406853,
+              "max": 152.851504
+            },
+            "admission_deadline_overrun_requests": 19
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-packing_ready-s103",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 24.160930032,
+          "queued_with_at_most_one_active_s": 0.000117799,
+          "active_request_seconds": 221.882135374,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.30855746650063287,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.3478952402125655
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.17271708683473389
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "requests": 60,
+      "arm": "fifo64",
+      "seed": 103,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "run_id": "v6controls1-main-gpufit-fifo64-s103",
+      "engine_pid": 443528,
+      "lmcache_pid": 443413,
+      "p50_ms": 12594.366761500001,
+      "p95_ms": 14827.3840162,
+      "p99_ms": 15042.683240729999,
+      "computed_tokens": 65122.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s103",
+        "snapshot_sha256": "c79f55e7e9a91bfa2b43af5377e3547225c18b069f07dc1adcb538e4513fc62f",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 138.50058672831528,
+        "itl_observations": 1346.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 300.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s103",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "659f0ffe57c76244c64583e1a4bd7a532e4f8ab043859e5711f71c1f356a620c",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14602.625694,
+          "p95": 20383.8460617,
+          "p99": 25800.690011829993
+        },
+        "after_first_to_close_ms": {
+          "p50": 1928.538724,
+          "p95": 9089.823001549992,
+          "p99": 13226.98740236999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 147.63609485,
+          "p95": 213.34953416249985,
+          "p99": 614.5107524859343
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1406,
+        "workload_output_tokens_per_s": 47.209087925529666,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-gpufit-fifo64-s103",
+        "request_file_sha256": "659f0ffe57c76244c64583e1a4bd7a532e4f8ab043859e5711f71c1f356a620c",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12657.32006,
+              "p95": 14612.162674700001,
+              "p99": 14847.79449894,
+              "max": 14906.702455
+            },
+            "completion_latency_ms": {
+              "p50": 14960.429482,
+              "p95": 20558.580338350006,
+              "p99": 24117.896901269993,
+              "max": 25007.726042
+            },
+            "admission_wait_ms": {
+              "p50": 0.029623499999999997,
+              "p95": 0.04097215000000001,
+              "p99": 0.051188829999999984,
+              "max": 0.053743
+            },
+            "preparation_ms": {
+              "p50": 60.356603500000006,
+              "p95": 149.60279860000006,
+              "p99": 193.64727011999992,
+              "max": 204.658388
+            },
+            "admission_deadline_overrun_requests": 1
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12448.663373,
+              "p95": 14578.1126327,
+              "p99": 14793.24672494,
+              "max": 14847.030248
+            },
+            "completion_latency_ms": {
+              "p50": 15589.1838155,
+              "p95": 19607.144295250004,
+              "p99": 25474.85646304999,
+              "max": 26941.784505
+            },
+            "admission_wait_ms": {
+              "p50": 0.029432,
+              "p95": 0.045124000000000004,
+              "p99": 0.04878719999999999,
+              "max": 0.049703
+            },
+            "preparation_ms": {
+              "p50": 44.9410075,
+              "p95": 100.14428310000001,
+              "p99": 119.94819741999996,
+              "max": 124.899176
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12728.322787500001,
+              "p95": 14846.9506492,
+              "p99": 15160.080456239999,
+              "max": 15238.362908
+            },
+            "completion_latency_ms": {
+              "p50": 14308.246439999999,
+              "p95": 18280.38669445,
+              "p99": 20866.509746089992,
+              "max": 21513.040509
+            },
+            "admission_wait_ms": {
+              "p50": 0.029122,
+              "p95": 0.04730235000000001,
+              "p99": 0.05550046999999998,
+              "max": 0.05755
+            },
+            "preparation_ms": {
+              "p50": 87.2062095,
+              "p95": 115.98559830000005,
+              "p99": 167.19346045999993,
+              "max": 179.995426
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-gpufit-fifo64-s103",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.001892809,
+          "queued_with_at_most_one_active_s": 0.000103446,
+          "active_request_seconds": 922.147729163,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.31080849849237696,
+      "by_category": {
+        "1": {
+          "n": 23,
+          "mean": 0.35451344813646735
+        },
+        "2": {
+          "n": 30,
+          "mean": 0.2807821943141636
+        },
+        "3": {
+          "n": 5,
+          "mean": 0.1692857142857143
+        },
+        "4": {
+          "n": 2,
+          "mean": 0.6124031007751938
+        }
+      },
+      "output_budget_hits": 4
+    }
+  ],
+  "pairs": [
+    {
+      "a": "v6controls1-main-gpufit-fifo64-s101",
+      "b": "v6controls1-main-gpufit-union64-s101",
+      "regime": "gpufit",
+      "seed": 101,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 0.16361031138087956,
+      "p95_ms_delta_pct": 0.33935248622496417,
+      "p99_ms_delta_pct": 0.1071212271016142,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-gpufit-fifo64-s102",
+      "b": "v6controls1-main-gpufit-union64-s102",
+      "regime": "gpufit",
+      "seed": 102,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 0.007467338097755238,
+      "p95_ms_delta_pct": -0.06214200183682905,
+      "p99_ms_delta_pct": -0.06035330121302307,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-gpufit-fifo64-s103",
+      "b": "v6controls1-main-gpufit-union64-s103",
+      "regime": "gpufit",
+      "seed": 103,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -0.2190498182436218,
+      "p95_ms_delta_pct": -0.09358789679176915,
+      "p99_ms_delta_pct": -0.09197878070408283,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-gpufit-fifo64-s101",
+      "b": "v6controls1-main-gpufit-packing_ready-s101",
+      "regime": "gpufit",
+      "seed": 101,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 8.802277664730806,
+      "p95_ms_delta_pct": 3.3843076777823944,
+      "p99_ms_delta_pct": 2.4389453615229373,
+      "f1_delta": 0.0025735294117646967,
+      "category5_delta": null,
+      "output_hash_mismatches": 3
+    },
+    {
+      "a": "v6controls1-main-gpufit-fifo64-s102",
+      "b": "v6controls1-main-gpufit-packing_ready-s102",
+      "regime": "gpufit",
+      "seed": 102,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 7.014933545220647,
+      "p95_ms_delta_pct": 0.1975471756501701,
+      "p99_ms_delta_pct": -1.4407708514352802,
+      "f1_delta": 0.003787348272642377,
+      "category5_delta": null,
+      "output_hash_mismatches": 4
+    },
+    {
+      "a": "v6controls1-main-gpufit-fifo64-s103",
+      "b": "v6controls1-main-gpufit-packing_ready-s103",
+      "regime": "gpufit",
+      "seed": 103,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 8.058938088913624,
+      "p95_ms_delta_pct": -0.2907400155880535,
+      "p99_ms_delta_pct": 0.05021753452567612,
+      "f1_delta": -0.00225103199174409,
+      "category5_delta": null,
+      "output_hash_mismatches": 3
+    },
+    {
+      "a": "v6controls1-main-gpufit-union64-s101",
+      "b": "v6controls1-main-gpufit-packing_ready-s101",
+      "regime": "gpufit",
+      "seed": 101,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 8.624556689295337,
+      "p95_ms_delta_pct": 3.034657007553898,
+      "p99_ms_delta_pct": 2.329328928689667,
+      "f1_delta": 0.0025735294117646967,
+      "category5_delta": null,
+      "output_hash_mismatches": 3
+    },
+    {
+      "a": "v6controls1-main-gpufit-union64-s102",
+      "b": "v6controls1-main-gpufit-packing_ready-s102",
+      "regime": "gpufit",
+      "seed": 102,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 7.006942975000641,
+      "p95_ms_delta_pct": 0.25985065388511863,
+      "p99_ms_delta_pct": -1.381251180907983,
+      "f1_delta": 0.003787348272642377,
+      "category5_delta": null,
+      "output_hash_mismatches": 4
+    },
+    {
+      "a": "v6controls1-main-gpufit-union64-s103",
+      "b": "v6controls1-main-gpufit-packing_ready-s103",
+      "regime": "gpufit",
+      "seed": 103,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 8.296160631942694,
+      "p95_ms_delta_pct": -0.1973368021590316,
+      "p99_ms_delta_pct": 0.1423272260769215,
+      "f1_delta": -0.00225103199174409,
+      "category5_delta": null,
+      "output_hash_mismatches": 3
+    }
+  ],
+  "exploratory_intervals": [
+    {
+      "regime": "gpufit",
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.01611417101631914,
+          "exploratory_t95_low_pct": -0.49301802950471885,
+          "exploratory_t95_high_pct": 0.4630753289993107,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.16361031138087956,
+            0.007467338097755238,
+            -0.2190498182436218
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.06101358887019927,
+          "exploratory_t95_low_pct": -0.5364399049426706,
+          "exploratory_t95_high_pct": 0.6620558409873974,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.33935248622496417,
+            -0.06214200183682905,
+            -0.09358789679176915
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.015108436905352305,
+          "exploratory_t95_low_pct": -0.28047404002996434,
+          "exploratory_t95_high_pct": 0.25096333587503966,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.1071212271016142,
+            -0.06035330121302307,
+            -0.09197878070408283
+          ]
+        }
+      }
+    },
+    {
+      "regime": "gpufit",
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 7.95622492272183,
+          "exploratory_t95_low_pct": 5.747150342633312,
+          "exploratory_t95_high_pct": 10.211447417762017,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            8.802277664730806,
+            7.014933545220647,
+            8.058938088913624
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 1.0839961058560974,
+          "exploratory_t95_low_pct": -3.729183566087018,
+          "exploratory_t95_high_pct": 6.137816705263557,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            3.3843076777823944,
+            0.1975471756501701,
+            -0.2907400155880535
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.3367765566674965,
+          "exploratory_t95_low_pct": -4.398951660410344,
+          "exploratory_t95_high_pct": 5.307095524950937,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            2.4389453615229373,
+            -1.4407708514352802,
+            0.05021753452567612
+          ]
+        }
+      }
+    },
+    {
+      "regime": "gpufit",
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 7.973623977142016,
+          "exploratory_t95_low_pct": 5.866348238724923,
+          "exploratory_t95_high_pct": 10.122845160089868,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            8.624556689295337,
+            7.006942975000641,
+            8.296160631942694
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 1.0223587392279676,
+          "exploratory_t95_low_pct": -3.2111275803313024,
+          "exploratory_t95_high_pct": 5.441015171526906,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            3.034657007553898,
+            0.25985065388511863,
+            -0.1973368021590316
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.3519381659285913,
+          "exploratory_t95_low_pct": -4.168863478655456,
+          "exploratory_t95_high_pct": 5.086007108089994,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            2.329328928689667,
+            -1.381251180907983,
+            0.1423272260769215
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": "n3paired log-ratio t(df2) descriptors are not semantic population significance or quality equivalence. Missing native coverage stays null. Source tokens are not measured DMA bytes. Report each regime/seed including regressions."
+}

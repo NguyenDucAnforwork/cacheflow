@@ -247,3 +247,6 @@ Before full freeze, `tests/test_v6_full_flow.py` fault injection reproduced a cl
 
 
 The main low-reuse subset is now complete in `v6controls1_main_lowreuse_subset_audit.json` / `_quality.json` / `_waits.json`: nine fresh engine/LMCache arms,72measured successes,540separate warmups, all three seeds pass the existing5% p95 gate for old union and readiness versus FIFO. Source-labelled CPU consumption0, compute190916, outputs/scores identical within each seed. Eight distinct QA are reused; no broad quality/tail guarantee. The full freezer still requires the complete36-arm stage and remaining GPU-fit/abstention controls; do not promote this subset to a complete prerequisite audit.
+
+
+The main GPU-fit subset now passes all nine arms/540measured responses plus540separate warmups (`v6controls1_main_gpufit_subset_audit.json`, `_quality.json`, `_waits.json`). Every arm computes65122tokens, consumes0engine-labelled CPU-source tokens, records0preemptions and has valid native ITL coverage. Old union has identical outputs/scores to FIFO; readiness increases median7–9%, changes outputs and has mixed p95/F1 changes with no observed work saving. Keep this separate from native GPU-fit and the full10GiB larger-cache control. The complete main36-arm audit and abstention are still pending; these subsets cannot replace the full prerequisite.
