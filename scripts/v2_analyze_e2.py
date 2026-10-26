@@ -17,6 +17,9 @@ COUNTERS = {
     'l1_read_chunks': ('lmcache', 'lmcache_mp_l1_read_chunks_total'),
     'l1_write_chunks': ('lmcache', 'lmcache_mp_l1_write_chunks_total'),
     'loaded_chunks': ('lmcache', 'lmcache_mp_num_chunks_loaded_total'),
+    'actual_external_tokens': ('vllm', 'vllm:prompt_tokens_source_external_kv_transfer_total'),
+    'actual_gpu_cached_tokens': ('vllm', 'vllm:prompt_tokens_source_local_cache_hit_total'),
+    'preemptions': ('vllm', 'vllm:num_preemptions_total'),
 }
 
 

@@ -45,3 +45,17 @@ def test_counter_absent_at_healthy_baseline_starts_at_zero(tmp_path):
     rows[0]["lmcache"] = {"error": "ConnectError"}
     path.write_text("\n".join(json.dumps(row) for row in rows) + "\n")
     assert summarize(path)["counter_deltas"]["lmcache"]["lmcache_mp_num_chunks_loaded_total"] is None
+
+
+def test_source_labels_are_preserved_instead_of_summing_cache_tiers():
+    from cacheflow.collect_metrics import parse_metrics
+    text = '\n'.join([
+        'vllm:prompt_tokens_by_source_total{engine="0",source="local_compute"} 10',
+        'vllm:prompt_tokens_by_source_total{engine="0",source="local_cache_hit"} 20',
+        'vllm:prompt_tokens_by_source_total{engine="0",source="external_kv_transfer"} 30',
+        'vllm:prompt_tokens_by_source_total{engine="1",source="external_kv_transfer"} 5',
+    ])
+    values = parse_metrics(text)
+    assert values['vllm:prompt_tokens_source_local_compute_total'] == 10
+    assert values['vllm:prompt_tokens_source_local_cache_hit_total'] == 20
+    assert values['vllm:prompt_tokens_source_external_kv_transfer_total'] == 35

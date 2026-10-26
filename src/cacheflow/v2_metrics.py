@@ -12,8 +12,12 @@ COUNTERS = {
         "vllm:external_prefix_cache_hits_total",
         "vllm:prompt_tokens_total",
         "vllm:prompt_tokens_cached_total",
+        "vllm:prompt_tokens_source_local_compute_total",
+        "vllm:prompt_tokens_source_local_cache_hit_total",
+        "vllm:prompt_tokens_source_external_kv_transfer_total",
         "vllm:request_prefill_kv_computed_tokens_sum",
         "vllm:request_queue_time_seconds_sum",
+        "vllm:num_preemptions_total",
     ),
     "lmcache": (
         "lmcache_mp_l1_read_chunks_total",

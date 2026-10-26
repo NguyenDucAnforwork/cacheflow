@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import signal
 import subprocess
 import time
@@ -17,10 +18,12 @@ NAMES = (
     "vllm:external_prefix_cache_hits_total",
     "vllm:prompt_tokens_total",
     "vllm:prompt_tokens_cached_total",
+    "vllm:prompt_tokens_by_source_total",
     "vllm:request_prefill_kv_computed_tokens_sum",
     "vllm:kv_cache_usage_perc",
     "vllm:num_requests_running",
     "vllm:num_requests_waiting",
+    "vllm:num_preemptions_total",
     "vllm:request_queue_time_seconds_sum",
     "vllm:request_queue_time_seconds_count",
     "vllm:time_to_first_token_seconds_sum",
@@ -46,6 +49,11 @@ def parse_metrics(text: str) -> dict[str, float]:
             continue
         name = line.split("{", 1)[0].split(" ", 1)[0]
         if name in NAMES:
+            if name == "vllm:prompt_tokens_by_source_total":
+                source = re.search(r'(?:\{|,)source="([^"]+)"', line)
+                if source is None:
+                    continue
+                name = f"vllm:prompt_tokens_source_{source.group(1)}_total"
             try:
                 values[name] = values.get(name, 0.0) + float(line.rsplit(" ", 1)[1])
             except ValueError:
