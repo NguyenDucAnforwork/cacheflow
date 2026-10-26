@@ -32,6 +32,8 @@ class Ticket:
     readiness_estimate_ms: float | None = None
     tokenize_ms: float | None = None
     prefix_hash_ms: float | None = None
+    prepare_cpu_ms: float | None = None
+    prepare_queue_ms: float | None = None
     engine_blocks: tuple[bytes, ...] = ()
     input_tokens: int = 0
     output_budget: int = 0

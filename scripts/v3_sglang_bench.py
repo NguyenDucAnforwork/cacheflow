@@ -41,6 +41,20 @@ def main():
     base.mkdir(parents=True,exist_ok=True);raw.mkdir(parents=True,exist_ok=True)
     setup=base/f'{args.run_id}.setup.json'
     assert not setup.exists(), 'run ID already exists'
+    gateway_reset=None
+    if args.gateway_policy:
+        with httpx.Client(timeout=10) as client:
+            previous=client.get(replay_url+'/health').json()
+        assert previous['active']==previous['queue']==0,'refusing to restart a busy gateway'
+        subprocess.run(['supervisorctl','restart','cacheflow_v2_gateway'],check=True)
+        for _ in range(120):
+            try:
+                with httpx.Client(timeout=2) as client:
+                    state=client.get(replay_url+'/health');state.raise_for_status()
+                break
+            except (httpx.HTTPError,ValueError):time.sleep(.5)
+        else:raise RuntimeError('gateway reset readiness timeout')
+        gateway_reset=dict(method='supervisor_restart',previous_decision_stats=previous.get('decision_stats'))
     with httpx.Client(timeout=30) as client:
         client.get(args.url+'/health').raise_for_status()
         # Flush rejects outstanding requests; do not hide a failed reset.
@@ -51,6 +65,9 @@ def main():
         if gateway_before:
             assert gateway_before['active']==gateway_before['queue']==0
             assert gateway_before['policy']==args.gateway_policy
+            assert gateway_before['completed_history_requests']==0,'gateway prefix history was not reset'
+            if gateway_before.get('decision_stats'):
+                assert gateway_before['decision_stats']['calls']==0,'gateway scheduler state was not reset'
     runtime=load_runtime();model=get_model(runtime['model_key'])
     gpu_bytes=runtime['gpu_kv_gib']*1024**3
     assert info['max_total_tokens']==gpu_bytes//(16*model['bytes_per_token'])*16
@@ -69,10 +86,11 @@ def main():
     public_env={key:env.get(key) for key in [
         'IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD',
         'IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD',
-        'CACHEFLOW_SGLANG_TRANSFER_PROFILE']}
+        'CACHEFLOW_SGLANG_TRANSFER_PROFILE','CACHEFLOW_SG_SAME_BATCH_GUARD']}
     assert public_env['IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD']==str(runtime['inbatch_check_threshold'])
     assert public_env['IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD']==str(runtime['inbatch_deprioritize_threshold'])
     assert (public_env['CACHEFLOW_SGLANG_TRANSFER_PROFILE']=='1')==runtime['profile_transfers']
+    assert (public_env['CACHEFLOW_SG_SAME_BATCH_GUARD']=='1')==runtime['same_batch_guard']
     allow=['model_path','served_model_name','dtype','context_length','max_total_tokens',
         'max_running_requests','chunked_prefill_size','page_size','mem_fraction_static',
         'enable_hierarchical_cache','hicache_size','hicache_write_policy','hicache_io_backend',
@@ -81,7 +99,7 @@ def main():
     c=dict(run_id=args.run_id,engine_kind='sglang',cache_backend='upstream_hicache',
         source_head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
         runtime=runtime, model=model, nominal_gpu_kv_bytes=gpu_bytes,
-        replay_url=replay_url,gateway_policy=args.gateway_policy,gateway_before=gateway_before,
+        replay_url=replay_url,gateway_policy=args.gateway_policy,gateway_before=gateway_before,gateway_reset=gateway_reset,
         gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text() if args.gateway_policy else None,
         server_config={k:info.get(k) for k in allow},launcher_pid=launcher,
         process_argv={str(x.pid):x.cmdline() for x in children},public_server_env=public_env,reset_status=reset.status_code,
@@ -100,9 +118,13 @@ def main():
         c['profiler_source_sha256']={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in
             ['scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v3_sglang_transfer_profile.py',
              'src/cacheflow/v4_sglang_admission_profile.py']}
+    if runtime['same_batch_guard']:
+        c['native_component_adaptation']='same-batch delay-hit guard only; not full Strata'
+        c['native_overlay_source_sha256']={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in
+            ['scripts/sglang_profile_hooks/sitecustomize.py','src/cacheflow/v4_sglang_delayhit.py']}
     if args.gateway_policy:
         names=['src/cacheflow/gateway.py','src/cacheflow/v3_memory_scheduler.py',
-               'src/cacheflow/scheduler.py','src/cacheflow/prefix.py']
+               'src/cacheflow/scheduler.py','src/cacheflow/prefix.py','src/cacheflow/v4_prepare.py']
         c['gateway_source_sha256']={name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in names}
     setup.write_text(json.dumps(c,indent=2)+'\n')
     stop=threading.Event();samples=[];collector_error=[]

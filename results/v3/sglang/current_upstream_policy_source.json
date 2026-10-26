@@ -1,0 +1,6 @@
+{
+  "commit": "c25c24d78322a623293ae3c097270b1316af0bcc",
+  "url": "https://raw.githubusercontent.com/sgl-project/sglang/c25c24d78322a623293ae3c097270b1316af0bcc/python/sglang/srt/managers/schedule_policy.py",
+  "sha256": "34647d0bc969eef8b2b37bd6f0dbcc76d37e8b57dec47a8efb43689ea8b918ab",
+  "scope": "Source audit only; not executed on GPU. Main still has in-batch check/deprioritize thresholds32; newer HRRN/SPF and other implementation changes are not reproduced by the pinned0.5.14 benchmark."
+}

@@ -424,3 +424,65 @@ Không. Đây là engine SGLang, phiên bản/prompt/concurrency cụ thể và 
 **Hỏi: Làm sao tin phép dựng lại batch?**
 
 Event ở `add_one_req` ghi số request đã chọn trước đó; event ở `add_chunked_req` đánh dấu continuation được thêm trước. Analyzer bắt đầu batch khi số đã chọn là0 hoặc xuất hiện continuation, rồi kiểm tra số đã chọn khớp độ dài batch đang dựng tại từng bước. Mỗi interval được nối với tokenized prompt thật; tổng phải đối chiếu counter. Phép đo này chứng minh công việc prefill được scheduler chọn, không tự cho biết thời gian kernel hoặc số FLOP thực. Muốn khẳng định chi tiết GPU execution cần timeline/kernel instrumentation bổ sung.
+
+### 15.2. Vì sao xóa KV cache chưa đủ để reset một thí nghiệm scheduler?
+
+**Hỏi: Đã gọi flush_cache rồi, vì sao một run vẫn có thể bị nhiễm trạng thái?**
+
+KV cache của engine và lịch sử của gateway là hai nơi khác nhau. Gateway giữ một deque các request đã hoàn thành để nhận diện prefix từng xuất hiện. Nếu xóa GPU/CPU KV nhưng không xóa deque, một policy reuse-gated có thể bật packing ngay ở lượt sau dù lượt trước bắt đầu với lịch sử rỗng. Không có gold-answer leakage, nhưng trạng thái ban đầu giữa các run đã không còn giống nhau.
+
+**Hỏi: Project đã gặp lỗi này thật chưa và xử lý ra sao?**
+
+Có. Script control mới tái dùng gateway qua nhiều run, trong khi script ma trận Direct/kernel chính restart gateway từng arm. Năm candidate control được phát hiện có decision counter khác0 ngay trước replay và bị đánh dấu invalid. Toàn bộ raw output được giữ; các bảng cap4 cũ có thông báo invalidation, không còn được dùng để nói đã lặp thành công ba seed cho candidate đó. Native direct không tiêu thụ state gateway nên vẫn là phép đo native hợp lệ. Control bị ảnh hưởng cần chạy lại với ID mới.
+
+**Hỏi: Cổng kiểm tra mới chứng minh được gì?**
+
+Benchmark restart gateway khi nó idle, chờ ready, rồi yêu cầu cả số completed-history request và decision calls bằng0. Sau đó mới capture setup/replay với cache engine được reset. Đây là bằng chứng mạnh hơn chỉ nhìn active=queue=0: một scheduler đang rảnh vẫn có thể nhớ nhiều prefix. Kiểm tra này không thay thế audit model/config/token/output hoặc tránh được mọi dạng state khác; mỗi thành phần có cache/lịch sử đều cần một reset contract rõ ràng.
+
+## 16. Tách CPU preparation khỏi event loop: đo gì và không suy ra gì?
+
+**Hỏi: Ngoài scheduler, gateway còn giữ event loop ở đâu?**
+
+Log của các run HiCache4B cho thấy tokenization khoảng68ms và prefix hashing khoảng12ms mỗi request. Đây là CPU work chạy đồng bộ ngay trong async HTTP handler. Trong thời gian đó, event loop cũng không relay token, đọc socket hoặc giải phóng ticket. Tên hàm là `async` không tự làm CPU work bên trong trở thành bất đồng bộ.
+
+**Hỏi: Vì sao chọn một worker riêng thay vì cho32 thread encode đồng thời?**
+
+Tokenizer có cấu hình mutable như truncation/padding. Nhiều thread dùng chung có thể đụng trạng thái đó. Một `ThreadPoolExecutor(max_workers=1)` tuần tự hóa preparation, kể cả khi HTTP task bị cancel mà CPU job chưa dừng. CPU worker tạo token IDs và cả hai loại hash; event loop nhận kết quả rồi mới admission. Cả baseline và candidate đều được bật/tắt cùng chế độ trong phép so phù hợp; không được cấp tối ưu này riêng cho candidate.
+
+**Hỏi: Đã kiểm chứng tương đương và responsiveness ra sao?**
+
+CPU-only microprofile chạy20 prompt dev thật ở trạng thái preparation liên tục, với heartbeat1ms. Hai chế độ trả đúng token IDs, prefix hash256 và engine hash16 giống nhau, đồng thời khớp tokenizer counts của trace. Inline mất1,025giây, worker1,135giây; heartbeat gap lớn nhất giảm161,59→12,86ms, p99 161,04→10,97ms. Bài đo này không dùng GPU và không phải speedup end-to-end; nó chứng minh luồng CPU có thể chậm hơn một chút mà event loop vẫn đáp ứng tốt hơn. Nguồn: `results/v3/prepare_eventloop_profile.json`.
+
+**Hỏi: Đưa sang thread có loại hết tác động của GIL không?**
+
+Không. Rust tokenizer có thể nhả GIL, nhưng hashing và bookkeeping Python vẫn tranh GIL với event loop. Thread cũng có scheduling overhead. Vì vậy heartbeat vẫn có gap hàng chục ms, không có hard latency bound. Cần đo GPU run sau thay đổi để xem stream progress, queue và prefill batching có tốt hơn không; không lấy tỷ số heartbeat làm tỷ số TTFT.
+
+**Hỏi: Thời gian chờ trong executor có bị giấu đi không?**
+
+Không. Client arrival-TTFT vẫn bắt đầu từ scheduled arrival, trước cả HTTP preparation. Gateway ghi riêng `prepare_queue_ms` và `prepare_cpu_ms`; `ingress_prepare_ms` bao gồm preparation và thời gian chờ worker trước admission. Nếu worker quá tải thì số đó và backlog tăng, và kết quả phải thể hiện điều này. Offload chỉ đổi nơi thực thi CPU work, không xóa công việc hoặc thời gian chờ.
+
+**Hỏi: Vì sao còn phải thử cap64 khi engine vẫn chỉ chạy16 request?**
+
+Cap ở gateway quyết định engine được nhìn thấy bao nhiêu request đang chờ; max-running của engine quyết định bao nhiêu request được thực thi. Một FIFO gateway cap16 có thể che đi các request mà native LPM muốn chọn, ngay cả khi cả working set đã vừa GPU. Control GPU-fit của cap16 ghi p95 tăng2,14/5,24/6,48% và median tăng lớn, dù không có host-promotion series. Cần so native direct, FIFO64 và union-admission64 trên cùng engine16 để tách visibility/concurrency khỏi memory policy. Đây mới là giả thuyết và phép kiểm tra đang chạy, chưa phải kết luận cap64 đã giải quyết được.
+
+## 17. Biến một cơ chế paper thành baseline có thể kiểm tra
+
+**Hỏi: Native in-batch threshold lớn có tái hiện delay-hit deferral trong Strata không?**
+
+Chưa. Kiểm tra prefix và giảm priority không đồng nghĩa cấm follower vào batch đang tính producer. Pilot threshold32K vẫn compute78.662token ở cap16, p95 khoảng20,82s. Component thử nghiệm tiếp theo nhìn vào các request đã được chọn trong batch: nếu follower còn thiếu hơn100token prefix mà producer đang tính, nó tạm chưa được thêm vào batch. Đây là adaptation của một thành phần trong Strata4.3.1, không phải toàn bộ hệ thống paper.
+
+**Hỏi: Guard có đọc KV từ GPU hoặc sửa allocator không?**
+
+Không. Nó đọc độ dài prefix/chunk từ metadata CPU và so sánh exact token arrays của toàn bộ prefix đến interval cần kiểm tra. Host-hit tokens được tính là đã cache để tránh nhầm restore bundle với duplicated compute. `extra_key` phải giống nhau; hybrid/Mamba requests được bỏ qua vì có lifecycle tài nguyên riêng. Native vẫn lookup, lock, allocate, load và execute KV. Không tạo shared KV chỉ vì hai đoạn văn bản giống nhau ở giữa prompt.
+
+**Hỏi: Tại sao trả CONTINUE mà không thêm follower vào can_run_list?**
+
+Trong scheduler phiên bản đã pin, CONTINUE tiếp tục xét request khác; sau batch, engine chỉ xóa khỏi waiting queue các request có trong can_run_list. Follower bị defer vì vậy còn ở queue cho round sau. Trả OTHER sẽ kết thúc scan ngay, có thể bỏ lỡ complementary work. Guard chỉ defer khi đã có producer được chọn, nên bản thân nó không tạo batch rỗng với tất cả request tự chờ nhau. Điều này không hứa hẹn một hard wall-time fairness bound.
+
+**Hỏi: Pilot guard đã chứng minh điều gì?**
+
+Trên dev seed101, ba arm đo chính thức đều60/60 thành công. Native guard p95=17,262s; thêm FIFO64 gateway18,083s; thêm packing64-worker16,049s. Packing giảm p99 khoảng10,66% so với native guard nhưng median tăng4,294→13,490s. Cả ba compute69.590 uncached token, trong khi promotions26.448/0/90.144 khác nhau. Vì thế không được giải thích tail gain này bằng “candidate tính ít token hơn” hoặc “luôn giảm transfer”. Một seed cũng chưa chứng minh được tính lặp lại. Cần xem per-conversation latency, actual bypass, migration và chạy workload lớn trước khi chốt claim.
+
+**Hỏi: Vì sao không gọi baseline này là Strata rồi công bố thắng paper?**
+
+Paper còn có transient nodes xuyên qua in-queue/in-flight, balanced-batch formation và bubble filling. Guard ở đây chỉ xử lý trùng compute giữa các request được chọn trong cùng batch, dùng Python và giữ native LPM. Hiệu năng trên RTX3090/LoCoMo của component adaptation không đồng nghĩa hiệu năng hệ thống Strata đầy đủ. Tên baseline, component scope, source/env hashes và những phần chưa tái hiện đều phải công khai.

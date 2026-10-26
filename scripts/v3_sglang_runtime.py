@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 MARKER=ROOT/'.cacheflow-sglang-runtime.json'
 DEFAULT=dict(model_key='qwen3-1.7b',gpu_kv_gib=4,max_running_requests=16,
     batch_tokens=8192,io_backend='kernel',attention_backend='triton',schedule_policy='lpm',graphs=True,
-    profile_transfers=False,host_kv_gib=16,inbatch_check_threshold=32,inbatch_deprioritize_threshold=32)
+    profile_transfers=False,host_kv_gib=16,inbatch_check_threshold=32,inbatch_deprioritize_threshold=32,same_batch_guard=False)
 
 
 def load():
@@ -29,12 +29,14 @@ def main():
     p.add_argument('--inbatch-check-threshold',type=int,default=32)
     p.add_argument('--inbatch-deprioritize-threshold',type=int,default=32)
     p.add_argument('--profile-transfers',action='store_true')
+    p.add_argument('--same-batch-guard',action='store_true')
     p.add_argument('--no-graphs',action='store_true');a=p.parse_args()
     if a.command=='configure':
         c=dict(model_key=a.model,gpu_kv_gib=a.gpu_kv_gib,max_running_requests=a.max_running_requests,
             batch_tokens=a.batch_tokens,io_backend=a.io_backend,attention_backend=a.attention_backend,
             schedule_policy=a.schedule_policy,graphs=not a.no_graphs,profile_transfers=a.profile_transfers,host_kv_gib=a.host_kv_gib,
-            inbatch_check_threshold=a.inbatch_check_threshold,inbatch_deprioritize_threshold=a.inbatch_deprioritize_threshold)
+            inbatch_check_threshold=a.inbatch_check_threshold,inbatch_deprioritize_threshold=a.inbatch_deprioritize_threshold,
+            same_batch_guard=a.same_batch_guard)
         MARKER.write_text(json.dumps(c,indent=2)+'\n')
     c=load();model=get_model(c['model_key'])
     tokens=c['gpu_kv_gib']*1024**3//(16*model['bytes_per_token'])*16

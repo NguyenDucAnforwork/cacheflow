@@ -1,0 +1,27 @@
+{
+  "scope": "CPU-only saturated preparation of20 real dev prompts,1ms heartbeat; no GPU/E2E speedup claim; single worker avoids concurrent tokenizer mutation",
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "requests": 20,
+  "exact_ids_and_both_hashes_equal": true,
+  "source_sha256": "89ba3e68faabd7abeceed855c96cefc407d0d0e1596addb7a6016ec081ea3dcb",
+  "runs": [
+    {
+      "mode": "inline",
+      "wall_s": 1.0245832549990155,
+      "heartbeat_gap_p50_ms": 19.572702993173152,
+      "heartbeat_gap_p99_ms": 161.03985379741061,
+      "heartbeat_gap_max_ms": 161.59329199581407,
+      "tokenize_mean_ms": 41.8522278,
+      "hash_mean_ms": 9.3258648
+    },
+    {
+      "mode": "serial_worker",
+      "wall_s": 1.1349128799920436,
+      "heartbeat_gap_p50_ms": 1.2000374917988665,
+      "heartbeat_gap_p99_ms": 10.969972191815039,
+      "heartbeat_gap_max_ms": 12.85804100916721,
+      "tokenize_mean_ms": 46.4731748,
+      "hash_mean_ms": 9.85042705
+    }
+  ]
+}

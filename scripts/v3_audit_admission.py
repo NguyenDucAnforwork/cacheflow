@@ -36,7 +36,7 @@ def audit(run_id):
     cap=config['max_inflight'];policy=config['policy']
     if policy in {'packing_fifo','packing','packing_reuse','residency'}:
         assert max_head_bypasses<=config.get('max_bypasses',4),(run_id,max_head_bypasses)
-    return dict(run_id=run_id,policy=policy,configured_max_bypasses=config.get('max_bypasses'),max_head_bypasses=max_head_bypasses,
+    return dict(run_id=run_id,policy=policy,max_inflight=cap,configured_max_bypasses=config.get('max_bypasses'),max_head_bypasses=max_head_bypasses,
         queued_with_spare_slots_s=sum(v for (a,q),v in histogram.items() if q and a<cap),
         queued_with_at_most_one_active_s=sum(v for (a,q),v in histogram.items() if q and a<=1),
         active_request_seconds=sum(a*v for (a,q),v in histogram.items()),

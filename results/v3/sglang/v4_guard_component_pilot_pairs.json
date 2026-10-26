@@ -1,0 +1,109 @@
+{
+  "scope": "Paired run-level dev contrasts; repeated QA are not independent new questions",
+  "pairs": [
+    {
+      "a": "v4-sgguard-direct-native-s101",
+      "b": "v4-sgguard-direct-packing_reuse-s101",
+      "requests": 60,
+      "trace_sha256": "ba8790ee8c536eb6d3e5c02874feffb579ebe55f8848ea0ffa556aa4443f69a7",
+      "p50_ms_delta_pct": 214.15940122044347,
+      "p95_ms_delta_pct": -7.029310526329846,
+      "p99_ms_delta_pct": -10.661658544464082,
+      "a_latency_ms": {
+        "p50_ms": 4293.9930265,
+        "p95_ms": 17262.136895999996,
+        "p99_ms": 18368.87927223
+      },
+      "b_latency_ms": {
+        "p50_ms": 13489.9827805,
+        "p95_ms": 16048.7276901,
+        "p99_ms": 16410.452085779998
+      },
+      "a_uncached_tokens": 69590.0,
+      "b_uncached_tokens": 69590.0,
+      "a_host_promoted_tokens": 26448.0,
+      "b_host_promoted_tokens": 90144.0,
+      "a_f1": 0.3075816244879685,
+      "b_f1": 0.30635845571487713,
+      "f1_delta": -0.0012231687730913654,
+      "a_cap_hits": 2,
+      "b_cap_hits": 2,
+      "output_hash_mismatches": 7,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 2544.28782695,
+          "b_mean_ms": 13352.6584754,
+          "a_p95_ms": 5890.022473050004,
+          "b_p95_ms": 16067.4638661
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 2725.7560657,
+          "b_mean_ms": 13345.90431405,
+          "a_p95_ms": 7298.757808700003,
+          "b_p95_ms": 16091.5365831
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 14217.68719035,
+          "b_mean_ms": 12853.6316798,
+          "a_p95_ms": 18314.33581515,
+          "b_p95_ms": 14567.0336829
+        }
+      ]
+    },
+    {
+      "a": "v4-sgguard-direct-fifo-s101",
+      "b": "v4-sgguard-direct-packing_reuse-s101",
+      "requests": 60,
+      "trace_sha256": "ba8790ee8c536eb6d3e5c02874feffb579ebe55f8848ea0ffa556aa4443f69a7",
+      "p50_ms_delta_pct": 265.1069806207954,
+      "p95_ms_delta_pct": -11.247426923840031,
+      "p99_ms_delta_pct": -14.874587140231688,
+      "a_latency_ms": {
+        "p50_ms": 3694.8027555,
+        "p95_ms": 18082.549196999997,
+        "p99_ms": 19277.97062531
+      },
+      "b_latency_ms": {
+        "p50_ms": 13489.9827805,
+        "p95_ms": 16048.7276901,
+        "p99_ms": 16410.452085779998
+      },
+      "a_uncached_tokens": 69590.0,
+      "b_uncached_tokens": 69590.0,
+      "a_host_promoted_tokens": 0.0,
+      "b_host_promoted_tokens": 90144.0,
+      "a_f1": 0.3077488239170818,
+      "b_f1": 0.30635845571487713,
+      "f1_delta": -0.0013903682022046726,
+      "a_cap_hits": 2,
+      "b_cap_hits": 2,
+      "output_hash_mismatches": 8,
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "a_mean_ms": 2127.8273475,
+          "b_mean_ms": 13352.6584754,
+          "a_p95_ms": 5262.64472695,
+          "b_p95_ms": 16067.4638661
+        },
+        {
+          "sample_id": "conv-30",
+          "a_mean_ms": 2254.73697575,
+          "b_mean_ms": 13345.90431405,
+          "a_p95_ms": 5914.789931750001,
+          "b_p95_ms": 16091.5365831
+        },
+        {
+          "sample_id": "conv-41",
+          "a_mean_ms": 15071.276545,
+          "b_mean_ms": 12853.6316798,
+          "a_p95_ms": 19273.693900550003,
+          "b_p95_ms": 14567.0336829
+        }
+      ]
+    }
+  ]
+}

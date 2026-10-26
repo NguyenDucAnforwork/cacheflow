@@ -1,0 +1,73 @@
+{
+  "scope": "Named runs only; missing source counters remain null; profiling flags recorded",
+  "runs": [
+    {
+      "run_id": "v4-sginbatch32768-direct-lpm4-measured-s101",
+      "requests": 60,
+      "errors": 0,
+      "trace_sha256": "ba8790ee8c536eb6d3e5c02874feffb579ebe55f8848ea0ffa556aa4443f69a7",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v4",
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 4,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32768,
+        "inbatch_deprioritize_threshold": 1024
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32768",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "1024",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null
+      },
+      "p50_ms": 5438.723202499999,
+      "p95_ms": 19502.841916249996,
+      "p99_ms": 21039.898362169995,
+      "native_uncached_tokens": 70486.0,
+      "native_host_promoted_tokens": null,
+      "admission": null
+    },
+    {
+      "run_id": "v4-sginbatch32768-direct-lpm16-measured-s101",
+      "requests": 60,
+      "errors": 0,
+      "trace_sha256": "ba8790ee8c536eb6d3e5c02874feffb579ebe55f8848ea0ffa556aa4443f69a7",
+      "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "prompt_version": "locomo-qwen-concise-v4",
+      "output_budget": 96,
+      "runtime": {
+        "model_key": "qwen3-4b",
+        "gpu_kv_gib": 6,
+        "max_running_requests": 16,
+        "batch_tokens": 8192,
+        "io_backend": "direct",
+        "attention_backend": "flashinfer",
+        "schedule_policy": "lpm",
+        "graphs": true,
+        "profile_transfers": false,
+        "host_kv_gib": 16,
+        "inbatch_check_threshold": 32768,
+        "inbatch_deprioritize_threshold": 1024
+      },
+      "public_server_env": {
+        "IN_BATCH_PREFIX_CACHING_CHECK_THRESHOLD": "32768",
+        "IN_BATCH_PREFIX_CACHING_DEPRIORITIZE_THRESHOLD": "1024",
+        "CACHEFLOW_SGLANG_TRANSFER_PROFILE": null
+      },
+      "p50_ms": 4423.383702,
+      "p95_ms": 20823.88488845,
+      "p99_ms": 22219.90035959,
+      "native_uncached_tokens": 78662.0,
+      "native_host_promoted_tokens": null,
+      "admission": null
+    }
+  ]
+}

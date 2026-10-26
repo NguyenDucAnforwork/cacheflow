@@ -4,6 +4,7 @@ import json
 import statistics
 from pathlib import Path
 import numpy as np
+import yaml
 from v4_audit_sglang_runs import audit
 
 
@@ -19,6 +20,10 @@ def compare(a,b,quality):
     for key in ['server_config','launcher_pid','upstream_source_sha256']:
         assert sa[key]==sb[key],key
     assert not x['runtime']['profile_transfers']
+    if sa['gateway_policy'] and sb['gateway_policy']:
+        ca=yaml.safe_load(sa['gateway_config']);cb=yaml.safe_load(sb['gateway_config'])
+        ca['scheduler'].pop('policy');cb['scheduler'].pop('policy')
+        assert ca==cb,'gateway policy contrast changed another configuration field'
     ra={r['request_id']:r for r in read(raw/f'{a}.jsonl')};rb={r['request_id']:r for r in read(raw/f'{b}.jsonl')}
     assert ra.keys()==rb.keys()
     assert all(ra[k]['prompt_sha256']==rb[k]['prompt_sha256'] for k in ra)

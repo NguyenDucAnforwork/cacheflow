@@ -13,6 +13,10 @@ if /venv/main/bin/python -c 'import json,sys;sys.exit(not json.loads(sys.argv[1]
     export CACHEFLOW_SGLANG_TRANSFER_LOG="$root/results/v3/raw/sglang_transfer_events.jsonl"
     export PYTHONPATH="$root/scripts/sglang_profile_hooks:$root/src${PYTHONPATH:+:$PYTHONPATH}"
 fi
+if /venv/main/bin/python -c 'import json,sys;sys.exit(not json.loads(sys.argv[1]).get("same_batch_guard"))' "$(/venv/main/bin/python "$root/scripts/v3_sglang_runtime.py" validate)"; then
+    export CACHEFLOW_SG_SAME_BATCH_GUARD=1
+    export PYTHONPATH="$root/scripts/sglang_profile_hooks:$root/src${PYTHONPATH:+:$PYTHONPATH}"
+fi
 mapfile -t args < <(/venv/main/bin/python "$root/scripts/v3_sglang_runtime.py" args)
 mkdir -p "$root/results/v3/raw/sglang_servers"
 if [[ -s "$root/results/v3/sglang_server.log" ]]; then

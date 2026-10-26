@@ -1,0 +1,10 @@
+{
+  "reason": "SG cache flush does not clear gateway scheduler recent-prefix history; restart gateway per candidate replay",
+  "invalid_runs": [
+    "v4-sgcontrol-cap4-q8-s102",
+    "v4-sgcontrol-cap4-q8-s103",
+    "v4-sgcontrol-lowreuse-q8-s102",
+    "v4-sgcontrol-qps2-q8-s101",
+    "v4-sgcontrol-qps2-q8-s102"
+  ]
+}

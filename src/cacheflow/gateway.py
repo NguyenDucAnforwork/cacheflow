@@ -6,6 +6,8 @@ import asyncio
 import json
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +19,7 @@ from transformers import AutoTokenizer
 
 from .prefix import prefix_blocks
 from .scheduler import AdmissionScheduler, Ticket
+from .v4_prepare import prepare
 
 
 def _first_content_token(buffer: bytearray, chunk: bytes) -> bool:
@@ -81,6 +84,9 @@ def create_app(config_path: str | None = None) -> FastAPI:
             max_keepalive_connections=settings.get('upstream_keepalive_connections',128)))
     app = FastAPI(title="CacheFlow Gateway")
     app.state.scheduler = scheduler
+    # One worker keeps mutable tokenizer settings serialized, including when a
+    # cancelled HTTP task leaves CPU work running. Stream I/O stays on the loop.
+    prepare_pool=ThreadPoolExecutor(max_workers=1,thread_name_prefix='cacheflow-prepare') if settings.get('prepare_in_thread',False) else None
 
     @app.on_event('startup')
     async def start_subscriber() -> None:
@@ -92,10 +98,14 @@ def create_app(config_path: str | None = None) -> FastAPI:
         if subscriber:
             await subscriber.close()
         await client.aclose()
+        if prepare_pool:
+            await asyncio.to_thread(prepare_pool.shutdown,wait=True,cancel_futures=True)
 
     @app.get("/health")
     async def health() -> dict[str, Any]:
         return {"policy": scheduler.policy, "queue": scheduler.queue_depth, "active": scheduler.active_count,
+                'completed_history_requests': len(scheduler._recent),
+                'prepare_mode': 'thread' if prepare_pool else 'inline',
                 'decision_stats': scheduler.decision_stats() if hasattr(scheduler, 'decision_stats') else None,
                 'residency': subscriber.stats() if subscriber else None}
 
@@ -121,18 +131,21 @@ def create_app(config_path: str | None = None) -> FastAPI:
                 raise ValueError
         except ValueError:
             arrival_ns = received_ns
-        tokenize_start = time.monotonic_ns()
-        token_ids = tokenizer.encode(prompt, add_special_tokens=False)
-        tokenize_end = time.monotonic_ns()
-        blocks = prefix_blocks(token_ids, block_size=scheduler.block_size, namespace=model)
-        engine_blocks = engine_block_hashes(token_ids) if subscriber or scheduler.policy in PURE_PACKING_POLICIES else ()
-        hash_end = time.monotonic_ns()
+        prepare_queued=time.monotonic_ns()
+        work=partial(prepare,tokenizer,prompt,scheduler.block_size,model,
+            bool(subscriber) or scheduler.policy in PURE_PACKING_POLICIES)
+        if prepare_pool:
+            token_ids,blocks,engine_blocks,preparation=await asyncio.get_running_loop().run_in_executor(prepare_pool,work)
+        else:
+            token_ids,blocks,engine_blocks,preparation=work()
         ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns,
             engine_blocks=engine_blocks, input_tokens=len(token_ids), output_budget=int(payload.get('max_tokens', 96)))
         if subscriber:
             ticket.predicted_gpu_tokens = residency.matched_tokens(engine_blocks) if residency.known else None
-        ticket.tokenize_ms = (tokenize_end-tokenize_start)/1e6
-        ticket.prefix_hash_ms = (hash_end-tokenize_end)/1e6
+        ticket.tokenize_ms = preparation['tokenize_ms']
+        ticket.prefix_hash_ms = preparation['prefix_hash_ms']
+        ticket.prepare_cpu_ms = preparation['cpu_ms']
+        ticket.prepare_queue_ms = (preparation['start_ns']-prepare_queued)/1e6
         headers = {"content-type": "application/json"}
         stream_cm = client.stream("POST", upstream + "/v1/completions", content=body, headers=headers)
         try:
@@ -186,6 +199,8 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         "ingress_prepare_ms": (ticket.enqueued_ns - received_ns) / 1e6,
         "tokenize_ms": ticket.tokenize_ms,
         "prefix_hash_ms": ticket.prefix_hash_ms,
+        "prepare_cpu_ms": ticket.prepare_cpu_ms,
+        "prepare_queue_ms": ticket.prepare_queue_ms,
         "dispatch_ns": ticket.dispatch_ns,
         "admission_wait_ms": (ticket.dispatch_ns - ticket.enqueued_ns) / 1e6 if ticket.dispatch_ns else None,
         "admission_deadline_ns": ticket.deadline_ns,

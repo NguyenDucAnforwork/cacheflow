@@ -1,0 +1,33 @@
+{
+  "counter_deltas": {
+    "sglang:cached_tokens_total": 1205440.0,
+    "sglang:cuda_graph_passes_total": 180.0,
+    "sglang:e2e_request_latency_seconds_count": 60.0,
+    "sglang:e2e_request_latency_seconds_sum": 596.2393723349669,
+    "sglang:generation_tokens_histogram_count": 60.0,
+    "sglang:generation_tokens_histogram_sum": 1396.0,
+    "sglang:generation_tokens_total": 1396.0,
+    "sglang:http_requests_total": 84.0,
+    "sglang:http_responses_total": 83.0,
+    "sglang:inter_token_latency_seconds_count": 1336.0,
+    "sglang:inter_token_latency_seconds_sum": 184.78808885907347,
+    "sglang:num_requests_total": 60.0,
+    "sglang:per_stage_req_latency_seconds_count": 128.0,
+    "sglang:per_stage_req_latency_seconds_sum": 83.5000330791081,
+    "sglang:process_cpu_seconds_total": 5.489999999999995,
+    "sglang:prompt_tokens_histogram_count": 60.0,
+    "sglang:prompt_tokens_histogram_sum": 1278118.0,
+    "sglang:prompt_tokens_total": 1278118.0,
+    "sglang:queue_time_seconds_count": 60.0,
+    "sglang:queue_time_seconds_sum": 295.0975469679397,
+    "sglang:realtime_tokens_total": 1280083.0,
+    "sglang:routing_key_all_req_count": 0.0,
+    "sglang:routing_key_running_req_count": 0.0,
+    "sglang:time_to_first_token_seconds_count": 60.0,
+    "sglang:time_to_first_token_seconds_sum": 411.42757187101233,
+    "sglang:uncached_prompt_tokens_histogram_count": 60.0,
+    "sglang:uncached_prompt_tokens_histogram_sum": 72678.0
+  },
+  "samples": 25,
+  "scope": "native source labels; load_back tokens are not vLLM engine-consumed-source tokens"
+}

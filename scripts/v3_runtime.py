@@ -44,6 +44,7 @@ def main():
     p.add_argument('--upstream')
     p.add_argument('--cpu-l1-gib',type=int,choices=[16,32,48,64],default=16)
     p.add_argument('--max-queue',type=int)
+    p.add_argument('--prepare-in-thread',action=argparse.BooleanOptionalAction,default=None)
     args = p.parse_args()
     if args.command in ('configure', 'gateway'):
         c = dict(max_inflight=args.max_inflight, max_num_seqs=args.max_num_seqs,
@@ -57,6 +58,7 @@ def main():
         c['upstream'] = args.upstream or 'http://127.0.0.1:8000'
         c['cpu_l1_gib'] = args.cpu_l1_gib
         c['max_queue'] = args.max_queue if args.max_queue is not None else 64
+        c['prepare_in_thread'] = bool(args.prepare_in_thread)
         if args.command == 'gateway':
             c = load() | {'max_inflight': args.max_inflight}
             if args.keepalive_connections is not None:
@@ -67,6 +69,8 @@ def main():
                 c['upstream']=args.upstream
             if args.max_queue is not None:
                 c['max_queue']=args.max_queue
+            if args.prepare_in_thread is not None:
+                c['prepare_in_thread']=args.prepare_in_thread
         MARKER.write_text(json.dumps(c, indent=2)+'\n')
         load()
         gateway = yaml.safe_load((ROOT/'configs/policies.yaml').read_text())
@@ -76,6 +80,7 @@ def main():
         gateway['model'] = get_model(c['model_key'])['path']
         gateway['upstream'] = c.get('upstream','http://127.0.0.1:8000')
         gateway['upstream_keepalive_connections']=c.get('keepalive_connections',0)
+        gateway['prepare_in_thread']=c.get('prepare_in_thread',False)
         gateway['residency'] = dict(enabled=c.get('residency_events', False),
                                    endpoint='ipc:///tmp/cacheflow-v3-kv-events.sock',
                                    kv_capacity_tokens=c.get('kv_capacity_tokens', 37424), max_bypasses=c.get('max_bypasses',4))

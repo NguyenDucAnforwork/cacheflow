@@ -2699,5 +2699,10 @@
         }
       ]
     }
+  ],
+  "invalidation_notice": "q8-s102/s103 invalid benchmark state; scores retained as diagnostic outputs, not matched-policy evidence",
+  "invalid_run_ids": [
+    "v4-sgcontrol-cap4-q8-s102",
+    "v4-sgcontrol-cap4-q8-s103"
   ]
 }

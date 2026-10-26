@@ -1,0 +1,1 @@
+Invalid comparison: gateway scheduler was not reset before run; nonzero prior decision calls indicate retained prefix history/bypass state. Raw outputs retained; rerun with a new ID after an explicit gateway restart.

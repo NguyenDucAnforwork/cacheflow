@@ -23,12 +23,22 @@ def audit(rid):
     assert metrics['sglang:prompt_tokens_total']==total
     assert metrics['sglang:cached_tokens_total']+metrics['sglang:uncached_prompt_tokens_histogram_sum']==total
     if setup['gateway_policy']:
+        state=setup['gateway_before']
+        if state.get('decision_stats'):
+            assert state['decision_stats']['calls']==0,'nonfresh gateway scheduler state'
+        if setup.get('gateway_reset'):
+            if 'completed_history_requests' in state:
+                assert state['completed_history_requests']==0,'nonfresh prefix history'
+            else:
+                assert state.get('decision_stats',{}).get('calls')==0,'missing freshness evidence'
         from v3_audit_admission import audit as audit_admission
         admission=audit_admission(rid)
         assert setup['gateway_after']['active']==setup['gateway_after']['queue']==0
     else:admission=None
     return dict(run_id=rid,requests=len(rows),errors=0,trace_sha256=summary['trace_sha256'],
         model_revision=summary['model_revision'],prompt_version=summary['prompt_version'],
+        gateway_policy=setup['gateway_policy'],
+        gateway_prepare_mode=(setup.get('gateway_before') or {}).get('prepare_mode'),
         output_budget=summary['output_tokens_budget'],runtime=setup['runtime'],
         public_server_env=setup.get('public_server_env'),
         p50_ms=summary['arrival_ttft_p50_ms'],p95_ms=summary['arrival_ttft_p95_ms'],p99_ms=summary['arrival_ttft_p99_ms'],
