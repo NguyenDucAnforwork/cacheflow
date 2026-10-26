@@ -1,0 +1,71 @@
+{
+  "scope": "Prospective development pilot on already exposed60dev/40stressQA, no fresh holdout or full contribution claim. Fixed four-arm order reversed on stress. Fresh engine per dataset block; uniform60dev warmup; fresh gateway and cache reset per arm. Stop block on any failed/incomplete arm; no retries. Allclient/pool/upstream timeouts180s; primary3600s data are not pooled. Native probes/profilers off. Configured host flags match historical V5; effective lazy heap measured separately.",
+  "runs": [
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-warm",
+      "returncode": 0,
+      "summary_present": true,
+      "requests": 60,
+      "successes": 60,
+      "errors": 0
+    },
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-fifo64-s101",
+      "returncode": 0,
+      "summary_present": true,
+      "requests": 60,
+      "successes": 60,
+      "errors": 0
+    },
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-union64-s101",
+      "returncode": 0,
+      "summary_present": true,
+      "requests": 60,
+      "successes": 60,
+      "errors": 0
+    },
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "ready_fifo",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-ready_fifo-s101",
+      "returncode": 2,
+      "summary_present": false
+    },
+    {
+      "dataset": "stress",
+      "seed": 101,
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-stress-warm",
+      "returncode": 0,
+      "summary_present": true,
+      "requests": 60,
+      "successes": 60,
+      "errors": 0
+    },
+    {
+      "dataset": "stress",
+      "seed": 702,
+      "arm": "packing_ready",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v6pilot1-stress-packing_ready-s702",
+      "returncode": 2,
+      "summary_present": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "run_id": "v5r2-confirm-main-qps4-union64-s702",
+  "converted_monotonic_ns": 130008266822042,
+  "reason": "Sustained no-progress stall; debugger stack capture makes run diagnostic, not an unprofiled performance result",
+  "engine_pid": 308380,
+  "engine_core_pid": 308534,
+  "timeout_s": 3600,
+  "full_stage_started": false,
+  "modified_method": false
+}

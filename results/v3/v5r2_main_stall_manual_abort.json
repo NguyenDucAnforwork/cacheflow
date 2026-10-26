@@ -1,0 +1,18 @@
+{
+  "run_id": "v5r2-confirm-main-qps4-union64-s702",
+  "manual_intervention_utc": "2026-10-26T15:57:43.096582+00:00",
+  "manual_intervention_monotonic_ns": 130770292744634,
+  "action": "supervisorctl stop cacheflow_v2_gateway; allow replay to catch disconnected streams and write all client outcomes",
+  "reason": "Sustained no-progress stall, already converted to diagnostic; preserve completed output text and terminal client ledger before separate registered off/on/off diagnosis",
+  "natural_timeout": false,
+  "configured_timeouts_s": 3600,
+  "expected_requests": 40,
+  "preabort_gateway_completions": 27,
+  "pipeline_pid": 281126,
+  "replay_pid": 310554,
+  "engine_pid": 308380,
+  "engine_core_pid": 308534,
+  "debugger_attach": "Rejected by container ptrace restriction; no sysctl/permission change attempted",
+  "performance_eligible": false,
+  "source_actors_changed": false
+}

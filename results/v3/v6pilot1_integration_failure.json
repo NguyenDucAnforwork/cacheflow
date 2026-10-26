@@ -1,0 +1,17 @@
+{
+  "scope": "Terminal integration-failed pilot; no request was sent for either new policy because parent replay argparse rejected the policy name",
+  "measured_complete_runs": [
+    "v6pilot1-dev-fifo64-s101",
+    "v6pilot1-dev-union64-s101"
+  ],
+  "measured_complete_requests": 120,
+  "failed_before_replay": [
+    "v6pilot1-dev-ready_fifo-s101",
+    "v6pilot1-stress-packing_ready-s702"
+  ],
+  "archived_registered_sources": "results/v3/v6pilot1_source_archive.json",
+  "complete_pilot": false,
+  "new_policy_performance_evidence": false,
+  "replacement_namespace": "v6pilot2",
+  "replacement": "Entire fixed pilot rerun under a new registered namespace; no pooling of earlier baselines"
+}

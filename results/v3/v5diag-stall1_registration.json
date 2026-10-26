@@ -1,0 +1,136 @@
+{
+  "registered_utc": "2026-10-26T15:57:15.449103+00:00",
+  "wait_pipeline_pid": 281126,
+  "wait_pipeline_birth": 1793023718.79,
+  "diagnostic_timeout_s": 180,
+  "actions": [
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "warm",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v5diag-stall1-offA-warm"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "history-fifo",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-history-fifo"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "history-bundle",
+      "arm": "bundle16",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-history-bundle"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "history-union",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-history-union"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "target",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-target"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "warm",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v5diag-stall1-on-warm"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "history-fifo",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-on-history-fifo"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "history-bundle",
+      "arm": "bundle16",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-on-history-bundle"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "history-union",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-on-history-union"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "target",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v5diag-stall1-on-target"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "warm",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v5diag-stall1-offB-warm"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "history-fifo",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-history-fifo"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "history-bundle",
+      "arm": "bundle16",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-history-bundle"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "history-union",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-history-union"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "target",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-target"
+    }
+  ],
+  "source_sha256": {
+    "scripts/v5_stall_diagnostic.py": "5cf3ad5ed25f44d1ad96a8b200ae3cb588faec18f203e8044acbeee0efd1885f",
+    "scripts/v5_serve_vllm_probe.sh": "3c679fba45917589540ae44de4d963427640262530491f8e1d9fb170c2355211",
+    "scripts/v5_vllm_probe_hooks/sitecustomize.py": "60a2c81710f4e87a03835ea6643a5ce6a6fadfe949d0e6b3a9b475ed64cb2943",
+    "src/cacheflow/v5_liveness_probe.py": "258cdad8b71a747f22a30a6665054849dcf0377565c6e89523fa9329aa093285"
+  },
+  "supervisor_original_sha256": "1a1a39d92e16268fa3c9e7a4c5d9864ecd6df29bee1fdeee7a7d13fd580841c0",
+  "scope": "Fresh-process off/on/off, exact warm/history/target trace order, same frozen policy/model/budgets/output cap.180s diagnostic timeouts uniformly differ from3600s primary. No retries, no source patch to upstream, all outcomes diagnostic. Stop phase if an earlier warm/history arm fails. Restore supervisor command and stop serving after all phases."
+}

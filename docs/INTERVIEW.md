@@ -1,6 +1,8 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Đính chính15:38UTC:** validation57lượt hoàn tất nhưng một main repeat đang mắc kẹt/chưa có summary; full study chưa bắt đầu. Budget cấu hình bằng byte không bảo đảm allocator thật bằng nhau: LMCache lazy làm tròn64MiB, hiện quan sát16.039.018.496byte so native16.000.745.472(+0,2392%). Các so sánh policy trong cùng engine vẫn cùng budget; không dùng mô tả “khớp tuyệt đối dung lượng thật giữa hai stack”. Chi tiết/source hash ở `results/v3/v5_host_allocator_rounding.json`.
+**Checkpoint16:36UTC:** diagnostic off/on/off660request hoàn tất, không tái hiện stall gốc; đã đo được2,021GiB cấp phát prefix trùng trong một snapshot bundle restore. V6 readiness+union và baseline chỉ có gate đang ở pilot dev, chưa có kết luận. V5 full benchmark chưa chạy; không gộp số V5/V6.
+
+**Đính chính15:38UTC:** validation57lượt hoàn tất nhưng một main repeat đã được manual abort sau khi mắc kẹt, giữ đủ40kết quả client; full study chưa bắt đầu. Budget cấu hình bằng byte không bảo đảm allocator thật bằng nhau: LMCache lazy làm tròn64MiB, hiện quan sát16.039.018.496byte so native16.000.745.472(+0,2392%). Các so sánh policy trong cùng engine vẫn cùng budget; không dùng mô tả “khớp tuyệt đối dung lượng thật giữa hai stack”. Chi tiết/source hash ở `results/v3/v5_host_allocator_rounding.json`.
 
 **Cập nhật 26/10/2026:** V5 dùng Qwen3-4B, đã audit57lượt validation/2820request không lỗi và đang chạy các lượt lặp protocol đã sửa; full study còn chờ. V4 có lỗi chỉ dẫn abstention mâu thuẫn; các số V4 dưới đây giữ phạm vi lịch sử, không gộp với V5. Phần21 giải thích lỗi, timeout và profiling mới nhất; phần18–20 là các bài học/cấu hình V4. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
 
@@ -738,3 +740,46 @@ Tôi giữ đây là quan sát một lượt chưa kết thúc, không tự gắ
 **Hỏi: Kết quả lặp trên các câu hỏi khác dev có giữ nguyên độ lớn lợi ích không?**
 
 **Đáp:** Không. Phần nativeSG của repair repeats đã audit18lượt/720request không lỗi. So nativeLPM4QPS, union giảm p95 khoảng11,22/7,81/4,34% theo ba seed, nhưng median tăng khoảng38–40%; một seed giảmF1. Đây là40câu conv43/44đã từng dùng ởV4, không phảiholdout mới. SoDFS mức giảm p95 khoảng11,00/9,83/4,40%. Tôi báo hiệu ứng nhỏ hơn dev này cùng với main đang mắc kẹt, không chọn bảng dev tốt nhất làm kết luận. Audit toàn27lượt và full study vẫn chưa đủ, nên ở checkpoint này chưa thể tuyên bố đóng góp đã đạt mục tiêu.
+
+
+### 21.8. Vì sao manual abort không được gọi là timeout tự nhiên?
+
+Main repeat V5 seed702đã đứng yên gần29phút: GPU0%, engine0running/11waiting, KV99,7%, counter compute/prompt/TTFT không đổi. Sau khi chuyển cả lượt thành diagnostic, tôi ghi thời điểm can thiệp và dừng gateway để client xuất đủ40kết quả. Có27response thành công và13`RemoteProtocolError` sau can thiệp; output hash của cả40record được kiểm. Conv43thành công18/20, conv44thành công9/20. Không tính p95 chỉ trên27response, cũng không gọi13lỗi là timeout3600giây hay lỗi mạng tự nhiên.
+
+**Hỏi: Tại sao không tiếp tục tăng timeout?**
+
+**Đáp:** Timeout dài hơn không tự tạo tiến triển khi engine không thực hiện công việc. Tôi đã giữ nguyên3600giây trong lượt gốc, loại lượt khỏi performance và ghi rõ manual abort, thay vì chờ thêm rồi chọn số đẹp. Diagnostic kế tiếp dùng180giây đồng nhất cho cảoff/on/off, có ID riêng và không đi vào bảng benchmark. Mốc180giây là cách giới hạn thời gian chẩn đoán, không phải sửa SLO hay chứng minh policy đạt deadline đó.
+
+**Hỏi: Tại sao replay cả ba arm trước seed702thay vì chỉ chạy request lỗi?**
+
+**Đáp:** Engine và connector giữ trạng thái qua nhiều lượt ngay cả khi đã reset cache. Nếu lỗi phụ thuộc trạng thái tích lũy hoặc thứ tự, chỉ chạy riêng request có thể làm nó biến mất. Diagnostic prospectively đăng ký đúng warmup→FIFO701→bundle701→union701→union702, lặp off/on/off với process mới cho mỗi phase. Probe ghi status request, block vật lý/refcount và membership của future, không thêm CUDA synchronization. Nó giúp phân biệt logical prefix có vẻ fit với tensor/block đã thật sự chia sẻ và được giải phóng; chưa có snapshot thực tế thì các lời giải thích đó vẫn chỉ là giả thuyết.
+
+## 22. Khi logical sharing chưa trở thành physical sharing
+
+**Hỏi: Union các block prefix giống nhau có đủ dự đoán memory footprint không?**
+
+**Đáp:** Không ở mọi trạng thái. Nó tính đúng lượng thông tin KV có thể dùng chung, nhưng engine có thể cấp phát nhiều bản vật lý khi restore còn bất đồng bộ và các block chưa được đăng ký sẵn sàng trong cache index. Trong diagnostic native, hai request cùng prefix đang`WAITING_FOR_REMOTE_KVS` mỗi request có1.776block. Có856block dùng chung, còn920logical prefix block được cấp phát ở hai bộ block ID khác nhau. Thực tế là2.696block vật lý thay vì1.776nếu chia sẻ trọn vẹn.
+
+Mỗi block16token của model4B chiếm`16×147456`byte, nên920bản cấp phát thêm là2.170.552.320byte, khoảng2,021GiB. Pool2730block được đối chiếu thành2696đang được request giữ+33free+1null. Đây là ledger allocation/refcount, không phải suy luận từ một con sốcache-hit. Hai request mỗi bên còn920block chưa được hash vào cache; snapshot worker gần đó có2retrieve future. Không đọc tensor nên chưa khẳng định hai buffer chứa dữ liệu gì hoặc mọi copy đã hoàn tất.
+
+**Hỏi: Có tìm được nguyên nhân stall trước đó chưa?**
+
+**Đáp:** Chưa. Cả ba phase off/on/off mới đều hoàn tất, tổng660request không lỗi. Snapshot trùng block xảy ra ở baseline bundle rồi tự phục hồi; các điểm lấy mẫu union/target trong lần diagnostic này ghi0trùng. Nó chứng minh một khoảng cách giữa logical và physical sharing, chưa chứng minh đó gây stall gốc. Tôi giữ nguyên lần stall thật và13gián đoạn do manual abort, không dùng ba lần thành công để xóa nó.
+
+**Hỏi: Thay đổi admission đang kiểm tra là gì?**
+
+**Đáp:** Tôi giữ union budget và giới hạn bypass, thêm gate: khi đã có một request cùng exact prefix chưa ra text đầu tiên, follower đó tiếp tục chờ; request prefix khác vẫn có thể được xem xét trong bound. Khi producer ra text đầu tiên, follower có thể tiếp tục. Sau đó mỗi prefix vẫn chỉ có tối đa một request mới chưa ra text đầu tiên tại một thời điểm. Mục tiêu là giảm các producer/follower cùng đi vào giai đoạn restore chưa sẵn sàng; chưa có GPU result thì đây vẫn là giả thuyết đang kiểm.
+
+Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union budget. Nếu nó tốt ngang hoặc hơn candidate, phải thừa nhận phần lợi ích đến từ readiness đơn giản, không tự gán cho union. Baseline FIFO và union cũ vẫn được đo lại trong pilot. Các đối chứng mạnh khác, controls và full benchmark còn phải hoàn tất trước khi chốt đóng góp.
+
+**Hỏi: First text có bảo đảm KV đã được pin sẵn cho follower không?**
+
+**Đáp:** Không. Nó là tín hiệu frontend sau khi model đã bắt đầu phát text, không phải API cấp phát/pinning. Native cache publication, eviction, request completion và queue có thể làm giả định sharing thay đổi. Gate chỉ bảo đảm quy tắc số request pending trong mô hình admission; không bảo đảm engine luôn tiến triển, không cưỡng bức restore/recompute và không đưa ra deadline E2E. Cần counter/allocation evidence và kiểm lỗi/fairness thực tế để xác định phạm vi.
+
+**Hỏi: Vì sao thêm một gate nhỏ lại phải sửa decision-cache key?**
+
+**Đáp:** Trước đây queue và tập active không đổi thì quyết định có thể cache lại. Với readiness, producer có thể vừa ra text đầu tiên mà cả hai tập ID vẫn giữ nguyên. Nếu cache key chỉ chứa ID, scheduler có thể giữ quyết định`None`cũ mãi và không dispatch follower dù điều kiện đã đổi. Tôi đưa bit readiness của từng active request vào key, đồng thời dùng notification hiện có khi nhận first text. Test kiểm quyết định bị cache lúc pending rồi follower được đánh thức sau transition; test khác kiểm cancellation và bypass/drain. Test này xác minh logic, không thay thế GPU benchmark.
+
+**Hỏi: Vì sao71unit test xanh mà policy mới vẫn chưa chạy được?**
+
+**Đáp:** Test trước đó kiểm class scheduler và factory adapter, nhưng chưa đi hết chuỗi launcher. CLI replay còn danh sách policy cố định nên nó từ chối hai tên mới trước khi gửi request. Tôi giữ lần pilot hỏng, lưu nguyên source đã đăng ký và không lấy hai baseline thành công ghép với một lượt sửa sau. Bản thay thế có namespace mới, thêm preflight cho CLI và test so sánh launcher/replay với parent: chỉ khác tên module/entrypoint và hai enum metadata. Toàn bộ72test hiện qua; vẫn phải nhìn request thật, source/argv thực tế và audit toàn bộ pilot mới biết end-to-end đã đúng. Test xanh không tự chứng minh một thí nghiệm hoàn tất hay một method có lợi.

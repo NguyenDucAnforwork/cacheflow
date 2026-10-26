@@ -1,0 +1,25 @@
+{
+  "scope": "Exact registered source snapshots for terminal integration-failed pilot; not performance evidence for new policies",
+  "files": {
+    "scripts/v6_pilot.py": {
+      "snapshot": "results/v3/protocol_sources/v6_pilot1/scripts/v6_pilot.py",
+      "sha256": "586c2b55276f13bfe37971dc5f4306fc7991dabb090b19d52e6a95f1867a1ba8"
+    },
+    "scripts/v6_runtime.py": {
+      "snapshot": "results/v3/protocol_sources/v6_pilot1/scripts/v6_runtime.py",
+      "sha256": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b"
+    },
+    "scripts/v6_serve_gateway.sh": {
+      "snapshot": "results/v3/protocol_sources/v6_pilot1/scripts/v6_serve_gateway.sh",
+      "sha256": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424"
+    },
+    "src/cacheflow/v6_gateway.py": {
+      "snapshot": "results/v3/protocol_sources/v6_pilot1/src/cacheflow/v6_gateway.py",
+      "sha256": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573"
+    },
+    "src/cacheflow/v6_ready_scheduler.py": {
+      "snapshot": "results/v3/protocol_sources/v6_pilot1/src/cacheflow/v6_ready_scheduler.py",
+      "sha256": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976"
+    }
+  }
+}

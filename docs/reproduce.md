@@ -1,6 +1,6 @@
 # CacheFlow: reproducibility log
 
-> **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. A main repeat is currently stalled/incomplete; no full study has started.
+> **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. The stalled main repeat was manually aborted; no full study has started.
 
 Status: pinned stack installed and development replay verified on `optim`. This file records both the initial host audit and the commands used after setup.
 
@@ -133,3 +133,33 @@ The separate `v5_full_histograms.py PIPELINE_PID` is a passive observer register
 `v5_after_pipeline.py PIPELINE_PID` waits on a verified live controller and analyzes complete audits only after it exits. It cannot retry/start serving work or mark the research complete. It derives completion, waits, run descriptors, per-conversation QoS, native resource samples and available full ITL snapshots; missing histogram coverage remains explicit. Final scientific review, plots/report and requirement audit still follow.
 
 Direct and kernel profiling artifacts remain separate from serving comparisons. Do not rerun heavy profilers while latency experiments are active. Direct DMA coverage is incomplete; kernel overlap is a scoped GPU-clock interval measurement. Preserve raw failures, output text, metric samples and trace manifests before any cleanup or instance recycle. Current state lives in [PROGRESS.md](PROGRESS.md), not the historical instance-state section above.
+
+### Separate main liveness diagnostic after V5 retirement
+
+The original pipeline terminated after an explicitly recorded manual abort; no full study ran. `v5_audit_manual_abort.py` verifies40retained client/output records and27completed gateway records while excluding successful-only quantiles.13RemoteProtocolErrors after controlled gateway stop are manual interruptions, not natural3600s timeouts. See `v5r2_main_stall_manual_abort.json`, `_main_manual_abort_audit.json` and `_pipeline_retirement.json`.
+
+Read the registered diagnostic action graph without GPU mutations:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v5_stall_diagnostic.py --plan
+PYTHONPATH=src /venv/main/bin/python -m pytest -q tests/test_v5_liveness_probe.py
+```
+
+Execution uses `--after-pid VERIFIED_LIVE_PIPELINE_PID`, registers all sourceSHA before waiting, and starts only after the prior pipeline is terminal with its retained diagnostic outcome. The current namespace is already registered: do not run a second controller. OffA/on/offB each starts a fresh main stack, warms identically and replays the same three historical arms before the failing seed702target. All use180s diagnostic timeouts and are excluded from primary comparisons. On-phase temporarily selects `v5_serve_vllm_probe.sh` through supervisor; the original supervisor command/config bytes are restored and serving stopped on completion. Original upstream source files and sealed actors are unchanged.
+
+Probe journals are private `results/v3/raw/v5diag-stall1-probe.PID.jsonl`. Analyze after completion with `v5_analyze_liveness_probe.py --output results/v3/v5diag_stall1_probe_analysis.json`; use`--partial` only for explicitly partial inspection. A complete analysis must inspect both native component coverage, probe errors and off/on/off outcomes. Missing state is not zero. No snapshot alone establishes successful DMA, tensor correctness or root cause. In this container gdb attach was unavailable; do not alter ptrace/sysctl permissions to work around that restriction.
+
+### V6 readiness pilot (development, not full evaluation)
+
+V5 actors/seal remain byte-identical. The separate `cacheflow.v6_gateway:create_app` factory installs process-local policy dispatch for`packing_ready`and`ready_fifo`; parent policy constructors remain unchanged. `v6_runtime.py` uses original runtime generation then explicitly selects a new policy in its gateway config/marker. The serving wrapper differs only by the factory target. This opt-in adapter is a new method runtime: its argv and all V6 source fingerprints must be verified even though the historical V5 byte verifier passes.
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_pilot.py --plan
+PYTHONPATH=src /venv/main/bin/python -m pytest -q tests/test_v6_ready_scheduler.py
+```
+
+The registered`v6pilot2-*`namespace is already running; do not start another controller. Two blocks use dev60QA/seed101 and already-exposed stress40QA/seed702, reversing the four-arm order. FIFO64, originalunion64, readiness-onlyFIFO64 and gatedunion64 all receive fresh gateway/cache resets, the same model/resources/preparation and180s pilot timeouts; engines restart between dataset blocks. Native probes/profilers are off. The controller records actual gateway argv/V6 source hashes in each`*.v6_entrypoint.json`, captures native host allocator status and restores original gateway supervisor config after completion. It stops a block on any failed/incomplete run and never retries it.
+
+Only after all8measured arms exist, run`PYTHONPATH=src /venv/main/bin/python scripts/v6_audit_pilot.py`. It checks parent19source coverage plus new entrypoint/source/policy/reset/transport/budget/observer evidence, grades captured outputs officially, and derives paired TTFT, completion and decode proxies. A partial pilot cannot produce a complete audit. These100uniqueQA reuse previous development exposure; no fresh semantic holdout, three-seed confirmation or full contribution claim is implied. No V5/V6 pooling.
+
+The first`v6pilot1`attempt is retained as an integration failure: parent replay argparse did not accept either new policy, so no new-policy request was sent. Registered five-source snapshots are archived in`v6pilot1_source_archive.json`. Replacement`v6pilot2`adds a replay module with only those two CLI enum entries and two mechanically checked shell launch-target substitutions. Parent files stay byte-identical. Controller preflight verifies both policy names and exact source transformations before GPU. The replacement reruns the entire fixed pilot; earlier baseline results are not pooled. `v6_after_pilot.py VERIFIED_PILOT_PID` waits on the verified current controller then audits all eight completed arms only, without GPU retries/restarts.

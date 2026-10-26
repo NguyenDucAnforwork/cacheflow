@@ -1,0 +1,18 @@
+{
+  "retired_utc": "2026-10-26T16:03:20.097044+00:00",
+  "pipeline_pid": 281126,
+  "reason": "Main repeat converted to diagnostic after prolonged no-progress, then manual gateway stop; source actors unchanged",
+  "completed_stage": "Validation57runs2820requests audited",
+  "native_repair_repeats": "18runs720requests audited independently",
+  "main_repeat_complete_success_runs_observed": 3,
+  "main_repeat_requests_observed": 120,
+  "diagnostic_interrupted_run": "v5r2-confirm-main-qps4-union64-s702",
+  "diagnostic_retained_successes": 27,
+  "manual_interruptions": 13,
+  "complete27_run_audit": false,
+  "full_stage_started": false,
+  "remaining_original_main_repeat_arms": 5,
+  "no_auto_resume": true,
+  "next": "Registered separate off/on/off liveness diagnosis; root cause and any method revision require new evidence before full study",
+  "research_goal_complete": false
+}

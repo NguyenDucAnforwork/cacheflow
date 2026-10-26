@@ -1,0 +1,72 @@
+{
+  "registered_utc": "2026-10-26T16:32:24.397483+00:00",
+  "actions": [
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-fifo64-s101"
+    },
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-union64-s101"
+    },
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "ready_fifo",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-ready_fifo-s101"
+    },
+    {
+      "dataset": "dev",
+      "seed": 101,
+      "arm": "packing_ready",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v6pilot1-dev-packing_ready-s101"
+    },
+    {
+      "dataset": "stress",
+      "seed": 702,
+      "arm": "packing_ready",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v6pilot1-stress-packing_ready-s702"
+    },
+    {
+      "dataset": "stress",
+      "seed": 702,
+      "arm": "ready_fifo",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v6pilot1-stress-ready_fifo-s702"
+    },
+    {
+      "dataset": "stress",
+      "seed": 702,
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v6pilot1-stress-union64-s702"
+    },
+    {
+      "dataset": "stress",
+      "seed": 702,
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v6pilot1-stress-fifo64-s702"
+    }
+  ],
+  "source_sha256": {
+    "scripts/v6_pilot.py": "586c2b55276f13bfe37971dc5f4306fc7991dabb090b19d52e6a95f1867a1ba8",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976"
+  },
+  "parent_v5_seal_sha256": "19f3fc70db3ba44df24b99dd64ae02b9dfe220bf1a434e54553b1bbf1b4e8271",
+  "original_supervisor_sha256": "7e2cbb9bc46a2ce4480314482ee4619bab909a6af405246a3bcc97d31feffdb7",
+  "method": "Same logical union budget/cap64/bypass8, add at most one admitted request without first nonempty text per >=1024-token exact prefix. Gate-only FIFO ablation has the same gate and bypass bound but no union budget. First text is a frontend signal, not a physical pin guarantee.",
+  "scope": "Prospective development pilot on already exposed60dev/40stressQA, no fresh holdout or full contribution claim. Fixed four-arm order reversed on stress. Fresh engine per dataset block; uniform60dev warmup; fresh gateway and cache reset per arm. Stop block on any failed/incomplete arm; no retries. Allclient/pool/upstream timeouts180s; primary3600s data are not pooled. Native probes/profilers off. Configured host flags match historical V5; effective lazy heap measured separately."
+}

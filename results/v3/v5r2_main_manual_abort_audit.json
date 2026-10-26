@@ -1,0 +1,47 @@
+{
+  "run_id": "v5r2-confirm-main-qps4-union64-s702",
+  "status": "Terminal manual-abort diagnostic, not natural3600s timeout or primary performance",
+  "attempts": 40,
+  "retained_successes": 27,
+  "interrupted": 13,
+  "status_counts": {
+    "ok": 27,
+    "exception:RemoteProtocolError": 13
+  },
+  "per_conversation": [
+    {
+      "sample_id": "conv-43",
+      "attempts": 20,
+      "retained_successes": 18,
+      "interrupted_request_ids": [
+        "conv-43-q018",
+        "conv-43-q019"
+      ]
+    },
+    {
+      "sample_id": "conv-44",
+      "attempts": 20,
+      "retained_successes": 9,
+      "interrupted_request_ids": [
+        "conv-44-q009",
+        "conv-44-q010",
+        "conv-44-q011",
+        "conv-44-q012",
+        "conv-44-q013",
+        "conv-44-q014",
+        "conv-44-q015",
+        "conv-44-q016",
+        "conv-44-q017",
+        "conv-44-q018",
+        "conv-44-q019"
+      ]
+    }
+  ],
+  "client_raw_sha256": "9b5ab7e48189f9920057d647eebd8c8010ea49f9d264dbc15f0c660e4c1402c5",
+  "trace_sha256": "b43bb72aa815a2d22f13dbc49aaa7408596864e66664605101cfcbf5e0370900",
+  "retained_output_hashes_verified": true,
+  "preabort_gateway_ledger_matches_completed_clients": true,
+  "complete_success_latency_quantiles": null,
+  "primary_success_rate": null,
+  "limitations": "Raw summary emits successful-only percentiles by implementation; they are excluded here.13RemoteProtocolErrors follow controlled gateway stop, not proven spontaneous transport failures. Native duplicate-block/connector cause remains unproven. Whole27-run repeat stage and full benchmark are incomplete."
+}

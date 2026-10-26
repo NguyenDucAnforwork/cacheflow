@@ -1,0 +1,698 @@
+{
+  "scope": "Complete registered liveness diagnostic, not primary latency/quality evidence. Original prolonged stall did not reproduce across this fixed three-phase experiment; it remains a retained real observation.",
+  "registration_sha256": "582f7509e5e47132c373bf7352339517eb2fda30922c47e51b8cd9b5773d7f34",
+  "requests": 660,
+  "errors": 0,
+  "original_supervisor_config_restored": true,
+  "runs": [
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "warm",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v5diag-stall1-offA-warm",
+      "requests": 60,
+      "errors": 0,
+      "duration_s": 50.561608635,
+      "engine_pid": 324171,
+      "diagnostic_ttft_p95_ms": 37031.61493385,
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "history-fifo",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-history-fifo",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 45.500176082,
+      "engine_pid": 324171,
+      "diagnostic_ttft_p95_ms": 34055.59445325,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "history-bundle",
+      "arm": "bundle16",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-history-bundle",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 37.644685427,
+      "engine_pid": 324171,
+      "diagnostic_ttft_p95_ms": 29158.129720700003,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "history-union",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-history-union",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 29.615204185,
+      "engine_pid": 324171,
+      "diagnostic_ttft_p95_ms": 20965.09588655,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "offA",
+      "probe": false,
+      "label": "target",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v5diag-stall1-offA-target",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 29.660704127,
+      "engine_pid": 324171,
+      "diagnostic_ttft_p95_ms": 19345.405590349998,
+      "trace_sha256": "b43bb72aa815a2d22f13dbc49aaa7408596864e66664605101cfcbf5e0370900"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "warm",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v5diag-stall1-on-warm",
+      "requests": 60,
+      "errors": 0,
+      "duration_s": 51.624003921,
+      "engine_pid": 326394,
+      "diagnostic_ttft_p95_ms": 38085.75253795,
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "history-fifo",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-on-history-fifo",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 45.597969382,
+      "engine_pid": 326394,
+      "diagnostic_ttft_p95_ms": 34144.2022493,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "history-bundle",
+      "arm": "bundle16",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-on-history-bundle",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 37.469616116,
+      "engine_pid": 326394,
+      "diagnostic_ttft_p95_ms": 28979.739855249998,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "history-union",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-on-history-union",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 29.316967274,
+      "engine_pid": 326394,
+      "diagnostic_ttft_p95_ms": 20350.50895655,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "label": "target",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v5diag-stall1-on-target",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 29.651501193,
+      "engine_pid": 326394,
+      "diagnostic_ttft_p95_ms": 19327.80313705,
+      "trace_sha256": "b43bb72aa815a2d22f13dbc49aaa7408596864e66664605101cfcbf5e0370900"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "warm",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "run_id": "v5diag-stall1-offB-warm",
+      "requests": 60,
+      "errors": 0,
+      "duration_s": 50.916134467,
+      "engine_pid": 328748,
+      "diagnostic_ttft_p95_ms": 37374.9506802,
+      "trace_sha256": "9220f3f67649644c6b2dda0a947a3efb8dba8e8e2bb6b20df662e8700c475ecd"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "history-fifo",
+      "arm": "fifo64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-history-fifo",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 45.722527275,
+      "engine_pid": 328748,
+      "diagnostic_ttft_p95_ms": 34271.01720375,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "history-bundle",
+      "arm": "bundle16",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-history-bundle",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 38.984048499,
+      "engine_pid": 328748,
+      "diagnostic_ttft_p95_ms": 29411.24598755,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "history-union",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s701.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-history-union",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 28.943778996,
+      "engine_pid": 328748,
+      "diagnostic_ttft_p95_ms": 19903.36705125,
+      "trace_sha256": "2c0fec97a0c98454822c0e7ea56de591d33406b53ff06e70891d4da2f3e1f2c2"
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "label": "target",
+      "arm": "union64",
+      "trace": "data/processed/v3/v5-confirm4b-qps4-s702.jsonl.gz",
+      "run_id": "v5diag-stall1-offB-target",
+      "requests": 40,
+      "errors": 0,
+      "duration_s": 29.742971786,
+      "engine_pid": 328748,
+      "diagnostic_ttft_p95_ms": 19408.7768851,
+      "trace_sha256": "b43bb72aa815a2d22f13dbc49aaa7408596864e66664605101cfcbf5e0370900"
+    }
+  ],
+  "paired_hash_changes": [
+    {
+      "a": "v5diag-stall1-offA-warm",
+      "b": "v5diag-stall1-on-warm",
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v5diag-stall1-offA-warm",
+      "b": "v5diag-stall1-offB-warm",
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v5diag-stall1-offA-history-fifo",
+      "b": "v5diag-stall1-on-history-fifo",
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v5diag-stall1-offA-history-fifo",
+      "b": "v5diag-stall1-offB-history-fifo",
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v5diag-stall1-offA-history-bundle",
+      "b": "v5diag-stall1-on-history-bundle",
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v5diag-stall1-offA-history-bundle",
+      "b": "v5diag-stall1-offB-history-bundle",
+      "output_hash_mismatches": 3
+    },
+    {
+      "a": "v5diag-stall1-offA-history-union",
+      "b": "v5diag-stall1-on-history-union",
+      "output_hash_mismatches": 3
+    },
+    {
+      "a": "v5diag-stall1-offA-history-union",
+      "b": "v5diag-stall1-offB-history-union",
+      "output_hash_mismatches": 5
+    },
+    {
+      "a": "v5diag-stall1-offA-target",
+      "b": "v5diag-stall1-on-target",
+      "output_hash_mismatches": 2
+    },
+    {
+      "a": "v5diag-stall1-offA-target",
+      "b": "v5diag-stall1-offB-target",
+      "output_hash_mismatches": 2
+    }
+  ],
+  "native_journal_sha256": {
+    "results/v3/raw/v5diag-stall1-probe.326557.jsonl": "5f87c7dec6c8326de96b26dd1be464fff9889fe6bebe3f57d5d4a8b9e176d61f"
+  },
+  "native_summary": {
+    "scheduler_snapshots": 85,
+    "worker_snapshots": 85,
+    "probe_errors": [],
+    "both_native_components_observed": true,
+    "max_duplicate_physical_blocks": 920,
+    "min_free_blocks": 33,
+    "blocked_snapshot_count": 20,
+    "max_pending_store_futures": 9,
+    "max_pending_retrieve_futures": 2,
+    "near_full_blocked_states": []
+  },
+  "peak_duplicate_snapshot": {
+    "diagnostic_only": true,
+    "duplicate_examples": [
+      {
+        "expected_prefix_hash": "6d079899b06c8213a5d4c24eb3f1bb0b0cad8a2f415b0d46ea00895e750e0b70",
+        "group_id": 0,
+        "physical_block_ids": [
+          960,
+          1802
+        ]
+      },
+      {
+        "expected_prefix_hash": "9e1c5db38ed61f81c6ce6b032b5e2f214307d02bf0c19784897c835d58029bfd",
+        "group_id": 0,
+        "physical_block_ids": [
+          959,
+          1801
+        ]
+      },
+      {
+        "expected_prefix_hash": "9a977e1a3c32f9e0a089f2b0c717bd1d0247e99cd72431e92b01a35ade1f7ea1",
+        "group_id": 0,
+        "physical_block_ids": [
+          958,
+          1800
+        ]
+      },
+      {
+        "expected_prefix_hash": "7934a3da69ea76090ae30970065bea8479b88e4dadc7df2a671de3a68a478c92",
+        "group_id": 0,
+        "physical_block_ids": [
+          957,
+          1815
+        ]
+      },
+      {
+        "expected_prefix_hash": "f6fcffc681d2c7a2e485c232117feede53db1947a59e809a1a08188d8533c3ba",
+        "group_id": 0,
+        "physical_block_ids": [
+          956,
+          1814
+        ]
+      },
+      {
+        "expected_prefix_hash": "dba31b41d3847b06aaf4fa2813ebb4a6138d237b40eb75140717fe961a2413e5",
+        "group_id": 0,
+        "physical_block_ids": [
+          955,
+          1820
+        ]
+      },
+      {
+        "expected_prefix_hash": "78bc361d4b64d94c28868f6a3381de9e61fc1562683790c79dc0998a3b101b58",
+        "group_id": 0,
+        "physical_block_ids": [
+          954,
+          1819
+        ]
+      },
+      {
+        "expected_prefix_hash": "18d9171b40745b4f617809b267e607ec814851eee20b7fb091d0835c2d83eccc",
+        "group_id": 0,
+        "physical_block_ids": [
+          953,
+          1818
+        ]
+      },
+      {
+        "expected_prefix_hash": "11c9d32c2b8f80e0921b0762ae8e06b649de78d22a7249fd52f55bf1fa145026",
+        "group_id": 0,
+        "physical_block_ids": [
+          952,
+          1804
+        ]
+      },
+      {
+        "expected_prefix_hash": "95024390e759009623ed79a0ef03b1a6af2fdaa1c851a56c36551f194f7f95c4",
+        "group_id": 0,
+        "physical_block_ids": [
+          1217,
+          1803
+        ]
+      },
+      {
+        "expected_prefix_hash": "97a2973449b2d9f1e86fcd444517767baf0d0102ed5e3f61942b2e701101a9fb",
+        "group_id": 0,
+        "physical_block_ids": [
+          1823,
+          2119
+        ]
+      },
+      {
+        "expected_prefix_hash": "c7d73f130057d14a53d720dac62804d50180b896f54a3ab40cc29adb442775a4",
+        "group_id": 0,
+        "physical_block_ids": [
+          6,
+          891
+        ]
+      },
+      {
+        "expected_prefix_hash": "6a69de08a253162d44eae86f4459b313296c5b74bb98864cee1b0902a4c943db",
+        "group_id": 0,
+        "physical_block_ids": [
+          5,
+          892
+        ]
+      },
+      {
+        "expected_prefix_hash": "7c876a9113def2874acc4fa35d892affd13195ab56fcc2350b77e35286548e73",
+        "group_id": 0,
+        "physical_block_ids": [
+          890,
+          1825
+        ]
+      },
+      {
+        "expected_prefix_hash": "b448d9dcf1fddf4ebae54d8a9ce9c07e930ceca4a6ed63a7963d5c7d0b68feb9",
+        "group_id": 0,
+        "physical_block_ids": [
+          889,
+          1808
+        ]
+      },
+      {
+        "expected_prefix_hash": "9c561c962998a4ce30876f529a1a6b83173e39fc4ae0dc37a1d0e78ed3d36e0a",
+        "group_id": 0,
+        "physical_block_ids": [
+          888,
+          1807
+        ]
+      }
+    ],
+    "duplicate_physical_blocks_above_one_per_expected_hash": 920,
+    "duplicated_expected_prefix_hashes": 920,
+    "finished_recving_kv_req_ids": [],
+    "free_blocks": 33,
+    "global_refcount_histogram": {
+      "0": 34,
+      "1": 1840,
+      "2": 856
+    },
+    "kind": "scheduler",
+    "limitation": "Expected hashes identify duplicated logical prefix identities in allocated tables; unhashed/pending blocks do not prove successful transfers or valid tensor content. Full-attention single-group interpretation is used here.",
+    "monotonic_ns": 131478006599927,
+    "pid": 326557,
+    "requests": [
+      {
+        "block_tables": [
+          {
+            "blocks": 1776,
+            "first_blocks": [
+              {
+                "block_id": 4,
+                "hashed": true,
+                "ref_cnt": 2
+              },
+              {
+                "block_id": 2727,
+                "hashed": true,
+                "ref_cnt": 2
+              },
+              {
+                "block_id": 2728,
+                "hashed": true,
+                "ref_cnt": 2
+              },
+              {
+                "block_id": 2173,
+                "hashed": true,
+                "ref_cnt": 2
+              }
+            ],
+            "last_blocks": [
+              {
+                "block_id": 964,
+                "hashed": false,
+                "ref_cnt": 1
+              },
+              {
+                "block_id": 963,
+                "hashed": false,
+                "ref_cnt": 1
+              },
+              {
+                "block_id": 962,
+                "hashed": false,
+                "ref_cnt": 1
+              },
+              {
+                "block_id": 961,
+                "hashed": false,
+                "ref_cnt": 1
+              }
+            ],
+            "unhashed": 920
+          }
+        ],
+        "num_computed_tokens": 28416,
+        "num_tokens": 28549,
+        "request_id": "cmpl-v5diag-stall1-on-history-bundle-conv-44-q008-0-a2552cd9",
+        "status": "WAITING_FOR_REMOTE_KVS"
+      },
+      {
+        "block_tables": [
+          {
+            "blocks": 1776,
+            "first_blocks": [
+              {
+                "block_id": 4,
+                "hashed": true,
+                "ref_cnt": 2
+              },
+              {
+                "block_id": 2727,
+                "hashed": true,
+                "ref_cnt": 2
+              },
+              {
+                "block_id": 2728,
+                "hashed": true,
+                "ref_cnt": 2
+              },
+              {
+                "block_id": 2173,
+                "hashed": true,
+                "ref_cnt": 2
+              }
+            ],
+            "last_blocks": [
+              {
+                "block_id": 1181,
+                "hashed": false,
+                "ref_cnt": 1
+              },
+              {
+                "block_id": 1182,
+                "hashed": false,
+                "ref_cnt": 1
+              },
+              {
+                "block_id": 1183,
+                "hashed": false,
+                "ref_cnt": 1
+              },
+              {
+                "block_id": 1184,
+                "hashed": false,
+                "ref_cnt": 1
+              }
+            ],
+            "unhashed": 920
+          }
+        ],
+        "num_computed_tokens": 28416,
+        "num_tokens": 28552,
+        "request_id": "cmpl-v5diag-stall1-on-history-bundle-conv-44-q009-0-bbd32c06",
+        "status": "WAITING_FOR_REMOTE_KVS"
+      },
+      {
+        "block_tables": [
+          {
+            "blocks": 0,
+            "first_blocks": [],
+            "last_blocks": [],
+            "unhashed": 0
+          }
+        ],
+        "num_computed_tokens": 0,
+        "num_tokens": 28548,
+        "request_id": "cmpl-v5diag-stall1-on-history-bundle-conv-44-q010-0-8508e912",
+        "status": "WAITING"
+      },
+      {
+        "block_tables": [
+          {
+            "blocks": 0,
+            "first_blocks": [],
+            "last_blocks": [],
+            "unhashed": 0
+          }
+        ],
+        "num_computed_tokens": 0,
+        "num_tokens": 28542,
+        "request_id": "cmpl-v5diag-stall1-on-history-bundle-conv-44-q011-0-b562b05c",
+        "status": "WAITING"
+      }
+    ],
+    "running": 0,
+    "skipped_waiting": 2,
+    "status_counts": {
+      "WAITING": 2,
+      "WAITING_FOR_REMOTE_KVS": 2
+    },
+    "total_blocks": 2730,
+    "tracked_request_unique_physical_blocks": 2696,
+    "waiting": 2
+  },
+  "nearby_worker_snapshot": {
+    "diagnostic_only": true,
+    "healthy": true,
+    "kind": "connector_worker",
+    "limitation": "Membership only; no extra future/event queries, synchronization, retries or state mutation.",
+    "monotonic_ns": 131477997869385,
+    "pid": 326557,
+    "returned_finished_recving": [],
+    "returned_finished_sending": [],
+    "state": {
+      "_returned_finished": {
+        "count": 128,
+        "first_ids": [
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q000-0-88cb075d",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q001-0-aa343a96",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q002-0-816239ef",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q003-0-a18c3f09",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q004-0-9e3c00ca",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q005-0-9faf4c2d",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q006-0-a4c50df0",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q007-0-aa008286",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q008-0-82d62677",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q009-0-9506fd96",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q010-0-9bd3a0c8",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q011-0-a8407e31",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q012-0-86dfc590",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q013-0-af1f4ce0",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q014-0-adba9698",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q015-0-9b2b8a14",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q016-0-bdf98567",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q017-0-90db6773",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q018-0-bd15ef58",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-43-q019-0-8ffa7c17",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q000-0-9e61d708",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q001-0-97bd5b82",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q002-0-bbbd41be",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q003-0-9564bda7",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q004-0-b310ca78",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q005-0-8a7e4acf",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q006-0-af199578",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q007-0-9c8d54c5",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q000-0-8f32ffe6",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q001-0-a965cfb6",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q002-0-a4428530",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q003-0-9f9a956a",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q004-0-9a11117c",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q005-0-a723529d",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q006-0-a4314365",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q007-0-a81b87ee",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q008-0-93b4e7ef",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q009-0-b2ccf621",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q010-0-8c7e111b",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q011-0-8f5a0c16",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q012-0-802470f8",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q013-0-85ad3132",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q014-0-aa069341",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q015-0-aecc30cc",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q016-0-a1a7378e",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q017-0-82f58cb2",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q018-0-9cf7616b",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-43-q019-0-b783a496",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q000-0-b7bcf7da",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q001-0-85d2e261",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q002-0-82a3af6e",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q003-0-a4e9b054",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q004-0-9a70c904",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q005-0-895ccb21",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q006-0-9fec74e2",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q007-0-905d4b29",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q008-0-a53acdfa",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q009-0-b28b2f12",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q010-0-bb65a2ab",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q011-0-b28ae31a",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q012-0-ae09bef2",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q013-0-a709cd73",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q014-0-895cec5a",
+          "cmpl-v5diag-stall1-on-history-fifo-conv-44-q015-0-9cb04078"
+        ]
+      },
+      "finished_stores": {
+        "count": 0,
+        "first_ids": []
+      },
+      "previously_finished": {
+        "count": 0,
+        "first_ids": []
+      },
+      "retrieve_events": {
+        "count": 2,
+        "first_ids": [
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q008-0-a2552cd9",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q009-0-bbd32c06"
+        ]
+      },
+      "retrieve_futures": {
+        "count": 2,
+        "first_ids": [
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q008-0-a2552cd9",
+          "cmpl-v5diag-stall1-on-history-bundle-conv-44-q009-0-bbd32c06"
+        ]
+      },
+      "store_events": {
+        "count": 0,
+        "first_ids": []
+      },
+      "store_futures": {
+        "count": 0,
+        "first_ids": []
+      }
+    }
+  },
+  "worker_snapshot_offset_ms": -8.730542,
+  "duplicate_allocated_kv_payload_bytes": 2170552320,
+  "physical_interpretation": "Two remote-loading conv44 requests in bundle history each have1776allocated blocks:856shared and920separate each,2696unique physical blocks,33free plus1null in2730block pool.920additional allocations correspond to2.021484375GiB KV payload at144KiB/token. This reconciles allocation metadata only, not successful tensor copies or a causal explanation of the original stall.",
+  "next": "Test a readiness gate with a gate-only FIFO ablation under new prospective method scope; no full research completion or safe-production claim."
+}

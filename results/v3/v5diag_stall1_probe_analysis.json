@@ -1,0 +1,17 @@
+{
+  "scope": "Native instrumented liveness diagnostic snapshots only. Expected-prefix duplicate allocated blocks are not a tensor-content, successful-transfer or causal-deadlock proof. Point samples can miss transients. Results are not serving performance.",
+  "partial": false,
+  "source_journal_sha256": {
+    "results/v3/raw/v5diag-stall1-probe.326557.jsonl": "5f87c7dec6c8326de96b26dd1be464fff9889fe6bebe3f57d5d4a8b9e176d61f"
+  },
+  "scheduler_snapshots": 85,
+  "worker_snapshots": 85,
+  "probe_errors": [],
+  "both_native_components_observed": true,
+  "max_duplicate_physical_blocks": 920,
+  "min_free_blocks": 33,
+  "blocked_snapshot_count": 20,
+  "max_pending_store_futures": 9,
+  "max_pending_retrieve_futures": 2,
+  "near_full_blocked_states": []
+}
