@@ -206,7 +206,7 @@ def main() -> None:
     parser.add_argument("--metrics-path", type=Path)
     parser.add_argument("--gateway-trace-path", type=Path)
     parser.add_argument("--mode", choices=["B1", "B2", "B3", "D0"])
-    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave"])
+    parser.add_argument("--policy", choices=["fifo", "dhas", "static_group", "dhas_guarded", "lpm_hint", "bundle_wave", "lpm_real", "packing_fifo", "residency"])
     parser.add_argument("--gpu-kv-bytes", type=int)
     parser.add_argument("--engine-pid", type=int)
     parser.add_argument("--lmcache-pid", type=int)

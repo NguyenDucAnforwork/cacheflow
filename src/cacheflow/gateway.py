@@ -58,21 +58,41 @@ def create_app(config_path: str | None = None) -> FastAPI:
     model = settings["model"]
     tokenizer = AutoTokenizer.from_pretrained(model, local_files_only=True, trust_remote_code=False)
     from .v3_scheduler import BaselineScheduler, V3_POLICIES
+    from .v3_residency import ResidencyIndex, ResidencySubscriber, engine_block_hashes
+    from .v3_memory_scheduler import ResidencyScheduler, RESIDENCY_POLICIES
+    residency_config = settings.get('residency', {})
+    residency = ResidencyIndex()
+    subscriber = ResidencySubscriber(residency, residency_config.get('endpoint', 'tcp://127.0.0.1:5557')) if residency_config.get('enabled') else None
     scheduler_cls = BaselineScheduler if settings["scheduler"]["policy"] in V3_POLICIES else AdmissionScheduler
-    scheduler = scheduler_cls(**settings["scheduler"])
+    if settings['scheduler']['policy'] in RESIDENCY_POLICIES:
+        if subscriber is None:
+            raise ValueError('residency policies require a real KV-event subscriber')
+        scheduler = ResidencyScheduler(**settings['scheduler'], residency_index=residency,
+            kv_capacity_tokens=residency_config['kv_capacity_tokens'],
+            max_bypasses=residency_config.get('max_bypasses', 4))
+    else:
+        scheduler = scheduler_cls(**settings["scheduler"])
     trace = TraceWriter(os.environ.get("CACHEFLOW_TRACE", "/workspace/results/raw/gateway.jsonl"))
     upstream = settings.get("upstream", "http://127.0.0.1:8000").rstrip("/")
     client = httpx.AsyncClient(timeout=httpx.Timeout(connect=30, read=600, write=30, pool=30), limits=httpx.Limits(max_connections=128))
     app = FastAPI(title="CacheFlow Gateway")
     app.state.scheduler = scheduler
 
+    @app.on_event('startup')
+    async def start_subscriber() -> None:
+        if subscriber:
+            subscriber.start()
+
     @app.on_event("shutdown")
     async def close_client() -> None:
+        if subscriber:
+            await subscriber.close()
         await client.aclose()
 
     @app.get("/health")
     async def health() -> dict[str, Any]:
-        return {"policy": scheduler.policy, "queue": scheduler.queue_depth, "active": scheduler.active_count}
+        return {"policy": scheduler.policy, "queue": scheduler.queue_depth, "active": scheduler.active_count,
+                'residency': subscriber.stats() if subscriber else None}
 
     @app.post("/v1/completions")
     async def completions(request: Request) -> Response:
@@ -100,8 +120,12 @@ def create_app(config_path: str | None = None) -> FastAPI:
         token_ids = tokenizer.encode(prompt, add_special_tokens=False)
         tokenize_end = time.monotonic_ns()
         blocks = prefix_blocks(token_ids, block_size=scheduler.block_size, namespace=model)
+        engine_blocks = engine_block_hashes(token_ids) if subscriber else ()
         hash_end = time.monotonic_ns()
-        ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns)
+        ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns,
+            engine_blocks=engine_blocks, input_tokens=len(token_ids), output_budget=int(payload.get('max_tokens', 96)))
+        if subscriber:
+            ticket.predicted_gpu_tokens = residency.matched_tokens(engine_blocks)
         ticket.tokenize_ms = (tokenize_end-tokenize_start)/1e6
         ticket.prefix_hash_ms = (hash_end-tokenize_end)/1e6
         headers = {"content-type": "application/json"}
@@ -168,6 +192,9 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         "readiness_guard_bypassed": ticket.readiness_guard_bypassed,
         "readiness_estimate_ms": ticket.readiness_estimate_ms,
         "recent_match": ticket.recent_match,
+        'dispatch_reason': ticket.dispatch_reason,
+        'predicted_gpu_tokens': ticket.predicted_gpu_tokens,
+        'reserved_active_tokens': ticket.reserved_active_tokens,
         "status": status,
     }
 

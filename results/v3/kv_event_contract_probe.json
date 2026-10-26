@@ -1,0 +1,10 @@
+{
+  "block_size": 16,
+  "hash_type": "int",
+  "hash_len": null,
+  "parent_type": "NoneType",
+  "extra": "[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Non",
+  "first_hash_match": false,
+  "medium": "GPU",
+  "group_idx": 0
+}

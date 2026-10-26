@@ -30,6 +30,8 @@ args=(
     --generation-config vllm --enable-prefix-caching
 )
 if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
+    export PYTHONHASHSEED=0
+    export VLLM_KV_EVENTS_USE_INT_BLOCK_HASHES=0
     "$venv/bin/python" "$root/scripts/v3_runtime.py" validate >/dev/null
     mapfile -t v3_args < <("$venv/bin/python" "$root/scripts/v3_runtime.py" vllm-args)
     args+=("${v3_args[@]}")

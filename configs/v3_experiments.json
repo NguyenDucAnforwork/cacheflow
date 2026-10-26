@@ -1,0 +1,13 @@
+{
+  "plan_version": "v3-2026-10-26-competitive",
+  "prompt_version": "locomo-qwen-concise-v3",
+  "output_tokens": 96,
+  "temperature": 0,
+  "thinking": false,
+  "dev": {"samples": ["conv-26", "conv-30", "conv-41"], "questions_per_sample": 20, "seeds": [101,102,103], "qps": [0.5,1,2]},
+  "confirmation": {"samples": ["conv-43", "conv-44"], "questions_per_sample": 20, "seeds": [701,702,703], "qps": [1,2], "rule": "no GPU evaluation until candidate and baseline configuration are frozen"},
+  "validation": {"samples": ["conv-42"], "questions_per_sample": 20},
+  "controls": ["low_reuse", "gpu_fit", "tuned_fifo_caps", "lpm_hint", "oldest_bundle_wave", "upstream_hicache_if_compatible"],
+  "proposed_method": null,
+  "status": "profiling_and_baseline_gate"
+}

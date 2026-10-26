@@ -1,0 +1,12 @@
+{
+  "status": "diagnostic_only_not_valid_actual_residency_comparisons",
+  "runs": [
+    "v3-real-fifo4-dev3-qps2-s101",
+    "v3-real-lpm_real4-dev3-qps2-s101",
+    "v3-real-packing_fifo4-dev3-qps2-s101",
+    "v3-real-residency4-dev3-qps2-s101",
+    "v3-real-bundle_wave4-dev3-qps2-s101"
+  ],
+  "reason": "vLLM emitted legacy truncated integer external hashes; local observer keys used full byte hashes. Events arrived without sequence gaps but all lookup predictions were zero. Corrected runtime forces byte hashes and verifies a live store payload before accepting residency results.",
+  "retained_raw": true
+}

@@ -2,6 +2,18 @@
 
 **V3 active from 2026-10-26 05:59 UTC.** Owner explicitly rejected V2 as a sufficiently strong research contribution and requires at least five additional hours (earliest completion ~10:59 UTC), competitive strong baselines, careful profiling, and `docs/INTERVIEW.md`. Branch `feat/cacheflow-v3-competitive`; read `docs/V3_RESEARCH_PLAN.md` and `docs/V3_BASELINES.md`. V2 values below are preserved baseline history, not a completion claim for the new goal. V2 supervisor programs are currently reused for V3 experiments with an ignored `.cacheflow-v3-runtime.json` marker; inspect health and live handles before starting/stopping anything. Raw V3 artifacts are in `results/v3/raw/`.
 
+## Current V3 checkpoint — 2026-10-26 07:11 UTC
+
+- Current branch: `feat/cacheflow-v3-competitive`. The V2 branch/service state below is historical, not the live handoff.
+- Three dev seeds at 2 QPS establish an ordering opportunity: bundle-wave cap4 vs FIFO cap4 changes arrival-TTFT p95 by -35.77%, -29.88%, -14.36%, with less actual CPU KV consumption. This is a baseline result, not a new method claim. LPM-hint has mixed tail results.
+- Real-residency admission prototype is integrated with vLLM public KV events. Hashes match the pinned vLLM implementation exactly in a six-block chained check. Twenty-six unit tests pass; live event/hash/reset verification and GPU measurements are still required.
+- New policies: `lpm_real` (same real residency information), `packing_fifo` (memory-packing control), `residency` (candidate with migration-opportunity gate and bounded bypass). Candidate is not frozen or validated. Fresh confirmation traces remain unevaluated.
+- SGLang startup failed because the default kernel wheel requires CUDA13 cuBLAS. Installing matching `0.4.4+cu129` in its isolated environment; no upstream HiCache measurement exists yet. Qwen3-4B pinned download remains live and unadopted until SHA verification.
+- vLLM/LMCache are being restarted at 4-GiB KV with lightweight KV events. Inspect supervisor health before any action. GPU engine tuning, stronger-model checks, matched quality audits, controls/ablations and final documentation remain open.
+- Previous goal turn only restated status/next steps: **no progress**. This continuation changes code, verifies tests/hash compatibility and repairs the external baseline setup.
+
+## Preserved V2 handoff (historical)
+
 Updated: **2026-10-26 05:15 UTC**. Current `optim` host. The owner’s 90-minute continuation produced a measured contribution aligned with RQ1/RQ3 and a cache-metric audit relevant to RQ0. All experiments finished around 05:10 UTC; V2 services are stopped. No credentials are stored here.
 
 ## Start here

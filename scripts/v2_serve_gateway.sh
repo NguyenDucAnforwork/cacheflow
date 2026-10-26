@@ -9,6 +9,8 @@ export CACHEFLOW_POLICY_CONFIG="$root/configs/policies.yaml"
 export CACHEFLOW_POLICY="$(cat "$root/.cacheflow-policy" 2>/dev/null || printf fifo)"
 export CACHEFLOW_TRACE="$root/results/v2/raw/gateway.jsonl"
 if [[ -s "$root/.cacheflow-v3-runtime.json" ]]; then
+    export PYTHONHASHSEED=0
+    export LD_LIBRARY_PATH="$venv/lib/python3.12/site-packages/nvidia/cu13/lib:${LD_LIBRARY_PATH:-}"
     export CACHEFLOW_POLICY_CONFIG="$root/.cacheflow-v3-gateway.yaml"
     export CACHEFLOW_TRACE="$root/results/v3/raw/gateway.jsonl"
 fi

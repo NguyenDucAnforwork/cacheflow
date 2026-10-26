@@ -32,6 +32,13 @@ class Ticket:
     readiness_estimate_ms: float | None = None
     tokenize_ms: float | None = None
     prefix_hash_ms: float | None = None
+    engine_blocks: tuple[bytes, ...] = ()
+    input_tokens: int = 0
+    output_budget: int = 0
+    scheduler_head_id: str | None = None
+    dispatch_reason: str | None = None
+    predicted_gpu_tokens: int | None = None
+    reserved_active_tokens: int | None = None
 
 
 class AdmissionScheduler:
@@ -130,7 +137,9 @@ class AdmissionScheduler:
                           if t.first_token_ns is not None and t.first_token_ns + self.store_grace_ns > now]
         return max(0.001, (min(deadlines) - now) / 1e9) if deadlines else 0.1
 
-    async def admit(self, request_id: str, blocks: tuple[str, ...], *, arrival_ns: int | None = None) -> Ticket:
+    async def admit(self, request_id: str, blocks: tuple[str, ...], *, arrival_ns: int | None = None,
+                    engine_blocks: tuple[bytes, ...] = (), input_tokens: int = 0,
+                    output_budget: int = 0) -> Ticket:
         arrival = arrival_ns or time.monotonic_ns()
         ticket = Ticket(
             request_id=request_id,
@@ -139,6 +148,7 @@ class AdmissionScheduler:
             enqueued_ns=time.monotonic_ns(),
             deadline_ns=arrival + self.max_wait_ns,
             group=group_digest(blocks, min_shared_tokens=self.min_shared_tokens, block_size=self.block_size),
+            engine_blocks=engine_blocks, input_tokens=input_tokens, output_budget=output_budget,
         )
         try:
             async with self._condition:

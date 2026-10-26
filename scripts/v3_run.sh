@@ -8,10 +8,15 @@ url=${3:-http://127.0.0.1:8100}
 [[ -s .cacheflow-v3-runtime.json ]] || { echo 'configure V3 runtime first'; exit 2; }
 [[ ! -e "results/v3/$id.setup.json" ]] || { echo 'setup already exists'; exit 2; }
 /venv/main/bin/python - "$id" "$trace" <<'PY'
-import hashlib,json,subprocess,sys
+import hashlib,json,subprocess,sys,urllib.request
 from datetime import datetime,timezone
 from pathlib import Path
 rid,trace=sys.argv[1:]
+health=json.load(urllib.request.urlopen('http://127.0.0.1:8100/health'))
+assert health['active']==health['queue']==0, 'gateway must be idle before replay'
+files=sorted(p for root in ['src/cacheflow','scripts','configs'] for p in Path(root).rglob('*')
+             if p.is_file() and p.suffix in ['.py','.sh','.yaml','.json'])
+source_files={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 pid=int(subprocess.check_output(['supervisorctl','pid','cacheflow_v2_vllm'],text=True))
 c=dict(run_id=rid,trace_path=trace,runtime=json.loads(Path('.cacheflow-v3-runtime.json').read_text()),
        gateway_config=Path('.cacheflow-v3-gateway.yaml').read_text(),
@@ -19,8 +24,20 @@ c=dict(run_id=rid,trace_path=trace,runtime=json.loads(Path('.cacheflow-v3-runtim
        actual_engine_argv=Path(f'/proc/{pid}/cmdline').read_bytes().replace(b'\0',b' ').decode(),
        source_head=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
        source_diff_sha256=hashlib.sha256(subprocess.check_output(['git','diff','HEAD'])).hexdigest(),
+       source_files_sha256=source_files, gateway_before=health,
        captured_utc=datetime.now(timezone.utc).isoformat())
 Path(f'results/v3/{rid}.setup.json').write_text(json.dumps(c,indent=2)+'\n')
 PY
 CACHEFLOW_RESULTS_DIR="$root/results/v3" CACHEFLOW_GATEWAY_LOG="$root/results/v3/raw/gateway.jsonl" \
     CACHEFLOW_CAPTURE_TEXT=1 bash scripts/v2_run.sh "$id" "$trace" "$url"
+/venv/main/bin/python - "$id" <<'PY'
+import json,sys,urllib.request
+from pathlib import Path
+health=json.load(urllib.request.urlopen('http://127.0.0.1:8100/health'))
+path=Path(f'results/v3/{sys.argv[1]}.setup.json')
+c=json.loads(path.read_text());c['gateway_after']=health
+path.write_text(json.dumps(c,indent=2)+'\n')
+if c['runtime'].get('residency_events'):
+    state=health['residency']
+    assert state['subscriber_running'] and state['known'] and state['gaps']==0 and state['hash_contract_verified'], state
+PY
