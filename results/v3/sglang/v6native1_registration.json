@@ -1,0 +1,723 @@
+{
+  "upstream_source_sha256": {
+    "srt/managers/schedule_policy.py": "58d342a1bee7e32415218cb74b05f24fe04b250cbb9cdc73ff03376ec1edd7cc",
+    "srt/managers/cache_controller.py": "8f519f6e815233758d1439bf8463a8d63687d2ab2eeb08970890127e89391d0a",
+    "srt/mem_cache/hiradix_cache.py": "91199caa12b6632a217372dfd114ad342fc331960f93f04104f8dc1042d682c9",
+    "srt/mem_cache/memory_pool_host.py": "ac53115953124dd9d6c666d104d9eae75a613f76c189a14f557c6fabeebea65c"
+  },
+  "package_versions": {
+    "sglang": "0.5.14",
+    "sglang-kernel": "0.4.4+cu129",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.8.1",
+    "flashinfer-python": "0.6.12",
+    "flashinfer-cubin": "0.6.12"
+  },
+  "registered_utc": "2026-10-26T18:36:05.606146+00:00",
+  "scope": "Development evidence on previously exposed questions. 60 measured arms/2700 requests, 18 fresh native engines; each regime/seed block has one separate60-request native warmup, reset before every arm and fresh gateway for gateway arms. Native Direct HiCache with LPM or DFS, same-batch guard component enabled in all arms (not full Strata). All gateway arms cap64/bypass8/thread preparation/logical budget43664 or72800, uniform180s transport. Paired arms share an engine within each block; blocks have independent fresh engines. Balanced arm order, no retries. Native histograms use outside-window boundary GETs; missing coverage stays null. No GPU profiler or liveness hooks. No cross-engine absolute timing or quality-equivalence inference.",
+  "blocks": [
+    {
+      "regime": "primary",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 101,
+      "warmup": {
+        "run_id": "v6native1-primary-s101-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-primary-s101-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s101-fifo64",
+          "arm": "fifo64",
+          "policy": "fifo",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s101-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s101-ready_fifo",
+          "arm": "ready_fifo",
+          "policy": "ready_fifo",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s101-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "primary",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 102,
+      "warmup": {
+        "run_id": "v6native1-primary-s102-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-primary-s102-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s102-ready_fifo",
+          "arm": "ready_fifo",
+          "policy": "ready_fifo",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s102-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s102-fifo64",
+          "arm": "fifo64",
+          "policy": "fifo",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s102-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "primary",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 103,
+      "warmup": {
+        "run_id": "v6native1-primary-s103-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-primary-s103-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s103-ready_fifo",
+          "arm": "ready_fifo",
+          "policy": "ready_fifo",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s103-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s103-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-primary-s103-fifo64",
+          "arm": "fifo64",
+          "policy": "fifo",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "dfs",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "dfs-weight",
+      "seed": 101,
+      "warmup": {
+        "run_id": "v6native1-dfs-s101-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-dfs-s101-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-dfs-s101-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-dfs-s101-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "dfs",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "dfs-weight",
+      "seed": 102,
+      "warmup": {
+        "run_id": "v6native1-dfs-s102-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-dfs-s102-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-dfs-s102-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-dfs-s102-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "dfs",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "dfs-weight",
+      "seed": 103,
+      "warmup": {
+        "run_id": "v6native1-dfs-s103-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-dfs-s103-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-dfs-s103-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-dfs-s103-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "lowload",
+      "qps": 2,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 101,
+      "warmup": {
+        "run_id": "v6native1-lowload-s101-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-lowload-s101-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowload-s101-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowload-s101-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s101.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "lowload",
+      "qps": 2,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 102,
+      "warmup": {
+        "run_id": "v6native1-lowload-s102-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-lowload-s102-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowload-s102-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowload-s102-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s102.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "lowload",
+      "qps": 2,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 103,
+      "warmup": {
+        "run_id": "v6native1-lowload-s103-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-lowload-s103-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowload-s103-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowload-s103-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps2-s103.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 101,
+      "warmup": {
+        "run_id": "v6native1-lowreuse-s101-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-lowreuse-s101-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowreuse-s101-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowreuse-s101-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 102,
+      "warmup": {
+        "run_id": "v6native1-lowreuse-s102-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-lowreuse-s102-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowreuse-s102-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowreuse-s102-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 103,
+      "warmup": {
+        "run_id": "v6native1-lowreuse-s103-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-lowreuse-s103-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowreuse-s103-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-lowreuse-s103-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 8,
+          "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "native_policy": "lpm",
+      "seed": 101,
+      "warmup": {
+        "run_id": "v6native1-gpufit-s101-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-gpufit-s101-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-gpufit-s101-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-gpufit-s101-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "native_policy": "lpm",
+      "seed": 102,
+      "warmup": {
+        "run_id": "v6native1-gpufit-s102-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-gpufit-s102-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-gpufit-s102-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-gpufit-s102-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s102.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "gpufit",
+      "qps": 4,
+      "budget": 10,
+      "native_policy": "lpm",
+      "seed": 103,
+      "warmup": {
+        "run_id": "v6native1-gpufit-s103-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-gpufit-s103-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-gpufit-s103-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-gpufit-s103-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 60,
+          "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "abstention",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 101,
+      "warmup": {
+        "run_id": "v6native1-abstention-s101-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-abstention-s101-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-abstention-s101-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s101.jsonl"
+        },
+        {
+          "run_id": "v6native1-abstention-s101-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s101.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "abstention",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 102,
+      "warmup": {
+        "run_id": "v6native1-abstention-s102-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-abstention-s102-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-abstention-s102-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s102.jsonl"
+        },
+        {
+          "run_id": "v6native1-abstention-s102-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s102.jsonl"
+        }
+      ]
+    },
+    {
+      "regime": "abstention",
+      "qps": 4,
+      "budget": 6,
+      "native_policy": "lpm",
+      "seed": 103,
+      "warmup": {
+        "run_id": "v6native1-abstention-s103-warm",
+        "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+        "requests": 60
+      },
+      "actions": [
+        {
+          "run_id": "v6native1-abstention-s103-packing_ready",
+          "arm": "packing_ready",
+          "policy": "packing_ready",
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-abstention-s103-native",
+          "arm": "native",
+          "policy": null,
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s103.jsonl"
+        },
+        {
+          "run_id": "v6native1-abstention-s103-union64",
+          "arm": "union64",
+          "policy": "packing_reuse",
+          "requests": 12,
+          "trace": "data/processed/v3/v5-abstention12-qps4-s103.jsonl"
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "scripts/v6_native_matrix.py": "0efc4c6dad36bfd593808b174cdc2d400f56d8b0864fe121d663b2e7103c0f34",
+    "scripts/v6_sglang_bench.py": "ff51ceff928dfb933d4cb242adc32f4e694465783e6fb4ac0dc1e15461916295",
+    "scripts/v6_native_metrics.py": "79dfcc5fae25256a208a055a22528bd9888d56a50471f52619e0260a941dceea",
+    "scripts/v5_full_histograms.py": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v6_replay.py": "ee31f9a31493766cfa93cafd56c2490e902b2bf329faa299d3ba210e79f73f46",
+    "scripts/v3_sglang_runtime.py": "d2b86ece75e170c5d737405cb2e04136c23301c716fdee0c72851cc12e866739",
+    "scripts/v3_serve_sglang.sh": "88e4dad6b05796c3afa493759f15d6388d89c9b821bc42baa1e8c4a28374ef80",
+    "scripts/sglang_profile_hooks/sitecustomize.py": "186294114ea432ccd1f7fea64a070be48b1dba243faa9884a8b62eb5966d6075",
+    "src/cacheflow/v4_sglang_delayhit.py": "e9e4c5da52444a8aebb695ec8ae95d1526c1e86f19df989afb36a5d460de5c3c"
+  },
+  "trace_sha256": {
+    "data/processed/v3/v5-dev4b3-qps4-s101.jsonl": "69803faa79336894bc218298206c0db09398509dcb9ea21a144ff6c99c65904a",
+    "data/processed/v3/v5-dev4b3-qps4-s102.jsonl": "1fa9070e5d8738b87c90e9be1ce00ae02eb3e412305e5d789142c83f9e32bdd7",
+    "data/processed/v3/v5-dev4b3-qps4-s103.jsonl": "3b06e42bf8c4939097a42d2858ca55896c9acf7951ba799646cf448b7e17828a",
+    "data/processed/v3/v5-dev4b3-qps2-s101.jsonl": "b2f1694d68f1269f6f67a938c01263a92fc41ecf639b6ea1db35e3c8d8c72734",
+    "data/processed/v3/v5-dev4b3-qps2-s102.jsonl": "56fea4d611425d89ac2bff87bd497663b2d407f8780386da4b98daa13b6fe497",
+    "data/processed/v3/v5-dev4b3-qps2-s103.jsonl": "d5cfa8d3abdfc4273f6b339bf9d816b6bd6a809cf3ad2138a2ce40ae676feb7c",
+    "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl": "96ab8cb301326e4decb5e12f34408a3548e70d89f7c29f23aa6e26b48bfb4115",
+    "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl": "c6c5c3caa75595ce4a8fac238753693cdd2627c335b016e3af53b2aff0dd7dfa",
+    "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl": "a340bd2d35d85c96c16bb1a6dfb9af7f4c37f3abf9e5f747d97fe4d28abd84ce",
+    "data/processed/v3/v5-abstention12-qps4-s101.jsonl": "09b8d87946432e173cb5dc61ad58b705c145bc89ea65f68393b7ba2c3e936d4f",
+    "data/processed/v3/v5-abstention12-qps4-s102.jsonl": "35613421d4a0a8be0500b5d4fc16bfa31495358fdd57107e7eba492034f76fcb",
+    "data/processed/v3/v5-abstention12-qps4-s103.jsonl": "7dce10d608218bbab0b0cd99c1873073cc373e4a8a9b70216d96fb4bbe9cdc3c"
+  },
+  "original_supervisor_sha256": "7e2cbb9bc46a2ce4480314482ee4619bab909a6af405246a3bcc97d31feffdb7",
+  "main_audit_sha256": "4478f68ec3554f7e2676fb4cf5626e80898bb1a339d4c5b2f4827cb50ecc36a7"
+}

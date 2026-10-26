@@ -1,0 +1,10 @@
+{
+  "run_id": "v6dev1-main-fifo64-s101",
+  "coverage_valid": false,
+  "coverage_failures": [
+    "Observer registered after this setup already existed; no retrospective baseline"
+  ],
+  "before": null,
+  "after": null,
+  "native_itl_mean_ms": null
+}

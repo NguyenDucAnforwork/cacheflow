@@ -827,3 +827,11 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Unit test cho verifier có phải bằng chứng full benchmark đã đúng không?**
 
 **Đáp:** Không. Test full-contract hiện lấy một setup native đã capture rồi chiếu host budget sang48GB để thử verifier, sau đó cố ý làm sai policy/GPU/host/timeout/profile/source và kiểm nó từ chối. Nó phát hiện lỗ hổng kiểm chứng, nhưng fixture chiếu không phải run48GB thật. Bằng chứng thực phải đến từ full request/output/token ledgers, actual config và quan sát host của process mới. Full pipeline chỉ đánh dấu từng run sau audit/official evaluator, rồi final audit giải nén kiểm lại raw. Viết xong controller, test xanh hoặc có seal vẫn chưa có nghĩa đã hoàn tất nghiên cứu.
+
+**Hỏi: Sau main matrix24arms, gate mới có phải đóng góp chính không?**
+
+**Đáp:** Chưa. Toàn1440request đo đều thành công, nhưng readiness so union cũ có p95−1,66/−3,98/+1,08% theo3seed và interval thăm dò cắt0. Gate-onlyFIFO không giảm compute/CPU-source work. Readiness+union soFIFO giảm p95khoảng46%và CPU-source tokens91,7%, nhưng union cũ đã có phần lớn lợi ích đó. Vì vậy phần bằng chứng mạnh hiện là union/grouping trong chế độ memory pressure; gate là ablation bổ sung, chưa được gọi là sửa stall hay cải tiến ổn định.
+
+**Hỏi: Native histogram mới có xác nhận decode cost chỉ là artifact của proxy không?**
+
+**Đáp:** Nó cho thấy tradeoff vẫn xuất hiện trong engine-update metrics. Có22/24arm đủ coverage;2FIFOseed101thiếu baseline vì observer đăng ký muộn. Mean native update interval FIFO64khoảng19,5ms(n2), union cũ50,8ms(n3), readiness45,8ms(n3). P95 chỉ có bucket bounds: FIFO[10,25]ms, readiness[100,150]ms, union cũ[150,200]hoặc[200,300]ms. Đây không phải exact client ITL, nhưng đủ để không bỏ qua decode khi TTFT tốt. Completion p95mean readiness21,234s còn union cũ21,182s; không thể chỉ chọn proxy decode giảm rồi gọi mọi trải nghiệm đều nhanh hơn.
