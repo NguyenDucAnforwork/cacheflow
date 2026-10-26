@@ -799,3 +799,11 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Có thể thêm một cột metadata rồi tiếp tục append CSV cũ không?**
 
 **Đáp:** Không an toàn nếu writer vẫn ghi theo thứ tự field của schema mới nhưng header cũ không đổi. Project có CSV main header35cột và65dòng về sau có38cột khi thêm timeout/keepalive. Đọc bằng header cũ có thể gán nhầm giá trị cho cột. Tôi giữ bản raw, lấy các JSON summary có tên key rõ ràng làm nguồn rồi tạo index CSV riêng với union header, summary SHA và invalid status. Các latency quantile của run lỗi/invalid được để trống trong index; raw không bị sửa. Test kiểm đúng trường thiếu, metadata mới và bảo toàn file cũ. Index không tự biến một run thành hợp lệ: vẫn phải qua audit đúng protocol, nhất là các lỗi xảy ra trước khi client tạo summary.
+
+**Hỏi: Fresh engine cho mỗi arm và fresh engine cho mỗi block khác nhau thế nào?**
+
+**Đáp:** Với main matrix V6, mỗi policy/seed có engine riêng, nên không dùng lại trạng thái native của policy trước đó. Với native validation tiếp theo, mỗi regime/seed có engine mới nhưng các policy trong block dùng chung process, có flush cache và gateway mới giữa các arm. Cách thứ hai giảm chi phí khởi động và tạo paired comparison trong cùng process, nhưng vẫn có thể giữ trạng thái allocator/kernel sau flush. Tôi đảo thứ tự và ghi PID, không gộp hai protocol thành một quần thể. Cả hai đều chưa chứng minh service chạy lâu không bị stall.
+
+**Hỏi: Counter không xuất hiện ở warmup có được xem bằng 0 không?**
+
+**Đáp:** Không. Prometheus có thể chỉ tạo một metric khi sự kiện đầu tiên xảy ra. Nếu đầu cửa sổ không có cached-token counter, giá trị cuối không đủ chứng minh delta của toàn cửa sổ bằng bao nhiêu. Collector V6 lưu null và hai endpoint riêng; warmup được đánh dấu tường minh, không dùng để claim hiệu năng. Các lượt đo chính thức phải đủ counter để đối chiếu cached+uncached với toàn bộ prompt. Với ITL, nếu snapshot thiếu, PID đổi, lệch cửa sổ hoặc histogram reset, kết quả coverage phải fail và mean/bounds để null. Một số đo thiếu không tự làm các request thành lỗi, nhưng cũng không được thay bằng số từ lượt khác.
