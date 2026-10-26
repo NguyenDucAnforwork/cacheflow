@@ -2,7 +2,7 @@
 
 Current server changed on 2026-10-26. The 2026-10-25 status and trace notes below are historical for the previous host. See `docs/V2_HOST_2026_10_26.md` for the active setup; its model, packages and ignored traces must be recreated here before GPU runs.
 
-Status on new server at 2026-10-26 03:35 UTC: B1 and four matched E1 pairs completed, including a four-pair concurrency screen. See `docs/V2_HOST_2026_10_26.md` for exact measurements. The 2026-10-25 gate notes below refer to the previous host. The owner waived old-baseline restoration.
+Status on new server at 2026-10-26 03:39 UTC: B1 and five matched E1 pairs completed, including four-pair 2K and eight-pair 8K concurrency screens. See `docs/V2_HOST_2026_10_26.md` for exact measurements. The 2026-10-25 gate notes below refer to the previous host. The owner waived old-baseline restoration.
 
 ## Gate before GPU runs
 
@@ -45,7 +45,7 @@ A matched B2/B3 pilot can be validated with `python3 scripts/v2_compare_e1.py --
 
 The follow-on `scripts/v2_e1_after_b1.sh B1_WATCHER_PID` waits for the B1 watcher to finish, verifies the B1 one-request success, then runs the 2K/50 ms E1 B2 FIFO and B3 DHAS pair on the same serving engine. It resets caches between arms, validates matched artifacts with `v2_compare_e1.py`, and stops V2 services on exit. Its detached log is `results/v2/e1_after_b1.log`. A waiting follow-on job is not an E1 result.
 
-The 2K/50-ms one-pair E1 condition completed three matched comparisons. Follower arrival-TTFT differences (B3 minus B2) were -38.107, -98.918 and +29.216 ms; r3 reversed the arm order. All three pairs had equal B2/B3 computed-prefill (2,071 tokens) and cached-prompt (2,048 tokens) counters, with zero external prefix hits. Thus this condition has no measured incremental cache savings from DHAS, and its latency difference is not stable in sign. Screen a higher-concurrency trace before any B5 work. A four-pair 2K/50-ms screen also showed equal B2/B3 computed-prefill (8,284) and cached-prompt (8,192) counters across eight requests per arm. The next screen will use a larger prefix/working set. Run-level summaries and comparisons are under `results/v2/`; raw prompts remain ignored under `results/v2/raw/`.
+The 2K/50-ms one-pair E1 condition completed three matched comparisons. Follower arrival-TTFT differences (B3 minus B2) were -38.107, -98.918 and +29.216 ms; r3 reversed the arm order. All three pairs had equal B2/B3 computed-prefill (2,071 tokens) and cached-prompt (2,048 tokens) counters, with zero external prefix hits. Thus this condition has no measured incremental cache savings from DHAS, and its latency difference is not stable in sign. Screen a higher-concurrency trace before any B5 work. A four-pair 2K/50-ms screen also showed equal B2/B3 computed-prefill (8,284) and cached-prompt (8,192) counters across eight requests per arm. An eight-pair 8K/50-ms screen showed equal computed-prefill (65,704), cached-prompt (65,536), LMCache L1 reads (256) and L1 writes (256) across 16 requests per arm. Its B3 follower TTFT median was 59.128 ms lower in one matched pilot, without measured cache-work reduction. Together these screens do not support implementing B5 on the current evidence. The loaded-chunk counter remains unavailable; do not substitute null with zero. Run-level summaries and comparisons are under `results/v2/`; raw prompts remain ignored under `results/v2/raw/`.
 
 ## Decision rule
 

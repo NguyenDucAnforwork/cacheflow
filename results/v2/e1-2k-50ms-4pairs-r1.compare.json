@@ -21,6 +21,16 @@
       "b3": null,
       "delta_b3_minus_b2": null
     },
+    "lmcache_l1_read_chunks": {
+      "b2": 32.0,
+      "b3": 32.0,
+      "delta_b3_minus_b2": 0.0
+    },
+    "lmcache_l1_write_chunks": {
+      "b2": 32.0,
+      "b3": 32.0,
+      "delta_b3_minus_b2": 0.0
+    },
     "prompt_tokens_cached": {
       "b2": 8192.0,
       "b3": 8192.0,

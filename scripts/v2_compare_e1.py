@@ -102,6 +102,8 @@ def compare(b2: dict, b3: dict) -> dict:
         "prompt_tokens_cached": ("vllm", "vllm:prompt_tokens_cached_total"),
         "external_prefix_hits": ("vllm", "vllm:external_prefix_cache_hits_total"),
         "lmcache_chunks_loaded": ("lmcache", "lmcache_mp_num_chunks_loaded_total"),
+        "lmcache_l1_read_chunks": ("lmcache", "lmcache_mp_l1_read_chunks_total"),
+        "lmcache_l1_write_chunks": ("lmcache", "lmcache_mp_l1_write_chunks_total"),
     }
     counter_summary = {}
     for label, (source, name) in counters.items():
