@@ -50,11 +50,16 @@ def load_run(root, run_id):
         raise ValueError('failed run')
     if requests.keys() != gateway.keys() or requests.keys() != outputs.keys():
         raise ValueError('request/gateway/output IDs differ')
+    reset = json.loads((raw / f'{run_id}.reset_health.json').read_text())
+    if reset.get('active') != 0 or reset.get('queue') != 0:
+        raise ValueError('reset audit is not idle')
     for request_id, r in requests.items():
         if r['status'] != 'ok' or gateway[request_id]['status'] != 'ok':
             raise ValueError('failed request')
         if r['run_id'] != run_id or r['trace_sha256'] != summary['trace_sha256']:
             raise ValueError('request provenance mismatch')
+        if gateway[request_id]['run_id'] != run_id or outputs[request_id]['run_id'] != run_id:
+            raise ValueError('gateway/output provenance mismatch')
         if r['server_prompt_tokens'] != r['input_tokens'] or gateway[request_id]['input_tokens'] != r['input_tokens']:
             raise ValueError('prompt token count mismatch')
         if r['output_tokens'] is None or r['output_tokens'] > summary['output_tokens_budget']:

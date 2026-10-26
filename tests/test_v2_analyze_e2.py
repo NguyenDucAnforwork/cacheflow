@@ -52,3 +52,39 @@ def test_interval_uses_run_units_and_exposes_uncertainty():
     assert result['n_runs'] == 3 and result['mean'] == 0
     assert result['exploratory_t95_interval'][0] < -200
     assert e2.run_level_interval([1])['exploratory_t95_interval'] is None
+
+
+def write_run(tmp_path):
+    import hashlib
+    import json
+    raw = tmp_path / 'results/v2/raw'
+    raw.mkdir(parents=True)
+    summary = dict(run_id='r', requests=1, successes=1, errors=0, trace_sha256='trace', output_tokens_budget=64)
+    request = dict(request_id='q', run_id='r', trace_sha256='trace', status='ok',
+                   server_prompt_tokens=100, input_tokens=100, output_tokens=1,
+                   output_hash=hashlib.sha256(b'answer').hexdigest())
+    gateway = dict(request_id='q', run_id='r', input_tokens=100, status='ok')
+    output = dict(request_id='q', run_id='r', output='answer', status='ok')
+    for suffix, data in [('summary.json', summary), ('jsonl', request), ('gateway.jsonl', gateway),
+                         ('outputs.jsonl', output), ('reset_health.json', dict(active=0, queue=0))]:
+        (raw / f'r.{suffix}').write_text(json.dumps(data)+'\n')
+    metrics = dict(counter_deltas=dict(vllm={'vllm:request_prefill_kv_computed_tokens_sum': 60,
+                                           'vllm:prompt_tokens_cached_total': 40}))
+    (raw.parent / 'r.metrics_summary.json').write_text(json.dumps(metrics))
+    return raw
+
+
+def test_incomplete_metric_window_and_foreign_output_are_rejected(tmp_path):
+    import json
+    raw = write_run(tmp_path)
+    assert e2.load_run(tmp_path, 'r')['summary']['successes'] == 1
+    path = raw.parent / 'r.metrics_summary.json'
+    metrics = json.loads(path.read_text())
+    metrics['counter_deltas']['vllm']['vllm:prompt_tokens_cached_total'] = 30
+    path.write_text(json.dumps(metrics))
+    with pytest.raises(ValueError, match='do not account'):
+        e2.load_run(tmp_path, 'r')
+    output = dict(request_id='q', run_id='different-run', output='answer')
+    (raw / 'r.outputs.jsonl').write_text(json.dumps(output)+'\n')
+    with pytest.raises(ValueError, match='provenance'):
+        e2.load_run(tmp_path, 'r')
