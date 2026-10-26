@@ -1,0 +1,48 @@
+{
+  "run_id": "v4c1-full-sg-g6-qps4-native-s901",
+  "live_snapshot": true,
+  "source_prefix_sha256": "4b70bd19a36a78f96d8c4e710edf177a3148b3a9bdee6ba507b7b3deb957c419",
+  "scope": "Existing 1Hz observations, left-endpoint weighted. Live snapshots are incomplete and not performance results. Summed RSS double-counts shared pages; load_back CPU duration is enqueue-path time, not DMA. Missing endpoint counters remain null.",
+  "samples": 630,
+  "window_s": 698.416963979,
+  "start_ns": 120312812938015,
+  "end_ns": 121011229901994,
+  "counter_deltas": {
+    "sglang:num_requests_total": 857.0,
+    "sglang:prompt_tokens_total": 21520039.0,
+    "sglang:cached_tokens_total": 21242992.0,
+    "sglang:uncached_prompt_tokens_histogram_sum": 277047.0,
+    "sglang:load_back_tokens_total": null,
+    "sglang:load_back_duration_seconds_sum": null,
+    "sglang:process_cpu_seconds_total": 154.93000000000012,
+    "sglang:queue_time_seconds_sum": 139983.1513298576,
+    "sglang:time_to_first_token_seconds_sum": 140630.87079862918,
+    "sglang:num_retracted_requests_total": null
+  },
+  "endpoint_counters": {
+    "sglang:load_back_tokens_total": {
+      "first": null,
+      "last": 18654256.0
+    },
+    "sglang:load_back_duration_seconds_sum": {
+      "first": null,
+      "last": 3.0708168611017754
+    },
+    "sglang:num_retracted_requests_total": {
+      "first": null,
+      "last": null
+    }
+  },
+  "retract_gauge_peak": 0.0,
+  "queue_peak": 255.0,
+  "queue_last": 255.0,
+  "sampled_queue_above128_s": 639.760917676,
+  "sampled_queue_above128_fraction": 0.9160157193650816,
+  "gpu_time_weighted_util_pct": 85.57224883190985,
+  "gpu_time_weighted_power_w": 243.97464416462805,
+  "vram_peak_mib": 16028.0,
+  "temperature_peak_c": 72.0,
+  "summed_process_rss_peak_bytes": 53643833344,
+  "last_host_used_tokens": 287088.0,
+  "host_capacity_tokens": 325536.0
+}

@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Trạng thái:** tài liệu đang được phát triển cùng nghiên cứu V3 từ 2026-10-26. Số liệu V2 dưới đây là baseline đã đo, **không phải bằng chứng đã thắng các method của paper gần đây**. Kết quả method/baseline V3 và profiling sẽ được bổ sung khi kiểm chứng xong. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
+**Cập nhật 26/10/2026:** V4 dùng Qwen3-4B; dev và held-out đã được audit, full benchmark đang chạy. Phần 18–20 trình bày cấu hình và kết quả mới nhất. Các phần V2/diagnostic giữ phạm vi lịch sử của chúng; không dùng số của model1.7B để tính ngân sách4B. Chưa có kết luận thắng toàn diện hoặc quality equivalence. Đọc cùng `docs/PROPOSAL_LOCOMO_AGENTPERF_V2.md`, `docs/V3_RESEARCH_PLAN.md` và `docs/V3_BASELINES.md`.
 
 ## 1. Kể project trong hai phút
 
@@ -28,7 +28,7 @@ Nó lưu tensor key/value ở các layer attention, không phải câu trả l�
 
 **Câu hỏi: Tính kích thước KV trên bảng trắng như thế nào?**
 
-Với full attention, xấp xỉ `bytes/token = 2 × layers × KV_heads × head_dim × bytes/element`. Hai lần là K và V. Model này có 28 layer, 8 KV head, head dimension 128 và BF16 hai byte: `2 × 28 × 8 × 128 × 2 = 114,688 byte/token`, tức 112 KiB/token. Một context 32,768 token cần khoảng 3.5 GiB KV, chưa tính weights, allocator, activation, runtime và fragmentation.
+Với full attention, xấp xỉ `bytes/token = 2 × layers × KV_heads × head_dim × bytes/element`. Hai lần là K và V. Model4B hiện dùng có36 layer,8 KV head, head dimension128 và BF16 hai byte: `2 ×36 ×8 ×128 ×2 =147.456 byte/token`, tức144KiB/token. Một context32.768token cần4,5GiB KV, chưa tính weights, allocator, activation, runtime và fragmentation. Model1.7B lịch sử có28 layer, tương ứng112KiB/token và3,5GiB cho32K; đó là một geometry khác.
 
 **Câu hỏi: Vì sao dùng KV heads chứ không dùng query heads?**
 
@@ -186,7 +186,7 @@ Cần một cơ chế có thể giải thích bằng profiling, vượt baseline
 
 ## 9. Kết quả V3 và phần diễn tập nâng cao
 
-Đang triển khai. Phần này sẽ cập nhật method cuối, timeline thật, table baseline, counterfactual/ablation và Q&A bảo vệ kết quả sau khi có bằng chứng. Không dùng trạng thái đang chạy như một kết quả đã đạt.
+Các phần10–17 giải thích diagnostic và các quyết định phát triển. Phần18 sửa đơn vị ngân sách; phần19 trình bày dev/held-out, tradeoff chất lượng và phân rã latency; phần20 diễn tập tính bộ nhớ/admission. Full benchmark chưa hoàn tất nên các kết luận full vẫn để mở.
 
 ## 10. Profiling V3 đã quan sát: bài học có số liệu
 
@@ -216,7 +216,7 @@ LPM có thể ưu tiên request khớp prefix vừa dùng, giảm migration từ
 
 **Hỏi:** Dùng conversation vừa phục vụ để chọn request tiếp theo có đủ chính xác không?
 
-**Đáp:** Không. Trong thời gian một request decode, những request khác có thể làm các block cũ bị thu hồi. Một conversation cũng có thể chỉ còn một phần prefix trên GPU. LPM-hint của baseline dùng lịch sử request nên chỉ là tín hiệu gần đúng. Prototype V3 đang chuyển sang sự kiện `BlockStored`, `BlockRemoved`, `AllBlocksCleared` mà vLLM phát ra. Gateway tạo cùng chuỗi hash theo block 16 token và đếm prefix liên tiếp còn trong index. Thông tin này vẫn có độ trễ truyền sự kiện; nó là ước lượng phục vụ admission, không phải quyền sở hữu hay khóa block trong allocator.
+**Đáp:** Không. Trong thời gian một request decode, những request khác có thể làm các block cũ bị thu hồi. Một conversation cũng có thể chỉ còn một phần prefix trên GPU. LPM-hint của baseline dùng lịch sử request nên chỉ là tín hiệu gần đúng. Baseline actual-GPU LPM và prototype residency V3 đã dùng sự kiện `BlockStored`, `BlockRemoved`, `AllBlocksCleared` mà vLLM phát ra. Gateway tạo cùng chuỗi hash theo block 16 token và đếm prefix liên tiếp còn trong index. Thông tin này vẫn có độ trễ truyền sự kiện; nó là ước lượng phục vụ admission, không phải quyền sở hữu hay khóa block trong allocator.
 
 **Hỏi:** Hash của gateway làm sao khớp hash của engine?
 
@@ -238,11 +238,11 @@ LPM có thể ưu tiên request khớp prefix vừa dùng, giảm migration từ
 
 **Hỏi:** Prototype ước lượng bộ nhớ ra sao?
 
-**Đáp:** Lấy hợp các hash block đầy đủ của các request đang active, mỗi hash chỉ tính một lần. Sau đó cộng riêng đuôi prompt chưa đủ block, ngân sách token sinh và một block dự phòng cho từng request, làm tròn theo block. Đây là dự phòng bảo thủ ở cấp gateway; allocator thật còn có null block, copy-on-write và thời điểm giải phóng bất đồng bộ. Prototype dùng 37.424 token thay vì 37.440 để chừa null block. Engine vẫn chịu trách nhiệm bảo vệ bộ nhớ và tính đúng của attention.
+**Đáp:** Lấy hợp các hash block đầy đủ của các request đang active, mỗi hash chỉ tính một lần. Sau đó cộng riêng đuôi prompt chưa đủ block, ngân sách token sinh và một block dự phòng cho từng request, làm tròn theo block. Đây là dự phòng bảo thủ ở cấp gateway; allocator thật còn có null block, copy-on-write và thời điểm giải phóng bất đồng bộ. Prototype1.7B lịch sử dùng37.424token thay vì37.440 để chừa null block. Cấu hình4B/GPU6GiB hiện dùng43.664token admission so với43.680token pool vật lý. Engine vẫn chịu trách nhiệm bảo vệ bộ nhớ và tính đúng của attention.
 
 **Hỏi:** Khi request đầu hàng không vừa thì phải làm gì?
 
-**Đáp:** Có thể cho một request phía sau dùng chung prefix với nhóm đang active đi trước, nếu dự phòng bộ nhớ vẫn vừa. Nhưng phải giới hạn số lần vượt hàng. Prototype cho phép tối đa bốn lượt rồi ngừng backfill để các request đang chạy hoàn thành và request cũ được phục vụ. Khi không có active request, luôn cho request cũ nhất tiến lên; nếu chỉ chờ một ước lượng vừa bộ nhớ, một request dài đơn lẻ có thể bị kẹt vô hạn.
+**Đáp:** Có thể cho một request phía sau dùng chung prefix với nhóm đang active đi trước, nếu dự phòng bộ nhớ vẫn vừa. Nhưng phải giới hạn số lần vượt hàng. Prototype lịch sử cho phép bốn lượt; cấu hình V4 đã khóa cho phép tám lượt, rồi ngừng backfill để các request đang chạy hoàn thành và request cũ được phục vụ. Khi không có active request, luôn cho request cũ nhất tiến lên; nếu chỉ chờ một ước lượng vừa bộ nhớ, một request dài đơn lẻ có thể bị kẹt vô hạn.
 
 **Hỏi:** Đã chứng minh đây là contribution chưa?
 
@@ -340,9 +340,9 @@ Không. Nó giới hạn số request phía sau được vượt head trong poli
 
 Có. Official evaluator của category5 chấm abstention bằng cụm “no information available” hoặc “not mentioned”. Prompt V3 yêu cầu “I don't know”, nên có thể bị chấm sai dù model nhận biết không có thông tin. Những dev cohort60 QA hiện tại không có category5; điểm F1 của chúng không được suy ra cho cả benchmark. Protocol V4 được chuẩn bị trước formal freeze, đổi cùng một hướng dẫn toàn cục thành “No information available.”, giữ nguyên nội dung câu hỏi, context và output budget. Không thay câu trả lời sau khi sinh hoặc đổi evaluator để làm đẹp điểm; các baseline phải chạy lại cùng protocol mới.
 
-## 14. Kết quả 4B trên HiCache và cách giải thích tradeoff
+## 14. Ma trận HiCache ban đầu và cách giải thích tradeoff
 
-Các số dưới đây là **dev V4**, chưa phải confirmation hay toàn LoCoMo. Cùng60 QA được chạy theo ba arrival seed, model Qwen3-4B, GPU KV6GiB, CPU16GB thập phân, FlashInfer/kernel, native LPM16, decode graphs. Gateway giữ nguyên native LPM bên trong. Nguồn: `results/v3/sglang/v4_gateway_dev_analysis.json` và `v4_gateway_dev_quality.json`.
+Các số dưới đây là **dev V4 giai đoạn đầu, trước guard**, chưa phải cấu hình cuối hoặc confirmation/toàn LoCoMo. Kết quả cấu hình guard/Direct mới hơn ở phần19. Cùng60 QA được chạy theo ba arrival seed, model Qwen3-4B, GPU KV6GiB, CPU16GB thập phân, FlashInfer/kernel, native LPM16, decode graphs. Gateway giữ nguyên native LPM bên trong. Nguồn: `results/v3/sglang/v4_gateway_dev_analysis.json` và `v4_gateway_dev_quality.json`.
 
 | Policy | Mean p50 TTFT | Mean p95 TTFT | Mean p99 TTFT | Mean answerable F1 |
 | --- | ---: | ---: | ---: | ---: |
@@ -463,7 +463,7 @@ Không. Client arrival-TTFT vẫn bắt đầu từ scheduled arrival, trước 
 
 **Hỏi: Vì sao còn phải thử cap64 khi engine vẫn chỉ chạy16 request?**
 
-Cap ở gateway quyết định engine được nhìn thấy bao nhiêu request đang chờ; max-running của engine quyết định bao nhiêu request được thực thi. Một FIFO gateway cap16 có thể che đi các request mà native LPM muốn chọn, ngay cả khi cả working set đã vừa GPU. Control GPU-fit của cap16 ghi p95 tăng2,14/5,24/6,48% và median tăng lớn, dù không có host-promotion series. Cần so native direct, FIFO64 và union-admission64 trên cùng engine16 để tách visibility/concurrency khỏi memory policy. Đây mới là giả thuyết và phép kiểm tra đang chạy, chưa phải kết luận cap64 đã giải quyết được.
+Cap ở gateway quyết định engine được nhìn thấy bao nhiêu request đang chờ; max-running của engine quyết định bao nhiêu request được thực thi. Một FIFO gateway cap16 có thể che đi các request mà native LPM muốn chọn, ngay cả khi cả working set đã vừa GPU. Control GPU-fit của cap16 ghi p95 tăng2,14/5,24/6,48% và median tăng lớn, dù không có host-promotion series. Cần so native direct, FIFO64 và union-admission64 trên cùng engine16 để tách visibility/concurrency khỏi memory policy. Đây là động cơ của phép kiểm tra cap64. Validation mới ở phần19 cho thấy GPU-fit cap64 chỉ tăng p95 khoảng0,48–1,19% trong ba seed; không được biến kết quả này thành bảo đảm cho mọi cache size hoặc mức tải.
 
 ## 17. Biến một cơ chế paper thành baseline có thể kiểm tra
 
@@ -535,3 +535,47 @@ Trên SGLang Direct+guard, p95 giảm3,9–8,7% so với nativeLPM ở4QPS và3,
 Tôi dựng lại từng request từ cùng clock monotonic trên host, rồi kiểm tra tổng các khoảng khớp arrival-TTFT. Với held-out seed701 trên vLLM, FIFO có mean28,16giây; union17,95giây. Union chờ admission13,84giây nhưng phần handoff→token chỉ4,00giây, còn FIFO gần như không chờ gateway nhưng handoff→token28,05giây. Tổng giảm khoảng10,21giây: lợi ích không chỉ là đổi chỗ ghi queue.
 
 Cùng seed trên SGLang, FIFO mean10,97giây còn union15,45giây. Union làm p95 tốt hơn nhưng mean xấu hơn khoảng4,48giây. Vì vậy người review phải thấy cả mean/median/tail, và SLO quyết định tradeoff có hữu ích hay không. Tôi không gọi phần handoff→token là GPU compute: nó còn gồm native queue, KV load và transport. P95 của từng stage cũng không cộng thành p95 tổng vì các request chậm nhất ở mỗi stage có thể khác nhau.
+
+## 20. Diễn tập thiết kế: từ công thức bộ nhớ đến quyết định admission
+
+**Hỏi: Vì sao tám request có thể nhẹ bộ nhớ hơn hai request?**
+
+**Đáp:** Giả sử tám request cùng một causal prefix gồm30.000token đầy block16, và tạm bỏ qua mọi prompt tail. Mỗi request dành96token output cùng16token an toàn. Hợp prefix vẫn chỉ30.000token; phần riêng là8×112=896token. Tổng dự phòng30.896token, nằm trong ngân sách admission43.664token của GPU KV6GiB. Với144KiB/token, phần prefix chung chiếm khoảng4,12GiB; mỗi tail112token tương ứng15,75MiB. Đếm request rồi nhân nguyên prompt tám lần sẽ đánh giá quá cao.
+
+Ngược lại, hai prefix hoàn toàn khác nhau dài28.000 và22.000token cần50.000token trước khi cộng tail/output; không vừa43.664token. Đây là ví dụ lý tưởng hóa để thấy vì sao concurrency cap không thay thế token budget. Trong dữ liệu thật phải tính cả phần header chung, tail chưa đủ block và allocator semantics.
+
+**Hỏi: Khi request đầu hàng không vừa mà request phía sau vừa, làm gì?**
+
+**Đáp:** Policy xét request cũ nhất trước. Khi còn active work và có reuse opportunity, nó có thể chọn request phía sau vừa với hợp bộ nhớ hiện tại. Mỗi lần như vậy tăng bypass của đầu hàng; đạt8 lần thì không tiếp tục vượt đầu đó. Active work được phép hoàn tất rồi đầu hàng tiến lên. Khi không còn active request, luôn cho đầu hàng chạy để tránh deadlock vì dự phòng bảo thủ. Đây là giới hạn số quyết định backfill, không phải lời hứa request được phục vụ trong8ms hay8batch native.
+
+**Hỏi: Hợp các hash bằng nhau có bảo đảm chỉ có một bản KV vật lý không?**
+
+**Đáp:** Không. Hash mô tả causal content trong namespace đã kiểm chứng. Engine vẫn có thể giữ bản sao, block đang ghi, copy-on-write hoặc cấp phát ở thời điểm khác. Admission là mô hình dự phòng để sắp thứ tự, không can thiệp allocator hay thay validation KV. Engine chịu trách nhiệm correctness và bảo vệ bộ nhớ. Cần đo preemption, compute, transfer và output thật để kiểm tra mô hình có hữu ích.
+
+**Hỏi: Vì sao hash của riêng một chunk giống nhau chưa đủ?**
+
+**Đáp:** KV của một token trong causal attention phụ thuộc cả prefix trước nó. Hai chunk cùng chữ nhưng đứng sau hai lịch sử khác nhau thường có KV khác. Vì vậy fingerprint phải nối theo causal prefix và namespace phù hợp, gồm các biến ảnh hưởng KV như model/token IDs hay extra key mà backend dùng. Project từng gặp external hash integer64 của vLLM không khớp bytesSHA256 của gateway; event đến đầy đủ vẫn cho mọi lookup miss. Chúng tôi kiểm một payload store thật thay vì chỉ kiểm tên hàm hash.
+
+**Hỏi: Vì sao không đơn giản chọn request hit CPU nhiều nhất?**
+
+**Đáp:** Cache hit cho biết cơ hội reuse, chưa cho biết KV nằm trên GPU hay CPU, copy có bị lặp giữa nhiều request hay không, và request cũ sẽ chờ bao lâu. Một prefix CPU dài có thể gây nhiều I/O hơn một prefix GPU ngắn. Policy union hiện không có oracle CPU residency hoặc quyền ép restore/recompute. Baseline nativeLPM nhìn cả host/device match, nativeDFS nhóm theo cây; phải so với chúng và kiểm tra counter nguồn, không xem mọi token cached như một đơn vị chi phí giống nhau.
+
+**Hỏi: Tại sao cần DFS khi đã có native LPM?**
+
+**Đáp:** Trong SGLang0.5.14 đã pin, LPM chuyển tạm sangFCFS khi waiting queue dài hơn128 để tránh chi phí match/sort. Full run đầu đã quan sát queue255 ở nhiều sample. DFS không dùng điều kiện fallback LPM đó, nên là đối chứng bổ sung quan trọng khi tải lớn. Gauge1Hz chỉ cho biết trạng thái tại các mẫu, không phải log chính xác mọi lần scheduler quyết định. Tôi không gọi thời gian queue>128 là thời gian đã chứng minh engine chạyFCFS ở từng microsecond.
+
+**Hỏi: Giảm engine queue có chứng minh giảm latency không?**
+
+**Đáp:** Không. Chờ có thể chuyển sang connection pool của client, CPU worker hoặc gateway admission. Arrival-TTFT bắt đầu từ lịch đến dự kiến và kết thúc ở token mà client nhận, nên giữ các khoảng đó trong phép đo. Khi hệ thống quá tải, timeout và reject cũng phải báo cùng tổng request; không được bỏ lỗi rồi lấy p95 của những request còn thành công. Full-study audit chỉ chấp nhận các lượt hoàn chỉnh cho bảng latency chính; các lượt thất bại vẫn là bằng chứng về giới hạn vận hành.
+
+**Hỏi: Hai engine khớp48.002.236.416byte CPU cache có đồng nghĩa dùng cùng tổng RAM không?**
+
+**Đáp:** Không. Đây là cùng ngân sách KV payload. Metadata, index, staging buffer, tokenizer, weights trong lúc load và cách reserve/touch page vẫn có thể khác. Tổng RSS của nhiều process còn đếm lặp shared pages, nên không phải số RAM vật lý độc lập đã dùng. Cần giữ capacity cấu hình, actual payload, RSS và RAM khả dụng thành các phép đo khác nhau. So policy trong cùng stack giúp kiểm soát phần lớn những khác biệt implementation này.
+
+**Hỏi: GPU utilization86% có nghĩa là86% thời gian đang làm GEMM không?**
+
+**Đáp:** Không. Đó là quan sát utilization tổng từ công cụ GPU, lấy mẫu theo giây. Attention, memory kernels và GPU-assisted I/O cũng có thể làm GPU bận; các burst ngắn còn bị trung bình hóa. Muốn nói thời gian GEMM/attention hay overlap với transfer phải phân loại event kernel trên cùng timeline. Với timestamp lấy mẫu không đều, phải tính trung bình có trọng số thời gian thay vì trung bình số dòng. Đoạn lấy mẫu đang chạy cũng chưa cho biết p95 của toàn benchmark.
+
+**Hỏi: Vì sao giá trị cuối counter lớn hơn0 nhưng delta vẫn đểnull?**
+
+**Đáp:** Nếu series không có ở đầu cửa sổ, không thể chỉ từ hai endpoint chứng minh baseline bằng0. Analyzer giữ giá trị đầu/cuối, đồng thời để delta nghiêm ngặt lànull. Nếu mã nguồn chứng minh exporter tạo series lười khi lần đầu observe/inc, có thể bổ sung diễn giải có điều kiện, nhưng phải ghi rõ giả định. Trong full native run đầu, `load_back_tokens_total` có giá trị cuối nhưng không có series ở mẫu đầu; công cụ theo dõi giữ cả hai thông tin. Một gauge cũng không được trừ như counter: `num_retracted_reqs` là gauge, còn `num_retracted_requests_total` mới là counter tương ứng trong phiên bản đã pin.
