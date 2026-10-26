@@ -46,3 +46,25 @@ quality:
   adversarial_category: 5
   require_identical_prompt_hashes: true
   label_fit_subset_separately_from_full_benchmark: true
+e2_current_host_2026_10_26:
+  plan: docs/V2_E2_PLAN_2026_10_26.md
+  prompt_version: locomo-text-v1
+  protocol: p_qa
+  arrival: interleaved
+  qps: 0.2
+  gpu_kv_gib: [4, 8]
+  cpu_l1_gib: 16
+  dev:
+    sample_ids: [conv-26, conv-30, conv-41]
+    questions_per_sample: 10
+    seeds: [17, 29, 43]
+  confirmation:
+    sample_ids: [conv-49, conv-50]
+    questions_per_sample: 15
+    seeds: [101, 211, 307]
+    gpu_kv_gib: [4]
+  reset: cold_service_restart_then_tiny_warmup_then_empty_cache_reset
+  quality_evaluator:
+    url: https://raw.githubusercontent.com/snap-research/locomo/3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376/task_eval/evaluation.py
+    sha256: 8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd
+    output_processing: whole_raw_generation_no_extraction

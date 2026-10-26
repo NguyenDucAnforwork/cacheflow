@@ -5,14 +5,14 @@ from __future__ import annotations
 import argparse
 import json
 import statistics
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from pathlib import Path
 
 from transformers import AutoTokenizer
 
 from cacheflow.locomo import (
     PROMPT_VERSION, build_trace, context_prefix, load_locomo,
-    question_prompt, source_sha256,
+    question_prompt, source_sha256, trace_digest,
 )
 
 
@@ -79,6 +79,8 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--qps", type=float, default=2.0)
     parser.add_argument("--session-gap-ms", type=int, default=1000)
+    parser.add_argument("--qwen-chat-no-think", action="store_true",
+                        help="Separate locomo-qwen-chat-v2 protocol; wrap exact user text in pinned chat template")
     args = parser.parse_args()
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path, local_files_only=True, trust_remote_code=False)
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -96,6 +98,34 @@ def main() -> None:
             seed=args.seed, qps=args.qps, session_gap_ms=args.session_gap_ms,
         )
         manifest["source_sha256"] = source_sha256(args.source)
+        if args.qwen_chat_no_think:
+            wrapped = []
+            original_prefix_lengths = {}
+            grouped_ids = {}
+            for row in rows:
+                prompt = tokenizer.apply_chat_template(
+                    [{"role": "user", "content": row.prompt}], tokenize=False,
+                    add_generation_prompt=True, enable_thinking=False)
+                if prompt.count(row.prompt) != 1:
+                    raise ValueError("chat template changed original user content")
+                ids = tokenizer.encode(prompt, add_special_tokens=False)
+                if len(ids) + row.max_tokens > args.max_model_len:
+                    raise ValueError("chat-wrapped request exceeds frozen context budget")
+                wrapped.append(replace(row, prompt=prompt, input_tokens=len(ids)))
+                grouped_ids.setdefault(row.sample_id, []).append(ids)
+            if args.protocol == "p_qa":
+                for conversation in load_locomo(args.source):
+                    if conversation.sample_id in grouped_ids:
+                        prefix_len = len(tokenizer.encode(context_prefix(conversation), add_special_tokens=False))
+                        group = grouped_ids[conversation.sample_id]
+                        common = next((i for i, tokens in enumerate(zip(*group)) if len(set(tokens)) > 1), min(map(len, group)))
+                        if common < prefix_len:
+                            raise ValueError("chat template lost shared context token prefix")
+                        original_prefix_lengths[conversation.sample_id] = common
+            rows = wrapped
+            manifest.update(prompt_version="locomo-qwen-chat-v2", thinking=False,
+                            chat_template="pinned tokenizer apply_chat_template; one exact user message",
+                            shared_prefix_tokens=original_prefix_lengths, trace_sha256=trace_digest(rows))
         with args.output.open("w", encoding="utf-8") as file:
             for row in rows:
                 file.write(json.dumps(asdict(row), sort_keys=True) + "\n")
