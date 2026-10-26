@@ -4,7 +4,6 @@ This is a token-content oracle, not an execution simulator. It assumes every
 prior prompt is fully materialized before the next one and omits output tokens.
 """
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
