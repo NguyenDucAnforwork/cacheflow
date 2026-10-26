@@ -218,3 +218,23 @@ In the 8K revisit r2 pair, B2/B3 had 8/18 requests beyond 200 ms, consistent wit
 # V2 status (2026-10-25)
 
 The owner skipped restoration of the old-host baseline. The full-context LoCoMo tokenizer audit found 0/1,986 QA fitting 12,288 tokens and 1,986/1,986 fitting 32,768 tokens with a 64-token output reserve; all 1,986 prompts retained an exact tokenized shared prefix. These are **data/fit findings**, not serving latency or answer-quality results. The 32K setting still needs a GPU memory pilot. V1 findings above remain tied to their original traces and host. See `docs/V2_DATA_FIT.md` and `docs/V2_NEW_HOST_REPRO.md`.
+
+# V2 measured LoCoMo tiering on the current host (2026-10-26)
+
+This section supersedes the earlier V2 fit-only status. It uses the current RTX 3090 host, pinned Qwen3-1.7B BF16/vLLM 0.22.0/LMCache 0.5.3, and genuine full-history LoCoMo text. V1 timings above remain tied to their old host and synthetic traces. The detailed methods, raw-score caveats, paired confidence intervals, source counters and reproduction commands are in [the V2 report](V2_E2_RESULTS_2026_10_26.md).
+
+Each condition has three run-level arrival seeds, 30 QA/run, constructed interleaved exponential arrivals at nominal 0.2 QPS, FIFO ingress and a 64-token output budget. B1 is GPU-only prefix caching; B2 adds 16 GiB CPU L1. Stacks restart between arms; a uniform warmup and empty-cache reset precede measurement; middle-seed arm order is reversed. Main dev uses conv-26/30/41, first 10 QA each. Confirmation uses untouched conv-49/50, first 15 QA each and new seeds fixed before the first B2 dev result.
+
+| Condition | B2 arrival-TTFT p95 mean change (run range) | B1/B2 new prefill tokens | B2 actual external KV tokens |
+| --- | --- | --- | ---: |
+| Dev, 4 GiB GPU KV | -53.86% (-57.01% to -49.27%) | 613,180 / 67,884 | 545,296 |
+| Dev, 8 GiB GPU KV | +1.79% (+1.56% to +2.10%) | 64,236 / 64,236 | 0 |
+| Holdout, 4 GiB GPU KV | -50.54% (-57.97% to -46.43%) | 323,394–344,450 / 52,482 | 291,968 |
+
+All 540 main-matrix requests succeeded with exact trace/server input-token agreement and no observed preemptions. The dev prefixes total 63,688 tokens; actual GPU capacities are 37,440/74,896 tokens at 4/8 GiB. Holdout prefixes total 47,914 tokens. Thus the tiering benefit follows residency pressure and actual CPU reuse rather than the nominal budget alone. These deliberately constrained KV budgets do not prove CPU caching is necessary when all available VRAM is allocated to KV, and schedule-limited achieved requests/s is not a peak-throughput result.
+
+A measurement-method finding accompanies RQ1: both dev B2 budgets report 2,224 LMCache L1 read chunks, yet only 4 GiB restores KV into the engine. L1 read lifecycle counts, GPU prefix lookup hits and consumed external tokens are different quantities. A prompt-only no-eviction oracle independently predicts 64,236/67,884 dev prefill tokens at 16/256-token granularity and predicts 52,482 CPU-backed holdout prefill before those GPU runs. All matching regimes attain these references. This supports the mechanism interpretation while leaving a causal chunk-size ablation open.
+
+RQ3 remains qualified: 30/90 dev-pressure, 9/90 dev-GPU-fit and 46/90 holdout output hashes differ between B1/B2 across repeated seeds. Official-evaluator raw-output F1 means are 0.073974/0.072746, 0.074773/0.074765 and 0.089931/0.087090 respectively. All main generations hit the 64-token cap under the original raw-completion template; these are poor absolute QA scores. Outputs are now retained privately and all per-request scores are audited. The report separately records a Qwen chat-template validation pilot and a chronological P-SESSION pilot; neither rewrites this main protocol. No broad answer-equivalence claim follows from lossless storage or temperature zero.
+
+The useful contribution is an exploratory, reproducible real-content residency boundary plus a source-aware reuse audit. It is not a new caching algorithm or a whole-LoCoMo leaderboard score. RQ0's existing matched E1 screens still show no DHAS cache-work gain, so B5 remains gated.
