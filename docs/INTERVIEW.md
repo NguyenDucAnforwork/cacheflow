@@ -835,3 +835,19 @@ Tôi thêm baseline`ready_fifo`có cùng gate/bypass nhưng không có union bud
 **Hỏi: Native histogram mới có xác nhận decode cost chỉ là artifact của proxy không?**
 
 **Đáp:** Nó cho thấy tradeoff vẫn xuất hiện trong engine-update metrics. Có22/24arm đủ coverage;2FIFOseed101thiếu baseline vì observer đăng ký muộn. Mean native update interval FIFO64khoảng19,5ms(n2), union cũ50,8ms(n3), readiness45,8ms(n3). P95 chỉ có bucket bounds: FIFO[10,25]ms, readiness[100,150]ms, union cũ[150,200]hoặc[200,300]ms. Đây không phải exact client ITL, nhưng đủ để không bỏ qua decode khi TTFT tốt. Completion p95mean readiness21,234s còn union cũ21,182s; không thể chỉ chọn proxy decode giảm rồi gọi mọi trải nghiệm đều nhanh hơn.
+
+**Hỏi: Giảm compute có chắc giảm latency không?**
+
+**Đáp:** Không. Trong native development seed101, gate-onlyFIFO và readiness+union đều giảm new-prefill tokens từ69650xuống65122, khoảng6,5%. Nhưng gate-onlyFIFO làm p95 tăng30,4%so native; readiness+union giảm13,7%. Cách giữ request, thứ tự đổi prefix, host promotion, batch/decode interleaving và thời gian chờ đều tác động critical path. Native gate-only còn có304656host-promotion tokens quan sát được, so90144của gated union. Đây mới là một block; tôi chưa dùng aggregate counters để tự gán nguyên nhân cho từng request hoặc khẳng định kết quả lặp ổn định.
+
+**Hỏi: Có thể nói native không transfer vì metric lànull không?**
+
+**Đáp:** Không. Ở block đó native/FIFO thiếu counter ở cả hai endpoint, còn union cũ thiếu endpoint đầu nhưng endpoint cuối là90144. Tôi giữ delta=null. Hai arm sau mới có đủ endpoint90144→394800→484944 để tínhdelta. Nếu ghi null thành0 rồi so304656hoặc90144với0, bảng sẽ tạo ra một kết luận transfer không được đo. Muốn chứng minh0hay so lượng copy phải có source contract/coverage độc lập hoặc tracing phù hợp; không thể lấy số đẹp từ một loại metric khác.
+
+**Hỏi: Oracle65.122token được tính như thế nào, có dùng thông tin tương lai để schedule không?**
+
+**Đáp:** Đây là tham chiếu offline, không tham gia scheduler. Tôi tokenize60prompt, kiểm chiều dài và fingerprint rồi xây trie có khóa gồm parent-node cùng block token. Hai block có nội dung giống nhau nhưng nằm sau prefix khác nhau không được gộp. Có4045block16token khác nhau và402token đuôi lẻ riêng cho các request, thành65122. Nó giả định giữ toàn bộ cache và publish ngay, không mô phỏng bộ nhớ hữu hạn, queue hay IO. SGLang native tokenizer được kiểm riêng trênCPU:60vector token ID khớp oracle. Khớp oracle chỉ xác nhận counter đạt mức tham chiếu của mô hình này, không chứng minh scheduler tối ưu hay native KV publication đúng.
+
+**Hỏi: Ba seed có làm kết luận readiness mạnh hơn chưa?**
+
+**Đáp:** Phần compute đã lặp rõ hơn: cả6lượt có gate đều65122token, còn9lượt native/FIFO/union cũ đều69650. Ready union giảm p95so native13,7/26,5/21,7%, nhưng median tăng khoảng168–278%. So union cũ, p95giảm2,2–5,7% ở cả3seed, song interval thăm dò vẫn cắt0và F1 giảm ở cả3seed. Tôi có thể nói đã quan sát tác động lên compute và một tradeoff tail/median/quality trên dev; vẫn chưa thể nói tốt hơn toàn diện, quality-equivalent hay đã sửa stall. Controls và full benchmark còn đang chờ.

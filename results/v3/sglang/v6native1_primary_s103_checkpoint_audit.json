@@ -1,0 +1,2153 @@
+{
+  "completed_block": true,
+  "overall_native_stage_complete": false,
+  "registration_sha256": "44663cfe8ce50dd706a2df742592be184cb5ed6a8a7eed242765fe8cab678b2f",
+  "quality_sha256": "aec4aa681216266862a958c843c465cdce2bc5281744d699c4c21b9e4a8a42e6",
+  "requests": 300,
+  "errors": 0,
+  "separate_warmup_requests": 60,
+  "runs": [
+    {
+      "run_id": "v6native1-primary-s103-union64",
+      "arm": "union64",
+      "policy": "packing_reuse",
+      "requests": 60,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "engine_pid": 377697,
+      "p50_ms": 13264.8028005,
+      "p95_ms": 16862.4252533,
+      "p99_ms": 17099.32384513,
+      "computed_tokens": 69650.0,
+      "host_promoted_tokens": null,
+      "host_promotion_endpoints": {
+        "first": null,
+        "last": 90144.0
+      },
+      "f1": 0.3198898583090309,
+      "output_budget_hits": 4,
+      "native_itl": {
+        "run_id": "v6native1-primary-s103-union64",
+        "snapshot_sha256": "23ecd071329cb9f8c7cce7345a3b6ba76d54603af8b93d4b97f4103da7965eb5",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 31.69548531193659,
+        "itl_observations": 1323.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 20.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 60.0,
+            "upper_ms": 80.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-primary-s103-union64",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "5f00e470c488ed8a97c37679e851be3eb4235da2acabc72e80e0d99d7abb1b77",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14133.7499845,
+          "p95": 17325.5269556,
+          "p99": 18543.500750629995
+        },
+        "after_first_to_close_ms": {
+          "p50": 435.468966,
+          "p95": 1981.4850847999994,
+          "p99": 2496.43881213
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 32.289764149999996,
+          "p95": 77.24609361738352,
+          "p99": 224.3727671808324
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1383,
+        "workload_output_tokens_per_s": 51.20612772852465,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 1323.0,
+        "native_itl_mean_ms": 31.69548531193659,
+        "native_itl_sample_endpoints_ns": [
+          141065467275239,
+          141096964508991
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-primary-s103-union64",
+        "request_file_sha256": "5f00e470c488ed8a97c37679e851be3eb4235da2acabc72e80e0d99d7abb1b77",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13639.370715500001,
+              "p95": 16871.3082212,
+              "p99": 17046.25452424,
+              "max": 17089.9911
+            },
+            "completion_latency_ms": {
+              "p50": 14528.536033,
+              "p95": 17497.17047495,
+              "p99": 17726.58650619,
+              "max": 17783.940514
+            },
+            "admission_wait_ms": {
+              "p50": 12745.235078,
+              "p95": 15972.07617365,
+              "p99": 16206.41114833,
+              "max": 16264.994892
+            },
+            "preparation_ms": {
+              "p50": 56.431309999999996,
+              "p95": 148.59084435000003,
+              "p99": 187.11319766999992,
+              "max": 196.743786
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13543.933443499998,
+              "p95": 16922.35284955,
+              "p99": 17074.67368431,
+              "max": 17112.753893
+            },
+            "completion_latency_ms": {
+              "p50": 14252.9824385,
+              "p95": 17377.47180145,
+              "p99": 19184.71552589,
+              "max": 19636.526457
+            },
+            "admission_wait_ms": {
+              "p50": 12532.9770005,
+              "p95": 15934.1597975,
+              "p99": 16166.408737099999,
+              "max": 16224.470972
+            },
+            "preparation_ms": {
+              "p50": 44.603364,
+              "p95": 95.14446735000001,
+              "p99": 117.01759186999996,
+              "max": 122.485873
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13062.7035895,
+              "p95": 15577.999430150001,
+              "p99": 16002.85986123,
+              "max": 16109.074969
+            },
+            "completion_latency_ms": {
+              "p50": 13351.4312335,
+              "p95": 16146.716803899999,
+              "p99": 16431.181458379997,
+              "max": 16502.297622
+            },
+            "admission_wait_ms": {
+              "p50": 6402.4778045,
+              "p95": 13892.505439800001,
+              "p99": 14790.897560759999,
+              "max": 15015.495591
+            },
+            "preparation_ms": {
+              "p50": 84.060571,
+              "p95": 133.05010690000003,
+              "p99": 164.48888857999992,
+              "max": 172.348584
+            },
+            "admission_deadline_overrun_requests": 19
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-primary-s103-union64",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 8,
+          "queued_with_spare_slots_s": 22.566333363,
+          "queued_with_at_most_one_active_s": 1.1719727739999999,
+          "active_request_seconds": 186.46185265100002,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 7
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 7
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "setup_sha256": "0a050a885736a6f4993c3e0c365b5e9321742520bc854cb25db55f7d2e8e9f04",
+      "request_file_sha256": "5f00e470c488ed8a97c37679e851be3eb4235da2acabc72e80e0d99d7abb1b77"
+    },
+    {
+      "run_id": "v6native1-primary-s103-ready_fifo",
+      "arm": "ready_fifo",
+      "policy": "ready_fifo",
+      "requests": 60,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "engine_pid": 377697,
+      "p50_ms": 17359.9493945,
+      "p95_ms": 22143.20666165,
+      "p99_ms": 23661.684163089994,
+      "computed_tokens": 65122.0,
+      "host_promoted_tokens": 283184.0,
+      "host_promotion_endpoints": {
+        "first": 90144.0,
+        "last": 373328.0
+      },
+      "f1": 0.3201722148413874,
+      "output_budget_hits": 4,
+      "native_itl": {
+        "run_id": "v6native1-primary-s103-ready_fifo",
+        "snapshot_sha256": "8f48293c24ea84c89b88969b9c14b549eeb2ccbaf4401b0e7892427b21038186",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 22.672664711789693,
+        "itl_observations": 1371.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-primary-s103-ready_fifo",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "f04e5595f045d770cf3d38c8f7e80aaa54a5ff15d5d29cf5aaf92f3b8637a84e",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 17806.993561000003,
+          "p95": 22903.088363649997,
+          "p99": 24459.74011419
+        },
+        "after_first_to_close_ms": {
+          "p50": 247.34503999999998,
+          "p95": 1693.0422471499999,
+          "p99": 2236.5223005399976
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 21.4870346,
+          "p95": 66.43081567499999,
+          "p99": 77.74444468564512
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1431,
+        "workload_output_tokens_per_s": 40.71232502066183,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 1371.0,
+        "native_itl_mean_ms": 22.672664711789693,
+        "native_itl_sample_endpoints_ns": [
+          141115465419015,
+          141154332108862
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-primary-s103-ready_fifo",
+        "request_file_sha256": "f04e5595f045d770cf3d38c8f7e80aaa54a5ff15d5d29cf5aaf92f3b8637a84e",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 17725.2918515,
+              "p95": 22415.0197065,
+              "p99": 23919.1527989,
+              "max": 24295.186072
+            },
+            "completion_latency_ms": {
+              "p50": 18332.747817000003,
+              "p95": 23520.728389350003,
+              "p99": 24425.689578669997,
+              "max": 24651.929876
+            },
+            "admission_wait_ms": {
+              "p50": 16698.216383,
+              "p95": 21660.5707288,
+              "p99": 21974.00962176,
+              "max": 22052.369345
+            },
+            "preparation_ms": {
+              "p50": 59.220025,
+              "p95": 131.92474635000002,
+              "p99": 163.53141886999995,
+              "max": 171.433087
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 17537.9140455,
+              "p95": 22188.476183700004,
+              "p99": 23014.858455139998,
+              "max": 23221.454023
+            },
+            "completion_latency_ms": {
+              "p50": 17739.885707499998,
+              "p95": 22946.338016050002,
+              "p99": 24050.21521681,
+              "max": 24326.184517
+            },
+            "admission_wait_ms": {
+              "p50": 16287.685786,
+              "p95": 21537.276878250002,
+              "p99": 21813.27747885,
+              "max": 21882.277629
+            },
+            "preparation_ms": {
+              "p50": 43.4033085,
+              "p95": 91.32297435,
+              "p99": 93.57920687,
+              "max": 94.143265
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 17250.3701495,
+              "p95": 18238.64730865,
+              "p99": 18247.29850493,
+              "max": 18249.461304
+            },
+            "completion_latency_ms": {
+              "p50": 17441.4823225,
+              "p95": 18513.5858219,
+              "p99": 19526.93683638,
+              "max": 19780.27459
+            },
+            "admission_wait_ms": {
+              "p50": 16439.7324895,
+              "p95": 17074.23612985,
+              "p99": 17689.74877317,
+              "max": 17843.626934
+            },
+            "preparation_ms": {
+              "p50": 88.609026,
+              "p95": 116.60390390000003,
+              "p99": 146.67486797999996,
+              "max": 154.192609
+            },
+            "admission_deadline_overrun_requests": 19
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-primary-s103-ready_fifo",
+          "policy": "ready_fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 8,
+          "queued_with_spare_slots_s": 31.629164950000003,
+          "queued_with_at_most_one_active_s": 7.463260409999999,
+          "active_request_seconds": 108.89659990500002,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 7
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "setup_sha256": "30246953c2dd9fb794db2d2814b00b93ca80e8b5a4a35616279ccd5ba59adf8b",
+      "request_file_sha256": "f04e5595f045d770cf3d38c8f7e80aaa54a5ff15d5d29cf5aaf92f3b8637a84e"
+    },
+    {
+      "run_id": "v6native1-primary-s103-packing_ready",
+      "arm": "packing_ready",
+      "policy": "packing_ready",
+      "requests": 60,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "engine_pid": 377697,
+      "p50_ms": 13477.1542035,
+      "p95_ms": 16138.276921800001,
+      "p99_ms": 16284.30149588,
+      "computed_tokens": 65122.0,
+      "host_promoted_tokens": 90144.0,
+      "host_promotion_endpoints": {
+        "first": 373328.0,
+        "last": 463472.0
+      },
+      "f1": 0.3168095311714282,
+      "output_budget_hits": 3,
+      "native_itl": {
+        "run_id": "v6native1-primary-s103-packing_ready",
+        "snapshot_sha256": "e8f955e57f66108b6a947c095cfd67eaff0f0096f68b18434c1b3462bf27b881",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 27.97486504030279,
+        "itl_observations": 1331.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-primary-s103-packing_ready",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "762cde0a50142fd802846080a334722301672a414321dcda8af93235f7645cf5",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 14226.8597485,
+          "p95": 16414.649678,
+          "p99": 18232.238707219996
+        },
+        "after_first_to_close_ms": {
+          "p50": 327.609978,
+          "p95": 1977.9457340999986,
+          "p99": 2648.2792532399985
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 28.503727598484847,
+          "p95": 67.67008384999997,
+          "p99": 81.10703247064515
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1391,
+        "workload_output_tokens_per_s": 50.18366752224581,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 1331.0,
+        "native_itl_mean_ms": 27.97486504030279,
+        "native_itl_sample_endpoints_ns": [
+          141173648676274,
+          141205637202131
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-primary-s103-packing_ready",
+        "request_file_sha256": "762cde0a50142fd802846080a334722301672a414321dcda8af93235f7645cf5",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 14082.85456,
+              "p95": 16142.246188250001,
+              "p99": 16241.23993125,
+              "max": 16265.988367
+            },
+            "completion_latency_ms": {
+              "p50": 15018.195683999998,
+              "p95": 16602.0069884,
+              "p99": 17365.22772248,
+              "max": 17556.032906
+            },
+            "admission_wait_ms": {
+              "p50": 13755.781378,
+              "p95": 15795.50567255,
+              "p99": 15873.56566091,
+              "max": 15893.080658
+            },
+            "preparation_ms": {
+              "p50": 56.9687075,
+              "p95": 129.49459315000001,
+              "p99": 158.49663622999995,
+              "max": 165.747147
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 13906.893105,
+              "p95": 16192.80561285,
+              "p99": 16287.08475057,
+              "max": 16310.654535
+            },
+            "completion_latency_ms": {
+              "p50": 14724.789302000001,
+              "p95": 16452.210381400004,
+              "p99": 18654.694354679996,
+              "max": 19205.315348
+            },
+            "admission_wait_ms": {
+              "p50": 13670.005656500001,
+              "p95": 15758.89303605,
+              "p99": 15919.19878801,
+              "max": 15959.275226
+            },
+            "preparation_ms": {
+              "p50": 42.764268,
+              "p95": 88.98874625,
+              "p99": 91.73625645,
+              "max": 92.423134
+            },
+            "admission_deadline_overrun_requests": 19
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 12951.810561999999,
+              "p95": 14715.28253945,
+              "p99": 15488.135651089999,
+              "max": 15681.348929
+            },
+            "completion_latency_ms": {
+              "p50": 13154.6133925,
+              "p95": 15835.403001,
+              "p99": 16293.025798600002,
+              "max": 16407.431498
+            },
+            "admission_wait_ms": {
+              "p50": 12380.670268,
+              "p95": 14442.09736835,
+              "p99": 14962.72876167,
+              "max": 15092.88661
+            },
+            "preparation_ms": {
+              "p50": 82.8896885,
+              "p95": 95.67621365000004,
+              "p99": 139.16536912999993,
+              "max": 150.037658
+            },
+            "admission_deadline_overrun_requests": 19
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-primary-s103-packing_ready",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 8,
+          "queued_with_spare_slots_s": 24.159898686000002,
+          "queued_with_at_most_one_active_s": 9.129887379,
+          "active_request_seconds": 76.633034753,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 7
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 7
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 8
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 1
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 2
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 3
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 4
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 5
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 6
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "setup_sha256": "4b210a95826c43b1ecf6fd1e144c206d709889ba6e42190a1351af04be10c876",
+      "request_file_sha256": "762cde0a50142fd802846080a334722301672a414321dcda8af93235f7645cf5"
+    },
+    {
+      "run_id": "v6native1-primary-s103-native",
+      "arm": "native",
+      "policy": null,
+      "requests": 60,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "engine_pid": 377697,
+      "p50_ms": 5037.2916375,
+      "p95_ms": 20607.413287,
+      "p99_ms": 21707.36033207,
+      "computed_tokens": 69650.0,
+      "host_promoted_tokens": 26448.0,
+      "host_promotion_endpoints": {
+        "first": 463472.0,
+        "last": 489920.0
+      },
+      "f1": 0.3168914025164574,
+      "output_budget_hits": 3,
+      "native_itl": {
+        "run_id": "v6native1-primary-s103-native",
+        "snapshot_sha256": "751a8bf5ea38478410e3711b9ce8313ed47fb9597277981a18279d6c024f9de7",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 31.757603078658416,
+        "itl_observations": 1333.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 20.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 60.0,
+            "upper_ms": 80.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-primary-s103-native",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "f2526d921b2ca1420fdbcde17518d71eb53669f70c08b0946d9fa2272ab5e1d4",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 6301.009237,
+          "p95": 21252.595277949997,
+          "p99": 22369.05220156
+        },
+        "after_first_to_close_ms": {
+          "p50": 521.361392,
+          "p95": 2034.3780191499989,
+          "p99": 2862.299258899997
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 42.25796674107143,
+          "p95": 70.91582878333332,
+          "p99": 201.2483774979831
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1393,
+        "workload_output_tokens_per_s": 51.409415475824396,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 1333.0,
+        "native_itl_mean_ms": 31.757603078658416,
+        "native_itl_sample_endpoints_ns": [
+          141217948937602,
+          141248936913273
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-primary-s103-native",
+        "request_file_sha256": "f2526d921b2ca1420fdbcde17518d71eb53669f70c08b0946d9fa2272ab5e1d4",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 2576.9322425,
+              "p95": 6552.302112400003,
+              "p99": 9768.910599279994,
+              "max": 10573.062721
+            },
+            "completion_latency_ms": {
+              "p50": 3500.608005,
+              "p95": 8573.279008050002,
+              "p99": 10810.818857609996,
+              "max": 11370.20382
+            }
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 3469.732282,
+              "p95": 10311.2339391,
+              "p99": 10983.17932222,
+              "max": 11151.165668
+            },
+            "completion_latency_ms": {
+              "p50": 4179.2963785,
+              "p95": 10477.2367761,
+              "p99": 11040.933793619999,
+              "max": 11181.858048
+            }
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 16970.612753,
+              "p95": 21692.78140235,
+              "p99": 21723.55914287,
+              "max": 21731.253578
+            },
+            "completion_latency_ms": {
+              "p50": 17921.852301,
+              "p95": 22231.179215800003,
+              "p99": 22522.24440796,
+              "max": 22595.010706
+            }
+          }
+        ],
+        "admission": null,
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "setup_sha256": "fdb33439bd0369c0227b08ab25e9b2d0f88aa062bbe496c9c0b23b5719ab5b32",
+      "request_file_sha256": "f2526d921b2ca1420fdbcde17518d71eb53669f70c08b0946d9fa2272ab5e1d4"
+    },
+    {
+      "run_id": "v6native1-primary-s103-fifo64",
+      "arm": "fifo64",
+      "policy": "fifo",
+      "requests": 60,
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s103.jsonl",
+      "engine_pid": 377697,
+      "p50_ms": 5154.7014875,
+      "p95_ms": 20815.776928099996,
+      "p99_ms": 21916.19814299,
+      "computed_tokens": 69650.0,
+      "host_promoted_tokens": 26448.0,
+      "host_promotion_endpoints": {
+        "first": 489920.0,
+        "last": 516368.0
+      },
+      "f1": 0.3168914025164574,
+      "output_budget_hits": 3,
+      "native_itl": {
+        "run_id": "v6native1-primary-s103-fifo64",
+        "snapshot_sha256": "4fe6002661609a257c64e6ff7f1bee16b49d71fdb913b129bc4d2a20caf49e62",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 31.69293171499693,
+        "itl_observations": 1337.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 60.0,
+            "upper_ms": 80.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6native1-primary-s103-fifo64",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "520aaa085bd973ae70d4f183d97ff5c32f5a63d03dc3f838bb3f91a9925c1e4e",
+        "request_file_sha256": "5432d47d6c2877e134c5c2e5675615a6f8347af2f1f583a7dfe3688c502aa9e7",
+        "requests": 60,
+        "completion_latency_ms": {
+          "p50": 6400.8020935,
+          "p95": 21461.9903321,
+          "p99": 22576.14655543
+        },
+        "after_first_to_close_ms": {
+          "p50": 493.922109,
+          "p95": 2027.978973849999,
+          "p99": 2864.9914077199965
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 43.84178043831169,
+          "p95": 71.06766650833333,
+          "p99": 201.23732716911215
+        },
+        "proxy_eligible_requests": 60,
+        "single_token_responses": 0,
+        "generated_tokens": 1397,
+        "workload_output_tokens_per_s": 51.170921518162345,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 1337.0,
+        "native_itl_mean_ms": 31.69293171499693,
+        "native_itl_sample_endpoints_ns": [
+          141267803018174,
+          141298838444013
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "fairness": {
+        "run_id": "v6native1-primary-s103-fifo64",
+        "request_file_sha256": "5432d47d6c2877e134c5c2e5675615a6f8347af2f1f583a7dfe3688c502aa9e7",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 2696.0091465,
+              "p95": 6679.5095840500035,
+              "p99": 9963.216033609995,
+              "max": 10784.142646
+            },
+            "completion_latency_ms": {
+              "p50": 3617.2530445,
+              "p95": 8694.8312547,
+              "p99": 10998.695341339995,
+              "max": 11574.661363
+            },
+            "admission_wait_ms": {
+              "p50": 0.03209,
+              "p95": 0.08225605000000002,
+              "p99": 0.10327840999999997,
+              "max": 0.108534
+            },
+            "preparation_ms": {
+              "p50": 57.294905,
+              "p95": 125.79152565000003,
+              "p99": 159.00178752999994,
+              "max": 167.304353
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 3587.8529575000002,
+              "p95": 10520.06649825,
+              "p99": 11192.002064449998,
+              "max": 11359.985956
+            },
+            "completion_latency_ms": {
+              "p50": 4262.4039594999995,
+              "p95": 10684.534089800001,
+              "p99": 11262.87903876,
+              "max": 11407.465276
+            },
+            "admission_wait_ms": {
+              "p50": 0.031869999999999996,
+              "p95": 0.073127,
+              "p99": 0.07951099999999998,
+              "max": 0.081107
+            },
+            "preparation_ms": {
+              "p50": 45.087410500000004,
+              "p95": 90.98329104999999,
+              "p99": 92.31538941,
+              "max": 92.648414
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 20,
+            "arrival_ttft_ms": {
+              "p50": 17182.8668745,
+              "p95": 21903.045744950003,
+              "p99": 21930.81191859,
+              "max": 21937.753462
+            },
+            "completion_latency_ms": {
+              "p50": 18125.4462465,
+              "p95": 22438.892371150003,
+              "p99": 22728.65120463,
+              "max": 22801.090913
+            },
+            "admission_wait_ms": {
+              "p50": 0.03056,
+              "p95": 0.08447735000000003,
+              "p99": 0.12597866999999993,
+              "max": 0.136354
+            },
+            "preparation_ms": {
+              "p50": 82.17685750000001,
+              "p95": 126.93643605000003,
+              "p99": 144.29450240999998,
+              "max": 148.634019
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6native1-primary-s103-fifo64",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.002810063,
+          "queued_with_at_most_one_active_s": 0.000107885,
+          "active_request_seconds": 506.389036139,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q001",
+              "head_id": "conv-26-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q001",
+              "head_id": "conv-30-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q001",
+              "head_id": "conv-41-q001",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q002",
+              "head_id": "conv-26-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q002",
+              "head_id": "conv-30-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q002",
+              "head_id": "conv-41-q002",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q003",
+              "head_id": "conv-26-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q003",
+              "head_id": "conv-30-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q003",
+              "head_id": "conv-41-q003",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q004",
+              "head_id": "conv-26-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q004",
+              "head_id": "conv-30-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q004",
+              "head_id": "conv-41-q004",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q005",
+              "head_id": "conv-26-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q005",
+              "head_id": "conv-30-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q005",
+              "head_id": "conv-41-q005",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q006",
+              "head_id": "conv-26-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q006",
+              "head_id": "conv-30-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q006",
+              "head_id": "conv-41-q006",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q007",
+              "head_id": "conv-26-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q007",
+              "head_id": "conv-30-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q007",
+              "head_id": "conv-41-q007",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q008",
+              "head_id": "conv-26-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q008",
+              "head_id": "conv-30-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q008",
+              "head_id": "conv-41-q008",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q009",
+              "head_id": "conv-26-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q009",
+              "head_id": "conv-30-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q009",
+              "head_id": "conv-41-q009",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q010",
+              "head_id": "conv-26-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q010",
+              "head_id": "conv-30-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q010",
+              "head_id": "conv-41-q010",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q011",
+              "head_id": "conv-26-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q011",
+              "head_id": "conv-30-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q011",
+              "head_id": "conv-41-q011",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q012",
+              "head_id": "conv-26-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q012",
+              "head_id": "conv-30-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q012",
+              "head_id": "conv-41-q012",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q013",
+              "head_id": "conv-26-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q013",
+              "head_id": "conv-30-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q013",
+              "head_id": "conv-41-q013",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q014",
+              "head_id": "conv-26-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q014",
+              "head_id": "conv-30-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q014",
+              "head_id": "conv-41-q014",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q015",
+              "head_id": "conv-26-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q015",
+              "head_id": "conv-30-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q015",
+              "head_id": "conv-41-q015",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q016",
+              "head_id": "conv-26-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q016",
+              "head_id": "conv-30-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q016",
+              "head_id": "conv-41-q016",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q017",
+              "head_id": "conv-26-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q017",
+              "head_id": "conv-30-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q017",
+              "head_id": "conv-41-q017",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q018",
+              "head_id": "conv-26-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q018",
+              "head_id": "conv-30-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q018",
+              "head_id": "conv-41-q018",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-26-q019",
+              "head_id": "conv-26-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q019",
+              "head_id": "conv-30-q019",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q019",
+              "head_id": "conv-41-q019",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "setup_sha256": "9f046ae2b33390ea093fd0b3de60acde02177a513649897e563789ab9d63ea7a",
+      "request_file_sha256": "5432d47d6c2877e134c5c2e5675615a6f8347af2f1f583a7dfe3688c502aa9e7"
+    }
+  ],
+  "pairs": [
+    {
+      "baseline": "native",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 163.33203941877187,
+      "p95_ms_delta_pct": -18.173013670097504,
+      "p99_ms_delta_pct": -21.227990950756848,
+      "computed_tokens_delta_pct": 0.0,
+      "f1_delta": 0.0029984557925734623,
+      "output_hash_mismatches": 6
+    },
+    {
+      "baseline": "native",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 167.54762625156818,
+      "p95_ms_delta_pct": -21.687032248823357,
+      "p99_ms_delta_pct": -24.982580807755262,
+      "computed_tokens_delta_pct": -6.501076812634599,
+      "f1_delta": -8.187134502923854e-05,
+      "output_hash_mismatches": 3
+    },
+    {
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 1.6008636252926145,
+      "p95_ms_delta_pct": -4.294449467512285,
+      "p99_ms_delta_pct": -4.766401038027723,
+      "computed_tokens_delta_pct": -6.501076812634599,
+      "f1_delta": -0.003080327137602701,
+      "output_hash_mismatches": 5
+    },
+    {
+      "baseline": "native",
+      "candidate": "ready_fifo",
+      "p50_ms_delta_pct": 244.6286346667773,
+      "p95_ms_delta_pct": 7.452625680190739,
+      "p99_ms_delta_pct": 9.003046898027112,
+      "computed_tokens_delta_pct": -6.501076812634599,
+      "f1_delta": 0.0032808123249299936,
+      "output_hash_mismatches": 6
+    }
+  ],
+  "scope": "Single primary seed103development block, same native engine with flush/fresh gateway between5arms;60exposedQA. Not three-seed evidence, not the60-arm stage, not full1986QA, not quality equivalence or a causal transfer reduction claim. Missing host-promotion counter endpoints remain null, never zero-filled."
+}

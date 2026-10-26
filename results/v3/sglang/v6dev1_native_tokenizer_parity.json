@@ -1,0 +1,322 @@
+{
+  "cpu_only": true,
+  "requests": 60,
+  "token_id_mismatches": 0,
+  "input_oracle_sha256": "9c695a4944c389d56b946cbdbb019b8f35b51f7b80d0873ec2e5379736f84708",
+  "trace_sha256": "69803faa79336894bc218298206c0db09398509dcb9ea21a144ff6c99c65904a",
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "native_tokenizer_class": "Qwen2Tokenizer",
+  "package_versions": {
+    "sglang": "0.5.14",
+    "transformers": "5.8.1",
+    "tokenizers": "0.22.2"
+  },
+  "native_source_sha256": {
+    "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/utils/hf_transformers/tokenizer.py": "ba68d62e62d8d34c762b3d25b2ff8c51dd568e80a5c2a18c0047203a5d5e9096",
+    "/venv/sglang-baseline/lib/python3.12/site-packages/sglang/srt/managers/tokenizer_manager.py": "f7b0f64fc2f46dd0339e3e26f9481ac4b0fdb0ad31d501d925d8cada2bac9da2"
+  },
+  "source_sha256": "313e4f511be819eee99f3487dc1ea38a62531eb9c596c80592263533e643a97f",
+  "token_fingerprints": [
+    {
+      "request_id": "conv-26-q000",
+      "input_tokens": 19526,
+      "token_ids_u32le_sha256": "d62326402e4a554dc8f1049cfaca22d50cc6f18445987ef08a1e03a87da779ec"
+    },
+    {
+      "request_id": "conv-30-q000",
+      "input_tokens": 15210,
+      "token_ids_u32le_sha256": "9221bc4994fcad96ae4e3cb58729df82b9a88a67fdbf872209874c8f6c486e25"
+    },
+    {
+      "request_id": "conv-41-q000",
+      "input_tokens": 29181,
+      "token_ids_u32le_sha256": "16272c943ca75c14555249214f2944dbfd998ca6c44c0b6eaf0ecc810f8d2cab"
+    },
+    {
+      "request_id": "conv-26-q001",
+      "input_tokens": 19523,
+      "token_ids_u32le_sha256": "894b25b16ab5bd4c56e6cfd1706930133a7698dd04c15b18bfad9fa92fd752af"
+    },
+    {
+      "request_id": "conv-30-q001",
+      "input_tokens": 15210,
+      "token_ids_u32le_sha256": "b7f543dceb680b91f1b9501eced6238789257f9b7ac04c96994728f9364c7c70"
+    },
+    {
+      "request_id": "conv-41-q001",
+      "input_tokens": 29171,
+      "token_ids_u32le_sha256": "ea9c2dde1f7564dce4b6113c8eafe0d2e9b05dbb9f7431725143961f9d26fa71"
+    },
+    {
+      "request_id": "conv-26-q002",
+      "input_tokens": 19529,
+      "token_ids_u32le_sha256": "ed7d14ecd857b595727e615b872e433a4b4b7d739243bb5df9cf5566c3e6e310"
+    },
+    {
+      "request_id": "conv-30-q002",
+      "input_tokens": 15211,
+      "token_ids_u32le_sha256": "ed7be3c04fc509ab75d09707a812f8400a2a3645208ae6941c565a6d60c24c38"
+    },
+    {
+      "request_id": "conv-41-q002",
+      "input_tokens": 29171,
+      "token_ids_u32le_sha256": "52fcc71f59d1615a7fe02fe04372580b96767a68ab98780793b7c28ccccf50d0"
+    },
+    {
+      "request_id": "conv-26-q003",
+      "input_tokens": 19521,
+      "token_ids_u32le_sha256": "6ee17870b0b2987cf9f2590e46fae56fcd256e0880f0678a8f230b44a9aafbf6"
+    },
+    {
+      "request_id": "conv-30-q003",
+      "input_tokens": 15210,
+      "token_ids_u32le_sha256": "454c8bc4e88d2d5c1c7771ffef87b60943c8534f67d98f37b50f7fee386f3255"
+    },
+    {
+      "request_id": "conv-41-q003",
+      "input_tokens": 29175,
+      "token_ids_u32le_sha256": "c40a80140bbfa6b5ac700908f3f27609ae93a737269308ce317e881577eed673"
+    },
+    {
+      "request_id": "conv-26-q004",
+      "input_tokens": 19522,
+      "token_ids_u32le_sha256": "37d2286fa4c8788b4436289001e332fb0cb93c4c82804609be06d4784b94ca5c"
+    },
+    {
+      "request_id": "conv-30-q004",
+      "input_tokens": 15210,
+      "token_ids_u32le_sha256": "5ed25b39e0a4fa0074aad7fe24ecaa8a00c078a3146d53c2a89f17daffbb3c55"
+    },
+    {
+      "request_id": "conv-41-q004",
+      "input_tokens": 29173,
+      "token_ids_u32le_sha256": "f39a4a27544304b388e0aaa75d2d96ca45950edca150a5994598868033934528"
+    },
+    {
+      "request_id": "conv-26-q005",
+      "input_tokens": 19524,
+      "token_ids_u32le_sha256": "5fe50487d19fbae9c44d6bcf58bfa6e8fa0238fd244faef7c87eaba83d5f246f"
+    },
+    {
+      "request_id": "conv-30-q005",
+      "input_tokens": 15211,
+      "token_ids_u32le_sha256": "cdfd41e9f0d1b03fedc132c6efbd4802e030cdca157ade37e25c09ace108e088"
+    },
+    {
+      "request_id": "conv-41-q005",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "0be84c2918f38e5f3ded0d6fc3d8e86a99aa90e18c269145c112aca6ea6128ad"
+    },
+    {
+      "request_id": "conv-26-q006",
+      "input_tokens": 19524,
+      "token_ids_u32le_sha256": "20540e6f2153eb508e109e03e0dfdfa5601c1469cc3c2cf0c1b18e0c660ef244"
+    },
+    {
+      "request_id": "conv-30-q006",
+      "input_tokens": 15210,
+      "token_ids_u32le_sha256": "b1d5a69e643e707369237c2cebc1c52ca389c6c73d640ba64655144b2e608672"
+    },
+    {
+      "request_id": "conv-41-q006",
+      "input_tokens": 29170,
+      "token_ids_u32le_sha256": "eb7dcaf200314c4a4a34f44a4cc05a379521b3f7643800f1b0f1ab364ac56aa0"
+    },
+    {
+      "request_id": "conv-26-q007",
+      "input_tokens": 19523,
+      "token_ids_u32le_sha256": "33a96ff5ea9ce5464c7adfbba1b9f5f7e53e3556fbecabbbd4723b0efa66efd9"
+    },
+    {
+      "request_id": "conv-30-q007",
+      "input_tokens": 15211,
+      "token_ids_u32le_sha256": "36f4ad57b1526513aa32b1f57be6dbe4cace1ac5b294434d34f4416c063aace4"
+    },
+    {
+      "request_id": "conv-41-q007",
+      "input_tokens": 29174,
+      "token_ids_u32le_sha256": "e60d083a5454600d03d60e47df3728eaf7b6e4dd58ea0cd0701ff18d9c942259"
+    },
+    {
+      "request_id": "conv-26-q008",
+      "input_tokens": 19526,
+      "token_ids_u32le_sha256": "83b6c980dba369bdc4170b8160df9baeae614873914d23a5c879bab4dba4dbc9"
+    },
+    {
+      "request_id": "conv-30-q008",
+      "input_tokens": 15206,
+      "token_ids_u32le_sha256": "5a773ec784f0fe54ec2070dc6777ebd995abd466db2ef5f8abe303f927e891ad"
+    },
+    {
+      "request_id": "conv-41-q008",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "0a9d8cb5c1d6975162a3386ea03bd774744b4f8e4168dc1d9b379ae92b900ac1"
+    },
+    {
+      "request_id": "conv-26-q009",
+      "input_tokens": 19530,
+      "token_ids_u32le_sha256": "075267515ca98f7525157e6816c0cbd96140250769fef26fd703470e587e8414"
+    },
+    {
+      "request_id": "conv-30-q009",
+      "input_tokens": 15209,
+      "token_ids_u32le_sha256": "1a1f3c693710ede2bf49315b4fbe251553e871ed2d8b2839cd63b943e68d8c29"
+    },
+    {
+      "request_id": "conv-41-q009",
+      "input_tokens": 29183,
+      "token_ids_u32le_sha256": "6f81936cec27deaa4e405ee7c20fedabe8e441c8534c1b5e2accf1b248b75417"
+    },
+    {
+      "request_id": "conv-26-q010",
+      "input_tokens": 19528,
+      "token_ids_u32le_sha256": "d331d535335534b24ad9dad33cc11e161cc2001bdc8cd85a3c83114a2a7c8572"
+    },
+    {
+      "request_id": "conv-30-q010",
+      "input_tokens": 15214,
+      "token_ids_u32le_sha256": "5ebebd78321bde8942ea5986018677bc620ad643e6e7757ebd65b120dcdf9f0a"
+    },
+    {
+      "request_id": "conv-41-q010",
+      "input_tokens": 29170,
+      "token_ids_u32le_sha256": "533be990a2fb22215ce7f93c3ce36d8cb289ea92acf4e8cb9f260fc27a9218f6"
+    },
+    {
+      "request_id": "conv-26-q011",
+      "input_tokens": 19526,
+      "token_ids_u32le_sha256": "894edc6c9025da51c7bd2c3e277f6a70ad8a18e456877fc14dc4be2f5469af55"
+    },
+    {
+      "request_id": "conv-30-q011",
+      "input_tokens": 15207,
+      "token_ids_u32le_sha256": "23916ce0e71438d75ae918f9ef90f46c4c8cb68de7244dc5b797e6bf8992b245"
+    },
+    {
+      "request_id": "conv-41-q011",
+      "input_tokens": 29174,
+      "token_ids_u32le_sha256": "ee71f04b99fd56cc7a6478c273dfbeec71f4cd3b3e2b0fee71c2e0f92a38c043"
+    },
+    {
+      "request_id": "conv-26-q012",
+      "input_tokens": 19528,
+      "token_ids_u32le_sha256": "c6a356f188827b18c3f2f6321942737a79bfaaf3a479d301d5e0e1412a1eccc8"
+    },
+    {
+      "request_id": "conv-30-q012",
+      "input_tokens": 15210,
+      "token_ids_u32le_sha256": "80d6ad1f2fac04fa9cd1bf03c3a25780849afa4e9f8fda4eae1871f1d579863c"
+    },
+    {
+      "request_id": "conv-41-q012",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "82f4d4bfee191324dca006172b747cbde6f5eec154f90d8301f231ac7a95c1f8"
+    },
+    {
+      "request_id": "conv-26-q013",
+      "input_tokens": 19526,
+      "token_ids_u32le_sha256": "4a3ef63aa9c0d3d249f71197cdc4e8eb219cdead5bd287b008ea60739e71505c"
+    },
+    {
+      "request_id": "conv-30-q013",
+      "input_tokens": 15209,
+      "token_ids_u32le_sha256": "cbf660bf8890451f68b4f7e30149f56b7978b611f1cabb74176f1c1f4d585d39"
+    },
+    {
+      "request_id": "conv-41-q013",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "98cbec1470b7d7d7796191f35f7bb159d6ac705518a82920ce4cae26806bc7d6"
+    },
+    {
+      "request_id": "conv-26-q014",
+      "input_tokens": 19535,
+      "token_ids_u32le_sha256": "5a87e11ab8fe87b463b597b01d70630cf019b0a87ffbaff730aff958071fbd3a"
+    },
+    {
+      "request_id": "conv-30-q014",
+      "input_tokens": 15212,
+      "token_ids_u32le_sha256": "c3ab739fac06c57d73049632ae9d680797c642b0a769ff360864e0f4c4ab1d3c"
+    },
+    {
+      "request_id": "conv-41-q014",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "d71c416814f9d33b77b9bd41356a8c4b96fe8745b8811cdd405a5c5cf74bf46a"
+    },
+    {
+      "request_id": "conv-26-q015",
+      "input_tokens": 19524,
+      "token_ids_u32le_sha256": "801b4a4bdb52d4360a1cdd7fe832438f83d65a3f00fa6b2be4553677f699c4e8"
+    },
+    {
+      "request_id": "conv-30-q015",
+      "input_tokens": 15208,
+      "token_ids_u32le_sha256": "c38f14e6ceddefedf8c5ac15ccbba6d027bf63b6a47e6e0d2b68e140c6ed0a32"
+    },
+    {
+      "request_id": "conv-41-q015",
+      "input_tokens": 29171,
+      "token_ids_u32le_sha256": "22b3c467b9c05e45f1c794fe7b9d9c4eb661c5402293b879aeaebe51b5451420"
+    },
+    {
+      "request_id": "conv-26-q016",
+      "input_tokens": 19526,
+      "token_ids_u32le_sha256": "d5e3d728617243cad49a89906d3a4fe7f663dc85de9faf5c37be1943f9248d70"
+    },
+    {
+      "request_id": "conv-30-q016",
+      "input_tokens": 15216,
+      "token_ids_u32le_sha256": "24f8ac01c2a9ab6d73fb0d8cdb6cd0c30102753833709c30f706c63e6de9c444"
+    },
+    {
+      "request_id": "conv-41-q016",
+      "input_tokens": 29171,
+      "token_ids_u32le_sha256": "6661e6c16d22306341f6df13438ac4a27ddddfeeb313ac42069380e997c75b82"
+    },
+    {
+      "request_id": "conv-26-q017",
+      "input_tokens": 19525,
+      "token_ids_u32le_sha256": "c4f0abf9a9ed50b1ebebec2dd44c7d588a2b60e0a3ded8838053027a100ed13b"
+    },
+    {
+      "request_id": "conv-30-q017",
+      "input_tokens": 15211,
+      "token_ids_u32le_sha256": "05350bfd8673a7612e3add81b9376745e24de72dd7a5ff8a4f10b9a110b47b71"
+    },
+    {
+      "request_id": "conv-41-q017",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "a33aedf66159f153782f9c89987d00d02dc91d93c14eb4e7d071d14859ad8973"
+    },
+    {
+      "request_id": "conv-26-q018",
+      "input_tokens": 19522,
+      "token_ids_u32le_sha256": "9e04a15fb39d730f30d3d8715607120139d9c667a0a1fcabf5fa57390a103ae4"
+    },
+    {
+      "request_id": "conv-30-q018",
+      "input_tokens": 15212,
+      "token_ids_u32le_sha256": "20dbc767b8c103ac2f7dfced23fd1df3cee63b52f0b39a11a30603fc3df25f89"
+    },
+    {
+      "request_id": "conv-41-q018",
+      "input_tokens": 29172,
+      "token_ids_u32le_sha256": "24c79a7dcc097f53b8cc6717386035db5b01b5eb3e7b3ab23b1c11c28371c9df"
+    },
+    {
+      "request_id": "conv-26-q019",
+      "input_tokens": 19523,
+      "token_ids_u32le_sha256": "c21f76c829c16418712483bd5094b4dd87b3339ba181653d308588ab31ecfb5f"
+    },
+    {
+      "request_id": "conv-30-q019",
+      "input_tokens": 15209,
+      "token_ids_u32le_sha256": "456784e5dde28b8bd1c062882deb5316b484108ba3a32c3c6dd222e6795b83bb"
+    },
+    {
+      "request_id": "conv-41-q019",
+      "input_tokens": 29173,
+      "token_ids_u32le_sha256": "63fa31665fb94623e7fd055bbd09f0f2d469beaf619c987a67b6d1a36ef9f31e"
+    }
+  ],
+  "scope": "CPU native get_tokenizer auto/huggingface loader, default fast batched call matching the inspected tokenizer_manager path; compare every token ID against main-environment oracle encoding. No GPU execution, server request trace, runtime cache correctness or latency claim."
+}
