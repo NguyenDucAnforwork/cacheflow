@@ -62,6 +62,16 @@ def load_run(root, run_id):
         import hashlib
         if hashlib.sha256(outputs[request_id]['output'].encode()).hexdigest() != r['output_hash']:
             raise ValueError('captured output hash mismatch')
+    counters = metrics['counter_deltas']['vllm']
+    total = sum(r['server_prompt_tokens'] for r in requests.values())
+    computed = counters.get('vllm:request_prefill_kv_computed_tokens_sum')
+    cached = counters.get('vllm:prompt_tokens_cached_total')
+    if computed is None or cached is None or computed + cached != total:
+        raise ValueError('prefill/cache counters do not account for server prompt tokens')
+    sources = [counters.get(f'vllm:prompt_tokens_source_{name}_total')
+               for name in ('local_compute', 'local_cache_hit', 'external_kv_transfer')]
+    if all(value is not None for value in sources) and sum(sources) != total:
+        raise ValueError('source-labelled prompt token accounting mismatch')
     return {'summary': summary, 'metrics': metrics, 'requests': requests, 'gateway': gateway}
 
 
@@ -158,6 +168,23 @@ def main():
                              'output_hash_matches': sum(c['output_hash_matches'] for c in group),
                              'output_pairs': sum(c['requests'] for c in group)}
     (base / f'{prefix}_aggregate.json').write_text(json.dumps(summary, indent=2) + '\n')
+    if 4 in args.budgets and 8 in args.budgets:
+        diagnostics = []
+        for seed, arm in itertools.product(args.seeds, ('b1', 'b2')):
+            ids = [f'v2-e2-{arm}-{gib}g-{args.cohort}-qps02-s{seed}' for gib in (4, 8)]
+            runs = [indexed(jsonl(base / 'raw' / f'{rid}.jsonl')) for rid in ids]
+            if runs[0].keys() != runs[1].keys():
+                raise ValueError('cross-budget diagnostic IDs differ')
+            for rid in runs[0]:
+                for k in ('trace_sha256', 'prompt_sha256', 'input_tokens'):
+                    if runs[0][rid][k] != runs[1][rid][k]:
+                        raise ValueError('cross-budget diagnostic prompts differ')
+            diagnostics.append(dict(a=ids[0], b=ids[1], requests=len(runs[0]),
+                                    output_hash_mismatch_ids=[rid for rid in runs[0]
+                                        if runs[0][rid]['output_hash'] != runs[1][rid]['output_hash']]))
+        (base / f'{prefix}_output_diagnostics.json').write_text(json.dumps({
+            'note': 'Same policy and prompts, different GPU budgets. Diagnostic only; not a causal CPU-tier contrast.',
+            'pairs': diagnostics}, indent=2)+'\n')
     print(json.dumps(summary, indent=2))
 
 
