@@ -253,3 +253,6 @@ The main GPU-fit subset now passes all nine arms/540measured responses plus540se
 
 
 The final full auditor now independently checks both process layers:30distinct positive engine PIDs and12distinct positive main LMCache PIDs, with native LMCache IDs absent. A reused/missing CPU-tier PID rejects the stage even if all engine PIDs differ. Projected-ledger CPU tests cover this condition along with invalid IDs, incomplete graphs and reused engines; these tests are not actual48GB/full GPU evidence. The prospective analysis seal already covers the final auditor, and namespace copies retain the same check automatically.
+
+
+The terminal main24 audit uses a legacy schema without a `complete` flag. The freezer's prerequisite validator explicitly supports that named artifact only when its terminal scope,24unique IDs/1440summed requests and zero errors match. Modern native/main-controls audits still need explicit `complete=true`; partial, duplicate, miscounted or failed artifacts reject. Regression tests use the real completed main/native files without rewriting them, plus clearly projected control fixtures. This corrects an incompatible strict check added before full launch and does not change the original GPU measurements or acceptance thresholds.

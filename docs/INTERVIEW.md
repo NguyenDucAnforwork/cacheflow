@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 21:33 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main controls đã audit riêng low-load, low-reuse và GPU-fit; còn abstention và audit toàn bộ stage. Full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 21:50 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main controls đã audit riêng low-load, low-reuse và GPU-fit; còn abstention và audit toàn bộ stage. Full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -921,6 +921,12 @@ Board-energy estimate từ mẫu khoảng 1 Hz tăng 5,1–9,4% ở ba seed read
 **Đáp:** Serving code giữ nguyên nhưng cách lọc run, chọn counter hoặc tính percentile có thể đổi kết luận. Seal full dự kiến ghi riêng hash của auditor, evaluator, resource/fairness/wait/decode analysis và phiên bản dependency, rồi kiểm lại trước từng arm và lúc tổng hợp. Một sửa lỗi sau seal phải có provenance riêng; hash chỉ chứng minh cùng byte, không chứng minh công thức đúng.
 
 Ví dụ integration check trước freeze bắt được main audit đặt tên trường `p95_ms_delta_pct`, còn native dùng `p95_delta_pct`. Freezer cũ đọc một tên cho cả hai nên sẽ dừng trước full. Bản sửa đọc đúng schema, yêu cầu đủ ba seed và số hữu hạn, giữ nguyên ngưỡng 5%. Test gate không phải kết quả GPU; actual main low-reuse vẫn phải đo/audit riêng.
+
+**Hỏi: Có đủ 24 arms thành công mà freezer vẫn lỗi thì xử lý thế nào?**
+
+**Đáp:** Phải phân biệt dữ liệu thí nghiệm với schema đọc dữ liệu. Main24 audit cũ không có trường `complete`, trong khi các stage mới có. Strict check được thêm sau đó đọc cùng một field nên sẽ gây `KeyError` trước full launch. Bản sửa nhận đúng artifact legacy với terminal scope, 24 run ID riêng, tổng 1.440 requests và không lỗi; schema mới vẫn bắt buộc `complete=true` cùng các count checks.
+
+Không sửa lại audit gốc để làm validator xanh, vì audit có thể đã được registration khác tham chiếu bằng hash. Test đọc chính main/native audit đã hoàn tất, thêm phản ví dụ thiếu run, trùng ID, sai tổng hoặc cờ false. Đây là sửa integration trước freeze; không phải chạy lại GPU hay biến subset thành full result.
 
 **Hỏi: Cùng số token có đủ để so hai engine?**
 

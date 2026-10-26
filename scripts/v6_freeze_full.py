@@ -36,6 +36,20 @@ def sha(path):
     with Path(path).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
 
+def validate_prerequisite(name,audit,expected_runs,expected_requests):
+    """Accept the terminal main24 legacy schema without rewriting its audit."""
+    assert audit['errors']==0 and audit['requests']==expected_requests,name
+    runs=audit['runs'];assert len(runs)==expected_runs,name
+    assert len({r['run_id'] for r in runs})==expected_runs,name
+    assert sum(r['requests'] for r in runs)==expected_requests,name
+    if str(name)=='results/v3/v6dev1_main_audit.json':
+        assert (expected_runs,expected_requests)==(24,1440)
+        assert audit['scope'].startswith('Complete24-arm development matrix:'),name
+        assert audit.get('complete',True) is True,name
+    else:
+        assert audit['complete'] is True,name
+
+
 def lowreuse_gates(audits):
     """Read each producer's explicit schema; require all three registered seeds."""
     gates={}
@@ -71,7 +85,7 @@ def verify_full():
 def main():
     parent,seal=verify();assert not PATH.exists();steps=build_plan()
     for name,runs,requests in PREREQUISITES:
-        audit=json.loads(Path(name).read_text());assert audit['complete'] and len(audit['runs'])==runs and audit['requests']==requests and audit['errors']==0,name
+        validate_prerequisite(name,json.loads(Path(name).read_text()),runs,requests)
     gates=lowreuse_gates({stack:json.loads(Path(path).read_text()) for stack,path in
         [('main','results/v3/v6controls1_main_audit.json'),('sg','results/v3/sglang/v6native1_audit.json')]})
     # This is breadth evaluation of exposed QA. Both union variants remain fixed
