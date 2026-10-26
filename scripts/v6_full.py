@@ -35,8 +35,12 @@ def main():
     outcomes=[];phase='preflight';step=None
     def call(*args):subprocess.run(list(map(str,args)),check=True,env=env)
     def stop():
+        errors=[]
         for name in SERVICES:
-            if service_pid(name):call('supervisorctl','stop',name)
+            try:
+                if service_pid(name):call('supervisorctl','stop',name)
+            except Exception as exc:errors.append(dict(service=name,error=repr(exc)))
+        if errors:raise RuntimeError('Failed to stop serving services: '+json.dumps(errors))
     def wait(url):
         for _ in range(180):
             try:r=httpx.get(url,timeout=2);r.raise_for_status();return
@@ -100,7 +104,9 @@ def main():
         Path('results/v3/v6full1_interruption.json').write_text(json.dumps(dict(error=repr(exc),phase=phase,last_step=step,completed_arms=len(outcomes),scope='Study stopped; retain failed/unexecuted arms. No retries or successful-only complete-stage table.'),indent=2)+'\n')
         raise
     finally:
-        stop();CONFIG.write_text(original);call('supervisorctl','reread');call('supervisorctl','update','cacheflow_v2_gateway')
+        try:stop()
+        finally:
+            CONFIG.write_text(original);call('supervisorctl','reread');call('supervisorctl','update','cacheflow_v2_gateway')
     call(sys.executable,'scripts/v6_audit_full.py')
 
 

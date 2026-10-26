@@ -1,0 +1,3900 @@
+{
+  "subset_complete": true,
+  "overall_main_controls_complete": false,
+  "regime": "lowreuse",
+  "registration_sha256": "5e269b7f6c6701d766530fb016710bd807f060e86bc84d0c887dda84d3ad046c",
+  "quality_sha256": "fa374474fde2453ef7656391e09b30b6bf65a7f789e6aae2f80c1b5fc3f5d387",
+  "artifact_sha256": {
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101-warm.metrics.jsonl": "5110c698f8b8989f83a4532d122aaccb6fb3197aee2097a053e648cbe6eb913f",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101-warm.jsonl": "b62f93a136c9a4cdad942b908731974e95dec3ffb0a8d2f125b6d5bfdb8a9e01",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101-warm.outputs.jsonl": "e6d2af72d8f999014b08c492dc341c17cbfd5c3ad880251352ecbc1a904ac82d",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101-warm.summary.json": "af25cb35999b82d598a285a13ef940f75cdfcd5c6dc67f418d674d39451d90de",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101-warm.gateway.jsonl": "e67424f7f17b7eb78ddbb3f8ecb5b148bc2536656cb9cc7209d3dc7a09bf09e9",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s101-warm.setup.json": "f738b2761d118ef2e67d234a9e84f63f1b4ba7b50c0c10b2d6241cbf1a2b8fc8",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s101-warm.v6_entrypoint.json": "4e8bf2656f2d9cbeb5eb8d331d0c21e135bdf8a2ef3481a438af944dd7bbc7b6",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s101-warm.metrics_summary.json": "2738e59126b77ac362654b83b6d613a440f007fd0e4c547c907c131b2994f257",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101.metrics.jsonl": "4e58fe62627e598e5584d29e69048f1a998f59f537e2f95a852069a5eb9b39d6",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101.jsonl": "79768586628817c78ab3eed5b9a7a8818ffd996c9033a168217cc52e276776e4",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101.outputs.jsonl": "7debc6725398bfd32c9bcd8569c2bda22eebbfd5f4dda60645de6f82fe569344",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101.summary.json": "2b178b953efaa13d530fe2ba870f108a86a1fd8d912b1ca6063cb8b4107aed02",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s101.gateway.jsonl": "4b34078d54f366560695566456d41e5dfaabe88528f650a64669bb2850672d92",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s101.setup.json": "c1d27848993fa144902664e276818ccd35b7b94dd57bc804615785a811ccb23f",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s101.v6_entrypoint.json": "2679308486799213c6b3bcf822788dc61038e5b7aa71ff5f8176bf430e604427",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s101.metrics_summary.json": "e34d4d8ed7a47250c4594e3a6c4ec330a3ad6580e98a0272fe797361996ae0a1",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101-warm.metrics.jsonl": "c9338b13deaecb7b1b71b09732bc45036cd304ffe972f54da98214ed18eedf14",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101-warm.jsonl": "62314cd602a7c423e4c767d6d83180557fa6adf1ed8bca290da33e11523c079e",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101-warm.outputs.jsonl": "a551fc5d5580d1d2e90a0c6aed3d6d91819046821ecca6f3c6698bb86a7f036f",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101-warm.summary.json": "08940baf997d8ea702669bf666b0a965f56c8cc636648133375ef95235cbb0d4",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101-warm.gateway.jsonl": "d4ee30c552a4af16a0a1fc307eaecff3ae9b796849b92531fb0065542a3b294c",
+    "results/v3/v6controls1-main-lowreuse-union64-s101-warm.setup.json": "da2f5a957e27b0622b52f7c19d87d4d24217621806096ac45c9423d63893fa1b",
+    "results/v3/v6controls1-main-lowreuse-union64-s101-warm.v6_entrypoint.json": "aa08f136109895e0be7d764241f9da5e15ae29dc74b09ae05fc76d741c9d0d0d",
+    "results/v3/v6controls1-main-lowreuse-union64-s101-warm.metrics_summary.json": "96fff2f5e08162e4ef413af8fbe6838af9b0cd8cddd66841ee3f5735b396fe59",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101.metrics.jsonl": "ba65fd78b36b9b7b87e3ff32a14e11550a0340d54aa7af5c9ea6b118233ef9aa",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101.jsonl": "c50867dade62ba7c32bdeddcaaec959ef84da199250400b39e2f11f9303d9480",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101.outputs.jsonl": "97f6e85da0b84fec66c723b500dcd834b5b8c7aebda2558ec3b74c5361991e61",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101.summary.json": "98190abc0f4ca87155fecb25ab422a9b5e7664ece92fa1ea1d0e857b68592c0f",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s101.gateway.jsonl": "b765bfcb84b94105cb5a0e9c840a54a0024782e1bc94570f2cf1e5e725b12389",
+    "results/v3/v6controls1-main-lowreuse-union64-s101.setup.json": "9dcd6987eb91e92f773f66ffcc80475b75cb96ebb3ed291c9ac83532834ef8a9",
+    "results/v3/v6controls1-main-lowreuse-union64-s101.v6_entrypoint.json": "6e95645c71bbbcc9d03b24dded86417da8a3aa9bed667214248ee65fa57afb7b",
+    "results/v3/v6controls1-main-lowreuse-union64-s101.metrics_summary.json": "416b4382e41f3030c25c53f1dd46ba0ed170d91278f22d94280bb096790a0590",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101-warm.metrics.jsonl": "99d8b6ae09e25e44f57b01acacfcbc2c9acef9fc18e2f236c56e06e15920e548",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101-warm.jsonl": "b6892f3a265171a43ddd22f6d8fd74a3cb635c5c9d99af5daf09d5b747588153",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101-warm.outputs.jsonl": "5363f091e3c6e1e26a914a1852b7bc07571f3163f2c32bfcf9624b89f8fd3bc4",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101-warm.summary.json": "b8fbe739db3b93a5c3c2e50fada3dbcdba6df89154b7e817cb98b5c45d1de50f",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101-warm.gateway.jsonl": "ff622c7b5e294c6709da0c8fe4a9f33c877167ed950f94ea3bbb411501ee3940",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s101-warm.setup.json": "59a15fafa6a96956cdc00c59b5843775c1aeb89cf7168f253fd60d433cc67e0d",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s101-warm.v6_entrypoint.json": "5d87c427055b14e64b0b8a597585aee663ad3311b1dfcf9e4f03de7a266fb84c",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s101-warm.metrics_summary.json": "9703f847dd000fa6b12f49f278745c60f54c9f55ec31be52a7f74f94d7e0801e",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101.metrics.jsonl": "ae46d178c01ad848eae553e9e553257b2d161b036ca40835a4b60c1ef92ca7f1",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101.jsonl": "880deb59c76273df8a0ee3175056889afeb59c139c177192c8e4e87e8b764740",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101.outputs.jsonl": "340cbe464a4706e398c4886d85a5d62f90997ed96935a0fe72d82c0286d94c0e",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101.summary.json": "f9183a9eb341c6b93fc47b6d870b62413f655217e8e51d2b2079a38ffcb49782",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s101.gateway.jsonl": "4878c5964250f623f6dffd7fafb71fd5404ab29fdc866fa40f16d7c9d582b927",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s101.setup.json": "4f5e5b697437532894731fa43bcff2eb35905a1236b290bb0e13724730c0b3ab",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s101.v6_entrypoint.json": "5bba63ccb1f27c3041961c3f03503e12819b69c3be800bd7d09856f0338a9206",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s101.metrics_summary.json": "116d4b76272e9792ebff810003effb209065ed489da464e0ac4df4e18830620e",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102-warm.metrics.jsonl": "70a41428d13326a6c8895659e9de4463fa3f6870e4585e220eddcad48c69191a",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102-warm.jsonl": "f7db24db71836994a89137252240ed96dda2ef307f221b9c6e9d15012660ab1a",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102-warm.outputs.jsonl": "283853c1ab178cd12c5c8f81d1b2a3505146b9b049cd8b6ca8a63421e6594215",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102-warm.summary.json": "09de0cf891ec08a5a3943f81d8de1997851cbe68bebbcfcaae30d8b4edd82bd3",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102-warm.gateway.jsonl": "c6bb74b144e483900515b31f8650bc087f9ed0e6b0825aac9030d94aa6f29988",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s102-warm.setup.json": "09208cb69d223e366e3d6a356ee01096c2ad1247d873acc2ed28f39b3db1df34",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s102-warm.v6_entrypoint.json": "892c5247323f2a636b4b883141f726470dfb88cd07959b0df0531e49dee96dea",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s102-warm.metrics_summary.json": "1899c4a397d8600e7ac46f41b9d01c401e790183ea38f4d87be90daff928ac1a",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102.metrics.jsonl": "61dd41b7220ccdbfebc566a4c6879fcebd90d56af1bbe916bdfe3e114a636c5b",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102.jsonl": "d65ec5ac94a698c21ebf1beb77856d1cc8f32da0c5eb9c9c7eb8e96144ff21da",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102.outputs.jsonl": "2e45d4d2bab8178e6495dc194fdff623521cf70952ed6b9ab4d45147840e8da8",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102.summary.json": "9491929428f1a0b8d2739dcf265053a31d70b6ebc20e04afd28a41c13e5ed952",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s102.gateway.jsonl": "4987a952d30da5da9148e5838e7df063df644f252a3601dcd71284d5ce62cf7e",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s102.setup.json": "29f5d625515e252fc0e1cac1b55d8d6160441beaba6b2969631a02c84a69a9f6",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s102.v6_entrypoint.json": "5838605867860004b2b07986069d3ee5e4cb71878e5640e13ce9c75bbbe4c6fb",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s102.metrics_summary.json": "612252fc1fbee7167bea7e11b8b8c8b32d7bbd98b24afce51dbb1a2c25d96764",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102-warm.metrics.jsonl": "424ff44b00d7a0afeaab9cabdc7488f61f975026641d6031751c9fe4686df743",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102-warm.jsonl": "1e81eee936b3f998a50beb95170a9b2afc09cca23c75b9f7403cd1b370cba07a",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102-warm.outputs.jsonl": "19eafdef54991b4786132627555cf6761b25353ef0239dd4c6d9b91053a19e0c",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102-warm.summary.json": "5e6d64fe84ea4dc999c7ffd599787559d5bc46b3a49c06568e6cb1b8dfd8fa58",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102-warm.gateway.jsonl": "cb1969356498533c901031e5be317e4bb15c9281033d43970cad77040122a327",
+    "results/v3/v6controls1-main-lowreuse-union64-s102-warm.setup.json": "569700a190cf008fb6a60900e64d035f11e2a0708b08ffdb2b16d3e63c82d532",
+    "results/v3/v6controls1-main-lowreuse-union64-s102-warm.v6_entrypoint.json": "e194a6069552a94699e2f4f631d5d3d06c66000a9ea8cbd13fd90784c3d6edf5",
+    "results/v3/v6controls1-main-lowreuse-union64-s102-warm.metrics_summary.json": "6394975e9612f61ab374d061e9f0e7e2f3a676b00d7db337e083eab4e6275dfa",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102.metrics.jsonl": "2c6864021e783f28f2951ef3ee91430eb0065e13c86a126d56e93d4ca990763f",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102.jsonl": "bed3c94fc1dc477f76dc33e2f2316dc2f0aafd2d4881d10053e92bbe290b63f4",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102.outputs.jsonl": "1b7d52cde1b8ed875215132f0d9edcfe51350b68584a463687a040a73f92359e",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102.summary.json": "b27724d9679a483723604dda63a06de24bf43fac0c3a54317134c75e866e3975",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s102.gateway.jsonl": "cfd4abfc5b47856f77c1f1fd88f54066388d51c5580228b0d96159a98d5a1e86",
+    "results/v3/v6controls1-main-lowreuse-union64-s102.setup.json": "ffd68f282910410eac72f405f58415d428d70bf274a9a4ed388cd0442affd234",
+    "results/v3/v6controls1-main-lowreuse-union64-s102.v6_entrypoint.json": "bca833152f9f6a1518f6260d64e0f03eb474b456ad39a6369f6240e05b5796fd",
+    "results/v3/v6controls1-main-lowreuse-union64-s102.metrics_summary.json": "a82093de71d3dfad9088affb245f2a47b32ec4351c3d837d55ac1e244c9aa0d6",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102-warm.metrics.jsonl": "8ad928e8e0188eb278acc5227c47e7adfcd415b60863991c9b1f15a74ddfc325",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102-warm.jsonl": "4b240f3cc4d6601ce6c0aa8a590d4163fc68032ae47902bcd195b83f7d8a2bc8",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102-warm.outputs.jsonl": "7eec2935f38b4e22096003e41f5ad4ba1151314a09ad6788ce0fa175c64ed1fc",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102-warm.summary.json": "314c441d147fae4a5296b61436b3899943248d164d6798abf6de983cd1713bbf",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102-warm.gateway.jsonl": "8d5c6976c82ce50d5ddf98a5f5e41801472b26b64aa11d0359faa18e6e23de42",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s102-warm.setup.json": "0d5fc277ac6dba18a1c3c212c7eab8c2f5c84b5063c587b052d9f6ddf2b49902",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s102-warm.v6_entrypoint.json": "08c3b38296e06f6fd4b28941089cabb50ef353d01f1cba33cce40190c58253a6",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s102-warm.metrics_summary.json": "1a92a645ca4506e19c6f01ecef4fa4b576f30258fa34387b98b7eaf583123db4",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102.metrics.jsonl": "3f2641bbb40b6eb4e78f6b091c7f1724e2503eafe6f04a234423ccc35a2eb429",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102.jsonl": "5dfb90dc324eef68ac5e3e85b4e2e728c7e332f9395a9cd4b7312a09736eeaf1",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102.outputs.jsonl": "60696010bd472c836cea41ef5ca1e75d8b60042325cc18a6aa9455b7e8bd3f68",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102.summary.json": "b65ecc08d081f0c4bfcd7df13623eb63bfcfb2ea8916e5f141252278c1074885",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s102.gateway.jsonl": "7a58c34cdd455d93b0bf8e3e016be8a85888a52412caf531e47bcaf411cd493e",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s102.setup.json": "268b12a8503c5ff0c3c90c7ac1c2dfe076b3191844c1f40c85b824ade9d04e41",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s102.v6_entrypoint.json": "5f5728d449fe7e5915879df191e4b5274d52b595008c2ed48f32deb8d3a1ad18",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s102.metrics_summary.json": "4872ca45fc895b84065a4e435ca1138dfafeb22370eb8f5d3dbcff6461bbe649",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103-warm.metrics.jsonl": "7c93086d4a4c88d5d82bb5076068c805de06362e462a7a6eba75e5b1abc06f1c",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103-warm.jsonl": "189aff6cad1ca1a4699e644869ef419420241a05edb7a609fdadcbd99d5de1e1",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103-warm.outputs.jsonl": "d7d7b2d66981c692a3bf5b384e58d599aecb90c71e3efa88070bedc92878dfe7",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103-warm.summary.json": "8f70577c2511372c71e912147465cf00fb28b6c6014dea4c4a9d1ce5600b52a5",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103-warm.gateway.jsonl": "0928e528aad0dbf6ff308a8982c44941f527551482dbc1a3448db78f0929d148",
+    "results/v3/v6controls1-main-lowreuse-union64-s103-warm.setup.json": "adb26b7a3bc87b98bb07a4bfb983ee4ae551e17d15f1f7d672ee5c99f1bcd21d",
+    "results/v3/v6controls1-main-lowreuse-union64-s103-warm.v6_entrypoint.json": "b9c55bbc3c5ac1a8a54080c35e24bcf0ab4770f3f19c5d86d80c8e1a3b7c4945",
+    "results/v3/v6controls1-main-lowreuse-union64-s103-warm.metrics_summary.json": "fd39af66717332754610cdd7111abc8a11dcfd88dea2504625cafb596db00dc2",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103.metrics.jsonl": "03ce8c040c441eb960714e3bcb4bc770965b10bb6612b779e30579eff00b0ba6",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103.jsonl": "6c79aa17394ad20d9a311a9dabdc976f9f1bcd33be5914c34f19a8d54bf1977a",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103.outputs.jsonl": "2aa96de070f8f6bc79387117c11c73736aa34dbdb16d491b32e92a124c91b980",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103.summary.json": "604cebffdca0392933c2feef604aeb5776e9ef112ba721b0c0cf8f67f3a836c8",
+    "results/v3/raw/v6controls1-main-lowreuse-union64-s103.gateway.jsonl": "de9ec04244c4091c7abeb963d606dbe180cba9432a1f21bb6b5de774cb92359f",
+    "results/v3/v6controls1-main-lowreuse-union64-s103.setup.json": "ae0de4269687b3f2570df3004790d0e805a0532c426a51a22ec27092cf594b6a",
+    "results/v3/v6controls1-main-lowreuse-union64-s103.v6_entrypoint.json": "a739ecf27adb1eaebbdfb5af43c8e9fab4b906e15b6ce057162047fca2e38947",
+    "results/v3/v6controls1-main-lowreuse-union64-s103.metrics_summary.json": "f434c8fe78c8d24f9780d054953f9927f7e3f56c04f5a7ba0f751e4d6bb0eef3",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103-warm.metrics.jsonl": "3cce7894f94ce324b408576a5ff0feaf59e4369d7501d302c242b950ab8f6a9a",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103-warm.jsonl": "045307a4dea7ac8567694a7c4252e831f8132aa8170f7b9a4202e4b7cd98b6b0",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103-warm.outputs.jsonl": "990a362217c5f48c381a0e6ea27d6591f9fccc7241ba5c40179aa8d2c6c32b6d",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103-warm.summary.json": "4e30f429d16483e09b45a9816787f18bb9a75f73261445a91e1f129751e6f077",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103-warm.gateway.jsonl": "69779e2749c82cbd8a62d5f03c6577e961df6643d4fdbe32fb58ce9c35c0bb3a",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s103-warm.setup.json": "1449e8b6d37f37999db133c268b28198dd5f85b942911094f28db4c830002c81",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s103-warm.v6_entrypoint.json": "75fca74628c84ff564fad03321fe8f54f71bb54533dea073123956175cd15712",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s103-warm.metrics_summary.json": "568c3e07febece1af595e1efa6cd5208b057cf809de8b8b3304530ea7cfa88bb",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103.metrics.jsonl": "7dbaf2e3c68ddd7ed6f6dfb6cea63ff03ec8fa1c2f92f3a81b744690ee32c472",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103.jsonl": "8a94745ddbfd7f3b4695a805c9cb863f95fd85b5b25a3bb6a0f4c29ddf037a94",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103.outputs.jsonl": "d93a6319cd22d80d34f4ff46bce5e31fb2881aaa50436622c2889f0050e1c5e4",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103.summary.json": "d38a6d50c73572bf28b2ac305fe33f53cfa5584e259484dc330d7bd563653dc5",
+    "results/v3/raw/v6controls1-main-lowreuse-packing_ready-s103.gateway.jsonl": "7f5e40b88015f3126d501626d77a6cc1552093822c16056d9475227978f3c4dc",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s103.setup.json": "e57d41391884f2a4cb790abbbd4f77d698d7f99b58d6799b13043850664edfdd",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s103.v6_entrypoint.json": "3f3762304a1f87e31bfe58b951f040755a68f7d71a64ef96be467059b2c19dbb",
+    "results/v3/v6controls1-main-lowreuse-packing_ready-s103.metrics_summary.json": "5b23efe978165409b83424fe82b3c94c50fa94706aa1718c7f74fd3a354966dc",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103-warm.metrics.jsonl": "ce42dbfe981d7161a807c3aee1b469ea4a1bf0f633f6db5c0632130811f55066",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103-warm.jsonl": "cf1dec99ce799096659976177ba2601ba43bbf58ed5c4fe23a822349a090a7b2",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103-warm.outputs.jsonl": "a492cdc9e8bc7f9eafb4a4826d0c2d75a2132a87c75223ac4b5304c347a0cb2b",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103-warm.summary.json": "ea703fcc019070f1acf9edfd4ced5470c107189cb4886acbd035f486d06acf93",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103-warm.gateway.jsonl": "0a106aa38bf7d7c64f83e458910776a83257caa8c34ea9525079e3c08d48957c",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s103-warm.setup.json": "23528e3c0c299e03efe25ac4869b66889b0e15eeb467e5e0d096432f7b2d3567",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s103-warm.v6_entrypoint.json": "266666b17cbe7316cbd7d85fcbc02e05b6ef1de92b44e787f9c074fcfb1a7b40",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s103-warm.metrics_summary.json": "7e941f034e05aefb3706b1678eb85600847197acf2a4e16188516b3ba0bcae59",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103.metrics.jsonl": "50411b82f9e88f5a19281df6f72fae63b3081815e4b1be9ae51e2e72312ca315",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103.jsonl": "16c997918a8941a4ac3335d4780d950e8b8210bdde32d80ea0719d350db351c5",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103.outputs.jsonl": "b704592b89cef9007291c42664d1ab193187da4f3ba59671a801426fdc37501c",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103.summary.json": "13b288378c793071962d04e8f5e2e4390a60ba7fc710d934f70345eeb3fb8751",
+    "results/v3/raw/v6controls1-main-lowreuse-fifo64-s103.gateway.jsonl": "44cc5bab9b43933a30169f80c6cd322574c81270ac6c59a913f99b484532d9d1",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s103.setup.json": "3aaf9da1b2d7dc6b026342b517e25d5296568af2a1323f829a1cedc4d42a722f",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s103.v6_entrypoint.json": "aa4ae34cfb104bc752494a4e285582b90459774f8f154b522944a1b700dc7a68",
+    "results/v3/v6controls1-main-lowreuse-fifo64-s103.metrics_summary.json": "037982bd717fac596d1d324eaafcc9e081d08f9670ed978f9f7a9302e6522dcf"
+  },
+  "analysis_source_sha256": {
+    "scripts/v6_audit_main_controls_subset.py": "1f0ea671f9976ff616b1ec3c0e2cb87aac48d55e97f94fc4ff575540ea16d888",
+    "scripts/v3_analyze_runs.py": "7d095e4facce7dd42dd23eb0f170fc76679b477b4b249f5a518ee6abfd2eab37",
+    "scripts/v6_analyze_fairness.py": "1e62346d7249242fe8cad9ea2fa9e2fc1c9f2b4c7a9d9fd7c1c59c2e7353c0df",
+    "scripts/v5_analyze_decode.py": "d291c5dda7be6714cdbcd033b52d058cbd53db884b28cc19981dd88b1b0f2725",
+    "scripts/v5_analyze_histograms.py": "ff26dcdf211500c32ff8dd1deedaedb0469707575066d2337a41c2c6ddd10a8d"
+  },
+  "scope": "One complete nine-arm control, three arrival seeds on exposed QA; fresh engine/LMCache per arm. Not the full36-arm stage or full1986QA benchmark.",
+  "requests": 72,
+  "errors": 0,
+  "separate_warmup_requests": 540,
+  "runs": [
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "fifo64",
+      "seed": 101,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl",
+      "run_id": "v6controls1-main-lowreuse-fifo64-s101",
+      "engine_pid": 419735,
+      "lmcache_pid": 419624,
+      "p50_ms": 24003.4963365,
+      "p95_ms": 43781.71262765,
+      "p99_ms": 45706.37463993,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s101",
+        "snapshot_sha256": "940a240e2f9024110fcc9317f9bde98c2fbce3b2168e1bb1d424f96893ca2fb8",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.151637478833436,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s101",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+        "request_file_sha256": "79768586628817c78ab3eed5b9a7a8818ffd996c9033a168217cc52e276776e4",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24026.222665499998,
+          "p95": 43990.93236489999,
+          "p99": 45962.75056738
+        },
+        "after_first_to_close_ms": {
+          "p50": 143.907138,
+          "p95": 1899.466697249999,
+          "p99": 2562.6437418499995
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.012205861344539,
+          "p95": 63.79143324387094,
+          "p99": 83.169589952
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.1327337565580264,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s101",
+        "request_file_sha256": "79768586628817c78ab3eed5b9a7a8818ffd996c9033a168217cc52e276776e4",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5251.640738,
+              "p95": 5251.640738,
+              "p99": 5251.640738,
+              "max": 5251.640738
+            },
+            "completion_latency_ms": {
+              "p50": 7980.078741,
+              "p95": 7980.078741,
+              "p99": 7980.078741,
+              "max": 7980.078741
+            },
+            "admission_wait_ms": {
+              "p50": 0.07416,
+              "p95": 0.07416,
+              "p99": 0.07416,
+              "max": 0.07416
+            },
+            "preparation_ms": {
+              "p50": 86.156754,
+              "p95": 86.156754,
+              "p99": 86.156754,
+              "max": 86.156754
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7428.321274,
+              "p95": 7428.321274,
+              "p99": 7428.321274,
+              "max": 7428.321274
+            },
+            "completion_latency_ms": {
+              "p50": 7616.38554,
+              "p95": 7616.38554,
+              "p99": 7616.38554,
+              "max": 7616.38554
+            },
+            "admission_wait_ms": {
+              "p50": 0.041164,
+              "p95": 0.041164,
+              "p99": 0.041164,
+              "max": 0.041164
+            },
+            "preparation_ms": {
+              "p50": 111.559721,
+              "p95": 111.559721,
+              "p99": 111.559721,
+              "max": 111.559721
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14927.738815,
+              "p95": 14927.738815,
+              "p99": 14927.738815,
+              "max": 14927.738815
+            },
+            "completion_latency_ms": {
+              "p50": 14971.018818,
+              "p95": 14971.018818,
+              "p99": 14971.018818,
+              "max": 14971.018818
+            },
+            "admission_wait_ms": {
+              "p50": 0.03232,
+              "p95": 0.03232,
+              "p99": 0.03232,
+              "max": 0.03232
+            },
+            "preparation_ms": {
+              "p50": 87.101355,
+              "p95": 87.101355,
+              "p99": 87.101355,
+              "max": 87.101355
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20559.432192,
+              "p95": 20559.432192,
+              "p99": 20559.432192,
+              "max": 20559.432192
+            },
+            "completion_latency_ms": {
+              "p50": 20563.679043,
+              "p95": 20563.679043,
+              "p99": 20563.679043,
+              "max": 20563.679043
+            },
+            "admission_wait_ms": {
+              "p50": 0.028907,
+              "p95": 0.028907,
+              "p99": 0.028907,
+              "max": 0.028907
+            },
+            "preparation_ms": {
+              "p50": 72.623601,
+              "p95": 72.623601,
+              "p99": 72.623601,
+              "max": 72.623601
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27447.560481,
+              "p95": 27447.560481,
+              "p99": 27447.560481,
+              "max": 27447.560481
+            },
+            "completion_latency_ms": {
+              "p50": 27488.766288,
+              "p95": 27488.766288,
+              "p99": 27488.766288,
+              "max": 27488.766288
+            },
+            "admission_wait_ms": {
+              "p50": 0.031257,
+              "p95": 0.031257,
+              "p99": 0.031257,
+              "max": 0.031257
+            },
+            "preparation_ms": {
+              "p50": 83.374511,
+              "p95": 83.374511,
+              "p99": 83.374511,
+              "max": 83.374511
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 34143.08733,
+              "p95": 34143.08733,
+              "p99": 34143.08733,
+              "max": 34143.08733
+            },
+            "completion_latency_ms": {
+              "p50": 34503.035888,
+              "p95": 34503.035888,
+              "p99": 34503.035888,
+              "max": 34503.035888
+            },
+            "admission_wait_ms": {
+              "p50": 0.021318,
+              "p95": 0.021318,
+              "p99": 0.021318,
+              "max": 0.021318
+            },
+            "preparation_ms": {
+              "p50": 209.451085,
+              "p95": 209.451085,
+              "p99": 209.451085,
+              "max": 209.451085
+            },
+            "admission_deadline_overrun_requests": 1
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 39313.747242,
+              "p95": 39313.747242,
+              "p99": 39313.747242,
+              "max": 39313.747242
+            },
+            "completion_latency_ms": {
+              "p50": 39413.497252,
+              "p95": 39413.497252,
+              "p99": 39413.497252,
+              "max": 39413.497252
+            },
+            "admission_wait_ms": {
+              "p50": 0.035724,
+              "p95": 0.035724,
+              "p99": 0.035724,
+              "max": 0.035724
+            },
+            "preparation_ms": {
+              "p50": 156.326666,
+              "p95": 156.326666,
+              "p99": 156.326666,
+              "max": 156.326666
+            },
+            "admission_deadline_overrun_requests": 1
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 46187.540143,
+              "p95": 46187.540143,
+              "p99": 46187.540143,
+              "max": 46187.540143
+            },
+            "completion_latency_ms": {
+              "p50": 46455.705118,
+              "p95": 46455.705118,
+              "p99": 46455.705118,
+              "max": 46455.705118
+            },
+            "admission_wait_ms": {
+              "p50": 0.036174,
+              "p95": 0.036174,
+              "p99": 0.036174,
+              "max": 0.036174
+            },
+            "preparation_ms": {
+              "p50": 234.969371,
+              "p95": 234.969371,
+              "p99": 234.969371,
+              "max": 234.969371
+            },
+            "admission_deadline_overrun_requests": 1
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-fifo64-s101",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000301024,
+          "queued_with_at_most_one_active_s": 0.000115324,
+          "active_request_seconds": 197.777431661,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "union64",
+      "seed": 101,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl",
+      "run_id": "v6controls1-main-lowreuse-union64-s101",
+      "engine_pid": 421565,
+      "lmcache_pid": 421392,
+      "p50_ms": 23947.781138500002,
+      "p95_ms": 43723.35391015001,
+      "p99_ms": 45643.809373230004,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-union64-s101",
+        "snapshot_sha256": "0e3251a5e5ebbf0b21c08b4ec897ea0fe97f30789b7842799fe039d459ef1ca3",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.17639531220144,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-union64-s101",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+        "request_file_sha256": "c50867dade62ba7c32bdeddcaaec959ef84da199250400b39e2f11f9303d9480",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23968.9547895,
+          "p95": 43945.394374999996,
+          "p99": 45917.8564246
+        },
+        "after_first_to_close_ms": {
+          "p50": 140.26039550000002,
+          "p95": 1911.4084555499987,
+          "p99": 2579.3339535099994
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.438017548701298,
+          "p95": 63.85637764096771,
+          "p99": 83.64392915399999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.134692007345426,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-union64-s101",
+        "request_file_sha256": "c50867dade62ba7c32bdeddcaaec959ef84da199250400b39e2f11f9303d9480",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5172.148667,
+              "p95": 5172.148667,
+              "p99": 5172.148667,
+              "max": 5172.148667
+            },
+            "completion_latency_ms": {
+              "p50": 7918.463995,
+              "p95": 7918.463995,
+              "p99": 7918.463995,
+              "max": 7918.463995
+            },
+            "admission_wait_ms": {
+              "p50": 0.052347,
+              "p95": 0.052347,
+              "p99": 0.052347,
+              "max": 0.052347
+            },
+            "preparation_ms": {
+              "p50": 88.442733,
+              "p95": 88.442733,
+              "p99": 88.442733,
+              "max": 88.442733
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7375.696169,
+              "p95": 7375.696169,
+              "p99": 7375.696169,
+              "max": 7375.696169
+            },
+            "completion_latency_ms": {
+              "p50": 7554.906071,
+              "p95": 7554.906071,
+              "p99": 7554.906071,
+              "max": 7554.906071
+            },
+            "admission_wait_ms": {
+              "p50": 0.038734,
+              "p95": 0.038734,
+              "p99": 0.038734,
+              "max": 0.038734
+            },
+            "preparation_ms": {
+              "p50": 113.513379,
+              "p95": 113.513379,
+              "p99": 113.513379,
+              "max": 113.513379
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14865.888814,
+              "p95": 14865.888814,
+              "p99": 14865.888814,
+              "max": 14865.888814
+            },
+            "completion_latency_ms": {
+              "p50": 14910.488203,
+              "p95": 14910.488203,
+              "p99": 14910.488203,
+              "max": 14910.488203
+            },
+            "admission_wait_ms": {
+              "p50": 0.042084,
+              "p95": 0.042084,
+              "p99": 0.042084,
+              "max": 0.042084
+            },
+            "preparation_ms": {
+              "p50": 102.119599,
+              "p95": 102.119599,
+              "p99": 102.119599,
+              "max": 102.119599
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20500.994672,
+              "p95": 20500.994672,
+              "p99": 20500.994672,
+              "max": 20500.994672
+            },
+            "completion_latency_ms": {
+              "p50": 20504.033747,
+              "p95": 20504.033747,
+              "p99": 20504.033747,
+              "max": 20504.033747
+            },
+            "admission_wait_ms": {
+              "p50": 0.021862,
+              "p95": 0.021862,
+              "p99": 0.021862,
+              "max": 0.021862
+            },
+            "preparation_ms": {
+              "p50": 79.91164,
+              "p95": 79.91164,
+              "p99": 79.91164,
+              "max": 79.91164
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27394.567605,
+              "p95": 27394.567605,
+              "p99": 27394.567605,
+              "max": 27394.567605
+            },
+            "completion_latency_ms": {
+              "p50": 27433.875832,
+              "p95": 27433.875832,
+              "p99": 27433.875832,
+              "max": 27433.875832
+            },
+            "admission_wait_ms": {
+              "p50": 0.030817,
+              "p95": 0.030817,
+              "p99": 0.030817,
+              "max": 0.030817
+            },
+            "preparation_ms": {
+              "p50": 80.142692,
+              "p95": 80.142692,
+              "p99": 80.142692,
+              "max": 80.142692
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 34092.209775,
+              "p95": 34092.209775,
+              "p99": 34092.209775,
+              "max": 34092.209775
+            },
+            "completion_latency_ms": {
+              "p50": 34453.076896,
+              "p95": 34453.076896,
+              "p99": 34453.076896,
+              "max": 34453.076896
+            },
+            "admission_wait_ms": {
+              "p50": 0.03075,
+              "p95": 0.03075,
+              "p99": 0.03075,
+              "max": 0.03075
+            },
+            "preparation_ms": {
+              "p50": 94.234067,
+              "p95": 94.234067,
+              "p99": 94.234067,
+              "max": 94.234067
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 39265.153728,
+              "p95": 39265.153728,
+              "p99": 39265.153728,
+              "max": 39265.153728
+            },
+            "completion_latency_ms": {
+              "p50": 39366.464617,
+              "p95": 39366.464617,
+              "p99": 39366.464617,
+              "max": 39366.464617
+            },
+            "admission_wait_ms": {
+              "p50": 0.032063,
+              "p95": 0.032063,
+              "p99": 0.032063,
+              "max": 0.032063
+            },
+            "preparation_ms": {
+              "p50": 95.962388,
+              "p95": 95.962388,
+              "p99": 95.962388,
+              "max": 95.962388
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 46123.923239,
+              "p95": 46123.923239,
+              "p99": 46123.923239,
+              "max": 46123.923239
+            },
+            "completion_latency_ms": {
+              "p50": 46410.971937,
+              "p95": 46410.971937,
+              "p99": 46410.971937,
+              "max": 46410.971937
+            },
+            "admission_wait_ms": {
+              "p50": 0.04612,
+              "p95": 0.04612,
+              "p99": 0.04612,
+              "max": 0.04612
+            },
+            "preparation_ms": {
+              "p50": 107.465904,
+              "p95": 107.465904,
+              "p99": 107.465904,
+              "max": 107.465904
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-union64-s101",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000294777,
+          "queued_with_at_most_one_active_s": 9.108099999999999e-05,
+          "active_request_seconds": 197.70171951,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "packing_ready",
+      "seed": 101,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s101.jsonl",
+      "run_id": "v6controls1-main-lowreuse-packing_ready-s101",
+      "engine_pid": 423155,
+      "lmcache_pid": 423031,
+      "p50_ms": 23970.237239000002,
+      "p95_ms": 43743.3651128,
+      "p99_ms": 45665.588938559995,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s101",
+        "snapshot_sha256": "ddc19ec61b3266283915628a4096ea75ce8cfe4f2163d48c1ab0855c915ff560",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.17705494718393,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s101",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "d786cc6079552f54c869a598761e7196b596457ef417b32a58b2dc636c96b699",
+        "request_file_sha256": "880deb59c76273df8a0ee3175056889afeb59c139c177192c8e4e87e8b764740",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 23992.7090635,
+          "p95": 43953.408656449996,
+          "p99": 45924.700981689995
+        },
+        "after_first_to_close_ms": {
+          "p50": 138.9519335,
+          "p95": 1905.4469050499988,
+          "p99": 2574.5371666099995
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 14.848492163865547,
+          "p95": 63.85148579677416,
+          "p99": 83.52667733999999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.1344049551018167,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s101",
+        "request_file_sha256": "880deb59c76273df8a0ee3175056889afeb59c139c177192c8e4e87e8b764740",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5201.19384,
+              "p95": 5201.19384,
+              "p99": 5201.19384,
+              "max": 5201.19384
+            },
+            "completion_latency_ms": {
+              "p50": 7943.003572,
+              "p95": 7943.003572,
+              "p99": 7943.003572,
+              "max": 7943.003572
+            },
+            "admission_wait_ms": {
+              "p50": 0.080777,
+              "p95": 0.080777,
+              "p99": 0.080777,
+              "max": 0.080777
+            },
+            "preparation_ms": {
+              "p50": 85.897778,
+              "p95": 85.897778,
+              "p99": 85.897778,
+              "max": 85.897778
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7396.330271,
+              "p95": 7396.330271,
+              "p99": 7396.330271,
+              "max": 7396.330271
+            },
+            "completion_latency_ms": {
+              "p50": 7578.099611,
+              "p95": 7578.099611,
+              "p99": 7578.099611,
+              "max": 7578.099611
+            },
+            "admission_wait_ms": {
+              "p50": 0.047752,
+              "p95": 0.047752,
+              "p99": 0.047752,
+              "max": 0.047752
+            },
+            "preparation_ms": {
+              "p50": 112.363979,
+              "p95": 112.363979,
+              "p99": 112.363979,
+              "max": 112.363979
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 14890.018265,
+              "p95": 14890.018265,
+              "p99": 14890.018265,
+              "max": 14890.018265
+            },
+            "completion_latency_ms": {
+              "p50": 14935.560526,
+              "p95": 14935.560526,
+              "p99": 14935.560526,
+              "max": 14935.560526
+            },
+            "admission_wait_ms": {
+              "p50": 0.03018,
+              "p95": 0.03018,
+              "p99": 0.03018,
+              "max": 0.03018
+            },
+            "preparation_ms": {
+              "p50": 87.328827,
+              "p95": 87.328827,
+              "p99": 87.328827,
+              "max": 87.328827
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 20529.488855,
+              "p95": 20529.488855,
+              "p99": 20529.488855,
+              "max": 20529.488855
+            },
+            "completion_latency_ms": {
+              "p50": 20532.80831,
+              "p95": 20532.80831,
+              "p99": 20532.80831,
+              "max": 20532.80831
+            },
+            "admission_wait_ms": {
+              "p50": 0.018336,
+              "p95": 0.018336,
+              "p99": 0.018336,
+              "max": 0.018336
+            },
+            "preparation_ms": {
+              "p50": 74.602872,
+              "p95": 74.602872,
+              "p99": 74.602872,
+              "max": 74.602872
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 27410.985623,
+              "p95": 27410.985623,
+              "p99": 27410.985623,
+              "max": 27410.985623
+            },
+            "completion_latency_ms": {
+              "p50": 27452.609817,
+              "p95": 27452.609817,
+              "p99": 27452.609817,
+              "max": 27452.609817
+            },
+            "admission_wait_ms": {
+              "p50": 0.015708,
+              "p95": 0.015708,
+              "p99": 0.015708,
+              "max": 0.015708
+            },
+            "preparation_ms": {
+              "p50": 73.509401,
+              "p95": 73.509401,
+              "p99": 73.509401,
+              "max": 73.509401
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 34115.025044,
+              "p95": 34115.025044,
+              "p99": 34115.025044,
+              "max": 34115.025044
+            },
+            "completion_latency_ms": {
+              "p50": 34467.226699,
+              "p95": 34467.226699,
+              "p99": 34467.226699,
+              "max": 34467.226699
+            },
+            "admission_wait_ms": {
+              "p50": 0.019351,
+              "p95": 0.019351,
+              "p99": 0.019351,
+              "max": 0.019351
+            },
+            "preparation_ms": {
+              "p50": 71.999061,
+              "p95": 71.999061,
+              "p99": 71.999061,
+              "max": 71.999061
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 39281.059803,
+              "p95": 39281.059803,
+              "p99": 39281.059803,
+              "max": 39281.059803
+            },
+            "completion_latency_ms": {
+              "p50": 39377.19433,
+              "p95": 39377.19433,
+              "p99": 39377.19433,
+              "max": 39377.19433
+            },
+            "admission_wait_ms": {
+              "p50": 0.012074,
+              "p95": 0.012074,
+              "p99": 0.012074,
+              "max": 0.012074
+            },
+            "preparation_ms": {
+              "p50": 60.527709,
+              "p95": 60.527709,
+              "p99": 60.527709,
+              "max": 60.527709
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 46146.144895,
+              "p95": 46146.144895,
+              "p99": 46146.144895,
+              "max": 46146.144895
+            },
+            "completion_latency_ms": {
+              "p50": 46417.524063,
+              "p95": 46417.524063,
+              "p99": 46417.524063,
+              "max": 46417.524063
+            },
+            "admission_wait_ms": {
+              "p50": 0.018656,
+              "p95": 0.018656,
+              "p99": 0.018656,
+              "max": 0.018656
+            },
+            "preparation_ms": {
+              "p50": 74.900006,
+              "p95": 74.900006,
+              "p99": 74.900006,
+              "max": 74.900006
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-packing_ready-s101",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.00024283399999999999,
+          "queued_with_at_most_one_active_s": 0.000128529,
+          "active_request_seconds": 197.954054174,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "packing_ready",
+      "seed": 102,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl",
+      "run_id": "v6controls1-main-lowreuse-packing_ready-s102",
+      "engine_pid": 424574,
+      "lmcache_pid": 424452,
+      "p50_ms": 24886.4432805,
+      "p95_ms": 44505.1718587,
+      "p99_ms": 46387.097929339994,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s102",
+        "snapshot_sha256": "7874583b1c0cce094df5713b31127f4d84fc2c042d63e7fd741ceef193e85088",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.167647854611765,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s102",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+        "request_file_sha256": "d65ec5ac94a698c21ebf1beb77856d1cc8f32da0c5eb9c9c7eb8e96144ff21da",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24910.1017105,
+          "p95": 44720.32250435,
+          "p99": 46651.37822647
+        },
+        "after_first_to_close_ms": {
+          "p50": 139.6646485,
+          "p95": 1905.1810099499987,
+          "p99": 2570.6541995899993
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.355602281512605,
+          "p95": 63.627218368709634,
+          "p99": 83.35828230599998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.140968701546284,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s102",
+        "request_file_sha256": "d65ec5ac94a698c21ebf1beb77856d1cc8f32da0c5eb9c9c7eb8e96144ff21da",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5229.64312,
+              "p95": 5229.64312,
+              "p99": 5229.64312,
+              "max": 5229.64312
+            },
+            "completion_latency_ms": {
+              "p50": 7966.665617,
+              "p95": 7966.665617,
+              "p99": 7966.665617,
+              "max": 7966.665617
+            },
+            "admission_wait_ms": {
+              "p50": 0.107673,
+              "p95": 0.107673,
+              "p99": 0.107673,
+              "max": 0.107673
+            },
+            "preparation_ms": {
+              "p50": 100.895382,
+              "p95": 100.895382,
+              "p99": 100.895382,
+              "max": 100.895382
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7239.533198,
+              "p95": 7239.533198,
+              "p99": 7239.533198,
+              "max": 7239.533198
+            },
+            "completion_latency_ms": {
+              "p50": 7417.762826,
+              "p95": 7417.762826,
+              "p99": 7417.762826,
+              "max": 7417.762826
+            },
+            "admission_wait_ms": {
+              "p50": 0.040987,
+              "p95": 0.040987,
+              "p99": 0.040987,
+              "max": 0.040987
+            },
+            "preparation_ms": {
+              "p50": 56.199799,
+              "p95": 56.199799,
+              "p99": 56.199799,
+              "max": 56.199799
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 15512.454192,
+              "p95": 15512.454192,
+              "p99": 15512.454192,
+              "max": 15512.454192
+            },
+            "completion_latency_ms": {
+              "p50": 15559.430945,
+              "p95": 15559.430945,
+              "p99": 15559.430945,
+              "max": 15559.430945
+            },
+            "admission_wait_ms": {
+              "p50": 0.029543,
+              "p95": 0.029543,
+              "p99": 0.029543,
+              "max": 0.029543
+            },
+            "preparation_ms": {
+              "p50": 101.085175,
+              "p95": 101.085175,
+              "p99": 101.085175,
+              "max": 101.085175
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 21482.653693,
+              "p95": 21482.653693,
+              "p99": 21482.653693,
+              "max": 21482.653693
+            },
+            "completion_latency_ms": {
+              "p50": 21485.652848,
+              "p95": 21485.652848,
+              "p99": 21485.652848,
+              "max": 21485.652848
+            },
+            "admission_wait_ms": {
+              "p50": 0.03085,
+              "p95": 0.03085,
+              "p99": 0.03085,
+              "max": 0.03085
+            },
+            "preparation_ms": {
+              "p50": 74.142575,
+              "p95": 74.142575,
+              "p99": 74.142575,
+              "max": 74.142575
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 28290.232868,
+              "p95": 28290.232868,
+              "p99": 28290.232868,
+              "max": 28290.232868
+            },
+            "completion_latency_ms": {
+              "p50": 28334.550573,
+              "p95": 28334.550573,
+              "p99": 28334.550573,
+              "max": 28334.550573
+            },
+            "admission_wait_ms": {
+              "p50": 0.03109,
+              "p95": 0.03109,
+              "p99": 0.03109,
+              "max": 0.03109
+            },
+            "preparation_ms": {
+              "p50": 79.20963,
+              "p95": 79.20963,
+              "p99": 79.20963,
+              "max": 79.20963
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 35144.129397,
+              "p95": 35144.129397,
+              "p99": 35144.129397,
+              "max": 35144.129397
+            },
+            "completion_latency_ms": {
+              "p50": 35504.461931,
+              "p95": 35504.461931,
+              "p99": 35504.461931,
+              "max": 35504.461931
+            },
+            "admission_wait_ms": {
+              "p50": 0.03048,
+              "p95": 0.03048,
+              "p99": 0.03048,
+              "max": 0.03048
+            },
+            "preparation_ms": {
+              "p50": 95.962836,
+              "p95": 95.962836,
+              "p99": 95.962836,
+              "max": 95.962836
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 40136.414909,
+              "p95": 40136.414909,
+              "p99": 40136.414909,
+              "max": 40136.414909
+            },
+            "completion_latency_ms": {
+              "p50": 40237.514578,
+              "p95": 40237.514578,
+              "p99": 40237.514578,
+              "max": 40237.514578
+            },
+            "admission_wait_ms": {
+              "p50": 0.028543,
+              "p95": 0.028543,
+              "p99": 0.028543,
+              "max": 0.028543
+            },
+            "preparation_ms": {
+              "p50": 75.329121,
+              "p95": 75.329121,
+              "p99": 75.329121,
+              "max": 75.329121
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 46857.579447,
+              "p95": 46857.579447,
+              "p99": 46857.579447,
+              "max": 46857.579447
+            },
+            "completion_latency_ms": {
+              "p50": 47134.142157,
+              "p95": 47134.142157,
+              "p99": 47134.142157,
+              "max": 47134.142157
+            },
+            "admission_wait_ms": {
+              "p50": 0.029003,
+              "p95": 0.029003,
+              "p99": 0.029003,
+              "max": 0.029003
+            },
+            "preparation_ms": {
+              "p50": 92.168301,
+              "p95": 92.168301,
+              "p99": 92.168301,
+              "max": 92.168301
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-packing_ready-s102",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000328169,
+          "queued_with_at_most_one_active_s": 0.00014866,
+          "active_request_seconds": 202.868410254,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "union64",
+      "seed": 102,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl",
+      "run_id": "v6controls1-main-lowreuse-union64-s102",
+      "engine_pid": 426170,
+      "lmcache_pid": 426026,
+      "p50_ms": 24857.876347999998,
+      "p95_ms": 44462.2342413,
+      "p99_ms": 46343.05592586,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-union64-s102",
+        "snapshot_sha256": "a619b524444c53a7898c2dd557786a2f658b764a18abff08af66d9e24749e6e7",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.14887414622596,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-union64-s102",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+        "request_file_sha256": "bed3c94fc1dc477f76dc33e2f2316dc2f0aafd2d4881d10053e92bbe290b63f4",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24877.421011,
+          "p95": 44675.545987649995,
+          "p99": 46605.96323192999
+        },
+        "after_first_to_close_ms": {
+          "p50": 137.8800385,
+          "p95": 1902.0151533999988,
+          "p99": 2567.3642226799993
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.110040844537815,
+          "p95": 63.5348781709677,
+          "p99": 83.25411085999998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.142979265755586,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-union64-s102",
+        "request_file_sha256": "bed3c94fc1dc477f76dc33e2f2316dc2f0aafd2d4881d10053e92bbe290b63f4",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5207.107015,
+              "p95": 5207.107015,
+              "p99": 5207.107015,
+              "max": 5207.107015
+            },
+            "completion_latency_ms": {
+              "p50": 7940.808505,
+              "p95": 7940.808505,
+              "p99": 7940.808505,
+              "max": 7940.808505
+            },
+            "admission_wait_ms": {
+              "p50": 0.067907,
+              "p95": 0.067907,
+              "p99": 0.067907,
+              "max": 0.067907
+            },
+            "preparation_ms": {
+              "p50": 85.823603,
+              "p95": 85.823603,
+              "p99": 85.823603,
+              "max": 85.823603
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7215.189014,
+              "p95": 7215.189014,
+              "p99": 7215.189014,
+              "max": 7215.189014
+            },
+            "completion_latency_ms": {
+              "p50": 7392.769894,
+              "p95": 7392.769894,
+              "p99": 7392.769894,
+              "max": 7392.769894
+            },
+            "admission_wait_ms": {
+              "p50": 0.041127,
+              "p95": 0.041127,
+              "p99": 0.041127,
+              "max": 0.041127
+            },
+            "preparation_ms": {
+              "p50": 52.970514,
+              "p95": 52.970514,
+              "p99": 52.970514,
+              "max": 52.970514
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 15481.562045,
+              "p95": 15481.562045,
+              "p99": 15481.562045,
+              "max": 15481.562045
+            },
+            "completion_latency_ms": {
+              "p50": 15525.394545,
+              "p95": 15525.394545,
+              "p99": 15525.394545,
+              "max": 15525.394545
+            },
+            "admission_wait_ms": {
+              "p50": 0.02957,
+              "p95": 0.02957,
+              "p99": 0.02957,
+              "max": 0.02957
+            },
+            "preparation_ms": {
+              "p50": 83.903,
+              "p95": 83.903,
+              "p99": 83.903,
+              "max": 83.903
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 21455.194181,
+              "p95": 21455.194181,
+              "p99": 21455.194181,
+              "max": 21455.194181
+            },
+            "completion_latency_ms": {
+              "p50": 21458.815557,
+              "p95": 21458.815557,
+              "p99": 21458.815557,
+              "max": 21458.815557
+            },
+            "admission_wait_ms": {
+              "p50": 0.024142,
+              "p95": 0.024142,
+              "p99": 0.024142,
+              "max": 0.024142
+            },
+            "preparation_ms": {
+              "p50": 65.9414,
+              "p95": 65.9414,
+              "p99": 65.9414,
+              "max": 65.9414
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 28260.558515,
+              "p95": 28260.558515,
+              "p99": 28260.558515,
+              "max": 28260.558515
+            },
+            "completion_latency_ms": {
+              "p50": 28296.026465,
+              "p95": 28296.026465,
+              "p99": 28296.026465,
+              "max": 28296.026465
+            },
+            "admission_wait_ms": {
+              "p50": 0.02833,
+              "p95": 0.02833,
+              "p99": 0.02833,
+              "max": 0.02833
+            },
+            "preparation_ms": {
+              "p50": 72.425424,
+              "p95": 72.425424,
+              "p99": 72.425424,
+              "max": 72.425424
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 35106.683317,
+              "p95": 35106.683317,
+              "p99": 35106.683317,
+              "max": 35106.683317
+            },
+            "completion_latency_ms": {
+              "p50": 35464.138131,
+              "p95": 35464.138131,
+              "p99": 35464.138131,
+              "max": 35464.138131
+            },
+            "admission_wait_ms": {
+              "p50": 0.03127,
+              "p95": 0.03127,
+              "p99": 0.03127,
+              "max": 0.03127
+            },
+            "preparation_ms": {
+              "p50": 68.101285,
+              "p95": 68.101285,
+              "p99": 68.101285,
+              "max": 68.101285
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 40096.041045,
+              "p95": 40096.041045,
+              "p99": 40096.041045,
+              "max": 40096.041045
+            },
+            "completion_latency_ms": {
+              "p50": 40194.220242,
+              "p95": 40194.220242,
+              "p99": 40194.220242,
+              "max": 40194.220242
+            },
+            "admission_wait_ms": {
+              "p50": 0.028347,
+              "p95": 0.028347,
+              "p99": 0.028347,
+              "max": 0.028347
+            },
+            "preparation_ms": {
+              "p50": 57.496104,
+              "p95": 57.496104,
+              "p99": 57.496104,
+              "max": 57.496104
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 46813.261347,
+              "p95": 46813.261347,
+              "p99": 46813.261347,
+              "max": 46813.261347
+            },
+            "completion_latency_ms": {
+              "p50": 47088.567543,
+              "p95": 47088.567543,
+              "p99": 47088.567543,
+              "max": 47088.567543
+            },
+            "admission_wait_ms": {
+              "p50": 0.039603,
+              "p95": 0.039603,
+              "p99": 0.039603,
+              "max": 0.039603
+            },
+            "preparation_ms": {
+              "p50": 76.335368,
+              "p95": 76.335368,
+              "p99": 76.335368,
+              "max": 76.335368
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-union64-s102",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000290296,
+          "queued_with_at_most_one_active_s": 0.000109034,
+          "active_request_seconds": 202.698233681,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "fifo64",
+      "seed": 102,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s102.jsonl",
+      "run_id": "v6controls1-main-lowreuse-fifo64-s102",
+      "engine_pid": 427546,
+      "lmcache_pid": 427426,
+      "p50_ms": 24852.627385,
+      "p95_ms": 44459.48502565,
+      "p99_ms": 46339.12480193,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s102",
+        "snapshot_sha256": "e08d996f5cf812a83c86ddacafba62d626ceff0f3ae5326569d99b834deb1f98",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.14987228119086,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s102",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "90c93af79ba9562a33e8cc90c0e1d3fd211eaca707c6312537749cd280a5f822",
+        "request_file_sha256": "5dfb90dc324eef68ac5e3e85b4e2e728c7e332f9395a9cd4b7312a09736eeaf1",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24874.9606815,
+          "p95": 44672.390133299996,
+          "p99": 46600.221079459996
+        },
+        "after_first_to_close_ms": {
+          "p50": 140.0528885,
+          "p95": 1902.6095856499987,
+          "p99": 2566.8535411299995
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.250274046218486,
+          "p95": 63.57060257677415,
+          "p99": 83.24094709599999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.1432614118903506,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s102",
+        "request_file_sha256": "5dfb90dc324eef68ac5e3e85b4e2e728c7e332f9395a9cd4b7312a09736eeaf1",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5192.527971,
+              "p95": 5192.527971,
+              "p99": 5192.527971,
+              "max": 5192.527971
+            },
+            "completion_latency_ms": {
+              "p50": 7925.442501,
+              "p95": 7925.442501,
+              "p99": 7925.442501,
+              "max": 7925.442501
+            },
+            "admission_wait_ms": {
+              "p50": 0.077234,
+              "p95": 0.077234,
+              "p99": 0.077234,
+              "max": 0.077234
+            },
+            "preparation_ms": {
+              "p50": 85.344915,
+              "p95": 85.344915,
+              "p99": 85.344915,
+              "max": 85.344915
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7197.374819,
+              "p95": 7197.374819,
+              "p99": 7197.374819,
+              "max": 7197.374819
+            },
+            "completion_latency_ms": {
+              "p50": 7376.447847,
+              "p95": 7376.447847,
+              "p99": 7376.447847,
+              "max": 7376.447847
+            },
+            "admission_wait_ms": {
+              "p50": 0.04212,
+              "p95": 0.04212,
+              "p99": 0.04212,
+              "max": 0.04212
+            },
+            "preparation_ms": {
+              "p50": 56.786858,
+              "p95": 56.786858,
+              "p99": 56.786858,
+              "max": 56.786858
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 15484.281452,
+              "p95": 15484.281452,
+              "p99": 15484.281452,
+              "max": 15484.281452
+            },
+            "completion_latency_ms": {
+              "p50": 15522.109046,
+              "p95": 15522.109046,
+              "p99": 15522.109046,
+              "max": 15522.109046
+            },
+            "admission_wait_ms": {
+              "p50": 0.029477,
+              "p95": 0.029477,
+              "p99": 0.029477,
+              "max": 0.029477
+            },
+            "preparation_ms": {
+              "p50": 107.711853,
+              "p95": 107.711853,
+              "p99": 107.711853,
+              "max": 107.711853
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 21448.280849,
+              "p95": 21448.280849,
+              "p99": 21448.280849,
+              "max": 21448.280849
+            },
+            "completion_latency_ms": {
+              "p50": 21451.440062,
+              "p95": 21451.440062,
+              "p99": 21451.440062,
+              "max": 21451.440062
+            },
+            "admission_wait_ms": {
+              "p50": 0.03169,
+              "p95": 0.03169,
+              "p99": 0.03169,
+              "max": 0.03169
+            },
+            "preparation_ms": {
+              "p50": 75.978805,
+              "p95": 75.978805,
+              "p99": 75.978805,
+              "max": 75.978805
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 28256.973921,
+              "p95": 28256.973921,
+              "p99": 28256.973921,
+              "max": 28256.973921
+            },
+            "completion_latency_ms": {
+              "p50": 28298.481301,
+              "p95": 28298.481301,
+              "p99": 28298.481301,
+              "max": 28298.481301
+            },
+            "admission_wait_ms": {
+              "p50": 0.028047,
+              "p95": 0.028047,
+              "p99": 0.028047,
+              "max": 0.028047
+            },
+            "preparation_ms": {
+              "p50": 104.131075,
+              "p95": 104.131075,
+              "p99": 104.131075,
+              "max": 104.131075
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 35102.347017,
+              "p95": 35102.347017,
+              "p99": 35102.347017,
+              "max": 35102.347017
+            },
+            "completion_latency_ms": {
+              "p50": 35462.961706,
+              "p95": 35462.961706,
+              "p99": 35462.961706,
+              "max": 35462.961706
+            },
+            "admission_wait_ms": {
+              "p50": 0.03457,
+              "p95": 0.03457,
+              "p99": 0.03457,
+              "max": 0.03457
+            },
+            "preparation_ms": {
+              "p50": 94.556485,
+              "p95": 94.556485,
+              "p99": 94.556485,
+              "max": 94.556485
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 40096.035545,
+              "p95": 40096.035545,
+              "p99": 40096.035545,
+              "max": 40096.035545
+            },
+            "completion_latency_ms": {
+              "p50": 40197.068294,
+              "p95": 40197.068294,
+              "p99": 40197.068294,
+              "max": 40197.068294
+            },
+            "admission_wait_ms": {
+              "p50": 0.02745,
+              "p95": 0.02745,
+              "p99": 0.02745,
+              "max": 0.02745
+            },
+            "preparation_ms": {
+              "p50": 78.278863,
+              "p95": 78.278863,
+              "p99": 78.278863,
+              "max": 78.278863
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 46809.034746,
+              "p95": 46809.034746,
+              "p99": 46809.034746,
+              "max": 46809.034746
+            },
+            "completion_latency_ms": {
+              "p50": 47082.178816,
+              "p95": 47082.178816,
+              "p99": 47082.178816,
+              "max": 47082.178816
+            },
+            "admission_wait_ms": {
+              "p50": 0.039363,
+              "p95": 0.039363,
+              "p99": 0.039363,
+              "max": 0.039363
+            },
+            "preparation_ms": {
+              "p50": 82.196239,
+              "p95": 82.196239,
+              "p99": 82.196239,
+              "max": 82.196239
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-fifo64-s102",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000309951,
+          "queued_with_at_most_one_active_s": 0.00011935400000000001,
+          "active_request_seconds": 202.536493321,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "union64",
+      "seed": 103,
+      "policy": "packing_reuse",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl",
+      "run_id": "v6controls1-main-lowreuse-union64-s103",
+      "engine_pid": 429047,
+      "lmcache_pid": 428935,
+      "p50_ms": 24747.944769499998,
+      "p95_ms": 44670.0330209,
+      "p99_ms": 46599.51278178,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-union64-s103",
+        "snapshot_sha256": "277060c2db8dcf4fdfbcebee29734990e5c78575d294ed1ce2c123c328e8e54d",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.127204030999565,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-union64-s103",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+        "request_file_sha256": "6c79aa17394ad20d9a311a9dabdc976f9f1bcd33be5914c34f19a8d54bf1977a",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24774.136550000003,
+          "p95": 44890.429735599995,
+          "p99": 46869.66793752
+        },
+        "after_first_to_close_ms": {
+          "p50": 141.9016395,
+          "p95": 1915.8403645999986,
+          "p99": 2582.043531319999
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.803471336134454,
+          "p95": 63.89391953499997,
+          "p99": 83.71025030699998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.1020089804336637,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-union64-s103",
+        "request_file_sha256": "6c79aa17394ad20d9a311a9dabdc976f9f1bcd33be5914c34f19a8d54bf1977a",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5208.035553,
+              "p95": 5208.035553,
+              "p99": 5208.035553,
+              "max": 5208.035553
+            },
+            "completion_latency_ms": {
+              "p50": 7956.629876,
+              "p95": 7956.629876,
+              "p99": 7956.629876,
+              "max": 7956.629876
+            },
+            "admission_wait_ms": {
+              "p50": 0.069897,
+              "p95": 0.069897,
+              "p99": 0.069897,
+              "max": 0.069897
+            },
+            "preparation_ms": {
+              "p50": 85.345982,
+              "p95": 85.345982,
+              "p99": 85.345982,
+              "max": 85.345982
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7314.813476,
+              "p95": 7314.813476,
+              "p99": 7314.813476,
+              "max": 7314.813476
+            },
+            "completion_latency_ms": {
+              "p50": 7493.730707,
+              "p95": 7493.730707,
+              "p99": 7493.730707,
+              "max": 7493.730707
+            },
+            "admission_wait_ms": {
+              "p50": 0.045424,
+              "p95": 0.045424,
+              "p99": 0.045424,
+              "max": 0.045424
+            },
+            "preparation_ms": {
+              "p50": 54.526901,
+              "p95": 54.526901,
+              "p99": 54.526901,
+              "max": 54.526901
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 15313.834965,
+              "p95": 15313.834965,
+              "p99": 15313.834965,
+              "max": 15313.834965
+            },
+            "completion_latency_ms": {
+              "p50": 15369.364043,
+              "p95": 15369.364043,
+              "p99": 15369.364043,
+              "max": 15369.364043
+            },
+            "admission_wait_ms": {
+              "p50": 0.021643,
+              "p95": 0.021643,
+              "p99": 0.021643,
+              "max": 0.021643
+            },
+            "preparation_ms": {
+              "p50": 105.452351,
+              "p95": 105.452351,
+              "p99": 105.452351,
+              "max": 105.452351
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 21256.348353,
+              "p95": 21256.348353,
+              "p99": 21256.348353,
+              "max": 21256.348353
+            },
+            "completion_latency_ms": {
+              "p50": 21258.81118,
+              "p95": 21258.81118,
+              "p99": 21258.81118,
+              "max": 21258.81118
+            },
+            "admission_wait_ms": {
+              "p50": 0.018517,
+              "p95": 0.018517,
+              "p99": 0.018517,
+              "max": 0.018517
+            },
+            "preparation_ms": {
+              "p50": 86.645426,
+              "p95": 86.645426,
+              "p99": 86.645426,
+              "max": 86.645426
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 28239.541186,
+              "p95": 28239.541186,
+              "p99": 28239.541186,
+              "max": 28239.541186
+            },
+            "completion_latency_ms": {
+              "p50": 28289.46192,
+              "p95": 28289.46192,
+              "p99": 28289.46192,
+              "max": 28289.46192
+            },
+            "admission_wait_ms": {
+              "p50": 0.01994,
+              "p95": 0.01994,
+              "p99": 0.01994,
+              "max": 0.01994
+            },
+            "preparation_ms": {
+              "p50": 120.983779,
+              "p95": 120.983779,
+              "p99": 120.983779,
+              "max": 120.983779
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 35186.310517,
+              "p95": 35186.310517,
+              "p99": 35186.310517,
+              "max": 35186.310517
+            },
+            "completion_latency_ms": {
+              "p50": 35555.607816,
+              "p95": 35555.607816,
+              "p99": 35555.607816,
+              "max": 35555.607816
+            },
+            "admission_wait_ms": {
+              "p50": 0.02461,
+              "p95": 0.02461,
+              "p99": 0.02461,
+              "max": 0.02461
+            },
+            "preparation_ms": {
+              "p50": 181.594537,
+              "p95": 181.594537,
+              "p99": 181.594537,
+              "max": 181.594537
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 40190.883576,
+              "p95": 40190.883576,
+              "p99": 40190.883576,
+              "max": 40190.883576
+            },
+            "completion_latency_ms": {
+              "p50": 40295.769624,
+              "p95": 40295.769624,
+              "p99": 40295.769624,
+              "max": 40295.769624
+            },
+            "admission_wait_ms": {
+              "p50": 0.019874,
+              "p95": 0.019874,
+              "p99": 0.019874,
+              "max": 0.019874
+            },
+            "preparation_ms": {
+              "p50": 68.851985,
+              "p95": 68.851985,
+              "p99": 68.851985,
+              "max": 68.851985
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 47081.882722,
+              "p95": 47081.882722,
+              "p99": 47081.882722,
+              "max": 47081.882722
+            },
+            "completion_latency_ms": {
+              "p50": 47364.477488,
+              "p95": 47364.477488,
+              "p99": 47364.477488,
+              "max": 47364.477488
+            },
+            "admission_wait_ms": {
+              "p50": 0.01926,
+              "p95": 0.01926,
+              "p99": 0.01926,
+              "max": 0.01926
+            },
+            "preparation_ms": {
+              "p50": 116.859175,
+              "p95": 116.859175,
+              "p99": 116.859175,
+              "max": 116.859175
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-union64-s103",
+          "policy": "packing_reuse",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000239165,
+          "queued_with_at_most_one_active_s": 0.00011532099999999999,
+          "active_request_seconds": 202.650890668,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "packing_ready",
+      "seed": 103,
+      "policy": "packing_ready",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl",
+      "run_id": "v6controls1-main-lowreuse-packing_ready-s103",
+      "engine_pid": 430402,
+      "lmcache_pid": 430291,
+      "p50_ms": 24759.123089,
+      "p95_ms": 44684.07410525,
+      "p99_ms": 46613.796418649996,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s103",
+        "snapshot_sha256": "a692beb7d18035f0727106f875935c73996a9a390469a47daea7f349b6bfd145",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.139142802118535,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s103",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+        "request_file_sha256": "8a94745ddbfd7f3b4695a805c9cb863f95fd85b5b25a3bb6a0f4c29ddf037a94",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24781.389821,
+          "p95": 44893.02716304999,
+          "p99": 46871.29352781
+        },
+        "after_first_to_close_ms": {
+          "p50": 137.0561935,
+          "p95": 1901.5419682499987,
+          "p99": 2566.6086936499996
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 14.806208084033614,
+          "p95": 63.527006299838675,
+          "p99": 83.23121738899998
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.1019502409737996,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-packing_ready-s103",
+        "request_file_sha256": "8a94745ddbfd7f3b4695a805c9cb863f95fd85b5b25a3bb6a0f4c29ddf037a94",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5205.85217,
+              "p95": 5205.85217,
+              "p99": 5205.85217,
+              "max": 5205.85217
+            },
+            "completion_latency_ms": {
+              "p50": 7938.727545,
+              "p95": 7938.727545,
+              "p99": 7938.727545,
+              "max": 7938.727545
+            },
+            "admission_wait_ms": {
+              "p50": 0.054917,
+              "p95": 0.054917,
+              "p99": 0.054917,
+              "max": 0.054917
+            },
+            "preparation_ms": {
+              "p50": 86.288935,
+              "p95": 86.288935,
+              "p99": 86.288935,
+              "max": 86.288935
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7297.702779,
+              "p95": 7297.702779,
+              "p99": 7297.702779,
+              "max": 7297.702779
+            },
+            "completion_latency_ms": {
+              "p50": 7475.553656,
+              "p95": 7475.553656,
+              "p99": 7475.553656,
+              "max": 7475.553656
+            },
+            "admission_wait_ms": {
+              "p50": 0.046038,
+              "p95": 0.046038,
+              "p99": 0.046038,
+              "max": 0.046038
+            },
+            "preparation_ms": {
+              "p50": 56.823504,
+              "p95": 56.823504,
+              "p99": 56.823504,
+              "max": 56.823504
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 15318.328603,
+              "p95": 15318.328603,
+              "p99": 15318.328603,
+              "max": 15318.328603
+            },
+            "completion_latency_ms": {
+              "p50": 15357.556295,
+              "p95": 15357.556295,
+              "p99": 15357.556295,
+              "max": 15357.556295
+            },
+            "admission_wait_ms": {
+              "p50": 0.034103,
+              "p95": 0.034103,
+              "p99": 0.034103,
+              "max": 0.034103
+            },
+            "preparation_ms": {
+              "p50": 144.571976,
+              "p95": 144.571976,
+              "p99": 144.571976,
+              "max": 144.571976
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 21268.601632,
+              "p95": 21268.601632,
+              "p99": 21268.601632,
+              "max": 21268.601632
+            },
+            "completion_latency_ms": {
+              "p50": 21271.651257,
+              "p95": 21271.651257,
+              "p99": 21271.651257,
+              "max": 21271.651257
+            },
+            "admission_wait_ms": {
+              "p50": 0.024244,
+              "p95": 0.024244,
+              "p99": 0.024244,
+              "max": 0.024244
+            },
+            "preparation_ms": {
+              "p50": 89.235983,
+              "p95": 89.235983,
+              "p99": 89.235983,
+              "max": 89.235983
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 28249.644546,
+              "p95": 28249.644546,
+              "p99": 28249.644546,
+              "max": 28249.644546
+            },
+            "completion_latency_ms": {
+              "p50": 28291.128385,
+              "p95": 28291.128385,
+              "p99": 28291.128385,
+              "max": 28291.128385
+            },
+            "admission_wait_ms": {
+              "p50": 0.02416,
+              "p95": 0.02416,
+              "p99": 0.02416,
+              "max": 0.02416
+            },
+            "preparation_ms": {
+              "p50": 124.233048,
+              "p95": 124.233048,
+              "p99": 124.233048,
+              "max": 124.233048
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 35199.963252,
+              "p95": 35199.963252,
+              "p99": 35199.963252,
+              "max": 35199.963252
+            },
+            "completion_latency_ms": {
+              "p50": 35557.600322,
+              "p95": 35557.600322,
+              "p99": 35557.600322,
+              "max": 35557.600322
+            },
+            "admission_wait_ms": {
+              "p50": 0.028447,
+              "p95": 0.028447,
+              "p99": 0.028447,
+              "max": 0.028447
+            },
+            "preparation_ms": {
+              "p50": 176.501761,
+              "p95": 176.501761,
+              "p99": 176.501761,
+              "max": 176.501761
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 40204.361592,
+              "p95": 40204.361592,
+              "p99": 40204.361592,
+              "max": 40204.361592
+            },
+            "completion_latency_ms": {
+              "p50": 40300.623102,
+              "p95": 40300.623102,
+              "p99": 40300.623102,
+              "max": 40300.623102
+            },
+            "admission_wait_ms": {
+              "p50": 0.025831,
+              "p95": 0.025831,
+              "p99": 0.025831,
+              "max": 0.025831
+            },
+            "preparation_ms": {
+              "p50": 70.25949,
+              "p95": 70.25949,
+              "p99": 70.25949,
+              "max": 70.25949
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 47096.226997,
+              "p95": 47096.226997,
+              "p99": 47096.226997,
+              "max": 47096.226997
+            },
+            "completion_latency_ms": {
+              "p50": 47365.860119,
+              "p95": 47365.860119,
+              "p99": 47365.860119,
+              "max": 47365.860119
+            },
+            "admission_wait_ms": {
+              "p50": 0.035867,
+              "p95": 0.035867,
+              "p99": 0.035867,
+              "max": 0.035867
+            },
+            "preparation_ms": {
+              "p50": 117.198239,
+              "p95": 117.198239,
+              "p99": 117.198239,
+              "max": 117.198239
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-packing_ready-s103",
+          "policy": "packing_ready",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000273607,
+          "queued_with_at_most_one_active_s": 0.00010095500000000001,
+          "active_request_seconds": 202.591872462,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    },
+    {
+      "regime": "lowreuse",
+      "qps": 4,
+      "budget": 6,
+      "requests": 8,
+      "arm": "fifo64",
+      "seed": 103,
+      "policy": "fifo",
+      "cap": 64,
+      "trace": "data/processed/v3/v5-lowreuse8-qps4-s103.jsonl",
+      "run_id": "v6controls1-main-lowreuse-fifo64-s103",
+      "engine_pid": 431772,
+      "lmcache_pid": 431658,
+      "p50_ms": 24737.295303500003,
+      "p95_ms": 44641.198402350004,
+      "p99_ms": 46569.35144287,
+      "computed_tokens": 190916.0,
+      "consumed_cpu_tokens": 0.0,
+      "preemptions": 0.0,
+      "actual_host_heap_bytes": 16039018496,
+      "native_itl": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s103",
+        "snapshot_sha256": "e405336048a7c447a574d5dd249e33fb075c9179fe8b757ac5b9eaa140922ea9",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 41.15449921876765,
+        "itl_observations": 96.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 1000.0,
+            "upper_ms": 2500.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "secondary": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s103",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "16676b77ba6dac7a140b46f64abdbc0f5bf85504a54e2a223067b462ad424311",
+        "request_file_sha256": "16c997918a8941a4ac3335d4780d950e8b8210bdde32d80ea0719d350db351c5",
+        "requests": 8,
+        "completion_latency_ms": {
+          "p50": 24756.321072,
+          "p95": 44856.062139949994,
+          "p99": 46834.069164789995
+        },
+        "after_first_to_close_ms": {
+          "p50": 135.68933,
+          "p95": 1879.9268779999989,
+          "p99": 2536.1917291999994
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 15.182053058441559,
+          "p95": 62.64697019709674,
+          "p99": 82.21346996199999
+        },
+        "proxy_eligible_requests": 8,
+        "single_token_responses": 0,
+        "generated_tokens": 104,
+        "workload_output_tokens_per_s": 2.103535579436963,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "fairness": {
+        "run_id": "v6controls1-main-lowreuse-fifo64-s103",
+        "request_file_sha256": "16c997918a8941a4ac3335d4780d950e8b8210bdde32d80ea0719d350db351c5",
+        "by_conversation": [
+          {
+            "sample_id": "conv-26",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 5231.683309,
+              "p95": 5231.683309,
+              "p99": 5231.683309,
+              "max": 5231.683309
+            },
+            "completion_latency_ms": {
+              "p50": 7931.941251,
+              "p95": 7931.941251,
+              "p99": 7931.941251,
+              "max": 7931.941251
+            },
+            "admission_wait_ms": {
+              "p50": 0.121684,
+              "p95": 0.121684,
+              "p99": 0.121684,
+              "max": 0.121684
+            },
+            "preparation_ms": {
+              "p50": 80.316275,
+              "p95": 80.316275,
+              "p99": 80.316275,
+              "max": 80.316275
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-30",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 7297.464181,
+              "p95": 7297.464181,
+              "p99": 7297.464181,
+              "max": 7297.464181
+            },
+            "completion_latency_ms": {
+              "p50": 7469.711567,
+              "p95": 7469.711567,
+              "p99": 7469.711567,
+              "max": 7469.711567
+            },
+            "admission_wait_ms": {
+              "p50": 0.05395,
+              "p95": 0.05395,
+              "p99": 0.05395,
+              "max": 0.05395
+            },
+            "preparation_ms": {
+              "p50": 53.304472,
+              "p95": 53.304472,
+              "p99": 53.304472,
+              "max": 53.304472
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-41",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 15311.75476,
+              "p95": 15311.75476,
+              "p99": 15311.75476,
+              "max": 15311.75476
+            },
+            "completion_latency_ms": {
+              "p50": 15345.998763,
+              "p95": 15345.998763,
+              "p99": 15345.998763,
+              "max": 15345.998763
+            },
+            "admission_wait_ms": {
+              "p50": 0.029123,
+              "p95": 0.029123,
+              "p99": 0.029123,
+              "max": 0.029123
+            },
+            "preparation_ms": {
+              "p50": 82.728768,
+              "p95": 82.728768,
+              "p99": 82.728768,
+              "max": 82.728768
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-42",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 21247.95399,
+              "p95": 21247.95399,
+              "p99": 21247.95399,
+              "max": 21247.95399
+            },
+            "completion_latency_ms": {
+              "p50": 21251.843257,
+              "p95": 21251.843257,
+              "p99": 21251.843257,
+              "max": 21251.843257
+            },
+            "admission_wait_ms": {
+              "p50": 0.039654,
+              "p95": 0.039654,
+              "p99": 0.039654,
+              "max": 0.039654
+            },
+            "preparation_ms": {
+              "p50": 81.239812,
+              "p95": 81.239812,
+              "p99": 81.239812,
+              "max": 81.239812
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-47",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 28226.636617,
+              "p95": 28226.636617,
+              "p99": 28226.636617,
+              "max": 28226.636617
+            },
+            "completion_latency_ms": {
+              "p50": 28260.798887,
+              "p95": 28260.798887,
+              "p99": 28260.798887,
+              "max": 28260.798887
+            },
+            "admission_wait_ms": {
+              "p50": 0.034043,
+              "p95": 0.034043,
+              "p99": 0.034043,
+              "max": 0.034043
+            },
+            "preparation_ms": {
+              "p50": 104.162488,
+              "p95": 104.162488,
+              "p99": 104.162488,
+              "max": 104.162488
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-48",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 35169.067489,
+              "p95": 35169.067489,
+              "p99": 35169.067489,
+              "max": 35169.067489
+            },
+            "completion_latency_ms": {
+              "p50": 35525.522391,
+              "p95": 35525.522391,
+              "p99": 35525.522391,
+              "max": 35525.522391
+            },
+            "admission_wait_ms": {
+              "p50": 0.033087,
+              "p95": 0.033087,
+              "p99": 0.033087,
+              "max": 0.033087
+            },
+            "preparation_ms": {
+              "p50": 158.710474,
+              "p95": 158.710474,
+              "p99": 158.710474,
+              "max": 158.710474
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-49",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 40165.128844,
+              "p95": 40165.128844,
+              "p99": 40165.128844,
+              "max": 40165.128844
+            },
+            "completion_latency_ms": {
+              "p50": 40264.260118,
+              "p95": 40264.260118,
+              "p99": 40264.260118,
+              "max": 40264.260118
+            },
+            "admission_wait_ms": {
+              "p50": 0.030267,
+              "p95": 0.030267,
+              "p99": 0.030267,
+              "max": 0.030267
+            },
+            "preparation_ms": {
+              "p50": 63.116354,
+              "p95": 63.116354,
+              "p99": 63.116354,
+              "max": 63.116354
+            },
+            "admission_deadline_overrun_requests": 0
+          },
+          {
+            "sample_id": "conv-50",
+            "requests": 1,
+            "arrival_ttft_ms": {
+              "p50": 47051.389703,
+              "p95": 47051.389703,
+              "p99": 47051.389703,
+              "max": 47051.389703
+            },
+            "completion_latency_ms": {
+              "p50": 47328.570921,
+              "p95": 47328.570921,
+              "p99": 47328.570921,
+              "max": 47328.570921
+            },
+            "admission_wait_ms": {
+              "p50": 0.027207,
+              "p95": 0.027207,
+              "p99": 0.027207,
+              "max": 0.027207
+            },
+            "preparation_ms": {
+              "p50": 109.882186,
+              "p95": 109.882186,
+              "p99": 109.882186,
+              "max": 109.882186
+            },
+            "admission_deadline_overrun_requests": 0
+          }
+        ],
+        "admission": {
+          "run_id": "v6controls1-main-lowreuse-fifo64-s103",
+          "policy": "fifo",
+          "max_inflight": 64,
+          "configured_max_bypasses": 8,
+          "max_head_bypasses": 0,
+          "queued_with_spare_slots_s": 0.000369015,
+          "queued_with_at_most_one_active_s": 0.00017563399999999998,
+          "active_request_seconds": 202.558263819,
+          "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time",
+          "decisions": [
+            {
+              "request_id": "conv-26-q000",
+              "head_id": "conv-26-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-30-q000",
+              "head_id": "conv-30-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-41-q000",
+              "head_id": "conv-41-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-42-q000",
+              "head_id": "conv-42-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-47-q000",
+              "head_id": "conv-47-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-48-q000",
+              "head_id": "conv-48-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-49-q000",
+              "head_id": "conv-49-q000",
+              "bypasses_for_head": 0
+            },
+            {
+              "request_id": "conv-50-q000",
+              "head_id": "conv-50-q000",
+              "bypasses_for_head": 0
+            }
+          ]
+        },
+        "limitations": "Completed requests only after complete-run success check. Per-conversation tails are descriptive, not normalized slowdown or population estimates. Max-bypass admission bound is not an E2E deadline or native progress guarantee; configured200ms is not a hard maximum queue wait. Observed completion does not prove production starvation freedom."
+      },
+      "f1": 0.23075396825396824,
+      "by_category": {
+        "1": {
+          "n": 1,
+          "mean": 0.5
+        },
+        "2": {
+          "n": 5,
+          "mean": 0.2692063492063492
+        },
+        "3": {
+          "n": 2,
+          "mean": 0.0
+        }
+      },
+      "output_budget_hits": 0
+    }
+  ],
+  "pairs": [
+    {
+      "a": "v6controls1-main-lowreuse-fifo64-s101",
+      "b": "v6controls1-main-lowreuse-union64-s101",
+      "regime": "lowreuse",
+      "seed": 101,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -0.23211284397464116,
+      "p95_ms_delta_pct": -0.13329473425655047,
+      "p99_ms_delta_pct": -0.1368852095421702,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-fifo64-s102",
+      "b": "v6controls1-main-lowreuse-union64-s102",
+      "regime": "lowreuse",
+      "seed": 102,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 0.02112035447474625,
+      "p95_ms_delta_pct": 0.006183642586976568,
+      "p99_ms_delta_pct": 0.008483379750479081,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-fifo64-s103",
+      "b": "v6controls1-main-lowreuse-union64-s103",
+      "regime": "lowreuse",
+      "seed": 103,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 0.04305024405188984,
+      "p95_ms_delta_pct": 0.06459194551657887,
+      "p99_ms_delta_pct": 0.06476649980191596,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-fifo64-s101",
+      "b": "v6controls1-main-lowreuse-packing_ready-s101",
+      "regime": "lowreuse",
+      "seed": 101,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": -0.13855938748983387,
+      "p95_ms_delta_pct": -0.08758797349052161,
+      "p99_ms_delta_pct": -0.08923416414299279,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-fifo64-s102",
+      "b": "v6controls1-main-lowreuse-packing_ready-s102",
+      "regime": "lowreuse",
+      "seed": 102,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 0.136065676180408,
+      "p95_ms_delta_pct": 0.10276059883205235,
+      "p99_ms_delta_pct": 0.103526183576097,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-fifo64-s103",
+      "b": "v6controls1-main-lowreuse-packing_ready-s103",
+      "regime": "lowreuse",
+      "seed": 103,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 0.0882383673404652,
+      "p95_ms_delta_pct": 0.09604514312890888,
+      "p99_ms_delta_pct": 0.0954382537075249,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-union64-s101",
+      "b": "v6controls1-main-lowreuse-packing_ready-s101",
+      "regime": "lowreuse",
+      "seed": 101,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 0.09377111127801818,
+      "p95_ms_delta_pct": 0.045767766789150954,
+      "p99_ms_delta_pct": 0.0477163620413501,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-union64-s102",
+      "b": "v6controls1-main-lowreuse-packing_ready-s102",
+      "regime": "lowreuse",
+      "seed": 102,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 0.11492104997254948,
+      "p95_ms_delta_pct": 0.0965709846405316,
+      "p99_ms_delta_pct": 0.09503474166756565,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    },
+    {
+      "a": "v6controls1-main-lowreuse-union64-s103",
+      "b": "v6controls1-main-lowreuse-packing_ready-s103",
+      "regime": "lowreuse",
+      "seed": 103,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 0.045168678062434964,
+      "p95_ms_delta_pct": 0.031432894494232144,
+      "p99_ms_delta_pct": 0.03065190174171839,
+      "f1_delta": 0.0,
+      "category5_delta": null,
+      "output_hash_mismatches": 0
+    }
+  ],
+  "exploratory_intervals": [
+    {
+      "regime": "lowreuse",
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.05605879414156211,
+          "exploratory_t95_low_pct": -0.4353963862813712,
+          "exploratory_t95_high_pct": 0.3247240607079616,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -0.23211284397464116,
+            0.02112035447474625,
+            0.04305024405188984
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.020874189506022787,
+          "exploratory_t95_low_pct": -0.2731736365341463,
+          "exploratory_t95_high_pct": 0.23206355128208359,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -0.13329473425655047,
+            0.006183642586976568,
+            0.06459194551657887
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": -0.021247884864272544,
+          "exploratory_t95_low_pct": -0.27945089663573974,
+          "exploratory_t95_high_pct": 0.23762368314647841,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -0.1368852095421702,
+            0.008483379750479081,
+            0.06476649980191596
+          ]
+        }
+      }
+    },
+    {
+      "regime": "lowreuse",
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.028509790311477844,
+          "exploratory_t95_low_pct": -0.3354114317079191,
+          "exploratory_t95_high_pct": 0.39375985598275365,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -0.13855938748983387,
+            0.136065676180408,
+            0.0882383673404652
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.0370336995804965,
+          "exploratory_t95_low_pct": -0.23100506909103394,
+          "exploratory_t95_high_pct": 0.3057925795607627,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -0.08758797349052161,
+            0.10276059883205235,
+            0.09604514312890888
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.03653713018973978,
+          "exploratory_t95_low_pct": -0.2340277219815483,
+          "exploratory_t95_high_pct": 0.30783575297999677,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            -0.08923416414299279,
+            0.103526183576097,
+            0.0954382537075249
+          ]
+        }
+      }
+    },
+    {
+      "regime": "lowreuse",
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "metrics": {
+        "p50_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.08461601917304076,
+          "exploratory_t95_low_pct": -0.004196002010081104,
+          "exploratory_t95_high_pct": 0.17350691941699592,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.09377111127801818,
+            0.11492104997254948,
+            0.045168678062434964
+          ]
+        },
+        "p95_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.057919979412777836,
+          "exploratory_t95_low_pct": -0.027064751102744578,
+          "exploratory_t95_high_pct": 0.14297695352505785,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.045767766789150954,
+            0.0965709846405316,
+            0.031432894494232144
+          ]
+        },
+        "p99_ms": {
+          "paired_runs": 3,
+          "geometric_ratio_delta_pct": 0.05779729575686109,
+          "exploratory_t95_low_pct": -0.025021373890263557,
+          "exploratory_t95_high_pct": 0.1406845718906925,
+          "method": "t(df2) interval on paired log ratios; normality/independence assumptions unverified at n3",
+          "per_seed_ratio_delta_pct": [
+            0.0477163620413501,
+            0.09503474166756565,
+            0.03065190174171839
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": "n3paired log-ratio t(df2) descriptors are not semantic population significance or quality equivalence. Missing native coverage stays null. Source tokens are not measured DMA bytes. Report each regime/seed including regressions."
+}

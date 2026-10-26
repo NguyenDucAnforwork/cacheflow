@@ -76,3 +76,24 @@ def test_full_controller_retains_failure_without_archive_or_retry(tmp_path,monke
     assert not any(c[0]=='archive' or (len(c)>1 and c[1]=='scripts/v6_audit_full_run.py') for c in events)
     interruption=json.loads(Path('results/v3/v6full1_interruption.json').read_text());assert interruption['phase']=='measured' and interruption['completed_arms']==0
     assert not Path('results/v3/v6full1_outcomes.json').exists()
+
+
+def test_cleanup_attempts_remaining_services_and_restores_config_after_stop_failure(tmp_path,monkeypatch):
+    config,original,pids,events=harness(tmp_path,monkeypatch)
+    original_run=module.subprocess.run
+    failed_stops=[]
+    def fail_stop(cmd,**kwargs):
+        if list(cmd)==['supervisorctl','stop','cacheflow_v2_gateway']:
+            failed_stops.append(list(cmd))
+            raise subprocess.CalledProcessError(1,cmd)
+        return original_run(cmd,**kwargs)
+    monkeypatch.setattr(module.subprocess,'run',fail_stop)
+    with pytest.raises(RuntimeError,match='Failed to stop serving services'):module.main()
+    assert failed_stops and config.read_text()==original
+    assert pids['cacheflow_v2_vllm']==pids['cacheflow_v2_lmcache']==0
+    assert pids['cacheflow_v2_gateway']!=0,'Fixture stop failure must remain visible'
+    assert not any(c[0]=='archive' or (len(c)>1 and c[1]=='scripts/v6_audit_full_run.py') for c in events)
+    interruption=json.loads(Path('results/v3/v6full1_interruption.json').read_text())
+    assert interruption['phase']=='measured' and 'Failed to stop' in interruption['error']
+    assert Path('results/v3/cpu-test.invalid').exists()
+    assert interruption['completed_arms']==0 and not Path('results/v3/v6full1_outcomes.json').exists()

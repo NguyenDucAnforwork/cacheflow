@@ -167,3 +167,19 @@ Gateway chooser CPU is a different instrumented quantity: old union .519/.481/.4
 All24 sampled process-count sequences are three vLLM processes and one LMCache process, with monotonic aggregate CPU samples; counts alone do not prove stable descendant identities. Sampled VRAM peak is15997MiB in every arm, consistent with a largely preallocated engine footprint rather than evidence of identical live KV occupancy. Mean summed RSS peaks vary approximately3.66–3.72GB for vLLM and16.98–17.00GB for LMCache; these sums double-count shared pages and omit gateway/client, so are not physical system memory. GPU utilization is not a percentage of useful model work, kernel busy time or achieved request capacity.
 
 Union's lower sampled utilization coexists with a shorter window and much lower tails than FIFO; readiness's higher utilization coexists with mixed tail gains and worse decode/median/resource observations versus old union. Optimizing utilization alone would miss that tradeoff. The supplement strengthens resource reporting; it does not complete main controls or replace the pending full benchmark, quality/fairness review and final research audit.
+
+
+## Main low-reuse control: complete nine-arm subset
+
+`v6controls1_main_lowreuse_subset_audit.json` now passes for **9 fresh engine/LMCache arms,72/72 measured successes, zero errors,540 separate warmups**. The same eight exposed QA are replayed across three arrival schedules; they are not72independent semantic examples. Source/config/observer/transport/prompt/token/captured-output and warmup integrity, actual host heap16039018496bytes, official quality and native histogram coverage9/9 are verified. The strict full36-arm auditor remains unchanged and pending.
+
+| Candidate versus main FIFO64 | Seed101 p95 change | Seed102 | Seed103 |
+| --- | ---: | ---: | ---: |
+| Old union64 | −.133295% | +.006184% | +.064592% |
+| Ready union | −.087588% | +.102761% | +.096045% |
+
+Both treatments pass the declared<=5% gate at all three seeds. Every measured arm computes190916new-prefill source tokens, consumes **0 engine-labelled external CPU KV tokens**, records0preemptions and has0cap hits. Pairwise output hashes and official scores match exactly within each main seed, F1=.2307539683. This is a cohort observation, not quality equivalence beyond these eight questions. CPU-source consumption does not count backup/store IO or prove that every physical transfer operation was absent. Native promotions retain their distinct/missing-aware counter interpretation.
+
+Mean run p50/p95 seconds are FIFO24.531/44.294, oldunion24.518/44.285, readiness24.539/44.311. Readiness versus oldunion p95 changes+.045768/+.096571/+.031433%, consistent with negligible additional timing differences in this control; no adaptive scheduling or universal no-regression claim follows. `v6controls1_main_lowreuse_subset_waits.json` verifies per-request additive stage reconstruction for all72responses. Do not add stage quantiles or interpret upstream as pure GPU time.
+
+Together with the completed native low-reuse control, the observed primary low-reuse<=5% condition now holds on both stacks. **This does not authorize a premature full seal:** the freezer still requires the complete36-arm main controls audit, including GPU-fit/abstention, then full CPU token-ID preflight. Main18/36arms612requests are complete at this checkpoint; the30-arm full study and final research conclusion remain unexecuted/unproven.

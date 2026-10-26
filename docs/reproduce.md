@@ -241,3 +241,9 @@ The prospective full source list also explicitly includes the existing metric sa
 
 
 `PYTHONPATH=src /venv/main/bin/python scripts/v6_analyze_main_resources.py` validates the retained24-arm main resource supplement without contacting serving endpoints. It checks original request SHA, measured collector/summary source identities, strict counter reconciliation and sample windows bracketing all1,440responses, then writes raw/setup/source fingerprints and all per-run/aggregate samples to `v6dev1_main_resources.json`. GPU utilization/power/board-energy estimates are approximately1Hz sampled-window descriptors; CPU tree deltas, separate chooser CPU, clocks/temperature and missing instrumentation keep distinct scopes. This is not a full benchmark, exact kernel/energy trace or a causal cross-engine comparison.
+
+
+Before full freeze, `tests/test_v6_full_flow.py` fault injection reproduced a cleanup defect: a failed gateway-stop command left other services untouched and skipped config restoration. The full controller now attempts all stops and restores original config in a nested finally block while surfacing failures. The failed arm remains unarchived/ineligible; it never advances to another arm. This is CPU-only control-flow verification, not an observed GPU failure or liveness fix. Existing registered main-controls actors remain unchanged.
+
+
+The main low-reuse subset is now complete in `v6controls1_main_lowreuse_subset_audit.json` / `_quality.json` / `_waits.json`: nine fresh engine/LMCache arms,72measured successes,540separate warmups, all three seeds pass the existing5% p95 gate for old union and readiness versus FIFO. Source-labelled CPU consumption0, compute190916, outputs/scores identical within each seed. Eight distinct QA are reused; no broad quality/tail guarantee. The full freezer still requires the complete36-arm stage and remaining GPU-fit/abstention controls; do not promote this subset to a complete prerequisite audit.

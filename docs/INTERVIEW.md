@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 20:50 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
+**Cập nhật 26/10/2026, 21:03 UTC:** V6 đã audit main 24 arms / 1.440 request đo và native 60 arms / 2.700 request đo, đều không lỗi; warmups được tính riêng. Main low-load đã audit riêng 9 arms / 540 request; các controls còn lại đang chạy, full 1.986 QA chưa bắt đầu. Phần 22 tổng hợp kết quả hiện tại và các giới hạn; các phần V2–V5 dưới đây giữ phạm vi lịch sử, không gộp số khác model/prompt/protocol.
 
 **Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
 
@@ -852,7 +852,9 @@ Trong main, readiness so union cũ có p95 −0,44/−0,84/+4,58%, median tăng 
 
 **Hỏi: Low-reuse gate có qua không?**
 
-**Đáp:** Cả hai policy qua ngưỡng p95 regression ≤5% ở ba seed native; mức thay đổi chỉ khoảng −0,07 đến +0,41%. Tất cả outputs/scores trong control đó khớp pairwise. Nhưng chỉ có tám QA riêng biệt lặp nhiều lần, nên không suy thành bảo đảm tail hay chất lượng trên mọi workload. Main stack còn phải có control riêng.
+**Đáp:** Cả hai policy đã qua ngưỡng p95 regression ≤5% ở ba seed trên từng stack. Native thay đổi khoảng −0,07 đến +0,41%. Main đã audit riêng chín fresh-engine arms, 72 request đo và 540 warmup: old union −0,133/+0,006/+0,065%, readiness −0,088/+0,103/+0,096% so FIFO. Main đều compute 190.916 token, engine-consumed CPU KV bằng 0, không preemption/cap hit; outputs/scores khớp pairwise trong mỗi seed.
+
+Đây chỉ là tám QA riêng biệt lặp các lịch arrival, không phải bảo đảm tail hay chất lượng trên mọi workload. Counter main bằng 0 không chứng minh không có backup/store IO vật lý; native promotion thiếu endpoint vẫn giữ null. Full freezer còn phải chờ đủ main GPU-fit/abstention và audit 36 arms, không chỉ riêng low-reuse gate.
 
 **Hỏi: GPU-fit có làm method thành no-op không?**
 
@@ -923,6 +925,12 @@ Ví dụ integration check trước freeze bắt được main audit đặt tên
 **Hỏi: Nén raw có làm mất khả năng kiểm chứng không?**
 
 **Đáp:** Công cụ chỉ nén sau complete per-run integrity/official quality audit, kiểm gzip roundtrip SHA rồi lưu manifest gồm raw/compressed/audit hashes trước khi thu hồi bản plain dư. Đã thử riêng trên bản sao một run native 60 QA thật và một run main gồm 60 request đo + 60 warmup. Main có 10 raw files, gồm cả hai gateway log. Sau giải nén, mọi byte, full official-quality JSON, integrity của cả warm/measured, fairness, decode, native histogram, additive waits và sampled resources đều khớp. Raw gốc không đổi và không phát sinh inference mới. Đây là kiểm đường archival, không phải full GPU success hay thêm 120 mẫu độc lập.
+
+**Hỏi: `finally` có tự bảo đảm cleanup chạy hết không?**
+
+**Đáp:** Không. Nếu lệnh đầu tiên trong `finally` ném exception, các lệnh sau vẫn bị bỏ qua. CPU fault injection đã tái hiện điều này trong full controller: một lệnh stop gateway thất bại làm các service sau không được dừng và config không được phục hồi. Bản sửa thử dừng từng service, gom lỗi, rồi dùng nested `finally` để vẫn ghi lại config gốc và yêu cầu supervisor reload.
+
+Nếu stop/reload thực sự thất bại thì vẫn phải báo lỗi và giữ raw; không được nhận cleanup thành công hay tiếp tục arm tiếp theo. Test chỉ kiểm control flow bằng mock, không chứng minh native inference không thể stall. Nó cũng không phát sinh stop/restart nào trên job GPU đang đo.
 
 **Hỏi: Làm sao chạy lại khi registration cũ đã có trong repo?**
 
