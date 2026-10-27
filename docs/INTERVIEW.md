@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 27/10/2026, 01:02 UTC:** Full study đã audit **8/30 cấu hình,15.888/15.888 request đo**, không lỗi;480 warmups riêng. Native union seed901 vừa có p95 **57,629 giây**, thấp hơn baseline mạnh DFS62,475 giây **7,756%**, new-prefill giảm7,589%. Tuy nhiên median xấu hơn302,005%, bốn conversation có p95 regression và176 output hashes khác nhau. Mới một arrival seed nên chưa đủ kết luận contribution mạnh; main oldunion/readiness vẫn kém bundle23,566%/69,198% ở p95. Prototype epoch chưa được bật trong serving;166 CPU tests và smoke hai prompt thật đã pass, còn full real-prefix check/CPU timing/GPU speedup chưa có. Native readiness đang đo. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
+**Cập nhật 27/10/2026, 01:22 UTC:** Full study đã audit **9/30 cấu hình,17.874/17.874 request đo**, không lỗi;540 warmups riêng. Native union seed901 có p95 **57,629 giây**, thấp hơn DFS **7,756%**, nhưng median xấu hơn302,005% và bốn conversation có regression. Readiness native đạt đúng input reference304.885 new tokens nhưng p95 **249,003 giây**, xấu hơn oldunion332,076%. Main oldunion/readiness vẫn thua bundle. Entry point/collector V7 đã chuẩn bị,196 CPU tests pass; V7 chưa được bật trên GPU, các proof CPU/full real-prefix vẫn chờ. Full controller đã chuyển sang seed902. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
 
 **Đính chính resource:** LMCache lazy heap làm tròn theo64MiB. Ở development, main có16.039.018.496 byte, native có16.000.745.472 byte, chênh0,2392%. Ở full, main heap48.049.946.624 byte và native host payload48.002.236.416 byte đều đã có quan sát, chênh0,099392%. Đây là capacity, không phải RSS hoặc bằng chứng hai allocator có heap bằng nhau. Native capacity đã được xác nhận thêm bởi full LPM audit; các native comparisons và replications chưa hoàn tất. Stall V5 đã manual abort, nguyên nhân vẫn chưa được chứng minh.
 
@@ -1263,3 +1263,43 @@ Native ITL mean tốt hơn DFS28,956→24,865ms/update, p95 bucket100–200→40
 **Đáp:** Native union gọi chooser894.624 lần cho1.986 requests, trong đó888.842 cache hits, tỷ lệ99,354%. Counter đo50,257 thread-CPU seconds trong chooser,50,604 summed call-wall seconds và73,666ms max call-wall. Đây là overhead thực tế ngay trong run đã thắng tail; epoch-cache có thể giảm công việc lặp, nhưng chưa có timing hoặc E2E result để định lượng phần tiết kiệm.
 
 Không trừ50,257 giây khỏi makespan để dự đoán speedup. Arrival stream kéo dài gần hết run, CPU có thể chồng GPU/I/O, và thay dispatch timing có thể đổi batching/outputs. Trước mắt cần hoàn tất các arrival seeds, kiểm gate ablation, rồi đo prototype trong study mới với cả baseline mạnh và metric bất lợi được giữ nguyên.
+
+### 22.20. Readiness đạt input reference nhưng chậm hơn hơn bốn lần
+
+**Hỏi: Full readiness native đã có kết quả cuối chưa?**
+
+**Đáp:** Run seed901 đã audit đủ1.986 requests, không lỗi,60 warmups riêng. Nó tính304.885 new-prefill tokens, đúng bằng input-only full-retention reference. Oldunion tính304.901, chỉ hơn16 tokens. Nhưng readiness có TTFT p50/p95/p99 là160,188/249,003/252,189 giây, makespan759,368 giây. So với oldunion, p95 xấu hơn332,076%; so với DFS xấu hơn298,564%. Nó vẫn thắng LPM/FIFO yếu hơn ở aggregate p95, nên chỉ báo hai cặp đó sẽ gây hiểu lầm.
+
+Readiness có p95 xấu hơn oldunion ở cả mười conversation, từ26,141% đến348,776%. So với DFS, chín conversation xấu hơn; conv30 tốt hơn16,663%. Đây vẫn chỉ là một arrival seed, nhưng đủ bác bỏ claim rằng đạt reference về prefill tự động bảo đảm E2E tốt.
+
+**Hỏi: Waiting đã chuyển đi đâu?**
+
+**Đáp:** Mean TTFT oldunion26,416→readiness157,053 giây. Mean upstream-to-first-text giảm.913→.520 giây, nhưng admission tăng25,385→87,743 giây và arrival→gateway tăng.010→68,660 giây. Backpressure của client/gateway làm phần chờ trước gateway lớn hơn; dữ liệu hiện tại chưa chia hết nó thành từng nguyên nhân CPU, connection pool hay event-loop scheduling. Không bỏ phần chờ này khỏi latency hoặc cộng các stage p95.
+
+Chooser ghi2.104.620 calls,2.096.980 hits, tổng282,632 thread-CPU seconds, so với50,257 giây của oldunion. Counter không tách CPU hit/miss và không bao gồm timeout, condition, tokenize hay HTTP. Đây là cơ hội đo epoch cache, chưa phải bằng chứng nó sẽ sửa toàn bộ regression. Chính readiness gate cũng có thể giới hạn cơ hội batching; cần ablation và GPU measurements để phân biệt.
+
+**Hỏi: Các metric còn lại có bù được regression không?**
+
+**Đáp:** Native ITL mean giảm24,865→20,545ms/update so với oldunion, nhưng p95 bucket lại xấu hơn40–60→80–100ms. Mean và tail decode không đồng nghĩa nhau. Answerable F1 readiness.318114 so với oldunion.318996; category5 đúng221/446 thay vì223/446;19 cap hits so với20 và164 output hashes khác nhau. Không nhận quality equivalence hoặc tổng hợp các metric này thành một chiến thắng tùy ý.
+
+![Toàn bộ năm cấu hình native full seed901, gồm CPU và phần chờ](../figures/v6full1_native_checkpoint_09.png)
+
+### 22.21. Từ prototype CPU sang một phép đo GPU có thể kiểm chứng
+
+**Hỏi: Làm sao biết code tối ưu thật sự chạy, thay vì chỉ có file trong repo?**
+
+**Đáp:** Entry point V7 mới yêu cầu chọn rõ `reference` hoặc `epoch` trong process mới. Reference dựng đúng class gốc; epoch dùng class mới nhưng gọi selector method gốc. Policy name vẫn là `packing_reuse`, nên không dùng riêng nhãn policy để nhận implementation đã thay đổi.
+
+Endpoint `/implementation` trả class cụ thể, selector và sáu source hashes đã chụp lúc dựng app. Observer trước/sau run kiểm actual argv trỏ đúng factory V7, PID và birth time không đổi, biến môi trường implementation đúng, source startup khớp source đăng ký, cùng health policy/counters. Chỉ đọc source hiện tại sau run sẽ không chứng minh bytecode nào đã được process cũ nạp.
+
+**Hỏi: Đã bật V7 vào benchmark chưa?**
+
+**Đáp:** Chưa. Full controller đang dùng factory V6; marker chọn implementation V7 chưa được tạo và supervisor chưa đổi. Tests đã dựng app/đọc health và implementation với tokenizer giả, không tải model hoặc chạy GPU. Tổng196 CPU tests pass, gồm30 tests mới cho factory, identity boundaries và plan. Mất source hash, class sai, PID bị thay/reuse, history/counter không mới, chế độ khác hoặc boundary không idle đều bị từ chối.
+
+Collector main mới bọc nguyên luồng capture đang có bằng identity boundaries. Collector native mới giữ nguyên request replay, reset, sampling, histogram và token accounting; những khối thay đổi để ghi identity được liệt kê và kiểm cơ học. Điều này giảm rủi ro đo nhầm implementation, nhưng chưa chứng minh performance hay toàn bộ controller hoạt động.
+
+**Hỏi: Phép screen tiếp theo có giữ baseline mạnh không?**
+
+**Đáp:** [Draft V7](V7_EPOCH_EVALUATION_DRAFT.md) và `v7_epoch_plan.py --plan` chuẩn bị18 cấu hình: ba arrival seeds; trên main có bundle, oldunion và epoch-oldunion; trên native có DFS, oldunion và epoch-oldunion. Mỗi cấu hình có engine mới,60 warmups riêng và60 QA development đã lộ. So oldunion→epoch kiểm hiệu quả tối ưu; so bundle/DFS→epoch kiểm khả năng cạnh tranh. Không ghép kết quả process cũ vào pair mới.
+
+Plan chưa phải registration/freeze hay GPU execution. Trước khi chạy vẫn cần full30-arm audit, từ-source input proof, namespace proof, CPU probe, real-prefix checker, services idle, controller/auditor mới đã kiểm fault paths và source/config seal mới. Sau screen còn controls về low-reuse/GPU-fit/load/abstention và full confirmation. Không dùng green tests hay synthetic CPU ratio để thay những kết quả đó.

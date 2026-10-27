@@ -1,5 +1,28 @@
 # CacheFlow: reproducibility log
 
+The V7 prepared validation is separate from the running V6 study:
+`results/v3/v7_epoch_prepared_validation.json` records the actual196-test output,
+source identities, unchanged original/queued pins and a live V6 gateway argv.
+It is CPU preparation evidence, not a V7 GPU result. Read the
+[prospective draft](V7_EPOCH_EVALUATION_DRAFT.md) for remaining gates and scope.
+These read-only commands do not dispatch inference:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v7_epoch_plan.py --plan
+PYTHONPATH=src /venv/main/bin/python scripts/v7_gateway_identity.py verify-pair --help
+PYTHONPATH=src /venv/sglang-baseline/bin/python scripts/v7_sglang_bench.py --help
+```
+
+The new factory/launchers are available but unactivated. Do not change the live
+supervisor/implementation marker to try them during the sealed full study. A new
+registered controller/auditor and successful actual dependency proofs are still
+required before V7 execution; no GPU waiter has been registered for this draft.
+Identity boundaries must bracket the real request ledger, preserve PID/birth/
+factory/class/source identity and start from empty history/zero decision counters.
+Their checks do not replace model/budget/request/token/output/quality audits.
+
+**Full update,2026-10-27 01:22UTC:** Allnine6GiBseed901arms now pass strict R1 per-run audit/verified archive:17,874successes0errors +540separatewarmups. Checkpoint09 reopens allninearchives and retains12/39primarypairs(5main+7native), same1986uniqueQA atonearrival seed. Native readinessp95=249.003s versusoldunion57.629s(+332.076%)/DFS62.475s(+298.564%), despite exactinputreference304885newtokens versusoldunion304901. Alltenconversationp95worsenvsoldunion. ReadinesschooserCPU282.632s vsold50.257s; nativeITLmean20.545msbutp95bucket80–100msvsold40–60ms;F1=.318114/category5=221/446. Mainbundle regressions and nativeunionmedian/conversationcosts remain. New six-panel nativefigure preserves these tradeoffs. V7factory/identitycollectors and18-armdevplan are prepared,196CPUtests pass, but no V7GPUregistration/controller/freeze/run or CPUtiming/fullrealprefix result exists. OriginalV6sources/queuedpins unchanged; full controller is now onmainreadinessseed902. Remaining21fullarms/27primarypairs plus actualproofs/competitiveV7evaluation/finalreport remain required. Earlierupdatesarehistorical.
+
 **Full update,2026-10-27 01:02UTC:** Nativeunionseed901 is now terminal/audited, bringing full study to8/30arms,15,888/15,888measured successes0errors +480separatewarmups. `v6full1_checkpoint_08.json` reopens all eightarchives and preserves8/39primarycontrasts(5main+3native), same1986uniqueQA atonearrivalseed. Unionp50/p95/p99=24.277/57.629/65.174s; versus strongnativeDFS,p95−7.756%,p99−23.963%,completionp95−9.099%,newprefill−7.589%(329941→304901). But median+302.005%,fourconversationp95regress7.226–20.073%,F1−.000054/176hashchanges;category5equal223/446includes2gains/2losses. Mainbundle regressions remain. Nearfullretentionreference304885+16tokensisnotfinitecacheoptimality orproofgateisalwaysnecessary. Chooser894624calls/888842hits/50.257threadCPUs retains the profiling opportunity without an epoch speedup claim. Native readiness is measuring;22fullarms/31primarypairs and replication remain pending. The research objective remains unmet; earlierupdatesarehistorical.
 
 **Current full checkpoint,2026-10-27 00:57UTC:** `results/v3/v6full1_checkpoint_07.json` reopens/verifies seven completed arms,13,902measured requests0errors +420separatewarmups. It remains an interim report, not the30-arm terminal audit. `v6full1_native_baselines_s901.json` adds three separately labelled native baseline-to-baseline contrasts, not additional registered candidate pairs. NativeDFS p95=62.475s versusLPM957.655s/gatewayFIFO403.600s; three-seed replication and native candidate contrasts remain pending. Preserve the observed main candidate regressions.

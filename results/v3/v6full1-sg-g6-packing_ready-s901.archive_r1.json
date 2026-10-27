@@ -1,0 +1,79 @@
+{
+  "audit_path": "results/v3/v6full1-sg-g6-packing_ready-s901.full_audit_r1.json",
+  "audit_sha256": "f94bb24d9d3c5bdf5205bf5a7ec3f3c8a31bae9d264600807195422c185c511b",
+  "files": [
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.jsonl.gz",
+      "sha256": "3a3e892cab29ef6b541c98205d8f07dc54221a9a7176df36a0d22ed8d9b983ac",
+      "archive_sha256": "32e6dc58657af3ec545ccf24375013316778c80482ef69028bbccc2cdb9b4536",
+      "bytes": 51172,
+      "archive_bytes": 9184
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.outputs.jsonl.gz",
+      "sha256": "262c528f40ec82e0d06452c54eb9405b248aeec60a9413799e387e06c862c845",
+      "archive_sha256": "c70512f3632eb12b18d5c40b6ab2deb6df801ca3becca4e43c91a531b7bff1e1",
+      "bytes": 12065,
+      "archive_bytes": 2616
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.summary.json.gz",
+      "sha256": "4ac062f5f061fa760171da09fdc56ce9e772126d413147dee76702857dd8c05c",
+      "archive_sha256": "e90141a3fbd476653a26ebd4c307aaec6da425754657a4d459f2c2ddd9af5744",
+      "bytes": 1466,
+      "archive_bytes": 763
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901-warm.metrics.jsonl.gz",
+      "sha256": "4a73ae9f67aac5beafd2a8a5514764f02e2f9e66d2dca46410b63a9f7735d029",
+      "archive_sha256": "f49a8b010f778975d487bda1b0ba62fe467a73f1802c9f6677c050515f55b57a",
+      "bytes": 85310,
+      "archive_bytes": 4687
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.jsonl.gz",
+      "sha256": "4556211300381ae45640f4545e215e07a15d06bb78a31f8e47b23d6f244f5f5a",
+      "archive_sha256": "cc4b87ee9d0a8b91e1a1be9ee6759b18eb65d560a91029cc96c59d284ce476b2",
+      "bytes": 1696023,
+      "archive_bytes": 285854
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.outputs.jsonl.gz",
+      "sha256": "b7a589303e55cd56c58ca0d656145df828a598a3e0339e566e3668232abdee67",
+      "archive_sha256": "b0ea4627ffb8c0c865d1ee0b64584dc6f078fcbdd84190194a639425c36de0fe",
+      "bytes": 392565,
+      "archive_bytes": 64385
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.summary.json.gz",
+      "sha256": "c4193086adcf70fb4b935809abc5dcb829c01ef3f526ea0ffa8cc2c2a5ae3d40",
+      "archive_sha256": "28a62c08267754c43b6e18a6e1f0cd8e9763207426c5ac267c2bfc5542d8790a",
+      "bytes": 1463,
+      "archive_bytes": 761
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.metrics.jsonl.gz",
+      "sha256": "ec2f9c598676208e70688634e7750404850551f98c6ddc1033c1db1df566fc8c",
+      "archive_sha256": "51f6a7e4a1de28198394bbfb2b0dfeb59e3c095c3f0fc9eaec4374386331f536",
+      "bytes": 2482600,
+      "archive_bytes": 160269
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.gateway.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-packing_ready-s901.gateway.jsonl.gz",
+      "sha256": "5ec1462c65ed292b9bc3b3ea5f1487223580ae6773cf0593e433ef67ede08baa",
+      "archive_sha256": "95054054b1b754ed707e10e8d65513aa379bc0988e57a361bf3d81a5edd6a191",
+      "bytes": 1889975,
+      "archive_bytes": 232213
+    }
+  ],
+  "scope": "Lossless private raw archive after complete per-run integrity/quality audit; original uncompressed SHA retained. Not additional benchmark evidence."
+}

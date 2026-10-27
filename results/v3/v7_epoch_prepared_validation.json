@@ -1,0 +1,71 @@
+{
+  "kind": "prepared_v7_entrypoint_and_collector_cpu_validation_not_gpu_result",
+  "utc": "2026-10-27T01:21:52.410923+00:00",
+  "source_sha256": {
+    "src/cacheflow/v7_gateway.py": "b71679b6c2a658140e7a2133b62fbe37b7ec457302928c0b2fda89fcd4e97c60",
+    "scripts/v7_gateway_identity.py": "995586d45cae3ac47a82fab3abc1d0672213eaacc98ef333087ee0227ce90f88",
+    "scripts/v7_run.sh": "d2407bd4aef1196c399ec1f8bdc382e672dd3fbe57d2d46861f766844ec4c8e2",
+    "scripts/v7_serve_gateway.sh": "7ade885889037c319e89edf10ee44e495d3ab17cbad5de813d1466d6c325089a",
+    "scripts/v7_sglang_bench.py": "b65bb3e50e3b4fbaf0aeb1fb8088131b050db3420fb7c60501293b6ba58bdf97",
+    "scripts/v7_collector_source.py": "a253c1af4032f85958895c3e031262d2ab3799f21315f479e0a41f5598fad4fb",
+    "scripts/v7_epoch_plan.py": "5bc471682801b41e3f22c008f6d26662b63ac75ccabc886a1030b5b848be0667",
+    "src/cacheflow/v7_epoch_scheduler.py": "b37eb4e8fb27dd2aa28ef654084ac4513759aec74960abf99d98e2c0f5dde580",
+    "tests/test_v7_gateway.py": "6010644f45990eb2927522b606dff5337de07c862c1022daa346af05bc4ec20d",
+    "tests/test_v7_gateway_identity.py": "667302845f40ba02c11281319c4d282aee6a2205654b763c4fd7bf8812475838",
+    "tests/test_v7_epoch_plan.py": "2962d22791348dc7f108766b7edec18cd67ca38931a008261784ef55a5551ec9",
+    "docs/V7_EPOCH_EVALUATION_DRAFT.md": "c372b0b5ee7142ce409d6727f8aee3c604d386169884ef792816f275960f4f34"
+  },
+  "unchanged_original_and_queued_pins": {
+    "v6full1_freeze.json": {
+      "registration_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+      "pinned_files_verified": 51
+    },
+    "v6full1_analysis_r1_registration.json": {
+      "registration_sha256": "a2036d631c058886ef5eefd733c0bf4d7252a4d42f533c5efd3d340a5d0299ff",
+      "pinned_files_verified": 6
+    },
+    "v6full1_continuation_r1_registration.json": {
+      "registration_sha256": "3cb2807b2f20f495a8fcde3dbb52950aa8398ed30149fe346a965bb5404ca175",
+      "pinned_files_verified": 4
+    },
+    "v6full1_input_regeneration_registration.json": {
+      "registration_sha256": "83283d246c8af15bc85557e59f449f6ff79ee4ac78e22c245cd312b5c23ef200",
+      "pinned_files_verified": 8
+    },
+    "v6full1_r1_namespace_preparation_registration.json": {
+      "registration_sha256": "327b30d71a9f5fb05efd61df5de4d746408137f599d068f5e31a96e0921ba638",
+      "pinned_files_verified": 6
+    },
+    "v7_epoch_cpu_probe_registration.json": {
+      "registration_sha256": "d0dfadc3339556dd328479151ae10cb0ae12adc1d9ef783db255a23e1cfcd14a",
+      "pinned_files_verified": 8
+    },
+    "v7_epoch_trace_check_registration.json": {
+      "registration_sha256": "16f3eb1d8f835b9c3d0a507673ac4b206245df03b35fd7906335f44956b579b6",
+      "pinned_files_verified": 13
+    }
+  },
+  "live_full_gateway_pid": 491625,
+  "live_full_gateway_argv": [
+    "/venv/main/bin/python",
+    "/venv/main/bin/uvicorn",
+    "--factory",
+    "cacheflow.v6_gateway:create_app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8100",
+    "--no-access-log"
+  ],
+  "v7_implementation_marker_exists": false,
+  "prepared_plan_sha256": "5e2aa8daeb5a06604cc49117b5c1e77a03c7faf207bf29f46da2248067301920",
+  "cpu_only_validation": true,
+  "gpu_execution_for_this_validation": false,
+  "full_test_command": "PYTHONPATH=src /venv/main/bin/python -m pytest -q",
+  "observed_test_exit_code": 0,
+  "observed_test_output": "...................................... [ 36%]\n........................................................................ [ 73%]\n....................................................                     [100%]\n196 passed in 20.09s\n",
+  "tests_passed": 196,
+  "prepared_development_arms": 18,
+  "prepared_measured_requests": 1080,
+  "scope": "Factory routes tested with fake tokenizer, no model weights/inference. Constructor/selector/source/process/boundary rejection, mechanical collector changes and plan contracts checked. CLI help, Python compile and bash syntax checked. V7 not activated in the running study. No registered V7GPUcontroller/freeze, CPU timing/full real-prefix result, quality equivalence, performance gain or completed research claim."
+}

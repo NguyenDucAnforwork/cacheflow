@@ -1,0 +1,121 @@
+{
+  "producer": "Inline source/audit/setup-checked extraction of completed nine-arm chooser counters",
+  "checkpoint_sha256": "f230f75665652410414d408900074f39fdd8e653c777487063318d23c9c01be8",
+  "chooser_source_sha256": "112fc23c06439a68353e05719a00165afd2b7ee5a9fcb761817c008c3d653e56",
+  "runs": [
+    {
+      "run_id": "v6full1-main-g6-fifo64-s901",
+      "engine": "main",
+      "arm": "fifo64",
+      "seed": 901,
+      "audit_sha256": "0a98548fa26312812c42fb3ab2ae1b08b5b0c3374299fae8eec279014c010b1e",
+      "setup_sha256": "7292f54f9b149a76d6e60ce4303c9699a3ac3c4ed308db71aad243c3fde20a98",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-main-g6-bundle16-s901",
+      "engine": "main",
+      "arm": "bundle16",
+      "seed": 901,
+      "audit_sha256": "3193916f9ada5f422fa262b8f56caa2de7e0b7f6fd28dda09da9f29445a28eab",
+      "setup_sha256": "aa2a0d7af463c99ae890f569d802f3e687f9c8a9a0b783c3066c70d9dedea435",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-main-g6-union64-s901",
+      "engine": "main",
+      "arm": "union64",
+      "seed": 901,
+      "audit_sha256": "550917c67bb6f6e0cb7d8ca565d4d1ff0f7cb90740dc485ba1adc7830ae13dc5",
+      "setup_sha256": "ebba00535d52723b39a6fadb9768f13511eb039c47a506665b10d821de51abba",
+      "decision_stats": {
+        "calls": 2519889,
+        "cache_hits": 2514189,
+        "cache_misses": 5700,
+        "cache_hit_fraction": 0.9977379956021872,
+        "thread_cpu_s": 124.81032105300001,
+        "summed_call_wall_s": 126.193033142,
+        "max_call_wall_ms": 101.849926
+      }
+    },
+    {
+      "run_id": "v6full1-main-g6-packing_ready-s901",
+      "engine": "main",
+      "arm": "packing_ready",
+      "seed": 901,
+      "audit_sha256": "f6c3d6554154ef3a8fcf640dbfcbdbdde553c28e28f31937e1dce2ad5b4e1183",
+      "setup_sha256": "76a9f4c0a2f2f01795414d0cabb32ecc094d9b6d61be143423a5c4526ec89984",
+      "decision_stats": {
+        "calls": 2581025,
+        "cache_hits": 2573321,
+        "cache_misses": 7704,
+        "cache_hit_fraction": 0.9970151393341793,
+        "thread_cpu_s": 323.16598577,
+        "summed_call_wall_s": 328.019597526,
+        "max_call_wall_ms": 141.791211
+      }
+    },
+    {
+      "run_id": "v6full1-sg-g6-native_lpm-s901",
+      "engine": "sg",
+      "arm": "native_lpm",
+      "seed": 901,
+      "audit_sha256": "f203ac3b8e85b0bb57d5dfe7142932e6a042c6e67cffa89e2ec30add7d97227a",
+      "setup_sha256": "7d4f06bd2bca7f92133b161b97adb2f8277521d61438c6ce95eb3928b34bf92c",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-sg-g6-native_dfs-s901",
+      "engine": "sg",
+      "arm": "native_dfs",
+      "seed": 901,
+      "audit_sha256": "00bba4630d9a447825b6ebd95bbd8a6e561f1a65183b75e722d8c95e1d87892c",
+      "setup_sha256": "fe26cd0a4e5d09cd038a1b0fb4985678773d031654b3f83727efb20094281b41",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-sg-g6-fifo64-s901",
+      "engine": "sg",
+      "arm": "fifo64",
+      "seed": 901,
+      "audit_sha256": "b4425044d39fee596834e16640d663518fe1385f2446cf34157921874e471d25",
+      "setup_sha256": "d9cce7b819831a0aa415cb5227c8a3dc0a4394d23e4ba70618362c32392a1cbf",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "arm": "union64",
+      "seed": 901,
+      "audit_sha256": "1ba4e2359d2d66847f540b202175623665d5eb8a6deef7996dda59dba26f43d0",
+      "setup_sha256": "47bb4686cba4f39bb6d557e013652bffdb273c6bb25b78b10e071250b28cee38",
+      "decision_stats": {
+        "calls": 894624,
+        "cache_hits": 888842,
+        "cache_misses": 5782,
+        "cache_hit_fraction": 0.9935369496011732,
+        "thread_cpu_s": 50.256515795,
+        "summed_call_wall_s": 50.604406044,
+        "max_call_wall_ms": 73.665854
+      }
+    },
+    {
+      "run_id": "v6full1-sg-g6-packing_ready-s901",
+      "engine": "sg",
+      "arm": "packing_ready",
+      "seed": 901,
+      "audit_sha256": "f94bb24d9d3c5bdf5205bf5a7ec3f3c8a31bae9d264600807195422c185c511b",
+      "setup_sha256": "3cfc6c65c9b00cfba50d758c750fd52d3f53a20fabddde7cae8910e40e45be88",
+      "decision_stats": {
+        "calls": 2104620,
+        "cache_hits": 2096980,
+        "cache_misses": 7640,
+        "cache_hit_fraction": 0.996369891001701,
+        "thread_cpu_s": 282.63163744,
+        "summed_call_wall_s": 287.102930255,
+        "max_call_wall_ms": 178.251349
+      }
+    }
+  ],
+  "scope": "Chooser thread CPU/call wall, hits plus misses. Missing counters remain null. Excludes timeout/condition/preparation/HTTP work, not total gateway CPU, hit/miss CPU split, DMA time, wall saved or a prototype speedup."
+}

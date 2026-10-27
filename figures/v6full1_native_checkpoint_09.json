@@ -1,0 +1,32 @@
+{
+  "checkpoint": "results/v3/v6full1_checkpoint_09.json",
+  "checkpoint_sha256": "f230f75665652410414d408900074f39fdd8e653c777487063318d23c9c01be8",
+  "plot_source_sha256": "a17ab53c0ced8c67742589f7959161015215c21e4e2ca8481a9cc98c477cdad3",
+  "audit_setup_sha256": {
+    "v6full1-sg-g6-native_lpm-s901": {
+      "audit_sha256": "f203ac3b8e85b0bb57d5dfe7142932e6a042c6e67cffa89e2ec30add7d97227a",
+      "setup_sha256": "7d4f06bd2bca7f92133b161b97adb2f8277521d61438c6ce95eb3928b34bf92c"
+    },
+    "v6full1-sg-g6-native_dfs-s901": {
+      "audit_sha256": "00bba4630d9a447825b6ebd95bbd8a6e561f1a65183b75e722d8c95e1d87892c",
+      "setup_sha256": "fe26cd0a4e5d09cd038a1b0fb4985678773d031654b3f83727efb20094281b41"
+    },
+    "v6full1-sg-g6-fifo64-s901": {
+      "audit_sha256": "b4425044d39fee596834e16640d663518fe1385f2446cf34157921874e471d25",
+      "setup_sha256": "d9cce7b819831a0aa415cb5227c8a3dc0a4394d23e4ba70618362c32392a1cbf"
+    },
+    "v6full1-sg-g6-union64-s901": {
+      "audit_sha256": "1ba4e2359d2d66847f540b202175623665d5eb8a6deef7996dda59dba26f43d0",
+      "setup_sha256": "47bb4686cba4f39bb6d557e013652bffdb273c6bb25b78b10e071250b28cee38"
+    },
+    "v6full1-sg-g6-packing_ready-s901": {
+      "audit_sha256": "f94bb24d9d3c5bdf5205bf5a7ec3f3c8a31bae9d264600807195422c185c511b",
+      "setup_sha256": "3cfc6c65c9b00cfba50d758c750fd52d3f53a20fabddde7cae8910e40e45be88"
+    }
+  },
+  "figure_sha256": {
+    "figures/v6full1_native_checkpoint_09.png": "62b4386f607d9e4b840075d45a5e687f297749a72682c3ea8288fdbaf166aab9",
+    "figures/v6full1_native_checkpoint_09.svg": "e223c8cded2f86ec21873820c3cd0e3be03d5bf203dbb89d44cb261e21619237"
+  },
+  "scope": "Exact completed native five-arm seed901 subset, no three-seed interval, candidate universal win or quality equivalence. CPU is chooser-only; other baselines null. Stage means add, quantiles do not. Reference assumes full retention, not finite-cache optimality."
+}
