@@ -1,8 +1,8 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 27/10/2026, 00:04 UTC:** Cả bốn cấu hình trên main stack, seed901, đã audit đủ **7.944/7.944 request đo**, không lỗi;240 warmups được tính riêng. Readiness có p95 kém bundle69,198% và kém oldunion36,930%, nên mục tiêu cạnh tranh vẫn chưa đạt. Full native đang chạy; warmup xác nhận host payload48.002.236.416 byte từ metric token capacity. Prototype dùng epoch cache chưa được gắn vào gateway. Toàn bộ160 tests pass; phép đo CPU đã đăng ký nhưng còn chờ, chưa có kết quả speedup. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
+**Cập nhật 27/10/2026, 00:20 UTC:** Cả bốn cấu hình trên main stack, seed901, đã audit đủ **7.944/7.944 request đo**, không lỗi;240 warmups được tính riêng. Readiness có p95 kém bundle69,198% và kém oldunion36,930%, nên mục tiêu cạnh tranh vẫn chưa đạt. Native LPM full cũng vừa audit xong1.986/1.986 requests; tổng study hiện5/30 arms. Cấu hình này xác nhận host payload48.002.236.416 byte trong full audit. Native DFS đang chạy, chưa có paired native result. Prototype dùng epoch cache chưa được gắn vào gateway. Toàn bộ160 tests pass; phép đo CPU đã đăng ký nhưng còn chờ, chưa có kết quả speedup. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
 
-**Đính chính resource:** LMCache lazy heap làm tròn theo64MiB. Ở development, main có16.039.018.496 byte, native có16.000.745.472 byte, chênh0,2392%. Ở full, main heap48.049.946.624 byte và native host payload48.002.236.416 byte đều đã có quan sát, chênh0,099392%. Đây là capacity, không phải RSS hoặc bằng chứng hai allocator có heap bằng nhau. Native capacity mới được quan sát từ warmup; measured full native chưa hoàn tất. Stall V5 đã manual abort, nguyên nhân vẫn chưa được chứng minh.
+**Đính chính resource:** LMCache lazy heap làm tròn theo64MiB. Ở development, main có16.039.018.496 byte, native có16.000.745.472 byte, chênh0,2392%. Ở full, main heap48.049.946.624 byte và native host payload48.002.236.416 byte đều đã có quan sát, chênh0,099392%. Đây là capacity, không phải RSS hoặc bằng chứng hai allocator có heap bằng nhau. Native capacity đã được xác nhận thêm bởi full LPM audit; các native comparisons và replications chưa hoàn tất. Stall V5 đã manual abort, nguyên nhân vẫn chưa được chứng minh.
 
 Đọc cùng [báo cáo V6](V6_DEV_EVIDENCE.md), [research questions](PROPOSAL_LOCOMO_AGENTPERF_V2.md), [kế hoạch nghiên cứu](V3_RESEARCH_PLAN.md) [phạm vi baseline/paper](V3_BASELINES.md) và [claim ledger theo từng RQ](V6_RESEARCH_CLAIMS.md). Kết quả tốt về tail không tự chứng minh tốt về median, decode, chất lượng hay liveness.
 
@@ -1167,6 +1167,21 @@ Answerable F1 của readiness là.315511, so với oldunion.318010 và bundle.31
 
 **Đáp:** Warmup native LPM đã hoàn tất60/60 requests, và cả26 metric samples đều báo325.536 host tokens. Nhân với geometry Qwen3-4B BF16 là147.456 byte/token được48.002.236.416 byte payload capacity.
 
-Main heap đã quan sát48.049.946.624 byte, cao hơn0,099392% do allocator rounding. Không gọi hai con số này bằng nhau hoặc nhầm capacity với RSS. Quan sát warmup cũng chưa chứng minh measured native1.986QA đã hoàn tất.
+Main heap đã quan sát48.049.946.624 byte, cao hơn0,099392% do allocator rounding. Không gọi hai con số này bằng nhau hoặc nhầm capacity với RSS. Riêng quan sát warmup chưa chứng minh measured native1.986QA hoàn tất. Full audit mới tại22.16xác nhận phần đó sau khi run đã kết thúc.
 
 ![Bốn full main arms seed901, giữ các regression](../figures/v6full1_checkpoint_04_v2.png)
+
+
+### 22.16. Đọc baseline native đầu tiên mà không thay missing counter bằng zero
+
+**Hỏi: Native LPM full đã hoàn tất chưa?**
+
+**Đáp:** Đã hoàn tất và audit riêng1.986/1.986 requests, không lỗi;60 warmups tách riêng. TTFT p50/p95/p99 là532,250/957,655/970,424 giây; F1=.318222, category5 đúng223/446 và20 cap hits. Đây là baseline native đầu tiên, chưa có cặp native DFS/gatewayFIFO/union/readiness hoàn chỉnh để kết luận method win. Không lấy latency của hai engine khác nhau để nhận causal policy gain.
+
+**Hỏi: Cuối run có44.609.296 promotion tokens, sao report vẫn để delta null?**
+
+**Đáp:** Vì counter ở đầu cửa sổ không có. Delta cần cả đầu và cuối; không được tự coi endpoint thiếu là0 hoặc lấy số cuối thay delta. Duration cũng có cuối7,110 giây nhưng thiếu đầu, và bản thân counter duration này không phải phép đo DMA hoàn tất. Giữ missing là một phần tính đúng của báo cáo, không phải bỏ qua dữ liệu bất lợi.
+
+**Hỏi: Queue vượt128 gần95% thời gian thì có thể nói mọi decision đều dùng FIFO không?**
+
+**Đáp:** Không. Các samples thấy queue peak255, vượt128 trong94,7103% sample window. Source của implementation có fallback condition liên quan ngưỡng đó, nhưng sample không ghi từng scheduler decision. Vì vậy chỉ nói đã quan sát điều kiện fallback. Native DFS-weight vẫn phải đo như baseline thay thế mạnh, cùng các gateway controls; không chỉ giữ một cửa sổ thuận lợi cho method.

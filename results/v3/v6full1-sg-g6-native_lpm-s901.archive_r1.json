@@ -1,0 +1,71 @@
+{
+  "audit_path": "results/v3/v6full1-sg-g6-native_lpm-s901.full_audit_r1.json",
+  "audit_sha256": "f203ac3b8e85b0bb57d5dfe7142932e6a042c6e67cffa89e2ec30add7d97227a",
+  "files": [
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.jsonl.gz",
+      "sha256": "7d73b42535d54b0c8e5232d0f6cd9455a2538c3164b4135205354c9b192514c0",
+      "archive_sha256": "5b440863868f3041bdb23df02d4201cf5cd13e07f8666af9ce61395b0f32aa9e",
+      "bytes": 50996,
+      "archive_bytes": 9186
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.outputs.jsonl.gz",
+      "sha256": "17d99fc0dd071241e487d835771b6eddec08f1fa30ebf4dcebbb3a9de10a68b6",
+      "archive_sha256": "fc8b38f4e6d14af93e0c0c0ca06d739fbe223b76ea3537a0f71738ed220414b0",
+      "bytes": 11915,
+      "archive_bytes": 2609
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.summary.json.gz",
+      "sha256": "095eb971b9de75c77215c2916e447246bd8a449467550ca1e7ca128c6d7c518d",
+      "archive_sha256": "f3f09fca3840d61e257411e2501901d72a1d9083c96b2f9b512a67c4fc419af8",
+      "bytes": 1461,
+      "archive_bytes": 760
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901-warm.metrics.jsonl.gz",
+      "sha256": "1d3c6a9db6a25e310c882e4441eb9257028a027ceec49e1d556962440f1e3a16",
+      "archive_sha256": "b065247384317599a4abdf45cee5d9f1fd5559055d9d693afc96c5d48ef12260",
+      "bytes": 85315,
+      "archive_bytes": 4636
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.jsonl.gz",
+      "sha256": "8cc2e43c08417a3520373e38dd17c0b7b4ca4ae55669c07686954d6d27a605fa",
+      "archive_sha256": "4234a5c662d046e24754c5badb051f298ed46babe30246aec87397552dddd1b5",
+      "bytes": 1690804,
+      "archive_bytes": 289455
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.outputs.jsonl.gz",
+      "sha256": "3c0c44e41334cf1ce3f7d909c2474326d804f9e43b69abe1adfd8433bfc14be2",
+      "archive_sha256": "e618e89c8410e215db8f0c52f55146590e96d017bea5752f72a51719ee408c0a",
+      "bytes": 387064,
+      "archive_bytes": 64259
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.summary.json.gz",
+      "sha256": "138fedb92736e3f458588fa5d60bfd649c5bcd28df3167244c8d786af4bcaa50",
+      "archive_sha256": "4507cf5d3cf0be6f322320246ade67e79f09f391e82accb8a2b399ac8f25c6b4",
+      "bytes": 1461,
+      "archive_bytes": 766
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.metrics.jsonl.gz",
+      "sha256": "2ffbabbf376488607ebdacf058376a2221fd3adcbcf8024f47cb1a609b1ce991",
+      "archive_sha256": "fd7df75f8d6adef085a9b80fe7af2244cec55397aac08b61a086ab97a00b29f2",
+      "bytes": 4833475,
+      "archive_bytes": 314844
+    }
+  ],
+  "scope": "Lossless private raw archive after complete per-run integrity/quality audit; original uncompressed SHA retained. Not additional benchmark evidence."
+}

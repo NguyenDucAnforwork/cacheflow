@@ -1,5 +1,8 @@
 # V6 development evidence: complete main and native stages
 
+**Full update,2026-10-27 00:20UTC:** NativeLPMseed901has also passed1986/1986requests/R1quality/config/resource/ITL audit and verifiedarchive. Total5/30arms,9930successes0errors +300warmups; checkpoint05reopensallfivearchives. Nativep95=957.655s,F1=.318222,category5=223/446,uncached309413; hostpayload48,002,236,416bytesnowconfirmedinthefullaudit. Promotion/durationwindowdeltasremainnullbecauseinitialendpointsaremissing. NativeDFSisrunning; no nativepairedresultyet. Mainunion/readinessregressionsandunactivatedCPUprototypelimitsremainunchanged. Earlierupdatesbelowarehistorical.
+
+
 **Full update,2026-10-27 00:02UTC:** Allfour mainseed901arms now pass7944/7944measured requests and R1audits/verifiedarchives,240separatewarmups. Readinessp95=468.727s, **+69.198%vsbundle/+36.930%vsoldunion**, despite lower upstream/decode/source work thanoldunion. CapturedchooserCPU323.166s versusold124.810s is not a proved causal allocation of the regression. Firstnativearm is measuring; its completed60-QAwarmup observes325536host tokens,48,002,236,416payloadbytes at pinned144KiB/token. The epoch-cache CPU prototype is unactivated, has13newtests and an untimed15-state smoke; its timing probe is queued after all existing work, with no speedup/GPU result yet. Fullstudy26arms/native/replication stillpending. Earlier updates below are historical.
 
 
@@ -357,3 +360,12 @@ Thirteen newCPU tests replay600randomizedevents perpolicy with repeated polls, c
 ## First full native host-capacity observation
 
 `v6full1_native_host_observation.json` binds the completed nativeLPMwarmup60/60and every one of its26samples: hostcapacity325536tokens ×147456bytes/token =48,002,236,416payloadbytes, matching the frozen expectation. Actual mainheap48,049,946,624bytes exceeds this by47,710,208bytes(.099392%). These are capacity measures, not RSS/overhead equality or a causal cross-stack comparison. Native measured1986QAarm remains incomplete at this observation; this is not native full quality/performance eligibility.
+
+
+## First full native baseline, before any native paired comparison
+
+`v6full1_checkpoint_05.json` independently reopens the nativeLPMseed901archive alongside the four mainarchives. The nativearm has1986/1986successes,60separatewarmups, pinned4B/consistentV5prompt/6GiB GPU/observed48,002,236,416hostpayload/DirectFlashInfer/guard32/graphs/native16sequences, freshengine474287. It records TTFTp50/p95/p99=532.250/957.655/970.424s,makespan1462.180s,F1=.318222,category5=223/446,20cap hits. No within-native full paired candidate/baseline comparison is complete, and raw latency across main/native stacks is not a causal policy effect.
+
+Source accounting matches50,522,325prompt tokens:50,212,912cached+309,413newprefill. The latter is4528above the304,885input-onlyreference, not a finite-cache optimum or FLOP/time bound. NativeITLcoverage is valid, mean18.800ms/update and p95bounded25–30ms. Actualhost325536tokens×147456bytes/token confirms the earlierwarmupcapacity in a complete measuredarm; this is not RSS/allocator-overhead equality.
+
+Hostpromotion/load-backduration initial endpoints are absent, with final44609296tokens/7.110s. The measured-window deltas staynull; neither final value is a substitute for a delta and the duration is not native DMA time. Sampledqueuepeak255 and timeabove1281391.820s/1469.554swindow=94.7103% identify a condition where the pinned LPM implementation can fall back to FIFO. They do not trace exact scheduler decisions. The declared DFS-weight baseline is now executing and remains necessary, as do the matched gatewayFIFO/union/readiness arms. No SOTA, superiority, quality equivalence or complete-study conclusion follows from this baseline.
