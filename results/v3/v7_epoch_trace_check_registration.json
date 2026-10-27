@@ -1,0 +1,37 @@
+{
+  "kind": "real_prefix_ledger_state_validation_not_production_trace_replay",
+  "registered_utc": "2026-10-27T00:43:04.663957+00:00",
+  "after_pid": 475547,
+  "after_create_time": 1793058871.86,
+  "after_argv": [
+    "/venv/main/bin/python",
+    "-u",
+    "scripts/v7_epoch_cpu_probe.py",
+    "execute",
+    "results/v3/v7_epoch_cpu_probe_registration.json"
+  ],
+  "parent_registration_sha256": "d0dfadc3339556dd328479151ae10cb0ae12adc1d9ef783db255a23e1cfcd14a",
+  "freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "target_run_ids": [
+    "v6full1-main-g6-union64-s901",
+    "v6full1-main-g6-packing_ready-s901"
+  ],
+  "event_stride": 16,
+  "stable_polls": 3,
+  "source_sha256": {
+    "/workspace/cacheflow-e1/scripts/v7_epoch_trace_check.py": "5c0b51a19e3c7d72fee4a98466fc36a62bce3bdcb3e2af024208e645c430f175",
+    "src/cacheflow/v7_trace_states.py": "e6ef3793a8fb8daa40788711edbf23b2b9494504a3b45ea36f3f29471a7e9646",
+    "src/cacheflow/v7_epoch_scheduler.py": "b37eb4e8fb27dd2aa28ef654084ac4513759aec74960abf99d98e2c0f5dde580",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v3_memory_scheduler.py": "112fc23c06439a68353e05719a00165afd2b7ee5a9fcb761817c008c3d653e56",
+    "src/cacheflow/scheduler.py": "eeb1dd9812a6a5bdff9cf030994c29c67ff8f017c37f6eeaf734535ee87a895f",
+    "src/cacheflow/prefix.py": "b0f24fd7c950a40033e9a7cb298c641f84c41375389da053f528b870adbee1ad",
+    "src/cacheflow/v3_residency.py": "b0bf862d383c91f2b35db22860eceebc0af8f42a81acd5841ae5dd363b2b1940",
+    "src/cacheflow/v4_prepare.py": "89ba3e68faabd7abeceed855c96cefc407d0d0e1596addb7a6016ec081ea3dcb",
+    "scripts/v3_model.py": "8768571e71c61c635934d51708d9c2add24d19a69809b4d9975b4e0bf84a41e1",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v6_trace_hashes.py": "2942e34c564721ddbaafaf6441b0e4596fb8c37edaca7c347f926c1a4b9e7c00",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201"
+  },
+  "scope": "After exactCPUprobe parent succeeds and services idle, require complete30-armR1terminalaudit, prepare all1986real token/prefix templates and compare original/prototype on the two declared mainseed901ledger-derived histories. Check every recorded dispatch plus every16thlifecycleevent. Missing lock/wakeup/head-ID information remains explicit. No GPU, new inference, E2E/quality speedup or exactproductiondecisionreplay claim."
+}

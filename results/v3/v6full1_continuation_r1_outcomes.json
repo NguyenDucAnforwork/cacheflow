@@ -29,6 +29,24 @@
       "complete": true,
       "audit_sha256": "f203ac3b8e85b0bb57d5dfe7142932e6a042c6e67cffa89e2ec30add7d97227a",
       "archive_sha256": "f622f339cd2c57900a013f9a46f3728e973e3091e685440b3f41e53810108088"
+    },
+    {
+      "run_id": "v6full1-sg-g6-native_dfs-s901",
+      "complete": true,
+      "audit_sha256": "00bba4630d9a447825b6ebd95bbd8a6e561f1a65183b75e722d8c95e1d87892c",
+      "archive_sha256": "e11b745e73a5e3e8a94ae698bcdd3d1492d04861e76b78a89ea2f99589481907"
+    },
+    {
+      "run_id": "v6full1-sg-g6-fifo64-s901",
+      "complete": true,
+      "audit_sha256": "b4425044d39fee596834e16640d663518fe1385f2446cf34157921874e471d25",
+      "archive_sha256": "e05bcaeedae15bd7db9a333e31c69222a63800c856eeef7b1caf1790ebbbb7c2"
+    },
+    {
+      "run_id": "v6full1-sg-g6-union64-s901",
+      "complete": true,
+      "audit_sha256": "1ba4e2359d2d66847f540b202175623665d5eb8a6deef7996dda59dba26f43d0",
+      "archive_sha256": "3157bd1269196ac986a0f4267d327b38a36f37f42392208d4eac8e3b085f026e"
     }
   ]
 }

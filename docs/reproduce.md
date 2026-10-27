@@ -1,5 +1,26 @@
 # CacheFlow: reproducibility log
 
+**Full update,2026-10-27 01:02UTC:** Nativeunionseed901 is now terminal/audited, bringing full study to8/30arms,15,888/15,888measured successes0errors +480separatewarmups. `v6full1_checkpoint_08.json` reopens all eightarchives and preserves8/39primarycontrasts(5main+3native), same1986uniqueQA atonearrivalseed. Unionp50/p95/p99=24.277/57.629/65.174s; versus strongnativeDFS,p95−7.756%,p99−23.963%,completionp95−9.099%,newprefill−7.589%(329941→304901). But median+302.005%,fourconversationp95regress7.226–20.073%,F1−.000054/176hashchanges;category5equal223/446includes2gains/2losses. Mainbundle regressions remain. Nearfullretentionreference304885+16tokensisnotfinitecacheoptimality orproofgateisalwaysnecessary. Chooser894624calls/888842hits/50.257threadCPUs retains the profiling opportunity without an epoch speedup claim. Native readiness is measuring;22fullarms/31primarypairs and replication remain pending. The research objective remains unmet; earlierupdatesarehistorical.
+
+**Current full checkpoint,2026-10-27 00:57UTC:** `results/v3/v6full1_checkpoint_07.json` reopens/verifies seven completed arms,13,902measured requests0errors +420separatewarmups. It remains an interim report, not the30-arm terminal audit. `v6full1_native_baselines_s901.json` adds three separately labelled native baseline-to-baseline contrasts, not additional registered candidate pairs. NativeDFS p95=62.475s versusLPM957.655s/gatewayFIFO403.600s; three-seed replication and native candidate contrasts remain pending. Preserve the observed main candidate regressions.
+
+The following offline commands create new observer artifacts only; choose unused output paths. They do not launch inference, alter the original seal or replace the terminal study:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v6_full_native_baselines.py \
+  results/v3/v6full1_checkpoint_07.json \
+  --output results/v3/v6full1_native_baselines_s901_RECHECK.json
+PYTHONPATH=src /venv/main/bin/python scripts/v6_plot_native_baselines.py \
+  results/v3/v6full1_native_baselines_s901_RECHECK.json \
+  --stem figures/v6full1_native_baselines_s901_RECHECK
+```
+
+The diagnostic checks audit/archive SHA, losslessly expands each completed baseline archive, checks1986request identities/model/prompt/arrival/resource contracts through the existing comparator and retains paired output/official-score differences. It does not compute three-seed intervals or label DFS as our method. The direct-native/gateway contrast changes admission/preparation/transport together. Promotion/duration counters with missing first endpoints remain null.
+
+`scripts/v7_epoch_trace_check.py` is already registered and waiting behind the actual full→input-regeneration→namespace→CPU-probe chain. **Do not launch a duplicate execute process.** The checker pins13sources and requires the actual complete30-arm audit before preparing all1986real prompt/token/prefix templates and comparing two mainseed901ledger-derived histories. Source code,166passingCPUtests and the two-prompt `v7_epoch_real_prefix_smoke.json` do not constitute that absent result. Missing wakeup/head/condition-lock histories prevent exactproductiondecisionreplay; the output always states this. No prototype GPU factory is active.
+
+`v6full1_storage_maintenance_01.json` records removal of one regenerable165MBnpm installer-download cache blob after confirming it was unused and its corresponding installed binaries were present. Free space rose201.6→359.1MiB; benchmark inputs/raw outputs/model/servingcompilecaches remained intact. No historical traces need restoration because of this maintenance. The older resource correction below is historical; full main/native capacities have since been observed as documented in PROGRESS.
+
 > **Measurement correction,15:38UTC:** LMCache default lazy allocator rounds its heap to64MiB. Configured-byte flags match native payload, but actual cross-engine heap parity is not established: current main repeat reports16039018496bytes vs native16000745472bytes (+.2392%). Full main48049946624bytes is a source-derived prediction vs native48002236416 (+.0994%), not yet observed. Within-engine policy arms remain matched; do not make causal cross-engine timing comparisons. See `results/v3/v5_host_allocator_rounding.json`. The sealed plan is preserved with this external correction. The stalled main repeat was manually aborted; no full study has started.
 
 Status: pinned stack installed and development replay verified on `optim`. This file records both the initial host audit and the commands used after setup.

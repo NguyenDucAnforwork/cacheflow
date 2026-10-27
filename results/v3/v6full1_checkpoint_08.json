@@ -1,0 +1,4572 @@
+{
+  "complete": false,
+  "kind": "interim_full_checkpoint_not_terminal_audit",
+  "completed_arms": 8,
+  "measured_requests": 15888,
+  "scheduled_full_arms": 30,
+  "scheduled_full_requests": 59580,
+  "unique_qa": 1986,
+  "separate_completed_warmup_requests": 480,
+  "freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "continuation_registration_sha256": "3cb2807b2f20f495a8fcde3dbb52950aa8398ed30149fe346a965bb5404ca175",
+  "source_sha256": "02c8cf6d4a3c3dc10f1ca22dc18a2f09919e1644cbd104c4cdd1c25ec9345bb0",
+  "outcomes_sha256": "0efae0add98abc3fcfeae5fbca7d0f7d6e21e2b64916cba530dd2ca861ac3adf",
+  "runs": [
+    {
+      "run_id": "v6full1-main-g6-fifo64-s901",
+      "step": {
+        "engine": "main",
+        "arm": "fifo64",
+        "policy": "fifo",
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": null,
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-main-g6-fifo64-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 619639.801486,
+        "arrival_ttft_p95_ms": 1119933.9581545,
+        "arrival_ttft_p99_ms": 1159416.351444,
+        "client_keepalive_connections": 0,
+        "duration_s": 1671.172398767,
+        "engine_pid": 457682,
+        "errors": 0,
+        "finished_utc": "2026-10-26T22:39:24.464464+00:00",
+        "gateway_trace_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-fifo64-s901.gateway.jsonl",
+        "git_sha": "1904cdb1462050552f56f52113d13f64ebecc6e2",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": 457565,
+        "lmcache_version": "0.5.3",
+        "max_model_len": 32768,
+        "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-fifo64-s901.metrics.jsonl",
+        "mode": "B2",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "fifo",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-fifo64-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 1.188387267205515,
+        "run_id": "v6full1-main-g6-fifo64-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-26T22:11:31.201843+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.6.2",
+        "url": "http://127.0.0.1:8100",
+        "vllm_version": "0.22.0"
+      },
+      "quality": {
+        "run_id": "v6full1-main-g6-fifo64-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.31716190473719463,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.25153826425642334
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.17097374046322006
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.11460361893298922
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.4180868307594623
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5
+          }
+        },
+        "output_budget_hits": 20
+      },
+      "secondary": {
+        "run_id": "v6full1-main-g6-fifo64-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "1f1951a0eb946db83c342187bdf9bbdd5265e730ff8a4b9273b23685673ac723",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 620442.8484735,
+          "p95": 1120015.78284675,
+          "p99": 1160207.203632
+        },
+        "after_first_to_close_ms": {
+          "p50": 295.898796,
+          "p95": 1250.72280825,
+          "p99": 1727.2358868500003
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 21.006523983214286,
+          "p95": 63.73229020833334,
+          "p99": 142.14479695000017
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 40957,
+        "workload_output_tokens_per_s": 24.507944261297215,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "host": {
+        "actual_main_heap_bytes": 48049946624,
+        "configured_payload_bytes": 48002236416
+      },
+      "resource": {
+        "samples": 1680,
+        "sample_window_s": 1679.190730321,
+        "first_sample_ns": 153194452326621,
+        "last_sample_ns": 154873643056942,
+        "gpu_time_weighted_util_pct": 94.36689094655925,
+        "gpu_time_weighted_power_w": 246.94389321439633,
+        "vram_peak_mib": 16057.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 1817.6299999999999,
+            "summed_rss_peak_bytes": 3726643200,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 119.16000000000001,
+            "summed_rss_peak_bytes": 49022005248,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:request_prefill_kv_computed_tokens_sum": 601125.0,
+            "vllm:prompt_tokens_source_local_compute_total": 601125.0,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:time_to_first_token_seconds_sum": 104692.95406961441,
+            "vllm:request_queue_time_seconds_sum": 104118.88935789134,
+            "vllm:external_prefix_cache_hits_total": 49331488.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 49331488.0,
+            "vllm:time_to_first_token_seconds_count": 1986.0,
+            "vllm:request_prefill_time_seconds_sum": 299.14118845996563,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 589712.0,
+            "vllm:prompt_tokens_cached_total": 49921200.0,
+            "vllm:request_queue_time_seconds_count": 1986.0,
+            "vllm:prefix_cache_hits_total": 27908656.0,
+            "vllm:prompt_tokens_total": 50522325.0,
+            "vllm:request_prefill_time_seconds_count": 1986.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 39.0,
+            "lmcache_mp_num_chunks_loaded_total": 193071.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 319.63882699324853,
+            "lmcache_mp_l1_write_chunks_total": 969.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 21620.891138301875,
+            "lmcache_mp_l1_evicted_chunks_total": 0.0,
+            "lmcache_mp_l1_read_chunks_total": 194988.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 1960.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "native_itl": {
+        "run_id": "v6full1-main-g6-fifo64-s901",
+        "snapshot_sha256": "e53fbee992a80ee20a984f844ce68e3c365416a84369dcb39f396661b120ffed",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 17.97018565280371,
+        "itl_observations": 38971.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-main-g6-fifo64-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 422818.50338335,
+                "p50": 413032.717473,
+                "p95": 929951.5965165
+              },
+              "gateway_prepare": {
+                "mean": 90.58920603575025,
+                "p50": 84.6471315,
+                "p95": 141.57273
+              },
+              "gateway_admission": {
+                "mean": 146594.1806723404,
+                "p50": 155565.055902,
+                "p95": 172358.100794
+              },
+              "upstream_to_token": {
+                "mean": 52763.99154459164,
+                "p50": 52022.535552,
+                "p95": 60175.1896445
+              },
+              "return_stream": {
+                "mean": 13.95684830715005,
+                "p50": 0.7632605,
+                "p95": 75.18325625
+              },
+              "ttft": {
+                "mean": 622281.2216546249,
+                "p50": 619639.801486,
+                "p95": 1119933.9581545
+              },
+              "worker_queue": {
+                "mean": 5.427042404833837,
+                "p50": 0.1579515,
+                "p95": 53.59545575
+              },
+              "worker_cpu": {
+                "mean": 78.68295340231622,
+                "p50": 79.142493,
+                "p95": 103.003678
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 618526.203491,
+            "p95": 1065287.3733434002,
+            "p99": 1090350.04170998,
+            "max": 1094825.725556
+          },
+          "completion_latency_ms": {
+            "p50": 619425.181757,
+            "p95": 1065342.9520143,
+            "p99": 1090666.9624369799,
+            "max": 1095715.069063
+          },
+          "admission_wait_ms": {
+            "p50": 156363.155015,
+            "p95": 172645.514573,
+            "p99": 175726.75822974,
+            "max": 175861.181861
+          },
+          "preparation_ms": {
+            "p50": 64.722887,
+            "p95": 121.3923704,
+            "p99": 211.9725037400001,
+            "max": 370.081898
+          },
+          "admission_deadline_overrun_requests": 192
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 360183.559749,
+            "p95": 617519.8851976,
+            "p99": 641811.4280292799,
+            "max": 645292.31074
+          },
+          "completion_latency_ms": {
+            "p50": 361362.309151,
+            "p95": 617731.2549010001,
+            "p99": 642091.17865008,
+            "max": 645618.254787
+          },
+          "admission_wait_ms": {
+            "p50": 155544.58289,
+            "p95": 167089.3595412,
+            "p99": 169061.90962972,
+            "max": 169249.309508
+          },
+          "preparation_ms": {
+            "p50": 49.618763,
+            "p95": 99.63293979999999,
+            "p99": 139.33935415999994,
+            "max": 524.544096
+          },
+          "admission_deadline_overrun_requests": 98
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 605257.298363,
+            "p95": 1043641.2973519999,
+            "p99": 1072775.47219956,
+            "max": 1078881.754883
+          },
+          "completion_latency_ms": {
+            "p50": 605604.113633,
+            "p95": 1043776.4400985999,
+            "p99": 1073618.53967772,
+            "max": 1078920.443285
+          },
+          "admission_wait_ms": {
+            "p50": 156303.478436,
+            "p95": 172805.304583,
+            "p99": 175503.29734192,
+            "max": 175597.323481
+          },
+          "preparation_ms": {
+            "p50": 96.423896,
+            "p95": 130.39763879999995,
+            "p99": 176.47800931999996,
+            "max": 661.960471
+          },
+          "admission_deadline_overrun_requests": 186
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 776851.2145479999,
+            "p95": 1159945.78843745,
+            "p99": 1162895.71675983,
+            "max": 1163726.126348
+          },
+          "completion_latency_ms": {
+            "p50": 776971.940779,
+            "p95": 1160778.0192437,
+            "p99": 1163602.14517123,
+            "max": 1165600.398767
+          },
+          "admission_wait_ms": {
+            "p50": 152716.00506,
+            "p95": 171831.12081365,
+            "p99": 174874.28794931003,
+            "max": 175436.061866
+          },
+          "preparation_ms": {
+            "p50": 80.0150665,
+            "p95": 116.32827939999996,
+            "p99": 231.02761637000037,
+            "max": 351.158054
+          },
+          "admission_deadline_overrun_requests": 253
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 732630.292948,
+            "p95": 1143873.6227660498,
+            "p99": 1159243.57601085,
+            "max": 1161330.197047
+          },
+          "completion_latency_ms": {
+            "p50": 733799.804032,
+            "p95": 1143954.77586835,
+            "p99": 1159460.59504289,
+            "max": 1161965.484146
+          },
+          "admission_wait_ms": {
+            "p50": 153682.47090100002,
+            "p95": 172531.7683696,
+            "p99": 174869.07192619,
+            "max": 176342.790466
+          },
+          "preparation_ms": {
+            "p50": 96.5603135,
+            "p95": 122.94824524999999,
+            "p99": 175.69578453000008,
+            "max": 305.558906
+          },
+          "admission_deadline_overrun_requests": 235
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 513722.66118,
+            "p95": 895980.703587,
+            "p99": 926668.4534167701,
+            "max": 933555.830401
+          },
+          "completion_latency_ms": {
+            "p50": 513952.508798,
+            "p95": 896118.97855715,
+            "p99": 926758.2684844,
+            "max": 933619.940008
+          },
+          "admission_wait_ms": {
+            "p50": 156525.941492,
+            "p95": 172504.97932050002,
+            "p99": 175072.93556092,
+            "max": 176660.352947
+          },
+          "preparation_ms": {
+            "p50": 88.6056635,
+            "p95": 169.06798785,
+            "p99": 225.35650637000015,
+            "max": 263.233999
+          },
+          "admission_deadline_overrun_requests": 151
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 600180.7418795,
+            "p95": 1032909.8005780498,
+            "p99": 1063975.27316079,
+            "max": 1069766.630735
+          },
+          "completion_latency_ms": {
+            "p50": 600827.840379,
+            "p95": 1033330.9985455499,
+            "p99": 1064051.7079643,
+            "max": 1069784.651403
+          },
+          "admission_wait_ms": {
+            "p50": 156522.9753665,
+            "p95": 172823.9578755,
+            "p99": 175479.21375537,
+            "max": 177415.870682
+          },
+          "preparation_ms": {
+            "p50": 85.76318950000001,
+            "p95": 157.3441335999999,
+            "p99": 262.36976159,
+            "max": 788.755899
+          },
+          "admission_deadline_overrun_requests": 183
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 727377.679791,
+            "p95": 1139919.6351221001,
+            "p99": 1155243.03779762,
+            "max": 1159190.7629
+          },
+          "completion_latency_ms": {
+            "p50": 727518.163661,
+            "p95": 1140040.2332168,
+            "p99": 1155292.48901994,
+            "max": 1159283.628426
+          },
+          "admission_wait_ms": {
+            "p50": 153804.746428,
+            "p95": 172219.0075024,
+            "p99": 175258.45849604,
+            "max": 176145.46644
+          },
+          "preparation_ms": {
+            "p50": 84.537573,
+            "p95": 162.05504349999998,
+            "p99": 240.83068118000017,
+            "max": 587.395814
+          },
+          "admission_deadline_overrun_requests": 233
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 614645.0221955001,
+            "p95": 1058290.265619,
+            "p99": 1084382.0955444502,
+            "max": 1089781.626493
+          },
+          "completion_latency_ms": {
+            "p50": 614983.710449,
+            "p95": 1058350.521249,
+            "p99": 1084411.45522175,
+            "max": 1089975.305386
+          },
+          "admission_wait_ms": {
+            "p50": 156572.27010899998,
+            "p95": 172171.0930175,
+            "p99": 175372.84580785,
+            "max": 176136.50814
+          },
+          "preparation_ms": {
+            "p50": 67.49593,
+            "p95": 118.57644325,
+            "p99": 229.7727436500015,
+            "max": 399.594495
+          },
+          "admission_deadline_overrun_requests": 190
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 639354.798097,
+            "p95": 1084124.78647885,
+            "p99": 1100542.0036899,
+            "max": 1104549.126659
+          },
+          "completion_latency_ms": {
+            "p50": 639670.0759894999,
+            "p95": 1084168.8903302,
+            "p99": 1100587.07925612,
+            "max": 1104749.448774
+          },
+          "admission_wait_ms": {
+            "p50": 156448.9995185,
+            "p95": 172275.1419638,
+            "p99": 175339.83948733,
+            "max": 175843.573879
+          },
+          "preparation_ms": {
+            "p50": 86.149098,
+            "p95": 124.85496319999997,
+            "p99": 272.59868489999997,
+            "max": 567.127864
+          },
+          "admission_deadline_overrun_requests": 198
+        }
+      ],
+      "audit_sha256": "0a98548fa26312812c42fb3ab2ae1b08b5b0c3374299fae8eec279014c010b1e",
+      "archive_sha256": "ab593310076006d286cef1a44af374a2587721fc92df8b22689b8645d5d45101"
+    },
+    {
+      "run_id": "v6full1-main-g6-bundle16-s901",
+      "step": {
+        "engine": "main",
+        "arm": "bundle16",
+        "policy": "bundle_wave",
+        "cap": 16,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": null,
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-main-g6-bundle16-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 202700.4724945,
+        "arrival_ttft_p95_ms": 277028.21293225,
+        "arrival_ttft_p99_ms": 282468.7424805,
+        "client_keepalive_connections": 0,
+        "duration_s": 792.33661914,
+        "engine_pid": 463703,
+        "errors": 0,
+        "finished_utc": "2026-10-26T23:10:24.544153+00:00",
+        "gateway_trace_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-bundle16-s901.gateway.jsonl",
+        "git_sha": "fb5ce92a76338c785a5290b79530715956bfd52e",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": 463582,
+        "lmcache_version": "0.5.3",
+        "max_model_len": 32768,
+        "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-bundle16-s901.metrics.jsonl",
+        "mode": "B2",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "bundle_wave",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-bundle16-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 2.506510430068976,
+        "run_id": "v6full1-main-g6-bundle16-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-26T22:57:10.127165+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.6.2",
+        "url": "http://127.0.0.1:8100",
+        "vllm_version": "0.22.0"
+      },
+      "quality": {
+        "run_id": "v6full1-main-g6-bundle16-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.31900608273588177,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.2555939773287796
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.1680211194067957
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.11367759292195004
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.4213365488186129
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5044843049327354
+          }
+        },
+        "output_budget_hits": 18
+      },
+      "secondary": {
+        "run_id": "v6full1-main-g6-bundle16-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "70abdb3405c2b1bff79f1c83cc9030ee1548e215cf0def83f013d9ef9e5c209a",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 203814.9467005,
+          "p95": 277191.64513875,
+          "p99": 282999.36244264996
+        },
+        "after_first_to_close_ms": {
+          "p50": 707.3169685,
+          "p95": 2690.91107625,
+          "p99": 3727.020413450002
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 49.821146999999996,
+          "p95": 137.3286865625,
+          "p99": 264.96131035
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 40946,
+        "workload_output_tokens_per_s": 51.67753075005251,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "host": {
+        "actual_main_heap_bytes": 48049946624,
+        "configured_payload_bytes": 48002236416
+      },
+      "resource": {
+        "samples": 801,
+        "sample_window_s": 800.089759203,
+        "first_sample_ns": 155933327575306,
+        "last_sample_ns": 156733417334509,
+        "gpu_time_weighted_util_pct": 82.95877784334367,
+        "gpu_time_weighted_power_w": 268.16943177188284,
+        "vram_peak_mib": 16057.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 930.9199999999998,
+            "summed_rss_peak_bytes": 3677302784,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 84.35000000000001,
+            "summed_rss_peak_bytes": 48951832576,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 930965.0,
+            "vllm:time_to_first_token_seconds_count": 1986.0,
+            "vllm:request_queue_time_seconds_count": 1986.0,
+            "vllm:request_prefill_time_seconds_count": 1986.0,
+            "vllm:time_to_first_token_seconds_sum": 6550.523862361908,
+            "vllm:prefix_cache_hits_total": 75408624.0,
+            "vllm:external_prefix_cache_hits_total": 4017024.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 45574336.0,
+            "vllm:prompt_tokens_total": 50522325.0,
+            "vllm:prompt_tokens_cached_total": 49591360.0,
+            "vllm:request_prefill_time_seconds_sum": 2504.2971968711063,
+            "vllm:request_queue_time_seconds_sum": 1160.3877014555328,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 4017024.0,
+            "vllm:prompt_tokens_source_local_compute_total": 930965.0
+          },
+          "lmcache": {
+            "lmcache_mp_l1_read_chunks_total": 171315.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 4893.431167448562,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 658.0,
+            "lmcache_mp_l1_write_chunks_total": 3524.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 183.0,
+            "lmcache_mp_num_chunks_loaded_total": 15735.0,
+            "lmcache_mp_l1_evicted_chunks_total": 2625.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2018.463736056648
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "native_itl": {
+        "run_id": "v6full1-main-g6-bundle16-s901",
+        "snapshot_sha256": "065fcb91fe2ab55afe41fe9d9eaf32a74e48d314e31100654fb6b0c8f3230ad6",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 52.884714063470774,
+        "itl_observations": 38960.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 25.0,
+            "upper_ms": 50.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 150.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-main-g6-bundle16-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 95486.58486654733,
+                "p50": 99291.0584125,
+                "p95": 198311.82314649998
+              },
+              "gateway_prepare": {
+                "mean": 222.4970159264854,
+                "p50": 140.8856255,
+                "p95": 646.7504660000001
+              },
+              "gateway_admission": {
+                "mean": 87456.79085338772,
+                "p50": 85103.2549995,
+                "p95": 132324.3084535
+              },
+              "upstream_to_token": {
+                "mean": 3599.9181442240683,
+                "p50": 2558.7627735,
+                "p95": 8519.948964
+              },
+              "return_stream": {
+                "mean": 4.701161920443102,
+                "p50": 0.5338205,
+                "p95": 29.80654625
+              },
+              "ttft": {
+                "mean": 186770.49204200605,
+                "p50": 202700.4724945,
+                "p95": 277028.21293225
+              },
+              "worker_queue": {
+                "mean": 137.29427260372609,
+                "p50": 54.904354,
+                "p95": 554.64481675
+              },
+              "worker_cpu": {
+                "mean": 74.63263176686807,
+                "p50": 75.4385075,
+                "p95": 97.39502
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 189138.744031,
+            "p95": 264947.54366489995,
+            "p99": 267441.13003782,
+            "max": 268307.987885
+          },
+          "completion_latency_ms": {
+            "p50": 191451.787709,
+            "p95": 265283.5400525,
+            "p99": 268333.21609732,
+            "max": 269806.505598
+          },
+          "admission_wait_ms": {
+            "p50": 81780.996256,
+            "p95": 117500.9967162,
+            "p99": 125019.83231600001,
+            "max": 129701.037716
+          },
+          "preparation_ms": {
+            "p50": 101.984543,
+            "p95": 551.6898470999996,
+            "p99": 1000.21141792,
+            "max": 1111.816993
+          },
+          "admission_deadline_overrun_requests": 197
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 132936.662792,
+            "p95": 209791.8501026,
+            "p99": 215983.5433354,
+            "max": 218537.333776
+          },
+          "completion_latency_ms": {
+            "p50": 134009.313912,
+            "p95": 210089.0640352,
+            "p99": 216103.50433308,
+            "max": 218672.4118
+          },
+          "admission_wait_ms": {
+            "p50": 97004.621597,
+            "p95": 130983.4572178,
+            "p99": 133613.99551524,
+            "max": 134558.52823
+          },
+          "preparation_ms": {
+            "p50": 65.858755,
+            "p95": 325.3642641999999,
+            "p99": 651.7438166799986,
+            "max": 1155.35709
+          },
+          "admission_deadline_overrun_requests": 103
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 210647.9759,
+            "p95": 272544.1022792,
+            "p99": 277861.5524906,
+            "max": 279588.162852
+          },
+          "completion_latency_ms": {
+            "p50": 211809.450561,
+            "p95": 273155.5514176,
+            "p99": 278368.20031452,
+            "max": 280024.60617
+          },
+          "admission_wait_ms": {
+            "p50": 97047.785689,
+            "p95": 136392.49730659998,
+            "p99": 143488.87267995992,
+            "max": 146890.681543
+          },
+          "preparation_ms": {
+            "p50": 121.427987,
+            "p95": 605.2652253999993,
+            "p99": 960.2858767599995,
+            "max": 1071.462343
+          },
+          "admission_deadline_overrun_requests": 191
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 225581.431214,
+            "p95": 281087.1397102,
+            "p99": 283731.31793683,
+            "max": 284141.505712
+          },
+          "completion_latency_ms": {
+            "p50": 226680.1004635,
+            "p95": 281695.02973400004,
+            "p99": 284300.01403391,
+            "max": 285974.547009
+          },
+          "admission_wait_ms": {
+            "p50": 81610.5525885,
+            "p95": 133091.43939415,
+            "p99": 139973.94845126005,
+            "max": 143102.887966
+          },
+          "preparation_ms": {
+            "p50": 156.7414135,
+            "p95": 611.1064868499997,
+            "p99": 814.1238316400011,
+            "max": 1028.651914
+          },
+          "admission_deadline_overrun_requests": 258
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 222403.185454,
+            "p95": 281284.9873889,
+            "p99": 283565.33063669,
+            "max": 284173.348969
+          },
+          "completion_latency_ms": {
+            "p50": 223247.965111,
+            "p95": 281421.05321745,
+            "p99": 283963.27325171,
+            "max": 285694.184174
+          },
+          "admission_wait_ms": {
+            "p50": 87368.32736200001,
+            "p95": 138239.43192975,
+            "p99": 145078.67227621,
+            "max": 148556.547464
+          },
+          "preparation_ms": {
+            "p50": 156.08960050000002,
+            "p95": 655.89278375,
+            "p99": 898.0550021600002,
+            "max": 1132.998049
+          },
+          "admission_deadline_overrun_requests": 240
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 196967.769024,
+            "p95": 255004.05917035002,
+            "p99": 266013.20929639,
+            "max": 268463.904545
+          },
+          "completion_latency_ms": {
+            "p50": 198493.749176,
+            "p95": 255890.28200315003,
+            "p99": 266993.18262044,
+            "max": 268662.093849
+          },
+          "admission_wait_ms": {
+            "p50": 103480.994053,
+            "p95": 148418.2316545,
+            "p99": 154870.72279964,
+            "max": 158518.002151
+          },
+          "preparation_ms": {
+            "p50": 166.206724,
+            "p95": 721.27300075,
+            "p99": 963.6936221900004,
+            "max": 1209.015886
+          },
+          "admission_deadline_overrun_requests": 156
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 169139.47769700002,
+            "p95": 255732.3051251,
+            "p99": 263182.93898117996,
+            "max": 265827.482515
+          },
+          "completion_latency_ms": {
+            "p50": 169609.13431300002,
+            "p95": 256278.72451805,
+            "p99": 263581.39327933994,
+            "max": 266849.258377
+          },
+          "admission_wait_ms": {
+            "p50": 68178.18741849999,
+            "p95": 99204.90829895,
+            "p99": 105982.63297851996,
+            "max": 111134.128683
+          },
+          "preparation_ms": {
+            "p50": 172.59497149999999,
+            "p95": 700.1248640999986,
+            "p99": 928.641941119999,
+            "max": 1287.250685
+          },
+          "admission_deadline_overrun_requests": 189
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 233228.778911,
+            "p95": 277049.9776931,
+            "p99": 281438.49632636,
+            "max": 282390.467252
+          },
+          "completion_latency_ms": {
+            "p50": 235301.535289,
+            "p95": 277200.1751785,
+            "p99": 282067.45606206,
+            "max": 283966.387327
+          },
+          "admission_wait_ms": {
+            "p50": 78852.206358,
+            "p95": 124073.9276231,
+            "p99": 135742.36249616003,
+            "max": 137937.21722
+          },
+          "preparation_ms": {
+            "p50": 174.131662,
+            "p95": 726.0370195999998,
+            "p99": 1003.3433450800005,
+            "max": 1363.310374
+          },
+          "admission_deadline_overrun_requests": 238
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 184706.121268,
+            "p95": 267126.33491925,
+            "p99": 276501.28830190003,
+            "max": 277884.898193
+          },
+          "completion_latency_ms": {
+            "p50": 185807.0292615,
+            "p95": 267475.21328,
+            "p99": 277165.80739985,
+            "max": 278376.460012
+          },
+          "admission_wait_ms": {
+            "p50": 75093.31172299999,
+            "p95": 106522.64737825,
+            "p99": 113448.8138821,
+            "max": 115178.262952
+          },
+          "preparation_ms": {
+            "p50": 121.85259450000001,
+            "p95": 580.112637,
+            "p99": 960.5297782000002,
+            "max": 1398.837801
+          },
+          "admission_deadline_overrun_requests": 195
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 217637.659505,
+            "p95": 280394.20319855,
+            "p99": 283021.76985563,
+            "max": 284677.00662
+          },
+          "completion_latency_ms": {
+            "p50": 219353.9071705,
+            "p95": 280580.06146399997,
+            "p99": 284170.27633548,
+            "max": 285401.590995
+          },
+          "admission_wait_ms": {
+            "p50": 92410.5937465,
+            "p95": 129288.822533,
+            "p99": 139127.87788814,
+            "max": 142752.111981
+          },
+          "preparation_ms": {
+            "p50": 139.5239795,
+            "p95": 687.6164150999998,
+            "p99": 1060.83859403,
+            "max": 1382.523891
+          },
+          "admission_deadline_overrun_requests": 203
+        }
+      ],
+      "audit_sha256": "3193916f9ada5f422fa262b8f56caa2de7e0b7f6fd28dda09da9f29445a28eab",
+      "archive_sha256": "7074f6546ae73caabfbc7ffa78e2813dc6c99f44c0138a73b5a446fa151b7f98"
+    },
+    {
+      "run_id": "v6full1-main-g6-union64-s901",
+      "step": {
+        "engine": "main",
+        "arm": "union64",
+        "policy": "packing_reuse",
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": null,
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-main-g6-union64-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 225031.0708275,
+        "arrival_ttft_p95_ms": 342311.80854225,
+        "arrival_ttft_p99_ms": 345373.26579035,
+        "client_keepalive_connections": 0,
+        "duration_s": 853.818529415,
+        "engine_pid": 467033,
+        "errors": 0,
+        "finished_utc": "2026-10-26T23:28:39.684425+00:00",
+        "gateway_trace_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-union64-s901.gateway.jsonl",
+        "git_sha": "2653392c9d5804ca6c0c133067fc2d3721d16dbb",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": 466911,
+        "lmcache_version": "0.5.3",
+        "max_model_len": 32768,
+        "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-union64-s901.metrics.jsonl",
+        "mode": "B2",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "packing_reuse",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-union64-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 2.3260211995641775,
+        "run_id": "v6full1-main-g6-union64-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-26T23:14:23.782821+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.6.2",
+        "url": "http://127.0.0.1:8100",
+        "vllm_version": "0.22.0"
+      },
+      "quality": {
+        "run_id": "v6full1-main-g6-union64-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.3180102993148192,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.25611615294259243
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.16761404082962128
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.11404805723772685
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.4194511120260171
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5
+          }
+        },
+        "output_budget_hits": 16
+      },
+      "secondary": {
+        "run_id": "v6full1-main-g6-union64-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "854fd1430b7da0a98039491938adc6642798540dee8a27bd0a141607ea4157f9",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 225990.9318,
+          "p95": 342668.32715375,
+          "p99": 345830.31259895
+        },
+        "after_first_to_close_ms": {
+          "p50": 561.190241,
+          "p95": 2132.729312,
+          "p99": 2730.49449195
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 39.06685820833333,
+          "p95": 105.1783103875,
+          "p99": 179.03820833333336
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 40788,
+        "workload_output_tokens_per_s": 47.771275270807486,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "host": {
+        "actual_main_heap_bytes": 48049946624,
+        "configured_payload_bytes": 48002236416
+      },
+      "resource": {
+        "samples": 862,
+        "sample_window_s": 861.12396917,
+        "first_sample_ns": 156967299093904,
+        "last_sample_ns": 157828423063074,
+        "gpu_time_weighted_util_pct": 75.24756521055322,
+        "gpu_time_weighted_power_w": 256.60429671460304,
+        "vram_peak_mib": 16057.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 941.57,
+            "summed_rss_peak_bytes": 3701145600,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 84.72,
+            "summed_rss_peak_bytes": 49022509056,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:time_to_first_token_seconds_sum": 4301.082759141922,
+            "vllm:request_queue_time_seconds_sum": 1163.2672611475573,
+            "vllm:prefix_cache_hits_total": 49151600.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 43316096.0,
+            "vllm:time_to_first_token_seconds_count": 1986.0,
+            "vllm:prompt_tokens_total": 50522325.0,
+            "vllm:request_queue_time_seconds_count": 1986.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 674901.0,
+            "vllm:request_prefill_time_seconds_count": 1986.0,
+            "vllm:prompt_tokens_source_local_compute_total": 674901.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 6531328.0,
+            "vllm:prompt_tokens_cached_total": 49847424.0,
+            "vllm:request_prefill_time_seconds_sum": 1305.0353763053718,
+            "vllm:external_prefix_cache_hits_total": 6531328.0,
+            "vllm:num_preemptions_total": 0.0
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 1829.0,
+            "lmcache_mp_l1_write_chunks_total": 2723.0,
+            "lmcache_mp_num_chunks_loaded_total": 25571.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 291.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 4610.156995791048,
+            "lmcache_mp_l1_read_chunks_total": 187366.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 3127.1312915099006,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 632.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "native_itl": {
+        "run_id": "v6full1-main-g6-union64-s901",
+        "snapshot_sha256": "f30939a44ce599593b32f9240f3f3a2a943b8ba7367c66855816b72a193a8e16",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 40.0146075271591,
+        "itl_observations": 38802.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 25.0,
+            "upper_ms": 50.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 50.0,
+            "upper_ms": 75.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 150.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-main-g6-union64-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 119228.92258835297,
+                "p50": 114838.1688865,
+                "p95": 263041.31319225003
+              },
+              "gateway_prepare": {
+                "mean": 191.48652378247735,
+                "p50": 135.58252149999998,
+                "p95": 523.0971615
+              },
+              "gateway_admission": {
+                "mean": 97554.98649488621,
+                "p50": 99910.11319199999,
+                "p95": 123177.42446225
+              },
+              "upstream_to_token": {
+                "mean": 2447.4379122749247,
+                "p50": 1954.518839,
+                "p95": 6926.8005220000005
+              },
+              "return_stream": {
+                "mean": 6.309551126384693,
+                "p50": 0.495046,
+                "p95": 40.3307915
+              },
+              "ttft": {
+                "mean": 219429.14307042296,
+                "p50": 225031.0708275,
+                "p95": 342311.80854225
+              },
+              "worker_queue": {
+                "mean": 93.55763674018127,
+                "p50": 16.19548,
+                "p95": 405.94496449999997
+              },
+              "worker_cpu": {
+                "mean": 82.37190645367573,
+                "p50": 83.37576150000001,
+                "p95": 107.97458625
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 230765.471019,
+            "p95": 340451.8951066,
+            "p99": 344998.82117124,
+            "max": 347845.231923
+          },
+          "completion_latency_ms": {
+            "p50": 232428.096283,
+            "p95": 340871.0700382,
+            "p99": 345079.52078892005,
+            "max": 348238.422989
+          },
+          "admission_wait_ms": {
+            "p50": 107712.539692,
+            "p95": 126767.3498173,
+            "p99": 129765.67626252,
+            "max": 132589.40522
+          },
+          "preparation_ms": {
+            "p50": 100.19036,
+            "p95": 360.52394169999997,
+            "p99": 499.93382246000016,
+            "max": 579.783204
+          },
+          "admission_deadline_overrun_requests": 198
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 135389.317108,
+            "p95": 214089.6818834,
+            "p99": 222617.7599874,
+            "max": 225093.082562
+          },
+          "completion_latency_ms": {
+            "p50": 136501.914065,
+            "p95": 214874.32743259997,
+            "p99": 223119.87577391998,
+            "max": 226039.563791
+          },
+          "admission_wait_ms": {
+            "p50": 94208.260558,
+            "p95": 107727.6961242,
+            "p99": 111236.57511991999,
+            "max": 112202.354899
+          },
+          "preparation_ms": {
+            "p50": 64.816189,
+            "p95": 233.67989199999997,
+            "p99": 448.30663423999977,
+            "max": 507.232265
+          },
+          "admission_deadline_overrun_requests": 104
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 219760.493901,
+            "p95": 333398.28440859995,
+            "p99": 339911.83835308,
+            "max": 344216.808897
+          },
+          "completion_latency_ms": {
+            "p50": 220832.019863,
+            "p95": 333735.83681639994,
+            "p99": 340647.8722614,
+            "max": 344315.64628
+          },
+          "admission_wait_ms": {
+            "p50": 97371.202786,
+            "p95": 121433.23507039998,
+            "p99": 125702.31073696,
+            "max": 127024.224639
+          },
+          "preparation_ms": {
+            "p50": 143.95861,
+            "p95": 492.3606296,
+            "p99": 641.8526032799995,
+            "max": 777.481303
+          },
+          "admission_deadline_overrun_requests": 192
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 269572.3341025,
+            "p95": 344659.8793822,
+            "p99": 345727.25293392997,
+            "max": 347096.610149
+          },
+          "completion_latency_ms": {
+            "p50": 270129.30294850003,
+            "p95": 345018.0044813,
+            "p99": 346371.02930457,
+            "max": 348341.397106
+          },
+          "admission_wait_ms": {
+            "p50": 95393.69080750001,
+            "p95": 122636.66062639999,
+            "p99": 127516.04339493,
+            "max": 130196.821353
+          },
+          "preparation_ms": {
+            "p50": 139.9361285,
+            "p95": 553.5030828999999,
+            "p99": 730.0160259500008,
+            "max": 836.022804
+          },
+          "admission_deadline_overrun_requests": 259
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 257368.60655849997,
+            "p95": 343416.20856379997,
+            "p99": 346085.97160623,
+            "max": 346470.125244
+          },
+          "completion_latency_ms": {
+            "p50": 259353.0430835,
+            "p95": 343953.44130084995,
+            "p99": 346437.29501323,
+            "max": 347900.243558
+          },
+          "admission_wait_ms": {
+            "p50": 94150.6308465,
+            "p95": 121423.51041255,
+            "p99": 125449.54093131001,
+            "max": 134934.097835
+          },
+          "preparation_ms": {
+            "p50": 158.1349555,
+            "p95": 560.9328916999999,
+            "p99": 714.2513445800001,
+            "max": 803.651394
+          },
+          "admission_deadline_overrun_requests": 241
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 193095.074382,
+            "p95": 291475.9751203,
+            "p99": 319360.95399942,
+            "max": 323097.885661
+          },
+          "completion_latency_ms": {
+            "p50": 193936.95967050001,
+            "p95": 291877.83168125,
+            "p99": 319643.94848995,
+            "max": 323194.865644
+          },
+          "admission_wait_ms": {
+            "p50": 101098.142965,
+            "p95": 122385.21926725001,
+            "p99": 127142.67595024001,
+            "max": 127675.207873
+          },
+          "preparation_ms": {
+            "p50": 167.93163900000002,
+            "p95": 602.4899738,
+            "p99": 707.1749853300004,
+            "max": 801.467523
+          },
+          "admission_deadline_overrun_requests": 157
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 222901.912445,
+            "p95": 329327.77395294997,
+            "p99": 342254.24913628993,
+            "max": 345363.44087
+          },
+          "completion_latency_ms": {
+            "p50": 224278.534141,
+            "p95": 330126.52211774996,
+            "p99": 342746.77977862995,
+            "max": 345577.377815
+          },
+          "admission_wait_ms": {
+            "p50": 103272.82078750001,
+            "p95": 124933.42541384998,
+            "p99": 128072.21482169999,
+            "max": 130420.865185
+          },
+          "preparation_ms": {
+            "p50": 137.97700450000002,
+            "p95": 560.7215034999996,
+            "p99": 764.9147987999994,
+            "max": 860.049607
+          },
+          "admission_deadline_overrun_requests": 189
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 257081.619374,
+            "p95": 343601.4818056,
+            "p99": 345933.6200507,
+            "max": 347533.937879
+          },
+          "completion_latency_ms": {
+            "p50": 257851.85095,
+            "p95": 343954.1493764,
+            "p99": 346417.49430284,
+            "max": 347571.049768
+          },
+          "admission_wait_ms": {
+            "p50": 96750.197818,
+            "p95": 122686.51550729999,
+            "p99": 127634.02529416,
+            "max": 136910.920931
+          },
+          "preparation_ms": {
+            "p50": 144.329911,
+            "p95": 573.0500097999999,
+            "p99": 826.4093417600001,
+            "max": 937.724924
+          },
+          "admission_deadline_overrun_requests": 238
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 227359.097899,
+            "p95": 338659.7801885,
+            "p99": 345083.4576193,
+            "max": 347255.327929
+          },
+          "completion_latency_ms": {
+            "p50": 227869.1626755,
+            "p95": 338951.74066275,
+            "p99": 345283.94169045,
+            "max": 347581.133489
+          },
+          "admission_wait_ms": {
+            "p50": 107553.251974,
+            "p95": 124218.35579975,
+            "p99": 128627.01788775001,
+            "max": 131622.892129
+          },
+          "preparation_ms": {
+            "p50": 101.19946350000001,
+            "p95": 358.14448675,
+            "p99": 576.5312425000013,
+            "max": 899.375934
+          },
+          "admission_deadline_overrun_requests": 195
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 222261.639214,
+            "p95": 338895.1157211,
+            "p99": 345481.98855745,
+            "max": 346602.187367
+          },
+          "completion_latency_ms": {
+            "p50": 223030.60217799997,
+            "p95": 339077.9712361,
+            "p99": 345862.64142899,
+            "max": 346634.273277
+          },
+          "admission_wait_ms": {
+            "p50": 99378.9909755,
+            "p95": 120706.05664835,
+            "p99": 125754.44496096,
+            "max": 128342.894531
+          },
+          "preparation_ms": {
+            "p50": 150.666211,
+            "p95": 553.1356824999999,
+            "p99": 717.3655601099999,
+            "max": 985.766904
+          },
+          "admission_deadline_overrun_requests": 203
+        }
+      ],
+      "audit_sha256": "550917c67bb6f6e0cb7d8ca565d4d1ff0f7cb90740dc485ba1adc7830ae13dc5",
+      "archive_sha256": "dbd1ee833accb62cb908b1f619b0c3568450eababb9762a4d45acac948893eb4"
+    },
+    {
+      "run_id": "v6full1-main-g6-packing_ready-s901",
+      "step": {
+        "engine": "main",
+        "arm": "packing_ready",
+        "policy": "packing_ready",
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": null,
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-main-g6-packing_ready-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 302152.3090125,
+        "arrival_ttft_p95_ms": 468727.25627325,
+        "arrival_ttft_p99_ms": 476091.83531334996,
+        "client_keepalive_connections": 0,
+        "duration_s": 987.04856215,
+        "engine_pid": 470881,
+        "errors": 0,
+        "finished_utc": "2026-10-26T23:49:07.281386+00:00",
+        "gateway_trace_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-packing_ready-s901.gateway.jsonl",
+        "git_sha": "1aa74a11bfbdcb12544813d402a8fc4093c77d9b",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": 470702,
+        "lmcache_version": "0.5.3",
+        "max_model_len": 32768,
+        "metrics_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-packing_ready-s901.metrics.jsonl",
+        "mode": "B2",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "packing_ready",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "/workspace/cacheflow-e1/results/v3/raw/v6full1-main-g6-packing_ready-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 2.01205905783812,
+        "run_id": "v6full1-main-g6-packing_ready-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-26T23:32:38.188725+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.6.2",
+        "url": "http://127.0.0.1:8100",
+        "vllm_version": "0.22.0"
+      },
+      "quality": {
+        "run_id": "v6full1-main-g6-packing_ready-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.31551113416379123,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.24838317663322196
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.1679679626948524
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.11342106431636607
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.41740422425951385
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5
+          }
+        },
+        "output_budget_hits": 20
+      },
+      "secondary": {
+        "run_id": "v6full1-main-g6-packing_ready-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "3def0132a24ed31d18d892a73f8707f0c2695005e038569280e67383eea62aa1",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 303053.236946,
+          "p95": 468876.256168,
+          "p99": 476548.26167315
+        },
+        "after_first_to_close_ms": {
+          "p50": 359.807694,
+          "p95": 1864.11447875,
+          "p99": 2796.250395350003
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 29.909888757246378,
+          "p95": 81.32070075,
+          "p99": 158.1972986166675
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 41281,
+        "workload_output_tokens_per_s": 41.822663628708675,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_mean_ms": null,
+        "native_itl_scope": "The frozen main sampler did not retain native ITL counters; no retrospective value invented."
+      },
+      "host": {
+        "actual_main_heap_bytes": 48049946624,
+        "configured_payload_bytes": 48002236416
+      },
+      "resource": {
+        "samples": 995,
+        "sample_window_s": 994.111264796,
+        "first_sample_ns": 158061664934810,
+        "last_sample_ns": 159055776199606,
+        "gpu_time_weighted_util_pct": 84.39939246467294,
+        "gpu_time_weighted_power_w": 269.6002409896192,
+        "vram_peak_mib": 16057.0,
+        "process": {
+          "vllm": {
+            "sampled_cpu_seconds": 1128.2399999999998,
+            "summed_rss_peak_bytes": 3654201344,
+            "processes_peak": 3
+          },
+          "lmcache": {
+            "sampled_cpu_seconds": 92.78999999999999,
+            "summed_rss_peak_bytes": 49001328640,
+            "processes_peak": 1
+          }
+        },
+        "strict_counter_deltas": {
+          "vllm": {
+            "vllm:prefix_cache_hits_total": 43870560.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 43862592.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 6050368.0,
+            "vllm:prompt_tokens_source_local_compute_total": 609365.0,
+            "vllm:request_prefill_time_seconds_count": 1986.0,
+            "vllm:request_queue_time_seconds_sum": 365.64194936089916,
+            "vllm:time_to_first_token_seconds_sum": 933.2799475193024,
+            "vllm:prompt_tokens_total": 50522325.0,
+            "vllm:request_queue_time_seconds_count": 1986.0,
+            "vllm:prompt_tokens_cached_total": 49912960.0,
+            "vllm:time_to_first_token_seconds_count": 1986.0,
+            "vllm:request_prefill_time_seconds_sum": 329.98564831286785,
+            "vllm:request_prefill_kv_computed_tokens_sum": 609365.0,
+            "vllm:external_prefix_cache_hits_total": 6050368.0,
+            "vllm:num_preemptions_total": 0.0
+          },
+          "lmcache": {
+            "lmcache_mp_l1_evicted_chunks_total": 1834.0,
+            "lmcache_mp_l1_write_chunks_total": 2724.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 261.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 663.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2781.5157390721615,
+            "lmcache_mp_l1_read_chunks_total": 192962.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 4840.288279584187,
+            "lmcache_mp_num_chunks_loaded_total": 23684.0
+          }
+        },
+        "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+      },
+      "native_itl": {
+        "run_id": "v6full1-main-g6-packing_ready-s901",
+        "snapshot_sha256": "57e6c1ca04f2f9577ffad980cc27393cc7b4700809695f41866f9374586e45f8",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 27.177868289017702,
+        "itl_observations": 39295.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 10.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 50.0,
+            "upper_ms": 75.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 75.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-main-g6-packing_ready-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 169370.51501136305,
+                "p50": 172482.2536905,
+                "p95": 368737.21911
+              },
+              "gateway_prepare": {
+                "mean": 139.28545150704934,
+                "p50": 108.72491400000001,
+                "p95": 309.6006725
+              },
+              "gateway_admission": {
+                "mean": 115649.83674079507,
+                "p50": 120128.10683050001,
+                "p95": 159213.3632905
+              },
+              "upstream_to_token": {
+                "mean": 629.9967771908358,
+                "p50": 370.49247749999995,
+                "p95": 837.918592
+              },
+              "return_stream": {
+                "mean": 12.098848146022155,
+                "p50": 0.5501545,
+                "p95": 69.35330675
+              },
+              "ttft": {
+                "mean": 285801.732829002,
+                "p50": 302152.3090125,
+                "p95": 468727.25627325
+              },
+              "worker_queue": {
+                "mean": 30.75612717573011,
+                "p50": 0.20075549999999998,
+                "p95": 147.20438475
+              },
+              "worker_cpu": {
+                "mean": 84.32447163544813,
+                "p50": 84.051766,
+                "p95": 113.992504
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 314793.137005,
+            "p95": 458691.1932217,
+            "p99": 464273.33350392,
+            "max": 465922.611596
+          },
+          "completion_latency_ms": {
+            "p50": 315353.684166,
+            "p95": 459214.7928839,
+            "p99": 465155.68526584,
+            "max": 466451.728683
+          },
+          "admission_wait_ms": {
+            "p50": 129512.797784,
+            "p95": 161853.2947069,
+            "p99": 174963.38453832,
+            "max": 179317.507119
+          },
+          "preparation_ms": {
+            "p50": 78.645986,
+            "p95": 242.44077419999996,
+            "p99": 342.96258448,
+            "max": 596.691733
+          },
+          "admission_deadline_overrun_requests": 198
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 56884.836264,
+            "p95": 176081.555497,
+            "p99": 181038.8550358,
+            "max": 184179.160878
+          },
+          "completion_latency_ms": {
+            "p50": 58325.591775,
+            "p95": 176325.639122,
+            "p99": 181286.12117212,
+            "max": 185647.168578
+          },
+          "admission_wait_ms": {
+            "p50": 4246.497846,
+            "p95": 51606.68736359999,
+            "p99": 58654.02474879998,
+            "max": 60993.386077
+          },
+          "preparation_ms": {
+            "p50": 60.610251,
+            "p95": 205.63797319999998,
+            "p99": 332.33248675999954,
+            "max": 366.629484
+          },
+          "admission_deadline_overrun_requests": 104
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 295148.789893,
+            "p95": 443724.18897899997,
+            "p99": 458231.54098272,
+            "max": 460747.357424
+          },
+          "completion_latency_ms": {
+            "p50": 295507.228746,
+            "p95": 443856.0842322,
+            "p99": 458338.50498672,
+            "max": 460841.298932
+          },
+          "admission_wait_ms": {
+            "p50": 120765.544045,
+            "p95": 158523.44267859997,
+            "p99": 164850.5370782,
+            "max": 166402.002853
+          },
+          "preparation_ms": {
+            "p50": 121.297851,
+            "p95": 278.36523719999946,
+            "p99": 532.9140059199965,
+            "max": 767.399603
+          },
+          "admission_deadline_overrun_requests": 192
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 353416.4822345,
+            "p95": 476262.97364640003,
+            "p99": 477050.58658886,
+            "max": 477427.614366
+          },
+          "completion_latency_ms": {
+            "p50": 354156.8577545,
+            "p95": 476588.86209305,
+            "p99": 477504.35706776,
+            "max": 477987.114294
+          },
+          "admission_wait_ms": {
+            "p50": 110460.569835,
+            "p95": 156701.82054244998,
+            "p99": 165868.39834515,
+            "max": 178278.034635
+          },
+          "preparation_ms": {
+            "p50": 107.5903745,
+            "p95": 300.7421795499999,
+            "p99": 576.7562278300012,
+            "max": 842.200836
+          },
+          "admission_deadline_overrun_requests": 259
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 339550.5599245,
+            "p95": 473521.31523405,
+            "p99": 476590.84471295,
+            "max": 478202.636284
+          },
+          "completion_latency_ms": {
+            "p50": 341888.843919,
+            "p95": 473713.80669925,
+            "p99": 477121.97715687,
+            "max": 478242.764408
+          },
+          "admission_wait_ms": {
+            "p50": 115171.117413,
+            "p95": 157078.95332164995,
+            "p99": 167472.69940524,
+            "max": 173569.195867
+          },
+          "preparation_ms": {
+            "p50": 124.6105975,
+            "p95": 339.7025410999996,
+            "p99": 435.4976279900002,
+            "max": 687.190093
+          },
+          "admission_deadline_overrun_requests": 241
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 272951.30849950004,
+            "p95": 399360.1081153,
+            "p99": 414066.9197739101,
+            "max": 420793.169318
+          },
+          "completion_latency_ms": {
+            "p50": 273468.3417,
+            "p95": 400683.58949405,
+            "p99": 414629.38343886007,
+            "max": 420959.778472
+          },
+          "admission_wait_ms": {
+            "p50": 128146.9243445,
+            "p95": 161813.2636825,
+            "p99": 171205.29385673002,
+            "max": 176106.257695
+          },
+          "preparation_ms": {
+            "p50": 121.8449405,
+            "p95": 338.6048290000001,
+            "p99": 584.0436394300009,
+            "max": 767.870123
+          },
+          "admission_deadline_overrun_requests": 157
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 293587.659626,
+            "p95": 445337.46246149996,
+            "p99": 455468.83464855986,
+            "max": 465246.483867
+          },
+          "completion_latency_ms": {
+            "p50": 293880.7609895,
+            "p95": 445479.79948735,
+            "p99": 455768.1850293799,
+            "max": 465540.747406
+          },
+          "admission_wait_ms": {
+            "p50": 124274.267079,
+            "p95": 159121.3808963,
+            "p99": 169993.70336284998,
+            "max": 173793.777791
+          },
+          "preparation_ms": {
+            "p50": 112.890412,
+            "p95": 371.7767994499999,
+            "p99": 574.7693574899994,
+            "max": 858.211071
+          },
+          "admission_deadline_overrun_requests": 189
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 336802.838022,
+            "p95": 472698.5876253,
+            "p99": 475558.82220384,
+            "max": 480013.938927
+          },
+          "completion_latency_ms": {
+            "p50": 337396.294822,
+            "p95": 472765.6994928,
+            "p99": 476062.3381551,
+            "max": 480115.153313
+          },
+          "admission_wait_ms": {
+            "p50": 114158.166138,
+            "p95": 155865.68497499998,
+            "p99": 162080.34234374002,
+            "max": 165595.618295
+          },
+          "preparation_ms": {
+            "p50": 113.196527,
+            "p95": 299.55677929999985,
+            "p99": 592.9571022200005,
+            "max": 945.608562
+          },
+          "admission_deadline_overrun_requests": 238
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 308968.344796,
+            "p95": 456281.28384,
+            "p99": 461142.6753792,
+            "max": 463137.472603
+          },
+          "completion_latency_ms": {
+            "p50": 309847.7391445,
+            "p95": 456502.12924599997,
+            "p99": 461297.82291635,
+            "max": 464015.108407
+          },
+          "admission_wait_ms": {
+            "p50": 129512.9087155,
+            "p95": 160170.773333,
+            "p99": 175792.17355010004,
+            "max": 180417.825502
+          },
+          "preparation_ms": {
+            "p50": 81.0838575,
+            "p95": 286.61380725,
+            "p99": 412.92164545000276,
+            "max": 1009.098017
+          },
+          "admission_deadline_overrun_requests": 195
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 307383.858094,
+            "p95": 459174.9030054,
+            "p99": 468120.5138411,
+            "max": 470565.427458
+          },
+          "completion_latency_ms": {
+            "p50": 307943.900893,
+            "p95": 459254.4708978,
+            "p99": 468187.88223143,
+            "max": 470635.627309
+          },
+          "admission_wait_ms": {
+            "p50": 121622.26177350001,
+            "p95": 160506.48123125,
+            "p99": 166730.04859282,
+            "max": 181896.908147
+          },
+          "preparation_ms": {
+            "p50": 111.1428215,
+            "p95": 323.356143,
+            "p99": 515.6156285499999,
+            "max": 683.041943
+          },
+          "admission_deadline_overrun_requests": 203
+        }
+      ],
+      "audit_sha256": "f6c3d6554154ef3a8fcf640dbfcbdbdde553c28e28f31937e1dce2ad5b4e1183",
+      "archive_sha256": "c60a9635bdd41bdd6fa849ca06c200d99a7507e29855db7299b7d3e087f8819e"
+    },
+    {
+      "run_id": "v6full1-sg-g6-native_lpm-s901",
+      "step": {
+        "engine": "sg",
+        "arm": "native_lpm",
+        "policy": null,
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": "lpm",
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-sg-g6-native_lpm-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 532249.5260495,
+        "arrival_ttft_p95_ms": 957654.7484939999,
+        "arrival_ttft_p99_ms": 970423.6825021001,
+        "client_keepalive_connections": 0,
+        "duration_s": 1462.180147401,
+        "engine_kind": "sglang",
+        "engine_pid": 474287,
+        "engine_version": "0.5.14",
+        "errors": 0,
+        "finished_utc": "2026-10-27T00:16:44.667313+00:00",
+        "gateway_trace_path": null,
+        "git_sha": "be8057d907dc97444bf2bd195b56c9e46e8600a2",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": null,
+        "lmcache_version": null,
+        "max_model_len": 32768,
+        "metrics_path": null,
+        "mode": "SG",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "sglang_lpm",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "results/v3/raw/sglang/v6full1-sg-g6-native_lpm-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 1.3582457698732133,
+        "run_id": "v6full1-sg-g6-native_lpm-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-26T23:52:20.425957+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.8.1",
+        "url": "http://127.0.0.1:8300",
+        "vllm_version": null
+      },
+      "quality": {
+        "run_id": "v6full1-sg-g6-native_lpm-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.3182218737976727,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.25446926863019453
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.16824336050719374
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.12260590541842052
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.4191736816310624
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5
+          }
+        },
+        "output_budget_hits": 20
+      },
+      "secondary": {
+        "run_id": "v6full1-sg-g6-native_lpm-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "8cc2e43c08417a3520373e38dd17c0b7b4ca4ae55669c07686954d6d27a605fa",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 533024.5026605,
+          "p95": 958937.23560475,
+          "p99": 971198.4031979
+        },
+        "after_first_to_close_ms": {
+          "p50": 296.44555,
+          "p95": 1242.35425525,
+          "p99": 2062.262392350004
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 21.026872458646615,
+          "p95": 78.4761438125,
+          "p99": 121.18899571562514
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 40811,
+        "workload_output_tokens_per_s": 27.91106148756078,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 38825.0,
+        "native_itl_mean_ms": 18.800133803741062,
+        "native_itl_sample_endpoints_ns": [
+          159243904755728,
+          160713459110485
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "host": {
+        "observed_native_host_capacity_tokens": 325536.0,
+        "observed_native_host_payload_bytes": 48002236416.0
+      },
+      "resource": {
+        "samples": 1336,
+        "window_s": 1469.554354757,
+        "start_ns": 159243904755728,
+        "end_ns": 160713459110485,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50212912.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 309413.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 267.1800000000001,
+          "sglang:queue_time_seconds_sum": 349770.34747714445,
+          "sglang:time_to_first_token_seconds_sum": 351621.8251758237,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 44609296.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 7.110103274841094
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 255.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 1391.819736463,
+        "sampled_queue_above128_fraction": 0.9471032711091153,
+        "gpu_time_weighted_util_pct": 83.69423230138956,
+        "gpu_time_weighted_power_w": 235.6534008013048,
+        "vram_peak_mib": 16044.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 53732106240,
+        "last_host_used_tokens": 325536.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 1336,
+        "queue_samples_observed": 1336,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-native_lpm-s901",
+        "snapshot_sha256": "79fe335eb83fa885e49de76e8c973af5fe541a87de9f1465906418f05bee26bc",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 18.800133803741062,
+        "itl_observations": 38825.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6full1-sg-g6-native_lpm-s901"
+        ]
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 531286.295698,
+            "p95": 933019.530136,
+            "p99": 954331.0036098,
+            "max": 958825.321849
+          },
+          "completion_latency_ms": {
+            "p50": 532052.416707,
+            "p95": 933089.8383306001,
+            "p99": 954641.8611976401,
+            "max": 959665.901747
+          }
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 298039.804745,
+            "p95": 529923.4920038,
+            "p99": 552358.7452952,
+            "max": 555894.434286
+          },
+          "completion_latency_ms": {
+            "p50": 298724.342617,
+            "p95": 530084.279475,
+            "p99": 552521.3748219599,
+            "max": 556334.498622
+          }
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 518371.283502,
+            "p95": 918569.2142667999,
+            "p99": 937614.6887233999,
+            "max": 943036.04032
+          },
+          "completion_latency_ms": {
+            "p50": 518725.153799,
+            "p95": 918719.4458081999,
+            "p99": 938415.04397396,
+            "max": 943095.266937
+          }
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 677038.0909325,
+            "p95": 969657.9930522,
+            "p99": 977777.58042801,
+            "max": 979170.595925
+          },
+          "completion_latency_ms": {
+            "p50": 677157.319499,
+            "p95": 969959.086133,
+            "p99": 978053.51988266,
+            "max": 979323.999874
+          }
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 632681.4789575,
+            "p95": 963452.05982185,
+            "p99": 968549.86200996,
+            "max": 969708.087237
+          },
+          "completion_latency_ms": {
+            "p50": 633761.2037825,
+            "p95": 963498.5261119,
+            "p99": 969909.93397195,
+            "max": 971138.631011
+          }
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 436249.03695800004,
+            "p95": 783734.59941125,
+            "p99": 813993.3498890201,
+            "max": 818442.058144
+          },
+          "completion_latency_ms": {
+            "p50": 436458.708749,
+            "p95": 783879.0508496,
+            "p99": 814093.05547289,
+            "max": 818567.436882
+          }
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 514450.2078665,
+            "p95": 908339.0292857,
+            "p99": 932311.22954122,
+            "max": 935468.295548
+          },
+          "completion_latency_ms": {
+            "p50": 515064.265132,
+            "p95": 908745.2147527,
+            "p99": 932405.17752826,
+            "max": 935499.298058
+          }
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 627450.405872,
+            "p95": 966387.3760718,
+            "p99": 973615.5591177801,
+            "max": 974963.086727
+          },
+          "completion_latency_ms": {
+            "p50": 627578.076642,
+            "p95": 968091.2533621,
+            "p99": 973795.55597158,
+            "max": 975171.372506
+          }
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 526927.0928325,
+            "p95": 928751.8112245,
+            "p99": 948353.6170765,
+            "max": 953625.944403
+          },
+          "completion_latency_ms": {
+            "p50": 527254.4927985,
+            "p95": 928824.21553125,
+            "p99": 948391.63325775,
+            "max": 953838.235996
+          }
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 549905.7460050001,
+            "p95": 948150.5354239,
+            "p99": 964181.01371409,
+            "max": 968358.649401
+          },
+          "completion_latency_ms": {
+            "p50": 550184.829872,
+            "p95": 948208.50286525,
+            "p99": 964606.6517708,
+            "max": 968563.579114
+          }
+        }
+      ],
+      "audit_sha256": "f203ac3b8e85b0bb57d5dfe7142932e6a042c6e67cffa89e2ec30add7d97227a",
+      "archive_sha256": "f622f339cd2c57900a013f9a46f3728e973e3091e685440b3f41e53810108088"
+    },
+    {
+      "run_id": "v6full1-sg-g6-native_dfs-s901",
+      "step": {
+        "engine": "sg",
+        "arm": "native_dfs",
+        "policy": null,
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": "dfs-weight",
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-sg-g6-native_dfs-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 6038.8750145,
+        "arrival_ttft_p95_ms": 62475.002984,
+        "arrival_ttft_p99_ms": 85714.23328460011,
+        "client_keepalive_connections": 0,
+        "duration_s": 510.912781204,
+        "engine_kind": "sglang",
+        "engine_pid": 478692,
+        "engine_version": "0.5.14",
+        "errors": 0,
+        "finished_utc": "2026-10-27T00:28:21.038228+00:00",
+        "gateway_trace_path": null,
+        "git_sha": "9d6f988a3714a02bfbfeb487de4b45d24c73876d",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": null,
+        "lmcache_version": null,
+        "max_model_len": 32768,
+        "metrics_path": null,
+        "mode": "SG",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "sglang_dfs-weight",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 3.8871605351501652,
+        "run_id": "v6full1-sg-g6-native_dfs-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-27T00:19:48.048353+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.8.1",
+        "url": "http://127.0.0.1:8300",
+        "vllm_version": null
+      },
+      "quality": {
+        "run_id": "v6full1-sg-g6-native_dfs-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.3190503264208705,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.2567640823852413
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.17086842281330122
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.11175547725957498
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.42015783818729324
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5
+          }
+        },
+        "output_budget_hits": 20
+      },
+      "secondary": {
+        "run_id": "v6full1-sg-g6-native_dfs-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "9370e50b653516d58d5ad8239be146ade9196fcdf7eb749f2a63a185d1bd3a11",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 6559.8651525000005,
+          "p95": 63887.12756675,
+          "p99": 87112.79210685001
+        },
+        "after_first_to_close_ms": {
+          "p50": 311.6753505,
+          "p95": 1964.0205477499999,
+          "p99": 3044.2030355500005
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 22.417137999999998,
+          "p95": 72.64711538586957,
+          "p99": 102.49006029583346
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 40830,
+        "workload_output_tokens_per_s": 79.91579287521715,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 38844.0,
+        "native_itl_mean_ms": 28.95599460546234,
+        "native_itl_sample_endpoints_ns": [
+          160891519246097,
+          161410106689082
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "host": {
+        "observed_native_host_capacity_tokens": 325536.0,
+        "observed_native_host_payload_bytes": 48002236416.0
+      },
+      "resource": {
+        "samples": 463,
+        "window_s": 518.587442985,
+        "start_ns": 160891519246097,
+        "end_ns": 161410106689082,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50192384.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 329941.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 222.9300000000001,
+          "sglang:queue_time_seconds_sum": 26104.365327157895,
+          "sglang:time_to_first_token_seconds_sum": 27116.32645962268,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 8329696.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 2.146313785080565
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 212.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 85.413456963,
+        "sampled_queue_above128_fraction": 0.16470405930262866,
+        "gpu_time_weighted_util_pct": 94.33989846304299,
+        "gpu_time_weighted_power_w": 272.2179244936006,
+        "vram_peak_mib": 16038.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 53684543488,
+        "last_host_used_tokens": 325536.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 463,
+        "queue_samples_observed": 463,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-native_dfs-s901",
+        "snapshot_sha256": "ee25f14c933449578763c2866f03da8b383adbe2b1eb0b2e654634b122f8340c",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 28.95599460546234,
+        "itl_observations": 38844.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6full1-sg-g6-native_dfs-s901"
+        ]
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 6546.432095,
+            "p95": 65590.3389677,
+            "p99": 85586.11279140002,
+            "max": 90411.28202
+          },
+          "completion_latency_ms": {
+            "p50": 6991.387221,
+            "p95": 66690.32569979997,
+            "p99": 85665.27422324005,
+            "max": 91952.879608
+          }
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 9090.708477,
+            "p95": 80448.68902939999,
+            "p99": 90710.86012791998,
+            "max": 92418.992134
+          },
+          "completion_latency_ms": {
+            "p50": 9956.3631,
+            "p95": 82943.64854499997,
+            "p99": 92235.14581775997,
+            "max": 94579.130626
+          }
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 6027.732499,
+            "p95": 62241.350051199915,
+            "p99": 82831.84770191998,
+            "max": 86919.334662
+          },
+          "completion_latency_ms": {
+            "p50": 6479.710213,
+            "p95": 64614.95421759998,
+            "p99": 85950.21999503998,
+            "max": 87639.568658
+          }
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 4592.702134,
+            "p95": 65771.31446154998,
+            "p99": 88488.72795286009,
+            "max": 95946.937425
+          },
+          "completion_latency_ms": {
+            "p50": 4915.7328675,
+            "p95": 67840.61134129997,
+            "p99": 89238.40138311013,
+            "max": 97008.811325
+          }
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 4702.928240499999,
+            "p95": 47148.279375699974,
+            "p99": 74024.38360685001,
+            "max": 82829.622595
+          },
+          "completion_latency_ms": {
+            "p50": 5167.108885,
+            "p95": 50166.44573014994,
+            "p99": 74929.43712407001,
+            "max": 83664.024874
+          }
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 7842.868306,
+            "p95": 51592.187163200004,
+            "p99": 65222.34098485002,
+            "max": 70769.348519
+          },
+          "completion_latency_ms": {
+            "p50": 8622.766689,
+            "p95": 52191.228584200006,
+            "p99": 66991.12578426,
+            "max": 71170.063062
+          }
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 6997.533874,
+            "p95": 54673.832373599966,
+            "p99": 63772.612509639985,
+            "max": 65425.54741
+          },
+          "completion_latency_ms": {
+            "p50": 7517.4096365000005,
+            "p95": 55560.386980899995,
+            "p99": 64198.560175429986,
+            "max": 66101.696994
+          }
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 4527.278209,
+            "p95": 51528.1873449,
+            "p99": 72500.76151636001,
+            "max": 76250.387764
+          },
+          "completion_latency_ms": {
+            "p50": 4903.23584,
+            "p95": 53155.391985999995,
+            "p99": 72990.68198804001,
+            "max": 77298.728116
+          }
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 6882.8802964999995,
+            "p95": 64019.10715775,
+            "p99": 84994.70242205002,
+            "max": 87152.46323
+          },
+          "completion_latency_ms": {
+            "p50": 7154.864278,
+            "p95": 64736.735404,
+            "p99": 85754.03368665001,
+            "max": 88450.846293
+          }
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 5952.9671355,
+            "p95": 79957.40822514998,
+            "p99": 101847.64165245,
+            "max": 104522.195407
+          },
+          "completion_latency_ms": {
+            "p50": 6285.3273245,
+            "p95": 80726.55502704998,
+            "p99": 102642.70109671999,
+            "max": 105286.788744
+          }
+        }
+      ],
+      "audit_sha256": "00bba4630d9a447825b6ebd95bbd8a6e561f1a65183b75e722d8c95e1d87892c",
+      "archive_sha256": "e11b745e73a5e3e8a94ae698bcdd3d1492d04861e76b78a89ea2f99589481907"
+    },
+    {
+      "run_id": "v6full1-sg-g6-fifo64-s901",
+      "step": {
+        "engine": "sg",
+        "arm": "fifo64",
+        "policy": "fifo",
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": "lpm",
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-sg-g6-fifo64-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 244275.33855400002,
+        "arrival_ttft_p95_ms": 403599.5832735,
+        "arrival_ttft_p99_ms": 702019.1756898003,
+        "client_keepalive_connections": 0,
+        "duration_s": 912.259661617,
+        "engine_kind": "sglang",
+        "engine_pid": 480935,
+        "engine_version": "0.5.14",
+        "errors": 0,
+        "finished_utc": "2026-10-27T00:46:45.835176+00:00",
+        "gateway_trace_path": null,
+        "git_sha": "e3eecff601bbed3c0dbd806305403caa66287e3e",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": null,
+        "lmcache_version": null,
+        "max_model_len": 32768,
+        "metrics_path": null,
+        "mode": "SG",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "fifo",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "results/v3/raw/sglang/v6full1-sg-g6-fifo64-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 2.1770117473787804,
+        "run_id": "v6full1-sg-g6-fifo64-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-27T00:31:31.534146+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.8.1",
+        "url": "http://127.0.0.1:8100",
+        "vllm_version": null
+      },
+      "quality": {
+        "run_id": "v6full1-sg-g6-fifo64-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.31892365123970284,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.2586823383480991
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.1699486222071638
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.1216419217790444
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.41850519771187944
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.49551569506726456
+          }
+        },
+        "output_budget_hits": 21
+      },
+      "secondary": {
+        "run_id": "v6full1-sg-g6-fifo64-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "6e1335dda9ec59d507b744f3ccab7c1bc7f7334feaebd21416a99f3082b972cf",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 245016.894003,
+          "p95": 403841.6378395,
+          "p99": 702279.8159554503
+        },
+        "after_first_to_close_ms": {
+          "p50": 386.62315950000004,
+          "p95": 1631.73715175,
+          "p99": 2789.178965950002
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 25.887904042857144,
+          "p95": 119.25483725000001,
+          "p99": 179.38422855000016
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 41121,
+        "workload_output_tokens_per_s": 45.07598190531864,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 39135.0,
+        "native_itl_mean_ms": 25.248026409430885,
+        "native_itl_sample_endpoints_ns": [
+          161595204671638,
+          162514620912499
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "host": {
+        "observed_native_host_capacity_tokens": 325536.0,
+        "observed_native_host_payload_bytes": 48002236416.0
+      },
+      "resource": {
+        "samples": 820,
+        "window_s": 919.416240861,
+        "start_ns": 161595204671638,
+        "end_ns": 162514620912499,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50201968.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 320357.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 243.3100000000002,
+          "sglang:queue_time_seconds_sum": 54838.45281540119,
+          "sglang:time_to_first_token_seconds_sum": 56427.603067038144,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 24581280.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 3.6045384829049
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 63.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 86.76283027192581,
+        "gpu_time_weighted_power_w": 244.60136559662348,
+        "vram_peak_mib": 16038.0,
+        "temperature_peak_c": 67.0,
+        "summed_process_rss_peak_bytes": 53593948160,
+        "last_host_used_tokens": 325488.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 820,
+        "queue_samples_observed": 820,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-fifo64-s901",
+        "snapshot_sha256": "54fb5cca3f528767451375f253ef53e9f6a140892b2fa1ddf4af92d789a0fa6b",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 25.248026409430885,
+        "itl_observations": 39135.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 400.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-sg-g6-fifo64-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 135973.91534100453,
+                "p50": 121902.30653949999,
+                "p95": 331219.071166
+              },
+              "gateway_prepare": {
+                "mean": 147.30585344612285,
+                "p50": 90.517107,
+                "p95": 464.19431249999997
+              },
+              "gateway_admission": {
+                "mean": 78756.49954043253,
+                "p50": 86298.91330700001,
+                "p95": 108167.50116525
+              },
+              "upstream_to_token": {
+                "mean": 28491.280828394763,
+                "p50": 3881.546763,
+                "p95": 119431.99023375
+              },
+              "return_stream": {
+                "mean": 8.536060265861027,
+                "p50": 0.7800525,
+                "p95": 38.8652185
+              },
+              "ttft": {
+                "mean": 243377.53762354382,
+                "p50": 244275.33855400002,
+                "p95": 403599.5832735
+              },
+              "worker_queue": {
+                "mean": 60.686585444612284,
+                "p50": 0.146136,
+                "p95": 345.86272575
+              },
+              "worker_cpu": {
+                "mean": 78.97255250654582,
+                "p50": 79.581272,
+                "p95": 102.156779
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 267827.235389,
+            "p95": 417093.6471193,
+            "p99": 443819.68924428,
+            "max": 446358.649029
+          },
+          "completion_latency_ms": {
+            "p50": 269253.019477,
+            "p95": 418196.8673168,
+            "p99": 446392.49770283996,
+            "max": 447799.979269
+          },
+          "admission_wait_ms": {
+            "p50": 87593.517003,
+            "p95": 108442.2233119,
+            "p99": 112156.005885,
+            "max": 114232.276756
+          },
+          "preparation_ms": {
+            "p50": 69.507218,
+            "p95": 354.2292848999998,
+            "p99": 550.3222741800017,
+            "max": 1363.533049
+          },
+          "admission_deadline_overrun_requests": 190
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 131432.860319,
+            "p95": 735865.2776878,
+            "p99": 746558.1026829199,
+            "max": 749711.857198
+          },
+          "completion_latency_ms": {
+            "p50": 132373.137633,
+            "p95": 736202.8825318001,
+            "p99": 747598.0465437999,
+            "max": 749737.418903
+          },
+          "admission_wait_ms": {
+            "p50": 82931.785797,
+            "p95": 108352.811717,
+            "p99": 112518.91489575998,
+            "max": 114214.043106
+          },
+          "preparation_ms": {
+            "p50": 51.98121,
+            "p95": 254.11772759999985,
+            "p99": 575.8498922399995,
+            "max": 752.72673
+          },
+          "admission_deadline_overrun_requests": 96
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 210578.893356,
+            "p95": 384737.46170299995,
+            "p99": 398263.33949968,
+            "max": 401089.447979
+          },
+          "completion_latency_ms": {
+            "p50": 211118.397264,
+            "p95": 384827.9812676,
+            "p99": 398329.7728156,
+            "max": 401225.398676
+          },
+          "admission_wait_ms": {
+            "p50": 87741.142067,
+            "p95": 107933.285105,
+            "p99": 111732.33901055997,
+            "max": 113688.813264
+          },
+          "preparation_ms": {
+            "p50": 97.956677,
+            "p95": 480.19316079999885,
+            "p99": 661.9646136399934,
+            "max": 1588.765757
+          },
+          "admission_deadline_overrun_requests": 184
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 282317.45565150003,
+            "p95": 404889.33183375,
+            "p99": 409205.13883957005,
+            "max": 412716.157506
+          },
+          "completion_latency_ms": {
+            "p50": 282910.7447225,
+            "p95": 405591.8577162,
+            "p99": 409482.20109245006,
+            "max": 412807.838708
+          },
+          "admission_wait_ms": {
+            "p50": 83933.58444949999,
+            "p95": 106998.06983405,
+            "p99": 111222.20591719,
+            "max": 113606.026108
+          },
+          "preparation_ms": {
+            "p50": 83.58462850000001,
+            "p95": 444.5732598999997,
+            "p99": 818.6610602000068,
+            "max": 1650.078737
+          },
+          "admission_deadline_overrun_requests": 251
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 256533.556009,
+            "p95": 398765.23674275,
+            "p99": 400034.57754545,
+            "max": 401352.665829
+          },
+          "completion_latency_ms": {
+            "p50": 257629.947099,
+            "p95": 398964.46573460003,
+            "p99": 400600.27770246,
+            "max": 401370.952538
+          },
+          "admission_wait_ms": {
+            "p50": 84860.744498,
+            "p95": 107195.91274879998,
+            "p99": 111152.50342937,
+            "max": 113192.297996
+          },
+          "preparation_ms": {
+            "p50": 100.5839985,
+            "p95": 390.78887684999995,
+            "p99": 790.8635501500003,
+            "max": 1716.696209
+          },
+          "admission_deadline_overrun_requests": 233
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 177228.5897635,
+            "p95": 327789.80514235,
+            "p99": 343242.37528188,
+            "max": 346692.348432
+          },
+          "completion_latency_ms": {
+            "p50": 177311.1997045,
+            "p95": 328097.97638195,
+            "p99": 343445.16171368,
+            "max": 346790.773875
+          },
+          "admission_wait_ms": {
+            "p50": 88979.552818,
+            "p95": 109279.3516745,
+            "p99": 111712.57891452001,
+            "max": 113044.643534
+          },
+          "preparation_ms": {
+            "p50": 102.84164,
+            "p95": 469.57770645,
+            "p99": 1047.4098701100027,
+            "max": 1793.155455
+          },
+          "admission_deadline_overrun_requests": 149
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 209285.8734475,
+            "p95": 382702.01542704995,
+            "p99": 396309.29912080994,
+            "max": 402207.496773
+          },
+          "completion_latency_ms": {
+            "p50": 209489.7168645,
+            "p95": 383078.32789734995,
+            "p99": 396385.92431986,
+            "max": 402443.480019
+          },
+          "admission_wait_ms": {
+            "p50": 88648.869936,
+            "p95": 107999.29289449999,
+            "p99": 111211.52598899999,
+            "max": 113023.375852
+          },
+          "preparation_ms": {
+            "p50": 91.658057,
+            "p95": 473.11608484999977,
+            "p99": 948.3261394199944,
+            "max": 1477.40731
+          },
+          "admission_deadline_overrun_requests": 181
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 256747.666088,
+            "p95": 399567.30009760003,
+            "p99": 401312.1493582,
+            "max": 403099.444653
+          },
+          "completion_latency_ms": {
+            "p50": 256891.300613,
+            "p95": 399974.0669099,
+            "p99": 401491.41064484,
+            "max": 403151.774962
+          },
+          "admission_wait_ms": {
+            "p50": 84990.132742,
+            "p95": 107061.1842298,
+            "p99": 111336.15717078,
+            "max": 112682.230254
+          },
+          "preparation_ms": {
+            "p50": 87.744251,
+            "p95": 489.9092856,
+            "p99": 922.5325195000007,
+            "max": 1459.262603
+          },
+          "admission_deadline_overrun_requests": 231
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 234099.1990615,
+            "p95": 403858.80183475,
+            "p99": 409594.6307938,
+            "max": 413319.262136
+          },
+          "completion_latency_ms": {
+            "p50": 235137.4865155,
+            "p95": 404071.41163775,
+            "p99": 410286.23857865005,
+            "max": 414459.041725
+          },
+          "admission_wait_ms": {
+            "p50": 87668.0196725,
+            "p95": 108437.23168200001,
+            "p99": 112285.245918,
+            "max": 112478.796218
+          },
+          "preparation_ms": {
+            "p50": 72.354545,
+            "p95": 364.41320925,
+            "p99": 682.5552645000056,
+            "max": 1329.949611
+          },
+          "admission_deadline_overrun_requests": 188
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 271975.6484115,
+            "p95": 399096.23629365,
+            "p99": 403485.17757293,
+            "max": 405507.815294
+          },
+          "completion_latency_ms": {
+            "p50": 272205.300838,
+            "p95": 399265.8661783,
+            "p99": 403567.85853038996,
+            "max": 405579.609075
+          },
+          "admission_wait_ms": {
+            "p50": 87318.89712149999,
+            "p95": 108371.3392701,
+            "p99": 112400.17086313,
+            "max": 113434.246278
+          },
+          "preparation_ms": {
+            "p50": 92.347853,
+            "p95": 513.7891287499999,
+            "p99": 895.9635537499997,
+            "max": 1515.679902
+          },
+          "admission_deadline_overrun_requests": 196
+        }
+      ],
+      "audit_sha256": "b4425044d39fee596834e16640d663518fe1385f2446cf34157921874e471d25",
+      "archive_sha256": "e05bcaeedae15bd7db9a333e31c69222a63800c856eeef7b1caf1790ebbbb7c2"
+    },
+    {
+      "run_id": "v6full1-sg-g6-union64-s901",
+      "step": {
+        "engine": "sg",
+        "arm": "union64",
+        "policy": "packing_reuse",
+        "cap": 64,
+        "queue": 512,
+        "budget": 6,
+        "host_flag": 48,
+        "native_policy": "lpm",
+        "seed": 901,
+        "requests": 1986,
+        "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "run_id": "v6full1-sg-g6-union64-s901"
+      },
+      "summary": {
+        "arrival": "interleaved",
+        "arrival_ttft_p50_ms": 24276.557034999998,
+        "arrival_ttft_p95_ms": 57629.416268,
+        "arrival_ttft_p99_ms": 65174.24070000001,
+        "client_keepalive_connections": 0,
+        "duration_s": 510.984144326,
+        "engine_kind": "sglang",
+        "engine_pid": 484151,
+        "engine_version": "0.5.14",
+        "errors": 0,
+        "finished_utc": "2026-10-27T00:58:30.563650+00:00",
+        "gateway_trace_path": null,
+        "git_sha": "e3eecff601bbed3c0dbd806305403caa66287e3e",
+        "gpu_kv_bytes": 6442450944,
+        "lmcache_pid": null,
+        "lmcache_version": null,
+        "max_model_len": 32768,
+        "metrics_path": null,
+        "mode": "SG",
+        "model_name": "cacheflow-qwen3-4b",
+        "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+        "output_tokens_budget": 96,
+        "policy": "packing_reuse",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "protocol": "p_qa",
+        "python_version": "3.12.15",
+        "raw_path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.jsonl",
+        "request_pool_timeout_s": 3600.0,
+        "request_read_timeout_s": 3600.0,
+        "requests": 1986,
+        "requests_per_s": 3.886617661335814,
+        "run_id": "v6full1-sg-g6-union64-s901",
+        "source_sha256": "79fa87e90f04081343b8c8debecb80a9a6842b76a7aa537dc9fdf651ea698ff4",
+        "started_utc": "2026-10-27T00:49:57.500841+00:00",
+        "successes": 1986,
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "transformers_version": "5.8.1",
+        "url": "http://127.0.0.1:8100",
+        "vllm_version": null
+      },
+      "quality": {
+        "run_id": "v6full1-sg-g6-union64-s901",
+        "answerable_n": 1540,
+        "protocol": "p_qa",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "answerable_f1": 0.3189961420133591,
+        "by_category": {
+          "1": {
+            "n": 282,
+            "mean": 0.2578231346298692
+          },
+          "2": {
+            "n": 321,
+            "mean": 0.1733857320087949
+          },
+          "3": {
+            "n": 96,
+            "mean": 0.11197802167866204
+          },
+          "4": {
+            "n": 841,
+            "mean": 0.41871727072410836
+          },
+          "5": {
+            "n": 446,
+            "mean": 0.5
+          }
+        },
+        "output_budget_hits": 20
+      },
+      "secondary": {
+        "run_id": "v6full1-sg-g6-union64-s901",
+        "prompt_version": "locomo-qwen-concise-v5",
+        "trace_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "request_file_sha256": "2f83d3ab7a1caec23f7764489be3e1ec99e7ad687fbe09782a074c240d67e3a7",
+        "requests": 1986,
+        "completion_latency_ms": {
+          "p50": 24880.314488,
+          "p95": 58073.72015,
+          "p99": 65526.29770305001
+        },
+        "after_first_to_close_ms": {
+          "p50": 335.80125499999997,
+          "p95": 1376.2853854999998,
+          "p99": 1953.5920885500009
+        },
+        "client_tpot_proxy_ms": {
+          "p50": 26.293297982862903,
+          "p95": 49.2248705,
+          "p99": 62.71296211250018
+        },
+        "proxy_eligible_requests": 1986,
+        "single_token_responses": 0,
+        "generated_tokens": 40688,
+        "workload_output_tokens_per_s": 79.62673686023746,
+        "warning": "Proxy includes stream chunking, special-token accounting and final stream/metadata close overhead; one-token outputs are excluded, not zero-filled. Output tokens/s uses full workload duration and can be arrival-limited.",
+        "native_itl_observation_count": 38702.0,
+        "native_itl_mean_ms": 24.865037997212337,
+        "native_itl_sample_endpoints_ns": [
+          162701070355427,
+          163219103716436
+        ],
+        "native_itl_scope": "Native sampled-window histogram sum/count difference only; no query-start timestamps, retained buckets or per-token/request join. This is an observed-window mean, not exact full-run ITL coverage or ITL p95."
+      },
+      "host": {
+        "observed_native_host_capacity_tokens": 325536.0,
+        "observed_native_host_payload_bytes": 48002236416.0
+      },
+      "resource": {
+        "samples": 441,
+        "window_s": 518.033361009,
+        "start_ns": 162701070355427,
+        "end_ns": 163219103716436,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50217424.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 304901.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 193.79000000000008,
+          "sglang:queue_time_seconds_sum": 284.2468610840733,
+          "sglang:time_to_first_token_seconds_sum": 1131.0624641669274,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 8154224.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 3.8132284964376595
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 8.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 87.0685749258847,
+        "gpu_time_weighted_power_w": 260.07286555081726,
+        "vram_peak_mib": 16028.0,
+        "temperature_peak_c": 67.0,
+        "summed_process_rss_peak_bytes": 53579251712,
+        "last_host_used_tokens": 325536.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 441,
+        "queue_samples_observed": 441,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-union64-s901",
+        "snapshot_sha256": "f75b9197abe493a341961a5a2801f3d8ffe52a761c0a9ea9aaaff3bcfbb38095",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 24.865037997212337,
+        "itl_observations": 38702.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 20.0,
+            "upper_ms": 25.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 40.0,
+            "upper_ms": 60.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 80.0,
+            "upper_ms": 100.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-sg-g6-union64-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 10.228348887713999,
+                "p50": 6.297032,
+                "p95": 32.10808475
+              },
+              "gateway_prepare": {
+                "mean": 106.4528883449144,
+                "p50": 93.366184,
+                "p95": 192.85331925000003
+              },
+              "gateway_admission": {
+                "mean": 25385.491946719034,
+                "p50": 23000.656014,
+                "p95": 56436.819818
+              },
+              "upstream_to_token": {
+                "mean": 912.5051067134945,
+                "p50": 772.194861,
+                "p95": 978.1930514999999
+              },
+              "return_stream": {
+                "mean": 1.4298231747230614,
+                "p50": 1.0833395000000001,
+                "p95": 3.2418305
+              },
+              "ttft": {
+                "mean": 26416.10811383988,
+                "p50": 24276.557034999998,
+                "p95": 57629.416268
+              },
+              "worker_queue": {
+                "mean": 19.649480126888218,
+                "p50": 0.1411865,
+                "p95": 100.36823075
+              },
+              "worker_cpu": {
+                "mean": 80.74792460322256,
+                "p50": 82.01490849999999,
+                "p95": 103.90356349999999
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      },
+      "per_conversation": [
+        {
+          "sample_id": "conv-26",
+          "requests": 199,
+          "arrival_ttft_ms": {
+            "p50": 27390.04334,
+            "p95": 57596.815122800006,
+            "p99": 62984.18350684001,
+            "max": 68446.756418
+          },
+          "completion_latency_ms": {
+            "p50": 27880.414262,
+            "p95": 58209.2639304,
+            "p99": 63189.23524394001,
+            "max": 68519.669657
+          },
+          "admission_wait_ms": {
+            "p50": 26513.439719,
+            "p95": 56732.6978786,
+            "p99": 62166.98111584002,
+            "max": 67692.515895
+          },
+          "preparation_ms": {
+            "p50": 67.804981,
+            "p95": 167.69228029999996,
+            "p99": 217.83679486000008,
+            "max": 591.551723
+          },
+          "admission_deadline_overrun_requests": 193
+        },
+        {
+          "sample_id": "conv-30",
+          "requests": 105,
+          "arrival_ttft_ms": {
+            "p50": 39644.952627,
+            "p95": 53149.1500796,
+            "p99": 58855.742796919985,
+            "max": 60224.562152
+          },
+          "completion_latency_ms": {
+            "p50": 40574.64748,
+            "p95": 53887.4230904,
+            "p99": 58898.28153227999,
+            "max": 62629.683891
+          },
+          "admission_wait_ms": {
+            "p50": 38742.209346,
+            "p95": 50642.5534804,
+            "p99": 53294.04136628,
+            "max": 54139.837099
+          },
+          "preparation_ms": {
+            "p50": 52.608769,
+            "p95": 121.54711299999998,
+            "p99": 220.83270728,
+            "max": 518.413238
+          },
+          "admission_deadline_overrun_requests": 104
+        },
+        {
+          "sample_id": "conv-41",
+          "requests": 193,
+          "arrival_ttft_ms": {
+            "p50": 25612.651662,
+            "p95": 55975.006980599996,
+            "p99": 62338.5679676,
+            "max": 64004.681495
+          },
+          "completion_latency_ms": {
+            "p50": 25951.382687,
+            "p95": 56620.37853239998,
+            "p99": 62628.52080092,
+            "max": 64277.318311
+          },
+          "admission_wait_ms": {
+            "p50": 24570.221124,
+            "p95": 55016.779326799995,
+            "p99": 61319.98434884,
+            "max": 62884.436472
+          },
+          "preparation_ms": {
+            "p50": 101.564528,
+            "p95": 152.2058411999999,
+            "p99": 225.22928519999985,
+            "max": 284.258656
+          },
+          "admission_deadline_overrun_requests": 183
+        },
+        {
+          "sample_id": "conv-42",
+          "requests": 260,
+          "arrival_ttft_ms": {
+            "p50": 10163.879046,
+            "p95": 55753.997596599984,
+            "p99": 62842.498708130006,
+            "max": 65168.418294
+          },
+          "completion_latency_ms": {
+            "p50": 10595.599484499999,
+            "p95": 56486.03196999999,
+            "p99": 63501.203672070005,
+            "max": 65505.368361
+          },
+          "admission_wait_ms": {
+            "p50": 8869.806468499999,
+            "p95": 54826.45330274999,
+            "p99": 61899.93508542001,
+            "max": 64274.67962
+          },
+          "preparation_ms": {
+            "p50": 84.3094955,
+            "p95": 171.36122414999994,
+            "p99": 213.7316924400001,
+            "max": 250.92458
+          },
+          "admission_deadline_overrun_requests": 231
+        },
+        {
+          "sample_id": "conv-43",
+          "requests": 242,
+          "arrival_ttft_ms": {
+            "p50": 11405.4733145,
+            "p95": 56612.248010749994,
+            "p99": 63881.73635045001,
+            "max": 66540.05073
+          },
+          "completion_latency_ms": {
+            "p50": 11961.733318499999,
+            "p95": 57180.6310444,
+            "p99": 64244.46900181001,
+            "max": 67958.042864
+          },
+          "admission_wait_ms": {
+            "p50": 10385.3195715,
+            "p95": 55604.12347805,
+            "p99": 62825.64992864001,
+            "max": 65451.142169
+          },
+          "preparation_ms": {
+            "p50": 101.495769,
+            "p95": 189.67328954999994,
+            "p99": 265.5042784000001,
+            "max": 313.466092
+          },
+          "admission_deadline_overrun_requests": 216
+        },
+        {
+          "sample_id": "conv-44",
+          "requests": 158,
+          "arrival_ttft_ms": {
+            "p50": 35372.6620085,
+            "p95": 59810.1136585,
+            "p99": 66962.96089658001,
+            "max": 68938.187003
+          },
+          "completion_latency_ms": {
+            "p50": 35952.33214,
+            "p95": 59992.491609950004,
+            "p99": 67972.73566711001,
+            "max": 69565.318684
+          },
+          "admission_wait_ms": {
+            "p50": 33976.3078255,
+            "p95": 58769.75165225,
+            "p99": 66011.45928403,
+            "max": 68055.559912
+          },
+          "preparation_ms": {
+            "p50": 100.37663649999999,
+            "p95": 205.3498394,
+            "p99": 247.11091388000003,
+            "max": 361.575171
+          },
+          "admission_deadline_overrun_requests": 154
+        },
+        {
+          "sample_id": "conv-47",
+          "requests": 190,
+          "arrival_ttft_ms": {
+            "p50": 28485.188105,
+            "p95": 58624.50335945,
+            "p99": 68126.21887430997,
+            "max": 71384.716763
+          },
+          "completion_latency_ms": {
+            "p50": 28764.371664,
+            "p95": 58847.8145847,
+            "p99": 68672.54057127997,
+            "max": 71476.972703
+          },
+          "admission_wait_ms": {
+            "p50": 26818.007857,
+            "p95": 57610.1642419,
+            "p99": 67284.65443600998,
+            "max": 70354.521187
+          },
+          "preparation_ms": {
+            "p50": 97.582458,
+            "p95": 240.61687514999997,
+            "p99": 309.48217144999995,
+            "max": 321.980953
+          },
+          "admission_deadline_overrun_requests": 184
+        },
+        {
+          "sample_id": "conv-48",
+          "requests": 239,
+          "arrival_ttft_ms": {
+            "p50": 11625.352164,
+            "p95": 56957.1737916,
+            "p99": 66826.06348072001,
+            "max": 73123.580249
+          },
+          "completion_latency_ms": {
+            "p50": 12938.570081,
+            "p95": 57101.7406222,
+            "p99": 67134.70734218002,
+            "max": 73526.333215
+          },
+          "admission_wait_ms": {
+            "p50": 10605.009047,
+            "p95": 55933.1100983,
+            "p99": 65973.96199634,
+            "max": 72191.122454
+          },
+          "preparation_ms": {
+            "p50": 93.441377,
+            "p95": 231.3156497,
+            "p99": 313.04069062,
+            "max": 346.716444
+          },
+          "admission_deadline_overrun_requests": 210
+        },
+        {
+          "sample_id": "conv-49",
+          "requests": 196,
+          "arrival_ttft_ms": {
+            "p50": 28544.1834225,
+            "p95": 60218.5643845,
+            "p99": 70183.13182980003,
+            "max": 75363.815512
+          },
+          "completion_latency_ms": {
+            "p50": 28893.264769499998,
+            "p95": 61291.536874,
+            "p99": 70220.51673320004,
+            "max": 75666.404122
+          },
+          "admission_wait_ms": {
+            "p50": 26952.8029265,
+            "p95": 59241.64094125,
+            "p99": 69179.07569330004,
+            "max": 74245.262522
+          },
+          "preparation_ms": {
+            "p50": 75.4780625,
+            "p95": 213.47453025,
+            "p99": 240.80708900000099,
+            "max": 352.176584
+          },
+          "admission_deadline_overrun_requests": 191
+        },
+        {
+          "sample_id": "conv-50",
+          "requests": 204,
+          "arrival_ttft_ms": {
+            "p50": 23795.442513,
+            "p95": 58467.3296057,
+            "p99": 63581.23937876,
+            "max": 66622.228871
+          },
+          "completion_latency_ms": {
+            "p50": 24068.778952,
+            "p95": 59321.35824079999,
+            "p99": 63798.36725409,
+            "max": 68708.674056
+          },
+          "admission_wait_ms": {
+            "p50": 22309.2474325,
+            "p95": 56863.1797459,
+            "p99": 62587.32690792,
+            "max": 65480.939111
+          },
+          "preparation_ms": {
+            "p50": 97.40516249999999,
+            "p95": 193.6146172,
+            "p99": 254.71515752,
+            "max": 268.36355
+          },
+          "admission_deadline_overrun_requests": 195
+        }
+      ],
+      "audit_sha256": "1ba4e2359d2d66847f540b202175623665d5eb8a6deef7996dda59dba26f43d0",
+      "archive_sha256": "3157bd1269196ac986a0f4267d327b38a36f37f42392208d4eac8e3b085f026e"
+    }
+  ],
+  "available_primary_pairs": [
+    {
+      "a": "v6full1-main-g6-fifo64-s901",
+      "b": "v6full1-main-g6-union64-s901",
+      "engine": "main",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -63.68356740676796,
+      "p95_ms_delta_pct": -69.43464335108351,
+      "p99_ms_delta_pct": -70.21145463748175,
+      "completion_p95_delta_pct": -69.40504478581649,
+      "f1_delta": 0.0008483945776245894,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 179,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 14,
+          "decreased": 13,
+          "equal": 255
+        },
+        "2": {
+          "improved": 8,
+          "decreased": 12,
+          "equal": 301
+        },
+        "3": {
+          "improved": 0,
+          "decreased": 4,
+          "equal": 92
+        },
+        "4": {
+          "improved": 29,
+          "decreased": 30,
+          "equal": 782
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 2,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -68.04130945079233,
+        "conv-30": -65.33072261877146,
+        "conv-41": -68.05432237546354,
+        "conv-42": -70.28655280118845,
+        "conv-43": -69.97778410753361,
+        "conv-44": -67.46849860120926,
+        "conv-47": -68.11650216033894,
+        "conv-48": -69.85739422158512,
+        "conv-49": -67.99934845943083,
+        "conv-50": -68.74021146386626
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-main-g6-bundle16-s901",
+      "b": "v6full1-main-g6-union64-s901",
+      "engine": "main",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "bundle16",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 11.01654971899777,
+      "p95_ms_delta_pct": 23.56568485173234,
+      "p99_ms_delta_pct": 22.26955193606688,
+      "completion_p95_delta_pct": 23.621448612646745,
+      "f1_delta": -0.000995783421062546,
+      "category5_delta": -0.004484304932735439,
+      "output_hash_mismatches": 182,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 12,
+          "decreased": 12,
+          "equal": 258
+        },
+        "2": {
+          "improved": 10,
+          "decreased": 9,
+          "equal": 302
+        },
+        "3": {
+          "improved": 1,
+          "decreased": 2,
+          "equal": 93
+        },
+        "4": {
+          "improved": 30,
+          "decreased": 28,
+          "equal": 783
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 4,
+          "equal": 440
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": 28.497849195837933,
+        "conv-30": 2.0486171310744927,
+        "conv-41": 22.328196288415604,
+        "conv-42": 22.616737193150605,
+        "conv-43": 22.088353079788913,
+        "conv-44": 14.302484465780886,
+        "conv-47": 28.7783230170503,
+        "conv-48": 24.021479686319246,
+        "conv-49": 26.778881719346014,
+        "conv-50": 20.863809542141265
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-main-g6-fifo64-s901",
+      "b": "v6full1-main-g6-packing_ready-s901",
+      "engine": "main",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "fifo64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": -51.23742724597611,
+      "p95_ms_delta_pct": -58.14688421041816,
+      "p99_ms_delta_pct": -58.93693971795383,
+      "completion_p95_delta_pct": -58.136638487695706,
+      "f1_delta": -0.001650770573403404,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 183,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 16,
+          "decreased": 14,
+          "equal": 252
+        },
+        "2": {
+          "improved": 10,
+          "decreased": 16,
+          "equal": 295
+        },
+        "3": {
+          "improved": 3,
+          "decreased": 2,
+          "equal": 91
+        },
+        "4": {
+          "improved": 27,
+          "decreased": 31,
+          "equal": 783
+        },
+        "5": {
+          "improved": 1,
+          "decreased": 1,
+          "equal": 444
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -56.942022903913745,
+        "conv-30": -71.48568657984904,
+        "conv-41": -57.48307487401579,
+        "conv-42": -58.940928240450916,
+        "conv-43": -58.60370360765835,
+        "conv-44": -55.42759944310318,
+        "conv-47": -56.88515471416046,
+        "conv-48": -58.532288324460005,
+        "conv-49": -56.88505331067007,
+        "conv-50": -57.6455673062542
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-main-g6-bundle16-s901",
+      "b": "v6full1-main-g6-packing_ready-s901",
+      "engine": "main",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "bundle16",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 49.06344582926341,
+      "p95_ms_delta_pct": 69.19838283326105,
+      "p99_ms_delta_pct": 68.5467323331241,
+      "completion_p95_delta_pct": 69.15237684501673,
+      "f1_delta": -0.0034949485720905393,
+      "category5_delta": -0.004484304932735439,
+      "output_hash_mismatches": 176,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 11,
+          "decreased": 13,
+          "equal": 258
+        },
+        "2": {
+          "improved": 11,
+          "decreased": 11,
+          "equal": 299
+        },
+        "3": {
+          "improved": 4,
+          "decreased": 2,
+          "equal": 90
+        },
+        "4": {
+          "improved": 27,
+          "decreased": 30,
+          "equal": 784
+        },
+        "5": {
+          "improved": 1,
+          "decreased": 3,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": 73.12528618942132,
+        "conv-30": -16.068448125660638,
+        "conv-41": 62.80821535607455,
+        "conv-42": 69.43605962813729,
+        "conv-43": 68.34219260317906,
+        "conv-44": 56.609314147629306,
+        "conv-47": 74.14204366696976,
+        "conv-48": 70.6185257841559,
+        "conv-49": 70.81104488553325,
+        "conv-50": 63.76048355045827
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-main-g6-union64-s901",
+      "b": "v6full1-main-g6-packing_ready-s901",
+      "engine": "main",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "union64",
+      "candidate": "packing_ready",
+      "p50_ms_delta_pct": 34.271373238106364,
+      "p95_ms_delta_pct": 36.92991143640232,
+      "p99_ms_delta_pct": 37.84849103009302,
+      "completion_p95_delta_pct": 36.83092921442444,
+      "f1_delta": -0.0024991651510279933,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 199,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 12,
+          "decreased": 14,
+          "equal": 256
+        },
+        "2": {
+          "improved": 12,
+          "decreased": 14,
+          "equal": 295
+        },
+        "3": {
+          "improved": 5,
+          "decreased": 2,
+          "equal": 89
+        },
+        "4": {
+          "improved": 30,
+          "decreased": 32,
+          "equal": 779
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 2,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": 34.730104256895885,
+        "conv-30": -17.753366744269538,
+        "conv-41": 33.09132342000562,
+        "conv-42": 38.1834678582542,
+        "conv-43": 37.88554629216898,
+        "conv-44": 37.0130447116519,
+        "conv-47": 35.22620856299958,
+        "conv-48": 37.5717546796668,
+        "conv-49": 34.73146518492134,
+        "conv-50": 35.491744113328096
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-sg-g6-native_lpm-s901",
+      "b": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "native_lpm",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -95.43887672100205,
+      "p95_ms_delta_pct": -93.98223458311801,
+      "p99_ms_delta_pct": -93.2839395951305,
+      "completion_p95_delta_pct": -93.94394982343385,
+      "f1_delta": 0.00077426821568638,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 169,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 16,
+          "decreased": 9,
+          "equal": 257
+        },
+        "2": {
+          "improved": 11,
+          "decreased": 5,
+          "equal": 305
+        },
+        "3": {
+          "improved": 0,
+          "decreased": 3,
+          "equal": 93
+        },
+        "4": {
+          "improved": 27,
+          "decreased": 39,
+          "equal": 775
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 2,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -93.8268371387248,
+        "conv-30": -89.97041065708805,
+        "conv-41": -93.90628315088057,
+        "conv-42": -94.25013788406955,
+        "conv-43": -94.12402024225077,
+        "conv-44": -92.3685755734875,
+        "conv-47": -93.5459667074362,
+        "conv-48": -94.10617572188067,
+        "conv-49": -93.51618337033382,
+        "conv-50": -93.83353935674778
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-sg-g6-native_dfs-s901",
+      "b": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "native_dfs",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 302.00462795983236,
+      "p95_ms_delta_pct": -7.756040791612229,
+      "p99_ms_delta_pct": -23.963339339920843,
+      "completion_p95_delta_pct": -9.0994972511107,
+      "f1_delta": -5.418440751142617e-05,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 176,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 17,
+          "decreased": 13,
+          "equal": 252
+        },
+        "2": {
+          "improved": 15,
+          "decreased": 6,
+          "equal": 300
+        },
+        "3": {
+          "improved": 3,
+          "decreased": 2,
+          "equal": 91
+        },
+        "4": {
+          "improved": 26,
+          "decreased": 37,
+          "equal": 778
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 2,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -12.187044571970274,
+        "conv-30": -33.934100454792215,
+        "conv-41": -10.067813544283998,
+        "conv-42": -15.230525567200171,
+        "conv-43": 20.07277627172055,
+        "conv-44": 15.928625916370788,
+        "conv-47": 7.225889999541479,
+        "conv-48": 10.53595464238144,
+        "conv-49": -5.936575722440251,
+        "conv-50": -26.876907464204734
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-sg-g6-fifo64-s901",
+      "b": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -90.06180600190494,
+      "p95_ms_delta_pct": -85.72114078994295,
+      "p99_ms_delta_pct": -90.71617372332314,
+      "completion_p95_delta_pct": -85.61967991693803,
+      "f1_delta": 7.24907736562308e-05,
+      "category5_delta": 0.004484304932735439,
+      "output_hash_mismatches": 176,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 10,
+          "decreased": 14,
+          "equal": 258
+        },
+        "2": {
+          "improved": 9,
+          "decreased": 9,
+          "equal": 303
+        },
+        "3": {
+          "improved": 2,
+          "decreased": 3,
+          "equal": 91
+        },
+        "4": {
+          "improved": 26,
+          "decreased": 35,
+          "equal": 780
+        },
+        "5": {
+          "improved": 3,
+          "decreased": 1,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -86.19091527272154,
+        "conv-30": -92.77732600094916,
+        "conv-41": -85.45111600704737,
+        "conv-42": -86.22981807298076,
+        "conv-43": -85.80311351280817,
+        "conv-44": -81.75351621063194,
+        "conv-47": -84.68142288353721,
+        "conv-48": -85.74528651927037,
+        "conv-49": -85.08920342681053,
+        "conv-50": -85.3500674051257
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    }
+  ],
+  "available_secondary_baseline_pairs": [
+    {
+      "a": "v6full1-main-g6-fifo64-s901",
+      "b": "v6full1-main-g6-bundle16-s901",
+      "engine": "main",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "fifo64",
+      "candidate": "bundle16",
+      "p50_ms_delta_pct": -67.28737050002431,
+      "p95_ms_delta_pct": -75.26387954261561,
+      "p99_ms_delta_pct": -75.63698820284033,
+      "completion_p95_delta_pct": -75.25109472705728,
+      "f1_delta": 0.0018441779986871354,
+      "category5_delta": 0.004484304932735439,
+      "output_hash_mismatches": 163,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 16,
+          "decreased": 12,
+          "equal": 254
+        },
+        "2": {
+          "improved": 7,
+          "decreased": 12,
+          "equal": 302
+        },
+        "3": {
+          "improved": 2,
+          "decreased": 5,
+          "equal": 89
+        },
+        "4": {
+          "improved": 26,
+          "decreased": 28,
+          "equal": 787
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 0,
+          "equal": 444
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -75.12900741202225,
+        "conv-30": -66.02670535290231,
+        "conv-41": -73.88527044965372,
+        "conv-42": -75.76721752756659,
+        "conv-43": -75.40943494188521,
+        "conv-44": -71.53911260036539,
+        "conv-47": -75.24156465724462,
+        "conv-48": -75.69565703082004,
+        "conv-49": -74.75868921812237,
+        "conv-50": -74.13635342576681
+      },
+      "scope": "Supplemental baseline-strength diagnostic; separate from the39registered primary contrasts"
+    }
+  ],
+  "exploratory_complete_three_seed_intervals": [],
+  "pending_run_ids": [
+    "v6full1-sg-g6-packing_ready-s901",
+    "v6full1-main-g6-packing_ready-s902",
+    "v6full1-main-g6-union64-s902",
+    "v6full1-main-g6-bundle16-s902",
+    "v6full1-main-g6-fifo64-s902",
+    "v6full1-sg-g6-packing_ready-s902",
+    "v6full1-sg-g6-union64-s902",
+    "v6full1-sg-g6-fifo64-s902",
+    "v6full1-sg-g6-native_dfs-s902",
+    "v6full1-sg-g6-native_lpm-s902",
+    "v6full1-main-g6-union64-s903",
+    "v6full1-main-g6-packing_ready-s903",
+    "v6full1-main-g6-fifo64-s903",
+    "v6full1-main-g6-bundle16-s903",
+    "v6full1-sg-g6-fifo64-s903",
+    "v6full1-sg-g6-union64-s903",
+    "v6full1-sg-g6-packing_ready-s903",
+    "v6full1-sg-g6-native_lpm-s903",
+    "v6full1-sg-g6-native_dfs-s903",
+    "v6full1-sg-g10-native_lpm-s901",
+    "v6full1-sg-g10-union64-s901",
+    "v6full1-sg-g10-packing_ready-s901"
+  ],
+  "scope": "Only the exact completed audited prefix; raw archives reopened and request/config/output/quality identities checked. No model-weight rehash or serving calls in this observer. Pending/error arms have no partial quantiles. Single-seed results have no interval; quality differences are not equivalence. Full completion still requires the separate30-arm terminal audit."
+}

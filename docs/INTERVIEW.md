@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 27/10/2026, 00:20 UTC:** Cả bốn cấu hình trên main stack, seed901, đã audit đủ **7.944/7.944 request đo**, không lỗi;240 warmups được tính riêng. Readiness có p95 kém bundle69,198% và kém oldunion36,930%, nên mục tiêu cạnh tranh vẫn chưa đạt. Native LPM full cũng vừa audit xong1.986/1.986 requests; tổng study hiện5/30 arms. Cấu hình này xác nhận host payload48.002.236.416 byte trong full audit. Native DFS đang chạy, chưa có paired native result. Prototype dùng epoch cache chưa được gắn vào gateway. Toàn bộ160 tests pass; phép đo CPU đã đăng ký nhưng còn chờ, chưa có kết quả speedup. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
+**Cập nhật 27/10/2026, 01:02 UTC:** Full study đã audit **8/30 cấu hình,15.888/15.888 request đo**, không lỗi;480 warmups riêng. Native union seed901 vừa có p95 **57,629 giây**, thấp hơn baseline mạnh DFS62,475 giây **7,756%**, new-prefill giảm7,589%. Tuy nhiên median xấu hơn302,005%, bốn conversation có p95 regression và176 output hashes khác nhau. Mới một arrival seed nên chưa đủ kết luận contribution mạnh; main oldunion/readiness vẫn kém bundle23,566%/69,198% ở p95. Prototype epoch chưa được bật trong serving;166 CPU tests và smoke hai prompt thật đã pass, còn full real-prefix check/CPU timing/GPU speedup chưa có. Native readiness đang đo. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
 
 **Đính chính resource:** LMCache lazy heap làm tròn theo64MiB. Ở development, main có16.039.018.496 byte, native có16.000.745.472 byte, chênh0,2392%. Ở full, main heap48.049.946.624 byte và native host payload48.002.236.416 byte đều đã có quan sát, chênh0,099392%. Đây là capacity, không phải RSS hoặc bằng chứng hai allocator có heap bằng nhau. Native capacity đã được xác nhận thêm bởi full LPM audit; các native comparisons và replications chưa hoàn tất. Stall V5 đã manual abort, nguyên nhân vẫn chưa được chứng minh.
 
@@ -1185,3 +1185,81 @@ Main heap đã quan sát48.049.946.624 byte, cao hơn0,099392% do allocator roun
 **Hỏi: Queue vượt128 gần95% thời gian thì có thể nói mọi decision đều dùng FIFO không?**
 
 **Đáp:** Không. Các samples thấy queue peak255, vượt128 trong94,7103% sample window. Source của implementation có fallback condition liên quan ngưỡng đó, nhưng sample không ghi từng scheduler decision. Vì vậy chỉ nói đã quan sát điều kiện fallback. Native DFS-weight vẫn phải đo như baseline thay thế mạnh, cùng các gateway controls; không chỉ giữ một cửa sổ thuận lợi cho method.
+
+### 22.17. Baseline mạnh làm thay đổi kết luận nghiên cứu
+
+**Hỏi: Khi thêm DFS-weight, kết quả full thay đổi thế nào?**
+
+**Đáp:** Ba baseline native ở cùng seed901 đã hoàn tất, mỗi cấu hình1.986 QA và60 warmups riêng, engine mới cho từng cấu hình. Bảng dưới dùng thời gian tính từ lịch arrival, gồm cả chờ phía client:
+
+| Baseline | TTFT p50 s | TTFT p95 s | TTFT p99 s | New prefill tokens | Answerable F1 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Native LPM | 532,250 | 957,655 | 970,424 | 309.413 | .318222 |
+| Native DFS-weight | 6,039 | 62,475 | 85,714 | 329.941 | .319050 |
+| Gateway FIFO64 | 244,275 | 403,600 | 702,019 | 320.357 | .318924 |
+
+DFS có p95 thấp hơn LPM93,476% và thấp hơn gateway FIFO84,521%; p95 tốt hơn LPM ở cả mười conversation. Đây là kết quả của một **baseline upstream**, không phải thuật toán do project tạo ra. Các cặp baseline này là phân tích bổ sung, không thay39 cặp candidate đã đăng ký. Chỉ một arrival seed, chưa có interval ba seed hoặc kết luận tổng quát.
+
+Nếu chỉ lấy LPM làm baseline, ta có thể đánh giá quá cao một admission method. Muốn gọi contribution cạnh tranh, phải giữ DFS trong phép so sánh, đồng thời tính median, decode, chất lượng và overhead của gateway. Cũng không gọi DFS/HiCache là toàn bộ Strata: project mới xác nhận các thành phần upstream và guard đã mô tả riêng.
+
+**Hỏi: DFS nhanh hơn vì tính ít prefill hơn phải không?**
+
+**Đáp:** Trong pair này thì ngược lại: DFS tính329.941 tokens, nhiều hơn LPM309.413, tức6,634%. Nhưng makespan giảm từ1.462,180 xuống510,913 giây. Cả hai vẫn có cùng50.522.325 prompt tokens và tổng cached+uncached khớp chính xác.
+
+Điều đó bác bỏ cách giải thích đơn giản “new-prefill thấp hơn luôn đồng nghĩa latency thấp hơn”. Nó chưa xác định toàn bộ nguyên nhân. Ordering có thể đổi locality, queueing, batch composition và transfers; cần instrument riêng từng phần. Promotion counters thiếu endpoint đầu ở cả hai run nên delta vẫn null. Không lấy số cuối8.329.696 so với44.609.296 rồi gọi đó là mức giảm transfer đã đo trong cửa sổ.
+
+**Hỏi: DFS thắng TTFT thì decode cũng tốt hơn chứ?**
+
+**Đáp:** Không. Native update-interval mean tăng18,800→28,956ms; p95 histogram nằm trong bucket25–30ms của LPM và100–200ms của DFS. Đây là histogram của engine updates, không phải chính xác từng token ở client. Một baseline có thể phục vụ request sớm hơn nhưng có decode interval xấu hơn. Report phải giữ cả hai.
+
+**Hỏi: F1 gần nhau và category5 đều223/446 đã đủ nhận quality equivalence?**
+
+**Đáp:** Chưa. DFS/LPM khác157 output hashes; category5 có một câu từ sai thành đúng và một câu từ đúng thành sai. Answerable F1 của DFS cao hơn.000828 nhưng paired score có cả tăng và giảm. Gateway FIFO đúng221/446 và21 cap hits, so với223/446 và20 của hai native baselines. Những con số này mô tả outcome thực tế; chúng không chứng minh phân phối chất lượng tương đương.
+
+**Hỏi: Gateway FIFO có thể xem là causal ablation chỉ thay ordering so với native không?**
+
+**Đáp:** Không. Nó thêm tokenization/preparation, admission, HTTP hop và giới hạn inflight64, còn native direct đưa request vào engine theo đường khác. Riêng gateway FIFO, mean TTFT243,378 giây gồm arrival→gateway135,974; prepare.147; admission78,756; upstream28,491 và return.009 giây. Các **mean** cộng được vì mỗi request được đối chiếu cùng clock; các p95 từng stage không cộng được. Source upstream bao gồm engine queue, copy, compute và transport, không phải GPU compute thuần.
+
+![Các baseline native full seed901, giữ cả decode và quality](../figures/v6full1_native_baselines_s901.png)
+
+### 22.18. Kiểm cache invalidation trên prefix thật có phải replay production không?
+
+**Hỏi: Hai prompt thật khớp đã chứng minh prototype đúng cho full benchmark chưa?**
+
+**Đáp:** Chưa. Smoke chỉ chạy hàm preparation thật trên hai prompt đầu của full trace:19.526 và15.210 input tokens. Token-ID SHA, prompt SHA và prefix-group đều khớp fingerprints và gateway ledger gốc. Nó không tải weights hoặc chạy GPU, cũng chưa kiểm đủ1.986 QA hay lifecycle scheduling. Artifact ghi rõ `complete_trace=false`.
+
+**Hỏi: Phép kiểm đầy đủ được thiết kế thế nào?**
+
+**Đáp:** Job riêng đã đăng ký và đang chờ chuỗi full→tái tạo input→namespace→CPU probe kết thúc thành công, services idle và full audit đủ30 arms. Nó chuẩn bị toàn bộ1.986 token/prefix templates thật một lần, kiểm50.522.325 input tokens, rồi dựng hai lifecycle histories từ ledger main oldunion/readiness seed901. Cả selector gốc và prototype đi qua cùng membership events; so winner, reason, head và timeout tại mọi dispatch và mỗi16 events, với ba lần gọi lặp trên cùng state.
+
+166 CPU tests hiện pass, gồm sáu test của checker. Một test cố ý bỏ readiness invalidation sau first text và checker phát hiện cached `None` sai. Tests này là synthetic; kết quả thực thi đầy đủ của job thật vẫn chưa có.
+
+**Hỏi: Nếu mọi state đều khớp thì đã tái hiện chính xác scheduler production chưa?**
+
+**Đáp:** Vẫn chưa. Timestamp enqueue được ghi trước khi lấy condition lock; ledger không lưu đầy đủ thứ tự append trong lock, head IDs hay từng wakeup. Checker theo membership đã ghi cho cả hai model và báo riêng recorded-dispatch disagreement, reservation mismatch, head ambiguity và timestamp ties. Nó không ép winner dự đoán bằng dispatch đã ghi để tạo ra agreement giả. Artifact luôn ghi `production_decision_trace_reproduced=false`.
+
+Đây là phép kiểm logic trên những trạng thái suy ra từ bằng chứng thật. Muốn khẳng định performance, cần phép đo CPU và study GPU mới; muốn exact decision replay, cần instrumentation đủ thông tin được đăng ký trước lần chạy mới.
+
+### 22.19. Union vừa thắng tail của DFS: đã đạt contribution mạnh chưa?
+
+**Hỏi: Full native union seed901 cho kết quả gì?**
+
+**Đáp:** Run đã hoàn tất và audit1.986/1.986 requests, không lỗi;60 warmups riêng. Union có TTFT p50/p95/p99 là24,277/57,629/65,174 giây, makespan510,984 giây. So với DFS, p95 giảm7,756%, p99 giảm23,963% và completion p95 giảm9,099%. New-prefill329.941→304.901 tokens, giảm7,589%; con số cuối chỉ cao hơn input-only full-retention reference304.885 đúng16 tokens.
+
+Đây là một cặp primary đã đăng ký, không phải chọn baseline sau khi thấy kết quả. Checkpoint08 mở lại đủ tám archive,15.888 measured successes; hiện có8/39 primary pairs, gồm ba cặp union native với LPM/DFS/FIFO. Mới một arrival seed nên chưa có interval ba seed. Main stack vẫn giữ regression so với bundle; không gộp hai stack để làm mất kết quả xấu.
+
+**Hỏi: Vì sao vẫn chưa nói union tốt hơn DFS toàn diện?**
+
+**Đáp:** Median tăng từ6,039 lên24,277 giây, tức302,005%. Bốn conversation có p95 xấu hơn DFS: conv43+20,073%, conv44+15,929%, conv47+7,226% và conv48+10,536%. Sáu conversation còn lại tốt hơn, nhưng aggregate p95 không phải lời bảo đảm cho từng conversation hay từng request.
+
+Native ITL mean tốt hơn DFS28,956→24,865ms/update, p95 bucket100–200→40–60ms; đây vẫn là engine-update histogram. Answerable F1 union.318996 so với DFS.319050, chênh−.000054;176 output hashes khác nhau. Category5 cùng223/446 nhưng hai câu đúng thành sai và hai câu sai thành đúng. Bypass lớn nhất được quan sát bằng8, đúng bound đã đặt; bound này không ngăn median hoặc conversation p95 regression và không phải deadline200ms.
+
+**Hỏi: Gần bằng input oracle có chứng minh scheduling tối ưu không?**
+
+**Đáp:** Không. Reference chỉ tính prefix/token geometry với giả định giữ toàn bộ và publication ngay. Run có finite cache, batching, I/O và lịch arrival thật;16 tokens dư là quan sát, chưa có causal explanation đã trace. Việc đạt gần reference về compute cũng không tối ưu TTFT, fairness hay transfer. Readiness ở development từng giúp native đạt reference, nhưng full **oldunion không có readiness gate** cũng đạt rất gần reference. Điều này giới hạn mọi claim rằng gate luôn cần thiết.
+
+**Hỏi: Còn cơ hội profiling CPU nào nếu tail đã tốt hơn DFS?**
+
+**Đáp:** Native union gọi chooser894.624 lần cho1.986 requests, trong đó888.842 cache hits, tỷ lệ99,354%. Counter đo50,257 thread-CPU seconds trong chooser,50,604 summed call-wall seconds và73,666ms max call-wall. Đây là overhead thực tế ngay trong run đã thắng tail; epoch-cache có thể giảm công việc lặp, nhưng chưa có timing hoặc E2E result để định lượng phần tiết kiệm.
+
+Không trừ50,257 giây khỏi makespan để dự đoán speedup. Arrival stream kéo dài gần hết run, CPU có thể chồng GPU/I/O, và thay dispatch timing có thể đổi batching/outputs. Trước mắt cần hoàn tất các arrival seeds, kiểm gate ablation, rồi đo prototype trong study mới với cả baseline mạnh và metric bất lợi được giữ nguyên.

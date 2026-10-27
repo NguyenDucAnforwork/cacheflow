@@ -1,0 +1,10 @@
+{
+  "source": "results/v3/v6full1_native_baselines_s901.json",
+  "source_sha256": "2f4a90d0a4eb06f7c6840cf31138dbfa9ce27c182ff17b50dfce280b9d6a828a",
+  "plot_source_sha256": "70c8ba3e0c1766f1a3eae23ea039c9804a4cf9111ccaa8136f0e1b754d5950c5",
+  "figure_sha256": {
+    "figures/v6full1_native_baselines_s901.png": "0892fe0a4048836e58776fb185ec717974b1c1126cf10391ec289c467f667fe7",
+    "figures/v6full1_native_baselines_s901.svg": "f3aab3f8191abe66b693f19ab5d6cb25dff75f6d4b53dc2f89db4459c1e23ec4"
+  },
+  "scope": "Three completed native baseline arms, fresh engines and matched prompts/budgets/arrivals. No three-seed interval, candidate win, full39-pair replacement, quality equivalence or complete-Strata reproduction. Native direct versus gatewayFIFO changes admission, preparation and transport together; not an ordering-only causal contrast. Missing promotion/duration endpoints remain null; duration is not DMA time."
+}

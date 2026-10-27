@@ -1,0 +1,199 @@
+{
+  "producer": "Inline hash-checked extraction from complete per-run audit/setup and checkpoint08",
+  "checkpoint_sha256": "1af08a4089fcf524d8c6045b329456f3496e70f7fcbbef8655b7d344731ad0f0",
+  "audit_sha256": "1ba4e2359d2d66847f540b202175623665d5eb8a6deef7996dda59dba26f43d0",
+  "setup_sha256": "47bb4686cba4f39bb6d557e013652bffdb273c6bb25b78b10e071250b28cee38",
+  "chooser_source_sha256": "112fc23c06439a68353e05719a00165afd2b7ee5a9fcb761817c008c3d653e56",
+  "run_id": "v6full1-sg-g6-union64-s901",
+  "decision_stats": {
+    "calls": 894624,
+    "cache_hits": 888842,
+    "cache_misses": 5782,
+    "cache_hit_fraction": 0.9935369496011732,
+    "thread_cpu_s": 50.256515795,
+    "summed_call_wall_s": 50.604406044,
+    "max_call_wall_ms": 73.665854
+  },
+  "admission": {
+    "run_id": "v6full1-sg-g6-union64-s901",
+    "policy": "packing_reuse",
+    "max_inflight": 64,
+    "configured_max_bypasses": 8,
+    "max_head_bypasses": 8,
+    "queued_with_spare_slots_s": 504.0591885610001,
+    "queued_with_at_most_one_active_s": 70.52074529799998,
+    "active_request_seconds": 2769.1612454370006,
+    "scope": "Ingress intervals; spare ingress slots do not prove GPU idle time"
+  },
+  "paired_primary_comparisons": [
+    {
+      "a": "v6full1-sg-g6-native_lpm-s901",
+      "b": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "native_lpm",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -95.43887672100205,
+      "p95_ms_delta_pct": -93.98223458311801,
+      "p99_ms_delta_pct": -93.2839395951305,
+      "completion_p95_delta_pct": -93.94394982343385,
+      "f1_delta": 0.00077426821568638,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 169,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 16,
+          "decreased": 9,
+          "equal": 257
+        },
+        "2": {
+          "improved": 11,
+          "decreased": 5,
+          "equal": 305
+        },
+        "3": {
+          "improved": 0,
+          "decreased": 3,
+          "equal": 93
+        },
+        "4": {
+          "improved": 27,
+          "decreased": 39,
+          "equal": 775
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 2,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -93.8268371387248,
+        "conv-30": -89.97041065708805,
+        "conv-41": -93.90628315088057,
+        "conv-42": -94.25013788406955,
+        "conv-43": -94.12402024225077,
+        "conv-44": -92.3685755734875,
+        "conv-47": -93.5459667074362,
+        "conv-48": -94.10617572188067,
+        "conv-49": -93.51618337033382,
+        "conv-50": -93.83353935674778
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-sg-g6-native_dfs-s901",
+      "b": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "native_dfs",
+      "candidate": "union64",
+      "p50_ms_delta_pct": 302.00462795983236,
+      "p95_ms_delta_pct": -7.756040791612229,
+      "p99_ms_delta_pct": -23.963339339920843,
+      "completion_p95_delta_pct": -9.0994972511107,
+      "f1_delta": -5.418440751142617e-05,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 176,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 17,
+          "decreased": 13,
+          "equal": 252
+        },
+        "2": {
+          "improved": 15,
+          "decreased": 6,
+          "equal": 300
+        },
+        "3": {
+          "improved": 3,
+          "decreased": 2,
+          "equal": 91
+        },
+        "4": {
+          "improved": 26,
+          "decreased": 37,
+          "equal": 778
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 2,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -12.187044571970274,
+        "conv-30": -33.934100454792215,
+        "conv-41": -10.067813544283998,
+        "conv-42": -15.230525567200171,
+        "conv-43": 20.07277627172055,
+        "conv-44": 15.928625916370788,
+        "conv-47": 7.225889999541479,
+        "conv-48": 10.53595464238144,
+        "conv-49": -5.936575722440251,
+        "conv-50": -26.876907464204734
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    },
+    {
+      "a": "v6full1-sg-g6-fifo64-s901",
+      "b": "v6full1-sg-g6-union64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "baseline": "fifo64",
+      "candidate": "union64",
+      "p50_ms_delta_pct": -90.06180600190494,
+      "p95_ms_delta_pct": -85.72114078994295,
+      "p99_ms_delta_pct": -90.71617372332314,
+      "completion_p95_delta_pct": -85.61967991693803,
+      "f1_delta": 7.24907736562308e-05,
+      "category5_delta": 0.004484304932735439,
+      "output_hash_mismatches": 176,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 10,
+          "decreased": 14,
+          "equal": 258
+        },
+        "2": {
+          "improved": 9,
+          "decreased": 9,
+          "equal": 303
+        },
+        "3": {
+          "improved": 2,
+          "decreased": 3,
+          "equal": 91
+        },
+        "4": {
+          "improved": 26,
+          "decreased": 35,
+          "equal": 780
+        },
+        "5": {
+          "improved": 3,
+          "decreased": 1,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -86.19091527272154,
+        "conv-30": -92.77732600094916,
+        "conv-41": -85.45111600704737,
+        "conv-42": -86.22981807298076,
+        "conv-43": -85.80311351280817,
+        "conv-44": -81.75351621063194,
+        "conv-47": -84.68142288353721,
+        "conv-48": -85.74528651927037,
+        "conv-49": -85.08920342681053,
+        "conv-50": -85.3500674051257
+      },
+      "scope": "Registered full primary comparison, available completed pair only; study incomplete"
+    }
+  ],
+  "scope": "Completed native union seed901 only; paired baselines are registered primary contrasts, not three-seed evidence. Chooser counters cover instrumented thread CPU/call wall including hits and misses, excluding timeout/HTTP/preparation/condition work. No hit/miss CPU attribution, total gateway CPU, wall saved or E2E prototype speedup. Ingress spare-slot intervals do not establish GPU idle time. Per-conversation regressions, median/quality changes and main-stack failures remain visible."
+}

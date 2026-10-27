@@ -1,0 +1,38 @@
+{
+  "cpu_only": true,
+  "complete_trace": false,
+  "requests": 2,
+  "preflight_sha256": "a13db4fe27865081644d4659129e0fc7482c036027ab86d6457226a11dfb3ad7",
+  "reference_fingerprints_sha256": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+  "setup_sha256": "ebba00535d52723b39a6fadb9768f13511eb039c47a506665b10d821de51abba",
+  "source_trace_path": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+  "reference_trace_stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+  "gateway_archive_sha256": "798f9159617e0c1630d91217be2e01d963c2ba152f180b59901ea3ef47494a9c",
+  "preparation_source_sha256": "89ba3e68faabd7abeceed855c96cefc407d0d0e1596addb7a6016ec081ea3dcb",
+  "prefix_source_sha256": "b0f24fd7c950a40033e9a7cb298c641f84c41375389da053f528b870adbee1ad",
+  "engine_hash_source_sha256": "b0bf862d383c91f2b35db22860eceebc0af8f42a81acd5841ae5dd363b2b1940",
+  "records": [
+    {
+      "request_id": "conv-26-q000",
+      "input_tokens": 19526,
+      "prompt_sha256": "ce4c4ab75a68db5eab8c2cd6bc275dcd771c3c947b06e8c6611cbb505680bc2b",
+      "token_ids_u32le_sha256": "d62326402e4a554dc8f1049cfaca22d50cc6f18445987ef08a1e03a87da779ec",
+      "gateway_prefix_blocks": 76,
+      "engine_blocks": 1220,
+      "prefix_group": "308c597f1a87f0ed9418fef8af647c25",
+      "recorded_prefix_group_equal": true
+    },
+    {
+      "request_id": "conv-30-q000",
+      "input_tokens": 15210,
+      "prompt_sha256": "1e4b7f2462ebe6a717869f1efca2275786ff58cadb5c28b1429bc30c7242ed12",
+      "token_ids_u32le_sha256": "9221bc4994fcad96ae4e3cb58729df82b9a88a67fdbf872209874c8f6c486e25",
+      "gateway_prefix_blocks": 59,
+      "engine_blocks": 950,
+      "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+      "recorded_prefix_group_equal": true
+    }
+  ],
+  "producer": "Inline CPU preflight of two frozen prompts using the exact gateway preparation function",
+  "scope": "Two real prompt/token/prefix-group matches only; no full1986QA preparation, lifecycle equivalence, source regeneration, CPU timing, model weights, GPU activation or E2E improvement."
+}

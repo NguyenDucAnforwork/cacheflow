@@ -1,0 +1,79 @@
+{
+  "audit_path": "results/v3/v6full1-sg-g6-union64-s901.full_audit_r1.json",
+  "audit_sha256": "1ba4e2359d2d66847f540b202175623665d5eb8a6deef7996dda59dba26f43d0",
+  "files": [
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.jsonl.gz",
+      "sha256": "333a9b7747b3e0e2131f900405f46c98b371dab1ec50083654a201b223d597e3",
+      "archive_sha256": "bdfa56c324b1cff42a23346308026c7bdd99d8b569cc1f40d9c5d062a4576573",
+      "bytes": 50817,
+      "archive_bytes": 9161
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.outputs.jsonl.gz",
+      "sha256": "4ab7a60039556856ed89835376f8eceeb9b3d158a53827900fe8787160204a34",
+      "archive_sha256": "f97b73ef9871c283f769f87e6a985e7f3d89c4538e240323175044ab7d0d233c",
+      "bytes": 11761,
+      "archive_bytes": 2624
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.summary.json.gz",
+      "sha256": "e729570c6cc8137a2043f1a26bffac5c46546a7d20e8c02e74a4de4aae491e9e",
+      "archive_sha256": "f85732ca3e99c870186272575555dca58b33559dd2b439efdd58850f71bc4960",
+      "bytes": 1455,
+      "archive_bytes": 757
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901-warm.metrics.jsonl.gz",
+      "sha256": "f5a415fd71d5c166eada82014b23f63bcdeb9f5698e8524d11be70541c29cb76",
+      "archive_sha256": "9664cbccc2caf9826e0e2e9358777aa7661088569643d50062540f199267e964",
+      "bytes": 85341,
+      "archive_bytes": 4717
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.jsonl.gz",
+      "sha256": "2f83d3ab7a1caec23f7764489be3e1ec99e7ad687fbe09782a074c240d67e3a7",
+      "archive_sha256": "d7bab8cb43b8ec6c3481c2a64b0c7b6266266f9a40a57a3c2bb877daab62ba0a",
+      "bytes": 1677030,
+      "archive_bytes": 281647
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.outputs.jsonl.gz",
+      "sha256": "606e3fb277f9d0a430d5cd978743f4c702af8dcdf846850396b8847a85ee6941",
+      "archive_sha256": "8b1a242db4b11962aae1d7cb0e9d8892cba60373f62285449366662cfb143bee",
+      "bytes": 380497,
+      "archive_bytes": 63940
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.summary.json.gz",
+      "sha256": "b081d11da949241745ba192ac722a6e68972b75e4025b951744987b4b2df4acc",
+      "archive_sha256": "6db8e02e02ea5f770d3516ad0e77e28a8fcb76168dc3c7b9f0dd3eae4764ac03",
+      "bytes": 1455,
+      "archive_bytes": 762
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.metrics.jsonl.gz",
+      "sha256": "c1b6e532e445e06e22adb5502ec9f6e5af9ff937dac3b2b76e6df370f5fe0601",
+      "archive_sha256": "0fcd49f55467498998bafa29e348c3c061295139b69fa928e0379fe92a29d476",
+      "bytes": 1585655,
+      "archive_bytes": 103871
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.gateway.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-union64-s901.gateway.jsonl.gz",
+      "sha256": "1a8aec2e539b493c209c7a83772848a95ae187eb32a3c1d798a0592554af0ced",
+      "archive_sha256": "9c4809ead16d535eba3fef6419e14ade532977f499d7a4c920143c871f82c99d",
+      "bytes": 1859287,
+      "archive_bytes": 226249
+    }
+  ],
+  "scope": "Lossless private raw archive after complete per-run integrity/quality audit; original uncompressed SHA retained. Not additional benchmark evidence."
+}

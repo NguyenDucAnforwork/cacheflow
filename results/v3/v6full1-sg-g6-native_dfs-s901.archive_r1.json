@@ -1,0 +1,71 @@
+{
+  "audit_path": "results/v3/v6full1-sg-g6-native_dfs-s901.full_audit_r1.json",
+  "audit_sha256": "00bba4630d9a447825b6ebd95bbd8a6e561f1a65183b75e722d8c95e1d87892c",
+  "files": [
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.jsonl.gz",
+      "sha256": "de51e6ec02995142cff0dfd1e5d11166cfa7bd53979703a59c31557a070435ef",
+      "archive_sha256": "58d93b28886d034256fa2603d748278f448cc94f5b86a855e77a477ac9c7f271",
+      "bytes": 50995,
+      "archive_bytes": 9190
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.outputs.jsonl.gz",
+      "sha256": "df9074b971a9fd1de9545eb2b350bceacf660d22e43bf9f7beb3456d4ccc9d92",
+      "archive_sha256": "e9d056732ea4e2c209c1cddea682a5ae7656a0138b98fc2d8a198cc3292362ae",
+      "bytes": 11950,
+      "archive_bytes": 2625
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.summary.json.gz",
+      "sha256": "52c2427ca514c36e8c0e9c981446c3e4627b555642ac14e723bf310c373f1f2c",
+      "archive_sha256": "ab56cdb3f41d7689e1fdabe82e87ccbe913648ff9edbd4b79ec0b2e0c2e21cb8",
+      "bytes": 1468,
+      "archive_bytes": 760
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901-warm.metrics.jsonl.gz",
+      "sha256": "bd9dc8ba10e292c9d4dbea9f69fece353a03f19618a906248ba73c569d55129f",
+      "archive_sha256": "e794d202ad1a8656e810a80752a4649dde60bbf196ed4bf96d7057cb11d1bb00",
+      "bytes": 85239,
+      "archive_bytes": 4657
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.jsonl.gz",
+      "sha256": "9370e50b653516d58d5ad8239be146ade9196fcdf7eb749f2a63a185d1bd3a11",
+      "archive_sha256": "bcccf2f38030f10c764c1d3a0b7a83328fb0d8dd086894f7a8e308f93a82b5cc",
+      "bytes": 1680753,
+      "archive_bytes": 281071
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.outputs.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.outputs.jsonl.gz",
+      "sha256": "148f1fe19712c20297cf51a2b38b3df0ce3a6c01c92e82f2b51022ef87a98569",
+      "archive_sha256": "48e14f0f6d532f9e364148a0ddc57a98b2e654efa6804c259d67a2a709681217",
+      "bytes": 387111,
+      "archive_bytes": 64215
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.summary.json",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.summary.json.gz",
+      "sha256": "70b4fade0ebb30530bcb479f642f377ed915cc229b30145aafd418b4b8b22fe5",
+      "archive_sha256": "f0eab36b55dbc05d14d9367011d74b92b8e04d8d81d2b7674eb95ff2cba476af",
+      "bytes": 1460,
+      "archive_bytes": 764
+    },
+    {
+      "path": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.metrics.jsonl",
+      "archive": "results/v3/raw/sglang/v6full1-sg-g6-native_dfs-s901.metrics.jsonl.gz",
+      "sha256": "0fcb39a5699de5407f1e462e4b9f35923b5ddadf6a149af4710c9f7fd5f0760f",
+      "archive_sha256": "f76cc731310bd080e614f301364ad6b58a4f6834e71f9ca090a948dba59678e7",
+      "bytes": 1671007,
+      "archive_bytes": 111151
+    }
+  ],
+  "scope": "Lossless private raw archive after complete per-run integrity/quality audit; original uncompressed SHA retained. Not additional benchmark evidence."
+}

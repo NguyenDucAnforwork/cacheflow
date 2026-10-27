@@ -1,0 +1,529 @@
+{
+  "kind": "supplemental_full_native_baseline_diagnostic",
+  "complete_full_study": false,
+  "checkpoint_sha256": "d57f872784790d096cd2f1e3fd3a623923c73edd692ccf40a8a0e204b5d283e0",
+  "source_sha256": "afcf6d8f37c29269ccc213fca53b43fd61dc2dbb2b27559da7c71bb419460520",
+  "comparator_source_sha256": "02c8cf6d4a3c3dc10f1ca22dc18a2f09919e1644cbd104c4cdd1c25ec9345bb0",
+  "seed": 901,
+  "unique_qa": 1986,
+  "measured_requests": 5958,
+  "separate_warmup_requests": 180,
+  "runs": [
+    {
+      "arm": "native_lpm",
+      "run_id": "v6full1-sg-g6-native_lpm-s901",
+      "audit_sha256": "f203ac3b8e85b0bb57d5dfe7142932e6a042c6e67cffa89e2ec30add7d97227a",
+      "archive_sha256": "f622f339cd2c57900a013f9a46f3728e973e3091e685440b3f41e53810108088",
+      "engine_pid": 474287,
+      "ttft_s": {
+        "p50": 532.2495260495,
+        "p95": 957.6547484939999,
+        "p99": 970.4236825021002
+      },
+      "makespan_s": 1462.180147401,
+      "new_prefill_tokens": 309413.0,
+      "cached_tokens": 50212912.0,
+      "answerable_f1": 0.3182218737976727,
+      "category5_correct": 223,
+      "output_budget_hits": 20,
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-native_lpm-s901",
+        "snapshot_sha256": "79fe335eb83fa885e49de76e8c973af5fe541a87de9f1465906418f05bee26bc",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 18.800133803741062,
+        "itl_observations": 38825.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 25.0,
+            "upper_ms": 30.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "resource": {
+        "samples": 1336,
+        "window_s": 1469.554354757,
+        "start_ns": 159243904755728,
+        "end_ns": 160713459110485,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50212912.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 309413.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 267.1800000000001,
+          "sglang:queue_time_seconds_sum": 349770.34747714445,
+          "sglang:time_to_first_token_seconds_sum": 351621.8251758237,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 44609296.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 7.110103274841094
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 255.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 1391.819736463,
+        "sampled_queue_above128_fraction": 0.9471032711091153,
+        "gpu_time_weighted_util_pct": 83.69423230138956,
+        "gpu_time_weighted_power_w": 235.6534008013048,
+        "vram_peak_mib": 16044.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 53732106240,
+        "last_host_used_tokens": 325536.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 1336,
+        "queue_samples_observed": 1336,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6full1-sg-g6-native_lpm-s901"
+        ]
+      }
+    },
+    {
+      "arm": "native_dfs",
+      "run_id": "v6full1-sg-g6-native_dfs-s901",
+      "audit_sha256": "00bba4630d9a447825b6ebd95bbd8a6e561f1a65183b75e722d8c95e1d87892c",
+      "archive_sha256": "e11b745e73a5e3e8a94ae698bcdd3d1492d04861e76b78a89ea2f99589481907",
+      "engine_pid": 478692,
+      "ttft_s": {
+        "p50": 6.0388750145,
+        "p95": 62.475002984,
+        "p99": 85.71423328460011
+      },
+      "makespan_s": 510.912781204,
+      "new_prefill_tokens": 329941.0,
+      "cached_tokens": 50192384.0,
+      "answerable_f1": 0.3190503264208705,
+      "category5_correct": 223,
+      "output_budget_hits": 20,
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-native_dfs-s901",
+        "snapshot_sha256": "ee25f14c933449578763c2866f03da8b383adbe2b1eb0b2e654634b122f8340c",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 28.95599460546234,
+        "itl_observations": 38844.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "resource": {
+        "samples": 463,
+        "window_s": 518.587442985,
+        "start_ns": 160891519246097,
+        "end_ns": 161410106689082,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50192384.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 329941.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 222.9300000000001,
+          "sglang:queue_time_seconds_sum": 26104.365327157895,
+          "sglang:time_to_first_token_seconds_sum": 27116.32645962268,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 8329696.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 2.146313785080565
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 212.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 85.413456963,
+        "sampled_queue_above128_fraction": 0.16470405930262866,
+        "gpu_time_weighted_util_pct": 94.33989846304299,
+        "gpu_time_weighted_power_w": 272.2179244936006,
+        "vram_peak_mib": 16038.0,
+        "temperature_peak_c": 69.0,
+        "summed_process_rss_peak_bytes": 53684543488,
+        "last_host_used_tokens": 325536.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 463,
+        "queue_samples_observed": 463,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [],
+        "native_without_gateway": [
+          "v6full1-sg-g6-native_dfs-s901"
+        ]
+      }
+    },
+    {
+      "arm": "fifo64",
+      "run_id": "v6full1-sg-g6-fifo64-s901",
+      "audit_sha256": "b4425044d39fee596834e16640d663518fe1385f2446cf34157921874e471d25",
+      "archive_sha256": "e05bcaeedae15bd7db9a333e31c69222a63800c856eeef7b1caf1790ebbbb7c2",
+      "engine_pid": 480935,
+      "ttft_s": {
+        "p50": 244.27533855400003,
+        "p95": 403.59958327349995,
+        "p99": 702.0191756898002
+      },
+      "makespan_s": 912.259661617,
+      "new_prefill_tokens": 320357.0,
+      "cached_tokens": 50201968.0,
+      "answerable_f1": 0.31892365123970284,
+      "category5_correct": 221,
+      "output_budget_hits": 21,
+      "native_itl": {
+        "run_id": "v6full1-sg-g6-fifo64-s901",
+        "snapshot_sha256": "54fb5cca3f528767451375f253ef53e9f6a140892b2fa1ddf4af92d789a0fa6b",
+        "coverage_valid": true,
+        "coverage_failures": [],
+        "native_itl_mean_ms": 25.248026409430885,
+        "itl_observations": 39135.0,
+        "quantile_bounds": {
+          "p50": {
+            "lower_ms": 15.0,
+            "upper_ms": 20.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p95": {
+            "lower_ms": 100.0,
+            "upper_ms": 200.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          },
+          "p99": {
+            "lower_ms": 200.0,
+            "upper_ms": 400.0,
+            "upper_unbounded": false,
+            "scope": "Histogram observation quantile lies within these bucket boundaries; no interpolation or exact token percentile."
+          }
+        }
+      },
+      "resource": {
+        "samples": 820,
+        "window_s": 919.416240861,
+        "start_ns": 161595204671638,
+        "end_ns": 162514620912499,
+        "counter_deltas": {
+          "sglang:num_requests_total": 1986.0,
+          "sglang:prompt_tokens_total": 50522325.0,
+          "sglang:cached_tokens_total": 50201968.0,
+          "sglang:uncached_prompt_tokens_histogram_sum": 320357.0,
+          "sglang:load_back_tokens_total": null,
+          "sglang:load_back_duration_seconds_sum": null,
+          "sglang:process_cpu_seconds_total": 243.3100000000002,
+          "sglang:queue_time_seconds_sum": 54838.45281540119,
+          "sglang:time_to_first_token_seconds_sum": 56427.603067038144,
+          "sglang:num_retracted_requests_total": null
+        },
+        "endpoint_counters": {
+          "sglang:load_back_tokens_total": {
+            "first": null,
+            "last": 24581280.0
+          },
+          "sglang:load_back_duration_seconds_sum": {
+            "first": null,
+            "last": 3.6045384829049
+          },
+          "sglang:num_retracted_requests_total": {
+            "first": null,
+            "last": null
+          }
+        },
+        "retract_gauge_peak": 0.0,
+        "queue_peak": 63.0,
+        "queue_last": 0.0,
+        "sampled_queue_above128_s": 0,
+        "sampled_queue_above128_fraction": 0.0,
+        "gpu_time_weighted_util_pct": 86.76283027192581,
+        "gpu_time_weighted_power_w": 244.60136559662348,
+        "vram_peak_mib": 16038.0,
+        "temperature_peak_c": 67.0,
+        "summed_process_rss_peak_bytes": 53593948160,
+        "last_host_used_tokens": 325488.0,
+        "host_capacity_tokens": 325536.0,
+        "retract_gauge_samples_observed": 820,
+        "queue_samples_observed": 820,
+        "scope": "Existing1Hz sample-window estimates, left-endpoint weighted; may include pre/post-request margins. Missing endpoint counters/gauge coverage stay null; RSS sums double-count shared pages. Host promotions/enqueue duration are not engine-consumed-source tokens, measured DMA time or useful latency overlap. Queue>128 samples identify a fallback condition, not exact scheduler decisions."
+      },
+      "waits": {
+        "scope": "Complete audited gateway arms. Stages add per request and in means, never in quantiles. Worker queue/CPU are already within prepare. Upstream-to-token includes engine queue, copy, compute and transport; not pure GPU time.",
+        "runs": [
+          {
+            "run_id": "v6full1-sg-g6-fifo64-s901",
+            "requests": 1986,
+            "stages_ms": {
+              "arrival_to_gateway": {
+                "mean": 135973.91534100453,
+                "p50": 121902.30653949999,
+                "p95": 331219.071166
+              },
+              "gateway_prepare": {
+                "mean": 147.30585344612285,
+                "p50": 90.517107,
+                "p95": 464.19431249999997
+              },
+              "gateway_admission": {
+                "mean": 78756.49954043253,
+                "p50": 86298.91330700001,
+                "p95": 108167.50116525
+              },
+              "upstream_to_token": {
+                "mean": 28491.280828394763,
+                "p50": 3881.546763,
+                "p95": 119431.99023375
+              },
+              "return_stream": {
+                "mean": 8.536060265861027,
+                "p50": 0.7800525,
+                "p95": 38.8652185
+              },
+              "ttft": {
+                "mean": 243377.53762354382,
+                "p50": 244275.33855400002,
+                "p95": 403599.5832735
+              },
+              "worker_queue": {
+                "mean": 60.686585444612284,
+                "p50": 0.146136,
+                "p95": 345.86272575
+              },
+              "worker_cpu": {
+                "mean": 78.97255250654582,
+                "p50": 79.581272,
+                "p95": 102.156779
+              }
+            }
+          }
+        ],
+        "native_without_gateway": []
+      }
+    }
+  ],
+  "contrasts": [
+    {
+      "a": "v6full1-sg-g6-native_lpm-s901",
+      "b": "v6full1-sg-g6-native_dfs-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "p50_ms_delta_pct": -98.86540528099252,
+      "p95_ms_delta_pct": -93.47624986121066,
+      "p99_ms_delta_pct": -91.16733908805708,
+      "completion_p95_delta_pct": -93.33771542133726,
+      "f1_delta": 0.0008284526231978062,
+      "category5_delta": 0.0,
+      "output_hash_mismatches": 157,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 13,
+          "decreased": 12,
+          "equal": 257
+        },
+        "2": {
+          "improved": 11,
+          "decreased": 13,
+          "equal": 297
+        },
+        "3": {
+          "improved": 1,
+          "decreased": 5,
+          "equal": 90
+        },
+        "4": {
+          "improved": 23,
+          "decreased": 28,
+          "equal": 790
+        },
+        "5": {
+          "improved": 1,
+          "decreased": 1,
+          "equal": 444
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -92.97010010517793,
+        "conv-30": -84.81881059373319,
+        "conv-41": -93.22409796839524,
+        "conv-42": -93.21706055817462,
+        "conv-43": -95.10631806792566,
+        "conv-44": -93.41713544330483,
+        "conv-47": -93.9809002353896,
+        "conv-48": -94.66795732014285,
+        "conv-49": -93.10697364096174,
+        "conv-50": -91.56701333407963
+      },
+      "arm_a": "native_lpm",
+      "arm_b": "native_dfs",
+      "scope": "Supplemental baseline-to-baseline diagnostic, not a registered candidate contrast or new method"
+    },
+    {
+      "a": "v6full1-sg-g6-native_lpm-s901",
+      "b": "v6full1-sg-g6-fifo64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "p50_ms_delta_pct": -54.105109239443074,
+      "p95_ms_delta_pct": -57.85541878133039,
+      "p99_ms_delta_pct": -27.65848687042105,
+      "completion_p95_delta_pct": -57.886541178597696,
+      "f1_delta": 0.0007017774420301492,
+      "category5_delta": -0.004484304932735439,
+      "output_hash_mismatches": 136,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 16,
+          "decreased": 7,
+          "equal": 259
+        },
+        "2": {
+          "improved": 12,
+          "decreased": 6,
+          "equal": 303
+        },
+        "3": {
+          "improved": 1,
+          "decreased": 2,
+          "equal": 93
+        },
+        "4": {
+          "improved": 13,
+          "decreased": 18,
+          "equal": 810
+        },
+        "5": {
+          "improved": 2,
+          "decreased": 4,
+          "equal": 440
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": -55.29636479758329,
+        "conv-30": 38.86255068732134,
+        "conv-41": -58.11557194303572,
+        "conv-42": -58.24410929060908,
+        "conv-43": -58.61078580116536,
+        "conv-44": -58.17591753782604,
+        "conv-47": -57.86793222702329,
+        "conv-48": -58.65350583098746,
+        "conv-49": -56.51596078156898,
+        "conv-50": -57.90792480908934
+      },
+      "arm_a": "native_lpm",
+      "arm_b": "fifo64",
+      "scope": "Supplemental baseline-to-baseline diagnostic, not a registered candidate contrast or new method"
+    },
+    {
+      "a": "v6full1-sg-g6-native_dfs-s901",
+      "b": "v6full1-sg-g6-fifo64-s901",
+      "engine": "sg",
+      "budget": 6,
+      "seed": 901,
+      "p50_ms_delta_pct": 3945.0470984656604,
+      "p95_ms_delta_pct": 546.0177094779216,
+      "p99_ms_delta_pct": 719.022872617737,
+      "completion_p95_delta_pct": 532.1173814201642,
+      "f1_delta": -0.00012667518116765697,
+      "category5_delta": -0.004484304932735439,
+      "output_hash_mismatches": 179,
+      "per_category_score_changes": {
+        "1": {
+          "improved": 13,
+          "decreased": 7,
+          "equal": 262
+        },
+        "2": {
+          "improved": 18,
+          "decreased": 11,
+          "equal": 292
+        },
+        "3": {
+          "improved": 5,
+          "decreased": 2,
+          "equal": 89
+        },
+        "4": {
+          "improved": 30,
+          "decreased": 27,
+          "equal": 784
+        },
+        "5": {
+          "improved": 1,
+          "decreased": 3,
+          "equal": 442
+        }
+      },
+      "per_conversation_p95_delta_pct": {
+        "conv-26": 535.9071376726655,
+        "conv-30": 814.7013911176078,
+        "conv-41": 518.138040685997,
+        "conv-42": 515.6017028828716,
+        "conv-43": 745.768375904449,
+        "conv-44": 535.3477593525206,
+        "conv-47": 599.9729099141092,
+        "conv-48": 675.4344188805376,
+        "conv-49": 530.8410406905524,
+        "conv-50": 399.13603398680124
+      },
+      "arm_a": "native_dfs",
+      "arm_b": "fifo64",
+      "scope": "Supplemental baseline-to-baseline diagnostic, not a registered candidate contrast or new method"
+    }
+  ],
+  "scope": "Three completed native baseline arms, fresh engines and matched prompts/budgets/arrivals. No three-seed interval, candidate win, full39-pair replacement, quality equivalence or complete-Strata reproduction. Native direct versus gatewayFIFO changes admission, preparation and transport together; not an ordering-only causal contrast. Missing promotion/duration endpoints remain null; duration is not DMA time."
+}

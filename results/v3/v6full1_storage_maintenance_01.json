@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-27T00:55:21.531332+00:00",
+  "operation": "Removed one regenerable npm installer-download cache blob",
+  "package": "@openai/codex@0.164.0-linux-x64",
+  "cache_file_bytes": 165142849,
+  "free_bytes_before": 211402752,
+  "free_bytes_after": 376549376,
+  "installed_binary_sizes_verified": {
+    "codex": 308139304,
+    "codex-code-mode-host": 76997904
+  },
+  "scope": "npm download cache only, no open file descriptor at removal. Actual installed agent executables retained. No model/tokenizer/dataset/trace/output/profile/serving package/compile cache or benchmark configuration changed. Free-space delta is an observation while serving continues, not benchmark evidence."
+}
