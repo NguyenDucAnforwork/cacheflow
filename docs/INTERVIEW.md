@@ -1,6 +1,6 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 27/10/2026, 01:22 UTC:** Full study đã audit **9/30 cấu hình,17.874/17.874 request đo**, không lỗi;540 warmups riêng. Native union seed901 có p95 **57,629 giây**, thấp hơn DFS **7,756%**, nhưng median xấu hơn302,005% và bốn conversation có regression. Readiness native đạt đúng input reference304.885 new tokens nhưng p95 **249,003 giây**, xấu hơn oldunion332,076%. Main oldunion/readiness vẫn thua bundle. Entry point/collector V7 đã chuẩn bị,196 CPU tests pass; V7 chưa được bật trên GPU, các proof CPU/full real-prefix vẫn chờ. Full controller đã chuyển sang seed902. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
+**Cập nhật 27/10/2026, 02:15 UTC:** Full study đã audit **10/30 cấu hình,19.860/19.860 request đo**, không lỗi;600 warmups riêng. Main readiness seed902 có p95 489,534 giây và chooser CPU326,990 giây. Oldunion seed902 vẫn chưa terminal: snapshot giữ hơn1.069 giây không tăng progress counters, GPU0%, vLLM0running/9waiting;973 gateway records đã đóng không thay được full result. Timeout3600 giây giữ nguyên, root cause chưa rõ. Pipeline V7 đã có controller/auditor/seal và waiter đăng ký,244 CPU tests pass cùng2 observer tests; chưa có V7 GPU execution. Nếu original full audit không đạt, gate V7 phải dừng. Mục tiêu contribution mạnh vẫn chưa đạt.
 
 **Đính chính resource:** LMCache lazy heap làm tròn theo64MiB. Ở development, main có16.039.018.496 byte, native có16.000.745.472 byte, chênh0,2392%. Ở full, main heap48.049.946.624 byte và native host payload48.002.236.416 byte đều đã có quan sát, chênh0,099392%. Đây là capacity, không phải RSS hoặc bằng chứng hai allocator có heap bằng nhau. Native capacity đã được xác nhận thêm bởi full LPM audit; các native comparisons và replications chưa hoàn tất. Stall V5 đã manual abort, nguyên nhân vẫn chưa được chứng minh.
 
@@ -1303,3 +1303,43 @@ Collector main mới bọc nguyên luồng capture đang có bằng identity bou
 **Đáp:** [Draft V7](V7_EPOCH_EVALUATION_DRAFT.md) và `v7_epoch_plan.py --plan` chuẩn bị18 cấu hình: ba arrival seeds; trên main có bundle, oldunion và epoch-oldunion; trên native có DFS, oldunion và epoch-oldunion. Mỗi cấu hình có engine mới,60 warmups riêng và60 QA development đã lộ. So oldunion→epoch kiểm hiệu quả tối ưu; so bundle/DFS→epoch kiểm khả năng cạnh tranh. Không ghép kết quả process cũ vào pair mới.
 
 Plan chưa phải registration/freeze hay GPU execution. Trước khi chạy vẫn cần full30-arm audit, từ-source input proof, namespace proof, CPU probe, real-prefix checker, services idle, controller/auditor mới đã kiểm fault paths và source/config seal mới. Sau screen còn controls về low-reuse/GPU-fit/load/abstention và full confirmation. Không dùng green tests hay synthetic CPU ratio để thay những kết quả đó.
+
+### 22.22. Controller và auditor đã viết xong có nghĩa là thí nghiệm đã chạy?
+
+**Hỏi: Pipeline V7 hiện đã làm được gì?**
+
+**Đáp:** Đã có controller18 cấu hình, seal kiểm các prerequisites, auditor từng run, archive lossless và auditor terminal mở lại đủ18 archive. Trước mỗi engine mới, nó kiểm weights/model/data/packages khi services idle. Phần actor và phần analysis được seal riêng: collector main chụp source dưới `src/cacheflow`, `scripts`, `configs`, còn evaluator nằm trong thư mục data và được kiểm bằng analysis seal cùng evaluator SHA. Đưa evaluator vào danh sách source mà gateway phải tự chụp sẽ gây lỗi tích hợp dù từng hash riêng đều đúng.
+
+244 CPU tests đã pass, gồm fault injection khi warmup, measured replay, archive, stop/restore và terminal audit thất bại. Các tests còn kiểm metadata budget/transport, scalar argv cuối cùng, các prerequisites thiếu, process bị giữ lại, cặp có prompt/category khác và việc giữ score changes dù quality mean bằng nhau. Raw auditor đã được thử trên **bản sao**60 QA thật từ hai stack; identity/config V7 trong fixture là giả lập có ghi rõ. Đây không phải V7 inference hoặc performance evidence.
+
+**Hỏi: Chương trình có tự chạy tiếp mà không cần nhớ thao tác thủ công không?**
+
+**Đáp:** Có một waiter đã được đăng ký sau đúng PID/birth/argv của real-prefix checker. Nó pin68 source paths và protocol mới. Khi parent kết thúc, nó kiểm toàn bộ chuỗi kết quả thật, kiểm idle, tạo seal mới rồi mới chạy development. Nó không tự coi parent kết thúc là parent thành công. Nếu thiếu hoặc sai proof, nó giữ failure và dừng, không mở gate bằng số lượng tests.
+
+Việc hoàn tất development cũng chỉ tạo18-arm audit với1.080 measured requests và1.080 warmups, vẫn chỉ60 QA đã lộ. Các controls và full large-queue confirmation trước bundle/DFS vẫn là yêu cầu tiếp theo. Không đổi định nghĩa contribution mạnh thành “controller chạy được”.
+
+### 22.23. HTTP healthy nhưng không có tiến triển ở full seed902
+
+**Hỏi: Fresh process có giải quyết được anomaly cũ chưa?**
+
+**Đáp:** Chưa thể nhận claim đó. Full oldunion main seed902 đang có một cửa sổ không tiến triển rõ ràng: snapshot giữ1.069,149 giây với các counters prompt/new-prefill/external-KV/first-text không tăng, vLLM0running/9waiting và GPU utilization0%. Gateway có9active/247queued;973 measured gateway records đã đóng, đều statusok. Replay/controller vẫn sống, chưa có summary terminal hoặc marker lỗi ở thời điểm quan sát.
+
+Readiness main seed902 trước đó đã hoàn tất1.986/1.986 requests, p95 489,534 giây, chooser CPU326,990 giây; đó là run khác. Không dùng nó hoặc973 response của oldunion để điền một latency pair còn thiếu. Snapshot live không phải full success, và cũng chưa chứng minh deadlock hay terminal failure.
+
+**Hỏi: Cache chỉ dùng91,8%, tại sao vẫn cần điều tra?**
+
+**Đáp:** Gauge KV ở snapshot là.918285, không phải gần100%. Vì vậy detector cũ đòi occupancy>.99 sẽ bỏ sót hiện tượng này. Detector mới tìm counter không đổi +GPU0%+0running/cònwaiting và lưu occupancy như dữ liệu quan sát. Nó không suy ra số request chắc chắn có thể admit từ phần trăm còn trống: alignment, prefix publication, block references và connector state đều có thể ảnh hưởng tính khả thi.
+
+**Hỏi: LMCache trả `is_healthy=true`, không có session hoặc lock, vậy loại được connector chưa?**
+
+**Đáp:** Chưa. CPU server tại snapshot không có active session/prefetch job, không có read/write lock, store/prefetch queues cũng rỗng; host heap dùng khoảng73,6%. Điều đó mô tả server ở thời điểm GET. Nó không lộ hết vLLM scheduler states, callback queues hoặc futures đang chờ phía client/GPU worker. Cũng chưa chứng minh GPU block-reference cycle, lỗi DMA, thiếu RAM hay hash mismatch.
+
+Một giả thuyết đáng kiểm là khác biệt giữa hợp prefix logic mà admission dự đoán và allocation/prefix publication tạm thời của engine. Nhưng source logic và occupancy không đủ chứng minh causal chain. Cần diagnostic có instrumentation phù hợp, đăng ký riêng sau khi run hiện tại terminal; không gán root cause từ một counter.
+
+**Hỏi: Có nên restart ngay để lấy lại một run đẹp?**
+
+**Đáp:** Không. Hiện giữ timeout3600 giây đã đóng băng, không retry/reset/signal/debugger/native-probe hoặc sửa source của serving. Snapshot chỉ đọc metric đã giữ và GET health/status. Nếu lỗi terminal thật sự xảy ra, giữ raw/outcome/invalid marker; không tính p95 trên phần thành công rồi nhận full benchmark pass. Nếu cần sửa, dùng protocol/namespace mới và giữ study cũ thất bại/incomplete đúng phạm vi.
+
+**Hỏi: V7 đã queue thì anomaly này có bị bỏ qua không?**
+
+**Đáp:** Không. Waiter V7 hiện yêu cầu actual full30-arm success audit. Nếu study cũ không đạt và proof thiếu, nó phải dừng. Không được âm thầm nới gate hoặc sửa source đã pin để làm job chạy. Khi đó bước tiếp là ghi nhận kết quả terminal và đăng ký chẩn đoán/revision mới, tiếp tục nghiên cứu liveness cùng CPU overhead; mục tiêu contribution mạnh vẫn giữ nguyên.

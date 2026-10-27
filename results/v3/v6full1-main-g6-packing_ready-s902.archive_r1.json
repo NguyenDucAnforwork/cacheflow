@@ -1,0 +1,87 @@
+{
+  "audit_path": "results/v3/v6full1-main-g6-packing_ready-s902.full_audit_r1.json",
+  "audit_sha256": "e173873dab7e39c42a02116442a6c7a7a72ab74932f1a4bb48a32827560b4dd6",
+  "files": [
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.jsonl.gz",
+      "sha256": "e8eae3ea96dec0c5a5e25da1c8ee6858e63c75d25b335df1872a848d088b9247",
+      "archive_sha256": "8dab51c967fbcab2323533cc0de243346c1d2afe4e2ed5bcd9a45742e36d74db",
+      "bytes": 54463,
+      "archive_bytes": 9585
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.outputs.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.outputs.jsonl.gz",
+      "sha256": "ee827d7404ee84f5448974b18da483ddba0d4534195edbf47c708ba68720ea63",
+      "archive_sha256": "bcda33d50986641c5e4a11024e12645b2023ec7bf1750daeb6645c0df116c2e0",
+      "bytes": 12163,
+      "archive_bytes": 2609
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.summary.json",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.summary.json.gz",
+      "sha256": "42c016f1635c9699399dbc595865afa44b1a890f52c50655a2b7773fea81f0ae",
+      "archive_sha256": "0f5d710460230cb19140b0e7e6464350db3cc0685066f292fdf1072f6efe7900",
+      "bytes": 1610,
+      "archive_bytes": 764
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.metrics.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.metrics.jsonl.gz",
+      "sha256": "e33dbcf513c0e87a92b2909b2a51ad3c1bd3b67f24ce1d50ad7b6f42d8f0e6cb",
+      "archive_sha256": "c97a8686d6ae59f8d4b4663ac4f9f856accf1d79a979f5989afbde3a608a00d1",
+      "bytes": 97716,
+      "archive_bytes": 8220
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.gateway.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902-warm.gateway.jsonl.gz",
+      "sha256": "1c0864bfad592732739ce85c773a3696b39b86c61a2f7b3bafb64604d2b057b9",
+      "archive_sha256": "714c28fadb2dbcfc00b064d507a63b32e42da8a876d51d06a3dd638616cf412d",
+      "bytes": 55129,
+      "archive_bytes": 6542
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902.jsonl.gz",
+      "sha256": "b48c4929a5b99209748896b2286ae547eb67bb1d60a7fbf80b8962c4b1192753",
+      "archive_sha256": "31c0d7460e45a449f33cc32821dd9a2ca36592d9c6fc01f40f8d8090b0066829",
+      "bytes": 1790076,
+      "archive_bytes": 294022
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902.outputs.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902.outputs.jsonl.gz",
+      "sha256": "02e97d919d5f0711dca073070899c5f266d72513694644c64dc3dd88035a6926",
+      "archive_sha256": "33a039cf4a09c8085d9f1de6b9f0d7c5f0bafc4d88049f2e56c22c50532e2441",
+      "bytes": 398160,
+      "archive_bytes": 64805
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902.summary.json",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902.summary.json.gz",
+      "sha256": "8a6da6f511f2a865e39cb1cd217dfee0b02f735edf1b76dc9eca7a12fa4bfb31",
+      "archive_sha256": "4694033b3d5a57837f939e4c5bbb2a2015fae6e42b85a65a60b3711b11b6faa6",
+      "bytes": 1604,
+      "archive_bytes": 761
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902.metrics.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902.metrics.jsonl.gz",
+      "sha256": "3a87454dde85bc6b7c470e1d8bc10b82a91dd0952891b9da406d12fa7c8783eb",
+      "archive_sha256": "b76351496cdb02385fce0f8535e0a35256d5ba5b670f75fe08eeaf54a7af2d05",
+      "bytes": 1912965,
+      "archive_bytes": 139451
+    },
+    {
+      "path": "results/v3/raw/v6full1-main-g6-packing_ready-s902.gateway.jsonl",
+      "archive": "results/v3/raw/v6full1-main-g6-packing_ready-s902.gateway.jsonl.gz",
+      "sha256": "26b586dd192159a0807d6ff24aaaf16b10ce90a53cc0215bd2c6234463372afe",
+      "archive_sha256": "95ffa04026587729ff1fd09857dc033ad8313142729f769c7d17abaf71fe35a9",
+      "bytes": 1895650,
+      "archive_bytes": 232876
+    }
+  ],
+  "scope": "Lossless private raw archive after complete per-run integrity/quality audit; original uncompressed SHA retained. Not additional benchmark evidence."
+}

@@ -1,5 +1,40 @@
 # CacheFlow: reproducibility log
 
+**Current pipeline/liveness update,2026-10-27 02:15UTC:** Checkpoint10 verifies10complete originalarms19,860measured successes0errors +600separatewarmups,12/39primarypairs. Originaloldunionseed902 remainslive/incomplete with the passive nonprogress snapshot described in PROGRESS; no partial quantiles or terminal failure are asserted. Timeout3600s and serving sources/configuration remain unchanged.
+
+The executable V7 pipeline is now registered behind the exact real-prefix checker:
+`results/v3/v7dev1_epoch_after_trace_registration.json`, waiterPID503492/tool23707,
+parent483397. It pins68sourcepaths and [V7 development protocol](V7_EPOCH_DEV_PROTOCOL.md).
+**Do not start a duplicate waiter or alter those sources/protocol while pending.**
+It requires actual successful originalfull/input/namespace/CPU/real-prefix proofs,
+then idle services, new seal,18fresh development arms and all raw/config/identity/
+quality/resource audits. Missing or failed proof stops the waiter with retained
+failure; if the original study fails, any next diagnostic/revision must be
+registered separately rather than weakening this gate in place.
+
+`v7_epoch_pipeline_validation.json` retains the observed244-test output, source
+snapshot and live waiter, explicitly CPU-only. Its raw-layout tests copied old
+real60QA data with deliberately projected V7 metadata; they are not V7 inference.
+`v7_epoch_dev_plan_prepared_v2.json` records actual executable-controller `--plan`
+output. No V7 freeze/implementation marker/GPU results exist yet. The current
+read-only plan command is:
+
+```bash
+PYTHONPATH=src /venv/main/bin/python scripts/v7_epoch_dev.py --plan
+```
+
+`v6full1_union_s902_live_nonprogress_01.json` binds byte-prefix hashes/counts of
+actively appended metric/gateway logs, readonlyhealth/status timing and live
+process/setup/freeze identities. The observer uses existing metrics and two GETs;
+it does not reset, retry, inject hooks, signal, attach a debugger, hash weights or
+emit partial latency quantiles. The retained1069.149s window has0running/9waiting,
+GPU0%,unchangedprogress andKV.918285; LMCachehealthy/emptyqueues is not proof that
+all connector futures finished. The helper's two additional CPUtests pass.
+
+The earlier preparation notes and artifacts below are historical. In particular,
+`v7_epoch_prepared_validation.json` refers to the196-test source snapshot before
+the new controller/auditors; its old source hashes are preserved, not rewritten.
+
 The V7 prepared validation is separate from the running V6 study:
 `results/v3/v7_epoch_prepared_validation.json` records the actual196-test output,
 source identities, unchanged original/queued pins and a live V6 gateway argv.

@@ -23,7 +23,7 @@ def build_plan():
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--plan',action='store_true',required=True);p.parse_args()
-    print(json.dumps(dict(status='Prepared only; no GPU controller/registration/freeze or result',
+    print(json.dumps(dict(status='Read-only plan; separate executable pipeline requires prospective registration/freeze; no result',
         phase='Development screen, not completion of the research objective',actions=build_plan(),
         measured_requests=1080,separate_warmup_requests=1080,unique_qa=60,
         prerequisites='Complete original30-arm audit and successful from-source/namespace/CPU/real-prefix chain; idle services; new prospective registration and tested controller/auditor required before execution',
