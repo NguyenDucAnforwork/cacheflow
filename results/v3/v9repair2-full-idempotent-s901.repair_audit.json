@@ -1,0 +1,140 @@
+{
+  "diagnostic_integrity_checked": true,
+  "performance_valid": false,
+  "step": {
+    "run_id": "v9repair2-full-idempotent-s901",
+    "stage": "full",
+    "mode": "idempotent",
+    "seed": 901,
+    "probe": false,
+    "proof_label": "v9repair2-full-idempotent-s901-native",
+    "probe_label": "v9repair2-full-idempotent-s901-probe",
+    "policy": "packing_reuse",
+    "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+    "requests": 1986
+  },
+  "result": {
+    "diagnostic_integrity_checked": true,
+    "performance_valid": false,
+    "run_id": "v9repair2-full-idempotent-s901",
+    "requests": 1986,
+    "successes": 925,
+    "errors": 1061,
+    "status_counts": {
+      "ok": 925,
+      "exception:ReadTimeout": 256,
+      "exception:PoolTimeout": 408,
+      "http_502": 397
+    },
+    "process_bookends": {
+      "cacheflow_v2_vllm": {
+        "original_pid": 595197,
+        "original_birth": 1793076488.81,
+        "end_state": "engine_absent_after_failed_replay",
+        "end_identity_verified": false
+      },
+      "cacheflow_v2_lmcache": {
+        "original_pid": 595070,
+        "original_birth": 1793076473.1,
+        "end_state": "same_process",
+        "end_identity_verified": true
+      },
+      "cacheflow_v2_gateway": {
+        "original_pid": 596085,
+        "original_birth": 1793076607.11,
+        "end_state": "same_process",
+        "end_identity_verified": true
+      }
+    },
+    "gateway_closed_records": 1578,
+    "missing_closed_gateway_records": 408,
+    "gateway_after": {
+      "policy": "packing_reuse",
+      "queue": 0,
+      "active": 0,
+      "completed_history_requests": 256,
+      "upstream_read_timeout_s": 600.0,
+      "prepare_mode": "thread",
+      "decision_stats": {
+        "calls": 3115497,
+        "cpu_ms": 167680.202217,
+        "wall_ms": 170087.93227,
+        "max_ms": 151.211155,
+        "cache_hits": 3111229
+      },
+      "residency": null
+    },
+    "raw_sha256": {
+      "results/v3/raw/v9repair2-full-idempotent-s901.jsonl": "a0cbcb42775e49cabc23ef996242bcbe8db47c24bcb4b160027c255eff1672d8",
+      "results/v3/raw/v9repair2-full-idempotent-s901.outputs.jsonl": "206ef62cee341ef517802b8c83168dac55e59b81864e9e5a77ad56a3e32406ab",
+      "results/v3/raw/v9repair2-full-idempotent-s901.summary.json": "820cff00a9c854d1b7975231be9a329567829c0ba24996680f455321fbac126e",
+      "results/v3/raw/v9repair2-full-idempotent-s901.metrics.jsonl": "554338ef295a88c2303cd6b08f6957cfbcd81af8527c8891877d67e756e58e73",
+      "results/v3/raw/v9repair2-full-idempotent-s901.gateway.jsonl": "4defebcfeaafa967c3481eebe106ce59298fabf90be515c6e2c63f9a3f1db071"
+    },
+    "global_gateway_prefix_bytes": 45559655,
+    "global_gateway_prefix_sha256": "43c1050e686a3472ad0b33d1df505f4daebf2e829eff53927060c3654bbc377b",
+    "setup_sha256": "b06f1ca2ae1b9599e546b200a4c067eee999789bd6901fff2b3946c188fb2df4",
+    "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+    "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim.",
+    "native_identity_sha256": "50045e2526e2304fda255a55405a47b61a9747d4a456a3917c6bec5e23dbe564"
+  },
+  "probe": null,
+  "resources": {
+    "samples": 1096,
+    "sample_window_s": 1095.121555319,
+    "first_sample_ns": 177126102946081,
+    "last_sample_ns": 178221224501400,
+    "gpu_time_weighted_util_pct": 34.985410448464464,
+    "gpu_time_weighted_power_w": 135.74169969331362,
+    "vram_peak_mib": 16057.0,
+    "process": {
+      "vllm": {
+        "sampled_cpu_seconds": null,
+        "summed_rss_peak_bytes": null,
+        "processes_peak": null
+      },
+      "lmcache": {
+        "sampled_cpu_seconds": 57.89,
+        "summed_rss_peak_bytes": 49014370304,
+        "processes_peak": 1
+      }
+    },
+    "strict_counter_deltas": {
+      "vllm": {
+        "vllm:prompt_tokens_source_external_kv_transfer_total": null,
+        "vllm:prefix_cache_hits_total": null,
+        "vllm:time_to_first_token_seconds_count": null,
+        "vllm:request_prefill_time_seconds_sum": null,
+        "vllm:request_queue_time_seconds_sum": null,
+        "vllm:time_to_first_token_seconds_sum": null,
+        "vllm:request_prefill_time_seconds_count": null,
+        "vllm:external_prefix_cache_hits_total": null,
+        "vllm:prompt_tokens_total": null,
+        "vllm:prompt_tokens_cached_total": null,
+        "vllm:request_queue_time_seconds_count": null,
+        "vllm:num_preemptions_total": null,
+        "vllm:prompt_tokens_source_local_compute_total": null,
+        "vllm:request_prefill_kv_computed_tokens_sum": null,
+        "vllm:prompt_tokens_source_local_cache_hit_total": null
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2296.980929916185,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 157.0,
+        "lmcache_mp_l1_evicted_chunks_total": 1221.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 307.0,
+        "lmcache_mp_l1_read_chunks_total": 82301.0,
+        "lmcache_mp_l1_write_chunks_total": 2153.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1700.3001283690758,
+        "lmcache_mp_num_chunks_loaded_total": 13006.0
+      }
+    },
+    "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+  },
+  "engine_log_path": "results/v3/raw/v9repair2-full-idempotent-s901-engine.log",
+  "engine_log_sha256": "ddfffa3af9bd5365730aae7afcc8a9169d5b55b0b510a98827e457bbd352f061",
+  "quality_sha256": null,
+  "quality_not_scored_reason": "Failed whole workload; never grade successful subset as a complete run",
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "source_after_verified": true,
+  "scope": "Intervention diagnostic only. All error records retained; actual official quality/source accounting only for complete successful targets. Sampled CPU/RSS/counters are not DMA time or a primary performance contrast."
+}

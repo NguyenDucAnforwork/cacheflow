@@ -1,0 +1,519 @@
+{
+  "kind": "v8_readonly_sampled_liveness_evidence",
+  "run_id": "v9repair2-full-idempotent-s901",
+  "diagnostic_only": true,
+  "performance_valid": false,
+  "terminal_client_result": false,
+  "observer_source_sha256": "18963769171ee4fac52ff15d9156c34d75254cec5b062ec21c4cf2f13322dba5",
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "setup_sha256": "b06f1ca2ae1b9599e546b200a4c067eee999789bd6901fff2b3946c188fb2df4",
+  "metric_prefix_bytes": 1954876,
+  "metric_prefix_sha256": "12dd96a2953fd3415203bab3ffdc0afe2a1af1d68831c1300c38f964dee3282c",
+  "longest_sampled_no_progress": {
+    "sample_count": 545,
+    "span_s": 544.059893165,
+    "max_sample_gap_s": 1.001318941,
+    "first": {
+      "cpu_percent": 11.4,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 164.82,
+        "sm_clock_mhz": 1950.0,
+        "temperature_c": 62.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 212.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2305.3880043871086,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 325.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2435.7514809101995,
+        "lmcache_mp_l1_evicted_chunks_total": 1477.0,
+        "lmcache_mp_l1_memory_usage_bytes": 35181821952.0,
+        "lmcache_mp_l1_read_chunks_total": 86854.0,
+        "lmcache_mp_l1_write_chunks_total": 2409.0,
+        "lmcache_mp_num_chunks_loaded_total": 16452.0
+      },
+      "memory_available_bytes": 181981126656,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 71.33,
+          "ctx_switches": 8923,
+          "processes": 1,
+          "rss_bytes": 49014198272
+        },
+        "vllm": {
+          "cpu_seconds": 616.96,
+          "ctx_switches": 101932,
+          "processes": 4,
+          "rss_bytes": 3712827392
+        }
+      },
+      "timestamp_ns": 177600155903764,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 4199936.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 8.0,
+        "vllm:prefix_cache_hits_total": 58208768.0,
+        "vllm:prompt_tokens_cached_total": 23737840.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 4162448.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 19575392.0,
+        "vllm:prompt_tokens_source_local_compute_total": 620315.0,
+        "vllm:prompt_tokens_total": 24358155.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 620315.0,
+        "vllm:request_prefill_time_seconds_count": 985.0,
+        "vllm:request_prefill_time_seconds_sum": 783.0671885633783,
+        "vllm:request_queue_time_seconds_count": 985.0,
+        "vllm:request_queue_time_seconds_sum": 2173.731958426157,
+        "vllm:time_to_first_token_seconds_count": 985.0,
+        "vllm:time_to_first_token_seconds_sum": 3790.1768021583557
+      }
+    },
+    "last": {
+      "cpu_percent": 14.8,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 30.0,
+        "sm_clock_mhz": 210.0,
+        "temperature_c": 39.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 212.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2305.3880043871086,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 325.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2435.7514809101995,
+        "lmcache_mp_l1_evicted_chunks_total": 1477.0,
+        "lmcache_mp_l1_memory_usage_bytes": 35181821952.0,
+        "lmcache_mp_l1_read_chunks_total": 86854.0,
+        "lmcache_mp_l1_write_chunks_total": 2409.0,
+        "lmcache_mp_num_chunks_loaded_total": 16452.0
+      },
+      "memory_available_bytes": 181800955904,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 85.95,
+          "ctx_switches": 15492,
+          "processes": 1,
+          "rss_bytes": 49014366208
+        },
+        "vllm": {
+          "cpu_seconds": 979.84,
+          "ctx_switches": 807769,
+          "processes": 4,
+          "rss_bytes": 3713720320
+        }
+      },
+      "timestamp_ns": 178144215796929,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 4199936.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 8.0,
+        "vllm:prefix_cache_hits_total": 58208768.0,
+        "vllm:prompt_tokens_cached_total": 23737840.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 4162448.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 19575392.0,
+        "vllm:prompt_tokens_source_local_compute_total": 620315.0,
+        "vllm:prompt_tokens_total": 24358155.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 620315.0,
+        "vllm:request_prefill_time_seconds_count": 985.0,
+        "vllm:request_prefill_time_seconds_sum": 783.0671885633783,
+        "vllm:request_queue_time_seconds_count": 985.0,
+        "vllm:request_queue_time_seconds_sum": 2173.731958426157,
+        "vllm:time_to_first_token_seconds_count": 985.0,
+        "vllm:time_to_first_token_seconds_sum": 3790.1768021583557
+      }
+    }
+  },
+  "trailing_sampled_no_progress": {
+    "sample_count": 545,
+    "span_s": 544.059893165,
+    "max_sample_gap_s": 1.001318941,
+    "first": {
+      "cpu_percent": 11.4,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 164.82,
+        "sm_clock_mhz": 1950.0,
+        "temperature_c": 62.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 212.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2305.3880043871086,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 325.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2435.7514809101995,
+        "lmcache_mp_l1_evicted_chunks_total": 1477.0,
+        "lmcache_mp_l1_memory_usage_bytes": 35181821952.0,
+        "lmcache_mp_l1_read_chunks_total": 86854.0,
+        "lmcache_mp_l1_write_chunks_total": 2409.0,
+        "lmcache_mp_num_chunks_loaded_total": 16452.0
+      },
+      "memory_available_bytes": 181981126656,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 71.33,
+          "ctx_switches": 8923,
+          "processes": 1,
+          "rss_bytes": 49014198272
+        },
+        "vllm": {
+          "cpu_seconds": 616.96,
+          "ctx_switches": 101932,
+          "processes": 4,
+          "rss_bytes": 3712827392
+        }
+      },
+      "timestamp_ns": 177600155903764,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 4199936.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 8.0,
+        "vllm:prefix_cache_hits_total": 58208768.0,
+        "vllm:prompt_tokens_cached_total": 23737840.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 4162448.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 19575392.0,
+        "vllm:prompt_tokens_source_local_compute_total": 620315.0,
+        "vllm:prompt_tokens_total": 24358155.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 620315.0,
+        "vllm:request_prefill_time_seconds_count": 985.0,
+        "vllm:request_prefill_time_seconds_sum": 783.0671885633783,
+        "vllm:request_queue_time_seconds_count": 985.0,
+        "vllm:request_queue_time_seconds_sum": 2173.731958426157,
+        "vllm:time_to_first_token_seconds_count": 985.0,
+        "vllm:time_to_first_token_seconds_sum": 3790.1768021583557
+      }
+    },
+    "last": {
+      "cpu_percent": 14.8,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 30.0,
+        "sm_clock_mhz": 210.0,
+        "temperature_c": 39.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 212.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2305.3880043871086,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 325.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2435.7514809101995,
+        "lmcache_mp_l1_evicted_chunks_total": 1477.0,
+        "lmcache_mp_l1_memory_usage_bytes": 35181821952.0,
+        "lmcache_mp_l1_read_chunks_total": 86854.0,
+        "lmcache_mp_l1_write_chunks_total": 2409.0,
+        "lmcache_mp_num_chunks_loaded_total": 16452.0
+      },
+      "memory_available_bytes": 181800955904,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 85.95,
+          "ctx_switches": 15492,
+          "processes": 1,
+          "rss_bytes": 49014366208
+        },
+        "vllm": {
+          "cpu_seconds": 979.84,
+          "ctx_switches": 807769,
+          "processes": 4,
+          "rss_bytes": 3713720320
+        }
+      },
+      "timestamp_ns": 178144215796929,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 4199936.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 8.0,
+        "vllm:prefix_cache_hits_total": 58208768.0,
+        "vllm:prompt_tokens_cached_total": 23737840.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 4162448.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 19575392.0,
+        "vllm:prompt_tokens_source_local_compute_total": 620315.0,
+        "vllm:prompt_tokens_total": 24358155.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 620315.0,
+        "vllm:request_prefill_time_seconds_count": 985.0,
+        "vllm:request_prefill_time_seconds_sum": 783.0671885633783,
+        "vllm:request_queue_time_seconds_count": 985.0,
+        "vllm:request_queue_time_seconds_sum": 2173.731958426157,
+        "vllm:time_to_first_token_seconds_count": 985.0,
+        "vllm:time_to_first_token_seconds_sum": 3790.1768021583557
+      }
+    }
+  },
+  "observed_monotonic_ns": 178145005719562,
+  "live_processes": {
+    "engine": {
+      "pid": 595197,
+      "create_time": 1793076488.81,
+      "argv": [
+        "/venv/main/bin/python",
+        "/venv/main/bin/vllm",
+        "serve",
+        "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c",
+        "--served-model-name",
+        "cacheflow-qwen3-4b",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--dtype",
+        "bfloat16",
+        "--max-model-len",
+        "32768",
+        "--max-num-seqs",
+        "4",
+        "--kv-cache-memory-bytes",
+        "6442450944",
+        "--generation-config",
+        "vllm",
+        "--enable-prefix-caching",
+        "--max-num-seqs",
+        "16",
+        "--max-num-batched-tokens",
+        "8192",
+        "--kv-transfer-config",
+        "{\"kv_connector\":\"LMCacheMPConnector\",\"kv_connector_module_path\":\"lmcache.integration.vllm.lmcache_mp_connector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"lmcache.mp.host\":\"127.0.0.1\",\"lmcache.mp.port\":5555}}"
+      ],
+      "status": "sleeping",
+      "threads": 129,
+      "cpu_times": {
+        "user": 256.47,
+        "system": 21.1,
+        "children_user": 0.67,
+        "children_system": 0.15,
+        "iowait": 0.0
+      }
+    },
+    "replay": {
+      "pid": 596177,
+      "create_time": 1793076618.28,
+      "status": "sleeping",
+      "cmdline": [
+        "/venv/main/bin/python",
+        "-m",
+        "cacheflow.v6_replay",
+        "--trace",
+        "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+        "--url",
+        "http://127.0.0.1:8100",
+        "--run-id",
+        "v9repair2-full-idempotent-s901",
+        "--output",
+        "results/v3/raw/v9repair2-full-idempotent-s901.jsonl",
+        "--registry",
+        "results/v3/v9repair2_registry.csv",
+        "--metrics-path",
+        "results/v3/raw/v9repair2-full-idempotent-s901.metrics.jsonl",
+        "--mode",
+        "B2",
+        "--policy",
+        "packing_reuse",
+        "--gpu-kv-bytes",
+        "6442450944",
+        "--engine-pid",
+        "595197",
+        "--lmcache-pid",
+        "595070",
+        "--engine-request-ids",
+        "--model-name",
+        "cacheflow-qwen3-4b",
+        "--model-revision",
+        "1cfa9a7208912126459214e8b04321603b3df60c",
+        "--capture-text",
+        "--gateway-trace-path",
+        "results/v3/raw/v9repair2-full-idempotent-s901.gateway.jsonl"
+      ]
+    }
+  },
+  "endpoints": {
+    "gateway": {
+      "start_ns": 178145023209210,
+      "end_ns": 178145069034744,
+      "value": {
+        "policy": "packing_reuse",
+        "queue": 387,
+        "active": 8,
+        "completed_history_requests": 256,
+        "upstream_read_timeout_s": 600.0,
+        "prepare_mode": "thread",
+        "decision_stats": {
+          "calls": 2754425,
+          "cpu_ms": 142702.214153,
+          "wall_ms": 144088.235398,
+          "max_ms": 151.211155,
+          "cache_hits": 2751334
+        },
+        "residency": null
+      }
+    },
+    "lmcache": {
+      "start_ns": 178145069074762,
+      "end_ns": 178145085221733,
+      "value": {
+        "is_healthy": true,
+        "engine_type": "MPCacheServer",
+        "chunk_size": 256,
+        "hash_algorithm": "blake3",
+        "active_sessions": 4,
+        "storage_manager": {
+          "is_healthy": true,
+          "l1_manager": {
+            "is_healthy": true,
+            "total_object_count": 932,
+            "write_locked_count": 0,
+            "read_locked_count": 0,
+            "temporary_count": 0,
+            "memory_used_bytes": 35181821952,
+            "memory_total_bytes": 48049946624,
+            "memory_usage_ratio": 0.7321927374301676,
+            "write_ttl_seconds": 600,
+            "read_ttl_seconds": 300
+          },
+          "store_controller": {
+            "is_healthy": true,
+            "thread_alive": true,
+            "pending_keys_count": 0,
+            "in_flight_task_count": 0,
+            "num_l2_adapters": 0,
+            "num_active_adapters": 0,
+            "num_draining_adapters": 0
+          },
+          "prefetch_controller": {
+            "is_healthy": true,
+            "thread_alive": true,
+            "max_in_flight": 8,
+            "submission_queue_size": 0,
+            "pending_queue_size": 0,
+            "in_flight_request_count": 0,
+            "lookup_phase_count": 0,
+            "load_phase_count": 0,
+            "completed_results_count": 0,
+            "num_l2_adapters": 0,
+            "num_active_adapters": 0,
+            "num_draining_adapters": 0
+          },
+          "l1_eviction_controller": {
+            "is_healthy": true,
+            "thread_alive": true,
+            "eviction_policy": "LRU",
+            "trigger_watermark": 0.8,
+            "eviction_ratio": 0.2
+          },
+          "l2_eviction_controller": {
+            "is_healthy": true,
+            "thread_alive": true,
+            "adapters": []
+          },
+          "l2_adapters": [],
+          "num_l2_adapters": 0
+        },
+        "active_prefetch_jobs": 0,
+        "active_p2p_lookup_jobs": 0,
+        "p2p_enabled": false,
+        "p2p_state": "unregistered",
+        "p2p_peer_count": 0,
+        "p2p_peers": [],
+        "worker_liveness": {
+          "enabled": true,
+          "reap_timeout_seconds": 120.0,
+          "registration_grace_seconds": 3600.0,
+          "tracked_instances": 1
+        },
+        "registered_gpu_ids": [
+          2988895984134692350
+        ],
+        "cache_context_meta": {
+          "2988895984134692350": {
+            "model_name": "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c",
+            "world_size": 1,
+            "kv_cache_layout": {
+              "num_layers": 36,
+              "num_blocks": 2730,
+              "cache_size_per_token": 147456,
+              "kernel_groups": [
+                {
+                  "kernel_group_idx": 0,
+                  "engine_group_idx": 0,
+                  "object_group_idx": 0,
+                  "num_layers": 36,
+                  "layer_indices": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35
+                  ],
+                  "tokens_per_block": 16,
+                  "slots_per_block": 16,
+                  "dtype": "torch.bfloat16",
+                  "engine_kv_concrete_shape": "36 x [2, 2730, 16, 8, 128]",
+                  "is_mla": false,
+                  "engine_kv_format": "NL_X_TWO_NB_BS_NH_HS",
+                  "engine_kv_shape": "NL x [2, NB, BS, NH, HS]",
+                  "attention_backend": "vLLM non-MLA flash attention"
+                }
+              ]
+            }
+          }
+        },
+        "registered_non_cuda_instance_ids": [],
+        "non_cuda_context_meta": {}
+      }
+    }
+  },
+  "global_gateway_prefix_bytes": 44900504,
+  "global_gateway_prefix_sha256": "ba9592f8adbcaf5af5247bec7c9f9b1ecb670c678b3328aac40d1734a54b1abd",
+  "closed_gateway_cohort": {
+    "count": 0,
+    "prefix_group_counts": {},
+    "requests": [],
+    "scope": "Closed gateway records whose recorded dispatch/complete intervals span the entire sampled window; not native block tables or recovered condition-lock ordering. Live in-flight records may not be closed yet."
+  },
+  "scope": "Read-only diagnostic evidence; no source/config changes, reset, retry, injected hook, extra future/event query, partial successful-only quantiles or root-cause/fix claim. Health snapshots occur after the metric prefix and are separately clocked."
+}

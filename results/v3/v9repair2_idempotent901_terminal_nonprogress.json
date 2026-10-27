@@ -1,0 +1,244 @@
+{
+  "kind": "v8_readonly_sampled_liveness_evidence",
+  "run_id": "v9repair2-full-idempotent-s901",
+  "diagnostic_only": true,
+  "performance_valid": false,
+  "terminal_client_result": true,
+  "observer_source_sha256": "18963769171ee4fac52ff15d9156c34d75254cec5b062ec21c4cf2f13322dba5",
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "setup_sha256": "b06f1ca2ae1b9599e546b200a4c067eee999789bd6901fff2b3946c188fb2df4",
+  "metric_prefix_bytes": 2081375,
+  "metric_prefix_sha256": "554338ef295a88c2303cd6b08f6957cfbcd81af8527c8891877d67e756e58e73",
+  "longest_sampled_no_progress": {
+    "sample_count": 599,
+    "span_s": 598.065758194,
+    "max_sample_gap_s": 1.001318941,
+    "first": {
+      "cpu_percent": 11.4,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 164.82,
+        "sm_clock_mhz": 1950.0,
+        "temperature_c": 62.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 212.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2305.3880043871086,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 325.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2435.7514809101995,
+        "lmcache_mp_l1_evicted_chunks_total": 1477.0,
+        "lmcache_mp_l1_memory_usage_bytes": 35181821952.0,
+        "lmcache_mp_l1_read_chunks_total": 86854.0,
+        "lmcache_mp_l1_write_chunks_total": 2409.0,
+        "lmcache_mp_num_chunks_loaded_total": 16452.0
+      },
+      "memory_available_bytes": 181981126656,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 71.33,
+          "ctx_switches": 8923,
+          "processes": 1,
+          "rss_bytes": 49014198272
+        },
+        "vllm": {
+          "cpu_seconds": 616.96,
+          "ctx_switches": 101932,
+          "processes": 4,
+          "rss_bytes": 3712827392
+        }
+      },
+      "timestamp_ns": 177600155903764,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 4199936.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 8.0,
+        "vllm:prefix_cache_hits_total": 58208768.0,
+        "vllm:prompt_tokens_cached_total": 23737840.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 4162448.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 19575392.0,
+        "vllm:prompt_tokens_source_local_compute_total": 620315.0,
+        "vllm:prompt_tokens_total": 24358155.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 620315.0,
+        "vllm:request_prefill_time_seconds_count": 985.0,
+        "vllm:request_prefill_time_seconds_sum": 783.0671885633783,
+        "vllm:request_queue_time_seconds_count": 985.0,
+        "vllm:request_queue_time_seconds_sum": 2173.731958426157,
+        "vllm:time_to_first_token_seconds_count": 985.0,
+        "vllm:time_to_first_token_seconds_sum": 3790.1768021583557
+      }
+    },
+    "last": {
+      "cpu_percent": 11.2,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 29.91,
+        "sm_clock_mhz": 210.0,
+        "temperature_c": 39.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 212.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2305.3880043871086,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 325.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2435.7514809101995,
+        "lmcache_mp_l1_evicted_chunks_total": 1477.0,
+        "lmcache_mp_l1_memory_usage_bytes": 35181821952.0,
+        "lmcache_mp_l1_read_chunks_total": 86854.0,
+        "lmcache_mp_l1_write_chunks_total": 2409.0,
+        "lmcache_mp_num_chunks_loaded_total": 16452.0
+      },
+      "memory_available_bytes": 181615636480,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 87.39,
+          "ctx_switches": 16147,
+          "processes": 1,
+          "rss_bytes": 49014370304
+        },
+        "vllm": {
+          "cpu_seconds": 1015.1599999999999,
+          "ctx_switches": 880043,
+          "processes": 4,
+          "rss_bytes": 3713720320
+        }
+      },
+      "timestamp_ns": 178198221661958,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 4199936.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 8.0,
+        "vllm:prefix_cache_hits_total": 58208768.0,
+        "vllm:prompt_tokens_cached_total": 23737840.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 4162448.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 19575392.0,
+        "vllm:prompt_tokens_source_local_compute_total": 620315.0,
+        "vllm:prompt_tokens_total": 24358155.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 620315.0,
+        "vllm:request_prefill_time_seconds_count": 985.0,
+        "vllm:request_prefill_time_seconds_sum": 783.0671885633783,
+        "vllm:request_queue_time_seconds_count": 985.0,
+        "vllm:request_queue_time_seconds_sum": 2173.731958426157,
+        "vllm:time_to_first_token_seconds_count": 985.0,
+        "vllm:time_to_first_token_seconds_sum": 3790.1768021583557
+      }
+    }
+  },
+  "trailing_sampled_no_progress": null,
+  "observed_monotonic_ns": 178280161819603,
+  "client_outcome": {
+    "requests": 1986,
+    "successes": 925,
+    "errors": 1061
+  },
+  "summary_sha256": "820cff00a9c854d1b7975231be9a329567829c0ba24996680f455321fbac126e",
+  "global_gateway_prefix_bytes": 45559655,
+  "global_gateway_prefix_sha256": "43c1050e686a3472ad0b33d1df505f4daebf2e829eff53927060c3654bbc377b",
+  "closed_gateway_cohort": {
+    "count": 8,
+    "prefix_group_counts": {
+      "daf7b290ac3d8dd4ffca0dd0c64993ae": 6,
+      "16a6d90231b6b33d47d871ae737e4d51": 2
+    },
+    "requests": [
+      {
+        "request_id": "conv-47-q089",
+        "input_tokens": 27268,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597547632767,
+        "first_token_ns": null,
+        "complete_ns": 178198520945891,
+        "reserved_active_tokens": 27392,
+        "dispatch_reason": "oldest_start",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q090",
+        "input_tokens": 27278,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597566870139,
+        "first_token_ns": null,
+        "complete_ns": 178198521608133,
+        "reserved_active_tokens": 27552,
+        "dispatch_reason": "oldest_fits",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q091",
+        "input_tokens": 27263,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597583176426,
+        "first_token_ns": null,
+        "complete_ns": 178198522361881,
+        "reserved_active_tokens": 27696,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q092",
+        "input_tokens": 27266,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597594320319,
+        "first_token_ns": null,
+        "complete_ns": 178198522619433,
+        "reserved_active_tokens": 27856,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q093",
+        "input_tokens": 27263,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597606382928,
+        "first_token_ns": null,
+        "complete_ns": 178198522869090,
+        "reserved_active_tokens": 28000,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q094",
+        "input_tokens": 15210,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 177597613537060,
+        "first_token_ns": null,
+        "complete_ns": 178198521865615,
+        "reserved_active_tokens": 43280,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q094",
+        "input_tokens": 27263,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597632469739,
+        "first_token_ns": null,
+        "complete_ns": 178198523109499,
+        "reserved_active_tokens": 43424,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q095",
+        "input_tokens": 15209,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 177597639912676,
+        "first_token_ns": null,
+        "complete_ns": 178198522120226,
+        "reserved_active_tokens": 43568,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      }
+    ],
+    "scope": "Closed gateway records whose recorded dispatch/complete intervals span the entire sampled window; not native block tables or recovered condition-lock ordering. Live in-flight records may not be closed yet."
+  },
+  "scope": "Read-only diagnostic evidence; no source/config changes, reset, retry, injected hook, extra future/event query, partial successful-only quantiles or root-cause/fix claim. Health snapshots occur after the metric prefix and are separately clocked."
+}

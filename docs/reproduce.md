@@ -450,3 +450,44 @@ Existing paths reject reuse. The waiterPID475547/tool65823waits for exact namesp
 
 
 `v6full1_checkpoint_05.json` now extends the exact audited prefix with the first complete nativeLPMarm (9930measured successes total). Its native archive contains separatewarm/measured raw files; the observer verifies allbytes/config/token/output/quality. Main-only figure04_v2still describes its fourarm subset; no cross-stack policy delta or nativepairedresult is added. The nativeaudit confirms325536hosttokens/48002236416payloadbytes and leaves missing-baseline promotion/duration deltasnull. NativeDFSis the nextdeclared arm. This update does not change the160CPUtest/prototype/no-speedup scope.
+
+## V10 prospective epoch GPU development (2026-10-27)
+
+The original V7 development gate remains unmet and its failure is preserved.
+V10 is a separate prospective18-arm study; see `V10_EPOCH_DEV_PROTOCOL.md` and
+`results/v3/v10dev1_epoch_pipeline_registration.json`. The serial waiter records
+exact V9repair2 PID/birth/argv, all61actor/helper hashes, evaluator/analysis
+hashes and existing proof bytes before any V10 request. Only after that process
+terminates, serving is idle and the independent whole-six-arm diagnostic audit
+exists can it freeze and execute. Failed V9 full workloads remain failed;
+probe invariant validation and diagnostic integrity are distinct from liveness.
+
+Inspect the fixed matrix without launching services:
+
+```bash
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v10_epoch_plan.py --plan
+PYTHONPATH=src:scripts /venv/main/bin/python -m pytest -q tests/test_v10_epoch_flow.py tests/test_v10_epoch_native.py tests/test_v10_epoch_pairs.py
+```
+
+The registered execution is `scripts/v10_after_repair.py execute` with the
+registration path. Do not start a second waiter/controller or overwrite its
+fixed namespace. A new execution requires a separate explicit namespace and
+registration, including native proof/log paths and audit pair prefixes.
+
+The serving actors remain the unchanged opt-in V7 gateway/collector and V9
+native hook, whose hashes are pinned by V10. All main arms use idempotent mode,
+including bundle baseline; native SGLang uses its existing Direct/guard setup.
+Constructor/effective-code proof and PID/birth continuity bracket main requests;
+there is no native per-call probe. Both supervisor configs are restored on exit.
+Each complete arm is independently audited then losslessly archived. Terminal
+audit expands all archives, recomputes official quality from captured outputs,
+requires18fresh engines/9freshLMCacheunits and retains all12primary/6supplemental
+same-engine pairs. Native ITL, source work, waits, per-conversation fairness and
+per-question score/hash changes stay separate. Chooser CPU counters exclude
+other gateway work; native external consumption without an equivalent metric
+stays null. Missing/failed evidence stops execution and is never replaced with
+successful-only percentiles.
+
+This development stage covers60exposed answerableQA repeated over three arrival
+schedules, not1,080uniqueQA or full1986QA/category5 confirmation. Matched controls,
+full three-seed bundle/DFS comparisons and original-objective audit remain open.

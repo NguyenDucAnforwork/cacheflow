@@ -1493,3 +1493,41 @@ F1 development là0,316750696→0,317225031, cùng4output-budget hits. Checkpoin
 **Đáp:** Sáu file native quan trọng hiện khớp hash trong installed RECORD của vLLM0.22.0 vàLMCache0.5.3. Báo cáo còn giữ hash METADATA/WHEEL/RECORD để phân biệt distribution. Đây là kiểm consistency của môi trường hiện tại, chưa phải xác minh một wheel public tải độc lập hay chạy lại trên host khác.
 
 Khi tái lập, cần kiểm cả native source hash và hook source/effective AST/code identity. Chỉ ghi version là chưa đủ để phát hiện file bị sửa trong site-packages; chỉ ghi file hash cũng chưa đủ để phát hiện hook thay method trong memory. Cần thêm input/tokenizer/model/evaluator pins, prompt regeneration, cấu hình tài nguyên và fresh-process measurement. Không gọi source namespace copy hoặc CLI plan là performance reproduction.
+
+### 22.36. Sửa được invariant nhưng hệ thống vẫn đứng thì diễn giải thế nào?
+
+**Hỏi: Bản idempotent đã loại inflation trong probe, vậy có thể đóng issue stall chưa?**
+
+**Đáp:** Chưa. Trong full idempotent seed901 không bật probe, dữ liệu metric ghi một khoảng263,029giây không tiến triển: GPU0%, native0running/8waiting, occupancy khoảng0,859656, các bộ đếm prompt/prefill/external/first-text giữ nguyên. Replay và engine vẫn sống. Observer kiểm lại PID/birth, constructor proof và effective-code fingerprint của đúng engine: nó thực sự khởi tạo với bản idempotent, không phải vô tình chạy reference.
+
+Đây là counterexample cho suy luận “sửa watermark thì không thể stall”. Nó chưa chứng minh deadlock vĩnh viễn hoặc terminal failure: request timeout còn hiệu lực và lượt chạy chưa kết thúc ở thời điểm quan sát. Cũng không chỉ ra allocation/HOL/remote futures là nguyên nhân, vì full arm này không bật native state probe. Không cài probe vào giữa chừng hay đổi timeout để ép ra một câu chuyện khác; giữ nguyên whole-workload outcome, rồi đăng ký phép đo cơ chế tiếp theo nếu cần.
+
+**Hỏi: Tại sao watermark repair vẫn có giá trị nếu không sửa stall?**
+
+**Đáp:** Nó sửa một semantics sai đã quan sát và được kiểm trên implementation thật. Nhưng correctness của một biến trạng thái, liveness của toàn engine và performance trước baseline là ba yêu cầu khác nhau. Một lỗi có thể gây sai metadata STORE mà không phải nguyên nhân duy nhất của stall. Ngược lại, tránh stall bằng một đổi timing cũng chưa chứng minh semantics đúng. Phải giữ cả bằng chứng invariant đã được sửa và bằng chứng nonprogress vẫn xảy ra.
+
+### 22.37. Đo epoch scheduling thế nào để attribution có ý nghĩa?
+
+**Đáp:** Dùng hai tầng đối chứng trong cùng một lượt nghiên cứu mới. Epoch-union so với reference-union trả lời câu hỏi tối ưu implementation có giảm chi phí hay không. Epoch-union so với main bundle16 hoặc native DFS trả lời câu hỏi có cạnh tranh được với lựa chọn mạnh hơn hay không. Nếu chỉ thắng union cũ vốn chậm hơn bundle, chưa đủ nói contribution có ích.
+
+Mọi main arm, kể cả bundle baseline, dùng cùng bản idempotent native correction. Nếu chỉ candidate được sửa native, chênh lệch latency sẽ lẫn hai can thiệp. Native SGLang không dùng LMCache connector này; so sánh được thực hiện riêng trong từng engine, không lấy hai engine có source counters khác nhau làm một cặp causal. Mỗi arm có engine/cache mới,60FIFOwarmup riêng,reset và gateway mới trước đo.
+
+**Hỏi: Tại sao CPU microbenchmark thắng nhiều lần mà GPU benchmark có thể không nhanh hơn?**
+
+**Đáp:** Epoch tránh dựng lại cache key trên state không đổi. Nếu queue liên tục thay đổi, cache thường bị invalidate và vẫn phải chạy selector gốc. Nếu GPU compute/copy hoặc request queue khác chi phối makespan, giảm vài microsecond ở chooser có thể không đổi TTFT. Container tracking và bookkeeping cũng có chi phí. Thay timing của gateway có thể thay thứ tự engine batching, output hoặc cache work, dù pure policy không đổi. Vì vậy phải đo cả chooserCPU/calls/hits, wait stages, actual token-source work và latency/quality đầu cuối.
+
+Counter `decision_stats.cpu_ms` chỉ bao quanh chooser, gồm đường cache hit; nó không bao gồm toàn bộ timeout scans, mutation callbacks, tokenization hay tổng CPU của gateway. Không lấy chênh lệch counter này làm causal wall-time saved. Bảng pair giữ median/p95/p99, completion, từng conversation và từng câu trả lời ngay cả khi chooserCPU giảm mạnh. Thiếu metric consumption tương đương phía native thì giữnull, không suy từ promotion thành DMA hoặc unique bytes.
+
+**Hỏi: V10 có sửa lịch sử để vượt gate V7 không?**
+
+**Đáp:** Không. V7 vẫn đòi original30-arm full thành công và vẫn chưa vượt gate. V10 có protocol/namespace/controller/auditor mới, đăng ký trước GPU requests. Nó yêu cầu toàn bộ diagnostic V9 được audit, hai probe invariant hợp lệ và giữ mọi full failure; diagnostic integrity không đồng nghĩa full workload thành công hay liveness đã sửa. V10 tự dừng khi bất kỳ dev request/identity/audit nào lỗi.18arm development chỉ có60QA đã lộ, lặp ba arrival schedules; chưa có446category5. Cần controls và full1986QA/ba seeds trước khi kết luận contribution cạnh tranh hoặc hoàn thành research goal.
+
+### 22.38. Kết quả cuối cùng của full idempotent là gì?
+
+**Đáp:** Lượt idempotent seed901 đã kết thúc lúc05:08:32UTC:925/1.986target thành công,1.061lỗi gồm256ReadTimeout,408PoolTimeout và397HTTP502;60warmup riêng thành công. Hậu kiểm mở lại đủ1.986prompt/token/output/status records và giữ failed engine end identity, không chấm F1 của riêng925câu thành công thành “chất lượng full benchmark”. Cửa sổ nonprogress dài nhất đo được là598,066giây.
+
+**Hỏi: Native log lần này cho biết thêm điều gì?**
+
+**Đáp:** EngineCore log có fatal traceback lúc05:08:12UTC. Nó trỏ tới `Scheduler._update_from_kv_xfer_finished`, line2153, assertion `req_id in self.requests` trong vòng lặp `finished_recving`. Auditor kiểm SHA của native source đang cài và đối chiếu line với AST để phân biệt loop nhận KV với loop gửi KV có assertion tương tự. Request ID cụ thể không được log nên vẫnnull.
+
+Assertion cho biết tại thời điểm xử lý một finished-receive ID, ID đó không còn trong bảng request mà scheduler yêu cầu. Có thể nghi ngờ tương tác giữa cancellation và completion đến muộn, nhưng chưa tái dựng được lifecycle của ID cụ thể. Quan trọng hơn, assertion xuất hiện sau một khoảng dài đứng yên; không thể gọi nó là nguyên nhân đã được chứng minh của khoảng đứng yên trước đó. Tách triệu chứng ban đầu, lỗi khi xử lý completion và lỗi client dây chuyền giúp chọn đúng phép đo tiếp theo. Chưa sửa bằng cách xóa assertion hay bỏ mọi completion không nhận ra: làm vậy có thể che lỗi ownership hoặc bỏ giải phóng KV blocks.

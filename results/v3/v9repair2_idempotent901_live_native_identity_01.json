@@ -1,0 +1,60 @@
+{
+  "kind": "passive_nonprogress_under_actual_idempotent_native_startup_identity",
+  "run_id": "v9repair2-full-idempotent-s901",
+  "checked_monotonic_ns": 177968684500456,
+  "observer_source_sha256": "0cf636f3f3a38dc37b52f94630b519cfdc825d77a4959943049adf9594099165",
+  "observation_path": "results/v3/v9repair2_idempotent901_live_nonprogress_01.json",
+  "observation_sha256": "562658e0f96da42606e10347f1e65228c8ee2c95c014cb89687e91380cbb2c69",
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "native_identity": {
+    "engine_pid": 595197,
+    "engine_birth": 1793076488.81,
+    "constructor_records": [
+      {
+        "code_fingerprint_version": 1,
+        "connector_class": "lmcache.integration.vllm.lmcache_mp_connector.LMCacheMPConnector",
+        "connector_role": "KVConnectorRole.WORKER",
+        "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+        "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+        "functional_replacements": 1,
+        "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+        "mode": "idempotent",
+        "monotonic_ns": 177033433207857,
+        "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+        "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+        "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+        "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+        "pid": 595351,
+        "scope": "Actual fresh connector construction identity. No per-call observer, STORE/DMA/performance/quality or liveness claim."
+      },
+      {
+        "code_fingerprint_version": 1,
+        "connector_class": "lmcache.integration.vllm.lmcache_mp_connector.LMCacheMPConnector",
+        "connector_role": "KVConnectorRole.SCHEDULER",
+        "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+        "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+        "functional_replacements": 1,
+        "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+        "mode": "idempotent",
+        "monotonic_ns": 177035531719749,
+        "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+        "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+        "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+        "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+        "pid": 595351,
+        "scope": "Actual fresh connector construction identity. No per-call observer, STORE/DMA/performance/quality or liveness claim."
+      }
+    ],
+    "proof_sha256": {
+      "/workspace/cacheflow-e1/results/v3/raw/v9repair2-full-idempotent-s901-native.595351.jsonl": "4c24071333c81398a024bc2ef512952cfa9272792c647c29789df512da8fde44"
+    },
+    "checked_monotonic_ns": 177968684397885,
+    "mode": "idempotent",
+    "end_identity_verified": true
+  },
+  "sampled_nonprogress_s": 263.028824698,
+  "terminal_failure": false,
+  "performance_valid": false,
+  "research_complete": false,
+  "scope": "Actual idempotent constructor/effective-code fingerprints and PID/birth continuity coexist with sampled nonprogress. The one-site bookkeeping correction is insufficient to rule out this bounded stall. No per-call revalidation, native-state observation, eventual terminal failure, deadlock cause or performance claim."
+}

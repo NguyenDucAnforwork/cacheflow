@@ -1,0 +1,145 @@
+{
+  "kind": "independent_failed_native_full_ledger_and_traceback_audit",
+  "run_id": "v9repair2-full-idempotent-s901",
+  "complete_failed_workload_ledger_audit": true,
+  "performance_valid": false,
+  "research_complete": false,
+  "requests": 1986,
+  "successes": 925,
+  "errors": 1061,
+  "status_counts": {
+    "ok": 925,
+    "exception:ReadTimeout": 256,
+    "exception:PoolTimeout": 408,
+    "http_502": 397
+  },
+  "terminal_finished_utc": "2026-10-27T05:08:32.505281+00:00",
+  "native_mode": "idempotent",
+  "native_fatal_site": {
+    "method": "_update_from_kv_xfer_finished",
+    "line": 2153,
+    "loop_iterator": "kv_connector_output.finished_recving or ()",
+    "assertion": "req_id in self.requests"
+  },
+  "missing_native_request_id": null,
+  "engine_end_identity_verified": false,
+  "longest_sampled_nonprogress_s": 598.065758194,
+  "closed_gateway_cohort": {
+    "count": 8,
+    "prefix_group_counts": {
+      "daf7b290ac3d8dd4ffca0dd0c64993ae": 6,
+      "16a6d90231b6b33d47d871ae737e4d51": 2
+    },
+    "requests": [
+      {
+        "request_id": "conv-47-q089",
+        "input_tokens": 27268,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597547632767,
+        "first_token_ns": null,
+        "complete_ns": 178198520945891,
+        "reserved_active_tokens": 27392,
+        "dispatch_reason": "oldest_start",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q090",
+        "input_tokens": 27278,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597566870139,
+        "first_token_ns": null,
+        "complete_ns": 178198521608133,
+        "reserved_active_tokens": 27552,
+        "dispatch_reason": "oldest_fits",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q091",
+        "input_tokens": 27263,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597583176426,
+        "first_token_ns": null,
+        "complete_ns": 178198522361881,
+        "reserved_active_tokens": 27696,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q092",
+        "input_tokens": 27266,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597594320319,
+        "first_token_ns": null,
+        "complete_ns": 178198522619433,
+        "reserved_active_tokens": 27856,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q093",
+        "input_tokens": 27263,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597606382928,
+        "first_token_ns": null,
+        "complete_ns": 178198522869090,
+        "reserved_active_tokens": 28000,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q094",
+        "input_tokens": 15210,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 177597613537060,
+        "first_token_ns": null,
+        "complete_ns": 178198521865615,
+        "reserved_active_tokens": 43280,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-47-q094",
+        "input_tokens": 27263,
+        "prefix_group": "daf7b290ac3d8dd4ffca0dd0c64993ae",
+        "dispatch_ns": 177597632469739,
+        "first_token_ns": null,
+        "complete_ns": 178198523109499,
+        "reserved_active_tokens": 43424,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q095",
+        "input_tokens": 15209,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 177597639912676,
+        "first_token_ns": null,
+        "complete_ns": 178198522120226,
+        "reserved_active_tokens": 43568,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      }
+    ],
+    "scope": "Closed gateway records whose recorded dispatch/complete intervals span the entire sampled window; not native block tables or recovered condition-lock ordering. Live in-flight records may not be closed yet."
+  },
+  "raw_sha256": {
+    "results/v3/raw/v9repair2-full-idempotent-s901.jsonl": "a0cbcb42775e49cabc23ef996242bcbe8db47c24bcb4b160027c255eff1672d8",
+    "results/v3/raw/v9repair2-full-idempotent-s901.outputs.jsonl": "206ef62cee341ef517802b8c83168dac55e59b81864e9e5a77ad56a3e32406ab",
+    "results/v3/raw/v9repair2-full-idempotent-s901.summary.json": "820cff00a9c854d1b7975231be9a329567829c0ba24996680f455321fbac126e",
+    "results/v3/raw/v9repair2-full-idempotent-s901.metrics.jsonl": "554338ef295a88c2303cd6b08f6957cfbcd81af8527c8891877d67e756e58e73",
+    "results/v3/raw/v9repair2-full-idempotent-s901.gateway.jsonl": "4defebcfeaafa967c3481eebe106ce59298fabf90be515c6e2c63f9a3f1db071",
+    "results/v3/raw/v9repair2-full-idempotent-s901-engine.log": "ddfffa3af9bd5365730aae7afcc8a9169d5b55b0b510a98827e457bbd352f061"
+  },
+  "metadata_sha256": {
+    "results/v3/v9repair2_registration.json": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+    "results/v3/v9repair2-full-idempotent-s901.diagnostic_setup.json": "b06f1ca2ae1b9599e546b200a4c067eee999789bd6901fff2b3946c188fb2df4",
+    "results/v3/v9repair2-full-idempotent-s901.diagnostic_integrity.json": "e2adcc87cef7ec8e34a22a05530625499e9c2bb2111f51e3efbe2d177d978e1c",
+    "results/v3/v9repair2-full-idempotent-s901.native_identity.json": "50045e2526e2304fda255a55405a47b61a9747d4a456a3917c6bec5e23dbe564",
+    "results/v3/v9repair2-full-idempotent-s901.repair_audit.json": "6fda3928631c4f7d19e3f7adadf574af5e7c399df3ba22a58efbe856fc537d19",
+    "results/v3/input_preflight/20261026T220240-457168/main.json": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+    "results/v3/v9repair2_idempotent901_terminal_nonprogress.json": "c8f421cc86335bb219995028a4ee4e7855abee431cd1442f4383ef3d3bd7902b"
+  },
+  "native_scheduler_source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+  "auditor_source_sha256": "5cd72a9e923145b4dbb5f0fcaf62251011fbe25cd0b98f723ba6ce655fe5ba56",
+  "scope": "All1986statuses/outputs/prompt-token fingerprints reopened, actual native startup identity and failed missing end identity retained. Fatal traceback maps to installed assertion in a finished-transfer loop. No missing req_id value is logged; no proof that cancellation caused the earlier sampled stall, unique causal chain, functional mitigation, partial-cohort quality or successful-only latency claim."
+}
