@@ -1,0 +1,96 @@
+{
+  "cpu_only": true,
+  "synthetic_metadata": true,
+  "live_state_reproduced": false,
+  "gpu_execution": false,
+  "fixture_revision": 2,
+  "source_sha256": "537e135edea12939606d48afc2a82f9c31bc23dccc4f6c451f5e54fd6b610773",
+  "native_method_bodies": [
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/single_type_kv_cache_manager.py",
+      "class_name": "SingleTypeKVCacheManager",
+      "method": "get_num_blocks_to_allocate",
+      "source_sha256": "d57ad1c8e3d32db4a9d929ee201ab169305ef703b5bda9eb933d0f2f2a2299a1",
+      "method_ast_sha256": "4362dd835c401afb786fd90ab019bd06dbbe68975249ed780458ef970569595a",
+      "first_line": 89,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_coordinator.py",
+      "class_name": "KVCacheCoordinator",
+      "method": "get_num_blocks_to_allocate",
+      "source_sha256": "a5f0683483508fcfd0b2e3477940825bae5953eec715a4f704becec805484b89",
+      "method_ast_sha256": "63a9afb4ec406802c2f49966d5b950d5cb0c657e10809bcb65455f33c345e03d",
+      "first_line": 80,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_manager.py",
+      "class_name": "KVCacheManager",
+      "method": "allocate_slots",
+      "source_sha256": "05e5f1f9391a959b6328cc75e3f0a6315682a593b50d54ec30c215c768c3e224",
+      "method_ast_sha256": "172e7b1849060197bf5ab1d3b0665574836b31e26826d7ea4dce191970c81fe1",
+      "first_line": 236,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    }
+  ],
+  "native_imports_avoided": [
+    "vllm",
+    "torch",
+    "CUDA"
+  ],
+  "single_full_attention_group": true,
+  "tokens_per_page": 16,
+  "usable_capacity_pages": 160,
+  "logical_union_reservation_pages": 158,
+  "shared_prefix_tokens": 1024,
+  "private_uncached_suffix_tokens_per_request": 640,
+  "output_budget": 96,
+  "cases": [
+    {
+      "duplicate_physical_prefixes": true,
+      "initial_physical_prefix_blocks": 128,
+      "initial_free_blocks": 32,
+      "private_allocated_block_ids_unique": true,
+      "outcomes": [
+        {
+          "request_id": "cpu-witness-0",
+          "additional_blocks_needed": 40,
+          "free_before": 32,
+          "allocation_rejected": true,
+          "free_after": 32
+        },
+        {
+          "request_id": "cpu-witness-1",
+          "additional_blocks_needed": 40,
+          "free_before": 32,
+          "allocation_rejected": true,
+          "free_after": 32
+        }
+      ]
+    },
+    {
+      "duplicate_physical_prefixes": false,
+      "initial_physical_prefix_blocks": 64,
+      "initial_free_blocks": 96,
+      "private_allocated_block_ids_unique": true,
+      "outcomes": [
+        {
+          "request_id": "cpu-witness-0",
+          "additional_blocks_needed": 40,
+          "free_before": 96,
+          "allocation_rejected": false,
+          "free_after": 56
+        },
+        {
+          "request_id": "cpu-witness-1",
+          "additional_blocks_needed": 40,
+          "free_before": 56,
+          "allocation_rejected": false,
+          "free_after": 16
+        }
+      ]
+    }
+  ],
+  "scope": "Conditional feasibility counterexample: the real gateway union bound158<=160 pages can admit two prompts, yet if each ready request retains a separate64-page loaded copy of their common prefix, both installed native allocation calls reject40-page suffixes with32free pages. Shared physical prefixes are a positive control. This does not prove such a state occurred/is reachable in the live run, that all asynchronous work has drained, that the scheduler cannot preempt/free waiting requests elsewhere, a native deadlock, a tensor/DMA fault or a fix. Metadata fixtures and selected installed method bodies are not a full engine simulator or serving/performance result."
+}

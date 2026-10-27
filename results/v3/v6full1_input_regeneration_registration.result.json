@@ -1,0 +1,75 @@
+{
+  "complete": true,
+  "cpu_only": true,
+  "registration_sha256": "83283d246c8af15bc85557e59f449f6ff79ee4ac78e22c245cd312b5c23ef200",
+  "finished_utc": "2026-10-27T02:51:16.272629+00:00",
+  "unique_qa": 1986,
+  "answerable": 1540,
+  "category5": 446,
+  "input_tokens": 50522325,
+  "prompt_and_token_fingerprints_equal": true,
+  "original_inputs_unchanged": true,
+  "seeds": [
+    {
+      "original_path": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+      "seed": 901,
+      "generated_identity": {
+        "stored_sha256": "d883f36edd5beedf2e0d091e6acc62244addd9360490c89f7ba2e88fd3281106",
+        "uncompressed_sha256": "1855017432dd8ec138f6ef5a9f3494739aab5495ccb6f4f85e1342a743bb62a7",
+        "canonical_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+        "requests": 1986
+      },
+      "restored_identity": {
+        "path": "results/v3/v6full1_input_regeneration_registration_copies/restored-v5-full4b-qps4-s901.jsonl.gz",
+        "stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+        "uncompressed_sha256": "1855017432dd8ec138f6ef5a9f3494739aab5495ccb6f4f85e1342a743bb62a7"
+      },
+      "original_stored_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+      "requests": 1986,
+      "canonical_sha256": "ec5da658be9f8268371610a48ffbbfe84989f22790b77f4b925dbd728284f9ac",
+      "generated_from_official_source": true,
+      "temporary_copies_removed_after_verified_identity": true
+    },
+    {
+      "original_path": "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+      "seed": 902,
+      "generated_identity": {
+        "stored_sha256": "8e5e092dd42cc0209b9b23d65ba3756be95c89d2185e727b469f9179ce274ee5",
+        "uncompressed_sha256": "230819bf903f167c0831f7f37a3613c0d43f2b724c3f5b51439b2f7846455cbe",
+        "canonical_sha256": "8d1a292942c337d5a231f8aaca6520f2932f6705c9a4da886bdf3f360b5c359d",
+        "requests": 1986
+      },
+      "restored_identity": {
+        "path": "results/v3/v6full1_input_regeneration_registration_copies/restored-v5-full4b-qps4-s902.jsonl.gz",
+        "stored_sha256": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+        "uncompressed_sha256": "230819bf903f167c0831f7f37a3613c0d43f2b724c3f5b51439b2f7846455cbe"
+      },
+      "original_stored_sha256": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+      "requests": 1986,
+      "canonical_sha256": "8d1a292942c337d5a231f8aaca6520f2932f6705c9a4da886bdf3f360b5c359d",
+      "generated_from_official_source": true,
+      "temporary_copies_removed_after_verified_identity": true
+    },
+    {
+      "original_path": "data/processed/v3/v5-full4b-qps4-s903.jsonl.gz",
+      "seed": 903,
+      "generated_identity": {
+        "stored_sha256": "0f4fc100ed4415680afe91e0df2f0733d30f7cb4445b94579bca171da2b72f4b",
+        "uncompressed_sha256": "698e53f81d485f55b950aeb8ffc89a8361f8b0bc52f0abbc2ecef290755886fb",
+        "canonical_sha256": "562e5fff6d8f283e43ebfc692c68d4ce4f020711c01c5cb2d166f28b0f3aa913",
+        "requests": 1986
+      },
+      "restored_identity": {
+        "path": "results/v3/v6full1_input_regeneration_registration_copies/restored-v5-full4b-qps4-s903.jsonl.gz",
+        "stored_sha256": "27fb4c04da39940497b5d62e7f781fcddc30b697b8c96a6522d5f816ec99f988",
+        "uncompressed_sha256": "698e53f81d485f55b950aeb8ffc89a8361f8b0bc52f0abbc2ecef290755886fb"
+      },
+      "original_stored_sha256": "27fb4c04da39940497b5d62e7f781fcddc30b697b8c96a6522d5f816ec99f988",
+      "requests": 1986,
+      "canonical_sha256": "562e5fff6d8f283e43ebfc692c68d4ce4f020711c01c5cb2d166f28b0f3aa913",
+      "generated_from_official_source": true,
+      "temporary_copies_removed_after_verified_identity": true
+    }
+  ],
+  "scope": "All1986prompts/token vectors rebuilt from official LoCoMo and pinned tokenizer/renderer; all3scheduled gzip files match sealed plain/canonical/stored hashes after captured header restoration. No model weights, inference, performance reproduction, quality evaluation or complete research claim."
+}

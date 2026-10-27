@@ -1,0 +1,20 @@
+{
+  "error": "CalledProcessError(1, ['bash', 'scripts/v6_run.sh', 'v6full1-main-g6-union64-s902', 'data/processed/v3/v5-full4b-qps4-s902.jsonl.gz'])",
+  "phase": "measured",
+  "last_step": {
+    "engine": "main",
+    "arm": "union64",
+    "policy": "packing_reuse",
+    "cap": 64,
+    "queue": 512,
+    "budget": 6,
+    "host_flag": 48,
+    "native_policy": null,
+    "seed": 902,
+    "requests": 1986,
+    "trace": "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+    "run_id": "v6full1-main-g6-union64-s902"
+  },
+  "completed_arms": 10,
+  "scope": "Study stopped; retain failed/unexecuted arms. No retries or successful-only complete-stage table."
+}

@@ -1,0 +1,94 @@
+{
+  "cpu_only": true,
+  "synthetic_metadata": true,
+  "installed_files_modified": false,
+  "gpu_execution": false,
+  "live_stall_root_cause_proven": false,
+  "source_sha256": "56ad202f853c025a972bbe1b6afdf1fc6d699d1b178335c87874f5ebaecf8416",
+  "native_method_bodies": [
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+      "class_name": "LMCacheMPConnector",
+      "method": "get_num_new_matched_tokens",
+      "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+      "method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+      "first_line": 1030,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+      "class_name": "LMCacheMPRequestTracker",
+      "method": "increase_num_stored_tokens",
+      "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+      "method_ast_sha256": "1f692689bdb8789678d185ba621a5ce56742454b78d8843a3fc10ef16e5499a4",
+      "first_line": 295,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+      "class_name": "LMCacheMPRequestMetadata",
+      "method": "GetStoreMetadata",
+      "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+      "method_ast_sha256": "ada4dd2242562a49847f67b10188ba98dfe9f9223642c315115848558c593d5f",
+      "first_line": 356,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    }
+  ],
+  "unactivated_patch": {
+    "replacements": 1,
+    "corrected_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+    "change": "Only lookup watermark update: additive cached-prefix count becomes max(current,ret). Other incremental store updates remain unchanged."
+  },
+  "cases": [
+    {
+      "lookup_attempts_before_successful_allocation": 1,
+      "installed": {
+        "prefix_watermark_before_store": 1024,
+        "store_metadata_after640new_tokens": {
+          "direction": "STORE",
+          "start": 1024,
+          "end": 1536
+        }
+      },
+      "unactivated_idempotent_prototype": {
+        "prefix_watermark_before_store": 1024,
+        "store_metadata_after640new_tokens": {
+          "direction": "STORE",
+          "start": 1024,
+          "end": 1536
+        }
+      }
+    },
+    {
+      "lookup_attempts_before_successful_allocation": 2,
+      "installed": {
+        "prefix_watermark_before_store": 2048,
+        "store_metadata_after640new_tokens": null
+      },
+      "unactivated_idempotent_prototype": {
+        "prefix_watermark_before_store": 1024,
+        "store_metadata_after640new_tokens": {
+          "direction": "STORE",
+          "start": 1024,
+          "end": 1536
+        }
+      }
+    },
+    {
+      "lookup_attempts_before_successful_allocation": 8,
+      "installed": {
+        "prefix_watermark_before_store": 8192,
+        "store_metadata_after640new_tokens": null
+      },
+      "unactivated_idempotent_prototype": {
+        "prefix_watermark_before_store": 1024,
+        "store_metadata_after640new_tokens": {
+          "direction": "STORE",
+          "start": 1024,
+          "end": 1536
+        }
+      }
+    }
+  ],
+  "scope": "Execute installed method bodies on a conditional same-request lookup retry before allocation succeeds. Each lookup returns the same cached1024-token prefix; additive watermark grows to2048/8192 on2/8attempts and suppresses an otherwise eligible512-token STORE after640newtokens. A one-site unactivated max-watermark change preserves the first-attempt result. Metadata constructors and single-group slicing are CPU fixtures. This is not proof the retries occurred in the live run, actual lost cache data/bytes/quality/performance, the stall root cause or a validated serving fix. No engine, model, torch, CUDA or installed-file mutation."
+}

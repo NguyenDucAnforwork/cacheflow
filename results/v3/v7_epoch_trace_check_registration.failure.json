@@ -1,0 +1,5 @@
+{
+  "complete": false,
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "scope": "Preserved ledger-state validation failure; no serving modification or automatic retry"
+}

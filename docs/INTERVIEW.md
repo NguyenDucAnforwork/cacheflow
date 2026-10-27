@@ -1343,3 +1343,61 @@ Một giả thuyết đáng kiểm là khác biệt giữa hợp prefix logic m�
 **Hỏi: V7 đã queue thì anomaly này có bị bỏ qua không?**
 
 **Đáp:** Không. Waiter V7 hiện yêu cầu actual full30-arm success audit. Nếu study cũ không đạt và proof thiếu, nó phải dừng. Không được âm thầm nới gate hoặc sửa source đã pin để làm job chạy. Khi đó bước tiếp là ghi nhận kết quả terminal và đăng ký chẩn đoán/revision mới, tiếp tục nghiên cứu liveness cùng CPU overhead; mục tiêu contribution mạnh vẫn giữ nguyên.
+
+### 22.24. Khi full benchmark thất bại thật, báo cáo thế nào?
+
+**Hỏi: Seed902 cuối cùng có phục hồi không?**
+
+**Đáp:** Không. Replay kết thúc tự nhiên lúc02:46:42UTC ngày27/10, sau khoảng4.086,8giây. Đủ1.986 bản ghi client gồm973thành công và1.013lỗi:247ReadTimeout,482PoolTimeout,275HTTP502,9RemoteProtocolError. Auditor mới đối chiếu toàn bộ ID, prompt hash, input-token count và hash output đã capture với fingerprints đã chốt. Output rỗng hoặc một phần của request lỗi cũng được giữ. Metrics có khoảng3.597,8giây counters không tiến triển trong khi GPU0%,vLLM0running/9waiting.
+
+Study gốc vì vậy có10cấu hình full đã hoàn tất,1cấu hình thất bại và19cấu hình chưa chạy. File summary gốc vẫn có percentiles tính trên973request thành công; giữ nguyên bytes để truy xuất nhưng **không dùng những số đó làm p95 của full workload**. Cũng không ghép973request này với request chạy lại để tạo một lượt “thành công”.
+
+**Hỏi: PoolTimeout có chứng minh pool connection là nguyên nhân gốc không?**
+
+**Đáp:** Không. Replay mở tối đa256connection. Khi các request đang giữ connection chờ upstream không trả, request đến sau có thể hết thời gian chờ pool. ReadTimeout,502 và lỗi đóng stream có thể là các hậu quả khác của cùng chuỗi tắc nghẽn. Cần xếp sự kiện theo thời gian và quan sát trạng thái native trước lỗi, không suy ngược root cause từ tên exception cuối cùng.1.504gateway records đã đóng cũng không bằng1.986client records: một request hết hạn trước ingress sẽ không có closed gateway row.
+
+### 22.25. Reservation theo hợp prefix có luôn bảo đảm đủ GPU KV không?
+
+**Hỏi: Vì sao phép tính logic đúng vẫn có thể thiếu block vật lý?**
+
+**Đáp:** Xét GPU có160page khả dụng, mỗi page16token. Hai request cùng prefix1.024token, mỗi request thêm640token riêng và dự phòng96output token. Admission theo hợp prefix tính64page chung +2×47page riêng =158page, nằm trong160page.
+
+Nhưng phép tính đó dựa vào khả năng chia sẻ phần chung. Trong một trạng thái giả định mà mỗi request đã giữ64page vật lý riêng cho cùng prefix,128page đã bị giữ và chỉ còn32page trống. Mỗi suffix640token cần40page mới. Cả hai lời gọi cấp phát đều có thể trảNone dù reservation logic nhỏ hơn capacity. Nếu cùng dùng một bộ64page vật lý, ban đầu còn96page; cấp hai suffix40page lần lượt vẫn được, còn16page.
+
+`v8_allocation_witness.py` chạy **body phương thức cấp phát đang cài** bằng AST trên metadata fixture CPU, với ID block riêng không trùng nhau. Nó chứng minh một điều kiện mà logical union không đủ để bảo đảm allocation thành công. Nó chưa chứng minh engine thật đi tới trạng thái đó, tensor đã nạp đúng, mọi async load đã xong, hay scheduler không thể giải phóng/preempt ở nhánh khác. Không gọi nó là bằng chứng deadlock hoặc kết quả GPU.
+
+**Hỏi: Hướng thiết kế nếu runtime xác nhận bản KV trùng vật lý là gì?**
+
+**Đáp:** Khi đó cần làm admission tính đến vòng đời publication/load, thay vì giả định prefix logic lập tức trở thành block dùng chung. Có thể kiểm tra coalescing producer cùng prefix hoặc budget cho transient duplicated blocks. Nhưng chặn tất cả follower tới first text đã hồi quy mạnh trong các kết quả readiness trước đó: giảm compute không bảo đảm giảm TTFT. Một giải pháp mới phải chứng minh vừa có tiến triển vừa cạnh tranh với bundle và nativeDFS, kèm median/fairness/quality; chưa chọn hoặc tuyên bố thắng chỉ từ phản ví dụ CPU.
+
+### 22.26. Tại sao lookup nên cập nhật watermark theo cách idempotent?
+
+**Hỏi: Watermark “đã lưu” khác counter tổng công việc thế nào?**
+
+**Đáp:** Watermark là vị trí trong cùng một request: biết prefix1.024token đã có trong cache thì mốc đó là1.024. Nếu vLLM chưa cấp phát được và hỏi lại đúng kết quả lookup ấy, prefix vẫn chỉ dài1.024; không có thêm1.024token mới. Cộng lại mỗi lần hỏi biến watermark thành2.048 hoặc8.192 sau2hoặc8lần lookup.
+
+Witness CPU thực thi body lookup và dựng STORE metadata của connector hiện cài: sau khi thực sự schedule thêm640token, một STORE hợp lệ từ1.024đến1.536 xuất hiện nếu lookup chỉ một lần. Với watermark bị cộng lặp, STORE đó bị bỏ qua vì mốc đã vượt phần có thể lưu. Thay **riêng chỗ cập nhật từ kết quả lookup** bằng max(mốc hiện tại,kết quả lookup) giữ kết quả lần đầu và xử lý lặp đúng trong fixture. Không thay các cập nhật cộng dồn cho công việc lưu mới thật sự.
+
+Đây là lỗi hành vi có điều kiện trên metadata và có positive control. Chưa biết số lần lookup lặp của run thật, số byte KV bị bỏ lỡ, ảnh hưởng chất lượng/latency hay liên hệ với stall. Prototype max chưa cài vào serving. Một bản sửa native cần test vòng đời lookup/allocate/store/preemption và GPU correctness riêng.
+
+### 22.27. Tối ưu CPU V7 đã có số đo thật chưa?
+
+**Đáp:** Có số đo microbenchmark CPU đã đăng ký trước, sau khi serving và các job tái tạo input/namespace kết thúc.45trường hợp là3policy ×5queue sizes16/64/128/256/512 ×3kernel: gọi chooser với state ổn định, gọi timeout với state ổn định, và poll xen kẽ mutation. Mỗi bên2.000iteration,5round, đảo thứ tự legacy/prototype theo round. Giữ cả45trường hợp, không đặt ngưỡng thuận lợi rồi bỏ case yếu.
+
+Tỷ số median thread CPU legacy/prototype nằm trong1,827–12,617 cho chooser,1,535–30,548 cho timeout và1,550–15,924 cho poll có mutation. Ví dụ packing_reuse/queue512: chooser36,508→2,906microsecond mỗi iteration, timeout14,190→0,488microsecond. Fixture có4active request, prefix1.024token dùng chung và trạng thái blocked hợp lệ; phép đo bao gồm overhead vòng lặp/assert của probe.
+
+**Hỏi: Có thể nói hệ thống nhanh hơn30lần không?**
+
+**Đáp:** Không. Đây là chi phí một kernel CPU trong synthetic state; không đo tổng CPU gateway, tỷ trọng thời gian chạy thật, GPU compute, queueing hay TTFT. Cần kiểm tương đương quyết định với prefix thực và chạy cặp oldunion/epoch trên GPU, đồng thời so với bundle/DFS. Checker full-prefix/V7 GPU gốc đã dừng đúng gate vì không có full30-arm success audit. Không sửa gate đã pin; một revision riêng phải giữ nguyên failed evidence và nói rõ phạm vi proof nào đã thay đổi.
+
+### 22.28. Chẩn đoán native mà không làm sai lệch benchmark như thế nào?
+
+**Đáp:** [Protocol V8](V8_LIVENESS_DIAGNOSTIC_PROTOCOL.md) dùng offA/on/offB với engine và CPU cache mới ở mỗi phase. Mỗi phase warm60QA giống nhau rồi reset và chạy toàn bộ1.986QA seed902. Chỉ phase giữa bật hook bằng launcher riêng; file upstream không đổi. Ba phase cùng600s read/pool/upstream timeout, khác rõ3600s của primary study. Timeout600s có thể cắt một request khỏe nhưng quá chậm, nên không coi timeout diagnostic tự nó là deadlock hoặc so latency với primary study.
+
+Hook chỉ ghi metadata sau lời gọi gốc: allocationNone/cần thêm bao nhiêu block, request đang WAITING hay chờ remoteKV, prefix nào có nhiều physical block, lookup membership, watermark, operation ranges và các finish IDs mà worker **vốn đã trả**. Không thêm future.query/result, CUDAevent.query/synchronize hay đọc tensor. Không gọi get_blocks để tránh vô tình tạo entry trong defaultdict. Snapshot giữa process không atomic; expected hash không chứng minh tensor thật giống nhau hoặc DMA hoàn tất.
+
+Probe vẫn thêm CPU/I/O và có thể đổi interleaving. Vì vậy cả off controls cũng được đánh dấu diagnostic trước request đầu tiên, dùng registry riêng, giữ mọi lỗi và không tham gia bảng latency/quality chính. Phải kiểm đủ4hook identities/sourceSHA và các sample cần thiết; có probe_error thì không coi coverage đạt. Nếu không tái hiện được, báo không tái hiện được; không suy ra đã sửa xong. Bất kỳ mitigation nào sau đó cũng cần protocol mới và đánh giá unprofiled đầy đủ.
+
+**Hỏi: Phần tái lập input đã làm thật tới đâu?**
+
+**Đáp:** Job CPU đã tái tạo1.986prompt,50.522.325token từ LoCoMo chính thức và tokenizer/renderer đã pin. Prompt hash và vector token đều khớp; cả3arrival schedule khớp canonical hash. Khi khôi phục header gzip đã lưu, stored byte hash cũng khớp input gốc. Bản sao temporary chỉ bị gỡ sau kiểm định. Namespace source/protocol và CLI plan30cấu hình cũng tái tạo được. Điều đó chứng minh input và kế hoạch tái lập, chưa chứng minh model output, performance hoặc full study độc lập đã chạy lại.

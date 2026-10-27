@@ -1,0 +1,166 @@
+{
+  "kind": "complete_record_integrity_check_of_failed_full_attempt",
+  "performance_valid": false,
+  "research_complete": false,
+  "run_id": "v6full1-main-g6-union64-s902",
+  "requests": 1986,
+  "successes": 973,
+  "errors": 1013,
+  "status_counts": {
+    "ok": 973,
+    "exception:ReadTimeout": 247,
+    "exception:PoolTimeout": 482,
+    "http_502": 275,
+    "exception:RemoteProtocolError": 9
+  },
+  "completed_full_arms": 10,
+  "failed_full_arms": 1,
+  "unexecuted_full_arms": 19,
+  "gateway_closed_records": 1504,
+  "gateway_status_counts": {
+    "ok": 973,
+    "stream_error:ReadTimeout": 9,
+    "client_cancelled": 9,
+    "upstream_http_500": 8,
+    "upstream_connect_error": 505
+  },
+  "client_records_without_closed_gateway_record": 482,
+  "longest_exact_nonprogress_s": 3597.812679038,
+  "first_nonprogress_sample": {
+    "cpu_percent": 12.6,
+    "gpu": {
+      "gpu_memory_util_pct": 0.0,
+      "gpu_util_pct": 0.0,
+      "power_w": 163.59,
+      "sm_clock_mhz": 1950.0,
+      "temperature_c": 60.0,
+      "vram_total_mib": 24576.0,
+      "vram_used_mib": 16057.0
+    },
+    "lmcache": {
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 222.0,
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2394.9774598351896,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 302.0,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2256.039491228995,
+      "lmcache_mp_l1_evicted_chunks_total": 1265.0,
+      "lmcache_mp_l1_memory_usage_bytes": 35370565632.0,
+      "lmcache_mp_l1_read_chunks_total": 93004.0,
+      "lmcache_mp_l1_write_chunks_total": 2202.0,
+      "lmcache_mp_num_chunks_loaded_total": 17482.0
+    },
+    "memory_available_bytes": 181696684032,
+    "process": {
+      "lmcache": {
+        "cpu_seconds": 75.87,
+        "ctx_switches": 9177,
+        "processes": 1,
+        "rss_bytes": 49017950208
+      },
+      "vllm": {
+        "cpu_seconds": 626.1700000000001,
+        "ctx_switches": 102604,
+        "processes": 3,
+        "rss_bytes": 3672416256
+      }
+    },
+    "timestamp_ns": 166097033462061,
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 4462720.0,
+      "vllm:kv_cache_usage_perc": 0.918285086112129,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 9.0,
+      "vllm:prefix_cache_hits_total": 61414768.0,
+      "vllm:prompt_tokens_cached_total": 24946240.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 4422672.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 20523568.0,
+      "vllm:prompt_tokens_source_local_compute_total": 570380.0,
+      "vllm:prompt_tokens_total": 25516620.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 570380.0,
+      "vllm:request_prefill_time_seconds_count": 1033.0,
+      "vllm:request_prefill_time_seconds_sum": 745.5420325617888,
+      "vllm:request_queue_time_seconds_count": 1033.0,
+      "vllm:request_queue_time_seconds_sum": 2176.167892070138,
+      "vllm:time_to_first_token_seconds_count": 1033.0,
+      "vllm:time_to_first_token_seconds_sum": 3821.94011425972
+    }
+  },
+  "last_nonprogress_sample": {
+    "cpu_percent": 27.6,
+    "gpu": {
+      "gpu_memory_util_pct": 0.0,
+      "gpu_util_pct": 0.0,
+      "power_w": 29.76,
+      "sm_clock_mhz": 210.0,
+      "temperature_c": 38.0,
+      "vram_total_mib": 24576.0,
+      "vram_used_mib": 16057.0
+    },
+    "lmcache": {
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 222.0,
+      "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 2394.9774598351896,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 302.0,
+      "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 2256.039491228995,
+      "lmcache_mp_l1_evicted_chunks_total": 1265.0,
+      "lmcache_mp_l1_memory_usage_bytes": 35370565632.0,
+      "lmcache_mp_l1_read_chunks_total": 93004.0,
+      "lmcache_mp_l1_write_chunks_total": 2202.0,
+      "lmcache_mp_num_chunks_loaded_total": 17482.0
+    },
+    "memory_available_bytes": 161020858368,
+    "process": {
+      "lmcache": {
+        "cpu_seconds": 194.59,
+        "ctx_switches": 53331,
+        "processes": 1,
+        "rss_bytes": 48990875648
+      },
+      "vllm": {
+        "cpu_seconds": 3282.4399999999996,
+        "ctx_switches": 4364009,
+        "processes": 3,
+        "rss_bytes": 3618648064
+      }
+    },
+    "timestamp_ns": 169694846141099,
+    "vllm": {
+      "vllm:external_prefix_cache_hits_total": 4462720.0,
+      "vllm:kv_cache_usage_perc": 0.918285086112129,
+      "vllm:num_preemptions_total": 0.0,
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 9.0,
+      "vllm:prefix_cache_hits_total": 61414768.0,
+      "vllm:prompt_tokens_cached_total": 24946240.0,
+      "vllm:prompt_tokens_source_external_kv_transfer_total": 4422672.0,
+      "vllm:prompt_tokens_source_local_cache_hit_total": 20523568.0,
+      "vllm:prompt_tokens_source_local_compute_total": 570380.0,
+      "vllm:prompt_tokens_total": 25516620.0,
+      "vllm:request_prefill_kv_computed_tokens_sum": 570380.0,
+      "vllm:request_prefill_time_seconds_count": 1033.0,
+      "vllm:request_prefill_time_seconds_sum": 745.5420325617888,
+      "vllm:request_queue_time_seconds_count": 1033.0,
+      "vllm:request_queue_time_seconds_sum": 2176.167892070138,
+      "vllm:time_to_first_token_seconds_count": 1033.0,
+      "vllm:time_to_first_token_seconds_sum": 3821.94011425972
+    }
+  },
+  "raw_sha256": {
+    "results/v3/raw/v6full1-main-g6-union64-s902.jsonl": "139e8b8e3faec290790d351f0f9603f88cf5c8f7477766931ee43751688598f2",
+    "results/v3/raw/v6full1-main-g6-union64-s902.outputs.jsonl": "2c60eadbf22735ef06f8290958d259cc4325e64264e7a4c11b4239c5bc8f74bd",
+    "results/v3/raw/v6full1-main-g6-union64-s902.metrics.jsonl": "7a04ac4372557bfb7a04d829d21f08b66dc6e6a2c943237f5024fe0dc3e9ce96",
+    "results/v3/raw/v6full1-main-g6-union64-s902.summary.json": "ac9867f341e1a96f2e64d3cb028f48aab11a5cdfc7dc4da1baec07f3dba19d45"
+  },
+  "metadata_sha256": {
+    "results/v3/v6full1_freeze.json": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+    "results/v3/v6full1_continuation_r1_interruption.json": "efb47d4471184cfb96b66e999d9e1861d59440816773ff15924759ef346264bc",
+    "results/v3/v6full1-main-g6-union64-s902.invalid": "eee26d3e44ff6d284ee319e749fbcd040baf00b59c784ed99cc2bad77f2c2897",
+    "results/v3/v6full1_input_preflight.json": "a13db4fe27865081644d4659129e0fc7482c036027ab86d6457226a11dfb3ad7",
+    "results/v3/input_preflight/20261026T220240-457168/main.json": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.manifest.json": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf",
+    "results/v3/v6full1-main-g6-union64-s902.setup.json": "491fbd7b7c4f5e20c1409dc6f3bf75d775d3072f325fc94d11cc183f016a5529"
+  },
+  "global_gateway_prefix_bytes": 36460225,
+  "global_gateway_prefix_sha256": "146c447c0286c298af5cae645759a8dd33c6e0b56304cfd5c8e61371037f5f6d",
+  "auditor_source_sha256": "fd415da2f535f4eaf85f2dc6dcb2502711046bd2fd6b1c5fee5b2bc6e56d5c0e",
+  "scope": "All1986client records including failures and captured partial/empty outputs checked against sealed input fingerprints; no rerun, successful-only latency/quality comparison, native root-cause proof or complete30-arm claim. Client timeout types may be downstream consequences of engine nonprogress, not its cause. No lost gateway record is silently counted as a gateway success. Raw summary percentile fields are retained as original bytes but excluded from this failed-attempt report."
+}

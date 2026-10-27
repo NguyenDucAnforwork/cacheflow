@@ -1,0 +1,125 @@
+{
+  "step": {
+    "phase": "offA",
+    "probe": false,
+    "run_id": "v8diag1-offA-warm",
+    "label": "warm",
+    "policy": "fifo",
+    "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+    "requests": 60
+  },
+  "engine": {
+    "pid": 543405,
+    "birth": 1793069767.02,
+    "argv": [
+      "/venv/main/bin/python",
+      "/venv/main/bin/vllm",
+      "serve",
+      "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c",
+      "--served-model-name",
+      "cacheflow-qwen3-4b",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--dtype",
+      "bfloat16",
+      "--max-model-len",
+      "32768",
+      "--max-num-seqs",
+      "4",
+      "--kv-cache-memory-bytes",
+      "6442450944",
+      "--generation-config",
+      "vllm",
+      "--enable-prefix-caching",
+      "--max-num-seqs",
+      "16",
+      "--max-num-batched-tokens",
+      "8192",
+      "--kv-transfer-config",
+      "{\"kv_connector\":\"LMCacheMPConnector\",\"kv_connector_module_path\":\"lmcache.integration.vllm.lmcache_mp_connector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"lmcache.mp.host\":\"127.0.0.1\",\"lmcache.mp.port\":5555}}"
+    ],
+    "env": {
+      "PYTHONHASHSEED": "0",
+      "VLLM_BATCH_INVARIANT": "0"
+    }
+  },
+  "lmcache": {
+    "pid": 543130,
+    "birth": 1793069748.77,
+    "argv": [
+      "/venv/main/bin/python",
+      "/venv/main/bin/lmcache",
+      "server",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "5555",
+      "--http-host",
+      "127.0.0.1",
+      "--http-port",
+      "18080",
+      "--l1-size-gb",
+      "44.70556640625",
+      "--eviction-policy",
+      "LRU",
+      "--chunk-size",
+      "256",
+      "--supported-transfer-mode",
+      "auto"
+    ],
+    "env": {}
+  },
+  "gateway": {
+    "pid": 544402,
+    "birth": 1793069821.23,
+    "argv": [
+      "/venv/main/bin/python",
+      "/venv/main/bin/uvicorn",
+      "--factory",
+      "cacheflow.v6_gateway:create_app",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8100",
+      "--no-access-log"
+    ],
+    "env": {
+      "PYTHONHASHSEED": "0"
+    }
+  },
+  "runtime": {
+    "max_inflight": 64,
+    "max_num_seqs": 16,
+    "max_num_batched_tokens": 8192,
+    "chunk_size": 256,
+    "enforce_eager": false,
+    "profile": false,
+    "kv_events": false,
+    "residency_events": false,
+    "kv_capacity_tokens": 43664,
+    "model_key": "qwen3-4b",
+    "keepalive_connections": 0,
+    "max_bypasses": 8,
+    "batch_invariant": false,
+    "upstream": "http://127.0.0.1:8000",
+    "cpu_l1_gib": 16,
+    "cpu_l1_bytes": 48002236416,
+    "max_queue": 512,
+    "prepare_in_thread": true
+  },
+  "gateway_config": "http_read_timeout_s: 600\nmodel: /workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c\nprepare_in_thread: true\nresidency:\n  enabled: false\n  endpoint: ipc:///tmp/cacheflow-v3-kv-events.sock\n  kv_capacity_tokens: 43664\n  max_bypasses: 8\nscheduler:\n  block_size: 256\n  group_window_ms: 30\n  max_inflight: 64\n  max_queue: 512\n  max_wait_ms: 200\n  min_shared_tokens: 1024\n  policy: fifo\n  store_grace_ms: 20\nupstream: http://127.0.0.1:8000\nupstream_keepalive_connections: 0\n",
+  "gateway_before": {
+    "policy": "fifo",
+    "queue": 0,
+    "active": 0,
+    "completed_history_requests": 0,
+    "upstream_read_timeout_s": 600.0,
+    "prepare_mode": "thread",
+    "decision_stats": null,
+    "residency": null
+  },
+  "registration_sha256": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+  "capture_source_sha256": "525d7d82c778cb32b5057cf0deec6c6254dc6252e29ffcf0aa5647648e487c5a"
+}

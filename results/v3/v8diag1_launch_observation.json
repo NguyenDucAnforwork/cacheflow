@@ -1,0 +1,62 @@
+{
+  "observed_utc": "2026-10-27T02:59:22.020594+00:00",
+  "observed_monotonic_ns": 170469216766781,
+  "processes": [
+    {
+      "status": "sleeping",
+      "pid": 542581,
+      "create_time": 1793069696.92,
+      "cmdline": [
+        "/venv/main/bin/python",
+        "-u",
+        "scripts/v8_full_liveness_diagnostic.py",
+        "execute"
+      ]
+    },
+    {
+      "status": "sleeping",
+      "pid": 545553,
+      "create_time": 1793069906.44,
+      "cmdline": [
+        "/venv/main/bin/python",
+        "-m",
+        "cacheflow.v6_replay",
+        "--trace",
+        "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+        "--url",
+        "http://127.0.0.1:8100",
+        "--run-id",
+        "v8diag1-offA-target",
+        "--output",
+        "results/v3/raw/v8diag1-offA-target.jsonl",
+        "--registry",
+        "results/v3/v8diag1_registry.csv",
+        "--metrics-path",
+        "results/v3/raw/v8diag1-offA-target.metrics.jsonl",
+        "--mode",
+        "B2",
+        "--policy",
+        "packing_reuse",
+        "--gpu-kv-bytes",
+        "6442450944",
+        "--engine-pid",
+        "543405",
+        "--lmcache-pid",
+        "543130",
+        "--engine-request-ids",
+        "--model-name",
+        "cacheflow-qwen3-4b",
+        "--model-revision",
+        "1cfa9a7208912126459214e8b04321603b3df60c",
+        "--capture-text",
+        "--gateway-trace-path",
+        "results/v3/raw/v8diag1-offA-target.gateway.jsonl"
+      ]
+    }
+  ],
+  "registration_sha256": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+  "target_setup_sha256": "2b54a0a017c4c70bc4c1fd06e55111cc7a86da391fa0f5e0913db34ed8f6b5cf",
+  "warm_integrity_sha256": "decf18c12d9d3ee2fee6e6d82301ebff14464327236c0ed267302ffc9e3895f2",
+  "source_native_protocol_pins_unchanged": true,
+  "scope": "Verified live first unprofiled phase target after60/60warmups; no completed full diagnostic, root cause, speedup or contribution claim."
+}

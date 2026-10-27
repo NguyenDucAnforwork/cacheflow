@@ -1,0 +1,12 @@
+{
+  "complete_namespace_preparation": true,
+  "gpu_execution": false,
+  "source_input_reproduction_sha256": "712b7bc92d09e8d6a1ea43088222e5c99940334bc6b0e1449c96caa61019c7f7",
+  "registration_sha256": "327b30d71a9f5fb05efd61df5de4d746408137f599d068f5e31a96e0921ba638",
+  "namespace_manifest_path": "scripts/reproductions/v6repro_r1_reference/namespace_manifest.json",
+  "namespace_manifest_sha256": "1f97257f302c72780546eed88bd9b21505c8877a9a19d56e0d28ff4a79668246",
+  "generated_cli_plan_equal": true,
+  "planned_fresh_arms": 30,
+  "planned_measured_requests": 59580,
+  "scope": "Actual verified source/protocol namespace copies and generated CLI plan only. Every future serving arm is fresh; no oldinvalidmarker exception. Independent model outputs/performance and a newnamespacefullseal/GPU study remain unexecuted."
+}

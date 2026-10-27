@@ -1,0 +1,35 @@
+{
+  "diagnostic_integrity_checked": true,
+  "performance_valid": false,
+  "run_id": "v8diag1-offA-warm",
+  "requests": 60,
+  "successes": 60,
+  "errors": 0,
+  "status_counts": {
+    "ok": 60
+  },
+  "gateway_closed_records": 60,
+  "missing_closed_gateway_records": 0,
+  "gateway_after": {
+    "policy": "fifo",
+    "queue": 0,
+    "active": 0,
+    "completed_history_requests": 60,
+    "upstream_read_timeout_s": 600.0,
+    "prepare_mode": "thread",
+    "decision_stats": null,
+    "residency": null
+  },
+  "raw_sha256": {
+    "results/v3/raw/v8diag1-offA-warm.jsonl": "e1e43d4f66745806e9a51edc3bae0e0a090d7a545a6b371bcbd390d0e825b7c9",
+    "results/v3/raw/v8diag1-offA-warm.outputs.jsonl": "a5de458713ec66249cf4074936aa0686d32f8d3d76083c6dc16e4adbe81802b3",
+    "results/v3/raw/v8diag1-offA-warm.summary.json": "55896d3579a8785d54ef69829b0446f635d40e3e0ee8a612effb2119357effcd",
+    "results/v3/raw/v8diag1-offA-warm.metrics.jsonl": "0a08796d2cc8e79d41d1545a0f76d7396998988c6ba878c7ed31e56c6bd2f91d",
+    "results/v3/raw/v8diag1-offA-warm.gateway.jsonl": "525941e25a2b0cc16f9cb13c6a588bfecad06756d3f9dbf8e372f9220eaab698"
+  },
+  "global_gateway_prefix_bytes": 36510673,
+  "global_gateway_prefix_sha256": "3aa2d681e724b84af7fa70331d61723382599e2b651f33de8612c78cd52819d6",
+  "setup_sha256": "ab836e039ba8161ee0c82f02ace669c0d57349d538ff84f5d385077a60485acc",
+  "registration_sha256": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+  "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+}

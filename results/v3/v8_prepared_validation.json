@@ -1,0 +1,66 @@
+{
+  "verified_utc": "2026-10-27T02:58:43.946012+00:00",
+  "full_test_run": {
+    "command": "PYTHONPATH=src /venv/main/bin/python -m pytest -q",
+    "passed": 259,
+    "duration_s": 21.94,
+    "scope": "Observed process exit0; before final package-version/native-host assertions; no GPU evidence"
+  },
+  "final_targeted_test_run": {
+    "command": "PYTHONPATH=src /venv/main/bin/python -m pytest -q tests/test_v8_diagnostic.py tests/test_v8_liveness_probe.py tests/test_v8_allocation_witness.py tests/test_v8_lookup_watermark.py",
+    "passed": 13,
+    "duration_s": 0.32
+  },
+  "shell_syntax_passed": [
+    "scripts/v8_serve_vllm_probe.sh"
+  ],
+  "registration_sha256": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+  "source_sha256": {
+    "scripts/sglang_profile_hooks/sitecustomize.py": "186294114ea432ccd1f7fea64a070be48b1dba243faa9884a8b62eb5966d6075",
+    "scripts/v2_extract_gateway.py": "376735df82b5cf4ab240ec983f9172c5169cd83981bce69b06571505f221231e",
+    "scripts/v2_preflight.py": "abfff365a9af71d57c0479ceced1d6d6c458932de91e11cf6347c4714c90898e",
+    "scripts/v2_reset.sh": "b1a83c29438a84fc6eba1c2b7b4e5447eb964d0f4a8956ea6a182a2e677e8d06",
+    "scripts/v2_start.sh": "2e4840e09180d20d568cf0ee7d5f7a7c0e4ee6c5d09d13162fb98559f1f7d164",
+    "scripts/v3_model.py": "8768571e71c61c635934d51708d9c2add24d19a69809b4d9975b4e0bf84a41e1",
+    "scripts/v3_serve_sglang.sh": "88e4dad6b05796c3afa493759f15d6388d89c9b821bc42baa1e8c4a28374ef80",
+    "scripts/v3_sglang_runtime.py": "d2b86ece75e170c5d737405cb2e04136c23301c716fdee0c72851cc12e866739",
+    "scripts/v4_services.py": "db097bd99a7602bf4ac9a3fa12a5eb51f2e8dc982441ec8dfe17deedc83c5556",
+    "scripts/v5_full_histograms.py": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8",
+    "scripts/v6_freeze_full.py": "cf9f196e50cd2ac9481f1f9566a4904a8c6e0e7f8236ac27cfd6130a459031fd",
+    "scripts/v6_full.py": "2af66f1826ee24e4c3014f5dc1fda29fb7f8116864ad1bf6fa6aa01c770827b0",
+    "scripts/v6_full_input_preflight.py": "1b608f56707846bf5ca07ca3176508cb35936c1edc1d2320ddac924741eb78fe",
+    "scripts/v6_full_plan.py": "2fd7f89e10cb16f7b324fb6cdb0ff0ace615e51f9fead4e5780891dc581095cd",
+    "scripts/v6_input_oracle.py": "7b68d52b32ba78294167b6b252a853717e0098a82508b1776825ae0da8197d40",
+    "scripts/v6_native_metrics.py": "79dfcc5fae25256a208a055a22528bd9888d56a50471f52619e0260a941dceea",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "scripts/v6_run.sh": "799b3748b59d99918aa3526aca8b524b84794fa6b34e79f3ec22f16b3d99e300",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "scripts/v6_sglang_bench.py": "ff51ceff928dfb933d4cb242adc32f4e694465783e6fb4ac0dc1e15461916295",
+    "scripts/v6_token_fingerprints.py": "cd3945f32ee24c908bbf35a0b442c64e67025bdc105a19728f12945eba19cbb7",
+    "scripts/v6_trace_hashes.py": "2942e34c564721ddbaafaf6441b0e4596fb8c37edaca7c347f926c1a4b9e7c00",
+    "scripts/v6_v2_run.sh": "3bc9bf82aa548034beab6579298ed8a3300614a795cc72f67fa26047e596cf0e",
+    "scripts/v7_observe_full_liveness.py": "ad80f412f37a4c881d6fecc7f562f17fde4b039a91ade7138abee37e155a2724",
+    "scripts/v8_audit_failed_full.py": "fd415da2f535f4eaf85f2dc6dcb2502711046bd2fd6b1c5fee5b2bc6e56d5c0e",
+    "scripts/v8_diagnostic_capture.py": "525d7d82c778cb32b5057cf0deec6c6254dc6252e29ffcf0aa5647648e487c5a",
+    "scripts/v8_full_liveness_diagnostic.py": "eb9d1374c9bf3d32e324dc6f80a3568ff38906ae4d9af316b90ceba46aea4c18",
+    "scripts/v8_serve_vllm_probe.sh": "4c187a1d53b3c5c1b614200169a45bdb8f6d191d444e9f95fa58f0c4926d089c",
+    "scripts/v8_vllm_probe_hooks/sitecustomize.py": "79534b68db19c4157b96093fc1de3ca9c50e4cd3271c9d5c2ad2b3d573b28f39",
+    "src/cacheflow/collect_metrics.py": "405c632abdf0b53e0dde1419955072a7b3f5bc94021a53829131a82b52eee7e9",
+    "src/cacheflow/locomo.py": "599855840e4d59ab86cd3f88c6dd0b869fb4d1f6aec1970c4176d611494d559f",
+    "src/cacheflow/v2_metrics.py": "e207097e327a1d43b0cdac55caf91f1f41ec8a617e4f74e99a0c8197990080d9",
+    "src/cacheflow/v4_sglang_delayhit.py": "e9e4c5da52444a8aebb695ec8ae95d1526c1e86f19df989afb36a5d460de5c3c",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v6_replay.py": "ee31f9a31493766cfa93cafd56c2490e902b2bf329faa299d3ba210e79f73f46",
+    "src/cacheflow/v8_liveness_probe.py": "1c7721b86b23b1b214cd2d8eac123132b2073c4e2e92a2a1236f34ecee24faae"
+  },
+  "test_source_sha256": {
+    "tests/test_v8_allocation_witness.py": "2f1ef1d99aea0419d636c5aa68c7a86a886d83a9fde7361b9e5665e4929f2bf5",
+    "tests/test_v8_lookup_watermark.py": "ab85a68b6e60c0aa607e57f2c94c3b5ca4c1d711aed6ce0f3fbbd66bf1b443f2",
+    "tests/test_v8_liveness_probe.py": "dc1798e57eef60ca090b12d7a4cfb3c4a3830fd154811d41cc525d9d52491d67",
+    "tests/test_v8_diagnostic.py": "77fcaaeccdbd608bda0aa383daa614f60417bda87a3d5f32dbdc358f03de25ef"
+  },
+  "scope": "CPU/contract validation and unchanged source pins; actual diagnostic remains live/incomplete, research goal incomplete."
+}
