@@ -1,0 +1,255 @@
+{
+  "kind": "v8_readonly_sampled_liveness_evidence",
+  "run_id": "v8diag1-offA-target",
+  "diagnostic_only": true,
+  "performance_valid": false,
+  "terminal_client_result": true,
+  "observer_source_sha256": "978005014935f013bb110e7a14bd6ba42326d1d2d3583b30099dbfac74f30033",
+  "registration_sha256": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+  "setup_sha256": "2b54a0a017c4c70bc4c1fd06e55111cc7a86da391fa0f5e0913db34ed8f6b5cf",
+  "metric_prefix_bytes": 1729573,
+  "metric_prefix_sha256": "d8e6a23aebdab0a0e562a527d3459f82dedab1d0021ed58952f6c04a6b5d4afa",
+  "longest_sampled_no_progress": {
+    "sample_count": 600,
+    "span_s": 599.062565156,
+    "max_sample_gap_s": 1.000164849,
+    "first": {
+      "cpu_percent": 26.5,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 216.9,
+        "sm_clock_mhz": 1950.0,
+        "temperature_c": 61.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 133.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1251.5782477792302,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 150.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 1052.8170838446636,
+        "lmcache_mp_l1_evicted_chunks_total": 658.0,
+        "lmcache_mp_l1_memory_usage_bytes": 31029460992.0,
+        "lmcache_mp_l1_read_chunks_total": 43848.0,
+        "lmcache_mp_l1_write_chunks_total": 1480.0,
+        "lmcache_mp_num_chunks_loaded_total": 9991.0
+      },
+      "memory_available_bytes": 156743323648,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 57.230000000000004,
+          "ctx_switches": 6856,
+          "processes": 1,
+          "rss_bytes": 49012580352
+        },
+        "vllm": {
+          "cpu_seconds": 363.47999999999996,
+          "ctx_switches": 67531,
+          "processes": 3,
+          "rss_bytes": 3663007744
+        }
+      },
+      "timestamp_ns": 170657305553539,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 2549760.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 9.0,
+        "vllm:prefix_cache_hits_total": 55876848.0,
+        "vllm:prompt_tokens_cached_total": 11454400.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 2512272.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 8942128.0,
+        "vllm:prompt_tokens_source_local_compute_total": 383409.0,
+        "vllm:prompt_tokens_total": 11837809.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 383409.0,
+        "vllm:request_prefill_time_seconds_count": 483.0,
+        "vllm:request_prefill_time_seconds_sum": 315.4001649277343,
+        "vllm:request_queue_time_seconds_count": 483.0,
+        "vllm:request_queue_time_seconds_sum": 1940.9560181302368,
+        "vllm:time_to_first_token_seconds_count": 483.0,
+        "vllm:time_to_first_token_seconds_sum": 2687.455247402191
+      }
+    },
+    "last": {
+      "cpu_percent": 11.3,
+      "gpu": {
+        "gpu_memory_util_pct": 0.0,
+        "gpu_util_pct": 0.0,
+        "power_w": 29.91,
+        "sm_clock_mhz": 210.0,
+        "temperature_c": 38.0,
+        "vram_total_mib": 24576.0,
+        "vram_used_mib": 16057.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 133.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1251.5782477792302,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 150.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 1052.8170838446636,
+        "lmcache_mp_l1_evicted_chunks_total": 658.0,
+        "lmcache_mp_l1_memory_usage_bytes": 31029460992.0,
+        "lmcache_mp_l1_read_chunks_total": 43848.0,
+        "lmcache_mp_l1_write_chunks_total": 1480.0,
+        "lmcache_mp_num_chunks_loaded_total": 9991.0
+      },
+      "memory_available_bytes": 181942910976,
+      "process": {
+        "lmcache": {
+          "cpu_seconds": 80.92,
+          "ctx_switches": 14066,
+          "processes": 1,
+          "rss_bytes": 49012871168
+        },
+        "vllm": {
+          "cpu_seconds": 741.21,
+          "ctx_switches": 873843,
+          "processes": 3,
+          "rss_bytes": 3663413248
+        }
+      },
+      "timestamp_ns": 171256368118695,
+      "vllm": {
+        "vllm:external_prefix_cache_hits_total": 2549760.0,
+        "vllm:kv_cache_usage_perc": 0.85965555148406,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 9.0,
+        "vllm:prefix_cache_hits_total": 55876848.0,
+        "vllm:prompt_tokens_cached_total": 11454400.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 2512272.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 8942128.0,
+        "vllm:prompt_tokens_source_local_compute_total": 383409.0,
+        "vllm:prompt_tokens_total": 11837809.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 383409.0,
+        "vllm:request_prefill_time_seconds_count": 483.0,
+        "vllm:request_prefill_time_seconds_sum": 315.4001649277343,
+        "vllm:request_queue_time_seconds_count": 483.0,
+        "vllm:request_queue_time_seconds_sum": 1940.9560181302368,
+        "vllm:time_to_first_token_seconds_count": 483.0,
+        "vllm:time_to_first_token_seconds_sum": 2687.455247402191
+      }
+    }
+  },
+  "trailing_sampled_no_progress": null,
+  "observed_monotonic_ns": 171486811565859,
+  "client_outcome": {
+    "requests": 1986,
+    "successes": 423,
+    "errors": 1563
+  },
+  "summary_sha256": "ebc2a338c448573bcfc8d9b11262a0c7d86b3d3de860ab075d9a12284f929030",
+  "global_gateway_prefix_bytes": 38371608,
+  "global_gateway_prefix_sha256": "9aea75b06b5015e6575a320ea0bde74cb9aeae3a0b2eb3f430f8a65d62ea3750",
+  "closed_gateway_cohort": {
+    "count": 9,
+    "prefix_group_counts": {
+      "63cb71bdf61dc473e8a12b684b9c24fe": 7,
+      "16a6d90231b6b33d47d871ae737e4d51": 2
+    },
+    "requests": [
+      {
+        "request_id": "conv-42-q039",
+        "input_tokens": 25119,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656176081424,
+        "first_token_ns": null,
+        "complete_ns": 171256816099189,
+        "reserved_active_tokens": 25232,
+        "dispatch_reason": "oldest_start",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-42-q040",
+        "input_tokens": 25118,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656182352705,
+        "first_token_ns": null,
+        "complete_ns": 171256874261088,
+        "reserved_active_tokens": 25376,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-42-q041",
+        "input_tokens": 25122,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656190635767,
+        "first_token_ns": null,
+        "complete_ns": 171256875214409,
+        "reserved_active_tokens": 25536,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-42-q042",
+        "input_tokens": 25120,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656196443588,
+        "first_token_ns": null,
+        "complete_ns": 171256875549258,
+        "reserved_active_tokens": 25680,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-42-q043",
+        "input_tokens": 25124,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656215819222,
+        "first_token_ns": null,
+        "complete_ns": 171256875875973,
+        "reserved_active_tokens": 25840,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q044",
+        "input_tokens": 15211,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 170656228106626,
+        "first_token_ns": null,
+        "complete_ns": 171256874888367,
+        "reserved_active_tokens": 41120,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-42-q044",
+        "input_tokens": 25125,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656250906436,
+        "first_token_ns": null,
+        "complete_ns": 171257096111145,
+        "reserved_active_tokens": 41280,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q045",
+        "input_tokens": 15213,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 170656268997352,
+        "first_token_ns": null,
+        "complete_ns": 171257046757857,
+        "reserved_active_tokens": 41424,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-42-q045",
+        "input_tokens": 25122,
+        "prefix_group": "63cb71bdf61dc473e8a12b684b9c24fe",
+        "dispatch_ns": 170656295817012,
+        "first_token_ns": null,
+        "complete_ns": 171257096620006,
+        "reserved_active_tokens": 41584,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      }
+    ],
+    "scope": "Closed gateway records whose recorded dispatch/complete intervals span the entire sampled window; not native block tables or recovered condition-lock ordering. Live in-flight records may not be closed yet."
+  },
+  "scope": "Read-only diagnostic evidence; no source/config changes, reset, retry, injected hook, extra future/event query, partial successful-only quantiles or root-cause/fix claim. Health snapshots occur after the metric prefix and are separately clocked."
+}

@@ -1,0 +1,66 @@
+{
+  "complete_ledger_state_check": true,
+  "gpu_execution": false,
+  "production_decision_trace_reproduced": false,
+  "registration_sha256": "91c09cfc1d254adf7ee7d82304aef6ccb3b6130f1970f6e57386b27f21111e59",
+  "parent_result_sha256": "78cea2fa73e71ecfbc2510df45720f7643450997af75edb716fe3e98ce2cb4a7",
+  "checkpoint_sha256": "4b3a24cede84f3936eb36bcece6f641f0ee9bae6462b67bb7357745b19c34b2f",
+  "original_full_attempt_failed": true,
+  "source_trace_sha256": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+  "unique_qa": 1986,
+  "input_tokens": 50522325,
+  "request_trajectories": 3972,
+  "runs": [
+    {
+      "run_id": "v6full1-main-g6-union64-s901",
+      "audit_sha256": "550917c67bb6f6e0cb7d8ca565d4d1ff0f7cb90740dc485ba1adc7830ae13dc5",
+      "archive_sha256": "dbd1ee833accb62cb908b1f619b0c3568450eababb9762a4d45acac948893eb4",
+      "result": {
+        "requests": 1986,
+        "events": 7944,
+        "checked_state_points": 2483,
+        "stable_polls_per_point": 3,
+        "prototype_winner_reason_timeout_mismatches": 0,
+        "prototype_active_reservation_mismatches": 0,
+        "recorded_dispatch_agreement_unit": "request_id only; missing wakeup/head/lock history is not recovered",
+        "recorded_dispatch_agreements": 1986,
+        "recorded_dispatch_mismatches": 0,
+        "first_recorded_dispatch_mismatches": [],
+        "recorded_reservation_mismatches": 0,
+        "first_recorded_reservation_mismatches": [],
+        "inferred_head_ambiguities": 0,
+        "equal_timestamp_events": 0,
+        "reconstructed_queue_peak": 255,
+        "reconstructed_active_peak": 16,
+        "production_decision_trace_reproduced": false,
+        "scope": "Logical original/prototype parity on ledger-derived states using real prefix templates; recorded membership is followed even when the predicted dispatch differs. Condition-lock append order, head IDs and actual wakeup calls were not captured. Agreement does not recover missing internal events, timing/CPU saved, GPU behavior, quality equivalence or production liveness."
+      }
+    },
+    {
+      "run_id": "v6full1-main-g6-packing_ready-s901",
+      "audit_sha256": "f6c3d6554154ef3a8fcf640dbfcbdbdde553c28e28f31937e1dce2ad5b4e1183",
+      "archive_sha256": "c60a9635bdd41bdd6fa849ca06c200d99a7507e29855db7299b7d3e087f8819e",
+      "result": {
+        "requests": 1986,
+        "events": 7944,
+        "checked_state_points": 2483,
+        "stable_polls_per_point": 3,
+        "prototype_winner_reason_timeout_mismatches": 0,
+        "prototype_active_reservation_mismatches": 0,
+        "recorded_dispatch_agreement_unit": "request_id only; missing wakeup/head/lock history is not recovered",
+        "recorded_dispatch_agreements": 1986,
+        "recorded_dispatch_mismatches": 0,
+        "first_recorded_dispatch_mismatches": [],
+        "recorded_reservation_mismatches": 0,
+        "first_recorded_reservation_mismatches": [],
+        "inferred_head_ambiguities": 0,
+        "equal_timestamp_events": 0,
+        "reconstructed_queue_peak": 255,
+        "reconstructed_active_peak": 11,
+        "production_decision_trace_reproduced": false,
+        "scope": "Logical original/prototype parity on ledger-derived states using real prefix templates; recorded membership is followed even when the predicted dispatch differs. Condition-lock append order, head IDs and actual wakeup calls were not captured. Agreement does not recover missing internal events, timing/CPU saved, GPU behavior, quality equivalence or production liveness."
+      }
+    }
+  ],
+  "scope": "All real prompt/token/group/engine-block templates matched pinned preflight; original/prototype parity checked on the two declared ledger-derived main histories. Recorded dispatch/reservation disagreement, missing head/wakeup/lock-order information are retained. This is not exactproductiondecisiontrace replay, CPU timing, GPU behavior, quality equivalence, performance gain or completed research."
+}

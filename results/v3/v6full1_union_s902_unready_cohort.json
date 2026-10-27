@@ -1,0 +1,117 @@
+{
+  "kind": "original_failed_full_closed_gateway_cohort",
+  "run_id": "v6full1-main-g6-union64-s902",
+  "failure_audit_sha256": "9ff2b30d93b94610f736a4f25965131a582048f3240c8a415150923d3497f14b",
+  "observer_source_sha256": "978005014935f013bb110e7a14bd6ba42326d1d2d3583b30099dbfac74f30033",
+  "observation_span_s": 3597.812679038,
+  "cohort": {
+    "count": 9,
+    "prefix_group_counts": {
+      "213373ccfdd6917a4f69b771ba3143c5": 7,
+      "16a6d90231b6b33d47d871ae737e4d51": 2
+    },
+    "requests": [
+      {
+        "request_id": "conv-48-q094",
+        "input_tokens": 26883,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094775275896,
+        "first_token_ns": null,
+        "complete_ns": 169695582914698,
+        "reserved_active_tokens": 27008,
+        "dispatch_reason": "oldest_start",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-48-q095",
+        "input_tokens": 26883,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094776194561,
+        "first_token_ns": null,
+        "complete_ns": 169695697739047,
+        "reserved_active_tokens": 27152,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-48-q096",
+        "input_tokens": 26890,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094785455997,
+        "first_token_ns": null,
+        "complete_ns": 169695698022180,
+        "reserved_active_tokens": 27296,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-48-q097",
+        "input_tokens": 26888,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094792937991,
+        "first_token_ns": null,
+        "complete_ns": 169695698288929,
+        "reserved_active_tokens": 27440,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-48-q098",
+        "input_tokens": 26888,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094807936013,
+        "first_token_ns": null,
+        "complete_ns": 169695698548767,
+        "reserved_active_tokens": 27584,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-48-q099",
+        "input_tokens": 26894,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094830121920,
+        "first_token_ns": null,
+        "complete_ns": 169695698810089,
+        "reserved_active_tokens": 27728,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q100",
+        "input_tokens": 15214,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 166094844809005,
+        "first_token_ns": null,
+        "complete_ns": 169695647654571,
+        "reserved_active_tokens": 43008,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-48-q100",
+        "input_tokens": 26897,
+        "prefix_group": "213373ccfdd6917a4f69b771ba3143c5",
+        "dispatch_ns": 166094864637746,
+        "first_token_ns": null,
+        "complete_ns": 169695699072518,
+        "reserved_active_tokens": 43168,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      },
+      {
+        "request_id": "conv-30-q101",
+        "input_tokens": 15210,
+        "prefix_group": "16a6d90231b6b33d47d871ae737e4d51",
+        "dispatch_ns": 166094884498114,
+        "first_token_ns": null,
+        "complete_ns": 169695696353314,
+        "reserved_active_tokens": 43312,
+        "dispatch_reason": "compatible_backfill",
+        "status": "stream_error:ReadTimeout"
+      }
+    ],
+    "scope": "Closed gateway records whose recorded dispatch/complete intervals span the entire sampled window; not native block tables or recovered condition-lock ordering. Live in-flight records may not be closed yet."
+  },
+  "scope": "Post-terminal join of the retained complete gateway prefix with the previously audited sampled nonprogress interval. No new request, native state, hidden lock ordering, physical prefix sharing, deadlock cause or successful-only performance claim."
+}

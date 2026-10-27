@@ -1,0 +1,49 @@
+{
+  "verified_utc": "2026-10-27T03:46:36.450064+00:00",
+  "full_test_run": {
+    "command": "PYTHONPATH=src /venv/main/bin/python -m pytest -q",
+    "passed": 272,
+    "duration_s": 21.6,
+    "scope": "Before final live-watermark/store-replay/prediction additions; actual exit0"
+  },
+  "final_targeted_run": {
+    "passed": 17,
+    "duration_s": 0.66,
+    "files": [
+      "test_v8_epoch_trace_revision.py",
+      "test_v8_liveness_analysis.py",
+      "test_v8_native_hol_witness.py",
+      "test_v8_diag2.py",
+      "test_v8_diag3.py",
+      "test_v8_hol_prediction.py",
+      "test_v8_watermark_observation.py",
+      "test_v8_observed_store_replay.py"
+    ]
+  },
+  "all_registered_source_native_protocol_pins_unchanged": true,
+  "test_source_sha256": {
+    "tests/test_v8_allocation_witness.py": "2f1ef1d99aea0419d636c5aa68c7a86a886d83a9fde7361b9e5665e4929f2bf5",
+    "tests/test_v8_lookup_watermark.py": "ab85a68b6e60c0aa607e57f2c94c3b5ca4c1d711aed6ce0f3fbbd66bf1b443f2",
+    "tests/test_v8_liveness_probe.py": "dc1798e57eef60ca090b12d7a4cfb3c4a3830fd154811d41cc525d9d52491d67",
+    "tests/test_v8_diagnostic.py": "77fcaaeccdbd608bda0aa383daa614f60417bda87a3d5f32dbdc358f03de25ef",
+    "tests/test_v8_epoch_trace_revision.py": "e90b66628cc3dc5f049607f9fea0bcdc30e5b096756f044b2d2ae9ac0d62b08b",
+    "tests/test_v8_liveness_analysis.py": "81680312e6d59e411f97c5ca84595cc82c0d063797031263a9f110d46d93445b",
+    "tests/test_v8_native_hol_witness.py": "4ef5e1c956934ca68066a40a7f0fa24ed56ea31f7cabe7341221b868ca444f2a",
+    "tests/test_v8_diag2.py": "3e4b22b82b255ef69a6bc9cdd09341b2ae8a146ce1636364b38cad161f60203f",
+    "tests/test_v8_diag3.py": "30b0c9806f016c704a7b3677fbd2c696a2c14fc0f05602fc7308666dd3f720d8",
+    "tests/test_v8_hol_prediction.py": "52d4339e8fd3f806a6a3b91c4b048b7b1d629f52e4a3370e64180c97190625d9",
+    "tests/test_v8_watermark_observation.py": "6fd70a96eb7992d957eb163b8f6dc925980cca826201a6a030a92dc6e3105d30",
+    "tests/test_v8_observed_store_replay.py": "60b5cf8612f6cb2cd5f221f2f23d0faa9c7a2648f57d485b0e26ed69e68f5d4b"
+  },
+  "evidence_sha256": {
+    "results/v3/v8diag1_offA_postmortem_integrity.json": "6553b794c96c0cb725be5fdd98fece8dc003158b5f5263c6daadffe9e1b6031a",
+    "results/v3/v8_epoch_trace_revision_registration.result.json": "2c9ccefe20ed3a8d87601e11447f91dd27aadf8dbf44f597e4663b683c9ff623",
+    "results/v3/v8diag3-on-target.diagnostic_integrity.json": "379a447e6a98d7f2c1e601c9ddccf48b7b77fc319ac340ac7001f163320e248a",
+    "results/v3/v8diag3_on_native_coverage.json": "b0c9a9bea68e97f634841aa71e1c3f1d0d84e3648588565a30082958057796e8",
+    "results/v3/v8diag3_on_terminal_liveness.json": "4f665dc7c1ac5c1b1160ee7d010061747e5cfd7823bc0eea252e99f4bbf2ca28",
+    "results/v3/v8diag3_on_hol_prediction_evaluation.json": "26c0284b867417eb0026b1384bf9d15e5ce77a01939a163f02db5975f002a25b",
+    "results/v3/v8diag3_live_lookup_watermark_01.json": "6d2dc9a5a1c21f5e381e0a8c2cbf47915783bae1c0eb4c3ee2b8b2e4e9543738",
+    "results/v3/v8diag3_observed_store_metadata_replay_01.json": "bb98275e304882f6844e19e12e1a91eceaf6b3030253218f4374a8d103547cd0"
+  },
+  "scope": "Actual CPU and diagnostic evidence only; unprofiled offB/research goal remain incomplete. No primary performance/native-fix/quality equivalence claim."
+}

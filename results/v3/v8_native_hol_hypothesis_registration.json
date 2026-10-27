@@ -1,0 +1,24 @@
+{
+  "registered_utc": "2026-10-27T03:14:26.869077+00:00",
+  "kind": "prospective_native_head_allocation_blocks_later_ready_holder_hypothesis",
+  "witness_sha256": "d4a0fda7567440af5028e4a2c185e04e505316081c611e5963b7b98fe7db1431",
+  "source_sha256": "46fc9ea736db4fb2f7d5c9b6914f8e5fbef63822c9bb7112c230a18e2c58653d",
+  "prior_observations": [
+    "v6full1_union_s902_terminal_failure.json",
+    "v8diag1_offA_live_nonprogress_01.json"
+  ],
+  "prediction": {
+    "sampled_nonprogress_span_at_least_s": 120,
+    "repeat_allocation_none_for_same_request": true,
+    "failed_head_computed_tokens": 0,
+    "failed_head_held_blocks": 0,
+    "failed_new_tokens": 8192,
+    "free_blocks_less_than": 512,
+    "later_request_status": "WAITING_FOR_REMOTE_KVS",
+    "later_request_id_already_in_finished_recving_set": true,
+    "later_request_holds_blocks": true,
+    "later_request_small_suffix_fits_observed_free_blocks": true
+  },
+  "alternative": "If no finished remote holder exists, this specific promotion-HOL mechanism is not supported; inspect lookup futures, remote loads and all-holder allocation feasibility separately.",
+  "scope": "Prospective conditional mechanism prediction, before any profiled V8 native journal. CPU source-prefix witness is not a serving reproduction. A match needs actual native snapshots/failed-call identity and source guards; observation alone does not validate a fix or performance. No change to running diagnostic or installed source."
+}

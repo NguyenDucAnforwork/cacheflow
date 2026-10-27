@@ -1,0 +1,5 @@
+{
+  "complete": false,
+  "error": "RuntimeError('AssertionError() []')",
+  "scope": "Retained failure; never silently retry."
+}

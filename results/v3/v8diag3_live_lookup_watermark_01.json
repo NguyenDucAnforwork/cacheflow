@@ -1,0 +1,609 @@
+{
+  "kind": "live_native_lookup_watermark_inflation_observation",
+  "synthetic": false,
+  "diagnostic_only": true,
+  "performance_valid": false,
+  "observed_monotonic_ns": 172585072131222,
+  "engine_pid": 560649,
+  "engine_birth": 1793071416.7,
+  "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+  "setup_sha256": "89969ad7e656db03fa42ffe2f509995da3c133d10b971ada7d5aa37d4d58fbc6",
+  "native_connector_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+  "journal_prefixes": [
+    {
+      "path": "results/v3/raw/v8diag3-probe.560649.jsonl",
+      "prefix_bytes": 825,
+      "prefix_sha256": "26fa012751c7c2c007deab8f57a167f4eb60f90253324e2743b81f44170923a2"
+    },
+    {
+      "path": "results/v3/raw/v8diag3-probe.560809.jsonl",
+      "prefix_bytes": 1343300,
+      "prefix_sha256": "f8b149e386ffe6823b42e583eb26e22931a4523366dcfacbcde8d890f8f89893"
+    }
+  ],
+  "distinct_observed_request_ids": 41,
+  "distinct_by_phase": {
+    "target": 23,
+    "warm": 18
+  },
+  "max_observed_watermark_over_lookup_prefix_ratio": 260.0,
+  "examples": [
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-47-q003-0-bb2cc792",
+      "pid": 560809,
+      "monotonic_ns": 172147889359872,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 27136,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 7055360,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 260.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-48-q010-0-92193fef",
+      "pid": 560809,
+      "monotonic_ns": 172167539153910,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 26624,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 5910528,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 222.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q006-0-b5731fce",
+      "pid": 560809,
+      "monotonic_ns": 172015799289436,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 5669888,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 8928
+      },
+      "watermark_over_lookup_prefix_ratio": 196.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q012-0-bf2f296a",
+      "pid": 560809,
+      "monotonic_ns": 172023835928900,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3755008,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 193.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-43-q068-0-a8f9748b",
+      "pid": 560809,
+      "monotonic_ns": 172430258135000,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 29184,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 5369856,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 184.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q008-0-8ec8e6be",
+      "pid": 560809,
+      "monotonic_ns": 172017817626689,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3365888,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 173.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q015-0-bf3748fa",
+      "pid": 560809,
+      "monotonic_ns": 172031870033511,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 4975616,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 8928
+      },
+      "watermark_over_lookup_prefix_ratio": 172.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-47-q073-0-8554bd93",
+      "pid": 560809,
+      "monotonic_ns": 172448393306779,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 27136,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 4613120,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 170.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q015-0-9662cb37",
+      "pid": 560809,
+      "monotonic_ns": 172029860851725,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3268608,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 168.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q002-0-b4899313",
+      "pid": 560809,
+      "monotonic_ns": 172007793504018,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 2918400,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 150.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q012-0-9f23b339",
+      "pid": 560809,
+      "monotonic_ns": 172025848565042,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 4165632,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 8992
+      },
+      "watermark_over_lookup_prefix_ratio": 144.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-43-q039-0-86454422",
+      "pid": 560809,
+      "monotonic_ns": 172298773186109,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 29184,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3881472,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 133.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q017-0-aefa6628",
+      "pid": 560809,
+      "monotonic_ns": 172035880379378,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3500288,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 8864
+      },
+      "watermark_over_lookup_prefix_ratio": 121.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q003-0-ae95ffc2",
+      "pid": 560809,
+      "monotonic_ns": 172009794343015,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3471360,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 9120
+      },
+      "watermark_over_lookup_prefix_ratio": 120.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-41-q039-0-973f40ff",
+      "pid": 560809,
+      "monotonic_ns": 172294747977302,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 3153152,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 109.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q011-0-97438d14",
+      "pid": 560809,
+      "monotonic_ns": 172021827209669,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 2062336,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 106.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-26-q066-0-aea9cd07",
+      "pid": 560809,
+      "monotonic_ns": 172422210908222,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1984512,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 102.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q017-0-b96c931d",
+      "pid": 560809,
+      "monotonic_ns": 172033870649848,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1906688,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 14784
+      },
+      "watermark_over_lookup_prefix_ratio": 98.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q006-0-8466f2b3",
+      "pid": 560809,
+      "monotonic_ns": 172013796026319,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1361920,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 70.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-26-q081-0-bd696c24",
+      "pid": 560809,
+      "monotonic_ns": 172488283702673,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1108992,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 57.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-49-q009-0-8dbdad02",
+      "pid": 560809,
+      "monotonic_ns": 172157057682730,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 21248,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1168640,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 4640
+      },
+      "watermark_over_lookup_prefix_ratio": 55.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-41-q047-0-a30a363a",
+      "pid": 560809,
+      "monotonic_ns": 172328476124659,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1475328,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 51.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q014-0-a8d12fd0",
+      "pid": 560809,
+      "monotonic_ns": 172027848844537,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 972800,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 50.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q009-0-be3ee01a",
+      "pid": 560809,
+      "monotonic_ns": 172019825803573,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1301760,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 9104
+      },
+      "watermark_over_lookup_prefix_ratio": 45.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q019-0-a61326ba",
+      "pid": 560809,
+      "monotonic_ns": 172037881834254,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 836608,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 14784
+      },
+      "watermark_over_lookup_prefix_ratio": 43.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-42-q070-0-8a7c649b",
+      "pid": 560809,
+      "monotonic_ns": 172442336448231,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 25088,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 1053696,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 42.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-41-q001-0-af7ae839",
+      "pid": 560809,
+      "monotonic_ns": 172005793135032,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 954624,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 9200
+      },
+      "watermark_over_lookup_prefix_ratio": 33.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-41-q002-0-ba37ff6d",
+      "pid": 560809,
+      "monotonic_ns": 172133591619252,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 752128,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 26.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q005-0-8d9557f2",
+      "pid": 560809,
+      "monotonic_ns": 172011795895951,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 486400,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 25.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-49-q059-0-b1dd28bd",
+      "pid": 560809,
+      "monotonic_ns": 172366406754744,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 21248,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 488704,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 4416
+      },
+      "watermark_over_lookup_prefix_ratio": 23.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-26-q090-0-9903b8e8",
+      "pid": 560809,
+      "monotonic_ns": 172537406999697,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 252928,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 13.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-26-q060-0-986df0bf",
+      "pid": 560809,
+      "monotonic_ns": 172404093003488,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 194560,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 10.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-26-q022-0-a214c655",
+      "pid": 560809,
+      "monotonic_ns": 172224527611918,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 136192,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 7.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-30-q069-0-8485c4dc",
+      "pid": 560809,
+      "monotonic_ns": 172412131886452,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 15104,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 90624,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 6.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-43-q096-0-b334766e",
+      "pid": 560809,
+      "monotonic_ns": 172555483393890,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 29184,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 145920,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 5.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-30-q060-0-a38528fc",
+      "pid": 560809,
+      "monotonic_ns": 172370453642231,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 15104,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 60416,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 4.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-30-q027-0-b7ee6f61",
+      "pid": 560809,
+      "monotonic_ns": 172228588478257,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 15104,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 45312,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 3.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-warm-conv-26-q001-0-9527e84f",
+      "pid": 560809,
+      "monotonic_ns": 172003792596684,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 19456,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 38912,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 14528
+      },
+      "watermark_over_lookup_prefix_ratio": 2.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-30-q002-0-a8507f6f",
+      "pid": 560809,
+      "monotonic_ns": 172127588973188,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 15104,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 30208,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 2.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-30-q072-0-a75d45cb",
+      "pid": 560809,
+      "monotonic_ns": 172426255578779,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 15104,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 30208,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 2.0
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-30-q095-0-b620e86b",
+      "pid": 560809,
+      "monotonic_ns": 172533376899495,
+      "tracker": {
+        "allocated_blocks_per_group": {},
+        "lmcache_hit_tokens": 15104,
+        "num_scheduled_tokens": 0,
+        "num_stored_tokens": 30208,
+        "state": "PREFETCHING",
+        "vllm_hit_tokens": 48
+      },
+      "watermark_over_lookup_prefix_ratio": 2.0
+    }
+  ],
+  "observer_source_sha256": "0c72f070a2f9bd1cfe48f7c2fce0d78f3be692d0f3a037940d242bdbef377897",
+  "conditional_cpu_witness_sha256": "f56e2ce2d80bfbcc18914bec959e682c1457eecd04d90c485bf3279a327e9aaf",
+  "scope": "Actual profiled native metadata: PREFETCHING,zero scheduled tokens,zero allocated blocks,stored watermark greater than current cached-prefix length. Max ratio is a watermark/prefix ratio, not a measured lookup-call count. Sampling counts are observed IDs, not complete incidence or uniqueQA. The installed source adds the lookup result to that watermark before allocation; CPU witness establishes conditional later STORE suppression. No actual missed store/DMA bytes, answer quality, latency impact, stall root cause, validated fix or unprofiled behavior is proven here. Original diagnostic continues unchanged."
+}

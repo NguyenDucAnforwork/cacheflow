@@ -1,0 +1,55 @@
+{
+  "diagnostic_integrity_checked": true,
+  "performance_valid": false,
+  "run_id": "v8diag3-offB-warm",
+  "requests": 60,
+  "successes": 60,
+  "errors": 0,
+  "status_counts": {
+    "ok": 60
+  },
+  "process_bookends": {
+    "cacheflow_v2_vllm": {
+      "original_pid": 563808,
+      "original_birth": 1793072477.04,
+      "end_state": "same_process",
+      "end_identity_verified": true
+    },
+    "cacheflow_v2_lmcache": {
+      "original_pid": 563676,
+      "original_birth": 1793072459.58,
+      "end_state": "same_process",
+      "end_identity_verified": true
+    },
+    "cacheflow_v2_gateway": {
+      "original_pid": 564314,
+      "original_birth": 1793072528.57,
+      "end_state": "same_process",
+      "end_identity_verified": true
+    }
+  },
+  "gateway_closed_records": 60,
+  "missing_closed_gateway_records": 0,
+  "gateway_after": {
+    "policy": "fifo",
+    "queue": 0,
+    "active": 0,
+    "completed_history_requests": 60,
+    "upstream_read_timeout_s": 600.0,
+    "prepare_mode": "thread",
+    "decision_stats": null,
+    "residency": null
+  },
+  "raw_sha256": {
+    "results/v3/raw/v8diag3-offB-warm.jsonl": "f6625e2038e8888f6deaac8dca9fd9d197ad78d8b0cfb752660e6bfa16539557",
+    "results/v3/raw/v8diag3-offB-warm.outputs.jsonl": "18cbec22ccdb9bd52fce276d2428328ddd8064d72981d8c8de20e53fbd07e554",
+    "results/v3/raw/v8diag3-offB-warm.summary.json": "06f0581fff7cc44588cb05048234a75186a8babc408b92af75be62d3b9774a80",
+    "results/v3/raw/v8diag3-offB-warm.metrics.jsonl": "230a0df306193493d745ff76cc68f84784f8eb4cd39a056ebf52a030620ccee1",
+    "results/v3/raw/v8diag3-offB-warm.gateway.jsonl": "11198bbc7542c53f55a5dee3a1ed2151bb2a1e44b1acbc589361ba3a20c8939e"
+  },
+  "global_gateway_prefix_bytes": 40211195,
+  "global_gateway_prefix_sha256": "b17833efa39e33421f59f822b823a57a8adc1accd3a8a26f820d482a518b8c65",
+  "setup_sha256": "923af2e7d5f032d020ccd3992a47684af5e28a7f6bf79240a2a4ba2c1a8de82c",
+  "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+  "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+}

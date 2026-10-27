@@ -1,0 +1,190 @@
+{
+  "kind": "explicit_remaining_on_offB_after_engine_exit_collector_amendment",
+  "registered_utc": "2026-10-27T03:22:31.452769+00:00",
+  "wait_mode": "already_terminal_verified_process_scan",
+  "parent_failure_sha256": "0a16dd202bbfa3cc84fa8416588434f6df4d349800b2fe85a6d411cf677a01b9",
+  "parent_registration_sha256": "d7d4a099153a0ac4dfd0dc46dda27a3eb49a4a1a8bc1b11c9bd897ddad7904f2",
+  "failure_sha256": "9ff2b30d93b94610f736a4f25965131a582048f3240c8a415150923d3497f14b",
+  "reference_freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "actions": [
+    {
+      "phase": "on",
+      "probe": true,
+      "run_id": "v8diag3-on-warm",
+      "label": "warm",
+      "policy": "fifo",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "requests": 60
+    },
+    {
+      "phase": "on",
+      "probe": true,
+      "run_id": "v8diag3-on-target",
+      "label": "target",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+      "requests": 1986
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "run_id": "v8diag3-offB-warm",
+      "label": "warm",
+      "policy": "fifo",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "requests": 60
+    },
+    {
+      "phase": "offB",
+      "probe": false,
+      "run_id": "v8diag3-offB-target",
+      "label": "target",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+      "requests": 1986
+    }
+  ],
+  "timeout_s": 600,
+  "source_sha256": {
+    "scripts/sglang_profile_hooks/sitecustomize.py": "186294114ea432ccd1f7fea64a070be48b1dba243faa9884a8b62eb5966d6075",
+    "scripts/v2_extract_gateway.py": "376735df82b5cf4ab240ec983f9172c5169cd83981bce69b06571505f221231e",
+    "scripts/v2_preflight.py": "abfff365a9af71d57c0479ceced1d6d6c458932de91e11cf6347c4714c90898e",
+    "scripts/v2_reset.sh": "b1a83c29438a84fc6eba1c2b7b4e5447eb964d0f4a8956ea6a182a2e677e8d06",
+    "scripts/v2_start.sh": "2e4840e09180d20d568cf0ee7d5f7a7c0e4ee6c5d09d13162fb98559f1f7d164",
+    "scripts/v3_model.py": "8768571e71c61c635934d51708d9c2add24d19a69809b4d9975b4e0bf84a41e1",
+    "scripts/v3_serve_sglang.sh": "88e4dad6b05796c3afa493759f15d6388d89c9b821bc42baa1e8c4a28374ef80",
+    "scripts/v3_sglang_runtime.py": "d2b86ece75e170c5d737405cb2e04136c23301c716fdee0c72851cc12e866739",
+    "scripts/v4_services.py": "db097bd99a7602bf4ac9a3fa12a5eb51f2e8dc982441ec8dfe17deedc83c5556",
+    "scripts/v5_full_histograms.py": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8",
+    "scripts/v6_freeze_full.py": "cf9f196e50cd2ac9481f1f9566a4904a8c6e0e7f8236ac27cfd6130a459031fd",
+    "scripts/v6_full.py": "2af66f1826ee24e4c3014f5dc1fda29fb7f8116864ad1bf6fa6aa01c770827b0",
+    "scripts/v6_full_input_preflight.py": "1b608f56707846bf5ca07ca3176508cb35936c1edc1d2320ddac924741eb78fe",
+    "scripts/v6_full_plan.py": "2fd7f89e10cb16f7b324fb6cdb0ff0ace615e51f9fead4e5780891dc581095cd",
+    "scripts/v6_input_oracle.py": "7b68d52b32ba78294167b6b252a853717e0098a82508b1776825ae0da8197d40",
+    "scripts/v6_native_metrics.py": "79dfcc5fae25256a208a055a22528bd9888d56a50471f52619e0260a941dceea",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "scripts/v6_run.sh": "799b3748b59d99918aa3526aca8b524b84794fa6b34e79f3ec22f16b3d99e300",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "scripts/v6_sglang_bench.py": "ff51ceff928dfb933d4cb242adc32f4e694465783e6fb4ac0dc1e15461916295",
+    "scripts/v6_token_fingerprints.py": "cd3945f32ee24c908bbf35a0b442c64e67025bdc105a19728f12945eba19cbb7",
+    "scripts/v6_trace_hashes.py": "2942e34c564721ddbaafaf6441b0e4596fb8c37edaca7c347f926c1a4b9e7c00",
+    "scripts/v6_v2_run.sh": "3bc9bf82aa548034beab6579298ed8a3300614a795cc72f67fa26047e596cf0e",
+    "scripts/v7_observe_full_liveness.py": "ad80f412f37a4c881d6fecc7f562f17fde4b039a91ade7138abee37e155a2724",
+    "scripts/v8_audit_failed_full.py": "fd415da2f535f4eaf85f2dc6dcb2502711046bd2fd6b1c5fee5b2bc6e56d5c0e",
+    "scripts/v8_diagnostic_capture.py": "525d7d82c778cb32b5057cf0deec6c6254dc6252e29ffcf0aa5647648e487c5a",
+    "scripts/v8_full_liveness_diagnostic.py": "eb9d1374c9bf3d32e324dc6f80a3568ff38906ae4d9af316b90ceba46aea4c18",
+    "scripts/v8_serve_vllm_probe.sh": "4c187a1d53b3c5c1b614200169a45bdb8f6d191d444e9f95fa58f0c4926d089c",
+    "scripts/v8_vllm_probe_hooks/sitecustomize.py": "79534b68db19c4157b96093fc1de3ca9c50e4cd3271c9d5c2ad2b3d573b28f39",
+    "src/cacheflow/collect_metrics.py": "405c632abdf0b53e0dde1419955072a7b3f5bc94021a53829131a82b52eee7e9",
+    "src/cacheflow/locomo.py": "599855840e4d59ab86cd3f88c6dd0b869fb4d1f6aec1970c4176d611494d559f",
+    "src/cacheflow/v2_metrics.py": "e207097e327a1d43b0cdac55caf91f1f41ec8a617e4f74e99a0c8197990080d9",
+    "src/cacheflow/v4_sglang_delayhit.py": "e9e4c5da52444a8aebb695ec8ae95d1526c1e86f19df989afb36a5d460de5c3c",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v6_replay.py": "ee31f9a31493766cfa93cafd56c2490e902b2bf329faa299d3ba210e79f73f46",
+    "src/cacheflow/v8_liveness_probe.py": "1c7721b86b23b1b214cd2d8eac123132b2073c4e2e92a2a1236f34ecee24faae",
+    "scripts/v8_diag3.py": "43f6dbe48089482d9f4e4dcc6aed185b4f3aa2754e634bd0f6bd1219e70280cf",
+    "scripts/v8_diag3_capture.py": "8777e0d626870a9832e7c7f11d3ef5770b1b2744dcb2cd74f327318026bfa8e4",
+    "scripts/v8_diag3_serve_vllm.sh": "3ca53210e057fd92c5b54133f7006b5ee757dcf933a9b78e3c5ada6c355a9174"
+  },
+  "native_source_sha256": {
+    "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+    "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_coordinator.py": "a5f0683483508fcfd0b2e3477940825bae5953eec715a4f704becec805484b89",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_manager.py": "05e5f1f9391a959b6328cc75e3f0a6315682a593b50d54ec30c215c768c3e224",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/single_type_kv_cache_manager.py": "d57ad1c8e3d32db4a9d929ee201ab169305ef703b5bda9eb933d0f2f2a2299a1"
+  },
+  "model_artifact_sha256": {
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model-00001-of-00003.safetensors": "328a91d3122359d5547f9d79521205bc0a46e1f79a792dfe650e99fc2d651223",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model-00002-of-00003.safetensors": "6cd087b316306a68c562436b5492edbcf6e16c6dba3a1308279caa5a58e21ca5",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model-00003-of-00003.safetensors": "e4bf436957184f4eeb86a80e9db394503f1f56446b2e6b7edeac5b81470f4ca1",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/config.json": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "main_package_versions": {
+    "vllm": "0.22.0",
+    "lmcache": "0.5.3",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.6.2",
+    "tokenizers": "0.22.2",
+    "httpx": "0.28.1",
+    "numpy": "2.2.6",
+    "nltk": "3.9.2",
+    "regex": "2026.9.29",
+    "PyYAML": "6.0.3",
+    "psutil": "7.2.2"
+  },
+  "protocol_sha256": "54198fec4006609725d10cab80f22a109994263e0645ede7e0746f855c72ca7b",
+  "input_sha256": {
+    "data/processed/v3/v5-dev4b3-qps4-s101.jsonl": "69803faa79336894bc218298206c0db09398509dcb9ea21a144ff6c99c65904a",
+    "data/processed/v3/v5-dev4b3-qps4-s101.manifest.json": "e1f7b492d18ad8efda201aeaca437ba4a107aa85ef277091375dd443626f3cc8",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.manifest.json": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf"
+  },
+  "config_original": {
+    "cacheflow_v2_gateway": "[program:cacheflow_v2_gateway]\nenvironment=PROC_NAME=\"%(program_name)s\",CACHEFLOW_ROOT=\"/workspace/cacheflow-e1\"\ncommand=/workspace/cacheflow-e1/scripts/v2_serve_gateway.sh\nautostart=false\nautorestart=unexpected\nexitcodes=0\nstartsecs=5\nstopasgroup=true\nkillasgroup=true\nstopsignal=TERM\nstopwaitsecs=30\nstdout_logfile=/dev/stdout\nredirect_stderr=true\nstdout_logfile_maxbytes=0\n",
+    "cacheflow_v2_vllm": "[program:cacheflow_v2_vllm]\nenvironment=PROC_NAME=\"%(program_name)s\",CACHEFLOW_ROOT=\"/workspace/cacheflow-e1\"\ncommand=/workspace/cacheflow-e1/scripts/v2_serve_vllm.sh\nautostart=false\nautorestart=unexpected\nexitcodes=0\nstartsecs=5\nstopasgroup=true\nkillasgroup=true\nstopsignal=TERM\nstopwaitsecs=30\nstdout_logfile=/dev/stdout\nredirect_stderr=true\nstdout_logfile_maxbytes=0\n"
+  },
+  "scope": "Two unexecuted diagnostic phases only, on/offB; original offA failure retained, no retry or claim that original off/on/off completed. Same full input/settings/600s transport. Only post-replay accounting permits a missing original engine with client errors; both phases uniformly preserve native stderr/stdout. All outcomes diagnostic, no functional native patch or performance claim.",
+  "cpu_revision_result_sha256": "2c9ccefe20ed3a8d87601e11447f91dd27aadf8dbf44f597e4663b683c9ff623",
+  "controller_transformation": {
+    "parent_source_sha256": "eb9d1374c9bf3d32e324dc6f80a3568ff38906ae4d9af316b90ceba46aea4c18",
+    "changes": [
+      {
+        "old": "for phase in ['offA','on','offB']:",
+        "new": "for phase in ['on','offB']:"
+      },
+      {
+        "old": "            for n,p in CONFIGS.items():\n                content=r['config_original'][n]\n                if n.endswith('gateway'):content=content.replace(f'command={ROOT}/scripts/v2_serve_gateway.sh',f'command={ROOT}/scripts/v6_serve_gateway.sh')\n                elif phase=='on':\n                    content=content.replace(f'command={ROOT}/scripts/v2_serve_vllm.sh',f'command=/bin/bash {ROOT}/scripts/v8_serve_vllm_probe.sh')\n                    content=content.replace('environment=',f'environment=CACHEFLOW_V8_LIVENESS_LOG=\"{ROOT}/results/v3/raw/{PREFIX}-probe\",',1)\n                p.write_text(content)\n",
+        "new": "            write_configs(r,phase)\n"
+      },
+      {
+        "old": "len(outcomes)==6",
+        "new": "len(outcomes)==4"
+      }
+    ],
+    "derived_function_ast_sha256": "f9b2ec93f7bc12e753aa8200a5cb4e1d9ed8ecbe2ed98a1e1e925b8b754c8ba1",
+    "scope": "Only fixed unexecuted phases, uniform engine logging wrapper and expected action count differ. Original stop/cleanup/restore/probe coverage/config/model/source checks unchanged."
+  },
+  "capture_transformation": {
+    "parent_source_sha256": "525d7d82c778cb32b5057cf0deec6c6254dc6252e29ffcf0aa5647648e487c5a",
+    "changes": [
+      {
+        "old": "rid.startswith('v8diag1-')",
+        "new": "rid.startswith('v8diag3-')"
+      },
+      {
+        "old": "BASE/'v8diag1_registry.csv'",
+        "new": "BASE/'v8diag3_registry.csv'"
+      },
+      {
+        "old": "    for name,old in [('cacheflow_v2_vllm',engine),('cacheflow_v2_lmcache',lmcache),('cacheflow_v2_gateway',gateway)]:\n        now=process(name);assert now['pid']==old['pid'] and now['birth']==old['birth'] and now['argv']==old['argv']",
+        "new": "    end_summary=json.loads(raw.with_suffix('.summary.json').read_text())\n    process_bookends=bookends([('cacheflow_v2_vllm',engine),('cacheflow_v2_lmcache',lmcache),('cacheflow_v2_gateway',gateway)],end_summary)"
+      },
+      {
+        "old": "status_counts=statuses,gateway_closed_records=len(gateway_rows)",
+        "new": "status_counts=statuses,process_bookends=process_bookends,gateway_closed_records=len(gateway_rows)"
+      }
+    ],
+    "derived_function_ast_sha256": "b0d9085866ecb779f02eb2e0072ddb4d1a3df6ccfc10c33803db8bdc09f7a49f",
+    "scope": "Only namespace/registry and post-replay failed-engine bookend accounting differ. All replay args, timeouts, metric capture, request/output/prompt checks unchanged; no request retry/native patch."
+  },
+  "amendment_evidence_sha256": {
+    "results/v3/v8diag1_registration.json": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+    "results/v3/v8diag1_terminal.json": "0f8ec54302ee98c26aa92f197e73904e888d455c6941954f484af53fee193f28",
+    "results/v3/v8diag1_failure.json": "d4d5e0ef3514ac6c38d438fd64b06971729f0170662c114491cbe8aa3b7e76ef",
+    "results/v3/v8diag1_offA_postmortem_integrity.json": "6553b794c96c0cb725be5fdd98fece8dc003158b5f5263c6daadffe9e1b6031a",
+    "results/v3/v8_epoch_trace_revision_registration.json": "91c09cfc1d254adf7ee7d82304aef6ccb3b6130f1970f6e57386b27f21111e59",
+    "results/v3/v8_native_hol_hypothesis_registration.json": "4a8aecf3bffa19eef305604a3109869fa62478f078f367c0263b3fd7a9841fa7",
+    "results/v3/v8diag2_registration.json": "29a480972719f11d44e33fffdf563b4df9bd93bd7067e97e763ce8e028c5421e",
+    "results/v3/v8diag2_failure.json": "199d2913badc69bc739bdd81a2a2d6b94f6fe42b705072d56338effc39ddfbad",
+    "docs/V8_DIAGNOSTIC_ENGINE_EXIT_AMENDMENT.md": "62adcb8ab61bd1559bbbf4814e64b74dbab31c8724987f5e9e8a461ad9d88e4e"
+  }
+}

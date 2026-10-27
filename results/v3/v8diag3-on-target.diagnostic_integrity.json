@@ -1,0 +1,61 @@
+{
+  "diagnostic_integrity_checked": true,
+  "performance_valid": false,
+  "run_id": "v8diag3-on-target",
+  "requests": 1986,
+  "successes": 1986,
+  "errors": 0,
+  "status_counts": {
+    "ok": 1986
+  },
+  "process_bookends": {
+    "cacheflow_v2_vllm": {
+      "original_pid": 560649,
+      "original_birth": 1793071416.7,
+      "end_state": "same_process",
+      "end_identity_verified": true
+    },
+    "cacheflow_v2_lmcache": {
+      "original_pid": 560539,
+      "original_birth": 1793071401.34,
+      "end_state": "same_process",
+      "end_identity_verified": true
+    },
+    "cacheflow_v2_gateway": {
+      "original_pid": 561411,
+      "original_birth": 1793071536.84,
+      "end_state": "same_process",
+      "end_identity_verified": true
+    }
+  },
+  "gateway_closed_records": 1986,
+  "missing_closed_gateway_records": 0,
+  "gateway_after": {
+    "policy": "packing_reuse",
+    "queue": 0,
+    "active": 0,
+    "completed_history_requests": 256,
+    "upstream_read_timeout_s": 600.0,
+    "prepare_mode": "thread",
+    "decision_stats": {
+      "calls": 2522245,
+      "cpu_ms": 112118.934563,
+      "wall_ms": 112568.431073,
+      "max_ms": 85.500602,
+      "cache_hits": 2516500
+    },
+    "residency": null
+  },
+  "raw_sha256": {
+    "results/v3/raw/v8diag3-on-target.jsonl": "6b1943c5dd461784ccd426a66b03bf528de4b0626a8e6faf15e66e15d6517647",
+    "results/v3/raw/v8diag3-on-target.outputs.jsonl": "fc1275cb6068050f8656beb48f7326a66526f383976899c81b184b0f4d4f25d6",
+    "results/v3/raw/v8diag3-on-target.summary.json": "6d1c562f84708aa45cc207f46c862a70b2053d7f2151d24037491f8d2a7c383d",
+    "results/v3/raw/v8diag3-on-target.metrics.jsonl": "4961ea5dee6da0f100434d71f8ea855faf83fa36a27c919f49d1da1a497f6f6f",
+    "results/v3/raw/v8diag3-on-target.gateway.jsonl": "a7fbf42996f023c34d68ef57f776711eb8b841df40ce0ca4e063e22abe4d6e2a"
+  },
+  "global_gateway_prefix_bytes": 40160721,
+  "global_gateway_prefix_sha256": "43cdb58cd064649dfdc209e0ec0d0bc2b4ae9876739d4dd0e5abdf25acf343ed",
+  "setup_sha256": "89969ad7e656db03fa42ffe2f509995da3c133d10b971ada7d5aa37d4d58fbc6",
+  "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+  "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+}

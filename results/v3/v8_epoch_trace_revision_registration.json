@@ -1,0 +1,74 @@
+{
+  "kind": "real_prefix_ledger_state_revision_after_failed_full_not_gpu",
+  "registered_utc": "2026-10-27T03:04:26.136472+00:00",
+  "after_pid": 542581,
+  "after_create_time": 1793069696.92,
+  "after_argv": [
+    "/venv/main/bin/python",
+    "-u",
+    "scripts/v8_full_liveness_diagnostic.py",
+    "execute"
+  ],
+  "parent_registration_sha256": "d0dfadc3339556dd328479151ae10cb0ae12adc1d9ef783db255a23e1cfcd14a",
+  "freeze_sha256": "12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366",
+  "source_sha256": {
+    "/workspace/cacheflow-e1/scripts/v7_epoch_trace_check.py": "5c0b51a19e3c7d72fee4a98466fc36a62bce3bdcb3e2af024208e645c430f175",
+    "src/cacheflow/v7_trace_states.py": "e6ef3793a8fb8daa40788711edbf23b2b9494504a3b45ea36f3f29471a7e9646",
+    "src/cacheflow/v7_epoch_scheduler.py": "b37eb4e8fb27dd2aa28ef654084ac4513759aec74960abf99d98e2c0f5dde580",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v3_memory_scheduler.py": "112fc23c06439a68353e05719a00165afd2b7ee5a9fcb761817c008c3d653e56",
+    "src/cacheflow/scheduler.py": "eeb1dd9812a6a5bdff9cf030994c29c67ff8f017c37f6eeaf734535ee87a895f",
+    "src/cacheflow/prefix.py": "b0f24fd7c950a40033e9a7cb298c641f84c41375389da053f528b870adbee1ad",
+    "src/cacheflow/v3_residency.py": "b0bf862d383c91f2b35db22860eceebc0af8f42a81acd5841ae5dd363b2b1940",
+    "src/cacheflow/v4_prepare.py": "89ba3e68faabd7abeceed855c96cefc407d0d0e1596addb7a6016ec081ea3dcb",
+    "scripts/v3_model.py": "8768571e71c61c635934d51708d9c2add24d19a69809b4d9975b4e0bf84a41e1",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v6_trace_hashes.py": "2942e34c564721ddbaafaf6441b0e4596fb8c37edaca7c347f926c1a4b9e7c00",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "scripts/v7_epoch_trace_check.py": "5c0b51a19e3c7d72fee4a98466fc36a62bce3bdcb3e2af024208e645c430f175",
+    "scripts/v8_epoch_trace_revision.py": "34c499e7748c6159a1d6818ed1f2461085dad6fea910244d4489de6f67c582ab"
+  },
+  "evidence_sha256": {
+    "results/v3/v6full1_checkpoint_10.json": "4b3a24cede84f3936eb36bcece6f641f0ee9bae6462b67bb7357745b19c34b2f",
+    "results/v3/v6full1_union_s902_terminal_failure.json": "9ff2b30d93b94610f736a4f25965131a582048f3240c8a415150923d3497f14b",
+    "results/v3/v8diag1_registration.json": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+    "results/v3/v7_epoch_trace_check_registration.json": "16f3eb1d8f835b9c3d0a507673ac4b206245df03b35fd7906335f44956b579b6",
+    "results/v3/v7_epoch_trace_check_registration.failure.json": "aad028f7f3df5e24e1704433c9a473281f8a4e2b855976e9655cf735299de6c5",
+    "results/v3/v7dev1_epoch_after_trace_registration.failure.json": "0a16dd202bbfa3cc84fa8416588434f6df4d349800b2fe85a6d411cf677a01b9",
+    "results/v3/v6full1_input_regeneration_registration.result.json": "712b7bc92d09e8d6a1ea43088222e5c99940334bc6b0e1449c96caa61019c7f7",
+    "results/v3/v6full1_r1_namespace_preparation_registration.result.json": "27c1399c6cef131ec8744f89c90552c5ef77be3b1adf437402db81ce27e59cb4",
+    "results/v3/v7_epoch_cpu_probe_registration.result.json": "78cea2fa73e71ecfbc2510df45720f7643450997af75edb716fe3e98ce2cb4a7"
+  },
+  "protocol_sha256": "adcbab1c67b595e570a61ae8e8a838c65c578137eaf030f1c0fd4926f241c58a",
+  "target_run_ids": [
+    "v6full1-main-g6-union64-s901",
+    "v6full1-main-g6-packing_ready-s901"
+  ],
+  "event_stride": 16,
+  "stable_polls": 3,
+  "transformation": {
+    "original_function_ast_sha256": "d8299fda2e164fec27c1dff23e812596e3c91b3a0a2b8bdc6f8b528d09961d80",
+    "revised_function_ast_sha256": "eda13b7da39d60323cede64f63a7df504477dd32b682520eb76e882aaaeee535",
+    "replacements": [
+      {
+        "old": "r['kind']=='real_prefix_ledger_state_validation_not_production_trace_replay'",
+        "new": "r['kind']=='real_prefix_ledger_state_revision_after_failed_full_not_gpu'"
+      },
+      {
+        "old": "print('Waiting on exact CPU probe'",
+        "new": "print('Revised CPU checker waiting on exact V8 diagnostic controller'"
+      },
+      {
+        "old": "    full=json.loads(FULL.read_text());assert full['complete'] is True and full['requests']==59580 and full['errors']==0\n    assert full['unique_qa']==1986 and full['separate_warmup_requests']==1800 and len(full['runs'])==30 and full['freeze_sha256']==r['freeze_sha256']",
+        "new": "    full=validate_failed_full_checkpoint(r)"
+      },
+      {
+        "old": "terminal_full_audit_sha256=sha(FULL)",
+        "new": "checkpoint_sha256=sha(CHECKPOINT),original_full_attempt_failed=True"
+      }
+    ],
+    "scope": "Only prerequisite/registration identity/wait message/output provenance substitutions; tokenization, fingerprints, archive validation and compare_ledger_states unchanged."
+  },
+  "revised_source_sha256": "a400886a7ff15d5a600cb33b40097e6ebe1db079b8e57fd3a490b449a4d02ece",
+  "scope": "CPU parity check only, all1986real prefixes/two completed seed901histories3972trajectories. Original full failed10complete/1failed/19unexecuted, original V7 check/GPU gate failures retained. Wait for exact V8 diagnostic to terminate and all services idle; no GPU, retry or full-study success substitution."
+}

@@ -1,0 +1,20 @@
+{
+  "kinds": {
+    "hook_ready": 6,
+    "connector_metadata": 408,
+    "scheduler": 408,
+    "connector_worker": 406,
+    "allocation_failure": 176
+  },
+  "ready": [
+    "allocator",
+    "connector",
+    "scheduler",
+    "worker"
+  ],
+  "journal_sha256": {
+    "results/v3/raw/v8diag3-probe.560649.jsonl": "26fa012751c7c2c007deab8f57a167f4eb60f90253324e2743b81f44170923a2",
+    "results/v3/raw/v8diag3-probe.560809.jsonl": "6590e9dc71f403054eb816ef127d18f76585e2c2e6f36120974fa2fc8afbba04"
+  },
+  "native_metadata_coverage_checked": true
+}

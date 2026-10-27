@@ -1,0 +1,207 @@
+{
+  "kind": "native_store_metadata_replay_on_observed_scalar_bounds",
+  "diagnostic_only": true,
+  "performance_valid": false,
+  "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+  "journal_prefixes": [
+    {
+      "path": "results/v3/raw/v8diag3-probe.560649.jsonl",
+      "prefix_bytes": 825,
+      "prefix_sha256": "26fa012751c7c2c007deab8f57a167f4eb60f90253324e2743b81f44170923a2"
+    },
+    {
+      "path": "results/v3/raw/v8diag3-probe.560809.jsonl",
+      "prefix_bytes": 1853160,
+      "prefix_sha256": "153dbc560a2a14675bb26fa0645720f22a5ba1acb60e13ec89ba6836d0719c01"
+    }
+  ],
+  "source_sha256": "5c190bcbc051d4e1e18d35e6f787805c427be91e0537d32a3191587a32363b00",
+  "native_method": {
+    "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+    "class_name": "LMCacheMPRequestMetadata",
+    "method": "GetStoreMetadata",
+    "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+    "method_ast_sha256": "ada4dd2242562a49847f67b10188ba98dfe9f9223642c315115848558c593d5f",
+    "first_line": 356,
+    "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+  },
+  "distinct_observed_request_ids": 7,
+  "cases": [
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-43-q001-0-b1bed8c3",
+      "pid": 560809,
+      "monotonic_ns": 172141855796806,
+      "preceding_scheduler_ns": 172139855594118,
+      "token_list_length_lower_bound": 29445,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1845
+        },
+        "lmcache_hit_tokens": 29184,
+        "num_scheduled_tokens": 100,
+        "num_stored_tokens": 4669440,
+        "state": "READY",
+        "vllm_hit_tokens": 29408
+      },
+      "available_tokens_lower_bound": 29445,
+      "conditional_eligible_store_tokens": 256,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 29184,
+        "end": 29440
+      }
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-44-q019-0-b3f4490b",
+      "pid": 560809,
+      "monotonic_ns": 172215638018765,
+      "preceding_scheduler_ns": 172213194501894,
+      "token_list_length_lower_bound": 28551,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1785
+        },
+        "lmcache_hit_tokens": 14592,
+        "num_scheduled_tokens": 41,
+        "num_stored_tokens": 1065216,
+        "state": "READY",
+        "vllm_hit_tokens": 28512
+      },
+      "available_tokens_lower_bound": 28551,
+      "conditional_eligible_store_tokens": 13824,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 14592,
+        "end": 28416
+      }
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-44-q039-0-a3730eea",
+      "pid": 560809,
+      "monotonic_ns": 172311212837733,
+      "preceding_scheduler_ns": 172309176501929,
+      "token_list_length_lower_bound": 28546,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1785
+        },
+        "lmcache_hit_tokens": 15616,
+        "num_scheduled_tokens": 36,
+        "num_stored_tokens": 1920768,
+        "state": "READY",
+        "vllm_hit_tokens": 28512
+      },
+      "available_tokens_lower_bound": 28546,
+      "conditional_eligible_store_tokens": 12800,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 15616,
+        "end": 28416
+      }
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-48-q056-0-b1223955",
+      "pid": 560809,
+      "monotonic_ns": 172384237920871,
+      "preceding_scheduler_ns": 172382252304230,
+      "token_list_length_lower_bound": 26887,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1682
+        },
+        "lmcache_hit_tokens": 15872,
+        "num_scheduled_tokens": 37,
+        "num_stored_tokens": 1285632,
+        "state": "READY",
+        "vllm_hit_tokens": 26864
+      },
+      "available_tokens_lower_bound": 26887,
+      "conditional_eligible_store_tokens": 11008,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 15872,
+        "end": 26880
+      }
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-43-q096-0-b334766e",
+      "pid": 560809,
+      "monotonic_ns": 172557491594151,
+      "preceding_scheduler_ns": 172555491270446,
+      "token_list_length_lower_bound": 29441,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1842
+        },
+        "lmcache_hit_tokens": 29184,
+        "num_scheduled_tokens": 54,
+        "num_stored_tokens": 5895168,
+        "state": "READY",
+        "vllm_hit_tokens": 29408
+      },
+      "available_tokens_lower_bound": 29441,
+      "conditional_eligible_store_tokens": 256,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 29184,
+        "end": 29440
+      }
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-48-q111-0-9dbcc28f",
+      "pid": 560809,
+      "monotonic_ns": 172614749529123,
+      "preceding_scheduler_ns": 172612756445815,
+      "token_list_length_lower_bound": 26897,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1684
+        },
+        "lmcache_hit_tokens": 26624,
+        "num_scheduled_tokens": 69,
+        "num_stored_tokens": 4073472,
+        "state": "READY",
+        "vllm_hit_tokens": 26864
+      },
+      "available_tokens_lower_bound": 26897,
+      "conditional_eligible_store_tokens": 256,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 26624,
+        "end": 26880
+      }
+    },
+    {
+      "request_id": "cmpl-v8diag3-on-target-conv-41-q114-0-a6a28976",
+      "pid": 560809,
+      "monotonic_ns": 172618796140085,
+      "preceding_scheduler_ns": 172616820172448,
+      "token_list_length_lower_bound": 29185,
+      "tracker": {
+        "allocated_blocks_per_group": {
+          "0": 1828
+        },
+        "lmcache_hit_tokens": 28928,
+        "num_scheduled_tokens": 82,
+        "num_stored_tokens": 4425984,
+        "state": "READY",
+        "vllm_hit_tokens": 29152
+      },
+      "available_tokens_lower_bound": 29185,
+      "conditional_eligible_store_tokens": 256,
+      "installed_method_with_observed_watermark": null,
+      "conditional_method_with_lookup_prefix_watermark": {
+        "direction": "STORE",
+        "start": 28928,
+        "end": 29184
+      }
+    }
+  ],
+  "scope": "Actual profiled READY tracker/scalar counts joined to a preceding same-process request token-length lower bound within2.5s, under pinned non-speculative single full-attention Qwen. Installed STORE method executed only on CPU fixtures with dummy tokens/block IDs/metadata constructors. Inflated watermark returnsNone; setting only that fixture watermark to cached-prefix length exposes eligible256-aligned ranges. Not an actual backend STORE/RPC, tensor correctness, missed unique bytes, cache residency, performance/quality effect, full counterfactual request history, stall root cause or activated fix. Samples and request IDs are diagnostic observations, not complete incidence."
+}

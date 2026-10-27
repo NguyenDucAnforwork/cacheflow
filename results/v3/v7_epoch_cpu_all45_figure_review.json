@@ -1,0 +1,8 @@
+{
+  "figure_metadata_sha256": "c83d7aee1309b00900ed070def4ec9d7b0516e2e318a220d2df1f1824221fb77",
+  "review": "PNG visually inspected: all45cells/labels/ratio colorbar and synthetic-only scope legible; allcases retained.",
+  "figure_sha256": {
+    "figures/v7_epoch_cpu_all45.png": "43dc0cbe7d990280faf98e49c8392e433ec934a0482fb49f3f3bc425d687c7d7",
+    "figures/v7_epoch_cpu_all45.svg": "b3d86823fb4424a621336572b3de67c453dc7e4fd780bb100b043b81a749aec6"
+  }
+}

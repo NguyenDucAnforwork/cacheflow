@@ -1,0 +1,47 @@
+{
+  "kind": "postmortem_client_record_integrity_after_collector_failure",
+  "run_id": "v8diag1-offA-target",
+  "diagnostic_only": true,
+  "performance_valid": false,
+  "requests": 1986,
+  "successes": 423,
+  "errors": 1563,
+  "status_counts": {
+    "ok": 423,
+    "exception:ReadTimeout": 249,
+    "http_502": 1238,
+    "exception:PoolTimeout": 69,
+    "exception:RemoteProtocolError": 7
+  },
+  "gateway_closed_records": 1917,
+  "missing_closed_gateway_records": 69,
+  "gateway_status_counts": {
+    "ok": 423,
+    "stream_error:ReadTimeout": 9,
+    "client_cancelled": 19,
+    "upstream_http_500": 11,
+    "upstream_connect_error": 1455
+  },
+  "raw_sha256": {
+    "results/v3/raw/v8diag1-offA-target.jsonl": "494038f6a0af568fad8cfd4a10a4c6961757a12013b845f133ee070da0007822",
+    "results/v3/raw/v8diag1-offA-target.outputs.jsonl": "021a10a2ed72a2e0fbbc46b2eaa64d90402b9bc1343e84c51cd006573bd786ea",
+    "results/v3/raw/v8diag1-offA-target.summary.json": "ebc2a338c448573bcfc8d9b11262a0c7d86b3d3de860ab075d9a12284f929030",
+    "results/v3/raw/v8diag1-offA-target.metrics.jsonl": "d8e6a23aebdab0a0e562a527d3459f82dedab1d0021ed58952f6c04a6b5d4afa"
+  },
+  "metadata_sha256": {
+    "results/v3/v8diag1_registration.json": "c1b881c511e83e3b81747b5853d0bbb324515e72af4d404375b2b2fe9bda48e5",
+    "results/v3/v8diag1-offA-target.diagnostic_setup.json": "2b54a0a017c4c70bc4c1fd06e55111cc7a86da391fa0f5e0913db34ed8f6b5cf",
+    "results/v3/v8diag1_terminal.json": "0f8ec54302ee98c26aa92f197e73904e888d455c6941954f484af53fee193f28",
+    "results/v3/input_preflight/20261026T220240-457168/main.json": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.manifest.json": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf"
+  },
+  "global_gateway_prefix_bytes": 38371608,
+  "global_gateway_prefix_sha256": "9aea75b06b5015e6575a320ea0bde74cb9aeae3a0b2eb3f430f8a65d62ea3750",
+  "supervisor_log_prefix_bytes": 339462,
+  "supervisor_log_prefix_sha256": "ba9c26f206013d3d9f87a533f6a23822a5d0b9496ae4967f018bfda7015b972d",
+  "supervisor_exit_events": [
+    "2026-10-27 03:12:34,275 INFO exited: cacheflow_v2_vllm (exit status 0; expected)"
+  ],
+  "auditor_source_sha256": "5a6ade69a99c681ddd2d22028975c57d77dc488a4f2244f4ceaad3e38e40f14e",
+  "scope": "Complete1986client/error/output ledger postmortem only. Original collector failure/terminal record retained, not rewritten to pass. Engine disappeared before its end bookend, supervisor recorded exit0, native stderr was not independently captured. No proof of graceful completion, exact native cause, full diagnostic completion, successful-only latency/quality or serving fix."
+}

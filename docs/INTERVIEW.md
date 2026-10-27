@@ -1401,3 +1401,53 @@ Probe vẫn thêm CPU/I/O và có thể đổi interleaving. Vì vậy cả off 
 **Hỏi: Phần tái lập input đã làm thật tới đâu?**
 
 **Đáp:** Job CPU đã tái tạo1.986prompt,50.522.325token từ LoCoMo chính thức và tokenizer/renderer đã pin. Prompt hash và vector token đều khớp; cả3arrival schedule khớp canonical hash. Khi khôi phục header gzip đã lưu, stored byte hash cũng khớp input gốc. Bản sao temporary chỉ bị gỡ sau kiểm định. Namespace source/protocol và CLI plan30cấu hình cũng tái tạo được. Điều đó chứng minh input và kế hoạch tái lập, chưa chứng minh model output, performance hoặc full study độc lập đã chạy lại.
+
+### 22.29. CPU parity trên prefix thật đã kiểm được gì?
+
+**Đáp:** Revision riêng sau full failure đã tái chuẩn bị đủ1.986prefix/50.522.325token và mở lại hai archive seed901 hoàn chỉnh của union và readiness. So selector cũ với epoch trên3.972request trajectories,15.888sự kiện enqueue/dispatch/first-text/finish,4.966điểm trạng thái; mỗi điểm poll3lần. Không có khác biệt winner/reason/timeout/reservation giữa hai implementation. Trong hai lịch sử này, reconstructed dispatch và reservation cũng khớp bản ghi. Peak queue là255request, peak active16và11.
+
+Điểm cần giữ khi phỏng vấn: **khớp lịch sử tái dựng không đồng nghĩa khôi phục toàn bộ lịch sử nội bộ**. Ledger không lưu thứ tự lấy condition lock, mọi wakeup và head IDs tại từng lần poll. Vì vậy kết quả vẫn có `production_decision_trace_reproduced=false`. Nó tăng độ tin cậy cho bảo toàn logic trên prefix thực; không chứng minh CPU cost trên production, liveness, DMA, model output hoặc GPU speedup. Checker/V7GPU gốc thất bại do thiếu30-arm audit vẫn được giữ; revision này không tự mở gate GPU cũ.
+
+![Tất cả45case CPU synthetic](../figures/v7_epoch_cpu_all45.png)
+
+Hình biểu diễn ratio legacy/epoch từ median thread CPU mỗi iteration;45case đều có mặt. Queue càng lớn thì lợi ích tránh dựng lại cache key càng rõ trong fixture này. Không đọc ô30,55 thành “TTFT nhanh hơn30,55lần”. Real-prefix parity và microbenchmark là hai loại bằng chứng bổ sung nhau, chưa thay được cặp GPU/E2E.
+
+### 22.30. Head-of-line blocking có thể ngăn một async-load đã xong chạy không?
+
+**Hỏi: Native vLLM có chỗ nào đáng kiểm sau anomaly?**
+
+**Đáp:** Trong waiting loop của bản đang cài, allocation trảNone dẫn tới `break`. Việc promote request chờ remote KV nằm ở lúc duyệt từng request. Nếu request đầu không cấp phát được, một request phía sau dù đã có finished-receive ID vẫn có thể chưa được duyệt để promote. Nếu không có running request giải phóng thêm block, cùng head có thể được thử lại rồi lại break.
+
+Witness CPU mới dùng chính prefix waiting loop, phương thức chọn queue/promote và body allocator đang cài. Fixture có1.024page khả dụng: một holder giữ928page, còn96page. Head chưa giữ block và cần512page cho chunk8.192token, nên allocation thất bại. Holder phía sau đã có tín hiệu remote-finish và chỉ cần16token mới, tức1page. Ba lần chạy prefix native đều không promote holder. Control đặt holder lên trước, hoặc control cục bộ skip head thất bại, đều đi tới holder và cấp được page còn thiếu.
+
+Đây là **control-flow witness có điều kiện**, không phải full scheduler simulator hay bản sửa đã cài. Queue order, lookup result và trạng thái block là fixture; success tail, hoàn tất model, reinsertion/fairness không được mô phỏng. Cần native journal thật xác nhận head đang bị từ chối, request nào đã giữ block, finished ID nào đã tới và suffix nào có thể fit. Dự đoán này đã được ghi trước phase bật probe để tránh giải thích hậu nghiệm mọi hiện tượng thành cùng một nguyên nhân.
+
+**Hỏi: Vậy cứ đổi mọi `break` thành `continue` có đúng không?**
+
+**Đáp:** Không. Có thể tạo vòng lặp không tiến triển nếu không tạm lấy head ra khỏi queue, đổi fairness, tăng chi phí scan hoặc cho request đến sau tiếp tục chiếm tài nguyên. Trong nhiều trạng thái, dừng admission để running requests hoàn tất là hợp lý. Một mitigation phải xác định điều kiện thiếu tiến triển, bảo đảm duyệt hữu hạn, giữ mọi request và đo wait/bypass/quality trên dữ liệu thật. Chưa có claim rằng skip control là giải pháp production hoặc có lợi trước bundle/DFS.
+
+### 22.31. Vì sao giữ cả lỗi của bộ công cụ thí nghiệm?
+
+**Đáp:** Lượt diagnostic offA mới có423/1.986request thành công và599,063giây nonprogress. Engine tự thoát trước khi replay kết thúc; collector đòi engine còn sống ở end bookend nên protocol dừng trước phase bật probe. Đây vừa là failure của workload vừa là giới hạn của capture contract. Giữ nguyên outcome, rồi hậu kiểm toàn bộ client ledger; không đổi collector cũ để biến failure thành pass.
+
+Amendment mới chỉ cho phép ghi “engine gốc đã biến mất sau failed replay” khi summary thực sự có lỗi. Nó không gọi đó là end identity đã được xác minh. Successful run vẫn phải giữ đúng PID/birth/argv, engine bị thay thế vẫn bị từ chối. Hai phase còn lại đều ghi native stdout/stderr; log được tee cùng stdout supervisor và launcher vẫn exec để PID supervisor là PID vLLM thật.
+
+Một preflight tiếp theo còn bắt được lỗi Python: copy function sang namespace mới không đổi `function.__globals__` của các helper function đã có. Verifier vì thế đọc protocol cũ, và coverage helper cũng sẽ đọc journal prefix cũ. Lượt đó dừng trước request GPU và được giữ nguyên. Correction tạo namespace mới, rebind đúng hai helper và test bằng cách gọi verifier thật với protocol mới, rồi chỉ cung cấp journal có prefix mới. Test chỉ so chuỗi source sẽ chưa đủ phát hiện lỗi binding này.
+
+Bài học cho inference engineer là tách được failure của model/server, failure của workload và failure của hệ đo. Cả ba đều cần provenance. Một process exit0 không bảo đảm benchmark thành công, một green unit suite không thay được runtime bookends, và thay tên namespace không tự thay mọi dependency ngầm.
+
+### 22.32. Lỗi watermark đã thấy trên runtime thật chưa?
+
+**Đáp:** Đã thấy trên phase bật probe của vLLM/LMCache thật, không chỉ fixture CPU. Snapshot giữ41request IDs:23target và18warmup. Tracker cònPREFETCHING, số token scheduled bằng0, chưa có block được cấp, nhưng `num_stored_tokens` lớn hơn `num_lmcache_hit_tokens`. Ví dụ7.055.360so với27.136token, ratio260. Không gọi đó là260lookup đã được đo: snapshot không ghi từng lời gọi và kết quả prefix có thể thay đổi.41là số ID đã quan sát, không phải tỷ lệ lỗi đầy đủ của benchmark.
+
+Điểm bất thường có ý nghĩa cụ thể: trường “đã lưu” được dùng trực tiếp làm offset bắt đầu của STORE, nên mốc hàng triệu token trong request tối đa32.768token không còn mô tả một vị trí hợp lệ. Source hiện cài cộng kết quả lookup vào mốc này trước allocation. Trước đó CPU witness đã cho thấy tác động khi lookup bị hỏi lặp.
+
+**Hỏi: Có bằng chứng rằng nó ảnh hưởng quyết định STORE, hay mới chỉ sai counter?**
+
+**Đáp:** Có bước kiểm bổ sung với7trạng thái READY thật. Join tracker với scheduler sample cùngprocess ngay trước đó, cách không quá2,5giây, để lấy một lower bound bảo thủ về chiều dài token list. Dùng số block đã cấp, scheduled tokens, local/CPU hit counts thật và chạy body GetStoreMetadata đang cài trênCPU; token payload/block IDs/constructor trong replay là dummy có ghi rõ.
+
+Watermark quan sát cho kết quảNone. Chỉ đặt watermark của fixture bằng chiều dài prefix lookup thì có STORE range hợp lệ. Ví dụ cachedprefix14.592token, localGPUhit28.512token, watermark1.065.216: replay bảo thủ cho range14.592→28.416, dài13.824token. Điều này cho thấy một cơ hội metadata bị mốc sai che đi. Nó chưa đo mộtRPC STORE thật, byte dữ liệu duy nhất bị mất, chunk cònresident hay được request khác ghi lại, DMA time, F1 hoặc latency tiết kiệm. Cũng không thay được counterfactual đầy đủ với bản sửa chạy từ đầu.
+
+**Hỏi: Phase bật probe thành công thì lỗi stall đã được giải quyết chưa?**
+
+**Đáp:** Chưa. Phase này hoàn tất1.986/1.986target và60/60warmup nhưng không cài functionalfix. Probe thêmCPU/I/O, có thể đổi thời điểm lookup/load/dispatch.176allocation failures được sample trong lúc vẫn tiến triển là bình thường. Không có cửa sổ nonprogress120giây trong phase đó, nên dự đoán HOL chưa có failure window phù hợp để kiểm, chứ chưa bị bác bỏ hay chứng minh đã sửa. Phải giữ kết quả offA thất bại, hoàn tất offB và đo intervention không bật probe bằng protocol mới.

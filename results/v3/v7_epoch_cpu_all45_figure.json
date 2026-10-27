@@ -1,0 +1,372 @@
+{
+  "input_path": "results/v3/v7_epoch_cpu_probe_registration.result.json",
+  "input_sha256": "78cea2fa73e71ecfbc2510df45720f7643450997af75edb716fe3e98ce2cb4a7",
+  "plot_source_sha256": "4c9940cbb5a2e55e817fb01b65613f4b348b0b07d82616a6503ddaffbf8c0f40",
+  "cells": [
+    {
+      "policy": "packing_ready",
+      "kernel": "chooser_hit",
+      "queue": 16,
+      "legacy_us": 6.5738505,
+      "epoch_us": 3.2002289999999998,
+      "ratio": 2.0541812789022287
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "chooser_hit",
+      "queue": 64,
+      "legacy_us": 8.3216815,
+      "epoch_us": 2.898243,
+      "ratio": 2.871284947466448
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "chooser_hit",
+      "queue": 128,
+      "legacy_us": 12.448555,
+      "epoch_us": 2.98775,
+      "ratio": 4.166531670989875
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "chooser_hit",
+      "queue": 256,
+      "legacy_us": 19.5919175,
+      "epoch_us": 2.9540605,
+      "ratio": 6.632199137424572
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "chooser_hit",
+      "queue": 512,
+      "legacy_us": 36.11761,
+      "epoch_us": 2.862639,
+      "ratio": 12.616893013754092
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "chooser_hit",
+      "queue": 16,
+      "legacy_us": 6.136667999999999,
+      "epoch_us": 3.3593629999999997,
+      "ratio": 1.826735604339275
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "chooser_hit",
+      "queue": 64,
+      "legacy_us": 7.9517935,
+      "epoch_us": 2.4167185,
+      "ratio": 3.290326738509264
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "chooser_hit",
+      "queue": 128,
+      "legacy_us": 9.632915,
+      "epoch_us": 2.4473885,
+      "ratio": 3.935997492837774
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "chooser_hit",
+      "queue": 256,
+      "legacy_us": 17.290845,
+      "epoch_us": 2.4179575,
+      "ratio": 7.151012786618458
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "chooser_hit",
+      "queue": 512,
+      "legacy_us": 36.508374499999995,
+      "epoch_us": 2.9060884999999996,
+      "ratio": 12.562719442301912
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "chooser_hit",
+      "queue": 16,
+      "legacy_us": 6.658426,
+      "epoch_us": 3.2194705,
+      "ratio": 2.0681742541203594
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "chooser_hit",
+      "queue": 64,
+      "legacy_us": 9.811442999999999,
+      "epoch_us": 2.904508,
+      "ratio": 3.378005156122827
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "chooser_hit",
+      "queue": 128,
+      "legacy_us": 11.9824165,
+      "epoch_us": 2.9324160000000004,
+      "ratio": 4.0861925797704
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "chooser_hit",
+      "queue": 256,
+      "legacy_us": 23.0946155,
+      "epoch_us": 3.0863265,
+      "ratio": 7.482881509781937
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "chooser_hit",
+      "queue": 512,
+      "legacy_us": 37.5981655,
+      "epoch_us": 3.0058510000000003,
+      "ratio": 12.508326427357844
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "poll_mutating",
+      "queue": 16,
+      "legacy_us": 6.9845465,
+      "epoch_us": 3.6002745,
+      "ratio": 1.940003880259686
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "poll_mutating",
+      "queue": 64,
+      "legacy_us": 10.820522,
+      "epoch_us": 3.560737,
+      "ratio": 3.038843363045347
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "poll_mutating",
+      "queue": 128,
+      "legacy_us": 16.424732,
+      "epoch_us": 3.64118,
+      "ratio": 4.510826710022576
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "poll_mutating",
+      "queue": 256,
+      "legacy_us": 27.909731999999998,
+      "epoch_us": 3.626027,
+      "ratio": 7.69705575827207
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "poll_mutating",
+      "queue": 512,
+      "legacy_us": 54.514366499999994,
+      "epoch_us": 3.639448,
+      "ratio": 14.978745815299462
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "poll_mutating",
+      "queue": 16,
+      "legacy_us": 4.54355,
+      "epoch_us": 2.9305455,
+      "ratio": 1.5504110070974841
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "poll_mutating",
+      "queue": 64,
+      "legacy_us": 9.957741500000001,
+      "epoch_us": 3.5732845,
+      "ratio": 2.7867194733584744
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "poll_mutating",
+      "queue": 128,
+      "legacy_us": 15.901836999999999,
+      "epoch_us": 3.607224,
+      "ratio": 4.4083308937842505
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "poll_mutating",
+      "queue": 256,
+      "legacy_us": 23.8800045,
+      "epoch_us": 2.9726855,
+      "ratio": 8.03314191830922
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "poll_mutating",
+      "queue": 512,
+      "legacy_us": 48.337786,
+      "epoch_us": 3.03553,
+      "ratio": 15.924002068831472
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "poll_mutating",
+      "queue": 16,
+      "legacy_us": 6.974524000000001,
+      "epoch_us": 3.519588,
+      "ratio": 1.9816308045146194
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "poll_mutating",
+      "queue": 64,
+      "legacy_us": 10.239687,
+      "epoch_us": 3.4619989999999996,
+      "ratio": 2.957738289352481
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "poll_mutating",
+      "queue": 128,
+      "legacy_us": 13.493551,
+      "epoch_us": 2.881867,
+      "ratio": 4.682225446212472
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "poll_mutating",
+      "queue": 256,
+      "legacy_us": 28.296701000000002,
+      "epoch_us": 3.5155534999999998,
+      "ratio": 8.049003094391821
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "poll_mutating",
+      "queue": 512,
+      "legacy_us": 52.89933,
+      "epoch_us": 3.7301455,
+      "ratio": 14.181572809961434
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "timeout_hit",
+      "queue": 16,
+      "legacy_us": 1.47336,
+      "epoch_us": 0.9586315,
+      "ratio": 1.536940941331471
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "timeout_hit",
+      "queue": 64,
+      "legacy_us": 4.002665,
+      "epoch_us": 0.938028,
+      "ratio": 4.267106099178276
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "timeout_hit",
+      "queue": 128,
+      "legacy_us": 3.7662345,
+      "epoch_us": 0.4685395,
+      "ratio": 8.038243307127788
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "timeout_hit",
+      "queue": 256,
+      "legacy_us": 8.540958,
+      "epoch_us": 0.5137355,
+      "ratio": 16.625204993620258
+    },
+    {
+      "policy": "packing_ready",
+      "kernel": "timeout_hit",
+      "queue": 512,
+      "legacy_us": 11.845799999999999,
+      "epoch_us": 0.3975745,
+      "ratio": 29.795170464906576
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "timeout_hit",
+      "queue": 16,
+      "legacy_us": 1.499,
+      "epoch_us": 0.957963,
+      "ratio": 1.5647785979207967
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "timeout_hit",
+      "queue": 64,
+      "legacy_us": 3.5385675,
+      "epoch_us": 0.7539975,
+      "ratio": 4.69307590542409
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "timeout_hit",
+      "queue": 128,
+      "legacy_us": 7.169472,
+      "epoch_us": 0.798335,
+      "ratio": 8.98053072958094
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "timeout_hit",
+      "queue": 256,
+      "legacy_us": 8.672801999999999,
+      "epoch_us": 0.502372,
+      "ratio": 17.263704983558
+    },
+    {
+      "policy": "packing_reuse",
+      "kernel": "timeout_hit",
+      "queue": 512,
+      "legacy_us": 14.1899835,
+      "epoch_us": 0.48803949999999996,
+      "ratio": 29.075481595239733
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "timeout_hit",
+      "queue": 16,
+      "legacy_us": 1.465518,
+      "epoch_us": 0.95455,
+      "ratio": 1.5352972604892359
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "timeout_hit",
+      "queue": 64,
+      "legacy_us": 2.3353924999999998,
+      "epoch_us": 0.668176,
+      "ratio": 3.4951756722779623
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "timeout_hit",
+      "queue": 128,
+      "legacy_us": 6.781607,
+      "epoch_us": 0.7194225,
+      "ratio": 9.426459417101912
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "timeout_hit",
+      "queue": 256,
+      "legacy_us": 8.733458500000001,
+      "epoch_us": 0.5043915,
+      "ratio": 17.3148407536606
+    },
+    {
+      "policy": "ready_fifo",
+      "kernel": "timeout_hit",
+      "queue": 512,
+      "legacy_us": 12.0903,
+      "epoch_us": 0.39578199999999997,
+      "ratio": 30.547877366833255
+    }
+  ],
+  "figure_sha256": {
+    "figures/v7_epoch_cpu_all45.png": "43dc0cbe7d990280faf98e49c8392e433ec934a0482fb49f3f3bc425d687c7d7",
+    "figures/v7_epoch_cpu_all45.svg": "b3d86823fb4424a621336572b3de67c453dc7e4fd780bb100b043b81a749aec6"
+  },
+  "scope": "All45synthetic registered CPU cases; ratios of per-implementation medians, not E2E speedups, uncertainty intervals, DMA or GPU performance."
+}

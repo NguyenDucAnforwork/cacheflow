@@ -1,0 +1,112 @@
+{
+  "cpu_only": true,
+  "synthetic_metadata": true,
+  "live_state_reproduced": false,
+  "installed_files_modified": false,
+  "gpu_execution": false,
+  "source_sha256": "46fc9ea736db4fb2f7d5c9b6914f8e5fbef63822c9bb7112c230a18e2c58653d",
+  "native_method_bodies": [
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/single_type_kv_cache_manager.py",
+      "class_name": "SingleTypeKVCacheManager",
+      "method": "get_num_blocks_to_allocate",
+      "source_sha256": "d57ad1c8e3d32db4a9d929ee201ab169305ef703b5bda9eb933d0f2f2a2299a1",
+      "method_ast_sha256": "4362dd835c401afb786fd90ab019bd06dbbe68975249ed780458ef970569595a",
+      "first_line": 89,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_coordinator.py",
+      "class_name": "KVCacheCoordinator",
+      "method": "get_num_blocks_to_allocate",
+      "source_sha256": "a5f0683483508fcfd0b2e3477940825bae5953eec715a4f704becec805484b89",
+      "method_ast_sha256": "63a9afb4ec406802c2f49966d5b950d5cb0c657e10809bcb65455f33c345e03d",
+      "first_line": 80,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_manager.py",
+      "class_name": "KVCacheManager",
+      "method": "allocate_slots",
+      "source_sha256": "05e5f1f9391a959b6328cc75e3f0a6315682a593b50d54ec30c215c768c3e224",
+      "method_ast_sha256": "172e7b1849060197bf5ab1d3b0665574836b31e26826d7ea4dce191970c81fe1",
+      "first_line": 236,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+      "class_name": "Scheduler",
+      "method": "_select_waiting_queue_for_scheduling",
+      "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+      "method_ast_sha256": "d5a8edfc7c4bbb5afbe3df85531d3b2f7b645e8f3f5191714ac8274f65f4c874",
+      "first_line": 1619,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+      "class_name": "Scheduler",
+      "method": "_try_promote_blocked_waiting_request",
+      "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+      "method_ast_sha256": "461e9288a9973a5ba36b31363833b0582863b072f4b358656bed6615a57ee39f",
+      "first_line": 2103,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    },
+    {
+      "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+      "class_name": "Scheduler",
+      "method": "_update_waiting_for_remote_kv",
+      "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+      "method_ast_sha256": "ccbf9d77309536c2bac805ec1f06974bd342a1ee32befbaa9e2809de07b5e44c",
+      "first_line": 2069,
+      "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+    }
+  ],
+  "native_prefix": {
+    "native_source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+    "original_full_waiting_loop_ast_sha256": "687db8c87126c49180795f4672c56de21a05a34d5fceb406cb400046f3bd2207",
+    "bound_prefix_ast_sha256": "38d3c0523105628f7c9bc8bd579a9914675b7f7e36d44b136025c123ca749578",
+    "native_first_line": 548,
+    "native_prefix_last_line": 740,
+    "skip_control": false,
+    "scope": "Only native waiting-loop prefix through allocation-failure guard. Success tail replaced by observation return; remaining schedule body, model, worker, queue reinsertion and fairness are not simulated."
+  },
+  "unactivated_skip_control": {
+    "native_source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+    "original_full_waiting_loop_ast_sha256": "687db8c87126c49180795f4672c56de21a05a34d5fceb406cb400046f3bd2207",
+    "bound_prefix_ast_sha256": "82fc0a7fd03a239f9b236c7e28df551f2160cef0d173785cd670de05291fd913",
+    "native_first_line": 548,
+    "native_prefix_last_line": 740,
+    "skip_control": true,
+    "scope": "Only native waiting-loop prefix through allocation-failure guard. Success tail replaced by observation return; remaining schedule body, model, worker, queue reinsertion and fairness are not simulated."
+  },
+  "usable_blocks": 1024,
+  "initial_free_blocks": 96,
+  "head_held_blocks": 0,
+  "head_first_chunk_tokens": 8192,
+  "head_first_chunk_blocks": 512,
+  "later_holder_blocks": 928,
+  "later_holder_computed_tokens": 14848,
+  "later_holder_new_tokens": 16,
+  "remote_finish_already_received": true,
+  "original_three_step_results": [
+    null,
+    null,
+    null
+  ],
+  "original_holder_not_promoted": true,
+  "skip_control_reached": {
+    "request_id": "holder",
+    "num_new_tokens": 16,
+    "status": "WAITING",
+    "deferred_ids": [
+      "head"
+    ]
+  },
+  "holder_first_positive_control": {
+    "request_id": "holder",
+    "num_new_tokens": 16,
+    "status": "WAITING",
+    "deferred_ids": []
+  },
+  "scope": "Conditional control-flow witness: a waiting head cannot allocate512pages with96free; native allocation-None break prevents visiting a later928-page holder whose remote-finish ID already arrived and whose16-token suffix fits. Repeated native prefixes leave it unpromoted. A local skip-only control reaches/promotes it; placing holder first also succeeds. Queue order/lookup/cache-publication fixtures are assumptions, not proof of live reachability, complete scheduler correctness, physical tensor validity, fairness, native deadlock cause, a serving fix or speedup. No source patch/import of installed vLLM/torch/CUDA; selected native bodies and truncated waiting-loop prefix only."
+}

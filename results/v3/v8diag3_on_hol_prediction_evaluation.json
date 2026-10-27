@@ -1,0 +1,12 @@
+{
+  "kind": "evaluation_of_unchanged_registered_hol_metadata_prediction",
+  "observation_sha256": "4f665dc7c1ac5c1b1160ee7d010061747e5cfd7823bc0eea252e99f4bbf2ca28",
+  "hypothesis_sha256": "4a8aecf3bffa19eef305604a3109869fa62478f078f367c0263b3fd7a9841fa7",
+  "evaluator_source_sha256": "2ced963fcf661debfa4c70a79db37d05b6d1862c8e8fbfcf811a3892dbd4f4e6",
+  "observed_metadata_matches_registered_conditions": false,
+  "matching_pair_windows": [],
+  "sampled_nonprogress_span_s": 0.0,
+  "qualifying_120s_nonprogress_window_observed": false,
+  "conclusion": "qualifying_window_not_observed",
+  "scope": "Exact8192-token/<512free/0held/0computed failed-head prediction retained. A later remote holder must already have a received-finish ID and a full-prompt page bound fitting free capacity in same-process adjacent sampled records. Single full-attention group/no-speculation metadata assumption;2s sampling can miss events. A nonmatch is not proof of absence; a match is not a full engine replay, tensor/DMA validation, serving-fix, fairness or performance result. Original root cause and mitigation require source/runtime review and separate intervention."
+}
