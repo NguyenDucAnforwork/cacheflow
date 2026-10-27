@@ -1,0 +1,21 @@
+{
+  "diagnostic_execution_complete": false,
+  "error": "AssertionError()",
+  "cleanup_errors": [],
+  "last_step": {
+    "run_id": "v9repair1-probe-reference-s101",
+    "stage": "probe",
+    "mode": "reference",
+    "seed": 101,
+    "probe": true,
+    "proof_label": "v9repair1-probe-reference-s101-native",
+    "probe_label": "v9repair1-probe-reference-s101-probe",
+    "policy": "packing_reuse",
+    "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+    "requests": 60
+  },
+  "outcomes": [],
+  "registration_sha256": "dd5d630ac0d0090d8ed0781729a2dc7b2e8e5d929d0a79551206943223e6eaa4",
+  "performance_valid": false,
+  "scope": "Repair diagnostic execution only; independent terminal audit/comparison, primary strongbaselines, epochGPU/controls/fullconfirmation and research completion remain required."
+}

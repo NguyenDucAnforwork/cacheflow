@@ -1,0 +1,262 @@
+{
+  "diagnostic_execution_complete": true,
+  "error": null,
+  "cleanup_errors": [],
+  "outcomes": [
+    {
+      "diagnostic_integrity_checked": true,
+      "performance_valid": false,
+      "run_id": "v8diag3-on-warm",
+      "requests": 60,
+      "successes": 60,
+      "errors": 0,
+      "status_counts": {
+        "ok": 60
+      },
+      "process_bookends": {
+        "cacheflow_v2_vllm": {
+          "original_pid": 560649,
+          "original_birth": 1793071416.7,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_lmcache": {
+          "original_pid": 560539,
+          "original_birth": 1793071401.34,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_gateway": {
+          "original_pid": 561162,
+          "original_birth": 1793071468.47,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        }
+      },
+      "gateway_closed_records": 60,
+      "missing_closed_gateway_records": 0,
+      "gateway_after": {
+        "policy": "fifo",
+        "queue": 0,
+        "active": 0,
+        "completed_history_requests": 60,
+        "upstream_read_timeout_s": 600.0,
+        "prepare_mode": "thread",
+        "decision_stats": null,
+        "residency": null
+      },
+      "raw_sha256": {
+        "results/v3/raw/v8diag3-on-warm.jsonl": "23638231934a2e22103cd97468cfb104b3c1cb8439075874361115193f867b4d",
+        "results/v3/raw/v8diag3-on-warm.outputs.jsonl": "d5bfacc25383881b0872dcf25d3c98d6785b105209af6cc187f5e657039b5a87",
+        "results/v3/raw/v8diag3-on-warm.summary.json": "130de40a6341848303ceef278764e76cd93d0de8e45653ef1d0518cbd313db66",
+        "results/v3/raw/v8diag3-on-warm.metrics.jsonl": "c4900966be68a26f1a1a64e9d2b36ff89edbfb83729885938ead7d7f8ebcd1ff",
+        "results/v3/raw/v8diag3-on-warm.gateway.jsonl": "e1a8541e6011827b05553c36753c975f6da48ee2def7d2d75ec8d95b3a264921"
+      },
+      "global_gateway_prefix_bytes": 38421967,
+      "global_gateway_prefix_sha256": "ed6e917d2bb342d33419ff19610e8aaac13b469128cb10deafdc19dbee1d9ca9",
+      "setup_sha256": "23b021329e575705f5c4b7f3855521db0d66bcd60f952b02a4189a8ac4cb5d2a",
+      "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+      "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+    },
+    {
+      "diagnostic_integrity_checked": true,
+      "performance_valid": false,
+      "run_id": "v8diag3-on-target",
+      "requests": 1986,
+      "successes": 1986,
+      "errors": 0,
+      "status_counts": {
+        "ok": 1986
+      },
+      "process_bookends": {
+        "cacheflow_v2_vllm": {
+          "original_pid": 560649,
+          "original_birth": 1793071416.7,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_lmcache": {
+          "original_pid": 560539,
+          "original_birth": 1793071401.34,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_gateway": {
+          "original_pid": 561411,
+          "original_birth": 1793071536.84,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        }
+      },
+      "gateway_closed_records": 1986,
+      "missing_closed_gateway_records": 0,
+      "gateway_after": {
+        "policy": "packing_reuse",
+        "queue": 0,
+        "active": 0,
+        "completed_history_requests": 256,
+        "upstream_read_timeout_s": 600.0,
+        "prepare_mode": "thread",
+        "decision_stats": {
+          "calls": 2522245,
+          "cpu_ms": 112118.934563,
+          "wall_ms": 112568.431073,
+          "max_ms": 85.500602,
+          "cache_hits": 2516500
+        },
+        "residency": null
+      },
+      "raw_sha256": {
+        "results/v3/raw/v8diag3-on-target.jsonl": "6b1943c5dd461784ccd426a66b03bf528de4b0626a8e6faf15e66e15d6517647",
+        "results/v3/raw/v8diag3-on-target.outputs.jsonl": "fc1275cb6068050f8656beb48f7326a66526f383976899c81b184b0f4d4f25d6",
+        "results/v3/raw/v8diag3-on-target.summary.json": "6d1c562f84708aa45cc207f46c862a70b2053d7f2151d24037491f8d2a7c383d",
+        "results/v3/raw/v8diag3-on-target.metrics.jsonl": "4961ea5dee6da0f100434d71f8ea855faf83fa36a27c919f49d1da1a497f6f6f",
+        "results/v3/raw/v8diag3-on-target.gateway.jsonl": "a7fbf42996f023c34d68ef57f776711eb8b841df40ce0ca4e063e22abe4d6e2a"
+      },
+      "global_gateway_prefix_bytes": 40160721,
+      "global_gateway_prefix_sha256": "43cdb58cd064649dfdc209e0ec0d0bc2b4ae9876739d4dd0e5abdf25acf343ed",
+      "setup_sha256": "89969ad7e656db03fa42ffe2f509995da3c133d10b971ada7d5aa37d4d58fbc6",
+      "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+      "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+    },
+    {
+      "diagnostic_integrity_checked": true,
+      "performance_valid": false,
+      "run_id": "v8diag3-offB-warm",
+      "requests": 60,
+      "successes": 60,
+      "errors": 0,
+      "status_counts": {
+        "ok": 60
+      },
+      "process_bookends": {
+        "cacheflow_v2_vllm": {
+          "original_pid": 563808,
+          "original_birth": 1793072477.04,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_lmcache": {
+          "original_pid": 563676,
+          "original_birth": 1793072459.58,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_gateway": {
+          "original_pid": 564314,
+          "original_birth": 1793072528.57,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        }
+      },
+      "gateway_closed_records": 60,
+      "missing_closed_gateway_records": 0,
+      "gateway_after": {
+        "policy": "fifo",
+        "queue": 0,
+        "active": 0,
+        "completed_history_requests": 60,
+        "upstream_read_timeout_s": 600.0,
+        "prepare_mode": "thread",
+        "decision_stats": null,
+        "residency": null
+      },
+      "raw_sha256": {
+        "results/v3/raw/v8diag3-offB-warm.jsonl": "f6625e2038e8888f6deaac8dca9fd9d197ad78d8b0cfb752660e6bfa16539557",
+        "results/v3/raw/v8diag3-offB-warm.outputs.jsonl": "18cbec22ccdb9bd52fce276d2428328ddd8064d72981d8c8de20e53fbd07e554",
+        "results/v3/raw/v8diag3-offB-warm.summary.json": "06f0581fff7cc44588cb05048234a75186a8babc408b92af75be62d3b9774a80",
+        "results/v3/raw/v8diag3-offB-warm.metrics.jsonl": "230a0df306193493d745ff76cc68f84784f8eb4cd39a056ebf52a030620ccee1",
+        "results/v3/raw/v8diag3-offB-warm.gateway.jsonl": "11198bbc7542c53f55a5dee3a1ed2151bb2a1e44b1acbc589361ba3a20c8939e"
+      },
+      "global_gateway_prefix_bytes": 40211195,
+      "global_gateway_prefix_sha256": "b17833efa39e33421f59f822b823a57a8adc1accd3a8a26f820d482a518b8c65",
+      "setup_sha256": "923af2e7d5f032d020ccd3992a47684af5e28a7f6bf79240a2a4ba2c1a8de82c",
+      "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+      "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+    },
+    {
+      "diagnostic_integrity_checked": true,
+      "performance_valid": false,
+      "run_id": "v8diag3-offB-target",
+      "requests": 1986,
+      "successes": 1986,
+      "errors": 0,
+      "status_counts": {
+        "ok": 1986
+      },
+      "process_bookends": {
+        "cacheflow_v2_vllm": {
+          "original_pid": 563808,
+          "original_birth": 1793072477.04,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_lmcache": {
+          "original_pid": 563676,
+          "original_birth": 1793072459.58,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        },
+        "cacheflow_v2_gateway": {
+          "original_pid": 564580,
+          "original_birth": 1793072599.9,
+          "end_state": "same_process",
+          "end_identity_verified": true
+        }
+      },
+      "gateway_closed_records": 1986,
+      "missing_closed_gateway_records": 0,
+      "gateway_after": {
+        "policy": "packing_reuse",
+        "queue": 0,
+        "active": 0,
+        "completed_history_requests": 256,
+        "upstream_read_timeout_s": 600.0,
+        "prepare_mode": "thread",
+        "decision_stats": {
+          "calls": 2661893,
+          "cpu_ms": 117874.775345,
+          "wall_ms": 118692.631596,
+          "max_ms": 103.890928,
+          "cache_hits": 2656147
+        },
+        "residency": null
+      },
+      "raw_sha256": {
+        "results/v3/raw/v8diag3-offB-target.jsonl": "12b941cf1863f947b5602c009a281f92b0bdb316fc74726703a7792000797855",
+        "results/v3/raw/v8diag3-offB-target.outputs.jsonl": "63f5e422a1eb31ba5fd91e4f1edbcdc51b7723eed7d0476098e41294b883b844",
+        "results/v3/raw/v8diag3-offB-target.summary.json": "33238528ab2c210c2a011edb47f94f35072d4658d6023861982d23e77fecdf7c",
+        "results/v3/raw/v8diag3-offB-target.metrics.jsonl": "2d3a355ab28957a3b134b8c691c274a33e50b65cb6f31921067c39bf84161792",
+        "results/v3/raw/v8diag3-offB-target.gateway.jsonl": "3d436f7f28d8a50e6a920b19fd675c294fcedbf6e8c9dfb2c1a7fa4adb02c482"
+      },
+      "global_gateway_prefix_bytes": 41954035,
+      "global_gateway_prefix_sha256": "0549dbf1d1960c8dcd65e39778bc8cea14af928c7d97cfcab9f51443b808f109",
+      "setup_sha256": "8c18817c3d9739525f6b9454f318e7735385925e21a4657a9ceed0454910aba7",
+      "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+      "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim."
+    }
+  ],
+  "probe_coverage": {
+    "kinds": {
+      "hook_ready": 6,
+      "connector_metadata": 408,
+      "scheduler": 408,
+      "connector_worker": 406,
+      "allocation_failure": 176
+    },
+    "ready": [
+      "allocator",
+      "connector",
+      "scheduler",
+      "worker"
+    ],
+    "journal_sha256": {
+      "results/v3/raw/v8diag3-probe.560649.jsonl": "26fa012751c7c2c007deab8f57a167f4eb60f90253324e2743b81f44170923a2",
+      "results/v3/raw/v8diag3-probe.560809.jsonl": "6590e9dc71f403054eb816ef127d18f76585e2c2e6f36120974fa2fc8afbba04"
+    },
+    "native_metadata_coverage_checked": true
+  },
+  "registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+  "performance_valid": false,
+  "scope": "Diagnostic coverage/counts only. Root-cause review and any serving fix require separate evidence/registration; all failures retained."
+}

@@ -1,0 +1,224 @@
+{
+  "diagnostic_integrity_checked": true,
+  "performance_valid": false,
+  "step": {
+    "run_id": "v9repair2-probe-reference-s101",
+    "stage": "probe",
+    "mode": "reference",
+    "seed": 101,
+    "probe": true,
+    "proof_label": "v9repair2-probe-reference-s101-native",
+    "probe_label": "v9repair2-probe-reference-s101-probe",
+    "policy": "packing_reuse",
+    "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+    "requests": 60
+  },
+  "result": {
+    "diagnostic_integrity_checked": true,
+    "performance_valid": false,
+    "run_id": "v9repair2-probe-reference-s101",
+    "requests": 60,
+    "successes": 60,
+    "errors": 0,
+    "status_counts": {
+      "ok": 60
+    },
+    "process_bookends": {
+      "cacheflow_v2_vllm": {
+        "original_pid": 584094,
+        "original_birth": 1793074936.19,
+        "end_state": "same_process",
+        "end_identity_verified": true
+      },
+      "cacheflow_v2_lmcache": {
+        "original_pid": 583858,
+        "original_birth": 1793074920.01,
+        "end_state": "same_process",
+        "end_identity_verified": true
+      },
+      "cacheflow_v2_gateway": {
+        "original_pid": 585556,
+        "original_birth": 1793075054.83,
+        "end_state": "same_process",
+        "end_identity_verified": true
+      }
+    },
+    "gateway_closed_records": 60,
+    "missing_closed_gateway_records": 0,
+    "gateway_after": {
+      "policy": "packing_reuse",
+      "queue": 0,
+      "active": 0,
+      "completed_history_requests": 60,
+      "upstream_read_timeout_s": 600.0,
+      "prepare_mode": "thread",
+      "decision_stats": {
+        "calls": 9757,
+        "cpu_ms": 471.334065,
+        "wall_ms": 470.587567,
+        "max_ms": 9.761833,
+        "cache_hits": 9596
+      },
+      "residency": null
+    },
+    "raw_sha256": {
+      "results/v3/raw/v9repair2-probe-reference-s101.jsonl": "62e4cea0fb01331f3acbe873548982a561d3bd1c1bed7b7bd97eb6855205f4c7",
+      "results/v3/raw/v9repair2-probe-reference-s101.outputs.jsonl": "e501834f6d3a020727f23f5d103fa75a3b2c47f4b985dfeba87cc43fa08ffe74",
+      "results/v3/raw/v9repair2-probe-reference-s101.summary.json": "7283d5c3d2876df7d1939712e2c846640089cd6ff70e4cd0bf442f7f30f31944",
+      "results/v3/raw/v9repair2-probe-reference-s101.metrics.jsonl": "3298000215c78b04051ed761364ce12e48b2ae3fda1281ef8e3452a5cc84ce57",
+      "results/v3/raw/v9repair2-probe-reference-s101.gateway.jsonl": "02bd92723eb45426fce7068431a23e3ab552524c9660b3491ae30f4421bda073"
+    },
+    "global_gateway_prefix_bytes": 42109892,
+    "global_gateway_prefix_sha256": "88d14c4ea62114726c67e380fada70d1bb3ea4c95dad2f1d13b981978c4694be",
+    "setup_sha256": "176934c716594e5bc99d1deaf08314ac386e5d4e8e4ab15fff51612c92c5ea4c",
+    "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+    "scope": "All client statuses/outputs retained; gateway subset explicitly counted. No official quality scoring, source-token reconciliation, primary-study completion, latency or speedup claim.",
+    "native_identity_sha256": "13668a5da84734d17aaef83f2bfdbb40ecda2609a33cefad6de25a0ceb80f7fe"
+  },
+  "probe": {
+    "eligible_sampled_prefetch_states": 19,
+    "distinct_inflated_ids": 19,
+    "first_inflation_examples": [
+      {
+        "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-26-q012-0-8f1556aa",
+        "pid": 584358,
+        "monotonic_ns": 175541832787260,
+        "tracker": {
+          "allocated_blocks_per_group": {},
+          "lmcache_hit_tokens": 19456,
+          "num_scheduled_tokens": 0,
+          "num_stored_tokens": 3813376,
+          "state": "PREFETCHING",
+          "vllm_hit_tokens": 48
+        },
+        "watermark_over_lookup_prefix_ratio": 196.0
+      },
+      {
+        "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-26-q015-0-bf85b79d",
+        "pid": 584358,
+        "monotonic_ns": 175547848261855,
+        "tracker": {
+          "allocated_blocks_per_group": {},
+          "lmcache_hit_tokens": 19456,
+          "num_scheduled_tokens": 0,
+          "num_stored_tokens": 3502080,
+          "state": "PREFETCHING",
+          "vllm_hit_tokens": 48
+        },
+        "watermark_over_lookup_prefix_ratio": 180.0
+      },
+      {
+        "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-41-q006-0-87172e68",
+        "pid": 584358,
+        "monotonic_ns": 175533802012972,
+        "tracker": {
+          "allocated_blocks_per_group": {},
+          "lmcache_hit_tokens": 28928,
+          "num_scheduled_tokens": 0,
+          "num_stored_tokens": 5178112,
+          "state": "PREFETCHING",
+          "vllm_hit_tokens": 8928
+        },
+        "watermark_over_lookup_prefix_ratio": 179.0
+      },
+      {
+        "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-26-q008-0-9dfd9316",
+        "pid": 584358,
+        "monotonic_ns": 175535805200357,
+        "tracker": {
+          "allocated_blocks_per_group": {},
+          "lmcache_hit_tokens": 19456,
+          "num_scheduled_tokens": 0,
+          "num_stored_tokens": 3385344,
+          "state": "PREFETCHING",
+          "vllm_hit_tokens": 48
+        },
+        "watermark_over_lookup_prefix_ratio": 174.0
+      },
+      {
+        "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-41-q015-0-842ffcf0",
+        "pid": 584358,
+        "monotonic_ns": 175549853841428,
+        "tracker": {
+          "allocated_blocks_per_group": {},
+          "lmcache_hit_tokens": 28928,
+          "num_scheduled_tokens": 0,
+          "num_stored_tokens": 4975616,
+          "state": "PREFETCHING",
+          "vllm_hit_tokens": 8928
+        },
+        "watermark_over_lookup_prefix_ratio": 172.0
+      }
+    ],
+    "counts": {
+      "hook_ready": 6,
+      "connector_metadata": 37,
+      "scheduler": 37,
+      "connector_worker": 37,
+      "allocation_failure": 25
+    },
+    "raw_sha256": {
+      "results/v3/raw/v9repair2-probe-reference-s101-probe.584094.jsonl": "538b52bc10d33887d291a399f6d17aa5e429402b16896c2c9062bf46d36451ab",
+      "results/v3/raw/v9repair2-probe-reference-s101-probe.584358.jsonl": "85e0a4a89224b82895af7e4ec462f3e180959bfdfc3b481cf1ca39b685115a36"
+    },
+    "scope": "Sampled native metadata across separate warm/target; counts are not total incidence, uniqueQA, STOREbytes, DMA or speed."
+  },
+  "resources": {
+    "samples": 36,
+    "sample_window_s": 35.003502603,
+    "first_sample_ns": 175573396805128,
+    "last_sample_ns": 175608400307731,
+    "gpu_time_weighted_util_pct": 77.14282736004172,
+    "gpu_time_weighted_power_w": 262.66540216416496,
+    "vram_peak_mib": 16057.0,
+    "process": {
+      "vllm": {
+        "sampled_cpu_seconds": 35.530000000000015,
+        "summed_rss_peak_bytes": 3674132480,
+        "processes_peak": 4
+      },
+      "lmcache": {
+        "sampled_cpu_seconds": 2.700000000000003,
+        "summed_rss_peak_bytes": 49008185344,
+        "processes_peak": 1
+      }
+    },
+    "strict_counter_deltas": {
+      "vllm": {
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 86544.0,
+        "vllm:prefix_cache_hits_total": 1134192.0,
+        "vllm:time_to_first_token_seconds_count": 60.0,
+        "vllm:request_prefill_time_seconds_sum": 76.53347593755461,
+        "vllm:request_queue_time_seconds_sum": 38.642251847544685,
+        "vllm:time_to_first_token_seconds_sum": 177.19183802604675,
+        "vllm:request_prefill_time_seconds_count": 60.0,
+        "vllm:external_prefix_cache_hits_total": 86544.0,
+        "vllm:prompt_tokens_total": 1278178.0,
+        "vllm:prompt_tokens_cached_total": 1212528.0,
+        "vllm:request_queue_time_seconds_count": 60.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:prompt_tokens_source_local_compute_total": 65650.0,
+        "vllm:request_prefill_kv_computed_tokens_sum": 65650.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 1125984.0
+      },
+      "lmcache": {
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 138.87689706634325,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 6.0,
+        "lmcache_mp_l1_evicted_chunks_total": 0.0,
+        "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 18.0,
+        "lmcache_mp_l1_read_chunks_total": 4096.0,
+        "lmcache_mp_l1_write_chunks_total": 256.0,
+        "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 62.86253328371731,
+        "lmcache_mp_num_chunks_loaded_total": 340.0
+      }
+    },
+    "scope": "Existing sampled-window observations, left-endpoint weighted, may include pre/post-request margins. Process CPU/RSS includes retained vLLM/LMCache descendants; summed RSS double-counts shared pages and omits gateway/client process memory. Missing endpoint counters stay null; source counters are not DMA time or throughput capacity."
+  },
+  "engine_log_path": "results/v3/raw/v9repair2-probe-reference-s101-engine.log",
+  "engine_log_sha256": "5a21b7a2b237a491cea8054e8f5f67bc2b87b2d681f262fa9f8f4a02e20e8a0f",
+  "quality_sha256": "3bceb2e16627a3445debfb963c9cb3015712860a4f1cd672262a73f6002b3843",
+  "quality_not_scored_reason": null,
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "source_after_verified": true,
+  "scope": "Intervention diagnostic only. All error records retained; actual official quality/source accounting only for complete successful targets. Sampled CPU/RSS/counters are not DMA time or a primary performance contrast."
+}

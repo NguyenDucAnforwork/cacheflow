@@ -1,0 +1,97 @@
+{
+  "before": {
+    "engine_pid": 586709,
+    "engine_birth": 1793075175.16,
+    "constructor_records": [
+      {
+        "code_fingerprint_version": 1,
+        "connector_class": "lmcache.integration.vllm.lmcache_mp_connector.LMCacheMPConnector",
+        "connector_role": "KVConnectorRole.WORKER",
+        "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+        "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+        "functional_replacements": 1,
+        "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+        "mode": "idempotent",
+        "monotonic_ns": 175719528266433,
+        "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+        "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+        "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+        "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+        "pid": 586961,
+        "scope": "Actual fresh connector construction identity. No per-call observer, STORE/DMA/performance/quality or liveness claim."
+      },
+      {
+        "code_fingerprint_version": 1,
+        "connector_class": "lmcache.integration.vllm.lmcache_mp_connector.LMCacheMPConnector",
+        "connector_role": "KVConnectorRole.SCHEDULER",
+        "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+        "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+        "functional_replacements": 1,
+        "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+        "mode": "idempotent",
+        "monotonic_ns": 175721606859762,
+        "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+        "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+        "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+        "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+        "pid": 586961,
+        "scope": "Actual fresh connector construction identity. No per-call observer, STORE/DMA/performance/quality or liveness claim."
+      }
+    ],
+    "proof_sha256": {
+      "/workspace/cacheflow-e1/results/v3/raw/v9repair2-probe-idempotent-s101-native.586961.jsonl": "f9066a5bcff79af758b4b9a01336583906731cee4df7c319307bded2c9038d04"
+    },
+    "checked_monotonic_ns": 175741945846538,
+    "mode": "idempotent",
+    "end_identity_verified": true
+  },
+  "after": {
+    "engine_pid": 586709,
+    "engine_birth": 1793075175.16,
+    "constructor_records": [
+      {
+        "code_fingerprint_version": 1,
+        "connector_class": "lmcache.integration.vllm.lmcache_mp_connector.LMCacheMPConnector",
+        "connector_role": "KVConnectorRole.WORKER",
+        "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+        "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+        "functional_replacements": 1,
+        "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+        "mode": "idempotent",
+        "monotonic_ns": 175719528266433,
+        "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+        "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+        "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+        "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+        "pid": 586961,
+        "scope": "Actual fresh connector construction identity. No per-call observer, STORE/DMA/performance/quality or liveness claim."
+      },
+      {
+        "code_fingerprint_version": 1,
+        "connector_class": "lmcache.integration.vllm.lmcache_mp_connector.LMCacheMPConnector",
+        "connector_role": "KVConnectorRole.SCHEDULER",
+        "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+        "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+        "functional_replacements": 1,
+        "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+        "mode": "idempotent",
+        "monotonic_ns": 175721606859762,
+        "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+        "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+        "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+        "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+        "pid": 586961,
+        "scope": "Actual fresh connector construction identity. No per-call observer, STORE/DMA/performance/quality or liveness claim."
+      }
+    ],
+    "proof_sha256": {
+      "/workspace/cacheflow-e1/results/v3/raw/v9repair2-probe-idempotent-s101-native.586961.jsonl": "f9066a5bcff79af758b4b9a01336583906731cee4df7c319307bded2c9038d04"
+    },
+    "checked_monotonic_ns": 175799493398037,
+    "mode": "idempotent",
+    "end_identity_verified": true
+  },
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "setup_sha256": "e23c73c42b26f7e3176259f1388a214cf041cdebba3920bb5fa3bff92cf1e6ab",
+  "scope": "Native constructor/effective-code bookends bracket actual client ledger. Failed missing end identity is explicit; no quality, liveness or performance conclusion."
+}

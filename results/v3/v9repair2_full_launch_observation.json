@@ -1,0 +1,132 @@
+{
+  "observed_utc": "2026-10-27T04:44:44.439057+00:00",
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "setup_sha256": "4deb7741c5fc76d106946fb876111886bc8ba0b2b60fffe26d1dd4dc8305e8b3",
+  "processes": [
+    {
+      "pid": 583515,
+      "birth": 1793074869.14,
+      "argv": [
+        "/venv/main/bin/python",
+        "-u",
+        "scripts/v9_repair_r1.py",
+        "execute"
+      ]
+    },
+    {
+      "pid": 589345,
+      "birth": 1793075413.35,
+      "argv": [
+        "/venv/main/bin/python",
+        "/venv/main/bin/vllm",
+        "serve",
+        "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c",
+        "--served-model-name",
+        "cacheflow-qwen3-4b",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--dtype",
+        "bfloat16",
+        "--max-model-len",
+        "32768",
+        "--max-num-seqs",
+        "4",
+        "--kv-cache-memory-bytes",
+        "6442450944",
+        "--generation-config",
+        "vllm",
+        "--enable-prefix-caching",
+        "--max-num-seqs",
+        "16",
+        "--max-num-batched-tokens",
+        "8192",
+        "--kv-transfer-config",
+        "{\"kv_connector\":\"LMCacheMPConnector\",\"kv_connector_module_path\":\"lmcache.integration.vllm.lmcache_mp_connector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"lmcache.mp.host\":\"127.0.0.1\",\"lmcache.mp.port\":5555}}"
+      ]
+    },
+    {
+      "pid": 589127,
+      "birth": 1793075397.6,
+      "argv": [
+        "/venv/main/bin/python",
+        "/venv/main/bin/lmcache",
+        "server",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5555",
+        "--http-host",
+        "127.0.0.1",
+        "--http-port",
+        "18080",
+        "--l1-size-gb",
+        "44.70556640625",
+        "--eviction-policy",
+        "LRU",
+        "--chunk-size",
+        "256",
+        "--supported-transfer-mode",
+        "auto"
+      ]
+    },
+    {
+      "pid": 590820,
+      "birth": 1793075531.46,
+      "argv": [
+        "/venv/main/bin/python",
+        "/venv/main/bin/uvicorn",
+        "--factory",
+        "cacheflow.v6_gateway:create_app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8100",
+        "--no-access-log"
+      ]
+    }
+  ],
+  "replay": {
+    "cmdline": [
+      "/venv/main/bin/python",
+      "-m",
+      "cacheflow.v6_replay",
+      "--trace",
+      "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+      "--url",
+      "http://127.0.0.1:8100",
+      "--run-id",
+      "v9repair2-full-reference-s901",
+      "--output",
+      "results/v3/raw/v9repair2-full-reference-s901.jsonl",
+      "--registry",
+      "results/v3/v9repair2_registry.csv",
+      "--metrics-path",
+      "results/v3/raw/v9repair2-full-reference-s901.metrics.jsonl",
+      "--mode",
+      "B2",
+      "--policy",
+      "packing_reuse",
+      "--gpu-kv-bytes",
+      "6442450944",
+      "--engine-pid",
+      "589345",
+      "--lmcache-pid",
+      "589127",
+      "--engine-request-ids",
+      "--model-name",
+      "cacheflow-qwen3-4b",
+      "--model-revision",
+      "1cfa9a7208912126459214e8b04321603b3df60c",
+      "--capture-text",
+      "--gateway-trace-path",
+      "results/v3/raw/v9repair2-full-reference-s901.gateway.jsonl"
+    ],
+    "create_time": 1793075542.86,
+    "status": "sleeping",
+    "pid": 590981
+  },
+  "probe_enabled": false,
+  "scope": "Actual controller/firstfullreference901 replay/serving processes verified live. No terminal1986outcome, native-idempotent-full success, latency or quality conclusion."
+}

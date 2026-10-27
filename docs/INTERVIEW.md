@@ -1451,3 +1451,45 @@ Watermark quan sát cho kết quảNone. Chỉ đặt watermark của fixture b�
 **Hỏi: Phase bật probe thành công thì lỗi stall đã được giải quyết chưa?**
 
 **Đáp:** Chưa. Phase này hoàn tất1.986/1.986target và60/60warmup nhưng không cài functionalfix. Probe thêmCPU/I/O, có thể đổi thời điểm lookup/load/dispatch.176allocation failures được sample trong lúc vẫn tiến triển là bình thường. Không có cửa sổ nonprogress120giây trong phase đó, nên dự đoán HOL chưa có failure window phù hợp để kiểm, chứ chưa bị bác bỏ hay chứng minh đã sửa. Phải giữ kết quả offA thất bại, hoàn tất offB và đo intervention không bật probe bằng protocol mới.
+
+### 22.33. Bản sửa native dùng `max` chính xác để làm gì?
+
+**Đáp:** Trong một lookup epoch trước allocation, adapter giữ kết quả prefix đã tìm được. Gọi lại cùng kết quảRtoken không làm prefix dài thêm. Với watermark ban đầu0, cách cộng lặp choW=n×R; cách idempotent choW=max(R₁,…,Rₙ), bằngRkhi kết quả cache ổn định. Đây là cập nhật vị trí đã biết, không phải tổng công việc mới.
+
+Không thay mọi phép cộng bằngmax. Khi STORE thực sự tạo thêm một range mới, số token trong range đó vẫn được cộng vào watermark. Lookup sau đó dùngmaxđể không làm mất một mốc lưu hợp lệ lớn hơn. Nếu các lookup prefix và STORE ranges đều căn chunk256, cảmaxvà các increment thật đều giữ alignment. GetStoreMetadata vẫn caps range theo token list, số block đã cấp và số token đã computed/scheduled; bản sửa không bỏ các giới hạn đó.
+
+Điều quan trọng là chỉ nạp bản sửa trong process mới với tracker mới. Nó không tự thu nhỏ một watermark đã sai từ trước trong process cũ. Vì vậy thí nghiệm khởi động engine/LMCache mới cho từng arm, warm riêng rồi reset. File thư viện cài đặt được giữ nguyên; một import hook riêng chỉ thay expression đã kiểm AST. Lookup None/zero, đường preempted, số external tokens trả về và các exception vẫn được kiểm riêng.
+
+**Hỏi: Hash file thư viện có đủ chứng minh native method đang dùng đúng bản sửa không?**
+
+**Đáp:** Không. File có thể không đổi nhưng method được thay trong memory khi import. Hệ đo mới compile source để dự đoán fingerprint trước thí nghiệm, rồi tại constructor thật ghi fingerprint của bound method ở cả vai trò scheduler và worker. Nó còn kiểm class/PID/birth/role/mode và giữ proof qua hai đầu request ledger. TrênGPU, reference warmup đã khớp các fingerprint dự kiến; idempotent phải tự vượt cùng gate trong process riêng.
+
+Đó là bằng chứng startup implementation cộng process continuity và proof-file continuity. Nó không phải RPC đọc lại code object tại mọi request, cũng không kiểm tensor/DMA. Một hash code cũng chưa bao gồm toàn bộ trạng thái mutable của engine. Vì vậy source/package/config pins, whole-cohort output checks và official quality vẫn cần thiết.
+
+**Hỏi: Vì sao chưa chạy ngay so latency giữa bản sửa và baseline?**
+
+**Đáp:** Trước hết phải thấy invariant native được sửa trên trường hợp có cơ hội kiểm: snapshot PREFETCHING có prefix lookup dương nhưng chưa schedule/cấp block. Hai lượt development bật probe để yêu cầu reference có inflation và candidate không có, đồng thời giữ coverage. Sau đó bốn lượt full tắt probe, chạy hai arrival seeds với thứ tự reference/candidate đảo chiều. Mỗi lượt dùng cùng600s timeout chẩn đoán và giữ đủ1.986request kể cả lỗi. Chỉ các lượt hoàn chỉnh mới được chấm official quality và đối chiếu nguồn token.
+
+Toàn bộ stage này vẫn là repair diagnostic, không phải bảng primary latency hay contribution đã đạt. Sửa bookkeeping không tự chứng minh tăng tốc, quality tương đương hoặc giải quyết stall. Native code không đổi scheduler/HOL hay epoch policy trong stage này; các so sánh cạnh tranh với bundle/DFS và full confirmation vẫn phải đo riêng.
+
+### 22.34. Bản sửa đã qua GPU validation tới đâu?
+
+**Đáp:** Hai lượt development đã hoàn tất, mỗi lượt60target và60warmup riêng, không lỗi. Bound method tại cả connector WORKER và SCHEDULER khớp fingerprint mode đã dự đoán trước; reference có0functional replacement, idempotent có1. Native samples đủ điều kiện cho reference ghi19trạng thái/19ID bị inflation, còn idempotent có18trạng thái và0ID bị inflation. Checkpoint mở lại raw, identity/source counters và chấm lại official scores. Đây là bằng chứng can thiệp thực tế cho invariant, mạnh hơn một unit test hoặc chỉ thấy counter sai ở baseline.
+
+Tuy nhiên số sample không phải mẫu request độc lập hay complete incidence: hai mode có timing khác nhau và hook chỉ sample2giây. Source transformation cùng mô tả vòng đời tracker cung cấp lập luận logic; GPU samples kiểm rằng implementation thật đang biểu hiện invariant mong muốn trong trường hợp có lookup dương trước allocation.
+
+**Hỏi: Invariant đúng thì đã nhanh hơn chưa?**
+
+**Đáp:** Chưa có kết luận đó. Trong hai lượt có probe này, new-prefill là65.650→65.778token, tăng128token; external KV thực sự được engine tiêu thụ là86.544→97.104token, tăng10.560token. Không suy từ “cache ghi được đúng hơn” hoặc “đọc CPU nhiều hơn” thành tránh compute hay giảm TTFT. Giá trị của bản sửa trước hết là semantics của watermark/STORE. Lợi ích hoặc chi phí hệ thống cần bốn lượt full không bật probe và đánh giá primary tiếp theo.
+
+F1 development là0,316750696→0,317225031, cùng4output-budget hits. Checkpoint giữ hash changes và score changes từng câu.60QA này đều answerable, nên category5 không có dữ liệu; không điền0hay tuyên bố abstention tương đương. Full1986QA sẽ chấm cả1.540answerable và446category5. Một chênh lệch mean nhỏ trên development cũng không chứng minh quality equivalence.
+
+**Hỏi: Tại sao vẫn chưa gọi đây là research contribution đủ mạnh?**
+
+**Đáp:** Bookkeeping repair là một kết quả hệ thống cần thiết, nhưng chưa phải bằng chứng thắng baseline mạnh. Còn phải hoàn tất full intervention outcomes, đo epoch optimization thật trên GPU, so với main bundle/native DFS, kiểm controls và ba arrival seeds, giữ median/fairness/quality costs rồi tái lập. Các failure và negative results trước đó không bị thay bằng những run mới đẹp hơn. Phạm vi được chứng minh tăng dần, mục tiêu nghiên cứu không được thu nhỏ thành việc test đã xanh.
+
+### 22.35. Có thể tái lập đúng native source của thí nghiệm không?
+
+**Đáp:** Sáu file native quan trọng hiện khớp hash trong installed RECORD của vLLM0.22.0 vàLMCache0.5.3. Báo cáo còn giữ hash METADATA/WHEEL/RECORD để phân biệt distribution. Đây là kiểm consistency của môi trường hiện tại, chưa phải xác minh một wheel public tải độc lập hay chạy lại trên host khác.
+
+Khi tái lập, cần kiểm cả native source hash và hook source/effective AST/code identity. Chỉ ghi version là chưa đủ để phát hiện file bị sửa trong site-packages; chỉ ghi file hash cũng chưa đủ để phát hiện hook thay method trong memory. Cần thêm input/tokenizer/model/evaluator pins, prompt regeneration, cấu hình tài nguyên và fresh-process measurement. Không gọi source namespace copy hoặc CLI plan là performance reproduction.

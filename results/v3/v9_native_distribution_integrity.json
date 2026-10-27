@@ -1,0 +1,79 @@
+{
+  "all_selected_native_files_match_installed_record": true,
+  "selected_files": 6,
+  "packages": [
+    {
+      "name": "vllm",
+      "version": "0.22.0",
+      "distribution_metadata_text_sha256": {
+        "METADATA": "b161d1711bc4f40cc1604f51012256f55c740586a53fed10f8f79f4628ad700e",
+        "WHEEL": "3195b844c385a39b126f4c647a4bee9c534d9bc9d95a3025edc887ed33933941",
+        "RECORD": "d3934bff8d48ce2f1cfde2696690a29ec2d49ff8c3a43e41c7f8601ebc8b21e6"
+      },
+      "files": [
+        {
+          "source_path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_coordinator.py",
+          "distribution_file": "vllm/v1/core/kv_cache_coordinator.py",
+          "sha256": "a5f0683483508fcfd0b2e3477940825bae5953eec715a4f704becec805484b89",
+          "recorded_hash_mode": "sha256",
+          "recorded_hash_value": "pfBoNINQj8_QsuNHeUCCW65ZU-7HFaT3BL7OyAVIS4k",
+          "matches_installed_record": true
+        },
+        {
+          "source_path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_manager.py",
+          "distribution_file": "vllm/v1/core/kv_cache_manager.py",
+          "sha256": "05e5f1f9391a959b6328cc75e3f0a6315682a593b50d54ec30c215c768c3e224",
+          "recorded_hash_mode": "sha256",
+          "recorded_hash_value": "BeXx-TkalZtjKMx14_CmMVaCpZO1DVTsMMIVx2jD4iQ",
+          "matches_installed_record": true
+        },
+        {
+          "source_path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "distribution_file": "vllm/v1/core/sched/scheduler.py",
+          "sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "recorded_hash_mode": "sha256",
+          "recorded_hash_value": "Qf8uUkyQ2apytyzXdJLrYu4qcpp3O9gjPpcPOau7WYM",
+          "matches_installed_record": true
+        },
+        {
+          "source_path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/single_type_kv_cache_manager.py",
+          "distribution_file": "vllm/v1/core/single_type_kv_cache_manager.py",
+          "sha256": "d57ad1c8e3d32db4a9d929ee201ab169305ef703b5bda9eb933d0f2f2a2299a1",
+          "recorded_hash_mode": "sha256",
+          "recorded_hash_value": "1XrRyOPTLbSp2SnuIBqxaTBe9wO1vanrkz0PLyoimaE",
+          "matches_installed_record": true
+        }
+      ]
+    },
+    {
+      "name": "lmcache",
+      "version": "0.5.3",
+      "distribution_metadata_text_sha256": {
+        "METADATA": "e27e344f5334412539b2b9679a603d7247b5ac699168c37549b9a5e8f0178663",
+        "WHEEL": "ef9002d3c99a91cb669eb5d0557ff8f4abb82a2322cfca707a6016e7e69f518f",
+        "RECORD": "58dd774d806a6ee0426959d31a6b9e573c17da31155f5ab279942b047bcef924"
+      },
+      "files": [
+        {
+          "source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "distribution_file": "lmcache/integration/vllm/lmcache_mp_connector.py",
+          "sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "recorded_hash_mode": "sha256",
+          "recorded_hash_value": "LJO4pRsFKf-P6MvmmP7mYtRhDd-sH_wl2NxBDYA5SKI",
+          "matches_installed_record": true
+        },
+        {
+          "source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "distribution_file": "lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "recorded_hash_mode": "sha256",
+          "recorded_hash_value": "dlRQzFnZskxQnMq1dumqt2GckUs84c7asQnT3R14TOk",
+          "matches_installed_record": true
+        }
+      ]
+    }
+  ],
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "source_sha256": "fc83beff53d3c20a09fefb9d907c2dc6800c7c36874436f2b86d033e2bc1ea8b",
+  "scope": "Read-only installed-distribution RECORD consistency for the6selected native files; all match. RECORD/METADATA/WHEEL text identities retained. No independently downloaded/published wheel verification, complete dependency lock/fresh-host reproduction or claim that installed-file identity alone proves runtime implementation. V9 effective method differs in memory and is verified separately by constructor proof."
+}

@@ -1,0 +1,472 @@
+{
+  "diagnostic_attempts_reopened": true,
+  "original_v8diag1_complete": false,
+  "amended_v8diag3_complete": true,
+  "performance_valid": false,
+  "research_complete": false,
+  "terminal_sha256": "a427cf0303d31e66112c0c9b416c45661e650f64561737dea2390205d5aee0e4",
+  "observer_source_sha256": "a48b2a936461245eec98d9c6a65bc6382f358a3e1146ab60fffb486651e8c9e5",
+  "target_requests": 5958,
+  "separate_warmups": 180,
+  "distinct_engines": 3,
+  "distinct_cpu_caches": 3,
+  "phases": [
+    {
+      "phase": "offA",
+      "run_id": "v8diag1-offA-target",
+      "requests": 1986,
+      "successes": 423,
+      "errors": 1563,
+      "probe_enabled": false,
+      "summary_sha256": "ebc2a338c448573bcfc8d9b11262a0c7d86b3d3de860ab075d9a12284f929030",
+      "setup_sha256": "2b54a0a017c4c70bc4c1fd06e55111cc7a86da391fa0f5e0913db34ed8f6b5cf",
+      "integrity_sha256": "6553b794c96c0cb725be5fdd98fece8dc003158b5f5263c6daadffe9e1b6031a",
+      "longest_sampled_nonprogress": {
+        "sample_count": 600,
+        "span_s": 599.062565156,
+        "max_sample_gap_s": 1.000164849,
+        "first": {
+          "cpu_percent": 26.5,
+          "gpu": {
+            "gpu_memory_util_pct": 0.0,
+            "gpu_util_pct": 0.0,
+            "power_w": 216.9,
+            "sm_clock_mhz": 1950.0,
+            "temperature_c": 61.0,
+            "vram_total_mib": 24576.0,
+            "vram_used_mib": 16057.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 133.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1251.5782477792302,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 150.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 1052.8170838446636,
+            "lmcache_mp_l1_evicted_chunks_total": 658.0,
+            "lmcache_mp_l1_memory_usage_bytes": 31029460992.0,
+            "lmcache_mp_l1_read_chunks_total": 43848.0,
+            "lmcache_mp_l1_write_chunks_total": 1480.0,
+            "lmcache_mp_num_chunks_loaded_total": 9991.0
+          },
+          "memory_available_bytes": 156743323648,
+          "process": {
+            "lmcache": {
+              "cpu_seconds": 57.230000000000004,
+              "ctx_switches": 6856,
+              "processes": 1,
+              "rss_bytes": 49012580352
+            },
+            "vllm": {
+              "cpu_seconds": 363.47999999999996,
+              "ctx_switches": 67531,
+              "processes": 3,
+              "rss_bytes": 3663007744
+            }
+          },
+          "timestamp_ns": 170657305553539,
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 2549760.0,
+            "vllm:kv_cache_usage_perc": 0.85965555148406,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 9.0,
+            "vllm:prefix_cache_hits_total": 55876848.0,
+            "vllm:prompt_tokens_cached_total": 11454400.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 2512272.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 8942128.0,
+            "vllm:prompt_tokens_source_local_compute_total": 383409.0,
+            "vllm:prompt_tokens_total": 11837809.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 383409.0,
+            "vllm:request_prefill_time_seconds_count": 483.0,
+            "vllm:request_prefill_time_seconds_sum": 315.4001649277343,
+            "vllm:request_queue_time_seconds_count": 483.0,
+            "vllm:request_queue_time_seconds_sum": 1940.9560181302368,
+            "vllm:time_to_first_token_seconds_count": 483.0,
+            "vllm:time_to_first_token_seconds_sum": 2687.455247402191
+          }
+        },
+        "last": {
+          "cpu_percent": 11.3,
+          "gpu": {
+            "gpu_memory_util_pct": 0.0,
+            "gpu_util_pct": 0.0,
+            "power_w": 29.91,
+            "sm_clock_mhz": 210.0,
+            "temperature_c": 38.0,
+            "vram_total_mib": 24576.0,
+            "vram_used_mib": 16057.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 133.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1251.5782477792302,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 150.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 1052.8170838446636,
+            "lmcache_mp_l1_evicted_chunks_total": 658.0,
+            "lmcache_mp_l1_memory_usage_bytes": 31029460992.0,
+            "lmcache_mp_l1_read_chunks_total": 43848.0,
+            "lmcache_mp_l1_write_chunks_total": 1480.0,
+            "lmcache_mp_num_chunks_loaded_total": 9991.0
+          },
+          "memory_available_bytes": 181942910976,
+          "process": {
+            "lmcache": {
+              "cpu_seconds": 80.92,
+              "ctx_switches": 14066,
+              "processes": 1,
+              "rss_bytes": 49012871168
+            },
+            "vllm": {
+              "cpu_seconds": 741.21,
+              "ctx_switches": 873843,
+              "processes": 3,
+              "rss_bytes": 3663413248
+            }
+          },
+          "timestamp_ns": 171256368118695,
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 2549760.0,
+            "vllm:kv_cache_usage_perc": 0.85965555148406,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 9.0,
+            "vllm:prefix_cache_hits_total": 55876848.0,
+            "vllm:prompt_tokens_cached_total": 11454400.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 2512272.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 8942128.0,
+            "vllm:prompt_tokens_source_local_compute_total": 383409.0,
+            "vllm:prompt_tokens_total": 11837809.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 383409.0,
+            "vllm:request_prefill_time_seconds_count": 483.0,
+            "vllm:request_prefill_time_seconds_sum": 315.4001649277343,
+            "vllm:request_queue_time_seconds_count": 483.0,
+            "vllm:request_queue_time_seconds_sum": 1940.9560181302368,
+            "vllm:time_to_first_token_seconds_count": 483.0,
+            "vllm:time_to_first_token_seconds_sum": 2687.455247402191
+          }
+        }
+      },
+      "source_counters": {
+        "vllm:request_prefill_time_seconds_sum": null,
+        "vllm:prompt_tokens_source_local_compute_total": null,
+        "vllm:time_to_first_token_seconds_count": null,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": null,
+        "vllm:request_prefill_time_seconds_count": null,
+        "vllm:time_to_first_token_seconds_sum": null,
+        "vllm:request_prefill_kv_computed_tokens_sum": null,
+        "vllm:prompt_tokens_total": null,
+        "vllm:num_preemptions_total": null,
+        "vllm:request_queue_time_seconds_sum": null,
+        "vllm:prompt_tokens_cached_total": null,
+        "vllm:prefix_cache_hits_total": null,
+        "vllm:prompt_tokens_source_local_cache_hit_total": null,
+        "vllm:request_queue_time_seconds_count": null,
+        "vllm:external_prefix_cache_hits_total": null
+      },
+      "scope": "Whole client cohort; failed source deltas may be null. No latency/quality/speedup contrast."
+    },
+    {
+      "phase": "on",
+      "run_id": "v8diag3-on-target",
+      "requests": 1986,
+      "successes": 1986,
+      "errors": 0,
+      "probe_enabled": true,
+      "summary_sha256": "6d1c562f84708aa45cc207f46c862a70b2053d7f2151d24037491f8d2a7c383d",
+      "setup_sha256": "89969ad7e656db03fa42ffe2f509995da3c133d10b971ada7d5aa37d4d58fbc6",
+      "integrity_sha256": "379a447e6a98d7f2c1e601c9ddccf48b7b77fc319ac340ac7001f163320e248a",
+      "longest_sampled_nonprogress": {
+        "sample_count": 1,
+        "span_s": 0.0,
+        "max_sample_gap_s": 0,
+        "first": {
+          "cpu_percent": 26.1,
+          "gpu": {
+            "gpu_memory_util_pct": 0.0,
+            "gpu_util_pct": 0.0,
+            "power_w": 181.53,
+            "sm_clock_mhz": 1950.0,
+            "temperature_c": 62.0,
+            "vram_total_mib": 24576.0,
+            "vram_used_mib": 16057.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 59.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 632.1671733484404,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 48.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 390.3806881657578,
+            "lmcache_mp_l1_evicted_chunks_total": 248.0,
+            "lmcache_mp_l1_memory_usage_bytes": 36540776448.0,
+            "lmcache_mp_l1_read_chunks_total": 6014.0,
+            "lmcache_mp_l1_write_chunks_total": 1216.0,
+            "lmcache_mp_num_chunks_loaded_total": 3740.0
+          },
+          "memory_available_bytes": 156910497792,
+          "process": {
+            "lmcache": {
+              "cpu_seconds": 37.37,
+              "ctx_switches": 2924,
+              "processes": 1,
+              "rss_bytes": 48996888576
+            },
+            "vllm": {
+              "cpu_seconds": 179.29,
+              "ctx_switches": 20337,
+              "processes": 4,
+              "rss_bytes": 3678355456
+            }
+          },
+          "timestamp_ns": 172133460805788,
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 981840.0,
+            "vllm:kv_cache_usage_perc": 0.6625137412971784,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 9.0,
+            "vllm:prefix_cache_hits_total": 37755360.0,
+            "vllm:prompt_tokens_cached_total": 1540864.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 952960.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 587904.0,
+            "vllm:prompt_tokens_source_local_compute_total": 321177.0,
+            "vllm:prompt_tokens_total": 1862041.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 321177.0,
+            "vllm:request_prefill_time_seconds_count": 87.0,
+            "vllm:request_prefill_time_seconds_sum": 93.97452224901645,
+            "vllm:request_queue_time_seconds_count": 87.0,
+            "vllm:request_queue_time_seconds_sum": 1710.7658077920496,
+            "vllm:time_to_first_token_seconds_count": 87.0,
+            "vllm:time_to_first_token_seconds_sum": 1884.9548575878143
+          }
+        },
+        "last": {
+          "cpu_percent": 26.1,
+          "gpu": {
+            "gpu_memory_util_pct": 0.0,
+            "gpu_util_pct": 0.0,
+            "power_w": 181.53,
+            "sm_clock_mhz": 1950.0,
+            "temperature_c": 62.0,
+            "vram_total_mib": 24576.0,
+            "vram_used_mib": 16057.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 59.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 632.1671733484404,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 48.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 390.3806881657578,
+            "lmcache_mp_l1_evicted_chunks_total": 248.0,
+            "lmcache_mp_l1_memory_usage_bytes": 36540776448.0,
+            "lmcache_mp_l1_read_chunks_total": 6014.0,
+            "lmcache_mp_l1_write_chunks_total": 1216.0,
+            "lmcache_mp_num_chunks_loaded_total": 3740.0
+          },
+          "memory_available_bytes": 156910497792,
+          "process": {
+            "lmcache": {
+              "cpu_seconds": 37.37,
+              "ctx_switches": 2924,
+              "processes": 1,
+              "rss_bytes": 48996888576
+            },
+            "vllm": {
+              "cpu_seconds": 179.29,
+              "ctx_switches": 20337,
+              "processes": 4,
+              "rss_bytes": 3678355456
+            }
+          },
+          "timestamp_ns": 172133460805788,
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 981840.0,
+            "vllm:kv_cache_usage_perc": 0.6625137412971784,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 9.0,
+            "vllm:prefix_cache_hits_total": 37755360.0,
+            "vllm:prompt_tokens_cached_total": 1540864.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 952960.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 587904.0,
+            "vllm:prompt_tokens_source_local_compute_total": 321177.0,
+            "vllm:prompt_tokens_total": 1862041.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 321177.0,
+            "vllm:request_prefill_time_seconds_count": 87.0,
+            "vllm:request_prefill_time_seconds_sum": 93.97452224901645,
+            "vllm:request_queue_time_seconds_count": 87.0,
+            "vllm:request_queue_time_seconds_sum": 1710.7658077920496,
+            "vllm:time_to_first_token_seconds_count": 87.0,
+            "vllm:time_to_first_token_seconds_sum": 1884.9548575878143
+          }
+        }
+      },
+      "source_counters": {
+        "vllm:request_prefill_time_seconds_sum": 1277.872172451549,
+        "vllm:prompt_tokens_source_local_compute_total": 653109.0,
+        "vllm:time_to_first_token_seconds_count": 1986.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 6972000.0,
+        "vllm:request_prefill_time_seconds_count": 1986.0,
+        "vllm:time_to_first_token_seconds_sum": 4216.499116659164,
+        "vllm:request_prefill_kv_computed_tokens_sum": 653109.0,
+        "vllm:prompt_tokens_total": 50522325.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_queue_time_seconds_sum": 1087.6286987137864,
+        "vllm:prompt_tokens_cached_total": 49869216.0,
+        "vllm:prefix_cache_hits_total": 50851376.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 42897216.0,
+        "vllm:request_queue_time_seconds_count": 1986.0,
+        "vllm:external_prefix_cache_hits_total": 6972000.0
+      },
+      "scope": "Whole client cohort; failed source deltas may be null. No latency/quality/speedup contrast."
+    },
+    {
+      "phase": "offB",
+      "run_id": "v8diag3-offB-target",
+      "requests": 1986,
+      "successes": 1986,
+      "errors": 0,
+      "probe_enabled": false,
+      "summary_sha256": "33238528ab2c210c2a011edb47f94f35072d4658d6023861982d23e77fecdf7c",
+      "setup_sha256": "8c18817c3d9739525f6b9454f318e7735385925e21a4657a9ceed0454910aba7",
+      "integrity_sha256": "e1e25f03bb955f864d18b80c03df27145316cc0fe5a77921cc0539aa516544d3",
+      "longest_sampled_nonprogress": {
+        "sample_count": 2,
+        "span_s": 1.000072234,
+        "max_sample_gap_s": 1.000072234,
+        "first": {
+          "cpu_percent": 18.2,
+          "gpu": {
+            "gpu_memory_util_pct": 0.0,
+            "gpu_util_pct": 0.0,
+            "power_w": 193.52,
+            "sm_clock_mhz": 1950.0,
+            "temperature_c": 61.0,
+            "vram_total_mib": 24576.0,
+            "vram_used_mib": 16057.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 184.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1803.528749520771,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 217.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 1444.0724331536678,
+            "lmcache_mp_l1_evicted_chunks_total": 859.0,
+            "lmcache_mp_l1_memory_usage_bytes": 37748736000.0,
+            "lmcache_mp_l1_read_chunks_total": 67595.0,
+            "lmcache_mp_l1_write_chunks_total": 1859.0,
+            "lmcache_mp_num_chunks_loaded_total": 14147.0
+          },
+          "memory_available_bytes": 172075356160,
+          "process": {
+            "lmcache": {
+              "cpu_seconds": 68.64,
+              "ctx_switches": 7364,
+              "processes": 1,
+              "rss_bytes": 49015848960
+            },
+            "vllm": {
+              "cpu_seconds": 506.44,
+              "ctx_switches": 84465,
+              "processes": 4,
+              "rss_bytes": 3708223488
+            }
+          },
+          "timestamp_ns": 173497819777382,
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 3639648.0,
+            "vllm:kv_cache_usage_perc": 0.6683766947599854,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 9.0,
+            "vllm:prefix_cache_hits_total": 58163984.0,
+            "vllm:prompt_tokens_cached_total": 18249712.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 3610512.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 14639200.0,
+            "vllm:prompt_tokens_source_local_compute_total": 479042.0,
+            "vllm:prompt_tokens_total": 18728754.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 479042.0,
+            "vllm:request_prefill_time_seconds_count": 762.0,
+            "vllm:request_prefill_time_seconds_sum": 555.6633007867786,
+            "vllm:request_queue_time_seconds_count": 762.0,
+            "vllm:request_queue_time_seconds_sum": 2133.4739938793937,
+            "vllm:time_to_first_token_seconds_count": 762.0,
+            "vllm:time_to_first_token_seconds_sum": 3425.146701335907
+          }
+        },
+        "last": {
+          "cpu_percent": 25.4,
+          "gpu": {
+            "gpu_memory_util_pct": 0.0,
+            "gpu_util_pct": 0.0,
+            "power_w": 164.53,
+            "sm_clock_mhz": 1950.0,
+            "temperature_c": 61.0,
+            "vram_total_mib": 24576.0,
+            "vram_used_mib": 16057.0
+          },
+          "lmcache": {
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_count": 185.0,
+            "lmcache_mp_l0_l1_load_throughput_GB_per_second_sum": 1810.8484527036262,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_count": 217.0,
+            "lmcache_mp_l0_l1_store_throughput_GB_per_second_sum": 1444.0724331536678,
+            "lmcache_mp_l1_evicted_chunks_total": 859.0,
+            "lmcache_mp_l1_memory_usage_bytes": 37899730944.0,
+            "lmcache_mp_l1_read_chunks_total": 68621.0,
+            "lmcache_mp_l1_write_chunks_total": 1859.0,
+            "lmcache_mp_num_chunks_loaded_total": 14261.0
+          },
+          "memory_available_bytes": 166638014464,
+          "process": {
+            "lmcache": {
+              "cpu_seconds": 68.87,
+              "ctx_switches": 7383,
+              "processes": 1,
+              "rss_bytes": 49015848960
+            },
+            "vllm": {
+              "cpu_seconds": 507.15,
+              "ctx_switches": 85123,
+              "processes": 4,
+              "rss_bytes": 3708223488
+            }
+          },
+          "timestamp_ns": 173498819849616,
+          "vllm": {
+            "vllm:external_prefix_cache_hits_total": 3639648.0,
+            "vllm:kv_cache_usage_perc": 0.6683766947599854,
+            "vllm:num_preemptions_total": 0.0,
+            "vllm:num_requests_running": 0.0,
+            "vllm:num_requests_waiting": 9.0,
+            "vllm:prefix_cache_hits_total": 58176800.0,
+            "vllm:prompt_tokens_cached_total": 18249712.0,
+            "vllm:prompt_tokens_source_external_kv_transfer_total": 3610512.0,
+            "vllm:prompt_tokens_source_local_cache_hit_total": 14639200.0,
+            "vllm:prompt_tokens_source_local_compute_total": 479042.0,
+            "vllm:prompt_tokens_total": 18728754.0,
+            "vllm:request_prefill_kv_computed_tokens_sum": 479042.0,
+            "vllm:request_prefill_time_seconds_count": 762.0,
+            "vllm:request_prefill_time_seconds_sum": 555.6633007867786,
+            "vllm:request_queue_time_seconds_count": 762.0,
+            "vllm:request_queue_time_seconds_sum": 2133.4739938793937,
+            "vllm:time_to_first_token_seconds_count": 762.0,
+            "vllm:time_to_first_token_seconds_sum": 3425.146701335907
+          }
+        }
+      },
+      "source_counters": {
+        "vllm:request_prefill_time_seconds_sum": 1289.3522337873874,
+        "vllm:prompt_tokens_source_local_compute_total": 808277.0,
+        "vllm:time_to_first_token_seconds_count": 1986.0,
+        "vllm:prompt_tokens_source_external_kv_transfer_total": 6950240.0,
+        "vllm:request_prefill_time_seconds_count": 1986.0,
+        "vllm:time_to_first_token_seconds_sum": 4572.178739070892,
+        "vllm:request_prefill_kv_computed_tokens_sum": 808277.0,
+        "vllm:prompt_tokens_total": 50522325.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_queue_time_seconds_sum": 1395.759803324996,
+        "vllm:prompt_tokens_cached_total": 49714048.0,
+        "vllm:prefix_cache_hits_total": 52063632.0,
+        "vllm:prompt_tokens_source_local_cache_hit_total": 42763808.0,
+        "vllm:request_queue_time_seconds_count": 1986.0,
+        "vllm:external_prefix_cache_hits_total": 6950240.0
+      },
+      "scope": "Whole client cohort; failed source deltas may be null. No latency/quality/speedup contrast."
+    }
+  ],
+  "scope": "Cross-namespace offA/on/offB chronology explicitly retains offA collector/engine failure and diag2 preflight failure. On/offB complete, offAfailed; no deterministic probe-cause, deadlock fix, hidden retry, quality equivalence, DMA or primary performance result. Original V6full still10complete/1failed/19unexecuted. Native intervention requires its own registered evidence."
+}

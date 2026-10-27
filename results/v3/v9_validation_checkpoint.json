@@ -1,0 +1,36 @@
+{
+  "verified_utc": "2026-10-27T04:44:44.418621+00:00",
+  "full_test_run": {
+    "command": "PYTHONPATH=src /venv/main/bin/python -m pytest -q",
+    "passed": 292,
+    "duration_s": 20.72,
+    "scope": "Actual exit0 after startup metadata prefix correction; no GPU success inferred from tests"
+  },
+  "target_test_run": {
+    "command": "PYTHONPATH=src /venv/main/bin/python -m pytest -q tests/test_v9_host_metadata_r1.py tests/test_v9_lookup_watermark.py tests/test_v9_native_identity.py tests/test_v9_repair_pipeline.py",
+    "passed": 16,
+    "duration_s": 0.52
+  },
+  "syntax_checked": [
+    "scripts/v9_serve_vllm.sh",
+    "scripts/v9_repair_r1.py",
+    "scripts/v9_repair_capture_r1.py",
+    "scripts/v9_audit_repair_r1.py"
+  ],
+  "test_source_sha256": {
+    "tests/test_v9_lookup_watermark.py": "b529cea036d33561569e76d55fd5f9cfd5bd300621d053685b8120a83aae5936",
+    "tests/test_v9_native_identity.py": "17614014c208fffa50ab10f23244c61c2ddf3989c5ff5d50f082774497fd2251",
+    "tests/test_v9_repair_pipeline.py": "c365fb3f527f14c57019f8679d2a2e6e097cf61da5bfd14e8495df829fb3f2b3",
+    "tests/test_v9_host_metadata_r1.py": "c2bf2c0cba81a99b02baa04abc95cedc57e54d46abf07567649432ff8857502f"
+  },
+  "evidence_sha256": {
+    "results/v3/v8_bracketed_diagnostic_closure.json": "7e470b1fc66b85b4079d1bf9c07d99fe3799b6fb84fd251fda7a2464d7ff95bf",
+    "results/v3/v9repair1_registration.json": "dd5d630ac0d0090d8ed0781729a2dc7b2e8e5d929d0a79551206943223e6eaa4",
+    "results/v3/v9repair1_terminal.json": "ca775a562810073e7227a3611736beaacdfa626a8a5ba100a6ea92e13963334b",
+    "results/v3/v9repair1_failure.json": "5fc09eda227a217c44580524320be1c54d7f13e0d5fc615506d5c469ce2aa3eb",
+    "results/v3/v9repair2_registration.json": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+    "results/v3/v9repair2_probe_checkpoint.json": "605fb225320004de270daa496fe616623343bded3daf55b039feeb0158dd8e81",
+    "results/v3/v9_native_distribution_integrity.json": "aaab3095d8060b150be6d56203e0426b40beaf1d36b3cb5c68699fc3b3d9d929"
+  },
+  "scope": "Actual292CPUtests and two completed native GPU probe arms checked separately. Four unprofiled full arms/live study remain incomplete; no research completion, primary performance, quality equivalence or liveness fix claim."
+}

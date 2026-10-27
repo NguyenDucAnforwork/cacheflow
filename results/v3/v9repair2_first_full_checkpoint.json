@@ -1,0 +1,18 @@
+{
+  "observed_utc": "2026-10-27T04:51:52.926481+00:00",
+  "complete_six_arm_study": false,
+  "performance_valid": false,
+  "run_id": "v9repair2-full-reference-s901",
+  "requests": 1986,
+  "errors": 0,
+  "per_run_audit_sha256": "7618ca8a71fe9ba2290eb31cc163674d4c74509875dd45ee0ff17db265478546",
+  "quality_sha256": "d1e281bcc4069b9857d74a8910a40460ab3e552753592a6f0ac8b74de64bfa50",
+  "answerable_f1": 0.3181064222463466,
+  "category5": {
+    "n": 446,
+    "mean": 0.5
+  },
+  "output_budget_hits": 17,
+  "new_prefill": 700453.0,
+  "scope": "First unprofiled full reference diagnostic complete; no same-seed idempotent full pair yet, no independent six-arm terminal audit or performance/fix/research completion claim."
+}

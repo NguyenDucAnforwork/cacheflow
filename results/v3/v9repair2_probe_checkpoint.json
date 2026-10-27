@@ -1,0 +1,148 @@
+{
+  "complete_two_arm_probe_check": true,
+  "complete_six_arm_study": false,
+  "performance_valid": false,
+  "research_complete": false,
+  "registration_sha256": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+  "auditor_source_sha256": "38c47d7c04b48e26307c93536026617ba3ea5b1a87a198698bd5542d738b4e58",
+  "target_requests": 120,
+  "separate_warmups": 120,
+  "unique_qa": 60,
+  "runs": [
+    {
+      "run_id": "v9repair2-probe-reference-s101",
+      "mode": "reference",
+      "audit_sha256": "51aba7d864437eecd2c635fdfdddce08b56cd895881ee4ab9fa28664dabd6097",
+      "quality_sha256": "3bceb2e16627a3445debfb963c9cb3015712860a4f1cd672262a73f6002b3843",
+      "probe": {
+        "eligible_sampled_prefetch_states": 19,
+        "distinct_inflated_ids": 19,
+        "first_inflation_examples": [
+          {
+            "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-26-q012-0-8f1556aa",
+            "pid": 584358,
+            "monotonic_ns": 175541832787260,
+            "tracker": {
+              "allocated_blocks_per_group": {},
+              "lmcache_hit_tokens": 19456,
+              "num_scheduled_tokens": 0,
+              "num_stored_tokens": 3813376,
+              "state": "PREFETCHING",
+              "vllm_hit_tokens": 48
+            },
+            "watermark_over_lookup_prefix_ratio": 196.0
+          },
+          {
+            "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-26-q015-0-bf85b79d",
+            "pid": 584358,
+            "monotonic_ns": 175547848261855,
+            "tracker": {
+              "allocated_blocks_per_group": {},
+              "lmcache_hit_tokens": 19456,
+              "num_scheduled_tokens": 0,
+              "num_stored_tokens": 3502080,
+              "state": "PREFETCHING",
+              "vllm_hit_tokens": 48
+            },
+            "watermark_over_lookup_prefix_ratio": 180.0
+          },
+          {
+            "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-41-q006-0-87172e68",
+            "pid": 584358,
+            "monotonic_ns": 175533802012972,
+            "tracker": {
+              "allocated_blocks_per_group": {},
+              "lmcache_hit_tokens": 28928,
+              "num_scheduled_tokens": 0,
+              "num_stored_tokens": 5178112,
+              "state": "PREFETCHING",
+              "vllm_hit_tokens": 8928
+            },
+            "watermark_over_lookup_prefix_ratio": 179.0
+          },
+          {
+            "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-26-q008-0-9dfd9316",
+            "pid": 584358,
+            "monotonic_ns": 175535805200357,
+            "tracker": {
+              "allocated_blocks_per_group": {},
+              "lmcache_hit_tokens": 19456,
+              "num_scheduled_tokens": 0,
+              "num_stored_tokens": 3385344,
+              "state": "PREFETCHING",
+              "vllm_hit_tokens": 48
+            },
+            "watermark_over_lookup_prefix_ratio": 174.0
+          },
+          {
+            "request_id": "cmpl-v9repair2-probe-reference-s101-warm-conv-41-q015-0-842ffcf0",
+            "pid": 584358,
+            "monotonic_ns": 175549853841428,
+            "tracker": {
+              "allocated_blocks_per_group": {},
+              "lmcache_hit_tokens": 28928,
+              "num_scheduled_tokens": 0,
+              "num_stored_tokens": 4975616,
+              "state": "PREFETCHING",
+              "vllm_hit_tokens": 8928
+            },
+            "watermark_over_lookup_prefix_ratio": 172.0
+          }
+        ],
+        "counts": {
+          "hook_ready": 6,
+          "connector_metadata": 37,
+          "scheduler": 37,
+          "connector_worker": 37,
+          "allocation_failure": 25
+        },
+        "raw_sha256": {
+          "results/v3/raw/v9repair2-probe-reference-s101-probe.584094.jsonl": "538b52bc10d33887d291a399f6d17aa5e429402b16896c2c9062bf46d36451ab",
+          "results/v3/raw/v9repair2-probe-reference-s101-probe.584358.jsonl": "85e0a4a89224b82895af7e4ec462f3e180959bfdfc3b481cf1ca39b685115a36"
+        },
+        "scope": "Sampled native metadata across separate warm/target; counts are not total incidence, uniqueQA, STOREbytes, DMA or speed."
+      },
+      "answerable_f1": 0.31675069596061106,
+      "category5": null,
+      "output_budget_hits": 4,
+      "new_prefill": 65650.0,
+      "external_consumed": 86544.0
+    },
+    {
+      "run_id": "v9repair2-probe-idempotent-s101",
+      "mode": "idempotent",
+      "audit_sha256": "56df397d1c9c61841598e17caa657944b1ed0cc2e8d15c5bd408f70b3acbf939",
+      "quality_sha256": "0c4f5232140eb981e9cc54eff8af7c275d34610dcf0e34d5c9c8c6b3a42621d3",
+      "probe": {
+        "eligible_sampled_prefetch_states": 18,
+        "distinct_inflated_ids": 0,
+        "first_inflation_examples": [],
+        "counts": {
+          "hook_ready": 6,
+          "connector_metadata": 37,
+          "scheduler": 37,
+          "connector_worker": 37,
+          "allocation_failure": 25
+        },
+        "raw_sha256": {
+          "results/v3/raw/v9repair2-probe-idempotent-s101-probe.586709.jsonl": "123aa1c76e9ae370ccc3f755ba606e83c909aaa93893d7dbf02d5878806825a6",
+          "results/v3/raw/v9repair2-probe-idempotent-s101-probe.586961.jsonl": "0ab8f533526842077ff5557984e93f58cbbff493009c4ca07299fd3557bbb70a"
+        },
+        "scope": "Sampled native metadata across separate warm/target; counts are not total incidence, uniqueQA, STOREbytes, DMA or speed."
+      },
+      "answerable_f1": 0.3172250307045748,
+      "category5": null,
+      "output_budget_hits": 4,
+      "new_prefill": 65778.0,
+      "external_consumed": 97104.0
+    }
+  ],
+  "answerable_f1_delta": 0.00047433474396374464,
+  "output_hash_changes": 3,
+  "per_question_score_changes": {
+    "improved": 1,
+    "decreased": 1,
+    "equal": 58
+  },
+  "scope": "Two actual profiled development arms/60already-exposed answerableQA only; no category5 test. Native constructor/code identities, whole warm/target ledgers and source accounting reopened; official scores recomputed. Candidate has zero inflation in eligible sampled states versus a positive reference control. Not complete incidence, production-liveness, STORE/DMA bytes, quality equivalence, latency gain, complete four-full comparison or competitive contribution."
+}

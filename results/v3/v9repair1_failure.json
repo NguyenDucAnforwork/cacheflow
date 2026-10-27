@@ -1,0 +1,5 @@
+{
+  "complete": false,
+  "error": "RuntimeError('AssertionError() []')",
+  "scope": "Retained native repair failure; no implicit retry."
+}

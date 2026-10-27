@@ -1,0 +1,1 @@
+V9 native repair diagnostic only;600s timeouts. Excluded from all primary latency/quality comparisons, even if every request succeeds.

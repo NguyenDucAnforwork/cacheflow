@@ -1,0 +1,252 @@
+{
+  "kind": "native_watermark_repair_diagnostic_not_epoch_or_primary_study",
+  "registered_utc": "2026-10-27T04:21:10.863187+00:00",
+  "wait_mode": "already_terminal_verified_process_scan",
+  "terminal_sha256": "a427cf0303d31e66112c0c9b416c45661e650f64561737dea2390205d5aee0e4",
+  "parent_registration_sha256": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+  "protocol_sha256": "309bd5d38cdb49b402f03c9de85fa6548d84f067764f41f97b941bf589794c53",
+  "actions": [
+    {
+      "run_id": "v9repair2-probe-reference-s101",
+      "stage": "probe",
+      "mode": "reference",
+      "seed": 101,
+      "probe": true,
+      "proof_label": "v9repair2-probe-reference-s101-native",
+      "probe_label": "v9repair2-probe-reference-s101-probe",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "requests": 60
+    },
+    {
+      "run_id": "v9repair2-probe-idempotent-s101",
+      "stage": "probe",
+      "mode": "idempotent",
+      "seed": 101,
+      "probe": true,
+      "proof_label": "v9repair2-probe-idempotent-s101-native",
+      "probe_label": "v9repair2-probe-idempotent-s101-probe",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-dev4b3-qps4-s101.jsonl",
+      "requests": 60
+    },
+    {
+      "run_id": "v9repair2-full-reference-s901",
+      "stage": "full",
+      "mode": "reference",
+      "seed": 901,
+      "probe": false,
+      "proof_label": "v9repair2-full-reference-s901-native",
+      "probe_label": "v9repair2-full-reference-s901-probe",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+      "requests": 1986
+    },
+    {
+      "run_id": "v9repair2-full-idempotent-s901",
+      "stage": "full",
+      "mode": "idempotent",
+      "seed": 901,
+      "probe": false,
+      "proof_label": "v9repair2-full-idempotent-s901-native",
+      "probe_label": "v9repair2-full-idempotent-s901-probe",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz",
+      "requests": 1986
+    },
+    {
+      "run_id": "v9repair2-full-idempotent-s902",
+      "stage": "full",
+      "mode": "idempotent",
+      "seed": 902,
+      "probe": false,
+      "proof_label": "v9repair2-full-idempotent-s902-native",
+      "probe_label": "v9repair2-full-idempotent-s902-probe",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+      "requests": 1986
+    },
+    {
+      "run_id": "v9repair2-full-reference-s902",
+      "stage": "full",
+      "mode": "reference",
+      "seed": 902,
+      "probe": false,
+      "proof_label": "v9repair2-full-reference-s902-native",
+      "probe_label": "v9repair2-full-reference-s902-probe",
+      "policy": "packing_reuse",
+      "trace": "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz",
+      "requests": 1986
+    }
+  ],
+  "source_sha256": {
+    "scripts/sglang_profile_hooks/sitecustomize.py": "186294114ea432ccd1f7fea64a070be48b1dba243faa9884a8b62eb5966d6075",
+    "scripts/v2_extract_gateway.py": "376735df82b5cf4ab240ec983f9172c5169cd83981bce69b06571505f221231e",
+    "scripts/v2_preflight.py": "abfff365a9af71d57c0479ceced1d6d6c458932de91e11cf6347c4714c90898e",
+    "scripts/v2_reset.sh": "b1a83c29438a84fc6eba1c2b7b4e5447eb964d0f4a8956ea6a182a2e677e8d06",
+    "scripts/v2_start.sh": "2e4840e09180d20d568cf0ee7d5f7a7c0e4ee6c5d09d13162fb98559f1f7d164",
+    "scripts/v3_model.py": "8768571e71c61c635934d51708d9c2add24d19a69809b4d9975b4e0bf84a41e1",
+    "scripts/v3_serve_sglang.sh": "88e4dad6b05796c3afa493759f15d6388d89c9b821bc42baa1e8c4a28374ef80",
+    "scripts/v3_sglang_runtime.py": "d2b86ece75e170c5d737405cb2e04136c23301c716fdee0c72851cc12e866739",
+    "scripts/v4_services.py": "db097bd99a7602bf4ac9a3fa12a5eb51f2e8dc982441ec8dfe17deedc83c5556",
+    "scripts/v5_full_histograms.py": "37ad9a1d2c917f7bcaecebb3c612ca45151ba991f42c262d1d25e925093c4fc8",
+    "scripts/v6_freeze_full.py": "cf9f196e50cd2ac9481f1f9566a4904a8c6e0e7f8236ac27cfd6130a459031fd",
+    "scripts/v6_full.py": "2af66f1826ee24e4c3014f5dc1fda29fb7f8116864ad1bf6fa6aa01c770827b0",
+    "scripts/v6_full_input_preflight.py": "1b608f56707846bf5ca07ca3176508cb35936c1edc1d2320ddac924741eb78fe",
+    "scripts/v6_full_plan.py": "2fd7f89e10cb16f7b324fb6cdb0ff0ace615e51f9fead4e5780891dc581095cd",
+    "scripts/v6_input_oracle.py": "7b68d52b32ba78294167b6b252a853717e0098a82508b1776825ae0da8197d40",
+    "scripts/v6_native_metrics.py": "79dfcc5fae25256a208a055a22528bd9888d56a50471f52619e0260a941dceea",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "scripts/v6_run.sh": "799b3748b59d99918aa3526aca8b524b84794fa6b34e79f3ec22f16b3d99e300",
+    "scripts/v6_runtime.py": "ad07e72ddbe2f2805d4a7b85bcbbcd354ac4822ab68fdd2d07389472ff8f615b",
+    "scripts/v6_serve_gateway.sh": "02e467ffe2807f0acbc6c1c8feb8e4f1e824abd0a67c94d579ed32f4be2ec424",
+    "scripts/v6_sglang_bench.py": "ff51ceff928dfb933d4cb242adc32f4e694465783e6fb4ac0dc1e15461916295",
+    "scripts/v6_token_fingerprints.py": "cd3945f32ee24c908bbf35a0b442c64e67025bdc105a19728f12945eba19cbb7",
+    "scripts/v6_trace_hashes.py": "2942e34c564721ddbaafaf6441b0e4596fb8c37edaca7c347f926c1a4b9e7c00",
+    "scripts/v6_v2_run.sh": "3bc9bf82aa548034beab6579298ed8a3300614a795cc72f67fa26047e596cf0e",
+    "scripts/v7_observe_full_liveness.py": "ad80f412f37a4c881d6fecc7f562f17fde4b039a91ade7138abee37e155a2724",
+    "scripts/v8_audit_failed_full.py": "fd415da2f535f4eaf85f2dc6dcb2502711046bd2fd6b1c5fee5b2bc6e56d5c0e",
+    "scripts/v8_diagnostic_capture.py": "525d7d82c778cb32b5057cf0deec6c6254dc6252e29ffcf0aa5647648e487c5a",
+    "scripts/v8_full_liveness_diagnostic.py": "eb9d1374c9bf3d32e324dc6f80a3568ff38906ae4d9af316b90ceba46aea4c18",
+    "scripts/v8_serve_vllm_probe.sh": "4c187a1d53b3c5c1b614200169a45bdb8f6d191d444e9f95fa58f0c4926d089c",
+    "scripts/v8_vllm_probe_hooks/sitecustomize.py": "79534b68db19c4157b96093fc1de3ca9c50e4cd3271c9d5c2ad2b3d573b28f39",
+    "src/cacheflow/collect_metrics.py": "405c632abdf0b53e0dde1419955072a7b3f5bc94021a53829131a82b52eee7e9",
+    "src/cacheflow/locomo.py": "599855840e4d59ab86cd3f88c6dd0b869fb4d1f6aec1970c4176d611494d559f",
+    "src/cacheflow/v2_metrics.py": "e207097e327a1d43b0cdac55caf91f1f41ec8a617e4f74e99a0c8197990080d9",
+    "src/cacheflow/v4_sglang_delayhit.py": "e9e4c5da52444a8aebb695ec8ae95d1526c1e86f19df989afb36a5d460de5c3c",
+    "src/cacheflow/v6_gateway.py": "bb50ad4b1ddf7ea98101ae31185050bf9db0d66583a7f21c0ffc5f5432831573",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v6_replay.py": "ee31f9a31493766cfa93cafd56c2490e902b2bf329faa299d3ba210e79f73f46",
+    "src/cacheflow/v8_liveness_probe.py": "1c7721b86b23b1b214cd2d8eac123132b2073c4e2e92a2a1236f34ecee24faae",
+    "scripts/v8_diag3.py": "43f6dbe48089482d9f4e4dcc6aed185b4f3aa2754e634bd0f6bd1219e70280cf",
+    "scripts/v8_diag3_capture.py": "8777e0d626870a9832e7c7f11d3ef5770b1b2744dcb2cd74f327318026bfa8e4",
+    "scripts/v8_diag3_serve_vllm.sh": "3ca53210e057fd92c5b54133f7006b5ee757dcf933a9b78e3c5ada6c355a9174",
+    "src/cacheflow/v9_lookup_watermark.py": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+    "scripts/v9_native_hooks/sitecustomize.py": "12eeecc96d858d2bcedf2d930e8595ed34f3b1d70485879fc52f4dd198561640",
+    "scripts/v9_serve_vllm.sh": "f0066611f7b53884183d8366aeeddf82c8d0fb8c0e504d1b6198929417c849be",
+    "scripts/v9_native_identity.py": "3301d82b0ea8d4d5869b154c94329a96df728b86acdaf1826d0c59a9926a1ec3",
+    "scripts/v9_repair_capture.py": "d42aeceacbf2dafc7afabe0b2e244f0f2d1292f669ddb98a088027827bf11d76",
+    "scripts/v9_repair.py": "02c9ef6b19d2a0f23d0f7e1953478a6832eb383a96c27822c3a07d32087ffd63",
+    "scripts/v8_observe_lookup_watermark.py": "0c72f070a2f9bd1cfe48f7c2fce0d78f3be692d0f3a037940d242bdbef377897",
+    "scripts/v6_main_resources.py": "51c0a0f3cf32dc624272896794b59cfd58c1ccee05896e8eaaace97134537544",
+    "scripts/v2_quality_audit.py": "71da2d14bd262d9c2197fbcf791969137cd8020bc2caa054f30037b9a25845eb",
+    "scripts/v9_audit_repair.py": "00e156199e3d9640fca87e45afd8f1ad04a6e77961f27bc0eb9ba1ea907e7e68",
+    "scripts/v9_repair_capture_r1.py": "af619d39e0f98f2c2bbe09a0177a8ed341eb89832403a4b9476647205fc54857",
+    "scripts/v9_repair_r1.py": "0f1c95ee9af9de7f0834c5b8b350e0884adf5e1c886331d62cab84d93710d38a",
+    "scripts/v9_audit_repair_r1.py": "8230fcd0a3cbe5330374fe250d9f48792cd7e232b39254385bbdecf8204ba3e7"
+  },
+  "native_source_sha256": {
+    "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+    "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_coordinator.py": "a5f0683483508fcfd0b2e3477940825bae5953eec715a4f704becec805484b89",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/kv_cache_manager.py": "05e5f1f9391a959b6328cc75e3f0a6315682a593b50d54ec30c215c768c3e224",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/single_type_kv_cache_manager.py": "d57ad1c8e3d32db4a9d929ee201ab169305ef703b5bda9eb933d0f2f2a2299a1"
+  },
+  "native_method_expected": {
+    "reference": {
+      "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+      "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+      "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+      "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+      "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+      "code_fingerprint_version": 1,
+      "mode": "reference",
+      "effective_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+      "effective_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+      "functional_replacements": 0
+    },
+    "idempotent": {
+      "native_source_path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+      "native_source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+      "installer_source_sha256": "072203d26897c2dbf68517adc14fa2fa624508f4bd1b36a611b5fde754d71026",
+      "original_method_code_sha256": "d833ea799dfc0c91941f3eacab94ab85fc9ed18c32ee0c95439bdf108b1bf77a",
+      "original_method_ast_sha256": "3d228c2bbe105a4f724618e0ae8791bbad46988f026af05de9821c5b7e125743",
+      "code_fingerprint_version": 1,
+      "mode": "idempotent",
+      "effective_method_code_sha256": "87f06e76d7a7e52da25646fff30324fe1adc2c23b7efca5823bd2fff342f38cf",
+      "effective_method_ast_sha256": "2772ae44a2e6a0fa848a4baff071c0a7e4a164bfae6ab6f59cb44bb7b2e9980a",
+      "functional_replacements": 1
+    }
+  },
+  "capture_transformation": {
+    "parent_source_sha256": "525d7d82c778cb32b5057cf0deec6c6254dc6252e29ffcf0aa5647648e487c5a",
+    "changes": [
+      {
+        "old": "rid.startswith('v8diag1-')",
+        "new": "rid.startswith('v9repair2-')"
+      },
+      {
+        "old": "BASE/'v8diag1_registry.csv'",
+        "new": "BASE/'v9repair2_registry.csv'"
+      },
+      {
+        "old": "    for name,old in [('cacheflow_v2_vllm',engine),('cacheflow_v2_lmcache',lmcache),('cacheflow_v2_gateway',gateway)]:\n        now=process(name);assert now['pid']==old['pid'] and now['birth']==old['birth'] and now['argv']==old['argv']",
+        "new": "    end_summary=json.loads(raw.with_suffix('.summary.json').read_text())\n    process_bookends=bookends([('cacheflow_v2_vllm',engine),('cacheflow_v2_lmcache',lmcache),('cacheflow_v2_gateway',gateway)],end_summary)"
+      },
+      {
+        "old": "status_counts=statuses,gateway_closed_records=len(gateway_rows)",
+        "new": "status_counts=statuses,process_bookends=process_bookends,gateway_closed_records=len(gateway_rows)"
+      },
+      {
+        "old": "V8 liveness diagnostic only;600s timeouts.",
+        "new": "V9 native repair diagnostic only;600s timeouts."
+      }
+    ],
+    "effective_ast_sha256": "1830abc2143bb232d3150f0c9cfacdff40037017626b1d78a8fa9178f29984e0"
+  },
+  "model_artifact_sha256": {
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model-00001-of-00003.safetensors": "328a91d3122359d5547f9d79521205bc0a46e1f79a792dfe650e99fc2d651223",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model-00002-of-00003.safetensors": "6cd087b316306a68c562436b5492edbcf6e16c6dba3a1308279caa5a58e21ca5",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model-00003-of-00003.safetensors": "e4bf436957184f4eeb86a80e9db394503f1f56446b2e6b7edeac5b81470f4ca1",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/config.json": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json": "6dc0981b8829fead746441f68f38f24c5ca4a3a66351f652c26c6df0efc43ab2",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "/workspace/.hf_home/hub/models--Qwen--Qwen3-4B/snapshots/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "main_package_versions": {
+    "vllm": "0.22.0",
+    "lmcache": "0.5.3",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.6.2",
+    "tokenizers": "0.22.2",
+    "httpx": "0.28.1",
+    "numpy": "2.2.6",
+    "nltk": "3.9.2",
+    "regex": "2026.9.29",
+    "PyYAML": "6.0.3",
+    "psutil": "7.2.2"
+  },
+  "input_sha256": {
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.gz": "f3f5dc7b6e339af198c85f9a5626100a9315badc1d8f1109a4bb770efa956323",
+    "data/processed/v3/v5-dev4b3-qps4-s101.jsonl": "69803faa79336894bc218298206c0db09398509dcb9ea21a144ff6c99c65904a",
+    "data/processed/v3/v5-full4b-qps4-s901.jsonl.gz": "77c6424cc5730cd57d63a7b885ce3803a8f930d665adab2326d7639ce965cd61",
+    "data/processed/v3/v5-full4b-qps4-s902.jsonl.manifest.json": "176f0c70fbd4fb47946013013ceb93952e48a21babbfe783dd606e2b5341efdf",
+    "data/processed/v3/v5-full4b-qps4-s901.jsonl.manifest.json": "4d8df5cb7a8753f30b80760d69b93d00b3218003d2bad7d1f13493058527c68b",
+    "data/processed/v3/v5-dev4b3-qps4-s101.manifest.json": "e1f7b492d18ad8efda201aeaca437ba4a107aa85ef277091375dd443626f3cc8"
+  },
+  "config_original": {
+    "cacheflow_v2_gateway": "[program:cacheflow_v2_gateway]\nenvironment=PROC_NAME=\"%(program_name)s\",CACHEFLOW_ROOT=\"/workspace/cacheflow-e1\"\ncommand=/workspace/cacheflow-e1/scripts/v2_serve_gateway.sh\nautostart=false\nautorestart=unexpected\nexitcodes=0\nstartsecs=5\nstopasgroup=true\nkillasgroup=true\nstopsignal=TERM\nstopwaitsecs=30\nstdout_logfile=/dev/stdout\nredirect_stderr=true\nstdout_logfile_maxbytes=0\n",
+    "cacheflow_v2_vllm": "[program:cacheflow_v2_vllm]\nenvironment=PROC_NAME=\"%(program_name)s\",CACHEFLOW_ROOT=\"/workspace/cacheflow-e1\"\ncommand=/workspace/cacheflow-e1/scripts/v2_serve_vllm.sh\nautostart=false\nautorestart=unexpected\nexitcodes=0\nstartsecs=5\nstopasgroup=true\nkillasgroup=true\nstopsignal=TERM\nstopwaitsecs=30\nstdout_logfile=/dev/stdout\nredirect_stderr=true\nstdout_logfile_maxbytes=0\n"
+  },
+  "evidence_sha256": {
+    "results/v3/v9repair1_registration.json": "dd5d630ac0d0090d8ed0781729a2dc7b2e8e5d929d0a79551206943223e6eaa4",
+    "results/v3/v9repair1_terminal.json": "ca775a562810073e7227a3611736beaacdfa626a8a5ba100a6ea92e13963334b",
+    "results/v3/v9repair1_failure.json": "5fc09eda227a217c44580524320be1c54d7f13e0d5fc615506d5c469ce2aa3eb",
+    "results/v3/v9repair1-probe-reference-s101-warm.diagnostic_integrity.json": "e720b2d0a8e978e557f1c93fda4b4e358b8a6b8f4bf817b6ce2a657db984f962",
+    "results/v3/v9repair1-probe-reference-s101-warm.native_identity.json": "4643f24b7ed0217b7261a656496edd30eb313c6abffd4232976f360d1ada3519",
+    "docs/V9_NATIVE_WATERMARK_INTERVENTION.md": "3642e69637e6eb361f05b9a5beb40e9d9be4e48a5adad4ec47f9ddbb04fd61c3",
+    "results/v3/v8diag3_registration.json": "1a94f223211448633f01f787cb3f6a12a350567bfb5043f2c88416296d93235e",
+    "results/v3/v8diag1_offA_postmortem_integrity.json": "6553b794c96c0cb725be5fdd98fece8dc003158b5f5263c6daadffe9e1b6031a",
+    "results/v3/v6full1_union_s902_terminal_failure.json": "9ff2b30d93b94610f736a4f25965131a582048f3240c8a415150923d3497f14b",
+    "results/v3/v8diag3_live_lookup_watermark_01.json": "6d2dc9a5a1c21f5e381e0a8c2cbf47915783bae1c0eb4c3ee2b8b2e4e9543738",
+    "results/v3/v8diag3_observed_store_metadata_replay_01.json": "bb98275e304882f6844e19e12e1a91eceaf6b3030253218f4374a8d103547cd0",
+    "results/v3/v8_epoch_trace_revision_registration.result.json": "2c9ccefe20ed3a8d87601e11447f91dd27aadf8dbf44f597e4663b683c9ff623",
+    "results/v3/v6full1_input_regeneration_registration.result.json": "712b7bc92d09e8d6a1ea43088222e5c99940334bc6b0e1449c96caa61019c7f7"
+  },
+  "evaluator_sha256": "8e3be5d57ff2ff9ec5cd05939592f468c5f3f1fd95d13e431932bdf6bf0fd6fd",
+  "scope": "6fresh engines:2profiled60QA native reference/idempotent checks, then4unprofiled1986QA reference/idempotent pairs at901/902 in reversed order.360separatewarmups;8064targets.600s diagnostic timeouts, no retries. One native lookup statement only, no epoch or HOL patch. All outcomes diagnostic; actual quality/source work and constructor code identity retained. Strongbaseline/fullprimary confirmation remains required."
+}
