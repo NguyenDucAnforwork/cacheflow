@@ -1,0 +1,1114 @@
+{
+  "kind": "conditional_native_transfer_lifetime_cpu_witness",
+  "cpu_only": true,
+  "synthetic_metadata": true,
+  "gpu_execution": false,
+  "installed_files_modified": false,
+  "live_failure_reproduced": false,
+  "source_sha256": "8e261e69e36c11083adb0252c6f4c0e3d4d6387b637be3dccd41e2a892998544",
+  "native_source_sha256": {
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+    "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+    "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+    "/venv/main/lib/python3.12/site-packages/vllm/v1/request.py": "462c17cfde4308f0eb35eb0b2afa6b4ba3e628caa481dee9f476297bec373f1e"
+  },
+  "linked_observed_failure_sha256": "51ad8e7f5657d3b0f3e72dd92dc8bfddc9135dca313f53a2f2a04cf297fecfc4",
+  "cases": [
+    {
+      "order": "receive_late_no_store",
+      "repeat_terminal_signal": false,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": false,
+          "store_ready": null,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "receive_ready": true,
+          "store_ready": null,
+          "finished_sending": [],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2153,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2153,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": true,
+      "future_queries": {
+        "receive": 2,
+        "store": null
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "receive_late_no_store",
+      "repeat_terminal_signal": true,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": false,
+          "store_ready": null,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "receive_ready": true,
+          "store_ready": null,
+          "finished_sending": [],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2153,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2153,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": true,
+      "future_queries": {
+        "receive": 2,
+        "store": null
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "store_first",
+      "repeat_terminal_signal": false,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": false,
+          "store_ready": true,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "receive_ready": true,
+          "store_ready": true,
+          "finished_sending": [],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2153,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2153,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": true,
+      "future_queries": {
+        "receive": 2,
+        "store": 1
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "store_first",
+      "repeat_terminal_signal": true,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": false,
+          "store_ready": true,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "receive_ready": true,
+          "store_ready": true,
+          "finished_sending": [],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2153,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": true,
+              "store_pending": false
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2153,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": true,
+      "future_queries": {
+        "receive": 2,
+        "store": 1
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "receive_first",
+      "repeat_terminal_signal": false,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": true,
+          "store_ready": false,
+          "finished_sending": [],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": false,
+              "store_pending": true
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "receive_ready": true,
+          "store_ready": true,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2162,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": false,
+              "store_pending": true
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2162,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": true,
+      "future_queries": {
+        "receive": 1,
+        "store": 2
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "receive_first",
+      "repeat_terminal_signal": true,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": true,
+          "store_ready": false,
+          "finished_sending": [],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": false,
+              "store_pending": true
+            }
+          ]
+        },
+        {
+          "round": 1,
+          "receive_ready": true,
+          "store_ready": true,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2162,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": false,
+              "store_pending": true
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2162,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": true,
+      "future_queries": {
+        "receive": 1,
+        "store": 2
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "simultaneous",
+      "repeat_terminal_signal": false,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": true,
+          "store_ready": true,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2162,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": false,
+              "store_pending": false
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2162,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": false,
+      "future_queries": {
+        "receive": 1,
+        "store": 1
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    },
+    {
+      "order": "simultaneous",
+      "repeat_terminal_signal": true,
+      "rounds": [
+        {
+          "round": 0,
+          "receive_ready": true,
+          "store_ready": true,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [
+            "cpu-cancelled-fixture"
+          ],
+          "assertion": {
+            "type": "AssertionError",
+            "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+            "line": 2162,
+            "method": "_update_from_kv_xfer_finished"
+          },
+          "request_retained": false,
+          "frees": [
+            {
+              "request_id": "cpu-cancelled-fixture",
+              "receive_pending": false,
+              "store_pending": false
+            }
+          ]
+        }
+      ],
+      "assertion": {
+        "type": "AssertionError",
+        "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+        "line": 2162,
+        "method": "_update_from_kv_xfer_finished"
+      },
+      "freed_while_operation_pending": false,
+      "future_queries": {
+        "receive": 1,
+        "store": 1
+      },
+      "native_method_bodies": [
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "get_finished",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "e6c98a3e76ef01a7c8f245794361ddc12ec540644b669c31e99dedaf37a3a191",
+          "first_line": 1543,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_process_finished_stores",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "89d573a1f6b11d4eb9891e17c277ccc7116cc40dc77d5e77a6acb24c1b2cccb1",
+          "first_line": 1523,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/vllm_multi_process_adapter.py",
+          "class_name": "LMCacheMPWorkerAdapter",
+          "method": "_update_and_get_finished_store",
+          "source_sha256": "765450cc59d9b24c509ccab576e9aab7619c914b3ce1cedab109d3dd1d784ce9",
+          "method_ast_sha256": "f988c629d17de596b78105591cfd4ecbcdc1423e4e6e968c2caeced0451ab9fc",
+          "first_line": 1750,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/lmcache/integration/vllm/lmcache_mp_connector.py",
+          "class_name": "LMCacheMPConnector",
+          "method": "request_finished",
+          "source_sha256": "2c93b8a51b0529ff8fe8cbe698fee662d4610ddfac1ffc25d8dc410d803948a2",
+          "method_ast_sha256": "aab199f9be7604b801954751351677835f01b25f205c78e0390ef1f614711e19",
+          "first_line": 1219,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "finish_requests",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "581043dfc709bbb7e3720e98847cf8898dd0087f65cdd495bf8eac0ffdbd48be",
+          "first_line": 1779,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_request",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "ce6d88bb5b4a01abf2c506ee709555309a350c31c0518cdb12cabf393783f77f",
+          "first_line": 1842,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_free_blocks",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "34a306c598555cef71419ac2debdc472abd46f8b635706977b0e45bb2f474586",
+          "first_line": 1860,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_connector_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "e08a94c37e60da1d08f4eeb7dd4e2b857acd20eca008bb4e95001b589243c4a2",
+          "first_line": 2038,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        },
+        {
+          "path": "/venv/main/lib/python3.12/site-packages/vllm/v1/core/sched/scheduler.py",
+          "class_name": "Scheduler",
+          "method": "_update_from_kv_xfer_finished",
+          "source_sha256": "41ff2e524c90d9aa72b72cd77492eb62ee2a729a773bd8233e970f39abbb5983",
+          "method_ast_sha256": "fcf280a287c5fdc28d2ce5e5c05c34f94a497dc3ebcb79e95ae3ed60cfc588d1",
+          "first_line": 2136,
+          "binding": "Original method body; decorators omitted only for binding to CPU fixture, annotations deferred"
+        }
+      ]
+    }
+  ],
+  "positive_control": {
+    "normal_receive_then_cancel": true,
+    "exactly_one_safe_free": true,
+    "no_assertion": true
+  },
+  "scope": "Selected complete installed scheduler/connector/worker method bodies, with decorators omitted and deferred annotations. CPU futures/queues/block-free callbacks and cancellation/completion ordering are fixtures. Eight cases expose completion ownership hazards; two order families reach the same receive-loop assertion line as the actual full failure. Missing native request ID/order/pending-future state is not recovered, so this is not actual root-cause or earlier-stall reproduction. No CUDA/IPC/tensor/fairness/quality/performance proof, native source edit or serving activation."
+}

@@ -1,0 +1,30 @@
+{
+  "checked_utc": "2026-10-27T05:23:21.357961+00:00",
+  "primary_sources": [
+    {
+      "url": "https://api.github.com/repos/LMCache/LMCache/pulls/5938",
+      "html_url": "https://github.com/LMCache/LMCache/pull/5938",
+      "created_at": "2026-10-21T06:32:24Z",
+      "updated_at": "2026-10-26T20:55:25Z",
+      "state": "open",
+      "merged": false,
+      "head_sha": "6ff9b5ee7b6b2bba616e3fb0f6e97d6264edb091",
+      "base_sha": "10dd1e6a124de200e6f0e933632b56a6c0a97ed3",
+      "raw_path": "results/v3/remote_sources/v11_lmcache_pr5938.json",
+      "raw_sha256": "e972d3c75b685ab98ffd02bbd0b2cad0290d2bcf2c9c59da7998d58d7c0a209a"
+    },
+    {
+      "url": "https://api.github.com/repos/LMCache/LMCache/pulls/4939",
+      "html_url": "https://github.com/LMCache/LMCache/pull/4939",
+      "created_at": "2026-09-04T04:46:33Z",
+      "updated_at": "2026-10-10T09:15:40Z",
+      "state": "open",
+      "merged": false,
+      "head_sha": "1438f369be2e70a137da2073425c0978df78ec14",
+      "base_sha": "21a5db10f1fc280fc7a5d59ce2660697669a0e1d",
+      "raw_path": "results/v3/remote_sources/v11_lmcache_pr4939.json",
+      "raw_sha256": "faf51660169629c84b84bef84e0ac0f37899e5743c4ca994313ee2740d34a58a"
+    }
+  ],
+  "claim_scope": "Prior work/source applicability only. Both PRs concern async retrieve/abort lifecycle. This artifact neither establishes our observed request chronology nor executes/ports either PR, and does not support a novelty or serving-fix claim."
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "independent_complete_single_full_repair_checkpoint",
+  "run_id": "v9repair2-full-idempotent-s902",
+  "mode": "idempotent",
+  "requests": 1986,
+  "errors": 0,
+  "separate_warmups": 60,
+  "complete_single_diagnostic_check": true,
+  "complete_six_arm_study": false,
+  "performance_valid": false,
+  "research_complete": false,
+  "finished_utc": "2026-10-27T05:26:28.773119+00:00",
+  "answerable_f1": 0.3182431799204785,
+  "category5": {
+    "n": 446,
+    "mean": 0.5022421524663677
+  },
+  "output_budget_hits": 22,
+  "new_prefill": 744965.0,
+  "external_consumed": 6829104.0,
+  "preemptions": 1.0,
+  "metadata_sha256": {
+    "results/v3/v9repair2-full-idempotent-s902.repair_audit.json": "597257f37e024a4f8709b294630af6a7062c00d90c5b848d18d57365f5991437",
+    "results/v3/input_preflight/20261026T220240-457168/main.json": "e28c7ff40ea3bd94a219dcdd1fe79fdd3d9bfd7437391bbd99709350032c0930",
+    "results/v3/v9repair2_registration.json": "56630cbe0eaa9286eeee3fc2b5014ade76c3663242a1d9693be490a0fff659c0",
+    "results/v3/v9repair2-full-idempotent-s902-warm.diagnostic_setup.json": "0c8df6c9426c203d7db2ba701d894b2d3c568a59d17c533da218bcb7c60c24cd",
+    "results/v3/v9repair2-full-idempotent-s902-warm.diagnostic_integrity.json": "696b39b0a4f7e10ea5325e8dd8fe6794524d90590d624cba33a9b2000aa82e1b",
+    "results/v3/v9repair2-full-idempotent-s902-warm.native_identity.json": "7069953ba1b3eacf5db190b7f2c0d882dd7c8e65c60448621ee7299bab5e26f2",
+    "results/v3/v9repair2-full-idempotent-s902.diagnostic_setup.json": "eac22aa8ec46f747614abcb5d03439748443122c13bcbedeaaa63053fd4951cf",
+    "results/v3/v9repair2-full-idempotent-s902.diagnostic_integrity.json": "56946f9bedf837c65fb33a6fb203fb2d1b7c0b6db1111f9b7f0eb596107926d0",
+    "results/v3/v9repair2-full-idempotent-s902.native_identity.json": "389a3c02e57f668e5f22c429021b290ae844a7ddc48f417ad2f36e0a6bde16ce",
+    "results/v3/v9repair2-full-idempotent-s902.quality.json": "962e8f5735059c87cf2270cb094f9b9b339fe0169308872ba9500eff996e9d2a"
+  },
+  "raw_sha256": {
+    "results/v3/raw/v9repair2-full-idempotent-s902.jsonl": "cc878ed487dfe2e9ae1414cbfb96dc1f22cf002a37b6ad9bde89b86d17bd0e4d",
+    "results/v3/raw/v9repair2-full-idempotent-s902.outputs.jsonl": "bb4d5e369eec5e9e8d407373388d465476ba9eb302d0d065adcc7d993ba84807",
+    "results/v3/raw/v9repair2-full-idempotent-s902.summary.json": "696b6f2f3f9a971f69ef6908518f329020289b8d077e9cb2acbcc9a09fc49b76",
+    "results/v3/raw/v9repair2-full-idempotent-s902.metrics.jsonl": "660c4c7a606b20e815c3245e54ef68925d3ae68a2cb8a5a6f017ec400cc2fd04",
+    "results/v3/raw/v9repair2-full-idempotent-s902.gateway.jsonl": "48a7d80189007350d09c50ae66eae4f5b3ef4eb6ba53c8f70564d5f06718d3a9",
+    "results/v3/raw/v9repair2-full-idempotent-s902-engine.log": "6d0a02000afd06427cfbb1bda1d9a41f7011e6d711d9245ef5424e6623c05ac4"
+  },
+  "auditor_source_sha256": "98c729303dd02d4bac02052ec4c75ffe3081c30356adc9c5ae21f26426181efb",
+  "scope": "Whole successful full diagnostic plus separate warmup reopened; source/native-code/PID/proof/clock continuity and official quality recomputed. No same-seed comparison, latency speedup, quality equivalence, stall fix, six-arm completion or competitive contribution claim. Failure of another seed remains retained."
+}

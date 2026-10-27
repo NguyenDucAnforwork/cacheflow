@@ -1,0 +1,609 @@
+{
+  "kind": "unactivated_terminal_transfer_barrier_cpu_controls",
+  "cpu_only": true,
+  "synthetic_metadata": true,
+  "gpu_execution": false,
+  "installed_files_modified": false,
+  "source_sha256": {
+    "/workspace/cacheflow-e1/scripts/v11_transfer_barrier_control.py": "3570374c59c9c9460e3b4c2ffc13838fd71ee731c43e2b4477a54acb630c2d2f",
+    "src/cacheflow/v11_transfer_barrier.py": "1035a0b728663a647fc4977c840f81e978a96367def6cc18cd92d18c54352971",
+    "scripts/v11_transfer_lifetime_witness.py": "8e261e69e36c11083adb0252c6f4c0e3d4d6387b637be3dccd41e2a892998544"
+  },
+  "original_conditional_witness_sha256": "70129a1ab0d72834e19c87efae2318616a79a055547d12bd53d2a2c7c7b732ae",
+  "cases": [
+    {
+      "order": "receive_late_no_store",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": true,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": true
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 2,
+      "store_queries": null,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "receive_late_no_store",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": null,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "receive_late_no_store",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": true,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": true
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 2,
+      "store_queries": null,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "receive_late_no_store",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": null,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "store_first",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": true,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": true
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 2,
+      "store_queries": 1,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "store_first",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": 0,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "store_first",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": true,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": true
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 2,
+      "store_queries": 1,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "store_first",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": 0,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "receive_first",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": true,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": true
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 1,
+      "store_queries": 2,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "receive_first",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": 0,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "receive_first",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": true,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": true
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 1,
+      "store_queries": 2,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "receive_first",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 2,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": 0,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "simultaneous",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 1,
+      "store_queries": 1,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "simultaneous",
+      "repeat_terminal_signal": false,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": 0,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    },
+    {
+      "order": "simultaneous",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": false,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 1,
+      "store_queries": 1,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": []
+    },
+    {
+      "order": "simultaneous",
+      "repeat_terminal_signal": true,
+      "unhealthy_drain": true,
+      "rounds": [
+        {
+          "round": 0,
+          "operations_pending": false,
+          "finished_sending": [
+            "cpu-cancelled-fixture"
+          ],
+          "finished_recving": [],
+          "request_retained": false
+        },
+        {
+          "round": 1,
+          "operations_pending": false,
+          "finished_sending": [],
+          "finished_recving": [],
+          "request_retained": false
+        }
+      ],
+      "terminal_acknowledgements": 1,
+      "physical_free_callbacks": 1,
+      "no_native_assertion": true,
+      "receive_queries": 0,
+      "store_queries": 0,
+      "retained_terminal_tombstones": 1,
+      "error_block_ids": [
+        1,
+        2
+      ]
+    }
+  ],
+  "normal_receive_control": {
+    "nonterminal_receive_preserved": true,
+    "request_blocks_retained": true,
+    "receive_queries": 1
+  },
+  "scope": "Sixteen complete selected-native-body CPU controls; all registered operations quiesce or native unhealthy-drain completes before one terminal release. No extra future queries/results/event synchronization beyond original collector. All transfer registrations precede terminal delivery and IDs are not reused; those full-engine assumptions, allocator/tensor safety, bounded tombstone memory, remote cancellation/IPC races, runtime activation, earlier-stall mitigation, full correctness/quality/fairness/performance and competitive contribution remain unproved."
+}

@@ -297,3 +297,49 @@ Readiness versus originalunion has paired p95−1.662/−3.982/+1.078%, explorat
 Main controls now pass36arms1260/1260measured successes0errors plus2160separate warmups, fresh engine/LMCache perarm and36/36nativeITLcoverage. The inspected median/p95 control plot and full tradeoffs appear in [V6 evidence](V6_DEV_EVIDENCE.md). Main abstention9arms108responses scores7/12everyarm, no cap hits and answerableF1=null; readiness halves median but has+.438/+.096/+1.749%p95changes versus FIFO. Low-reuse gates pass onbothstacks; GPU-fit exposes readiness delay with no additional main work saving. No quality-equivalence/universal-win claim.
 
 Full preflight verifies1,986token vectors/50,522,325input tokens and all nonarrival content across three traces with0mismatches. Prospective fullseal `12f86b1a0698cbb56f3b290f53bb4cf660b38c6380bcece6e328a641228af366` was written22:07:24UTC and the30-arm controller started. Main hostheapcapacity48049946624bytes is now observed, while fullnativepayload remains expected/unobserved. Firstwarm60succeeded; no1986QA measuredarm has completed at this checkpoint. All59,580measured requests, per-run/final integrity+quality+resource/fairness/nativeITLaudits and final research requirement review remain pending.
+
+## Current research checkpoint: native correctness and queued epoch evaluation, 2026-10-27 05:30 UTC
+
+The original V6 full study stopped at10complete/1failed/19unexecuted arms. Its
+successful full seed901 main union/readiness lose to bundle16 at p95; native
+union retains a tail benefit against DFS with a substantial median penalty.
+Those failures and tradeoffs remain authoritative. The research goal is still
+incomplete; historical development wins above are not a completed full study.
+
+V9 is a separate one-statement native watermark diagnostic, excluded from primary
+performance tables. Two profiled60QA probe arms confirm positive sampled inflation
+in reference and none in idempotent, with slightly more new compute in candidate.
+Full outcomes so far are:
+
+| Full diagnostic | Successes / targets | Errors | Answerable F1 | Category5 mean | Output cap hits |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| reference901 |1986/1986|0|.318106422|.500000|17|
+| idempotent901 |925/1986|1061|inapplicable for whole failed workload|inapplicable|not promoted as a complete cohort|
+| idempotent902 |1986/1986|0|.318243180|.502242|22|
+| reference902 |pending|pending|pending|pending|pending|
+
+Each completed arm also has60separate successful warmups. The single-successful
+idempotent902 checkpoint independently reopens raw/identity/source evidence and
+recomputes official quality:1,540answerable/446category5,744,965new-prefill and
+6,829,104engine-consumed external tokens,1observed preemption. These are not
+same-seed comparisons with reference901, unique DMA bytes, quality equivalence
+or a liveness fix. Reference902 and independent all-six diagnostic audit remain
+required; failed901 has no successful-only latency/quality table.
+
+The idempotent901 engine log maps its fatal assertion to the receive-completion
+loop. [Conditional lifetime evidence](V11_TRANSFER_LIFETIME_CPU.md) executes
+selected complete native bodies on explicit CPU cancellation/future-order
+fixtures; an unactivated barrier control prevents their premature/duplicate
+release callbacks under stated registration assumptions. Actual missing ID,
+request chronology and cause of the preceding598s stall remain unknown. Related
+upstream abort/retrieve issues/PRs are acknowledged; this is no novelty claim for
+that bug family, no installed patch, no CUDA/tensor proof and no performance
+contribution by itself.
+
+[V10 protocol](V10_EPOCH_DEV_PROTOCOL.md) prospectively registers18fresh-engine
+GPU dev arms against same-policy union and strong main bundle/nativeDFS, with
+idempotent applied equally to every main arm. Its exact-parent waiter is live;
+no V10 GPU result exists at this checkpoint. Matched controls, full1,986QA
+three-seed strong-baseline confirmation and original-requirement audit remain
+necessary. [PROGRESS](PROGRESS.md) is the live handoff; [INTERVIEW](INTERVIEW.md)
+explains the evidence boundaries and async ownership questions in Vietnamese.

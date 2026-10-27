@@ -1531,3 +1531,32 @@ Counter `decision_stats.cpu_ms` chỉ bao quanh chooser, gồm đường cache h
 **Đáp:** EngineCore log có fatal traceback lúc05:08:12UTC. Nó trỏ tới `Scheduler._update_from_kv_xfer_finished`, line2153, assertion `req_id in self.requests` trong vòng lặp `finished_recving`. Auditor kiểm SHA của native source đang cài và đối chiếu line với AST để phân biệt loop nhận KV với loop gửi KV có assertion tương tự. Request ID cụ thể không được log nên vẫnnull.
 
 Assertion cho biết tại thời điểm xử lý một finished-receive ID, ID đó không còn trong bảng request mà scheduler yêu cầu. Có thể nghi ngờ tương tác giữa cancellation và completion đến muộn, nhưng chưa tái dựng được lifecycle của ID cụ thể. Quan trọng hơn, assertion xuất hiện sau một khoảng dài đứng yên; không thể gọi nó là nguyên nhân đã được chứng minh của khoảng đứng yên trước đó. Tách triệu chứng ban đầu, lỗi khi xử lý completion và lỗi client dây chuyền giúp chọn đúng phép đo tiếp theo. Chưa sửa bằng cách xóa assertion hay bỏ mọi completion không nhận ra: làm vậy có thể che lỗi ownership hoặc bỏ giải phóng KV blocks.
+
+### 22.39. Vì sao một request hủy rồi vẫn phải giữ KV blocks?
+
+**Đáp:** Client không cần kết quả nữa không có nghĩa GPU/CPU transfer đã ngừng dùng buffer. Trong witness CPU dùng body native thật, scheduler nhận cancel cho một request đangWAITING_FOR_REMOTE_KVS và ban đầu giữ blocks đúng. Nhưng worker có thể báo terminal completion theo đường STORE trong khi retrieve vẫnpending. Scheduler free request theo notification đó; retrieve hoàn tất sau sẽ gặp ID đã bị xóa. Hai thứ tự fixture này chạm đúng receive-loop assertion2153 đã thấy trong log thật. Các thứ tự receive-trước-store hoặc cùnglúc có thể chạm send-loop assertion2162. Đây là các interleaving có điều kiện; ID và thứ tự thực của failed run vẫn chưa được quan sát.
+
+```mermaid
+sequenceDiagram
+    participant S as Scheduler
+    participant W as Worker fixture
+    participant T as Retrieve future
+    S->>S: Cancel request; ban đầu giữ blocks
+    W-->>S: Terminal STORE acknowledgement
+    S->>S: Free blocks và xóa request
+    T-->>W: Retrieve hoàn tất sau đó
+    W-->>S: finished_recving
+    S->>S: Assertion vì ID không còn
+```
+
+Sơ đồ là thứ tự fixture, không phải timeline native đã khôi phục. Một future chưaready cũng chưa chứng minh DMA thật còn chạy; trong fixture nó chỉ mô tả giả thiết operation chưa hoàn tất. Điều cần kiểm ở production là ownership của buffer và completion fence, không chỉ tình trạng socket hoặc việcclient đãdisconnect.
+
+**Hỏi: Control barrier thay đổi điều gì?**
+
+**Đáp:** Prototype chưa được bật trong engine. Nó gọi collector native đúng một lần, không poll/wait/sync future thêm. Với request terminal, nó giữ acknowledgement khi vẫn có retrieve hoặc store đã đăng ký; khi cả hai không cònpending thì phát đúng mộtfinished_sending. Với request chưaterminal, receive notification vẫn đi qua. Control native-body giữblocks tới khi các operation fixture hoàn tất và không gặp assertion. Đường HMA thực sự gọi request_finished_all_groups cũng được kiểm riêng; binding kiểu, queue và futures vẫn làfixture.
+
+Chưa thể gọi đó là patch production: operation có thể được đăng ký sau terminal qua một batch đang bay; phải chứng minh ordering/fencing của toàn engine. Prototype còn giữ tombstone không giới hạn và giả định ID không tái sử dụng. Unhealthy drain đánh dấuoperation lỗi, không chứng minh copy đã thành công. Nếu chỉ xóa assertion để server sống, cũng chưa chứng minh buffer không bị trả về pool quá sớm. Cần đo cả lifetime trước khi free, ID dedup, lỗi và tensor correctness.
+
+**Hỏi: Đây có phải bug/method mới chưa ai biết không?**
+
+**Đáp:** Không nên claim vậy. Đã đối chiếu [LMCache issue5937](https://github.com/LMCache/LMCache/issues/5937), [PR5938](https://github.com/LMCache/LMCache/pull/5938) và [PR4939](https://github.com/LMCache/LMCache/pull/4939); chúng xử lý họ vấn đề abort/retrieve lifecycle. Đóng góp cục bộ hiện tại là bằng chứng có giới hạn trên stack và workload đang dùng, chưa phải novelty hoặc contribution cạnh tranh đủ mạnh. Các PR đó chưa được port/chạy ở đây; nguyên nhân598giây stall trước assertion vẫn chưa được xác minh.

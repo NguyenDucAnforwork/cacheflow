@@ -1,0 +1,29 @@
+{
+  "kind": "cpu_transfer_lifetime_and_actual_full902_checkpoint_validation",
+  "checked_utc": "2026-10-27T05:32:16.346863+00:00",
+  "full_tests": {
+    "command": "PYTHONPATH=src:scripts /venv/main/bin/python -m pytest -q",
+    "passed": 392,
+    "elapsed_s": 26.92
+  },
+  "targeted_lifetime_tests": {
+    "passed": 52,
+    "elapsed_s": 5.6
+  },
+  "source_sha256": {
+    "scripts/v11_transfer_lifetime_witness.py": "8e261e69e36c11083adb0252c6f4c0e3d4d6387b637be3dccd41e2a892998544",
+    "scripts/v11_transfer_barrier_control.py": "3570374c59c9c9460e3b4c2ffc13838fd71ee731c43e2b4477a54acb630c2d2f",
+    "scripts/v11_hma_transfer_control.py": "70aa260d4e0608f07a59a7621187d8cf19ecd22c665c9789f90f21a5e4837eb2",
+    "src/cacheflow/v11_transfer_barrier.py": "1035a0b728663a647fc4977c840f81e978a96367def6cc18cd92d18c54352971",
+    "tests/test_v11_transfer_lifetime.py": "ae90ce2da6cbb938bca24543372d41956ee8fbf71604249c7e36e8dc2da6a602"
+  },
+  "artifact_sha256": {
+    "results/v3/v11_transfer_lifetime_witness.json": "70129a1ab0d72834e19c87efae2318616a79a055547d12bd53d2a2c7c7b732ae",
+    "results/v3/v11_transfer_barrier_control.json": "ff8cba1a52d6e6c3b5b50284684b0fd7e5711a01833493ea7423ad0ffac1f302",
+    "results/v3/v11_hma_transfer_control.json": "0962b512ca0cd2a77e3e747340fb94e67708b6fee8703195967ae8bead87005c",
+    "results/v3/v11_transfer_prior_art.json": "f3a9b2444799f6c2a715ab0ad1968e27d67d5aaa8bef5696fee327988a73bce7",
+    "results/v3/v9repair2_idempotent902_full_checkpoint.json": "adb334822e07fe0b2ef3387ebe33d012f8d958b52ac23d91ce2047e1e9890a6d"
+  },
+  "active_v9_v10_source_pins_unchanged": true,
+  "scope": "CPU conditional native-body witness/barrier controls/HMA supplement and independently recomputed complete actual idempotent902 diagnostic. No native barrier activation or liveness/novelty/quality-equivalence/performance/research-completion claim. Exact parent/waiter live checks recorded separately in current progress."
+}
