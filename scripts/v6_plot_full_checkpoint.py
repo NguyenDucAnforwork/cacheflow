@@ -39,7 +39,7 @@ def main():
         ax.plot([i-.18,i-.18],[bounds['lower_ms'],bounds['upper_ms']],color='#5575ad',lw=9,alpha=.5,label='Native update p95 bucket' if i==0 else None)
         ax.scatter(i,h['native_itl_mean_ms'],color='#233f6c',s=45,label='Native update mean' if i==0 else None)
         ax.scatter(i+.18,r['secondary']['client_tpot_proxy_ms']['p95'],color='#b75a70',marker='D',s=40,label='Client TPOT proxy p95' if i==0 else None)
-    ax.set(title='D. Decode cost: distinct measurement units',ylabel='Milliseconds; bucket range is not a CI');ax.set_xticks(x,names);ax.legend(fontsize=8,loc='upper left');ax.grid(axis='y',alpha=.15)
+    ax.set(title='D. Decode cost: distinct measurement units',ylabel='Milliseconds; bucket range is not a CI');ax.set_xticks(x,names);ax.legend(fontsize=7,loc='upper right' if len(runs)>=3 else 'upper left');ax.grid(axis='y',alpha=.15)
     ax=axes[1,1];categories=['1','2','3','4','5'];xx=np.arange(5);bw=.7/len(runs)
     for i,r in enumerate(runs):ax.bar(xx+(i-(len(runs)-1)/2)*bw,[r['quality']['by_category'][c]['mean'] for c in categories],bw,label=names[i])
     ax.set_xticks(xx,['C1 F1','C2 F1','C3 F1','C4 F1','C5 accuracy']);ax.set(title='E. Official quality by category',ylabel='Score (same 1,986 QA)',ylim=(0,1));ax.legend(fontsize=8);ax.grid(axis='y',alpha=.15)
@@ -47,7 +47,7 @@ def main():
     for i,r in enumerate(runs[1:]):
         current={r['sample_id']:r for r in r['per_conversation']};assert current.keys()==base.keys()
         vals=[100*(current[k]['arrival_ttft_ms']['p95']/base[k]['arrival_ttft_ms']['p95']-1) for k in samples]
-        ax.bar(xx+(i-(len(runs)-2)/2)*bw,vals,bw,label=r['step']['arm'])
+        ax.bar(xx+(i-(len(runs)-2)/2)*bw,vals,bw,label=r['step']['arm'],color=plt.rcParams['axes.prop_cycle'].by_key()['color'][i+1])
     ax.set_xticks(xx,[k.replace('conv-','') for k in samples]);ax.axhline(0,color='#555555',lw=.7);ax.set(title='F. Per-conversation p95 versus FIFO',ylabel='Change (%)',xlabel='Conversation ID');ax.legend(fontsize=8);ax.grid(axis='y',alpha=.15)
     fig.suptitle(f'Full main stack, seed901: {len(runs)} audited arms, 1,986 QA each\nInterim single-seed evidence; remaining full study incomplete',fontsize=16)
     fig.text(.01,-.025,'Distinct fresh engines/LMCache; 60 warmups per arm excluded. B shows source tokens, not DMA bytes. D compares engine output-update\nhistograms with a request-level client proxy; neither is exact per-token ITL. No run-level CI or quality-equivalence claim from one seed.',fontsize=10)

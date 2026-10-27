@@ -1,8 +1,8 @@
 # CacheFlow: tài liệu phỏng vấn Inference Engineer
 
-**Cập nhật 26/10/2026, 23:36 UTC:** Ba full main arms seed901 đã audit đủ1.986QA mỗi arm, không lỗi request; warmups tính riêng. Originalunion giảm p95so vớiFIFO69,435% nhưng **thua bundle23,566%**. Captured chooser counters ghi124,810giâythreadCPU; chưa chứng minh đây là nguyên nhân regression hoặc speedup có thể thu hồi. Readiness đang đo, chưa có full replicated/native conclusion. Tests147/147pass. Các phần V2–V5 giữ scope lịch sử.
+**Cập nhật 27/10/2026, 00:04 UTC:** Cả bốn cấu hình trên main stack, seed901, đã audit đủ **7.944/7.944 request đo**, không lỗi;240 warmups được tính riêng. Readiness có p95 kém bundle69,198% và kém oldunion36,930%, nên mục tiêu cạnh tranh vẫn chưa đạt. Full native đang chạy; warmup xác nhận host payload48.002.236.416 byte từ metric token capacity. Prototype dùng epoch cache chưa được gắn vào gateway. Toàn bộ160 tests pass; phép đo CPU đã đăng ký nhưng còn chờ, chưa có kết quả speedup. Các phần V2–V5 và checkpoint cũ giữ phạm vi lịch sử.
 
-**Đính chính resource:** LMCache lazy heap làm tròn lên 64 MiB. Host payload native quan sát là 16.000.745.472 byte, còn main heap là 16.039.018.496 byte (+0,2392%). Budget flag bằng nhau không chứng minh actual cross-engine heap bằng nhau. Lượt stall V5 đã manual abort và giữ đủ client outcomes; nguyên nhân vẫn chưa được chứng minh.
+**Đính chính resource:** LMCache lazy heap làm tròn theo64MiB. Ở development, main có16.039.018.496 byte, native có16.000.745.472 byte, chênh0,2392%. Ở full, main heap48.049.946.624 byte và native host payload48.002.236.416 byte đều đã có quan sát, chênh0,099392%. Đây là capacity, không phải RSS hoặc bằng chứng hai allocator có heap bằng nhau. Native capacity mới được quan sát từ warmup; measured full native chưa hoàn tất. Stall V5 đã manual abort, nguyên nhân vẫn chưa được chứng minh.
 
 Đọc cùng [báo cáo V6](V6_DEV_EVIDENCE.md), [research questions](PROPOSAL_LOCOMO_AGENTPERF_V2.md), [kế hoạch nghiên cứu](V3_RESEARCH_PLAN.md) [phạm vi baseline/paper](V3_BASELINES.md) và [claim ledger theo từng RQ](V6_RESEARCH_CLAIMS.md). Kết quả tốt về tail không tự chứng minh tốt về median, decode, chất lượng hay liveness.
 
@@ -1114,10 +1114,59 @@ Có thể tái tạo figure bằng `PYTHONPATH=src:scripts /venv/main/bin/python
 
 **Hỏi: Nếu muốn tối ưu cache key bằng version counter thì phải giữ invariant gì?**
 
-**Đáp:** Đó là hướng chưa triển khai/đo ở checkpoint này. Phải invalidate khi queue, active requests, bypass counts, recent history hoặc readiness/residency state mà policy phụ thuộc thay đổi; bao gồm enqueue, dispatch, first text, finish và cancellation. Bỏ sót một event có thể trả winner/None đã stale, vi phạm fairness hoặc giữ queue vô hạn. Cần kiểm cùng chuỗi events cho cùng lựa chọn, thử lỗi/cancel, profile CPU thật, rồi đăng ký study mới so với cả oldunion và bundle. Không sửa source của study đang chạy hoặc dùng testCPU để nhận E2Espeedup.
+**Đáp:** Ở checkpoint23:36ngày26/10đây còn là hướng chưa triển khai. PrototypeCPU tại22.14đã được viết sau đó, nhưng chưa có benchmarkCPU/GPU. Phải invalidate khi queue, active requests, bypass counts, recent history hoặc readiness/residency state mà policy phụ thuộc thay đổi; bao gồm enqueue, dispatch, first text, finish và cancellation. Bỏ sót một event có thể trả winner/None đã stale, vi phạm fairness hoặc giữ queue vô hạn. Cần kiểm cùng chuỗi events cho cùng lựa chọn, thử lỗi/cancel, profile CPU thật, rồi đăng ký study mới so với cả oldunion và bundle. Không sửa source của study đang chạy hoặc dùng testCPU để nhận E2Espeedup.
 
 **Hỏi: Category5accuracy bằng nhau đã bảo đảm cùng behavior chưa?**
 
 **Đáp:** Không. FIFO vàunion đều đúng223/446, nhưng hai câu từng đúng trở thành sai và hai câu từng sai trở thành đúng. Union còn khác179outputhash so vớiFIFO. So vớibundle, union khác182hash, scores tăng55/giảm55/bằngnhau1.876 và F1giảm.000996. Phải xem paired per-question outcomes, không chỉ so mean hoặc tổng accuracy.
 
 ![Ba full main arms seed901, gồm regression so với bundle](../figures/v6full1_checkpoint_03.png)
+
+
+### 22.14. Prototype giảm chi phí bookkeeping, chưa phải kết quả speedup
+
+**Hỏi: Prototype mới có thay thuật toán chọn request không?**
+
+**Đáp:** Không thay hàm chọn request. Các class mới gọi nguyên selector method của oldunion, readiness và FIFO gate đã có. Thay đổi nằm ở cách nhớ kết quả và kiểm deadline: mỗi sự kiện làm thay đổi trạng thái liên quan sẽ tăng một số version, gọi là epoch. Khi version không đổi, cache hit chỉ so số đó thay vì dựng lại tuple chứa toàn bộ queue.
+
+Deadline cache lưu deadline tương lai gần nhất. Nó phải tính lại khi queue đổi, deadline đó qua hạn hoặc clock trong test đi ngược. Prototype chỉ hỗ trợ ba policy có tính chất này; không tự mở rộng sang DHAS, LPM hay policy phụ thuộc thời gian/residency khác.
+
+**Hỏi: Làm sao tránh cached `None` giữ queue mãi sau first text hoặc cancellation?**
+
+**Đáp:** Các thay đổi enqueue, remove, dispatch, finish, recent history và bypass count phải làm tăng version. First text phải invalidate readiness. Oldunion không phụ thuộc first text, nên không cần tạo cache miss thừa cho policy đó.
+
+Một lệnh thêm nhiều phần tử có thể thêm được vài phần tử rồi ném exception. Phần `finally` vẫn invalidate để không dùng cache của queue cũ. Thay hẳn private container sẽ bị từ chối. Các trường prompt, budget và deadline của ticket vẫn phải bất biến như hợp đồng gốc; prototype không tự phát hiện mọi mutation tùy ý ngoài API.
+
+**Hỏi: Đã kiểm bằng bằng chứng gì?**
+
+**Đáp:** Toàn bộ160 CPU tests pass, trong đó13 tests mới cho prototype. Chúng so winner, dispatch reason, bypass và timeout trên600 sự kiện ngẫu nhiên cho từng policy. Các bài kiểm còn thử first text/cancel/drain bằng API async thật, lỗi mutation một phần, deadline expiry và clock reversal. Một traversal trap cố ý không cho duyệt container trên stable cache hit; prototype vẫn hoạt động. Selector function object vẫn là method gốc.
+
+Untimed smoke kiểm thêm15 trạng thái blocked nhỏ với queue dài16–512. Đây là kiểm synthetic và cấu trúc tính toán, không phải replay đủ1.986 QA thật hoặc formal proof cho mọi lịch concurrency.
+
+**Hỏi: Có thể lấy323 giây CPU của readiness rồi nhận prototype sẽ tiết kiệm323 giây không?**
+
+**Đáp:** Không. Full readiness ghi323,166 thread-CPU seconds trong chooser nhưng chưa tách phần hit và miss. Prototype giữ nguyên công việc của cache miss, đồng thời có thêm chi phí cập nhật version. CPU, GPU và I/O cũng có thể chồng nhau; thay dispatch có thể đổi batching.
+
+Phép đo CPU synthetic đã đăng ký45 cases, mỗi case2000 iterations qua5 rounds, đổi thứ tự old/new giữa các rounds. Nó chờ các job hiện tại xong và services idle. Chưa có kết quả timing. Sau đó vẫn phải đăng ký và đo GPU mới, giữ cả bundle và oldunion làm baseline, kiểm E2E, decode, quality và fairness. Gateway của study V6 hiện tại không import prototype.
+
+### 22.15. Readiness full làm upstream tốt hơn nhưng E2E xấu hơn
+
+**Hỏi: Full main seed901 cho thấy readiness cải thiện gì và thất bại ở đâu?**
+
+**Đáp:** So với oldunion, readiness giảm new-prefill từ674.901 xuống609.365 tokens, giảm external consumption từ6.531.328 xuống6.050.368 tokens và giảm native ITL mean từ40,015 xuống27,178ms/update. Mean upstream-to-first-text cũng giảm từ2,447 xuống0,630 giây.
+
+Nhưng mean E2E tăng từ219,429 lên285,802 giây; p95 tăng từ342,312 lên468,727 giây, tức xấu hơn36,930%. So với bundle, p95 xấu hơn69,198%. Thời gian chờ trước gateway và trong admission tăng. Không được bỏ hai phần đó để gọi upstream gain là một method win.
+
+Answerable F1 của readiness là.315511, so với oldunion.318010 và bundle.319006. Số output chạm cap là20, so với16/18; có199 output hashes khác oldunion và176 khác bundle. Category5 vẫn đúng223/446 nhưng tập câu đúng/sai có đổi. Hiệu năng và quality đều phải giữ phạm vi một arrival seed; native và các seeds khác còn đang chạy.
+
+**Hỏi: Native60QA từng đạt input oracle, sao không nói gate đạt tối ưu ở full?**
+
+**Đáp:** Vì đó là phạm vi khác. Full main reference304.885 new tokens giả định giữ toàn bộ prefix và publication ngay; readiness thực tế tính609.365 tokens. Oracle không mô hình finite cache, eviction, transient I/O hay runtime publication. Không dùng kết quả native60QA để nhận main full optimality, FLOP savings tương ứng hoặc cache liveness guarantee.
+
+**Hỏi: Native48GB đã đo thật chưa?**
+
+**Đáp:** Warmup native LPM đã hoàn tất60/60 requests, và cả26 metric samples đều báo325.536 host tokens. Nhân với geometry Qwen3-4B BF16 là147.456 byte/token được48.002.236.416 byte payload capacity.
+
+Main heap đã quan sát48.049.946.624 byte, cao hơn0,099392% do allocator rounding. Không gọi hai con số này bằng nhau hoặc nhầm capacity với RSS. Quan sát warmup cũng chưa chứng minh measured native1.986QA đã hoàn tất.
+
+![Bốn full main arms seed901, giữ các regression](../figures/v6full1_checkpoint_04_v2.png)

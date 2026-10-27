@@ -1,0 +1,38 @@
+{
+  "checkpoint_path": "results/v3/v6full1_checkpoint_04.json",
+  "checkpoint_sha256": "934a0a2ea9172f61f30a27b28edb1c2bc880da2eb1a8fe78d690b07c23c402de",
+  "source_sha256": "c26f59afffaa9f41181b1eb3a904e4e2c430e28f8ae955c18648d9d50b133b34",
+  "runs": [
+    "v6full1-main-g6-fifo64-s901",
+    "v6full1-main-g6-bundle16-s901",
+    "v6full1-main-g6-union64-s901",
+    "v6full1-main-g6-packing_ready-s901"
+  ],
+  "complete_study": false,
+  "arrival_seed": 901,
+  "source_counts": {
+    "New prefill": [
+      601125.0,
+      930965.0,
+      674901.0,
+      609365.0
+    ],
+    "GPU local": [
+      589712.0,
+      45574336.0,
+      43316096.0,
+      43862592.0
+    ],
+    "External consumed": [
+      49331488.0,
+      4017024.0,
+      6531328.0,
+      6050368.0
+    ]
+  },
+  "figure_sha256": {
+    "figures/v6full1_checkpoint_04_v2.png": "7566069db9818182954a742bcfe227c1346088429ee269c32a758f65b3e189fd",
+    "figures/v6full1_checkpoint_04_v2.svg": "2475482f04a890ca06045240abf1a974b110307b832f1a75b75c531fed59e461"
+  },
+  "scope": "Audited full single-seed main-stack subset, all QA and category scores; descriptive intervals only where native histogram buckets identify a range. No incomplete-arm quantiles, model calls, terminal-study claim or quality equivalence."
+}

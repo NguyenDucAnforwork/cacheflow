@@ -1,0 +1,84 @@
+{
+  "complete_timing_probe": false,
+  "synthetic_state_smoke": true,
+  "source_sha256": "e25c6568275310058db4b0856c5f2cdf1a84b7b42c534190c27305cf1b961053",
+  "prototype_sha256": "b37eb4e8fb27dd2aa28ef654084ac4513759aec74960abf99d98e2c0f5dde580",
+  "cases": [
+    {
+      "policy": "packing_reuse",
+      "queue": 16,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_reuse",
+      "queue": 64,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_reuse",
+      "queue": 128,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_reuse",
+      "queue": 256,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_reuse",
+      "queue": 512,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_ready",
+      "queue": 16,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_ready",
+      "queue": 64,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_ready",
+      "queue": 128,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_ready",
+      "queue": 256,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "packing_ready",
+      "queue": 512,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "ready_fifo",
+      "queue": 16,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "ready_fifo",
+      "queue": 64,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "ready_fifo",
+      "queue": 128,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "ready_fifo",
+      "queue": 256,
+      "legacy_and_prototype_blocked": true
+    },
+    {
+      "policy": "ready_fifo",
+      "queue": 512,
+      "legacy_and_prototype_blocked": true
+    }
+  ],
+  "scope": "Untimed tiny fixture checks only; no CPU speedup, real1986QA replay, GPU activation or serving result."
+}

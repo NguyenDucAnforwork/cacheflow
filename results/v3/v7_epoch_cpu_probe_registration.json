@@ -1,0 +1,58 @@
+{
+  "kind": "synthetic_epoch_cpu_probe_after_all_queued_work",
+  "registered_utc": "2026-10-26T23:54:03.829094+00:00",
+  "after_pid": 470335,
+  "after_create_time": 1793057267.6,
+  "after_argv": [
+    "/venv/main/bin/python",
+    "-u",
+    "scripts/v6_after_input_reproduction.py",
+    "execute",
+    "results/v3/v6full1_r1_namespace_preparation_registration.json"
+  ],
+  "parent_registration_sha256": "327b30d71a9f5fb05efd61df5de4d746408137f599d068f5e31a96e0921ba638",
+  "smoke_path": "results/v3/v7_epoch_cpu_smoke.json",
+  "smoke_sha256": "e8a440cb6a246b5e8d122a75d66fb95c0f145a92b2cf8c39f2f0cf6d8855e839",
+  "source_sha256": {
+    "/workspace/cacheflow-e1/scripts/v7_epoch_cpu_probe.py": "e25c6568275310058db4b0856c5f2cdf1a84b7b42c534190c27305cf1b961053",
+    "src/cacheflow/v7_epoch_scheduler.py": "b37eb4e8fb27dd2aa28ef654084ac4513759aec74960abf99d98e2c0f5dde580",
+    "src/cacheflow/scheduler.py": "eeb1dd9812a6a5bdff9cf030994c29c67ff8f017c37f6eeaf734535ee87a895f",
+    "src/cacheflow/v3_memory_scheduler.py": "112fc23c06439a68353e05719a00165afd2b7ee5a9fcb761817c008c3d653e56",
+    "src/cacheflow/v6_ready_scheduler.py": "439626396756325369787147e58685740e5ea323bddd93ca00860953365c7976",
+    "src/cacheflow/v3_residency.py": "b0bf862d383c91f2b35db22860eceebc0af8f42a81acd5841ae5dd363b2b1940",
+    "scripts/v6_regenerate_full_inputs.py": "39166c89572ac5f0b8f2bfff39e1c9f7b813d55f0f7d99318c74c306ad328201",
+    "scripts/v6_raw_archive.py": "69e0ab2305c0826759f0fb8ab35bb6377297ab5176ac5bee7fdc69ebf6f1decf"
+  },
+  "policies": [
+    "packing_reuse",
+    "packing_ready",
+    "ready_fifo"
+  ],
+  "queues": [
+    16,
+    64,
+    128,
+    256,
+    512
+  ],
+  "kernels": [
+    "chooser_hit",
+    "timeout_hit",
+    "poll_mutating"
+  ],
+  "iterations": 2000,
+  "rounds": 5,
+  "case_order_seed": 919,
+  "fixture": {
+    "active": 4,
+    "ready_active": 3,
+    "prefix_tokens": 1024,
+    "output_budget": 96,
+    "kv_capacity_tokens": 1500,
+    "cap": 64,
+    "max_queue": 512,
+    "max_bypasses": 8,
+    "all_deadlines_expired": true
+  },
+  "scope": "Synthetic valid blocked states; all45cases retained, paired alternating order, no performance threshold/selection. Wait for namespace-preparation process to end successfully and services idle before CPU timing. No new inference, model weights, prompt tokenizer, GPU profiling or E2E speedup claim."
+}

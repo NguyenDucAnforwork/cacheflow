@@ -1,5 +1,8 @@
 # V6 development evidence: complete main and native stages
 
+**Full update,2026-10-27 00:02UTC:** Allfour mainseed901arms now pass7944/7944measured requests and R1audits/verifiedarchives,240separatewarmups. Readinessp95=468.727s, **+69.198%vsbundle/+36.930%vsoldunion**, despite lower upstream/decode/source work thanoldunion. CapturedchooserCPU323.166s versusold124.810s is not a proved causal allocation of the regression. Firstnativearm is measuring; its completed60-QAwarmup observes325536host tokens,48,002,236,416payloadbytes at pinned144KiB/token. The epoch-cache CPU prototype is unactivated, has13newtests and an untimed15-state smoke; its timing probe is queued after all existing work, with no speedup/GPU result yet. Fullstudy26arms/native/replication stillpending. Earlier updates below are historical.
+
+
 **Full update,23:36UTC:** Three mainseed901arms now pass R1audits and verified archives:5958/5958success0errors +180separatewarmups. The first registered primary result is mixed: originalunion p95−69.435%vsFIFO but **+23.566%vsbundle**, with worse per-conversationp95 in allten groups versusbundle. This does not confirm development superiority over the stronger baseline. Union uses27.505%lessnewprefill thanbundle but62.591%moreexternalconsumedtokens; decode improves versusbundle. Its captured chooser counters total124.810thread-CPUseconds. Readiness is now measuring after60/60warmup; remaining27fullarms/native/seedcomparisons remain open. The earlier updates below are historical.
 
 
@@ -312,3 +315,45 @@ Union versusbundle changes182outputhashes; official scores improve55/decrease55/
 `v6full1_checkpoint_03_gateway_costs.json` verifies chooser counters against hash-bound completed setup snapshots and the unchanged source. Originalunion records2,519,889calls,2,514,189cachehits(99.7738%),5,700misses,124.810thread-CPUseconds and126.193summedwallseconds. Mean CPU49.530microseconds/call; maximumcallwall101.850ms. The0.14618CPU-seconds/run-wall-second ratio is a one-thread-equivalent descriptor, not14.6%causally blocked wall time or time guaranteed recoverable by optimization. FIFO/bundle missing counters remain null, notzero.
 
 The unchanged `_choose` implementation builds queue/active/bypass/recent tuples before testing its cache key. `AdmissionScheduler.admit` calls the chooser from each awakened waiter, and condition notifications/periodic timeouts can wake many waiters. A cache hit can therefore still involve queue-length work; `_next_timeout` also scans queue deadlines outside the instrumented chooser region. This is a concrete code-level hypothesis for further CPU profiling, not a measured hit/miss CPU breakdown or proof that it caused the full regression. No frozen implementation was changed, no future speedup is subtracted from observed latency, and no new candidate has been measured. Readiness and the remaining native/arrival comparisons must continue under the original sealed graph.
+
+
+## Full checkpoint04: readiness worsens the main full tail
+
+![Four audited main arms atseed901](../figures/v6full1_checkpoint_04_v2.png)
+
+`v6full1_checkpoint_04.json` reopens allfourten-file archives and supplies the five mainseed901registered contrasts, not a completed30-arm or three-seed study. PNG/SVG version2moves the decode legend away from markers and uses matching arm colors across quality/per-conversation panels; values are unchanged and provenance is recorded.
+
+| Full seed901 observation | FIFO64 | Bundle16 | Old union64 | Readiness+union64 |
+| --- | ---: | ---: | ---: | ---: |
+| TTFTp50,seconds |619.640|202.700|225.031|302.152|
+| TTFTp95,seconds |1119.934|277.028|342.312|468.727|
+| TTFTp99,seconds |1159.416|282.469|345.373|476.092|
+| Makespan,seconds |1671.172|792.337|853.819|987.049|
+| New prefill tokens |601125|930965|674901|609365|
+| External-consumed KV tokens |49331488|4017024|6531328|6050368|
+| Native update ITL mean,ms |17.970|52.885|40.015|27.178|
+| Native update ITLp95bucket,ms |10–25|75–100|50–75|50–75|
+| Client TPOTproxy p95,ms |63.732|137.329|105.178|81.321|
+| AnswerableF1 |.317162|.319006|.318010|.315511|
+| Category5correct /446 |223|225|223|223|
+|96-token cap hits |20|18|16|20|
+
+Readinessp95 improves58.147%overFIFO but worsens69.198%versusbundle and36.930%versusoldunion. Versusoldunion, median/p99worsen34.271/37.848%; per-conversation p95is worse in ninegroups, withconv30improving17.753%. These fullresults retain counterexamples rather than extrapolate the smaller development result or report only FIFO gains.
+
+MeanTTFToldunion→readiness219.429→285.802s, while upstream2.447→.630s improves. Arrival→gateway119.229→169.371s and admission97.555→115.650s grow. Lower upstream latency is therefore not an E2Ewin. Newcompute falls674901→609365and externalconsumption6531328→6050368, but the full input-only reference304885is still not reached; the native60QAoracle match does not generalize to a mainfulloptimality claim. The counts are not DMA times or a finite-cache optimum.
+
+Readinessversusoldunion changes199outputhashes, F1−.002499and pairedscores61improve/64decrease/1861tie; versusbundle176hashesdiffer and F1−.003495/category5−2correct. Equalcategory5meanwithFIFO/oldunionagain masks question swaps. No qualityequivalence or universal readiness benefit is established.
+
+The hash-bound chooser supplement records readiness2,581,025calls/2,573,321hits(99.7015%),7,704misses,323.166thread-CPUseconds,328.020summedwallseconds and141.791msmaxcallwall. Oldunion has124.810CPUseconds. These counters include key construction and original miss work but lack hit/miss CPU attribution and exclude timeout/condition/other gateway work. They motivate the separate prototype below; they cannot be subtracted from observed wall time or prove a speedup.
+
+## Unactivated epoch-cache CPU prototype
+
+`src/cacheflow/v7_epoch_scheduler.py` wraps only lifecycle state/cache bookkeeping; it calls the original inherited union/readiness/fifo-gate selection functions. State mutations bump epochs, readiness firsttext invalidates only readiness policies, and timeout cache stores the next future deadline until membership/time horizon changes. Stable chooser and timeout hits avoid queue/active/recent scans. Queue/active/recent/bypass containers are tracked, partial bulk-mutation errors still invalidate, and replacement of tracked containers fails closed. Prompt/budget/deadline fields remain immutable, as assumed by the original policy. No gateway factory imports or activates this prototype; all sealedV6sources remain unchanged.
+
+Thirteen newCPU tests replay600randomizedevents perpolicy with repeated polls, comparing original/prototype winner/reason/bypass/timeout; they exercise realasyncfirsttext/cancel/drain, staleNone release, expired/reversed deadlines, partial mutation and unsupported-policy/replacement rejection. Traversal traps show stable cache hits do not iterate lifecycle containers. These are synthetic CPU tests and a structural work reduction, not a formal proof of all histories, a realfulltrace replay, numeric speedup or GPU/quality result.
+
+`v7_epoch_cpu_smoke.json` verifies15small blocked-state fixtures without timing. `v7_epoch_cpu_probe_registration.json` prospectively fixes all45policy/queue/kernelcases,2000iterations/fiverounds/alternatingpairorder and syntheticfixtureparameters. CPU timing waits for the existing full→inputreproduction→namespacepreparation chain to terminate successfully with services idle. It retains all cases without a winning threshold, measures chooser/timeout/mutating polls, and records environment/samples. Its `.result.json` is absent. A separate registered GPU comparison againstbundle/oldunion/nativebaselines is still necessary before claiming a competitive contribution.
+
+## First full native host-capacity observation
+
+`v6full1_native_host_observation.json` binds the completed nativeLPMwarmup60/60and every one of its26samples: hostcapacity325536tokens ×147456bytes/token =48,002,236,416payloadbytes, matching the frozen expectation. Actual mainheap48,049,946,624bytes exceeds this by47,710,208bytes(.099392%). These are capacity measures, not RSS/overhead equality or a causal cross-stack comparison. Native measured1986QAarm remains incomplete at this observation; this is not native full quality/performance eligibility.

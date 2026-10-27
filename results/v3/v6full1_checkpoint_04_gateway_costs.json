@@ -1,0 +1,66 @@
+{
+  "checkpoint_sha256": "934a0a2ea9172f61f30a27b28edb1c2bc880da2eb1a8fe78d690b07c23c402de",
+  "source_sha256": "5c309a2e6b7abc0e4595fb6ed21bff2af3e4f9f3670115acaf1d19537dc04f24",
+  "chooser_implementation_sha256": "112fc23c06439a68353e05719a00165afd2b7ee5a9fcb761817c008c3d653e56",
+  "runs": [
+    {
+      "run_id": "v6full1-main-g6-fifo64-s901",
+      "arm": "fifo64",
+      "seed": 901,
+      "requests": 1986,
+      "setup_sha256": "7292f54f9b149a76d6e60ce4303c9699a3ac3c4ed308db71aad243c3fde20a98",
+      "audit_sha256": "0a98548fa26312812c42fb3ab2ae1b08b5b0c3374299fae8eec279014c010b1e",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-main-g6-bundle16-s901",
+      "arm": "bundle16",
+      "seed": 901,
+      "requests": 1986,
+      "setup_sha256": "aa2a0d7af463c99ae890f569d802f3e687f9c8a9a0b783c3066c70d9dedea435",
+      "audit_sha256": "3193916f9ada5f422fa262b8f56caa2de7e0b7f6fd28dda09da9f29445a28eab",
+      "decision_stats": null
+    },
+    {
+      "run_id": "v6full1-main-g6-union64-s901",
+      "arm": "union64",
+      "seed": 901,
+      "requests": 1986,
+      "setup_sha256": "ebba00535d52723b39a6fadb9768f13511eb039c47a506665b10d821de51abba",
+      "audit_sha256": "550917c67bb6f6e0cb7d8ca565d4d1ff0f7cb90740dc485ba1adc7830ae13dc5",
+      "decision_stats": {
+        "calls": 2519889,
+        "cache_hits": 2514189,
+        "cache_misses": 5700,
+        "cache_hit_fraction": 0.9977379956021872,
+        "thread_cpu_s": 124.81032105300001,
+        "wall_s": 126.193033142,
+        "max_call_wall_ms": 101.849926,
+        "mean_thread_cpu_us_per_call": 49.53008686215941,
+        "thread_cpu_s_per_request": 0.06284507605891239,
+        "thread_cpu_s_divided_by_run_wall_s": 0.14617897920125336
+      }
+    },
+    {
+      "run_id": "v6full1-main-g6-packing_ready-s901",
+      "arm": "packing_ready",
+      "seed": 901,
+      "requests": 1986,
+      "setup_sha256": "76a9f4c0a2f2f01795414d0cabb32ecc094d9b6d61be143423a5c4526ec89984",
+      "audit_sha256": "f6c3d6554154ef3a8fcf640dbfcbdbdde553c28e28f31937e1dce2ad5b4e1183",
+      "decision_stats": {
+        "calls": 2581025,
+        "cache_hits": 2573321,
+        "cache_misses": 7704,
+        "cache_hit_fraction": 0.9970151393341793,
+        "thread_cpu_s": 323.16598577,
+        "wall_s": 328.019597526,
+        "max_call_wall_ms": 141.791211,
+        "mean_thread_cpu_us_per_call": 125.20839037591657,
+        "thread_cpu_s_per_request": 0.16272204721550856,
+        "thread_cpu_s_divided_by_run_wall_s": 0.32740636900992626
+      }
+    }
+  ],
+  "scope": "Instrumented chooser thread CPU/wall only, including cache-key construction, cache hits and misses; excludes next-timeout/condition handling, tokenization, HTTP and other gateway work. Max is call wall, not call CPU. Missing FIFO/bundle counters remain null, not0. CPU/run-wall ratio is a one-thread-equivalent descriptor, not causal blocked-wall fraction, total gateway CPU, energy or measured latency saved by a future optimization. No hit-versus-miss CPU split was captured."
+}

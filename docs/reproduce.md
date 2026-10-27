@@ -351,3 +351,20 @@ PYTHONPATH=src:scripts /venv/main/bin/python scripts/v6_full_gateway_costs.py re
 ```
 
 This output already exists and rejects overwrite. The supplement binds each completed setup to its audited hash, verifies the captured/current chooser source, checks fresh zero counters and retains missing FIFO/bundle instrumentation as null. Union records2,519,889calls,2,514,189cachehits and124.810thread-CPU seconds. The counters include key construction and both hit/miss branches; they exclude next-timeout/condition handling and other gateway work, so they cannot be labelled total gateway CPU or allocated entirely to cache hits. No serving/profiler call or inference rerun is performed.
+
+
+### Unactivated epoch prototype and queued CPU-only probe
+
+`src/cacheflow/v7_epoch_scheduler.py` is a separate, unactivated prototype; no serving factory references it. It invokes the original selector methods and tracks lifecycle mutations for constant-work stable cache keys/deadline reuse. It does not edit any sealed V6source, change policy/budget/bypass settings or imply an E2Ewin. Thirteen new CPU tests bring the suite to160passing; they are synthetic equivalence/cancellation/traversal tests, not real1986QA/GPU evidence.
+
+Actual untimed smoke and registrations now exist:
+
+```bash
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v7_epoch_cpu_probe.py smoke results/v3/v7_epoch_cpu_smoke.json
+PYTHONPATH=src:scripts /venv/main/bin/python scripts/v7_epoch_cpu_probe.py register 470335 results/v3/v7_epoch_cpu_probe_registration.json --smoke results/v3/v7_epoch_cpu_smoke.json
+PYTHONPATH=src:scripts PYTHONHASHSEED=0 PYTHONOPTIMIZE=0 nice -n 10 /venv/main/bin/python -u scripts/v7_epoch_cpu_probe.py execute results/v3/v7_epoch_cpu_probe_registration.json
+```
+
+Existing paths reject reuse. The waiterPID475547/tool65823waits for exact namespace-preparationPID470335to end successfully, then requires idle services and unchanged source/parent/smoke proofs. This serializes fullstudy→from-sourceinputs→namespacepreparation→CPUprobe. It never starts a model, profiler or inference engine. Timing fixes all45synthetic policy/queue/kernelcases,2000iterations/fiverounds and alternatingold/neworder, retains every sample/case and records environment. Fixture prefix1024/KV1500/active4/cap64 is a small valid blocked state, not a full-model trace snapshot; no ratio may be converted to latency saved on the full study. The `.result.json` is absent at this checkpoint. A separate GPU comparison remains required before activation/competitive claims.
+
+`v6full1_checkpoint_04.json` reopens allfourcompletedmainarchives and retains five primary fullseed901comparisons. The version2plot `figures/v6full1_checkpoint_04_v2.*` keeps originalvalues and improves legend/color readability, with its own source/checkpoint/figure hashes. `v6full1_checkpoint_04_gateway_costs.json` preserves both oldunion124.810s andreadiness323.166schooserCPUwith missingbaselinestatsnull, notzero. The inline host observation `v6full1_native_host_observation.json` references completednativewarmupmetrics/setup/summary hashes: every26samples report325536tokens, multiplied by pinned147456bytes/token. That is an actual capacity observation, not RSS or completednative1986QAquality/performance.
