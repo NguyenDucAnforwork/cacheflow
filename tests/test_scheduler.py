@@ -67,3 +67,20 @@ def test_guard_bypasses_wait_when_measured_producer_is_too_slow():
         await scheduler.finish(producer)
         await scheduler.finish(follower)
     asyncio.run(run())
+
+
+def test_class_first_admits_chat_before_older_doc():
+    async def run():
+        scheduler = AdmissionScheduler(policy="class_first", max_inflight=1, max_wait_ms=500,
+                                       min_shared_tokens=8, block_size=4)
+        busy = await scheduler.admit("busy", prefix_blocks(list(range(16)), block_size=4), priority=1)
+        doc = asyncio.create_task(scheduler.admit("doc", prefix_blocks(list(range(100, 116)), block_size=4), priority=1))
+        await asyncio.sleep(0.01)
+        chat = asyncio.create_task(scheduler.admit("chat", prefix_blocks(list(range(200, 216)), block_size=4), priority=0))
+        await asyncio.sleep(0.01)
+        await scheduler.finish(busy)
+        first = await asyncio.wait_for(asyncio.wait({doc, chat}, return_when=asyncio.FIRST_COMPLETED), 0.5)
+        assert chat in first[0] and doc not in first[0]
+        await scheduler.finish(chat.result())
+        await scheduler.finish(await asyncio.wait_for(doc, 0.5))
+    asyncio.run(run())

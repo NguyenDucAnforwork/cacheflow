@@ -96,7 +96,9 @@ def create_app(config_path: str | None = None) -> FastAPI:
             arrival_ns = received_ns
         token_ids = tokenizer.encode(prompt, add_special_tokens=False)
         blocks = prefix_blocks(token_ids, block_size=scheduler.block_size, namespace=model)
-        ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns)
+        # Only the declared request class (chat first) matters, and only under policy class_first.
+        priority = 0 if request.headers.get("x-cacheflow-class") == "chat" else 1
+        ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns, priority=priority)
         headers = {"content-type": "application/json"}
         stream_cm = client.stream("POST", upstream + "/v1/completions", content=body, headers=headers)
         try:
@@ -155,6 +157,7 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         "queue_wait_ms": (ticket.dispatch_ns - ticket.arrival_ns) / 1e6 if ticket.dispatch_ns else None,
         "input_tokens": input_tokens,
         "prefix_group": ticket.group,
+        "priority": ticket.priority,
         "delay_hit_candidate": ticket.delay_hit_candidate,
         "readiness_guard_bypassed": ticket.readiness_guard_bypassed,
         "readiness_estimate_ms": ticket.readiness_estimate_ms,

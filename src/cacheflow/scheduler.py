@@ -11,7 +11,7 @@ from typing import Literal
 
 from .prefix import group_digest, shared_prefix_tokens
 
-Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded"]
+Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first"]
 
 
 @dataclass(slots=True)
@@ -30,6 +30,7 @@ class Ticket:
     recent_match: bool = False
     readiness_guard_bypassed: bool = False
     readiness_estimate_ms: float | None = None
+    priority: int = 0  # lower is admitted first under policy class_first
 
 
 class AdmissionScheduler:
@@ -45,7 +46,7 @@ class AdmissionScheduler:
         store_grace_ms: int = 20,
         group_window_ms: int = 30,
     ) -> None:
-        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded"):
+        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first"):
             raise ValueError(f"unknown policy {policy}")
         if min(max_inflight, max_queue, max_wait_ms, min_shared_tokens, block_size) <= 0:
             raise ValueError("capacities and thresholds must be positive")
@@ -84,7 +85,7 @@ class AdmissionScheduler:
         return min(matches, key=lambda t: t.dispatch_ns or t.enqueued_ns, default=None)
 
     def _eligible(self, ticket: Ticket, now: int) -> bool:
-        if self.policy == "fifo":
+        if self.policy in ("fifo", "class_first"):
             return True
         if self.policy == "static_group":
             return len(self._queue) > 1 or now - ticket.enqueued_ns >= self.group_window_ns
@@ -111,6 +112,8 @@ class AdmissionScheduler:
         eligible = [ticket for ticket in self._queue if self._eligible(ticket, now)]
         if not eligible:
             return None
+        if self.policy == "class_first":
+            return min(eligible, key=lambda t: t.priority)  # FIFO within a priority level
         if self.policy != "static_group":
             return eligible[0]
         oldest = eligible[0]
@@ -128,7 +131,7 @@ class AdmissionScheduler:
                           if t.first_token_ns is not None and t.first_token_ns + self.store_grace_ns > now]
         return max(0.001, (min(deadlines) - now) / 1e9) if deadlines else 0.1
 
-    async def admit(self, request_id: str, blocks: tuple[str, ...], *, arrival_ns: int | None = None) -> Ticket:
+    async def admit(self, request_id: str, blocks: tuple[str, ...], *, arrival_ns: int | None = None, priority: int = 0) -> Ticket:
         arrival = arrival_ns or time.monotonic_ns()
         ticket = Ticket(
             request_id=request_id,
@@ -137,6 +140,7 @@ class AdmissionScheduler:
             enqueued_ns=time.monotonic_ns(),
             deadline_ns=arrival + self.max_wait_ns,
             group=group_digest(blocks, min_shared_tokens=self.min_shared_tokens, block_size=self.block_size),
+            priority=priority,
         )
         try:
             async with self._condition:

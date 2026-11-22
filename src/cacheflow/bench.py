@@ -15,6 +15,7 @@ import httpx
 from transformers import AutoTokenizer
 
 from .data import build_trace, trace_digest
+from .real_workload import load_trace
 
 
 def _percentile(values: list[float], pct: float) -> float | None:
@@ -29,9 +30,14 @@ def _percentile(values: list[float], pct: float) -> float | None:
 
 async def replay(args: argparse.Namespace) -> dict:
     tokenizer = AutoTokenizer.from_pretrained(args.model_path, local_files_only=True, trust_remote_code=False)
-    rows = build_trace(tokenizer, workload=args.workload, seed=args.seed, target_input_tokens=args.input_tokens,
-                       groups=args.groups, per_group=args.per_group, output_tokens=args.output_tokens)
-    trace_sha = trace_digest(rows)
+    if args.trace_file:
+        rows, trace_sha = load_trace(args.trace_file)
+    else:
+        rows = build_trace(tokenizer, workload=args.workload, seed=args.seed, target_input_tokens=args.input_tokens,
+                           groups=args.groups, per_group=args.per_group, output_tokens=args.output_tokens)
+        trace_sha = trace_digest(rows)
+    real = bool(args.trace_file)
+    engine = _engine_info() if real else {}
     commit_sha = subprocess.check_output(["git", "-C", "/workspace", "rev-parse", "HEAD"], text=True).strip()
     mode = Path("/workspace/.cacheflow-mode").read_text().strip() if Path("/workspace/.cacheflow-mode").exists() else "unknown"
     policy = Path("/workspace/.cacheflow-policy").read_text().strip() if Path("/workspace/.cacheflow-policy").exists() else "unknown"
@@ -39,6 +45,7 @@ async def replay(args: argparse.Namespace) -> dict:
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     records = []
+    texts = []
     timeout = httpx.Timeout(connect=30, read=600, write=30, pool=30)
     async with httpx.AsyncClient(timeout=timeout, limits=httpx.Limits(max_connections=128)) as client:
         async def send(row):
@@ -52,6 +59,8 @@ async def replay(args: argparse.Namespace) -> dict:
                     "stream_options": {"include_usage": True}}
             headers = {"X-Cacheflow-Request-ID": row.request_id, "X-Cacheflow-Arrival-Ns": str(due_ns),
                        "X-Cacheflow-Run-ID": args.run_id}
+            if real:
+                headers["X-Cacheflow-Class"] = row.cls
             first_ns = None
             token_events = []
             pieces = []
@@ -106,12 +115,21 @@ async def replay(args: argparse.Namespace) -> dict:
                 "output_hash": hashlib.sha256("".join(pieces).encode()).hexdigest(),
                 "status": status, "http_status": http_status,
             }
+            if real:
+                gaps = [(b - a) / 1e6 for a, b in zip(token_events, token_events[1:])]
+                record["max_itl_ms"] = max(gaps) if gaps else None
+                record.update({"cls": row.cls, "max_tokens": row.max_tokens, "gold_letter": row.gold_letter, "source_id": row.source_id})
+                texts.append({"request_id": row.request_id, "cls": row.cls, "gold_letter": row.gold_letter, "output_text": "".join(pieces)})
             records.append(record)
 
         await asyncio.gather(*(send(row) for row in rows))
     with output_path.open("w", encoding="utf-8") as file:
         for record in sorted(records, key=lambda item: item["request_id"]):
             file.write(json.dumps(record, sort_keys=True) + "\n")
+    if real:
+        with output_path.with_suffix(".outputs.jsonl").open("w", encoding="utf-8") as file:
+            for item in sorted(texts, key=lambda t: t["request_id"]):
+                file.write(json.dumps(item, sort_keys=True) + "\n")
     ttft = [r["arrival_ttft_ms"] for r in records if r["arrival_ttft_ms"] is not None]
     tpot = [r["tpot_ms"] for r in records if r["tpot_ms"] is not None]
     duration_s = (max(r["complete_ns"] for r in records) - base_ns) / 1e9
@@ -129,6 +147,9 @@ async def replay(args: argparse.Namespace) -> dict:
         "duration_s": duration_s,
         "raw_path": str(output_path),
     }
+    if real:
+        summary.update({"trace_file": args.trace_file, "gpu_kv_bytes_marker": _marker("/workspace/.cacheflow-gpu-kv-bytes"),
+                        "max_num_batched_tokens_marker": _marker("/workspace/.cacheflow-mnbt"), **engine})
     summary_path = output_path.with_suffix(".summary.json")
     summary_path.write_text(json.dumps(summary, sort_keys=True, indent=2) + "\n")
     registry_path = Path(args.registry)
@@ -150,12 +171,40 @@ async def replay(args: argparse.Namespace) -> dict:
     return summary
 
 
+def _marker(path: str) -> str | None:
+    return Path(path).read_text().strip() if Path(path).exists() else None
+
+
+def _engine_info() -> dict:
+    """Effective engine settings and KV capacity as reported by the running vLLM server."""
+    info: dict = {}
+    try:
+        text = httpx.get("http://127.0.0.1:8000/metrics", timeout=5).text
+        for line in text.splitlines():
+            if line.startswith("vllm:cache_config_info"):
+                labels = dict(part.split("=", 1) for part in line[line.index("{") + 1:line.rindex("}")].split(","))
+                blocks = int(labels["num_gpu_blocks"].strip('"'))
+                size = int(labels["block_size"].strip('"'))
+                info.update({"engine_num_gpu_blocks": blocks, "engine_block_size": size, "engine_gpu_kv_tokens": blocks * size})
+        config = httpx.get("http://127.0.0.1:8000/server_info", params={"config_format": "json"}, timeout=5).json()
+        sched = (config.get("vllm_config") or config).get("scheduler_config") or {}
+        for key in ("max_num_batched_tokens", "max_num_seqs", "enable_chunked_prefill", "chunked_prefill_enabled"):
+            if key in sched:
+                info[f"engine_{key}"] = sched[key]
+        if isinstance(config.get("vllm_config"), str):
+            info["engine_server_info_note"] = "vllm_config returned as string"
+    except Exception as exc:  # engine info is best-effort; never fail the benchmark
+        info["engine_info_error"] = type(exc).__name__
+    return info
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8100")
     parser.add_argument("--model-path", required=True)
     parser.add_argument("--model-name", default="cacheflow-qwen3-1.7b")
-    parser.add_argument("--workload", choices=["long_doc", "long_doc_revisit", "long_doc_simultaneous", "multi_turn", "distinct"], required=True)
+    parser.add_argument("--workload", choices=["long_doc", "long_doc_revisit", "long_doc_simultaneous", "multi_turn", "distinct", "real_quality_chat"], required=True)
+    parser.add_argument("--trace-file", default=None, help="JSONL trace from cacheflow.real_workload (real_quality_chat)")
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--input-tokens", type=int, default=4096)
     parser.add_argument("--output-tokens", type=int, default=64)

@@ -10,9 +10,27 @@ A single-RTX-3090 experiment in LLM inference: vLLM 0.22.0 with GPU prefix cachi
 
 All measured prompts, statuses, and output token counts matched within the selected paired audits. Some output-text hashes differed even on same-policy repeats; only hashes were retained, so semantic impact is unknown. LMCache's inclusive retrieve spans were observed, but exact H2D transfer and copy/compute overlap were not instrumented.
 
+## Real-data mixed workload (chatbot + document QA)
+
+Measured on 2026-11-22 with 62-request traces: 14 real QuALITY v1.0.1 dev documents (6.0–8.2K tokens, 3 questions each, late revisits) plus 20 real ShareGPT chat prompts. Dataset content is real; arrival times are simulated. The 14 documents total 1.75× the engine-reported GPU KV capacity (98,130 tokens versus 56,160). Two repeats per configuration, SLOs fixed beforehand (chat TTFT ≤ 1 s, doc TTFT ≤ 3 s, TPOT ≤ 100 ms). Details and limitations: [docs/real_workload_results.md](docs/real_workload_results.md).
+
+- **CPU tier (B2 vs B1), burst trace:** B2 restored 94,464 prompt tokens from CPU and computed 102.8K instead of 197.3K (−48%); goodput 2.54 → 4.00 req/s, chat SLO attainment ~0.33 → 0.60, doc ~0.87 → 0.95. Under the moderate trace every configuration met every SLO; the tier only lowered doc p50 TTFT (435 → 166 ms).
+- **`max_num_batched_tokens` 2048 → 8192 (B2T vs B2), burst trace:** chat TTFT p95 2.54 → 1.95 s and goodput 4.00 → 4.31 req/s in both repeats, with unchanged summed prefill time; the change appears as lower gateway/engine queueing. vLLM 0.22.0's default on this RTX 3090 is already 2048, so all earlier results used 2048.
+- Chat still missed its 1 s target for 30% of burst requests with B2T; no per-class prioritization was tested. Generated text differed between runs even for the same configuration (14–27 of 62 outputs per comparison), and the QuALITY answer letter changed more often under B2T (3–5 of 42) than under B2 (0–1 of 42); accuracy (57–62%) cannot separate configurations.
+- Single host, single trace seed, 20 chat requests per run; the comparison is not a general claim.
+
+## Prefill budget, load and queue order (follow-up)
+
+20 runs on the same real-data traces with 60 chat requests per trace and three simulated arrival loads (details, hypotheses and limits in [docs/chunk_study_results.md](docs/chunk_study_results.md)):
+
+- Raising `max_num_batched_tokens` from 2048 to 8192 reduced chat and doc TTFT p95 at every load (burst chat p95 3.43 → 3.02 s, paired CI −488 to −307 ms; light-load gains were small). Under burst the chat TTFT is mostly gateway admission wait; the larger budget shortens first-visit document prefill service time by 10–14% (unchanged for CPU-restored revisits) and the queue drains sooner. The per-step overhead behind this was not measured.
+- The cost shows up in the decode tail: the p95 of each chat request's longest inter-token gap rose 2–3× (to ~0.47–0.49 s) with unchanged TPOT, which the TPOT ≤ 100 ms SLO does not detect.
+- Admitting chat before queued documents at the gateway cut burst chat p95 from 3.02 to 0.97 s (SLO attainment 0.30 → 0.94) but raised doc p95 from 3.3 to 4.6 s (doc SLO 0.88 → 0.69): under saturation priority moves SLO misses between classes. The CPU tier and the budget effects looked roughly independent in a B1 versus B2 comparison under burst.
+- Single host and model, two repeats, simulated arrivals; the budget comparison is chunked versus essentially unchunked for these prompts.
+
 ## Project map
 
-- [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs.
+- [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs; [real-data workload results](docs/real_workload_results.md) is a separate study.
 - `src/cacheflow/` contains the gateway, bounded admission scheduler, token-aligned prefix fingerprints, deterministic replay, metrics collector, paired analyzer, quality audit, and plot generators.
 - `scripts/` contains stack setup, controlled runs, cache-reset crossover, profiler and audit commands. `results/raw/` holds per-request/metrics traces; `results/figures/` contains paired timelines and the [cache accounting](results/figures/cache_accounting/cache_accounting.png), [capacity](results/figures/capacity/capacity_boundary.png), and [working-set](results/figures/workingset/workingset_pressure.png) plots.
 - `results/registry.csv` and individual `.summary.json` files record run IDs, trace hashes, source commits and parameters. Model weights and credentials are excluded from Git.

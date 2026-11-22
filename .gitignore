@@ -20,3 +20,6 @@ CLAUDE.md
 .cacheflow-policy
 .cacheflow-trace
 .cacheflow-gpu-kv-bytes
+.cacheflow-mnbt
+/data/
+results/raw/*.outputs.jsonl

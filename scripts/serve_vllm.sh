@@ -19,12 +19,22 @@ case "$gpu_kv_bytes" in
     *) echo "unsupported GPU KV budget: $gpu_kv_bytes" >&2; exit 2 ;;
 esac
 
+mnbt_args=()
+if [[ -f /workspace/.cacheflow-mnbt ]]; then
+    mnbt=$(cat /workspace/.cacheflow-mnbt)
+    case "$mnbt" in
+        2048|4096|8192) mnbt_args=(--max-num-batched-tokens "$mnbt") ;;
+        *) echo "unsupported max_num_batched_tokens: $mnbt" >&2; exit 2 ;;
+    esac
+fi
+
 args=(
     "$model" --served-model-name cacheflow-qwen3-1.7b
     --host 127.0.0.1 --port 8000 --dtype bfloat16
     --max-model-len 12288 --max-num-seqs 16
     --kv-cache-memory-bytes "$gpu_kv_bytes" --enforce-eager
     --generation-config vllm
+    "${mnbt_args[@]}"
 )
 
 case "$mode" in
