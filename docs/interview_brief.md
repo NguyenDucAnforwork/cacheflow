@@ -12,7 +12,7 @@ For a conversation about LLM inference engineering (target: FPT Smart Cloud, AI 
 2. **Class-aware admission raises capacity by a further 25%** (5.5 to 6.9 req/s) and fixes chat under overload (chat SLO +0.5 to +0.6), at a cost to documents. Replicated on three document sets and two real arrival windows. Total on seed 7: **1.7x over the GPU-only baseline**.
 3. **Priority works in the first queue where requests wait.** Gateway chat-first collapses to FIFO (chat SLO 0.94 to 0.57) once the gateway admits more requests than the engine runs, because the excess waits in vLLM's FCFS queue. Engine-level priority avoids that. A design principle for any multi-queue serving stack.
 4. **Demotion of requests that can no longer meet their SLO** (still served, later) was the most robust configuration in the decisive cells: 3 of 4 cells passed, the lowest run-to-run spread, the highest mean doc attainment (0.935, with chat 0.963; engine priority with a document cap of 8 or 12 also clears both targets in the mean but by only 0.001 on doc). It adds no capacity by itself.
-5. **Measurement matters, and it led to a mechanism**: run-to-run noise in per-class attainment is large relative to the thresholds (doc SD up to 0.04), differs by configuration, and comes from correlated outcomes within a run (variance inflation 1.94 for engine priority vs 0.30 for demotion), not from noisier requests. A pre-registered 3-way decomposition then showed it is the **ordering policy** that decorrelates the outcomes: a gateway queue with FIFO order and a cap of 4, 8 or 12 documents does not (1.65, 1.65, 1.43 vs 1.94 with no cap), adding the demotion order does (0.77 at cap 4, 0.30 for chat-first + demotion). Two-repeat results near a threshold flipped.
+5. **Measurement matters, and it led to a mechanism**: run-to-run noise in per-class attainment is large relative to the thresholds (doc SD up to 0.04), differs by configuration, and comes from correlated outcomes within a run (variance inflation 1.94 for engine priority vs 0.30 for demotion), not from noisier requests. A pre-registered 3-way decomposition then showed it is the **ordering policy** that decorrelates the outcomes: a gateway queue with FIFO order and a cap of 4, 8 or 12 documents does not (1.65, 1.65, 1.43 vs 1.94 with no cap), adding the demotion order does (0.77 at cap 4, 0.30 for chat-first + demotion). Two-repeat results near a threshold flipped. The mechanism is directly visible in the gateway's demotion flag: of 1,008 documents in the 24 demotion runs, all 66 demoted ones missed their SLO and none of the other 942 did, so the savable documents are insulated and the miss count is just the (small) number of demoted documents.
 
 ## Corrections I made (use them, they show judgment)
 
@@ -46,6 +46,7 @@ For a conversation about LLM inference engineering (target: FPT Smart Cloud, AI 
 | Chat-first at saturation | chat SLO +0.53 to +0.64; doc SLO -0.17 to -0.19 |
 | Demotion, decisive cells | passes 3 of 4; doc run SD 0.014 vs 0.033 for engine priority |
 | Noise | engine priority doc SD 0.025 to 0.041; demotion 0.010 to 0.018 |
+| Demotion classifier, 24 runs | 66 of 66 demoted documents missed; 0 of 942 others missed |
 | Outcome design effect (variance inflation) | engine priority 1.94; gateway FIFO with cap 4 / 8 / 12: 1.65 / 1.65 / 1.43; cap 4 + demotion order 0.77; chat-first + demotion 0.30 |
 
 ## Claims to avoid
@@ -53,7 +54,7 @@ For a conversation about LLM inference engineering (target: FPT Smart Cloud, AI 
 - A general speedup, or that this is a reproduction of Strata, FlowPrefill or SLOs-Serve.
 - That engine priority is "the best" or that the 1.9x figure is right (it is 1.7x).
 - Anything about larger models, multi-GPU, or production traffic.
-- That the variance mechanism is proven: it is the best-supported reading (demotion order), post hoc, from valid contrasts, with a missing corner (demotion order inside the engine queue).
+- That the variance mechanism is fully proven: the demotion order is the best-supported factor and its insulation effect is directly visible in the gateway flags, but the contrasts are post hoc and the demotion-order-inside-the-engine corner is missing.
 
 ## Where to look in the repository
 

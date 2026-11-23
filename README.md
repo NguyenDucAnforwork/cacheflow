@@ -414,6 +414,7 @@ An offline investigation (no new runs) and 96 new runs.
 
 - Pre-registered L1 and L3 not met, L2 not evaluable (S4 collapsed the server: goodput 0.26 req/s vs 7.3; the S8 pilot was degenerate by a rule fixed beforehand), and the first reading rule printed "concurrency" only because of that artefact. The follow-up (addendum 3) obtained the concurrency contrast under FIFO with a gateway cap: **K1 met** (design effect 1.65, 1.65, 1.43 for caps 4, 8, 12 vs 1.94 with no cap), K2 not met. The interpretation uses only the valid contrasts and is post hoc.
 - **Moving the queue to the gateway and capping concurrency (at 4, 8 or 12), with FIFO order, does not remove the correlation; adding the demotion order does** (F4 to VD4: design effect 1.65 to 0.77, doc 0.818 to 0.898). Across all series the low design effects are the ones with the demotion order. This also explains the cap sweep post hoc: with caps of 8 or 12 the gateway queue rarely forms, so the demotion order has little to act on.
+- **Direct trace of the mechanism** (gateway `demoted` flag, 24 runs, 1,008 documents): **all 66 demoted documents missed their SLO and none of the 942 other documents did.** The savable documents are insulated and the miss count equals the number of demoted documents (SD 0.41 to 0.75 per run vs 1.03 to 1.72 for engine priority), which is why the outcome variance is small; the deadline test is a reliable classifier in these cells (0 false negatives, 0 false positives).
 
 ### 7.12 Consolidated: what worked and what did not
 
@@ -489,7 +490,7 @@ Claims **not** made: no general speedup guarantee; not a reproduction of Strata,
 
 | Path | Contents |
 |---|---|
-| `src/cacheflow/` | `gateway.py`, `scheduler.py` (policies `fifo`, `static_group`, `dhas`, `dhas_guarded`, `class_first`, `class_aged`, `class_slack`, `class_demote`, `engine_demote`), `bench.py` (replay client), `real_workload.py` (trace builder), `burst_arrivals.py`, `prefill_probe.py`, `collect_metrics.py`; analysis: `real_analyze.py`, `chunk_analyze.py`, `policy_analyze.py`, `capacity_analyze.py`, `robustness_summary.py`, `combo_summary.py`, `stats_analyze.py`, `variance_investigate.py`, `ladder_analyze.py`, `capsweep_analyze.py`, `frontier_plot.py`, `locus_analyze.py`, `bg_analyze.py`, `probe_analyze.py` |
+| `src/cacheflow/` | `gateway.py`, `scheduler.py` (policies `fifo`, `static_group`, `dhas`, `dhas_guarded`, `class_first`, `class_aged`, `class_slack`, `class_demote`, `engine_demote`), `bench.py` (replay client), `real_workload.py` (trace builder), `burst_arrivals.py`, `prefill_probe.py`, `collect_metrics.py`; analysis: `real_analyze.py`, `chunk_analyze.py`, `policy_analyze.py`, `capacity_analyze.py`, `robustness_summary.py`, `combo_summary.py`, `stats_analyze.py`, `variance_investigate.py`, `ladder_analyze.py`, `capsweep_analyze.py`, `frontier_plot.py`, `locus_analyze.py`, `compensation_trace.py`, `bg_analyze.py`, `probe_analyze.py` |
 | `scripts/` | stack setup (`install_services.sh`, `serve_vllm.sh`, `serve_lmcache.sh`, `serve_gateway.sh`), `set_mode.sh`, `run_real_workload.sh "CONFIG LOAD TAG" ...`, `run_prefill_probe.sh`, `check_before_push.sh` (credential scan) |
 | `configs/` | gateway policy configuration, supervisor programs |
 | `tests/` | 16 unit tests (scheduler policies among them) |
@@ -663,6 +664,7 @@ python -m cacheflow.capsweep_analyze
 python -m cacheflow.frontier_plot
 # study 11: 3-way decomposition of the outcome correlation
 python -m cacheflow.locus_analyze
+python -m cacheflow.compensation_trace     # direct trace from the gateway's demotion flag
 ```
 
 Check status: the offline commands for studies 1, 2, 3 (policy cells and the probe), the seed-11 command of studies 4 and 5 and the BurstGPT analysis were re-run against the committed data when this section was written (study 2 reproduces the committed numbers exactly, and the study 3 cells reproduce the values in section 7.3); the seed-7 commands of studies 4 to 7 are the ones that produced the committed results. The studies 4 and 5 commands write to the output paths shown; running `policy_analyze` with other `--summary-json` / `--out-dir` values is safe, but running it with the defaults and all gateway files would overwrite the study 3 files with a superset. The serving commands cannot be re-run without the host.

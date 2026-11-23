@@ -1,0 +1,65 @@
+{
+ "cells": [
+  {
+   "corr_dem_sav": null,
+   "dem_mean": 3.0,
+   "dem_sd": 0.6324555320336759,
+   "engine_priority_tot_sd": 1.7224014243685086,
+   "load": "mid45",
+   "runs": 6,
+   "sav_mean": 0.0,
+   "sav_sd": 0.0,
+   "seed": "7",
+   "tot_mean": 3.0,
+   "tot_sd": 0.6324555320336759
+  },
+  {
+   "corr_dem_sav": null,
+   "dem_mean": 2.8333333333333335,
+   "dem_sd": 0.752772652709081,
+   "engine_priority_tot_sd": 1.378404875209022,
+   "load": "mid45",
+   "runs": 6,
+   "sav_mean": 0.0,
+   "sav_sd": 0.0,
+   "seed": "23",
+   "tot_mean": 2.8333333333333335,
+   "tot_sd": 0.752772652709081
+  },
+  {
+   "corr_dem_sav": null,
+   "dem_mean": 1.8333333333333333,
+   "dem_sd": 0.408248290463863,
+   "engine_priority_tot_sd": 1.0327955589886446,
+   "load": "mid42",
+   "runs": 6,
+   "sav_mean": 0.0,
+   "sav_sd": 0.0,
+   "seed": "11",
+   "tot_mean": 1.8333333333333333,
+   "tot_sd": 0.408248290463863
+  },
+  {
+   "corr_dem_sav": null,
+   "dem_mean": 3.3333333333333335,
+   "dem_sd": 0.5163977794943222,
+   "engine_priority_tot_sd": 1.4142135623730951,
+   "load": "burst",
+   "runs": 6,
+   "sav_mean": 0.0,
+   "sav_sd": 0.0,
+   "seed": "11",
+   "tot_mean": 3.3333333333333335,
+   "tot_sd": 0.5163977794943222
+  }
+ ],
+ "pooled": {
+  "corr": NaN,
+  "cov": 0.0,
+  "ratio_total_to_independent_sum": 1.0,
+  "runs": 24,
+  "var_dem": 0.30434782608695654,
+  "var_sav": 0.0,
+  "var_tot": 0.30434782608695654
+ }
+}

@@ -52,6 +52,22 @@ All configurations use engine priority for chat (chat 0, doc 1). The statistic i
 5. **This also explains the cap-sweep result post hoc**: with a cap of 8 or 12 documents the gateway queue forms less often, so the demotion order has little to act on; it acts at cap 4, where documents queue at the gateway most of the time.
 6. **Why compensating outcomes?** Demotion decides at admission time which documents are served now and which are pushed back (those that were going to miss anyway), so a shift in load lands on the demoted ones and the savable documents are insulated; the flips become negatively correlated (design effect below 1). FIFO order, in the engine or at the gateway, lets a delay shift propagate to every document behind it.
 
+## Direct trace of the mechanism (from the gateway's `demoted` flag; `python -m cacheflow.compensation_trace`)
+
+The argument above is inferential. The demotion policy records, per request, whether the gateway demoted it, so its effect can be read directly. Over the 24 runs of chat-first + demotion in the four decisive cells (1,008 document requests):
+
+| | Requests | Missed their SLO |
+|---|---|---|
+| Documents the gateway **demoted** | 66 | **66 (100%)** |
+| Documents it did **not** demote | 942 | **0** |
+
+- **Every miss is a document the gateway had flagged, and every flagged document missed; none of the 942 other documents missed.** The savable documents are completely insulated, and the number of misses per run equals the number of demoted documents (mean 1.8 to 3.3 per run depending on the cell).
+- The run-to-run variance of the miss count is therefore the variance of how many documents get demoted: SD 0.41 to 0.75 misses per run, against 1.03 to 1.72 for engine priority in the same cells (where misses are spread over documents in the FCFS queue without a gate).
+- So the earlier phrase "compensating flips" is better read as **insulation plus a bounded, pre-identified set of misses**: the covariance between demoted-document misses and other misses is exactly zero because the latter never occur; the design effect below 1 reflects that the miss count is pinned to the (small and fairly stable) number of demoted documents.
+- This also shows that the deadline test (waited + expected service > SLO, evaluated when a document is about to be admitted) is a very reliable classifier in these cells: 0 false negatives and 0 false positives among 1,008 documents. The service-time estimate (72 ms per 1,000 tokens, 150 ms for a cached prefix) was never tuned on these runs.
+
+Limits of the trace: it covers the gateway-demotion configuration only (engine priority has no flag, so its misses cannot be split the same way), the four decisive cells at loads where demotion is rare (1.8 to 3.3 documents per run), and one host and model. At heavier loads (more documents doomed) the classifier was not checked here.
+
 ## Limitations
 
 - Four cells, 6 runs each, one host, one 1.7B model; per-cell design effects range from 0.15 to 3.3 (so only the cell average is interpreted) and the intervals of F4 and VD4 overlap slightly.

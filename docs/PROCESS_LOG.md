@@ -70,6 +70,8 @@ Written to be read in one sitting. It records what was done, why, what the resul
 - **One arm failed**: vLLM `max_num_seqs` 4 collapsed the server (goodput 0.26 req/s), and my pre-registered reading rule printed a wrong answer from an undefined value. I reported both, then piloted `max_num_seqs` 8 with a degeneracy rule fixed beforehand (it also failed, goodput 3.3 req/s, so I stopped it) and ran the concurrency contrast under FIFO order with a gateway cap instead (F4, F8, F12; 48 runs), which was valid.
 - **What the valid contrasts show**: queue location and a concurrency cap (4, 8 or 12), with FIFO order, do not decorrelate the document outcomes (design effect 1.65, 1.65, 1.43 vs 1.94); the demotion order does (0.77 at cap 4, 0.30 without a cap). That also explains post hoc why the cap sweep failed (at caps 8 and 12 the gateway queue rarely forms, so the order has nothing to act on).
 
+- **Direct trace** (offline, from the gateway's `demoted` flag): all 66 demoted documents missed their SLO, none of the other 942 did, in 24 runs. So demotion insulates the savable documents and pins the miss count to the number of demoted documents; my earlier phrase "compensating flips" was refined to "insulation plus a bounded set of misses".
+
 ## 10. Claims that changed over time
 
 | Claim | First said | Now |

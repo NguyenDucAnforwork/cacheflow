@@ -46,6 +46,8 @@ If queueing in the engine's FCFS waiting queue causes the common-mode correlatio
 
 The cap sweep ([ladder_capsweep_results.md](ladder_capsweep_results.md)) failed its dose-response prediction; the 3-way decomposition ([locus_results.md](locus_results.md)) then separated the factors: **queue location and a cap of 4, 8 or 12 documents in flight, with FIFO order, do not remove the positive correlation (design effect 1.65, 1.65, 1.43 vs 1.94 for engine priority); adding the demotion order does (0.77 at cap 4, 0.30 without a cap)**. So the best-supported reading is that the *ordering policy* decorrelates the outcomes (the "compensating flips" of the table above), not the location of the queue. Concurrency inside the engine's own queue could not be varied (vLLM `max_num_seqs` 4 and 8 collapse the server); the concurrency contrast was obtained under FIFO with a gateway cap. The conclusion is post hoc and rests on the valid contrasts.
 
+**Update (direct trace, [locus_results.md](locus_results.md)):** the gateway's `demoted` flag shows that under demotion every miss is a flagged document (66 of 66) and none of the 942 unflagged documents missed, so the mechanism is *insulation of the savable documents plus a bounded set of misses* rather than flips that compensate each other.
+
 ## Limitations
 
 - 12 points from 4 cells and 3 configurations; the correlations are descriptive and the cells share seeds and loads.
