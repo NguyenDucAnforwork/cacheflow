@@ -96,6 +96,8 @@ def main() -> None:
     gateway: dict = {}
     for path in args.gateway:
         gateway.update(_gateway_index(Path(path), set(keep)))
+    present = {rid for rid, _ in gateway}  # only runs that have gateway rows in the given files
+    keep = [rid for rid in keep if rid in present]
     details = [run_detail(rid, Path(args.raw_dir), gateway) for rid in keep]
     promoted = defaultdict(int)
     demoted = defaultdict(int)

@@ -192,7 +192,11 @@ def main() -> None:
     args = parser.parse_args()
     with open(args.registry, newline="") as file:
         run_ids = [row["run_id"] for row in csv.DictReader(file)]
+    # keep only the study-2 cells (later studies append other loads and configs to the same registry)
+    run_ids = [r for r in run_ids if r.split("-", 3)[1] in LOAD_ORDER and r.split("-", 3)[2].upper() in CONFIG_ORDER]
     gateway = _gateway_index(Path(args.gateway), set(run_ids))
+    present = {rid for rid, _ in gateway}  # only runs that have gateway rows in the given file
+    run_ids = [r for r in run_ids if r in present]
     details = [run_detail(rid, Path(args.raw_dir), gateway) for rid in run_ids]
     groups = defaultdict(list)
     for d in details:
