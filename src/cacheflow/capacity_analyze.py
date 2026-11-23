@@ -17,11 +17,11 @@ from .chunk_analyze import run_detail
 from .real_analyze import _gateway_index
 
 LOADS = ["medium", "mid65", "mid50", "mid45", "mid42", "burst"]  # light to heavy
-CONFIGS = ["B1", "B2", "B2T", "B2TP", "B2TD", "B2TS", "B2TV", "B2TW", "B2TPW", "B2TV24", "B2TV32", "B2TP24", "B2TP32", "B2TVD", "B2TVD4"]
+CONFIGS = ["B1", "B2", "B2T", "B2TP", "B2TD", "B2TS", "B2TV", "B2TW", "B2TPW", "B2TV24", "B2TV32", "B2TP24", "B2TP32", "B2TVD", "B2TVD4", "B2TVD8", "B2TVD12"]
 LABEL = {"B1": "B1 2048 FIFO", "B2": "B2 2048 FIFO", "B2T": "B2 8192 FIFO", "B2TP": "B2 8192 chat-first (gateway)",
          "B2TD": "B2 8192 chat-first + demotion", "B2TS": "B2 8192 chat-first + slack promotion", "B2TV": "B2 8192 engine priority", "B2TW": "B2 8192 FIFO, 64 in-flight", "B2TPW": "B2 8192 chat-first, 64 in-flight", "B2TV24": "engine priority, 24 in-flight", "B2TV32": "engine priority, 32 in-flight",
          "B2TP24": "gateway chat-first, 24 in-flight", "B2TP32": "gateway chat-first, 32 in-flight",
-         "B2TVD": "engine priority + gateway demotion (16 docs, did not bind)", "B2TVD4": "engine priority + gateway demotion (4 docs)"}
+         "B2TVD": "engine priority + gateway demotion (16 docs, did not bind)", "B2TVD4": "engine priority + gateway demotion (4 docs)", "B2TVD8": "engine priority + gateway demotion (8 docs)", "B2TVD12": "engine priority + gateway demotion (12 docs)"}
 CHAT_TARGET, DOC_TARGET = 0.95, 0.90
 
 

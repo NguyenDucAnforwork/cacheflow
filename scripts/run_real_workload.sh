@@ -33,6 +33,8 @@ for spec in "$@"; do
         B2TS) mode=B2; mnbt=8192; policy=class_slack ;;
         B2TD) mode=B2; mnbt=8192; policy=class_demote ;;
         B2TV) mode=B2; mnbt=8192; engine_priority=1 ;;
+        B2TVD8) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=8 ;;
+        B2TVD12) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=12 ;;
         B2TVD4) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=4 ;;
         B2TVD) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=16 ;;
         B2TV24) mode=B2; mnbt=8192; engine_priority=1; width=24 ;;

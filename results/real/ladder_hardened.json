@@ -1,0 +1,542 @@
+{
+ "11": {
+  "brackets": {
+   "B1": {
+    "first_fail": "mid50",
+    "heaviest_pass": null,
+    "offered_rps": null
+   },
+   "B2": {
+    "first_fail": "mid50",
+    "heaviest_pass": null,
+    "offered_rps": null
+   },
+   "B2T": {
+    "first_fail": "mid45",
+    "heaviest_pass": "mid50",
+    "offered_rps": 6.87
+   },
+   "B2TD": {
+    "first_fail": null,
+    "heaviest_pass": "burst",
+    "offered_rps": 8.64
+   },
+   "B2TP": {
+    "first_fail": "burst",
+    "heaviest_pass": "mid42",
+    "offered_rps": 8.18
+   },
+   "B2TV": {
+    "first_fail": "burst",
+    "heaviest_pass": "mid42",
+    "offered_rps": 8.18
+   }
+  },
+  "cells": {
+   "B1/mid45": {
+    "chat": 0.31666666666666665,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B1/mid50": {
+    "chat": 0.7083333333333333,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2/mid45": {
+    "chat": 0.5833333333333334,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2/mid50": {
+    "chat": 0.7666666666666666,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/burst": {
+    "chat": 0.4666666666666667,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/mid45": {
+    "chat": 0.7166666666666667,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/mid50": {
+    "chat": 0.9583333333333334,
+    "doc": 1.0,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TD/burst": {
+    "chat": 0.9833333333333334,
+    "doc": 0.9206349206349206,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TD/mid42": {
+    "chat": 0.9555555555555556,
+    "doc": 0.9563492063492064,
+    "p_pass": 0.8544,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TD/mid45": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2TD/mid50": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2TP/burst": {
+    "chat": 0.9861111111111112,
+    "doc": 0.8412698412698413,
+    "p_pass": 0.0,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TP/mid42": {
+    "chat": 0.9555555555555556,
+    "doc": 0.9642857142857143,
+    "p_pass": 0.815,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TP/mid45": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2TP/mid50": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2TV/burst": {
+    "chat": 0.9861111111111112,
+    "doc": 0.8333333333333334,
+    "p_pass": 0.0,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TV/mid42": {
+    "chat": 1.0,
+    "doc": 0.9682539682539684,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TV/mid45": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   }
+  }
+ },
+ "23": {
+  "brackets": {
+   "B1": {
+    "first_fail": "mid50",
+    "heaviest_pass": null,
+    "offered_rps": null
+   },
+   "B2": {
+    "first_fail": "mid50",
+    "heaviest_pass": null,
+    "offered_rps": null
+   },
+   "B2T": {
+    "first_fail": "mid50",
+    "heaviest_pass": null,
+    "offered_rps": null
+   },
+   "B2TD": {
+    "first_fail": "mid42",
+    "heaviest_pass": "mid45",
+    "offered_rps": 7.57
+   },
+   "B2TP": {
+    "first_fail": "mid45",
+    "heaviest_pass": "mid50",
+    "offered_rps": 6.87
+   },
+   "B2TV": {
+    "first_fail": "mid42",
+    "heaviest_pass": "mid45",
+    "offered_rps": 7.57
+   }
+  },
+  "cells": {
+   "B1/mid50": {
+    "chat": 0.4,
+    "doc": 0.9761904761904762,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2/mid50": {
+    "chat": 0.5833333333333334,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/mid45": {
+    "chat": 0.55,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/mid50": {
+    "chat": 0.6833333333333333,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TD/burst": {
+    "chat": 0.8916666666666666,
+    "doc": 0.8333333333333333,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TD/mid42": {
+    "chat": 0.938888888888889,
+    "doc": 0.8928571428571429,
+    "p_pass": 0.001,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TD/mid45": {
+    "chat": 0.9833333333333334,
+    "doc": 0.9325396825396827,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TP/burst": {
+    "chat": 0.9333333333333333,
+    "doc": 0.6666666666666666,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TP/mid42": {
+    "chat": 0.9416666666666667,
+    "doc": 0.7976190476190477,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TP/mid45": {
+    "chat": 1.0,
+    "doc": 0.8690476190476191,
+    "p_pass": 0.0,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TP/mid50": {
+    "chat": 0.9888888888888889,
+    "doc": 1.0,
+    "p_pass": 0.9994,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TV/burst": {
+    "chat": 0.95,
+    "doc": 0.6428571428571428,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TV/mid42": {
+    "chat": 0.925,
+    "doc": 0.7619047619047619,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TV/mid45": {
+    "chat": 0.9611111111111112,
+    "doc": 0.9166666666666666,
+    "p_pass": 0.8168,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TV/mid50": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   }
+  }
+ },
+ "7": {
+  "brackets": {
+   "B1": {
+    "first_fail": "mid65",
+    "heaviest_pass": "medium",
+    "offered_rps": 4.03
+   },
+   "B2": {
+    "first_fail": "mid50",
+    "heaviest_pass": "mid65",
+    "offered_rps": 5.5
+   },
+   "B2T": {
+    "first_fail": "mid50",
+    "heaviest_pass": "mid65",
+    "offered_rps": 5.5
+   },
+   "B2TD": {
+    "first_fail": "mid45",
+    "heaviest_pass": "mid50",
+    "offered_rps": 6.87
+   },
+   "B2TP": {
+    "first_fail": "mid45",
+    "heaviest_pass": "mid50",
+    "offered_rps": 6.87
+   },
+   "B2TV": {
+    "first_fail": "mid45",
+    "heaviest_pass": "mid50",
+    "offered_rps": 6.87
+   }
+  },
+  "cells": {
+   "B1/burst": {
+    "chat": 0.16666666666666666,
+    "doc": 0.5357142857142858,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B1/medium": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B1/mid45": {
+    "chat": 0.18333333333333332,
+    "doc": 0.8095238095238095,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B1/mid50": {
+    "chat": 0.3333333333333333,
+    "doc": 0.9523809523809523,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B1/mid65": {
+    "chat": 0.9277777777777777,
+    "doc": 1.0,
+    "p_pass": 0.0,
+    "pass": false,
+    "runs": 6
+   },
+   "B2/burst": {
+    "chat": 0.19166666666666665,
+    "doc": 0.8095238095238095,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2/medium": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2/mid45": {
+    "chat": 0.45833333333333337,
+    "doc": 0.9523809523809523,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2/mid50": {
+    "chat": 0.5833333333333334,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2/mid65": {
+    "chat": 0.9638888888888889,
+    "doc": 1.0,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2T/burst": {
+    "chat": 0.3,
+    "doc": 0.8809523809523809,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/medium": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2T/mid45": {
+    "chat": 0.575,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/mid50": {
+    "chat": 0.6833333333333333,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2T/mid65": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2TD/burst": {
+    "chat": 0.8916666666666666,
+    "doc": 0.7857142857142857,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TD/mid42": {
+    "chat": 0.9,
+    "doc": 0.8571428571428571,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TD/mid45": {
+    "chat": 0.9277777777777777,
+    "doc": 0.9285714285714285,
+    "p_pass": 0.0138,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TD/mid50": {
+    "chat": 0.9583333333333334,
+    "doc": 0.9841269841269842,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TP/burst": {
+    "chat": 0.9416666666666667,
+    "doc": 0.6904761904761905,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TP/mid42": {
+    "chat": 0.9333333333333333,
+    "doc": 0.75,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TP/mid45": {
+    "chat": 0.9416666666666668,
+    "doc": 0.8253968253968252,
+    "p_pass": 0.0,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TP/mid50": {
+    "chat": 0.9777777777777779,
+    "doc": 0.996031746031746,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   },
+   "B2TP/mid65": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": null,
+    "pass": true,
+    "runs": 2
+   },
+   "B2TV/burst": {
+    "chat": 0.9833333333333334,
+    "doc": 0.7142857142857143,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TV/mid42": {
+    "chat": 1.0,
+    "doc": 0.7380952380952381,
+    "p_pass": null,
+    "pass": false,
+    "runs": 2
+   },
+   "B2TV/mid45": {
+    "chat": 0.9861111111111112,
+    "doc": 0.8769841269841269,
+    "p_pass": 0.0794,
+    "pass": false,
+    "runs": 6
+   },
+   "B2TV/mid50": {
+    "chat": 1.0,
+    "doc": 1.0,
+    "p_pass": 1.0,
+    "pass": true,
+    "runs": 6
+   }
+  }
+ },
+ "hypotheses": {
+  "L1": true,
+  "L2": true,
+  "L3": true
+ }
+}

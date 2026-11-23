@@ -136,6 +136,14 @@
     "burst"
    ]
   },
+  "B2TVD12": {
+   "first_fail": "mid45",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid45"
+   ]
+  },
   "B2TVD4": {
    "first_fail": "mid45",
    "heaviest_pass": "mid50",
@@ -145,6 +153,14 @@
     "mid45",
     "mid42",
     "burst"
+   ]
+  },
+  "B2TVD8": {
+   "first_fail": "mid45",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid45"
    ]
   },
   "B2TW": {
@@ -187,11 +203,11 @@
    "runs": 2
   },
   "B1/mid65": {
-   "chat": 0.9333333333333333,
+   "chat": 0.9277777777777778,
    "doc": 1.0,
-   "goodput_req_per_s": 4.652528396432924,
+   "goodput_req_per_s": 4.640366793347618,
    "pass": false,
-   "runs": 2
+   "runs": 6
   },
   "B2/burst": {
    "chat": 0.19166666666666668,
@@ -222,11 +238,11 @@
    "runs": 2
   },
   "B2/mid65": {
-   "chat": 0.9833333333333333,
+   "chat": 0.9638888888888889,
    "doc": 1.0,
-   "goodput_req_per_s": 5.143212096790639,
+   "goodput_req_per_s": 5.079830737538183,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2T/burst": {
    "chat": 0.3,
@@ -286,10 +302,10 @@
   },
   "B2TD/mid50": {
    "chat": 0.9583333333333334,
-   "doc": 0.9880952380952381,
-   "goodput_req_per_s": 6.183557759971445,
+   "doc": 0.9841269841269841,
+   "goodput_req_per_s": 6.1822980042773095,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TP/burst": {
    "chat": 0.9416666666666667,
@@ -313,11 +329,11 @@
    "runs": 6
   },
   "B2TP/mid50": {
-   "chat": 0.9833333333333333,
-   "doc": 1.0,
-   "goodput_req_per_s": 6.328989529141863,
+   "chat": 0.9777777777777777,
+   "doc": 0.996031746031746,
+   "goodput_req_per_s": 6.286412290375662,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TP/mid65": {
    "chat": 1.0,
@@ -413,9 +429,9 @@
   "B2TV/mid50": {
    "chat": 1.0,
    "doc": 1.0,
-   "goodput_req_per_s": 6.382514064224418,
+   "goodput_req_per_s": 6.375014008139779,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TV24/burst": {
    "chat": 0.6416666666666667,
@@ -473,6 +489,13 @@
    "pass": true,
    "runs": 2
   },
+  "B2TVD12/mid45": {
+   "chat": 0.9916666666666667,
+   "doc": 0.8809523809523809,
+   "goodput_req_per_s": 6.591146588568248,
+   "pass": false,
+   "runs": 6
+  },
   "B2TVD4/burst": {
    "chat": 0.9833333333333333,
    "doc": 0.7857142857142857,
@@ -489,10 +512,10 @@
   },
   "B2TVD4/mid45": {
    "chat": 1.0,
-   "doc": 0.8571428571428571,
-   "goodput_req_per_s": 6.5559331896532385,
+   "doc": 0.8809523809523809,
+   "goodput_req_per_s": 6.627931807986536,
    "pass": false,
-   "runs": 2
+   "runs": 6
   },
   "B2TVD4/mid50": {
    "chat": 1.0,
@@ -500,6 +523,13 @@
    "goodput_req_per_s": 6.2684045885767254,
    "pass": true,
    "runs": 2
+  },
+  "B2TVD8/mid45": {
+   "chat": 0.9888888888888889,
+   "doc": 0.8849206349206349,
+   "goodput_req_per_s": 6.599703488512542,
+   "pass": false,
+   "runs": 6
   },
   "B2TW/burst": {
    "chat": 0.35833333333333334,

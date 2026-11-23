@@ -67,6 +67,14 @@
     "burst"
    ]
   },
+  "B2TVD12": {
+   "first_fail": null,
+   "heaviest_pass": "mid45",
+   "heaviest_pass_offered_rps": 7.566765578635015,
+   "tested": [
+    "mid45"
+   ]
+  },
   "B2TVD4": {
    "first_fail": "mid45",
    "heaviest_pass": null,
@@ -75,6 +83,14 @@
     "mid45",
     "mid42",
     "burst"
+   ]
+  },
+  "B2TVD8": {
+   "first_fail": null,
+   "heaviest_pass": "mid45",
+   "heaviest_pass_offered_rps": 7.566765578635015,
+   "tested": [
+    "mid45"
    ]
   }
  },
@@ -115,11 +131,11 @@
    "runs": 2
   },
   "B2TD/mid42": {
-   "chat": 0.9416666666666667,
-   "doc": 0.8690476190476191,
-   "goodput_req_per_s": 6.815483396322406,
+   "chat": 0.9388888888888889,
+   "doc": 0.8928571428571429,
+   "goodput_req_per_s": 6.864301056394296,
    "pass": false,
-   "runs": 2
+   "runs": 6
   },
   "B2TD/mid45": {
    "chat": 0.9833333333333333,
@@ -150,11 +166,11 @@
    "runs": 6
   },
   "B2TP/mid50": {
-   "chat": 0.9666666666666667,
+   "chat": 0.9888888888888889,
    "doc": 1.0,
-   "goodput_req_per_s": 6.250403066140886,
+   "goodput_req_per_s": 6.338547562261535,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TV/burst": {
    "chat": 0.95,
@@ -205,6 +221,13 @@
    "pass": true,
    "runs": 2
   },
+  "B2TVD12/mid45": {
+   "chat": 0.9777777777777777,
+   "doc": 0.9007936507936508,
+   "goodput_req_per_s": 6.594120085264103,
+   "pass": true,
+   "runs": 6
+  },
   "B2TVD4/burst": {
    "chat": 0.975,
    "doc": 0.8214285714285714,
@@ -221,10 +244,17 @@
   },
   "B2TVD4/mid45": {
    "chat": 0.9916666666666667,
-   "doc": 0.8928571428571429,
-   "goodput_req_per_s": 6.6336873300907,
+   "doc": 0.8849206349206349,
+   "goodput_req_per_s": 6.597378571426927,
    "pass": false,
-   "runs": 2
+   "runs": 6
+  },
+  "B2TVD8/mid45": {
+   "chat": 0.9666666666666667,
+   "doc": 0.9126984126984127,
+   "goodput_req_per_s": 6.594821913817739,
+   "pass": true,
+   "runs": 6
   }
  },
  "load_levels": {
