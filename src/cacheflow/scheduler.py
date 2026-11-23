@@ -11,7 +11,7 @@ from typing import Literal
 
 from .prefix import group_digest, shared_prefix_tokens
 
-Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged"]
+Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack"]
 
 
 @dataclass(slots=True)
@@ -31,6 +31,7 @@ class Ticket:
     readiness_guard_bypassed: bool = False
     readiness_estimate_ms: float | None = None
     priority: int = 0  # lower is admitted first under policy class_first / class_aged
+    input_tokens: int = 0
     promoted: bool = False  # class_aged: a priority-1 ticket admitted ahead of chat because it waited past the age cap
 
 
@@ -47,8 +48,11 @@ class AdmissionScheduler:
         store_grace_ms: int = 20,
         group_window_ms: int = 30,
         age_cap_ms: int = 1500,
+        doc_slo_ms: int = 3000,
+        ms_per_1k_tokens: float = 72.0,
+        slack_margin_ms: int = 500,
     ) -> None:
-        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged"):
+        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack"):
             raise ValueError(f"unknown policy {policy}")
         if min(max_inflight, max_queue, max_wait_ms, min_shared_tokens, block_size) <= 0:
             raise ValueError("capacities and thresholds must be positive")
@@ -61,6 +65,9 @@ class AdmissionScheduler:
         self.store_grace_ns = store_grace_ms * 1_000_000
         self.group_window_ns = group_window_ms * 1_000_000
         self.age_cap_ns = age_cap_ms * 1_000_000
+        self.doc_slo_ns = doc_slo_ms * 1_000_000
+        self.ns_per_token = ms_per_1k_tokens * 1_000.0  # ms per 1k tokens -> ns per token
+        self.slack_margin_ns = slack_margin_ms * 1_000_000
         self._condition = asyncio.Condition()
         self._queue: list[Ticket] = []
         self._active: dict[str, Ticket] = {}
@@ -88,7 +95,7 @@ class AdmissionScheduler:
         return min(matches, key=lambda t: t.dispatch_ns or t.enqueued_ns, default=None)
 
     def _eligible(self, ticket: Ticket, now: int) -> bool:
-        if self.policy in ("fifo", "class_first", "class_aged"):
+        if self.policy in ("fifo", "class_first", "class_aged", "class_slack"):
             return True
         if self.policy == "static_group":
             return len(self._queue) > 1 or now - ticket.enqueued_ns >= self.group_window_ns
@@ -117,11 +124,17 @@ class AdmissionScheduler:
             return None
         if self.policy == "class_first":
             return min(eligible, key=lambda t: t.priority)  # FIFO within a priority level
-        if self.policy == "class_aged":
+        if self.policy in ("class_aged", "class_slack"):
             # Chat first, but a request that has waited at least age_cap since its arrival is treated as chat.
             # Ties (min keeps the first) are FIFO by queue order.
             def level(t: Ticket) -> int:
-                return 0 if t.priority == 0 or now - t.arrival_ns >= self.age_cap_ns else 1
+                if t.priority == 0:
+                    return 0
+                if self.policy == "class_aged":
+                    return 0 if now - t.arrival_ns >= self.age_cap_ns else 1
+                # class_slack: promote when the remaining slack no longer covers the expected service time plus margin
+                slack_ns = self.doc_slo_ns - (now - t.arrival_ns) - t.input_tokens * self.ns_per_token - self.slack_margin_ns
+                return 0 if slack_ns <= 0 else 1
             chosen = min(eligible, key=level)
             chosen.promoted = chosen.priority != 0 and level(chosen) == 0
             return chosen
@@ -142,7 +155,7 @@ class AdmissionScheduler:
                           if t.first_token_ns is not None and t.first_token_ns + self.store_grace_ns > now]
         return max(0.001, (min(deadlines) - now) / 1e9) if deadlines else 0.1
 
-    async def admit(self, request_id: str, blocks: tuple[str, ...], *, arrival_ns: int | None = None, priority: int = 0) -> Ticket:
+    async def admit(self, request_id: str, blocks: tuple[str, ...], *, arrival_ns: int | None = None, priority: int = 0, input_tokens: int = 0) -> Ticket:
         arrival = arrival_ns or time.monotonic_ns()
         ticket = Ticket(
             request_id=request_id,
@@ -152,6 +165,7 @@ class AdmissionScheduler:
             deadline_ns=arrival + self.max_wait_ns,
             group=group_digest(blocks, min_shared_tokens=self.min_shared_tokens, block_size=self.block_size),
             priority=priority,
+            input_tokens=input_tokens,
         )
         try:
             async with self._condition:

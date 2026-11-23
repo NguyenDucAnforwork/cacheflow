@@ -17,11 +17,11 @@ from .analyze import percentile
 from .chunk_analyze import cell, paired_bootstrap_p95_diff, run_detail
 from .real_analyze import SLO_TTFT_MS, _gateway_index
 
-LOADS = ["medium", "mid65", "mid50", "burst"]
-FIRST_GAP_MS = {"medium": 900, "mid65": 650, "mid50": 500, "burst": 400}
-POLICIES = ["B2T", "B2TP", "B2TA"]
-LABEL = {"B2T": "FIFO", "B2TP": "chat-first", "B2TA": "chat-first + age cap"}
-COLORS = {"B2T": "#E69F00", "B2TP": "#CC79A7", "B2TA": "#009E73"}
+LOADS = ["medium", "mid65", "mid50", "mid45", "burst"]
+FIRST_GAP_MS = {"medium": 900, "mid65": 650, "mid50": 500, "mid45": 450, "burst": 400}
+POLICIES = ["B2T", "B2TP", "B2TA", "B2TS"]
+LABEL = {"B2T": "FIFO", "B2TP": "chat-first", "B2TA": "chat-first + age cap", "B2TS": "chat-first + slack promotion"}
+COLORS = {"B2T": "#E69F00", "B2TP": "#CC79A7", "B2TA": "#009E73", "B2TS": "#0072B2"}
 
 
 def attain_diff_ci(a: dict[str, list[bool]], b: dict[str, list[bool]], iterations: int = 2000, seed: int = 7):
@@ -80,6 +80,7 @@ def figures(cells: dict, out_dir: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--registry", default="results/real60_registry.csv")
+    parser.add_argument("--run-prefix", default="r60", help="only runs whose id starts with this prefix")
     parser.add_argument("--raw-dir", default="results/raw")
     parser.add_argument("--gateway", nargs="+", default=["results/raw/gateway_r60_runs.jsonl", "results/raw/gateway_policy_runs.jsonl"])
     parser.add_argument("--out-dir", default="results/figures/policy_study")
@@ -89,8 +90,8 @@ def main() -> None:
         run_ids = [row["run_id"] for row in csv.DictReader(file)]
     keep = []
     for rid in run_ids:
-        _, load, config, _tag = rid.split("-", 3)
-        if load in LOADS and config.upper() in POLICIES:
+        prefix, load, config, _tag = rid.split("-", 3)
+        if prefix == args.run_prefix and load in LOADS and config.upper() in POLICIES:
             keep.append(rid)
     gateway: dict = {}
     for path in args.gateway:
@@ -112,7 +113,7 @@ def main() -> None:
             1 for d in items for p in d["requests_detail"] if p["cls"] == "chat" and not p["slo"])
     comparisons = []
     for load in LOADS:
-        for a, b in (("B2T", "B2TP"), ("B2T", "B2TA"), ("B2TP", "B2TA")):
+        for a, b in (("B2T", "B2TP"), ("B2T", "B2TA"), ("B2TP", "B2TA"), ("B2T", "B2TS"), ("B2TP", "B2TS")):
             if f"{load}/{a}" not in groups or f"{load}/{b}" not in groups:
                 continue
             for cls in ("chat", "doc"):

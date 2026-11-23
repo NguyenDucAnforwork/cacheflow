@@ -4,7 +4,8 @@
 #           B1* = GPU prefix cache only, B2* = GPU + CPU tier; max_num_batched_tokens is passed explicitly:
 #           2048 (no suffix), 4096 (M), 8192 (T); P = gateway policy class_first (chat admitted first),
 #           A = gateway policy class_aged (chat first, but a request waiting >= age cap counts as chat), otherwise fifo
-#   LOAD:   moderate | medium | mid65 | mid50 | burst
+#   LOAD:   moderate | medium | mid65 | mid50 | mid45 | burst
+#   S = gateway policy class_slack (chat first; a doc is promoted once its remaining slack is below its expected service time + margin)
 # env: TRACE_PREFIX (default real), RUN_PREFIX (default real), REGISTRY (default results/real_registry.csv)
 # Each run is a full cold restart (set_mode.sh) followed by two identical tiny warm-up requests; no cache carry-over.
 set -euo pipefail
@@ -20,6 +21,7 @@ for spec in "$@"; do
         B2T) mode=B2; mnbt=8192 ;;
         B2TP) mode=B2; mnbt=8192; policy=class_first ;;
         B2TA) mode=B2; mnbt=8192; policy=class_aged ;;
+        B2TS) mode=B2; mnbt=8192; policy=class_slack ;;
         *) echo "unknown config $config" >&2; exit 2 ;;
     esac
     run_id="${RUN_PREFIX:-real}-${trace}-$(echo "$config" | tr 'A-Z' 'a-z')-${tag}"

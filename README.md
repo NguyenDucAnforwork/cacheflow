@@ -32,6 +32,10 @@ Measured on 2026-11-22 with 62-request traces: 14 real QuALITY v1.0.1 dev docume
 
 Is chat-first admission still a trade-off below saturation? At first-visit spacing of 0.5 s it is free: chat SLO attainment rose 0.68 to 0.98 while doc stayed at 1.00 (doc p95 2.58 s). At 0.4 s no policy reaches both targets (FIFO 0.30 / 0.88, chat-first 0.94 / 0.69, chat-first with a 1.5 s age cap 0.53 / 0.85, chat / doc), so that load needs capacity rather than reordering. An isolated, queue-free probe measured about 12 ms per scheduler step (95% CI 10.9 to 13.2): going from `max_num_batched_tokens` 2048 to 8192 shortens a 6 to 8K-token prefill by 22 to 49 ms. The pre-registered age-cap hypothesis (H-b) was not supported; details, limitations and reproduce commands: [docs/policy_study_results.md](docs/policy_study_results.md) (hypotheses: [docs/policy_study_prereg.md](docs/policy_study_prereg.md)).
 
+## Replication and slack-based admission (third follow-up)
+
+On a second document set (seed 11) the chat-first effect at saturation replicates (chat SLO +0.53, doc SLO -0.17, versus +0.64 and -0.19 on seed 7), but the load at which FIFO starts to fail does not transfer, so first-visit spacing is not a capacity measure. A slack-based promotion rule (`class_slack`, parameters fixed beforehand) found no load where both classes reach target: at 0.45 s spacing FIFO / chat-first / slack give chat 0.57 / 0.94 / 0.78 and doc 1.00 / 0.83 / 0.95, and at 0.5 s it gives up chat-first's free case (chat 0.92 vs 0.98). Pre-registered hypotheses, tables and limitations: [docs/replication_slack_results.md](docs/replication_slack_results.md) ([prereg](docs/replication_slack_prereg.md)).
+
 ## Project map
 
 - [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs; [real-data workload results](docs/real_workload_results.md) is a separate study.

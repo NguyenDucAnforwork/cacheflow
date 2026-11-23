@@ -120,3 +120,31 @@ def test_class_aged_young_doc_waits_for_chat():
         await scheduler.finish(chat.result())
         await scheduler.finish(await asyncio.wait_for(doc, 0.5))
     asyncio.run(run())
+
+
+def _slack_case(wait_s: float, tokens: int, expect_doc_first: bool):
+    async def run():
+        scheduler = AdmissionScheduler(policy="class_slack", max_inflight=1, max_wait_ms=500, min_shared_tokens=8,
+                                       block_size=4, doc_slo_ms=1000, ms_per_1k_tokens=100.0, slack_margin_ms=100)
+        busy = await scheduler.admit("busy", prefix_blocks(list(range(16)), block_size=4), priority=1)
+        doc = asyncio.create_task(scheduler.admit("doc", prefix_blocks(list(range(100, 116)), block_size=4), priority=1, input_tokens=tokens))
+        await asyncio.sleep(wait_s)
+        chat = asyncio.create_task(scheduler.admit("chat", prefix_blocks(list(range(200, 216)), block_size=4), priority=0))
+        await asyncio.sleep(0.01)
+        await scheduler.finish(busy)
+        first = await asyncio.wait_for(asyncio.wait({doc, chat}, return_when=asyncio.FIRST_COMPLETED), 0.5)
+        assert (doc in first[0]) == expect_doc_first
+        winner = doc.result() if expect_doc_first else chat.result()
+        loser = chat if expect_doc_first else doc
+        await scheduler.finish(winner)
+        await scheduler.finish(await asyncio.wait_for(loser, 0.5))
+    asyncio.run(run())
+
+
+def test_class_slack_promotes_doc_when_slack_is_gone():
+    # slo 1000 ms, 5000 tokens x 100 ms/1k = 500 ms service, 100 ms margin: promote after 400 ms of waiting
+    _slack_case(wait_s=0.5, tokens=5000, expect_doc_first=True)
+
+
+def test_class_slack_keeps_chat_first_while_slack_remains():
+    _slack_case(wait_s=0.05, tokens=5000, expect_doc_first=False)

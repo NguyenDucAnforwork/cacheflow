@@ -100,7 +100,7 @@ def create_app(config_path: str | None = None) -> FastAPI:
         blocks = prefix_blocks(token_ids, block_size=scheduler.block_size, namespace=model)
         # Only the declared request class (chat first) matters, and only under policy class_first.
         priority = 0 if request.headers.get("x-cacheflow-class") == "chat" else 1
-        ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns, priority=priority)
+        ticket: Ticket = await scheduler.admit(request_id, blocks, arrival_ns=arrival_ns, priority=priority, input_tokens=len(token_ids))
         headers = {"content-type": "application/json"}
         stream_cm = client.stream("POST", upstream + "/v1/completions", content=body, headers=headers)
         try:
