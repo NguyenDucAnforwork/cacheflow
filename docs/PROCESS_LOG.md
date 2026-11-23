@@ -67,8 +67,8 @@ Written to be read in one sitting. It records what was done, why, what the resul
 ## 9b. Phase J: the hook said the result was not yet meaningful, so I ran the missing experiment (study 11)
 
 - The goal check pointed out that the mechanism was still unestablished because the experiment that separates the two remaining readings had not been run. I designed a 3-way decomposition (queue location x documents running x demotion order), pre-registered it ([locus_prereg.md](locus_prereg.md)), added a policy (`engine_cap`) and a vLLM concurrency switch, ran 48 runs and analysed them ([locus_results.md](locus_results.md)).
-- **One arm failed**: vLLM `max_num_seqs` 4 collapsed the server (goodput 0.26 req/s), so the concurrency-only contrast was not obtained, and my pre-registered reading rule printed a wrong answer from an undefined value. I reported both.
-- **What the valid contrasts show**: queue location and a concurrency cap, with FIFO order, do not decorrelate the document outcomes (design effect 1.65 vs 1.94); the demotion order does (0.77 at cap 4, 0.30 without a cap). That also explains post hoc why the cap sweep failed (at caps 8 and 12 the gateway queue rarely forms, so the order has nothing to act on).
+- **One arm failed**: vLLM `max_num_seqs` 4 collapsed the server (goodput 0.26 req/s), and my pre-registered reading rule printed a wrong answer from an undefined value. I reported both, then piloted `max_num_seqs` 8 with a degeneracy rule fixed beforehand (it also failed, goodput 3.3 req/s, so I stopped it) and ran the concurrency contrast under FIFO order with a gateway cap instead (F4, F8, F12; 48 runs), which was valid.
+- **What the valid contrasts show**: queue location and a concurrency cap (4, 8 or 12), with FIFO order, do not decorrelate the document outcomes (design effect 1.65, 1.65, 1.43 vs 1.94); the demotion order does (0.77 at cap 4, 0.30 without a cap). That also explains post hoc why the cap sweep failed (at caps 8 and 12 the gateway queue rarely forms, so the order has nothing to act on).
 
 ## 10. Claims that changed over time
 
@@ -90,4 +90,4 @@ Written to be read in one sitting. It records what was done, why, what the resul
 
 ## 12. Re-running anything
 
-All analyses run offline from the committed data (README section 12.4). Serving runs need the GPU host and the pinned stack (README section 12.1 to 12.3); every run is a cold restart and takes about 1.2 minutes. The 422 runs took roughly 9 GPU-hours in total.
+All analyses run offline from the committed data (README section 12.4). Serving runs need the GPU host and the pinned stack (README section 12.1 to 12.3); every run is a cold restart and takes about 1.2 minutes. The 471 runs took roughly 10 GPU-hours in total.

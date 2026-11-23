@@ -37,7 +37,10 @@ for spec in "$@"; do
         B2TV) mode=B2; mnbt=8192; engine_priority=1 ;;
         B2TVD8) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=8 ;;
         B2TVD12) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=12 ;;
+        B2TVS8) mode=B2; mnbt=8192; engine_priority=1; wide=1; seqs=8 ;;
         B2TVS4) mode=B2; mnbt=8192; engine_priority=1; wide=1; seqs=4 ;;
+        B2TVF8) mode=B2; mnbt=8192; policy=engine_cap; engine_priority=1; width=8 ;;
+        B2TVF12) mode=B2; mnbt=8192; policy=engine_cap; engine_priority=1; width=12 ;;
         B2TVF4) mode=B2; mnbt=8192; policy=engine_cap; engine_priority=1; width=4 ;;
         B2TVD4) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=4 ;;
         B2TVD) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=16 ;;

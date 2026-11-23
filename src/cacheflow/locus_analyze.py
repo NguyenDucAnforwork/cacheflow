@@ -18,7 +18,7 @@ from .real_analyze import _meets_slo
 from .stats_analyze import CELLS, CHAT_T, DOC_T, PREFIX
 from .variance_investigate import load_cell
 
-SERIES = [("V engine priority, no cap", "B2TV"), ("S4 max_num_seqs 4 (queue in engine)", "B2TVS4"), ("F4 cap 4 at gateway, FIFO", "B2TVF4"),
+SERIES = [("V engine priority, no cap", "B2TV"), ("S4 max_num_seqs 4 (queue in engine)", "B2TVS4"), ("F4 cap 4 at gateway, FIFO", "B2TVF4"), ("F8 cap 8 at gateway, FIFO", "B2TVF8"), ("F12 cap 12 at gateway, FIFO", "B2TVF12"),
           ("VD4 cap 4 + demotion order", "B2TVD4"), ("D chat-first + demotion", "B2TD"), ("P gateway chat-first", "B2TP")]
 
 
@@ -70,22 +70,27 @@ def main() -> None:
             d, c = float(att.mean()), chat_attainment(raw, s, l, cfg)
             docs.append(d); chats.append(c); sds.append(float(att.std(ddof=1))); des.append(design_effect(m))
             passes += int(c >= CHAT_T and d >= DOC_T)
-        boots = []
-        for _ in range(args.resamples):
-            vals = []
-            for m in mats.values():
-                idx = rng.integers(0, m.shape[0], m.shape[0])
-                de = design_effect(m[idx])
-                if de is not None:
-                    vals.append(de)
-            boots.append(np.mean(vals))
-        lo, hi = np.percentile(boots, [2.5, 97.5])
+        valid = [x for x in des if x is not None]
+        if len(valid) == len(des):
+            boots = []
+            for _ in range(args.resamples):
+                vals = []
+                for m in mats.values():
+                    idx = rng.integers(0, m.shape[0], m.shape[0])
+                    de_b = design_effect(m[idx])
+                    if de_b is not None:
+                        vals.append(de_b)
+                boots.append(np.mean(vals))
+            lo, hi = (float(x) for x in np.percentile(boots, [2.5, 97.5]))
+            de_mean = float(np.mean(valid))
+        else:  # degenerate series (no outcome variance in some cell, e.g. the server collapsed)
+            lo = hi = de_mean = None
         out[cfg] = {"label": label, "passes": passes, "chat": float(np.mean(chats)), "doc": float(np.mean(docs)), "doc_sd": float(np.mean(sds)),
-                    "design_effect": float(np.mean([x for x in des if x is not None])), "design_effect_ci95": [float(lo), float(hi)],
-                    "cell_design_effects": des, "runs_per_cell": [m.shape[0] for m in mats.values()]}
+                    "design_effect": de_mean, "design_effect_ci95": [lo, hi], "cell_design_effects": des, "runs_per_cell": [m.shape[0] for m in mats.values()]}
         o = out[cfg]
-        print(f"{label:40s} {passes}/4     {o['chat']:.3f}  {o['doc']:.3f}  {o['doc_sd']:.3f}   {o['design_effect']:.2f} [{lo:.2f}, {hi:.2f}]   {o['runs_per_cell']}")
-    de = {k: v["design_effect"] for k, v in out.items()}
+        de_txt = "undefined (degenerate)" if de_mean is None else f"{de_mean:.2f} [{lo:.2f}, {hi:.2f}]"
+        print(f"{label:40s} {passes}/4     {o['chat']:.3f}  {o['doc']:.3f}  {o['doc_sd']:.3f}   {de_txt}   {o['runs_per_cell']}")
+    de = {k: v["design_effect"] for k, v in out.items() if v["design_effect"] is not None}
     h = {}
     if {"B2TVF4", "B2TVS4", "B2TVD4", "B2TV"} <= set(de):
         h["L1"] = de["B2TVF4"] <= 1.0
@@ -102,6 +107,12 @@ def main() -> None:
         print(f"\nL1 (DE(F4) <= 1.0): {h['L1']} ({de['B2TVF4']:.2f}); L2 (DE(S4) >= 1.3): {h['L2']} ({de['B2TVS4']:.2f}); L3 (|DE(F4) - DE(VD4)| <= 0.4): {h['L3']} ({abs(de['B2TVF4'] - de['B2TVD4']):.2f})")
         print(f"reading by the pre-registered rule: {reading}")
         h["reading"] = reading
+    if {"B2TVF4", "B2TVF8", "B2TVF12", "B2TV"} <= set(de):
+        k1 = de["B2TVF8"] >= 1.34 and de["B2TVF12"] >= 1.34 and de["B2TVF4"] >= 1.34
+        k2 = de["B2TVF4"] < de["B2TVF8"] < de["B2TVF12"] < de["B2TV"] and de["B2TV"] - de["B2TVF4"] > 0.6
+        print(f"K1 (DE(F4), DE(F8), DE(F12) all >= 1.34, no dose-response under FIFO): {k1}  [{de['B2TVF4']:.2f}, {de['B2TVF8']:.2f}, {de['B2TVF12']:.2f}, V {de['B2TV']:.2f}]")
+        print(f"K2 (DE falls monotonically with the cap, spread > 0.6): {k2}")
+        h["K1"], h["K2"] = bool(k1), bool(k2)
     Path(args.out).write_text(json.dumps({"series": out, "hypotheses": h}, indent=1, sort_keys=True) + "\n")
 
     import matplotlib
@@ -109,9 +120,9 @@ def main() -> None:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    cfgs = [c for _, c in SERIES if c in out]
+    cfgs = [c for _, c in SERIES if c in out and out[c]["design_effect"] is not None]
     fig, axes = plt.subplots(1, 3, figsize=(13, 3.6))
-    colors = {"B2TV": "#0072B2", "B2TVS4": "#56B4E9", "B2TVF4": "#009E73", "B2TVD4": "#E69F00", "B2TD": "#D55E00", "B2TP": "#CC79A7"}
+    colors = {"B2TV": "#0072B2", "B2TVS4": "#56B4E9", "B2TVF4": "#009E73", "B2TVF8": "#66C2A5", "B2TVF12": "#A6D8C5", "B2TVD4": "#E69F00", "B2TD": "#D55E00", "B2TP": "#CC79A7"}
     for ax, key, title in zip(axes, ("design_effect", "doc_sd", "doc"), ("outcome design effect (variance inflation)", "doc run-to-run SD", "mean doc attainment")):
         vals = [out[c][key] for c in cfgs]
         ax.bar(range(len(cfgs)), vals, color=[colors[c] for c in cfgs])

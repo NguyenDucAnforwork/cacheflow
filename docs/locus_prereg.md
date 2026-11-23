@@ -34,3 +34,20 @@ If the result is inconclusive I report it as such; no further knobs are tuned af
 ## Note added after the runs
 
 The S4 arm (`max_num_seqs` 4) collapsed the server (goodput 0.26 req/s versus about 7.3; nearly every request missed its SLO), so its design effect is undefined and L2 could not be evaluated; the reading rule above did not anticipate a degenerate arm and its printed output ("concurrency") is an artefact. See [locus_results.md](locus_results.md).
+
+## Addendum 2: a gentler concurrency arm (S8), pre-registered before it was run
+
+S4 collapsed the server, so the concurrency-only contrast is still missing. This addendum adds **S8**: engine priority with vLLM `max_num_seqs` 8 and a pass-through gateway (queue in the engine, at most 8 sequences running, chat sharing them), on the same 4 decisive cells, 6 runs each (24 runs). One pilot run (seed 11 burst, repeat 1) is run first as part of the arm.
+
+- **Degeneracy rule (decided now, unlike for S4):** S8 is declared degenerate, and no inference is drawn from it, if at seed 11 burst goodput is below 4 req/s or the mean attainment (chat and doc averaged over the four cells) is below 0.5. In that case the concurrency-only contrast stays unobtained and I say so.
+- **If S8 is not degenerate:** **L2' (concurrency alone does not decorrelate):** DE(S8) >= 1.3. **L2'' (concurrency decorrelates):** DE(S8) <= 1.0. Anything in between is inconclusive. The reading is then: L2' with the earlier F4 and VD4 results supports the demotion order as the decorrelating factor; L2'' would show that a lower number of sequences running in the engine reduces the correlation by itself.
+
+## Addendum 3: S8 is degenerate; the concurrency contrast is run under FIFO with a gateway cap instead (pre-registered before these runs)
+
+The S8 pilot (seed 11 burst, repeat 1) gave goodput 3.31 req/s (below the 4 req/s threshold of addendum 2; chat 1.000, doc 0.071, run duration 19.0 s against about 13 s for engine priority). By the rule fixed in addendum 2 **S8 is degenerate and the remaining S8 runs were not run; no inference is drawn from S8.** Limiting vLLM's `max_num_seqs` changes capacity, not just concurrency (S4 and S8 both fail), so that knob cannot provide the concurrency-only contrast.
+
+A valid concurrency contrast is available under FIFO order with the document queue at the gateway: the cap on documents in flight at the gateway with chat bypassing (policy `engine_cap`, engine priority for chat), which does not reduce capacity. Already measured: F4 (cap 4) design effect 1.65; V (no cap, documents run up to 16 in the engine, engine FIFO) 1.94. New: **F8 and F12** (caps 8 and 12), 4 decisive cells x 6 runs each (48 runs, random order within repeat blocks).
+
+- **K1 (no dose-response of concurrency under FIFO):** DE(F8) and DE(F12) are both within 0.6 of V's 1.94, i.e. at least 1.34 (F4 already is, at 1.65). Then limiting the number of documents in flight, by itself and with FIFO order, does not decorrelate the outcomes, and the demotion order is the factor that does.
+- **K2 (concurrency matters):** DE falls monotonically as the cap falls with a total spread of more than 0.6: DE(F4) < DE(F8) < DE(F12) < DE(V) and DE(V) - DE(F4) > 0.6. Then the cap itself reduces the correlation. (Not met by F4 alone: 1.94 - 1.65 = 0.29.)
+- Anything else is reported as inconclusive. Same statistic, intervals and cells as above.

@@ -44,7 +44,7 @@ If queueing in the engine's FCFS waiting queue causes the common-mode correlatio
 
 ## Outcome of the tests (added after studies 10 and 11)
 
-The cap sweep ([ladder_capsweep_results.md](ladder_capsweep_results.md)) failed its dose-response prediction; the 3-way decomposition ([locus_results.md](locus_results.md)) then separated the factors: **queue location and a 4-document concurrency cap, with FIFO order, do not remove the positive correlation (design effect 1.65 vs 1.94 for engine priority); adding the demotion order does (0.77 at cap 4, 0.30 without a cap)**. So the best-supported reading is that the *ordering policy* decorrelates the outcomes (the "compensating flips" of the table above), not the location of the queue. The concurrency-only contrast could not be obtained (vLLM `max_num_seqs` 4 collapsed the server), so the conclusion is post hoc and rests on the valid contrasts.
+The cap sweep ([ladder_capsweep_results.md](ladder_capsweep_results.md)) failed its dose-response prediction; the 3-way decomposition ([locus_results.md](locus_results.md)) then separated the factors: **queue location and a cap of 4, 8 or 12 documents in flight, with FIFO order, do not remove the positive correlation (design effect 1.65, 1.65, 1.43 vs 1.94 for engine priority); adding the demotion order does (0.77 at cap 4, 0.30 without a cap)**. So the best-supported reading is that the *ordering policy* decorrelates the outcomes (the "compensating flips" of the table above), not the location of the queue. Concurrency inside the engine's own queue could not be varied (vLLM `max_num_seqs` 4 and 8 collapse the server); the concurrency contrast was obtained under FIFO with a gateway cap. The conclusion is post hoc and rests on the valid contrasts.
 
 ## Limitations
 

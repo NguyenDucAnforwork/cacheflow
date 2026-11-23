@@ -2,7 +2,7 @@
 
 A set of pre-registered, paired experiments on a single RTX 3090 with vLLM 0.22.0, an LMCache CPU KV tier and an asyncio admission gateway, using real document and chat content, real arrival structure where available, and a Qwen3-1.7B model. The question that runs through all of it is practical: **when short interactive requests and long-document requests share one inference server, what actually moves latency-SLO attainment, and by how much?**
 
-> Status: 422 serving runs plus an isolated prefill probe, across eleven studies. Start with [docs/interview_brief.md](docs/interview_brief.md) (two-page summary) or [docs/PROCESS_LOG.md](docs/PROCESS_LOG.md) (the whole process in order). The numbers are from one host, one small model, three document sets, and mostly two repeats per cell. Read the limitations (section 9) before quoting any of them.
+> Status: 471 serving runs plus an isolated prefill probe, across eleven studies. Start with [docs/interview_brief.md](docs/interview_brief.md) (two-page summary) or [docs/PROCESS_LOG.md](docs/PROCESS_LOG.md) (the whole process in order). The numbers are from one host, one small model, three document sets, and mostly two repeats per cell. Read the limitations (section 9) before quoting any of them.
 
 Contents: [1. TL;DR](#1-tldr) · [2. System](#2-the-system) · [3. Research questions](#3-research-questions) · [4. Data](#4-data) · [5. Literature and survey](#5-literature-review-and-survey) · [6. Experimental setup and workflow](#6-experimental-setup) · [7. Studies and results](#7-studies-and-results) · [8. What failed](#8-what-failed-and-what-i-got-wrong) · [9. Limitations](#9-limitations-and-threats-to-validity) · [10. Reading the results](#10-what-the-results-support) · [11. Repository map](#11-repository-map) · [12. Reproduction commands](#12-reproduction-commands) · [13. Next steps](#13-next-steps)
 
@@ -23,7 +23,7 @@ Contents: [1. TL;DR](#1-tldr) · [2. System](#2-the-system) · [3. Research ques
 | 5 | Demoting documents that can no longer meet their SLO shifts misses toward savable documents | most consistent configuration in the hardening: passes 3 of the 4 decisive cells (pass probability 0.86 to 1.00), smallest run-to-run spread (doc SD 0.010 to 0.018), the only one passing seed 11 burst (doc 0.921 vs 0.833 for engine priority, interval excludes 0); adds no capacity by itself and lengthens the demoted documents' tail | moderate |
 | 6 | A scheduler step costs about 12 ms | isolated probe, 95% CI 10.9 to 13.2 ms | solid for this measurement |
 | 7 | Combining engine priority with demotion does **not** raise the SLO-constrained load level, but does combine their balance at overloaded cells | 0 of 3 seeds heavier than the better parent; 3 of 4 complementary cells within 0.03 of the better parent per class | negative for capacity, descriptive for balance |
-| 8 | **Replicate noise is large relative to the thresholds, depends on the configuration, and comes from correlated outcomes rather than noisier requests**: doc SLO run SD 0.010 to 0.018 for demotion, 0.019 to 0.039 for gateway chat-first, 0.025 to 0.041 for engine priority; the spread is not explained by more unstable requests (corr -0.08) or noisier per-request timings (smallest for engine priority); it is explained by positive correlation between documents' outcomes within a run (variance inflation 1.94 for engine priority, 0.30 for demotion) | studies 8 to 10 (offline variance investigation on 12 cells x 6 runs) | solid for the description; a 3-way decomposition (study 11) points at the **demotion order**, not queue location or the concurrency cap: with FIFO order the design effect stays high (gateway queue, cap 4: 1.65; engine queue: 1.94), with demotion order it falls (0.77 at cap 4, 0.30 without a cap); the concurrency-only contrast was not obtained (vLLM `max_num_seqs` 4 collapsed the server), so this rests on the valid contrasts and is post hoc |
+| 8 | **Replicate noise is large relative to the thresholds, depends on the configuration, and comes from correlated outcomes rather than noisier requests**: doc SLO run SD 0.010 to 0.018 for demotion, 0.019 to 0.039 for gateway chat-first, 0.025 to 0.041 for engine priority; the spread is not explained by more unstable requests (corr -0.08) or noisier per-request timings (smallest for engine priority); it is explained by positive correlation between documents' outcomes within a run (variance inflation 1.94 for engine priority, 0.30 for demotion) | studies 8 to 10 (offline variance investigation on 12 cells x 6 runs) | solid for the description; a 3-way decomposition (study 11) points at the **demotion order**, not queue location or the concurrency cap: with FIFO order the design effect stays high (gateway queue, cap 4: 1.65; engine queue: 1.94), with demotion order it falls (0.77 at cap 4, 0.30 without a cap); the number of documents in flight does not matter under FIFO order (caps 4, 8, 12 give 1.65, 1.65, 1.43 vs 1.94), while vLLM `max_num_seqs` 4 and 8 collapse the server so concurrency could not be varied inside the engine's own queue; the conclusion rests on the valid contrasts and is post hoc |
 | 9 | The capacity ladder holds at run level: 4.0 to 5.5 req/s with the CPU tier (+37%), to 6.9 with class ordering (+25%), **1.7x over B1** on seed 7; the ordering of configurations holds on three document sets; **chat-first + demotion is the most robust configuration** (3 of 4 decisive cells, lowest spread, the highest mean doc attainment, 0.935, with chat 0.963 (the cap-8 and cap-12 variants of engine priority also clear both targets in the mean, but by 0.001 on doc)); the engine-priority family plateaus at doc ~0.90 whatever the document cap | study 10 (boundary cells with 6 runs, cap sweep with 6 runs per cell) | moderate to fairly solid |
 
 **What did not work** (and is reported as such): age-capped promotion of documents, slack-based promotion, a larger prefill budget as a capacity lever (it lowers p95 but moves no capacity bracket), the original delay-hit-aware admission (DHAS), the combination of engine priority and demotion (as a capacity lever), and several hypotheses I wrote down in advance.
@@ -277,7 +277,7 @@ Reading diagram C with the mechanism result of study 7: a request waits in **eit
 
 ## 7. Studies and results
 
-Detailed tables and caveats are in the per-study documents (linked). Run counts: 12 + 20 + 14 + 18 + 10 + 56 + 60 + 40 + 48 + 96 + 48 = **422 serving runs**, plus the isolated probe (5 restarts, 210 samples).
+Detailed tables and caveats are in the per-study documents (linked). Run counts: 12 + 20 + 14 + 18 + 10 + 56 + 60 + 40 + 48 + 96 + 48 = **471 serving runs**, plus the isolated probe (5 restarts, 210 samples).
 
 ### 7.0 Original sprint: delay-hit-aware admission (RQ0) , negative
 
@@ -402,18 +402,18 @@ An offline investigation (no new runs) and 96 new runs.
 
 ### 7.11 What decorrelates the outcomes? (RQ11) , [docs/locus_results.md](docs/locus_results.md)
 
-48 runs: a 3-way decomposition (queue location x documents running x demotion order), all with engine priority for chat, on the 4 decisive cells, 6 runs each.
+97 runs: a 3-way decomposition (queue location x documents running x demotion order), all with engine priority for chat, on the 4 decisive cells, 6 runs each.
 
 | Series | Cells passed | Mean doc | Doc run SD | Design effect [95% CI] |
 |---|---|---|---|---|
 | V engine priority, engine queue, FIFO | 2 of 4 | 0.899 | 0.033 | 1.94 [1.12, 2.45] |
-| F4 gateway queue, 4 documents, FIFO | 0 of 4 | 0.818 | 0.025 | 1.65 [0.98, 2.01] |
-| VD4 gateway queue, 4 documents, demotion order | 1 of 4 | 0.898 | 0.021 | **0.77** [0.52, 1.08] |
-| D chat-first + demotion | 3 of 4 | 0.935 | 0.014 | **0.30** [0.12, 0.61] |
-| S4 `max_num_seqs` 4 | collapsed (doc 0.036) | | | not defined |
+| F4 / F8 / F12 gateway queue, 4 / 8 / 12 documents, FIFO | 0 / 2 / 2 of 4 | 0.818 / 0.917 / 0.912 | 0.025 / 0.026 / 0.025 | 1.65 / 1.65 / 1.43 |
+| VD4 gateway queue, 4 documents, demotion order | 1 of 4 | 0.898 | 0.021 | **0.77** [0.48, 1.07] |
+| D chat-first + demotion | 3 of 4 | 0.935 | 0.014 | **0.30** [0.15, 0.62] |
+| S4 / S8 `max_num_seqs` 4 / 8 | collapsed (S4 doc 0.036; S8 pilot goodput 3.3 req/s) | | | not defined |
 
-- Pre-registered L1 and L3 not met, L2 not evaluable (S4 collapsed the server: goodput 0.26 req/s vs 7.3), and the reading rule printed "concurrency" only because of that artefact; the interpretation uses only the valid contrasts and is post hoc.
-- **Moving the queue to the gateway and capping concurrency, with FIFO order, does not remove the correlation and costs document attainment; adding the demotion order does** (F4 to VD4: design effect 1.65 to 0.77, doc 0.818 to 0.898). Across all series the low design effects are the ones with the demotion order. This also explains the cap sweep post hoc: with caps of 8 or 12 the gateway queue rarely forms, so the demotion order has little to act on.
+- Pre-registered L1 and L3 not met, L2 not evaluable (S4 collapsed the server: goodput 0.26 req/s vs 7.3; the S8 pilot was degenerate by a rule fixed beforehand), and the first reading rule printed "concurrency" only because of that artefact. The follow-up (addendum 3) obtained the concurrency contrast under FIFO with a gateway cap: **K1 met** (design effect 1.65, 1.65, 1.43 for caps 4, 8, 12 vs 1.94 with no cap), K2 not met. The interpretation uses only the valid contrasts and is post hoc.
+- **Moving the queue to the gateway and capping concurrency (at 4, 8 or 12), with FIFO order, does not remove the correlation; adding the demotion order does** (F4 to VD4: design effect 1.65 to 0.77, doc 0.818 to 0.898). Across all series the low design effects are the ones with the demotion order. This also explains the cap sweep post hoc: with caps of 8 or 12 the gateway queue rarely forms, so the demotion order has little to act on.
 
 ### 7.12 Consolidated: what worked and what did not
 
@@ -494,12 +494,12 @@ Claims **not** made: no general speedup guarantee; not a reproduction of Strata,
 | `configs/` | gateway policy configuration, supervisor programs |
 | `tests/` | 16 unit tests (scheduler policies among them) |
 | `docs/` | one results file per study and a `*_prereg.md` written before it; `readme_by_study.md` is the earlier running README; `reproduce.md` has host setup |
-| `results/` | `*_registry.csv` (422 runs), `raw/` per-run traces and metrics, `real/` analyses and manifests, `figures/` |
+| `results/` | `*_registry.csv` (471 runs), `raw/` per-run traces and metrics, `real/` analyses and manifests, `figures/` |
 | `data/` | git-ignored: raw datasets and trace JSONL (rebuilt by the trace builder) |
 
 **Reproduce.** Section 12 has the exact commands for every study; host setup is in [docs/reproduce.md](docs/reproduce.md). Analyses can be rerun offline from the committed registries and raw files without a GPU.
 
-Cost and time: each run takes about 1.1 to 1.4 minutes (cold restart plus replay); the 422 runs were roughly 9 GPU-hours in total.
+Cost and time: each run takes about 1.1 to 1.4 minutes (cold restart plus replay); the 471 runs were roughly 10 GPU-hours in total.
 
 ---
 
@@ -674,7 +674,7 @@ Check status: the offline commands for studies 1, 2, 3 (policy cells and the pro
 Ordered by value for the effort; none is started.
 
 1. **Check a larger model (7 to 8B)** so prefill is heavier and closer to production; first confirm memory (about 6 GB of KV remains on a 24 GB card). This is the most important external-validity test of the capacity ladder and of the demotion-order finding.
-2. **The missing corner of the decomposition**: demotion order *inside* the engine queue (needs a deadline-aware scheduler change in vLLM), and a gentler way to vary engine concurrency than `max_num_seqs` 4 (for example 8 with chat bypassing).
+2. **The missing corner of the decomposition**: demotion order *inside* the engine queue (needs a deadline-aware scheduler change in vLLM); `max_num_seqs` 4 and 8 both collapse capacity, so concurrency inside the engine's own queue cannot be varied with that knob.
 3. **FP8 KV cache as a substitute for the CPU tier** (capacity x2, about 112K tokens versus the 98K-token working set); needs a feasibility check of the attention backend on sm86 and an accuracy check on QuALITY.
 4. **A closed-loop or production-like evaluation**: real arrival traces with sub-second timestamps (BurstGPT is integer-second and was time-compressed), client retries, and an evaluation of what happens to the demoted documents (rejection, a smaller model, or a longer deadline).
 5. **Sparse prefill** (MInference-style) if an integration exists, with accuracy measured on QuALITY.
