@@ -78,6 +78,11 @@ Written to be read in one sitting. It records what was done, why, what the resul
 - **All four hypotheses were met**: design effect 0.59 (engine priority 1.94), chat 0.983 and doc 0.938, 4 of 4 decisive cells passed, miss-count spread smaller in 4 of 4 cells. This completes the 2 x 2 (queue location x ordering): the ordering is the factor in either queue ([engine_demote_results.md](engine_demote_results.md)).
 - I then checked whether it extends the capacity ladder (24 more runs, pre-registered before): **it does not broadly** (+10% on seed 7, ties on seed 23 and seed 11, fails 8.2 req/s on both seeds checked), so the claim is robustness at marginal loads, not a higher ladder.
 
+## 9d. Phase L (last hour): per-request trace of the engine classifier, sparse-prefill feasibility
+
+- Added an optional decision log to the vLLM patch (off by default), ran 8 traced runs, and joined the engine log with client outcomes: **17 of 18 demoted documents missed their SLO and 317 of 318 kept documents met it** (336 documents, all matched), so the engine-queue mechanism is now traced per request, with a small number of false decisions (one false positive, one false negative) as expected from the missing prefix discount ([engine_demote_results.md](engine_demote_results.md)).
+- A 15-minute sparse-prefill feasibility check (no experiment): not feasible as a quick test; the candidates need a different vLLM version, other models, or disabled chunked prefill, or have no code ([sparse_prefill_feasibility.md](sparse_prefill_feasibility.md)). A bug of mine on the way: an escaped newline in the patch script broke vLLM's import for a few minutes on the host; caught by the first test, fixed before any run.
+
 ## 10. Claims that changed over time
 
 | Claim | First said | Now |
@@ -98,4 +103,4 @@ Written to be read in one sitting. It records what was done, why, what the resul
 
 ## 12. Re-running anything
 
-All analyses run offline from the committed data (README section 12.4). Serving runs need the GPU host and the pinned stack (README section 12.1 to 12.3); every run is a cold restart and takes about 1.2 minutes. The 519 runs took roughly 11 GPU-hours in total.
+All analyses run offline from the committed data (README section 12.4). Serving runs need the GPU host and the pinned stack (README section 12.1 to 12.3); every run is a cold restart and takes about 1.2 minutes. The 527 runs took roughly 11 GPU-hours in total.

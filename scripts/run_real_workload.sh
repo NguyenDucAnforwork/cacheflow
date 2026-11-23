@@ -57,9 +57,10 @@ for spec in "$@"; do
     esac
     run_id="${RUN_PREFIX:-real}-${trace}-$(echo "$config" | tr 'A-Z' 'a-z')-${tag}"
     printf '%s\n' "$mnbt" > /workspace/.cacheflow-mnbt
-    rm -f /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight /workspace/.cacheflow-max-num-seqs /workspace/.cacheflow-engine-demote
+    rm -f /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight /workspace/.cacheflow-max-num-seqs /workspace/.cacheflow-engine-demote /workspace/.cacheflow-engine-demote-log
     if [[ "$edemote" == 1 ]]; then
         printf '1\n' > /workspace/.cacheflow-engine-demote
+        if [[ "${TRACE_ENGINE:-0}" == 1 ]]; then printf '/workspace/results/raw/%s.edemote.log\n' "$run_id" > /workspace/.cacheflow-engine-demote-log; fi
     fi
     if [[ "$seqs" -gt 0 ]]; then
         printf '%s\n' "$seqs" > /workspace/.cacheflow-max-num-seqs

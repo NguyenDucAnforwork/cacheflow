@@ -4,11 +4,11 @@ For a conversation about LLM inference engineering (target: FPT Smart Cloud, AI 
 
 ## The 60-second version
 
-"I built a reproducible harness for SLO-aware serving of mixed chat and long-document traffic on one GPU (vLLM, an LMCache CPU KV tier, and an admission gateway), and used it to answer one practical question: when short interactive requests and long-document requests share a server, what actually moves SLO attainment? I ran 519 cold-restart experiments on real QuALITY and ShareGPT content, with hypotheses written down before each study. The CPU KV tier and class ordering raise the load the server can carry at the SLO by 1.7x on my main trace. More interesting is what did not work and what I had to correct: ordering only moves misses between classes unless capacity changes, priority only works in the first queue where requests wait, and several of my own headline numbers did not survive more repeats."
+"I built a reproducible harness for SLO-aware serving of mixed chat and long-document traffic on one GPU (vLLM, an LMCache CPU KV tier, and an admission gateway), and used it to answer one practical question: when short interactive requests and long-document requests share a server, what actually moves SLO attainment? I ran 527 cold-restart experiments on real QuALITY and ShareGPT content, with hypotheses written down before each study. The CPU KV tier and class ordering raise the load the server can carry at the SLO by 1.7x on my main trace. More interesting is what did not work and what I had to correct: ordering only moves misses between classes unless capacity changes, priority only works in the first queue where requests wait, and several of my own headline numbers did not survive more repeats."
 
 ## The result to lead with
 
-A deadline-aware demotion order added to vLLM's own priority waiting queue (a research patch of about 60 lines, off by default) keeps engine priority's chat attainment (0.983) and raises document attainment from 0.899 to 0.938. **It is the only configuration that met both SLO targets in all four decisive cells (4 of 4, six runs each)** and it cut the run-to-run spread by about 40% (document SD 0.020 vs 0.033) and the variance inflation of the outcomes from 1.94 to 0.59. I predicted this from a decomposition of why engine priority was noisy, wrote the hypotheses down before running (all four met), and I also report where it does not help: it does not lift the capacity ladder broadly (+10% on one seed, ties on the others, fails at 8.2 req/s on both seeds checked) and demoted documents wait longer (document p95 up to 4.25 s).
+A deadline-aware demotion order added to vLLM's own priority waiting queue (a research patch of about 60 lines, off by default) keeps engine priority's chat attainment (0.983) and raises document attainment from 0.899 to 0.938. **It is the only configuration that met both SLO targets in all four decisive cells (4 of 4, six runs each)** and it cut the run-to-run spread by about 40% (document SD 0.020 vs 0.033) and the variance inflation of the outcomes from 1.94 to 0.59. I predicted this from a decomposition of why engine priority was noisy, wrote the hypotheses down before running (all four met), and a per-request trace of the patch shows that 17 of the 18 documents it demoted missed their SLO and 317 of the 318 it kept met it. I also report where it does not help: it does not lift the capacity ladder broadly (+10% on one seed, ties on the others, fails at 8.2 req/s on both seeds checked) and demoted documents wait longer (document p95 up to 4.25 s).
 
 ## The five findings worth leading with
 
@@ -43,7 +43,7 @@ A deadline-aware demotion order added to vLLM's own priority waiting queue (a re
 |---|---|
 | Setup | RTX 3090 24 GB, vLLM 0.22.0, LMCache 0.5.3, Qwen3-1.7B BF16, GPU KV 6 GiB (56,160 tokens), working set 98K tokens |
 | Data | QuALITY v1.0.1 dev (14 documents of 6 to 8K tokens), ShareGPT V3 (60 chats), BurstGPT windows; 102 requests per trace; 3 seeds |
-| Runs | 519 serving runs + a 210-sample isolated prefill probe |
+| Runs | 527 serving runs + a 210-sample isolated prefill probe |
 | Seed 7 capacity ladder | B1 4.0, +CPU tier 5.5, +larger prefill budget 5.5, +class ordering 6.9 req/s (1.7x) |
 | Scheduler step cost | about 12 ms (CI 10.9 to 13.2) |
 | Larger prefill budget (2048 to 8192) | burst chat p95 -11.8%; inter-token stalls 2 to 3x longer (TPOT unchanged) |
@@ -51,6 +51,7 @@ A deadline-aware demotion order added to vLLM's own priority waiting queue (a re
 | Demotion, decisive cells | passes 3 of 4; doc run SD 0.014 vs 0.033 for engine priority |
 | Noise | engine priority doc SD 0.025 to 0.041; demotion 0.010 to 0.018 |
 | Engine-queue demotion (patch), 4 decisive cells x 6 runs | passes 4 of 4; chat 0.983, doc 0.938, doc SD 0.020, design effect 0.59 |
+| Engine-queue classifier, per-request trace (8 runs, 336 documents) | 17 of 18 demoted missed; 317 of 318 kept met |
 | Demotion classifier, 24 runs | 66 of 66 demoted documents missed; 0 of 942 others missed |
 | Outcome design effect (variance inflation) | engine priority 1.94; gateway FIFO with cap 4 / 8 / 12: 1.65 / 1.65 / 1.43; cap 4 + demotion order 0.77; chat-first + demotion 0.30 |
 

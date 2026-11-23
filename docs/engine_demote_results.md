@@ -48,6 +48,19 @@ Per cell (chat / doc attainment; pass = chat >= 0.95 and doc >= 0.90):
 - **P3 (no harm at mid50): met** on both seeds.
 - Net: the benefit of this configuration is **robustness at the loads where the others are marginal** (4 of 4 decisive cells, spread cut by a third to a half), not a broad shift of the capacity ladder (document run SD 0.020 against 0.033 for engine priority).
 
+## Per-request trace of the engine-queue classifier (8 extra runs, `python -m cacheflow.engine_trace`)
+
+The patch can log each request's decision when it leaves the waiting queue (`CACHEFLOW_ENGINE_DEMOTE_LOG`; the log is off by default). Eight runs (the four decisive cells x 2, tags r11 and r12) were run with it on. Each engine log entry (tier 0 chat, 1 savable document, 2 doomed document; prompt token count; time waited) was joined with the client's outcome by matching the engine's arrival order with the gateway's dispatch order and requiring equal prompt-token counts; all 336 document requests matched (0 unmatched).
+
+| | Documents | Missed their SLO | Met their SLO |
+|---|---|---|---|
+| **Demoted** by the engine rule (tier 2) | 18 | **17** | 1 |
+| **Not demoted** (tier 1) | 318 | 1 | **317** |
+
+- **Precision 17 of 18 (94%) and recall 17 of 18 (94%).** Of 336 documents, 17 of the 18 misses were demoted ones and 317 of the 318 kept documents met their SLO. This is the direct, per-request evidence that the engine-queue rule isolates the misses, as the gateway flag did (66 of 66 demoted missed and 0 of 942 others missed).
+- It is slightly weaker than the gateway classifier, as expected from the pre-registered difference: the engine rule has no prefix-cache discount, so a cached revisit can be demoted when it would still have met the SLO (the one demoted document that met it, in `s11-mid42-b2tve-r12`), and one kept document missed (`s11-burst-b2tve-r12`).
+- Counts per run are small (0 to 4 demoted documents per run); the totals are 18 demoted and 318 kept documents in 8 runs, so the estimates have wide uncertainty (one document changes the percentages by about 6 points).
+
 ## What the data support
 
 1. **The demotion order is the factor that decorrelates the document outcomes, in either queue**, which closes the missing corner of the decomposition and supports the mechanism read directly from the gateway flag ([locus_results.md](locus_results.md)): an early, deadline-based classification of documents that cannot make it insulates the ones that can.
@@ -58,7 +71,7 @@ Per cell (chat / doc attainment; pass = chat >= 0.95 and doc >= 0.90):
 
 - Four decisive cells (6 runs each) plus ladder cells with 4 runs; one host and a 1.7B model. The design-effect interval of E (0.29 to 1.04) touches 1.0.
 - The patch is research code: an O(n) scan per `peek` (the waiting queue holds fewer than about 100 requests here), no interaction with preemption was studied, and arrival time is the engine's receipt time (about 20 ms after the scheduled arrival).
-- The engine rule differs from the gateway rule (no prefix discount); its classifier was not traced per request as the gateway's was (the engine has no per-request flag in these runs), so the mechanism in the engine queue is supported by the outcome statistics (design effect, miss-count SD) and not by a direct flag trace.
+- The engine rule differs from the gateway rule (no prefix discount). It was traced per request in 8 extra runs (section above: 17 of 18 demoted documents missed, 317 of 318 others met), which is direct evidence but from few demoted documents.
 - The check at heavier loads used 4 runs per cell; the failed cells are near the thresholds (seed 7 mid42 doc 0.893).
 
 ## Reproduce (from `/workspace`)

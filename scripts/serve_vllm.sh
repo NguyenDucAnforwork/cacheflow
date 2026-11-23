@@ -30,6 +30,9 @@ fi
 
 if [[ -f /workspace/.cacheflow-engine-demote ]]; then
     export CACHEFLOW_ENGINE_DEMOTE=1  # requires scripts/patch_vllm_engine_demote.py to have been applied
+    if [[ -f /workspace/.cacheflow-engine-demote-log ]]; then
+        export CACHEFLOW_ENGINE_DEMOTE_LOG="$(cat /workspace/.cacheflow-engine-demote-log)"
+    fi
 fi
 sched_args=()
 if [[ -f /workspace/.cacheflow-sched-policy ]]; then

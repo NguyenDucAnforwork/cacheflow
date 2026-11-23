@@ -1,0 +1,113 @@
+{
+ "runs": [
+  {
+   "demoted_met": 0,
+   "demoted_missed": 2,
+   "discordant_examples": [],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 40,
+   "kept_missed": 0,
+   "run_id": "r60-mid45-b2tve-r11",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 0,
+   "demoted_missed": 2,
+   "discordant_examples": [],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 40,
+   "kept_missed": 0,
+   "run_id": "r60-mid45-b2tve-r12",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 0,
+   "demoted_missed": 4,
+   "discordant_examples": [],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 38,
+   "kept_missed": 0,
+   "run_id": "s11-burst-b2tve-r11",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 0,
+   "demoted_missed": 4,
+   "discordant_examples": [
+    {
+     "request_id": "doc-09-q0",
+     "tier": 1,
+     "ttft_ms": 3278,
+     "waited_s": 1.35
+    }
+   ],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 37,
+   "kept_missed": 1,
+   "run_id": "s11-burst-b2tve-r12",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 0,
+   "demoted_missed": 0,
+   "discordant_examples": [],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 42,
+   "kept_missed": 0,
+   "run_id": "s11-mid42-b2tve-r11",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 1,
+   "demoted_missed": 1,
+   "discordant_examples": [
+    {
+     "request_id": "doc-10-q1",
+     "tier": 2,
+     "ttft_ms": 2999,
+     "waited_s": 2.6
+    }
+   ],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 40,
+   "kept_missed": 0,
+   "run_id": "s11-mid42-b2tve-r12",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 0,
+   "demoted_missed": 2,
+   "discordant_examples": [],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 40,
+   "kept_missed": 0,
+   "run_id": "s23-mid45-b2tve-r11",
+   "unmatched": 0
+  },
+  {
+   "demoted_met": 0,
+   "demoted_missed": 2,
+   "discordant_examples": [],
+   "entries": 42,
+   "gateway_rows": 42,
+   "kept_met": 40,
+   "kept_missed": 0,
+   "run_id": "s23-mid45-b2tve-r12",
+   "unmatched": 0
+  }
+ ],
+ "total": {
+  "demoted_met": 1,
+  "demoted_missed": 17,
+  "kept_met": 317,
+  "kept_missed": 1,
+  "unmatched": 0
+ }
+}

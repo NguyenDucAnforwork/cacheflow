@@ -1,7 +1,8 @@
 """Idempotent patch of vLLM 0.22.0: deadline-aware demotion order inside the priority waiting queue (see docs/engine_demote_prereg.md).
 
 Adds DemotingPriorityRequestQueue to vllm/v1/core/sched/request_queue.py, used only when the environment variable CACHEFLOW_ENGINE_DEMOTE=1
-(otherwise create_request_queue returns vLLM's unmodified queue). Usage: python scripts/patch_vllm_engine_demote.py [--check]
+(otherwise create_request_queue returns vLLM's unmodified queue). Usage: python scripts/patch_vllm_engine_demote.py [--check] [--force]  (--force re-applies from the .orig backup).
+Optional per-request decision log: set CACHEFLOW_ENGINE_DEMOTE_LOG to a file path.
 """
 
 from __future__ import annotations
@@ -50,10 +51,23 @@ class DemotingPriorityRequestQueue(PriorityRequestQueue):
         self._peeked = self._best()
         return self._peeked
 
+    def _log(self, request: Request) -> None:
+        path = os.environ.get("CACHEFLOW_ENGINE_DEMOTE_LOG")
+        if not path or getattr(request, "_cf_logged", False):
+            return
+        request._cf_logged = True
+        now = time.time()
+        tier, priority, arrival = self._key(request, now)
+        service_s = request.num_prompt_tokens / 1000.0 * self.MS_PER_1K_TOKENS / 1000.0
+        with open(path, "a", encoding="utf-8") as file:
+            file.write(json.dumps({"t": now, "arrival": arrival, "tokens": request.num_prompt_tokens, "priority": priority, "tier": tier,
+                                   "waited_s": now - arrival, "est_service_s": service_s}) + "\\n")
+
     def pop_request(self) -> Request:
         if not self._heap:
             raise IndexError("pop from empty heap")
         request = self._peeked if (self._peeked is not None and self._peeked in self._heap) else self._best()
+        self._log(request)  # optional per-request trace of the decision (first pop only)
         self._peeked = None
         self._heap.remove(request)
         heapq.heapify(self._heap)
@@ -76,7 +90,11 @@ def locate() -> Path:
 def main() -> None:
     path = locate()
     text = path.read_text(encoding="utf-8")
-    if MARK in text:
+    if "--force" in sys.argv:  # re-apply from the pristine backup
+        backup_path = path.with_suffix(".py.orig")
+        if backup_path.exists():
+            text = backup_path.read_text(encoding="utf-8")
+    elif MARK in text:
         print("already patched:", path)
         return
     if "--check" in sys.argv:
@@ -85,10 +103,9 @@ def main() -> None:
     backup = path.with_suffix(".py.orig")
     if not backup.exists():
         backup.write_text(text, encoding="utf-8")
-    if "import os" not in text:
-        text = text.replace("import heapq\n", "import heapq\nimport os\nimport time\n", 1)
-    elif "import time" not in text:
-        text = text.replace("import heapq\n", "import heapq\nimport time\n", 1)
+    for module in ("json", "os", "time"):
+        if f"import {module}\n" not in text:
+            text = text.replace("import heapq\n", f"import heapq\nimport {module}\n", 1)
     anchor = "def create_request_queue(policy: SchedulingPolicy) -> RequestQueue:"
     assert anchor in text
     text = text.replace(anchor, CLASS.lstrip("\n") + "\n" + anchor, 1)

@@ -2,7 +2,7 @@
 
 A set of pre-registered, paired experiments on a single RTX 3090 with vLLM 0.22.0, an LMCache CPU KV tier and an asyncio admission gateway, using real document and chat content, real arrival structure where available, and a Qwen3-1.7B model. The question that runs through all of it is practical: **when short interactive requests and long-document requests share one inference server, what actually moves latency-SLO attainment, and by how much?**
 
-> Status: 519 serving runs plus an isolated prefill probe, across twelve studies. Start with [docs/interview_brief.md](docs/interview_brief.md) (two-page summary) or [docs/PROCESS_LOG.md](docs/PROCESS_LOG.md) (the whole process in order). The numbers are from one host, one small model, three document sets, and mostly two repeats per cell. Read the limitations (section 9) before quoting any of them.
+> Status: 527 serving runs plus an isolated prefill probe, across twelve studies. Start with [docs/interview_brief.md](docs/interview_brief.md) (two-page summary) or [docs/PROCESS_LOG.md](docs/PROCESS_LOG.md) (the whole process in order). The numbers are from one host, one small model, three document sets, and mostly two repeats per cell. Read the limitations (section 9) before quoting any of them.
 
 Contents: [1. TL;DR](#1-tldr) · [2. System](#2-the-system) · [3. Research questions](#3-research-questions) · [4. Data](#4-data) · [5. Literature and survey](#5-literature-review-and-survey) · [6. Experimental setup and workflow](#6-experimental-setup) · [7. Studies and results](#7-studies-and-results) · [8. What failed](#8-what-failed-and-what-i-got-wrong) · [9. Limitations](#9-limitations-and-threats-to-validity) · [10. Reading the results](#10-what-the-results-support) · [11. Repository map](#11-repository-map) · [12. Reproduction commands](#12-reproduction-commands) · [13. Next steps](#13-next-steps)
 
@@ -279,7 +279,7 @@ Reading diagram C with the mechanism result of study 7: a request waits in **eit
 
 ## 7. Studies and results
 
-Detailed tables and caveats are in the per-study documents (linked). Run counts: 12 + 20 + 14 + 18 + 10 + 56 + 60 + 40 + 48 + 96 + 97 + 48 = **519 serving runs**, plus the isolated probe (5 restarts, 210 samples).
+Detailed tables and caveats are in the per-study documents (linked). Run counts: 12 + 20 + 14 + 18 + 10 + 56 + 60 + 40 + 48 + 96 + 97 + 48 + 8 = **527 serving runs**, plus the isolated probe (5 restarts, 210 samples).
 
 ### 7.0 Original sprint: delay-hit-aware admission (RQ0) , negative
 
@@ -431,6 +431,7 @@ A research patch (`scripts/patch_vllm_engine_demote.py`, about 60 lines, active 
 - Pre-registered E1 to E4 all met. The ordering decorrelates the outcomes whichever queue it acts in, so the 2 x 2 decomposition is complete (queue location is not the factor).
 - Capacity check (4 runs per new cell, seeds 7 and 23): heaviest pass 7.6 req/s on both (the others: 6.9 on seed 7, 7.6 on seed 23), fails 8.2 req/s on both; P1 (heavier than all others on >= 2 of 3 seeds) and P2 (seed 23 passes 8.2) **not met**, P3 (no harm at 6.9) met. The gain is robustness at marginal loads, not a broad shift of the ladder.
 - Cost: demoted documents wait longer (document p95 TTFT 3.4 to 4.25 s on two cells), goodput about unchanged.
+- **Per-request trace** (8 extra runs with a decision log, 336 documents, all matched): 17 of the 18 documents the engine demoted missed their SLO and 317 of the 318 it kept met it (precision and recall 94%), against 66 of 66 and 942 of 942 for the gateway classifier; the engine rule has no prefix-cache discount.
 
 ### 7.13 Consolidated: what worked and what did not
 
@@ -507,12 +508,12 @@ Claims **not** made: no general speedup guarantee; not a reproduction of Strata,
 
 | Path | Contents |
 |---|---|
-| `src/cacheflow/` | `gateway.py`, `scheduler.py` (policies `fifo`, `static_group`, `dhas`, `dhas_guarded`, `class_first`, `class_aged`, `class_slack`, `class_demote`, `engine_demote`), `bench.py` (replay client), `real_workload.py` (trace builder), `burst_arrivals.py`, `prefill_probe.py`, `collect_metrics.py`; analysis: `real_analyze.py`, `chunk_analyze.py`, `policy_analyze.py`, `capacity_analyze.py`, `robustness_summary.py`, `combo_summary.py`, `stats_analyze.py`, `variance_investigate.py`, `ladder_analyze.py`, `capsweep_analyze.py`, `frontier_plot.py`, `locus_analyze.py`, `compensation_trace.py`, `bg_analyze.py`, `probe_analyze.py` |
+| `src/cacheflow/` | `gateway.py`, `scheduler.py` (policies `fifo`, `static_group`, `dhas`, `dhas_guarded`, `class_first`, `class_aged`, `class_slack`, `class_demote`, `engine_demote`), `bench.py` (replay client), `real_workload.py` (trace builder), `burst_arrivals.py`, `prefill_probe.py`, `collect_metrics.py`; analysis: `real_analyze.py`, `chunk_analyze.py`, `policy_analyze.py`, `capacity_analyze.py`, `robustness_summary.py`, `combo_summary.py`, `stats_analyze.py`, `variance_investigate.py`, `ladder_analyze.py`, `capsweep_analyze.py`, `frontier_plot.py`, `locus_analyze.py`, `compensation_trace.py`, `engine_trace.py`, `bg_analyze.py`, `probe_analyze.py` |
 | `scripts/` | `patch_vllm_engine_demote.py` (research patch for the engine-queue demotion), stack setup (`install_services.sh`, `serve_vllm.sh`, `serve_lmcache.sh`, `serve_gateway.sh`), `set_mode.sh`, `run_real_workload.sh "CONFIG LOAD TAG" ...`, `run_prefill_probe.sh`, `check_before_push.sh` (credential scan) |
 | `configs/` | gateway policy configuration, supervisor programs |
 | `tests/` | 16 unit tests (scheduler policies among them) |
 | `docs/` | one results file per study and a `*_prereg.md` written before it; `readme_by_study.md` is the earlier running README; `reproduce.md` has host setup |
-| `results/` | `*_registry.csv` (519 runs), `raw/` per-run traces and metrics, `real/` analyses and manifests, `figures/` |
+| `results/` | `*_registry.csv` (527 runs), `raw/` per-run traces and metrics, `real/` analyses and manifests, `figures/` |
 | `data/` | git-ignored: raw datasets and trace JSONL (rebuilt by the trace builder) |
 
 **Reproduce.** Section 12 has the exact commands for every study; host setup is in [docs/reproduce.md](docs/reproduce.md). Analyses can be rerun offline from the committed registries and raw files without a GPU.
@@ -686,6 +687,7 @@ python -m cacheflow.frontier_plot
 # study 11: 3-way decomposition of the outcome correlation
 python -m cacheflow.locus_analyze
 python -m cacheflow.compensation_trace     # direct trace from the gateway's demotion flag
+python -m cacheflow.engine_trace            # per-request trace of the engine-queue classifier (needs the *.edemote.log files)
 # study 12: results come from the same locus analysis (series E = B2TVE)
 ```
 
@@ -698,7 +700,7 @@ Check status: the offline commands for studies 1, 2, 3 (policy cells and the pro
 Ordered by value for the effort; none is started.
 
 1. **Check a larger model (7 to 8B)** so prefill is heavier and closer to production; first confirm memory (about 6 GB of KV remains on a 24 GB card). This is the most important external-validity test of the capacity ladder and of the demotion-order finding.
-2. **Harden the engine-queue demotion**: a prefix-aware classifier (the patch has no discount for cached prefixes), a per-request flag trace inside the engine, behaviour under preemption, and more repeats at 8.2 req/s where it narrowly fails (seed 7 doc 0.893). `max_num_seqs` 4 and 8 both collapse capacity, so concurrency inside the engine's own queue still cannot be varied with that knob.
+2. **Harden the engine-queue demotion**: a prefix-aware classifier (the patch has no discount for cached prefixes; the per-request trace found one false positive and one false negative in 336 documents), behaviour under preemption, and more repeats at 8.2 req/s where it narrowly fails (seed 7 doc 0.893). `max_num_seqs` 4 and 8 both collapse capacity, so concurrency inside the engine's own queue still cannot be varied with that knob.
 3. **FP8 KV cache as a substitute for the CPU tier** (capacity x2, about 112K tokens versus the 98K-token working set); needs a feasibility check of the attention backend on sm86 and an accuracy check on QuALITY.
 4. **A closed-loop or production-like evaluation**: real arrival traces with sub-second timestamps (BurstGPT is integer-second and was time-compressed), client retries, and an evaluation of what happens to the demoted documents (rejection, a smaller model, or a longer deadline).
-5. **Sparse prefill** (MInference-style) if an integration exists, with accuracy measured on QuALITY.
+5. **Sparse prefill**: a feasibility check found no ready integration for this stack (UniPrefill is built on vLLM 0.16.0 and does not include Qwen3-1.7B; MInference's vLLM path needs chunked prefill disabled; BFLA has no public code), so it is not a quick experiment; see [docs/sparse_prefill_feasibility.md](docs/sparse_prefill_feasibility.md).

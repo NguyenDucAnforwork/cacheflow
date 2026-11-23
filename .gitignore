@@ -26,5 +26,6 @@ CLAUDE.md
 .cacheflow-max-inflight
 .cacheflow-max-num-seqs
 .cacheflow-engine-demote
+.cacheflow-engine-demote-log
 /data/
 results/raw/*.outputs.jsonl
