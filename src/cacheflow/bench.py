@@ -61,6 +61,8 @@ async def replay(args: argparse.Namespace) -> dict:
                        "X-Cacheflow-Run-ID": args.run_id}
             if real:
                 headers["X-Cacheflow-Class"] = row.cls
+            if real and _marker("/workspace/.cacheflow-sched-policy") == "priority":
+                body["priority"] = 0 if row.cls == "chat" else 1  # vLLM: lower value is served first
             first_ns = None
             token_events = []
             pieces = []
@@ -149,7 +151,8 @@ async def replay(args: argparse.Namespace) -> dict:
     }
     if real:
         summary.update({"trace_file": args.trace_file, "gpu_kv_bytes_marker": _marker("/workspace/.cacheflow-gpu-kv-bytes"),
-                        "max_num_batched_tokens_marker": _marker("/workspace/.cacheflow-mnbt"), **engine})
+                        "max_num_batched_tokens_marker": _marker("/workspace/.cacheflow-mnbt"),
+                        "sched_policy_marker": _marker("/workspace/.cacheflow-sched-policy"), **engine})
     summary_path = output_path.with_suffix(".summary.json")
     summary_path.write_text(json.dumps(summary, sort_keys=True, indent=2) + "\n")
     registry_path = Path(args.registry)
@@ -188,7 +191,7 @@ def _engine_info() -> dict:
                 info.update({"engine_num_gpu_blocks": blocks, "engine_block_size": size, "engine_gpu_kv_tokens": blocks * size})
         config = httpx.get("http://127.0.0.1:8000/server_info", params={"config_format": "json"}, timeout=5).json()
         sched = (config.get("vllm_config") or config).get("scheduler_config") or {}
-        for key in ("max_num_batched_tokens", "max_num_seqs", "enable_chunked_prefill", "chunked_prefill_enabled"):
+        for key in ("max_num_batched_tokens", "max_num_seqs", "enable_chunked_prefill", "chunked_prefill_enabled", "policy"):
             if key in sched:
                 info[f"engine_{key}"] = sched[key]
         if isinstance(config.get("vllm_config"), str):

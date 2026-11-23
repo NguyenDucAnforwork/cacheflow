@@ -6,6 +6,8 @@
 #           A = gateway policy class_aged (chat first, but a request waiting >= age cap counts as chat), otherwise fifo
 #   LOAD:   moderate | medium | mid65 | mid50 | mid45 | burst
 #   D = gateway policy class_demote (chat first; docs that cannot meet their SLO are served last)
+#   W = wide gateway (64 in-flight) without engine priority (controls: B2TW FIFO, B2TPW gateway chat-first)
+#   V = engine-level priority (vLLM --scheduling-policy priority, request priority chat 0 / doc 1, gateway pass-through with 64 in-flight)
 #   S = gateway policy class_slack (chat first; a doc is promoted once its remaining slack is below its expected service time + margin)
 # env: TRACE_PREFIX (default real), RUN_PREFIX (default real), REGISTRY (default results/real_registry.csv)
 # Each run is a full cold restart (set_mode.sh) followed by two identical tiny warm-up requests; no cache carry-over.
@@ -14,6 +16,8 @@ cd /workspace
 for spec in "$@"; do
     read -r config trace tag <<< "$spec"
     policy=fifo
+    engine_priority=0
+    wide=0
     case "$config" in
         B1) mode=B1; mnbt=2048 ;;
         B1T) mode=B1; mnbt=8192 ;;
@@ -24,10 +28,20 @@ for spec in "$@"; do
         B2TA) mode=B2; mnbt=8192; policy=class_aged ;;
         B2TS) mode=B2; mnbt=8192; policy=class_slack ;;
         B2TD) mode=B2; mnbt=8192; policy=class_demote ;;
+        B2TV) mode=B2; mnbt=8192; engine_priority=1 ;;
+        B2TW) mode=B2; mnbt=8192; wide=1 ;;
+        B2TPW) mode=B2; mnbt=8192; policy=class_first; wide=1 ;;
         *) echo "unknown config $config" >&2; exit 2 ;;
     esac
     run_id="${RUN_PREFIX:-real}-${trace}-$(echo "$config" | tr 'A-Z' 'a-z')-${tag}"
     printf '%s\n' "$mnbt" > /workspace/.cacheflow-mnbt
+    rm -f /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight
+    if [[ "$engine_priority" == 1 ]]; then
+        printf 'priority\n' > /workspace/.cacheflow-sched-policy
+    fi
+    if [[ "$engine_priority" == 1 || "$wide" == 1 ]]; then
+        printf '64\n' > /workspace/.cacheflow-max-inflight
+    fi
     printf '%s\n' "${AGE_CAP_MS:-1500}" > /workspace/.cacheflow-age-cap-ms
     echo "### $run_id mode=$mode mnbt=$mnbt policy=$policy start $(date +%T)"
     bash scripts/set_mode.sh "$mode" "$policy" > "/workspace/results/raw/${run_id}.setmode.log" 2>&1
@@ -40,4 +54,4 @@ for spec in "$@"; do
     echo "### $run_id done $(date +%T)"
 done
 supervisorctl stop cacheflow_gateway cacheflow_vllm cacheflow_lmcache >/dev/null 2>&1 || true
-rm -f /workspace/.cacheflow-mnbt /workspace/.cacheflow-age-cap-ms
+rm -f /workspace/.cacheflow-mnbt /workspace/.cacheflow-age-cap-ms /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight

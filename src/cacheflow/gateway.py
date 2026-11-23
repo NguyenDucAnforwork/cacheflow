@@ -57,6 +57,8 @@ def create_app(config_path: str | None = None) -> FastAPI:
         settings["scheduler"]["policy"] = os.environ["CACHEFLOW_POLICY"]
     model = settings["model"]
     tokenizer = AutoTokenizer.from_pretrained(model, local_files_only=True, trust_remote_code=False)
+    if os.environ.get("CACHEFLOW_MAX_INFLIGHT"):
+        settings["scheduler"]["max_inflight"] = int(os.environ["CACHEFLOW_MAX_INFLIGHT"])
     if os.environ.get("CACHEFLOW_AGE_CAP_MS"):
         settings["scheduler"]["age_cap_ms"] = int(os.environ["CACHEFLOW_AGE_CAP_MS"])
     scheduler = AdmissionScheduler(**settings["scheduler"])

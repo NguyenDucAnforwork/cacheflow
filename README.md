@@ -40,6 +40,10 @@ On a second document set (seed 11) the chat-first effect at saturation replicate
 
 A gateway policy that serves chat first and sends documents that can no longer meet their 3 s SLO (waited time plus expected service time above the SLO) to a best-effort tier, still serving them. On the pre-registered cells it raised doc SLO attainment by 0.08 to 0.11 with chat unchanged at 0.45 s spacing and on a second document set at burst, and traded 0.05 chat for 0.095 doc on the main burst cell (that hypothesis missed its 0.10 threshold by 0.005). It adds no capacity (computed prefill tokens identical, goodput 0 to +6%) and lengthens the tail of the demoted documents (p95 4.6 s to 7.5 s on the main burst cell). Details: [docs/demotion_results.md](docs/demotion_results.md) ([prereg](docs/demotion_prereg.md)).
 
+## SLO-constrained capacity, engine-level priority, real arrival structure (fifth follow-up)
+
+A capacity ladder (highest load at which chat SLO >= 0.95 and doc SLO >= 0.90) makes the configurations comparable: on seed 7 it rises from 4.0 req/s (B1, 2048) to 7.6 req/s (B2, 8192, engine-level priority), 1.9x, with the CPU tier (+37%) and class ordering (+25% gateway, +10% more in the engine) carrying most of it; the larger prefill budget moved no bracket at this grid. The ordering of configurations holds on a second document set; the load levels shift. Engine-level priority (`--scheduling-policy priority`) beat gateway chat-first (0.99 / 0.92 vs 0.94 / 0.83 at 0.45 s), and controls with a wider gateway show the gain is not from the wider gateway. On two BurstGPT arrival windows chat-first still fixes chat, and demotion roughly doubles goodput under the heaviest, burstiest window. Details, hypotheses outcomes and limitations: [docs/capacity_priority_results.md](docs/capacity_priority_results.md) ([prereg](docs/capacity_prereg.md)).
+
 ## Project map
 
 - [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs; [real-data workload results](docs/real_workload_results.md) is a separate study.

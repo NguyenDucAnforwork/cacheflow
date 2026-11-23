@@ -28,13 +28,21 @@ if [[ -f /workspace/.cacheflow-mnbt ]]; then
     esac
 fi
 
+sched_args=()
+if [[ -f /workspace/.cacheflow-sched-policy ]]; then
+    case "$(cat /workspace/.cacheflow-sched-policy)" in
+        priority) sched_args=(--scheduling-policy priority) ;;
+        *) echo "unsupported scheduling policy marker" >&2; exit 2 ;;
+    esac
+fi
+
 args=(
     "$model" --served-model-name cacheflow-qwen3-1.7b
     --host 127.0.0.1 --port 8000 --dtype bfloat16
     --max-model-len 12288 --max-num-seqs 16
     --kv-cache-memory-bytes "$gpu_kv_bytes" --enforce-eager
     --generation-config vllm
-    "${mnbt_args[@]}"
+    "${mnbt_args[@]}" "${sched_args[@]}"
 )
 
 case "$mode" in

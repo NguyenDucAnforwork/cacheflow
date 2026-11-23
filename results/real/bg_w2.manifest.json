@@ -1,0 +1,34 @@
+{
+ "arrival_stats_independent_arrivals": {
+  "count": 74,
+  "gap_cv": 2.0833068760986704,
+  "mean_gap_s": 0.136986301369863,
+  "peak_arrivals_in_one_second": 21
+ },
+ "arrival_times": "REAL arrival structure (BurstGPT window, jittered and rescaled); content from QuALITY/ShareGPT as in the source trace",
+ "content": "documents and chats copied from /workspace/data/traces/real60_mid45.jsonl; q1 = q0 + 1300 ms, q2 = q0 + 8000 ms",
+ "offered_rps_over_span": 8.708272859216256,
+ "requests": 102,
+ "source": {
+  "chat_request_tokens_range": [
+   9,
+   1909
+  ],
+  "class_rule": "the 14 largest 'Request tokens' in the window are document first visits; the rest are chats",
+  "conversation_log_rows": 145717,
+  "csv_sha256": "46fc9480ef0b748ecb2b51d512ff08c196b031782cbe6f78e28044d768e86d5a",
+  "dataset": "BurstGPT_1.csv (HPMLL/BurstGPT)",
+  "doc_request_tokens_range": [
+   1917,
+   2561
+  ],
+  "rescaled_span_ms": 10000,
+  "window_real_span_s": 21079.315085740644,
+  "window_rows": 74,
+  "window_seed": 2,
+  "window_start_row": 14824
+ },
+ "span_ms": 11713,
+ "trace": "bg_w2",
+ "trace_sha256": "7317cef5e5a3a8b30c36eea14d87ed8e2fab4741b255c6e194f00adf7fb31725"
+}

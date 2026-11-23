@@ -22,5 +22,7 @@ CLAUDE.md
 .cacheflow-gpu-kv-bytes
 .cacheflow-mnbt
 .cacheflow-age-cap-ms
+.cacheflow-sched-policy
+.cacheflow-max-inflight
 /data/
 results/raw/*.outputs.jsonl
