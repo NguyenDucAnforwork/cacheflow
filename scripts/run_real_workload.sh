@@ -10,6 +10,7 @@
 #   V24/V32, P24/P32 = engine priority / gateway chat-first with 24 or 32 in-flight at the gateway (width sweep)
 #   VD4 = same with 4 documents in flight (attempt 2, binding cap)
 #   VS4 = engine priority with vLLM max_num_seqs 4 (queue stays in the engine); VF4 = engine priority, documents capped at 4 at the gateway, FIFO (policy engine_cap)
+#   VE = engine priority + deadline-aware demotion inside vLLM's waiting queue (needs scripts/patch_vllm_engine_demote.py applied on the host)
 #   VD = engine priority for chat + gateway demotion for documents (policy engine_demote, 16 documents in flight, chat bypasses the cap)
 #   V = engine-level priority (vLLM --scheduling-policy priority, request priority chat 0 / doc 1, gateway pass-through with 64 in-flight)
 #   S = gateway policy class_slack (chat first; a doc is promoted once its remaining slack is below its expected service time + margin)
@@ -24,6 +25,7 @@ for spec in "$@"; do
     wide=0
     width=0
     seqs=0
+    edemote=0
     case "$config" in
         B1) mode=B1; mnbt=2048 ;;
         B1T) mode=B1; mnbt=8192 ;;
@@ -37,6 +39,7 @@ for spec in "$@"; do
         B2TV) mode=B2; mnbt=8192; engine_priority=1 ;;
         B2TVD8) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=8 ;;
         B2TVD12) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=12 ;;
+        B2TVE) mode=B2; mnbt=8192; engine_priority=1; wide=1; edemote=1 ;;
         B2TVS8) mode=B2; mnbt=8192; engine_priority=1; wide=1; seqs=8 ;;
         B2TVS4) mode=B2; mnbt=8192; engine_priority=1; wide=1; seqs=4 ;;
         B2TVF8) mode=B2; mnbt=8192; policy=engine_cap; engine_priority=1; width=8 ;;
@@ -54,7 +57,10 @@ for spec in "$@"; do
     esac
     run_id="${RUN_PREFIX:-real}-${trace}-$(echo "$config" | tr 'A-Z' 'a-z')-${tag}"
     printf '%s\n' "$mnbt" > /workspace/.cacheflow-mnbt
-    rm -f /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight /workspace/.cacheflow-max-num-seqs
+    rm -f /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight /workspace/.cacheflow-max-num-seqs /workspace/.cacheflow-engine-demote
+    if [[ "$edemote" == 1 ]]; then
+        printf '1\n' > /workspace/.cacheflow-engine-demote
+    fi
     if [[ "$seqs" -gt 0 ]]; then
         printf '%s\n' "$seqs" > /workspace/.cacheflow-max-num-seqs
     fi
@@ -78,4 +84,4 @@ for spec in "$@"; do
     echo "### $run_id done $(date +%T)"
 done
 supervisorctl stop cacheflow_gateway cacheflow_vllm cacheflow_lmcache >/dev/null 2>&1 || true
-rm -f /workspace/.cacheflow-mnbt /workspace/.cacheflow-age-cap-ms /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight /workspace/.cacheflow-max-num-seqs
+rm -f /workspace/.cacheflow-mnbt /workspace/.cacheflow-age-cap-ms /workspace/.cacheflow-sched-policy /workspace/.cacheflow-max-inflight /workspace/.cacheflow-max-num-seqs /workspace/.cacheflow-engine-demote

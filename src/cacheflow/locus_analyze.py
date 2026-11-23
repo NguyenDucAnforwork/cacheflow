@@ -18,7 +18,7 @@ from .real_analyze import _meets_slo
 from .stats_analyze import CELLS, CHAT_T, DOC_T, PREFIX
 from .variance_investigate import load_cell
 
-SERIES = [("V engine priority, no cap", "B2TV"), ("S4 max_num_seqs 4 (queue in engine)", "B2TVS4"), ("F4 cap 4 at gateway, FIFO", "B2TVF4"), ("F8 cap 8 at gateway, FIFO", "B2TVF8"), ("F12 cap 12 at gateway, FIFO", "B2TVF12"),
+SERIES = [("V engine priority, no cap", "B2TV"), ("E engine priority + demotion in the engine queue", "B2TVE"), ("S4 max_num_seqs 4 (queue in engine)", "B2TVS4"), ("F4 cap 4 at gateway, FIFO", "B2TVF4"), ("F8 cap 8 at gateway, FIFO", "B2TVF8"), ("F12 cap 12 at gateway, FIFO", "B2TVF12"),
           ("VD4 cap 4 + demotion order", "B2TVD4"), ("D chat-first + demotion", "B2TD"), ("P gateway chat-first", "B2TP")]
 
 
@@ -113,6 +113,24 @@ def main() -> None:
         print(f"K1 (DE(F4), DE(F8), DE(F12) all >= 1.34, no dose-response under FIFO): {k1}  [{de['B2TVF4']:.2f}, {de['B2TVF8']:.2f}, {de['B2TVF12']:.2f}, V {de['B2TV']:.2f}]")
         print(f"K2 (DE falls monotonically with the cap, spread > 0.6): {k2}")
         h["K1"], h["K2"] = bool(k1), bool(k2)
+    if {"B2TVE", "B2TV"} <= set(out):
+        e = out["B2TVE"]
+        miss_sd = {}
+        for cfg in ("B2TVE", "B2TV"):
+            vals = []
+            for sd, ld in CELLS:
+                m = ok_matrix(raw, sd, ld, cfg)
+                vals.append(float((1 - m).sum(axis=1).std(ddof=1)))
+            miss_sd[cfg] = vals
+        h["E1"] = e["design_effect"] is not None and e["design_effect"] <= 1.0
+        h["E2"] = e["chat"] >= 0.97 and e["doc"] >= 0.92
+        h["E3"] = e["passes"] >= 3
+        h["E4"] = sum(a < b for a, b in zip(miss_sd["B2TVE"], miss_sd["B2TV"])) >= 3
+        print(f"E1 (DE(B2TVE) <= 1.0): {h['E1']} ({e['design_effect']})")
+        print(f"E2 (chat >= 0.97 and doc >= 0.92): {h['E2']} (chat {e['chat']:.3f}, doc {e['doc']:.3f})")
+        print(f"E3 (passes >= 3 of 4 cells): {h['E3']} ({e['passes']})")
+        print(f"E4 (SD of misses per run smaller than engine priority in >= 3 of 4 cells): {h['E4']}  B2TVE {[round(x, 2) for x in miss_sd['B2TVE']]} vs B2TV {[round(x, 2) for x in miss_sd['B2TV']]}")
+        h["miss_sd"] = miss_sd
     Path(args.out).write_text(json.dumps({"series": out, "hypotheses": h}, indent=1, sort_keys=True) + "\n")
 
     import matplotlib
@@ -122,7 +140,7 @@ def main() -> None:
 
     cfgs = [c for _, c in SERIES if c in out and out[c]["design_effect"] is not None]
     fig, axes = plt.subplots(1, 3, figsize=(13, 3.6))
-    colors = {"B2TV": "#0072B2", "B2TVS4": "#56B4E9", "B2TVF4": "#009E73", "B2TVF8": "#66C2A5", "B2TVF12": "#A6D8C5", "B2TVD4": "#E69F00", "B2TD": "#D55E00", "B2TP": "#CC79A7"}
+    colors = {"B2TV": "#0072B2", "B2TVE": "#984EA3", "B2TVS4": "#56B4E9", "B2TVF4": "#009E73", "B2TVF8": "#66C2A5", "B2TVF12": "#A6D8C5", "B2TVD4": "#E69F00", "B2TD": "#D55E00", "B2TP": "#CC79A7"}
     for ax, key, title in zip(axes, ("design_effect", "doc_sd", "doc"), ("outcome design effect (variance inflation)", "doc run-to-run SD", "mean doc attainment")):
         vals = [out[c][key] for c in cfgs]
         ax.bar(range(len(cfgs)), vals, color=[colors[c] for c in cfgs])

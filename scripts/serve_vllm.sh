@@ -28,6 +28,9 @@ if [[ -f /workspace/.cacheflow-mnbt ]]; then
     esac
 fi
 
+if [[ -f /workspace/.cacheflow-engine-demote ]]; then
+    export CACHEFLOW_ENGINE_DEMOTE=1  # requires scripts/patch_vllm_engine_demote.py to have been applied
+fi
 sched_args=()
 if [[ -f /workspace/.cacheflow-sched-policy ]]; then
     case "$(cat /workspace/.cacheflow-sched-policy)" in

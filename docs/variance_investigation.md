@@ -48,6 +48,8 @@ The cap sweep ([ladder_capsweep_results.md](ladder_capsweep_results.md)) failed 
 
 **Update (direct trace, [locus_results.md](locus_results.md)):** the gateway's `demoted` flag shows that under demotion every miss is a flagged document (66 of 66) and none of the 942 unflagged documents missed, so the mechanism is *insulation of the savable documents plus a bounded set of misses* rather than flips that compensate each other.
 
+**Update (study 12, [engine_demote_results.md](engine_demote_results.md)):** the last missing corner was filled by a small patch to vLLM's waiting queue; adding the demotion order *inside the engine queue* also lowers the variance inflation (1.94 to 0.59) and raises the number of decisive cells passed from 2 of 4 to 4 of 4. The ordering, not the queue location, is the factor in both queues.
+
 ## Limitations
 
 - 12 points from 4 cells and 3 configurations; the correlations are descriptive and the cells share seeds and loads.

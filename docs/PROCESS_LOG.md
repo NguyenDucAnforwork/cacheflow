@@ -72,6 +72,12 @@ Written to be read in one sitting. It records what was done, why, what the resul
 
 - **Direct trace** (offline, from the gateway's `demoted` flag): all 66 demoted documents missed their SLO, none of the other 942 did, in 24 runs. So demotion insulates the savable documents and pins the miss count to the number of demoted documents; my earlier phrase "compensating flips" was refined to "insulation plus a bounded set of misses".
 
+## 9c. Phase K: the missing corner, a small vLLM patch (study 12)
+
+- The goal check kept pointing at the one corner of the decomposition I could not test with configuration alone: demotion order inside vLLM's own waiting queue. I read the 200-line `request_queue.py`, wrote a patch of about 60 lines (off by default, a `DemotingPriorityRequestQueue` selected by an environment variable, with a unit test on the host), pre-registered E1 to E4 ([engine_demote_prereg.md](engine_demote_prereg.md)), and ran 24 runs.
+- **All four hypotheses were met**: design effect 0.59 (engine priority 1.94), chat 0.983 and doc 0.938, 4 of 4 decisive cells passed, miss-count spread smaller in 4 of 4 cells. This completes the 2 x 2 (queue location x ordering): the ordering is the factor in either queue ([engine_demote_results.md](engine_demote_results.md)).
+- I then checked whether it extends the capacity ladder (24 more runs, pre-registered before): **it does not broadly** (+10% on seed 7, ties on seed 23 and seed 11, fails 8.2 req/s on both seeds checked), so the claim is robustness at marginal loads, not a higher ladder.
+
 ## 10. Claims that changed over time
 
 | Claim | First said | Now |
@@ -92,4 +98,4 @@ Written to be read in one sitting. It records what was done, why, what the resul
 
 ## 12. Re-running anything
 
-All analyses run offline from the committed data (README section 12.4). Serving runs need the GPU host and the pinned stack (README section 12.1 to 12.3); every run is a cold restart and takes about 1.2 minutes. The 471 runs took roughly 10 GPU-hours in total.
+All analyses run offline from the committed data (README section 12.4). Serving runs need the GPU host and the pinned stack (README section 12.1 to 12.3); every run is a cold restart and takes about 1.2 minutes. The 519 runs took roughly 11 GPU-hours in total.

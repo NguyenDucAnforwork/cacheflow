@@ -72,7 +72,7 @@ Limits of the trace: it covers the gateway-demotion configuration only (engine p
 
 - Four cells, 6 runs each, one host, one 1.7B model; per-cell design effects range from 0.15 to 3.3 (so only the cell average is interpreted) and the intervals of F4 and VD4 overlap slightly.
 - S4 and S8 both collapsed capacity, so the concurrency contrast inside the engine's own queue (fewer documents running while they queue in the engine) was not obtained; the concurrency contrast we have is under FIFO order with the queue at the gateway (K1). An effect of concurrency specific to the engine queue is not excluded.
-- The demotion order could not be tested in the engine's own waiting queue (vLLM has no deadline-aware ordering), so "engine queue + demotion" is the missing corner of the 2 x 2 design.
+- The demotion order could not be tested in the engine's own waiting queue by configuration alone; it was tested later with a small vLLM patch (study 12, [engine_demote_results.md](engine_demote_results.md)): design effect 0.59 with the engine-queue demotion against 1.94 without, so the corner is filled.
 - The interpretation in point 6 is a hypothesis consistent with the data, not a traced mechanism.
 
 ## Reproduce (from `/workspace`)
