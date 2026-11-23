@@ -1,0 +1,64 @@
+# Queue location, documents in flight, or demotion order: what decorrelates document outcomes?
+
+Study 11. Pre-registered in [locus_prereg.md](locus_prereg.md) (written before the runs). Follows [ladder_capsweep_results.md](ladder_capsweep_results.md), where a cap sweep failed to show a dose-response and left two readings open (queue location vs documents in flight) with a third factor (demotion order) confounded in cap 4. Same host, stack, model, SLOs (chat TTFT <= 1 s, doc <= 3 s, TPOT <= 100 ms), B2, `max_num_batched_tokens` 8192; 48 new runs (configurations S4 and F4 x 4 decisive cells x 6 runs, random order within repeat blocks). Data: `results/real/locus_analysis.json`, raw `results/raw/*b2tvs4-*` and `*b2tvf4-*`, `results/raw/gateway_locus_runs.jsonl`, figure `results/figures/hardening/locus.png`; analysis `python -m cacheflow.locus_analyze`.
+
+## Design
+
+All configurations use engine priority for chat (chat 0, doc 1). The statistic is the outcome design effect (variance inflation of the per-run mean document outcome relative to independent requests; 1 = independent, > 1 positively correlated, < 1 compensating), averaged over the 4 decisive cells, with a 95% bootstrap interval over runs.
+
+| Series | Document queue | Documents running | Order among documents |
+|---|---|---|---|
+| V engine priority, no cap | engine | up to 16 | FCFS |
+| S4 `max_num_seqs` 4, gateway pass-through | engine | at most 4 (chat shares them) | FCFS |
+| F4 documents capped at 4 at the gateway, chat bypasses | gateway | at most 4 | FIFO |
+| VD4 cap 4 with demotion order | gateway | at most 4 | demotion |
+| D gateway chat-first + demotion | gateway | up to 16 | demotion |
+| P gateway chat-first | gateway | up to 16 | FIFO |
+
+## Results (4 decisive cells, 6 runs each)
+
+| Series | Cells passed | Mean chat | Mean doc | Doc run SD | Design effect [95% CI] |
+|---|---|---|---|---|---|
+| V engine priority, no cap | 2 of 4 | 0.983 | 0.899 | 0.033 | 1.94 [1.12, 2.45] |
+| S4 `max_num_seqs` 4 | 0 of 4 | 0.105 | 0.036 | 0.000 | not defined |
+| F4 cap 4 at gateway, FIFO | 0 of 4 | 1.000 | 0.818 | 0.025 | 1.65 [0.98, 2.01] |
+| VD4 cap 4 + demotion order | 1 of 4 | 0.998 | 0.898 | 0.021 | **0.77** [0.52, 1.08] |
+| D chat-first + demotion | 3 of 4 | 0.963 | 0.935 | 0.014 | **0.30** [0.12, 0.61] |
+| P gateway chat-first | 1 of 4 | 0.971 | 0.875 | 0.025 | 1.26 [0.72, 1.80] |
+
+![design effect, doc SD and doc attainment per series](../results/figures/hardening/locus.png)
+
+**S4 collapsed.** With vLLM `max_num_seqs` 4 (confirmed effective in the run summaries) the server cannot keep up: at seed 11 burst the run takes 31.5 s instead of 13 s, goodput is 0.26 req/s instead of 7.3, the engine segment of a document averages 20 s, and in every cell nearly every request misses its SLO (chat 0.105, doc 0.036). With no outcome variance the design effect is undefined. S4 therefore changed capacity, not just concurrency, and the V-versus-S4 contrast is not interpretable.
+
+## Hypotheses against outcomes
+
+- **L1 (DE(F4) <= 1.0): not met** (1.65).
+- **L2 (DE(S4) >= 1.3): not evaluable.** S4 has no outcome variance because almost everything fails; the analysis code printed "false" for an undefined value.
+- **L3 (|DE(F4) - DE(VD4)| <= 0.4): not met** (0.88).
+- **The pre-registered reading rule printed "(b) concurrency" because L1 and L2 both evaluated as false. That output is an artefact:** the rule did not anticipate a degenerate S4, so it must not be read as support for the concurrency reading. I report the decision rule's output as it fired and discard it for that reason; the interpretation below uses only the contrasts that are valid, and it is post hoc.
+
+## What the valid contrasts show
+
+1. **Moving the queue to the gateway and capping concurrency at 4, with FIFO order, does not remove the correlation and costs document attainment** (F4 vs V: design effect 1.65 vs 1.94, intervals overlapping; doc 0.818 vs 0.899). The documents wait at the gateway instead of in the engine (gateway wait about 1.7 s, engine segment 0.32 s at seed 11 burst, against 0.02 s and 1.55 s for engine priority), but their outcomes are still positively correlated.
+2. **Adding the demotion order at the same cap and location reduces the correlation and restores the attainment** (VD4 vs F4: design effect 0.77 vs 1.65, doc 0.898 vs 0.818). The intervals overlap slightly (VD4 [0.52, 1.08], F4 [0.98, 2.01]), so this is a clear difference in the point estimates and a moderate one statistically.
+3. **Across all configurations the common factor in the low design effects is the demotion order**: gateway + demotion (VD4 0.77, D 0.30) versus FIFO order (V 1.94, F4 1.65, P 1.26), at cap 4 and at up to 16 documents running and two queue locations for the FIFO cases. Queue location and the 4-document concurrency cap alone do not.
+4. **This also explains the cap-sweep result post hoc**: with a cap of 8 or 12 documents the gateway queue forms less often, so the demotion order has little to act on; it acts at cap 4, where documents queue at the gateway most of the time.
+5. **Why compensating outcomes?** Demotion decides at admission time which documents are served now and which are pushed back (those that were going to miss anyway), so a shift in load lands on the demoted ones and the savable documents are insulated; the flips become negatively correlated (design effect below 1). FIFO order, in the engine or at the gateway, lets a delay shift propagate to every document behind it.
+
+## Limitations
+
+- Four cells, 6 runs each, one host, one 1.7B model; per-cell design effects range from 0.15 to 3.3 (so only the cell average is interpreted) and the intervals of F4 and VD4 overlap slightly.
+- S4 collapsed, so the concurrency-only contrast (engine queue, fewer documents running) was not obtained; a gentler way to vary concurrency inside the engine (for example `max_num_seqs` 8 with chat bypassing) was not run. The conclusion therefore rests on F4 vs VD4 vs V/D and does not exclude a concurrency effect.
+- The demotion order could not be tested in the engine's own waiting queue (vLLM has no deadline-aware ordering), so "engine queue + demotion" is the missing corner of the 2 x 2 design.
+- The interpretation in point 5 is a hypothesis consistent with the data, not a traced mechanism.
+
+## Reproduce (from `/workspace`)
+
+```bash
+# 48 runs: configs B2TVS4 and B2TVF4 on seed 7 mid45, seed 23 mid45, seed 11 mid42, seed 11 burst, repeats 1 to 6 (random order within blocks), one run per call, e.g.
+TRACE_PREFIX=s11 RUN_PREFIX=s11 REGISTRY=/workspace/results/s11_registry.csv bash scripts/run_real_workload.sh "B2TVF4 burst r1"
+# offline
+PYTHONPATH=src python -m cacheflow.locus_analyze
+```
+
+Config letters: `VS4` = engine priority with vLLM `max_num_seqs` 4; `VF4` = engine priority, documents capped at 4 at the gateway, FIFO (policy `engine_cap`).

@@ -1,0 +1,154 @@
+{
+ "hypotheses": {
+  "L1": false,
+  "L2": false,
+  "L3": false,
+  "reading": "(b) concurrency"
+ },
+ "series": {
+  "B2TD": {
+   "cell_design_effects": [
+    0.3,
+    0.3953488372093023,
+    0.3846153846153847,
+    0.1379310344827586
+   ],
+   "chat": 0.9625,
+   "design_effect": 0.3044738140768614,
+   "design_effect_ci95": [
+    0.12138466042154562,
+    0.6103626893129116
+   ],
+   "doc": 0.9345238095238095,
+   "doc_sd": 0.01374925151607703,
+   "label": "D chat-first + demotion",
+   "passes": 3,
+   "runs_per_cell": [
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  "B2TP": {
+   "cell_design_effects": [
+    1.1111111111111112,
+    0.9999999999999998,
+    0.9130434782608695,
+    2.0
+   ],
+   "chat": 0.9708333333333334,
+   "design_effect": 1.256038647342995,
+   "design_effect_ci95": [
+    0.7199765512265511,
+    1.80496664131002
+   ],
+   "doc": 0.875,
+   "doc_sd": 0.02454053449911505,
+   "label": "P gateway chat-first",
+   "passes": 1,
+   "runs_per_cell": [
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  "B2TV": {
+   "cell_design_effects": [
+    3.06896551724138,
+    2.111111111111111,
+    1.0000000000000002,
+    1.5789473684210527
+   ],
+   "chat": 0.9833333333333334,
+   "design_effect": 1.9397559991933861,
+   "design_effect_ci95": [
+    1.1243800562182913,
+    2.454768068401071
+   ],
+   "doc": 0.8988095238095238,
+   "doc_sd": 0.03302271083892421,
+   "label": "V engine priority, no cap",
+   "passes": 2,
+   "runs_per_cell": [
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  "B2TVD4": {
+   "cell_design_effects": [
+    1.6363636363636358,
+    0.15151515151515146,
+    0.3333333333333332,
+    0.9729729729729727
+   ],
+   "chat": 0.9979166666666667,
+   "design_effect": 0.7735462735462733,
+   "design_effect_ci95": [
+    0.5189398303309595,
+    1.0823686922485596
+   ],
+   "doc": 0.8978174603174603,
+   "doc_sd": 0.02124574121102074,
+   "label": "VD4 cap 4 + demotion order",
+   "passes": 1,
+   "runs_per_cell": [
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  "B2TVF4": {
+   "cell_design_effects": [
+    1.4999999999999996,
+    1.4285714285714288,
+    3.3428571428571425,
+    0.3333333333333334
+   ],
+   "chat": 1.0,
+   "design_effect": 1.6511904761904759,
+   "design_effect_ci95": [
+    0.9805706521739131,
+    2.0124175824175823
+   ],
+   "doc": 0.8184523809523809,
+   "doc_sd": 0.02501287688830425,
+   "label": "F4 cap 4 at gateway, FIFO",
+   "passes": 0,
+   "runs_per_cell": [
+    6,
+    6,
+    6,
+    6
+   ]
+  },
+  "B2TVS4": {
+   "cell_design_effects": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "chat": 0.10486111111111111,
+   "design_effect": NaN,
+   "design_effect_ci95": [
+    NaN,
+    NaN
+   ],
+   "doc": 0.03571428571428571,
+   "doc_sd": 0.0,
+   "label": "S4 max_num_seqs 4 (queue in engine)",
+   "passes": 0,
+   "runs_per_cell": [
+    6,
+    6,
+    6,
+    6
+   ]
+  }
+ }
+}

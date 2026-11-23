@@ -42,6 +42,10 @@ This is consistent with the "first queue where requests wait" lesson from study 
 
 If queueing in the engine's FCFS waiting queue causes the common-mode correlation, then moving that queueing to the gateway where demotion acts should reduce the design effect in a dose-response manner as the cap on documents in flight is lowered. That is the cap sweep (caps 4, 8, 12 against no cap) pre-registered as M1 to M4 in [ladder_capsweep_prereg.md](ladder_capsweep_prereg.md); results in [ladder_capsweep_results.md](ladder_capsweep_results.md).
 
+## Outcome of the tests (added after studies 10 and 11)
+
+The cap sweep ([ladder_capsweep_results.md](ladder_capsweep_results.md)) failed its dose-response prediction; the 3-way decomposition ([locus_results.md](locus_results.md)) then separated the factors: **queue location and a 4-document concurrency cap, with FIFO order, do not remove the positive correlation (design effect 1.65 vs 1.94 for engine priority); adding the demotion order does (0.77 at cap 4, 0.30 without a cap)**. So the best-supported reading is that the *ordering policy* decorrelates the outcomes (the "compensating flips" of the table above), not the location of the queue. The concurrency-only contrast could not be obtained (vLLM `max_num_seqs` 4 collapsed the server), so the conclusion is post hoc and rests on the valid contrasts.
+
 ## Limitations
 
 - 12 points from 4 cells and 3 configurations; the correlations are descriptive and the cells share seeds and loads.

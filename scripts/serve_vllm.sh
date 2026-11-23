@@ -36,10 +36,16 @@ if [[ -f /workspace/.cacheflow-sched-policy ]]; then
     esac
 fi
 
+seqs=16
+if [[ -f /workspace/.cacheflow-max-num-seqs ]]; then
+    seqs=$(cat /workspace/.cacheflow-max-num-seqs)
+    case "$seqs" in 4|8|16) ;; *) echo "unsupported max_num_seqs: $seqs" >&2; exit 2 ;; esac
+fi
+
 args=(
     "$model" --served-model-name cacheflow-qwen3-1.7b
     --host 127.0.0.1 --port 8000 --dtype bfloat16
-    --max-model-len 12288 --max-num-seqs 16
+    --max-model-len 12288 --max-num-seqs "$seqs"
     --kv-cache-memory-bytes "$gpu_kv_bytes" --enforce-eager
     --generation-config vllm
     "${mnbt_args[@]}" "${sched_args[@]}"
