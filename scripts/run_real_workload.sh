@@ -7,6 +7,7 @@
 #   LOAD:   moderate | medium | mid65 | mid50 | mid45 | burst
 #   D = gateway policy class_demote (chat first; docs that cannot meet their SLO are served last)
 #   W = wide gateway (64 in-flight) without engine priority (controls: B2TW FIFO, B2TPW gateway chat-first)
+#   V24/V32, P24/P32 = engine priority / gateway chat-first with 24 or 32 in-flight at the gateway (width sweep)
 #   V = engine-level priority (vLLM --scheduling-policy priority, request priority chat 0 / doc 1, gateway pass-through with 64 in-flight)
 #   S = gateway policy class_slack (chat first; a doc is promoted once its remaining slack is below its expected service time + margin)
 # env: TRACE_PREFIX (default real), RUN_PREFIX (default real), REGISTRY (default results/real_registry.csv)
@@ -18,6 +19,7 @@ for spec in "$@"; do
     policy=fifo
     engine_priority=0
     wide=0
+    width=0
     case "$config" in
         B1) mode=B1; mnbt=2048 ;;
         B1T) mode=B1; mnbt=8192 ;;
@@ -29,6 +31,10 @@ for spec in "$@"; do
         B2TS) mode=B2; mnbt=8192; policy=class_slack ;;
         B2TD) mode=B2; mnbt=8192; policy=class_demote ;;
         B2TV) mode=B2; mnbt=8192; engine_priority=1 ;;
+        B2TV24) mode=B2; mnbt=8192; engine_priority=1; width=24 ;;
+        B2TV32) mode=B2; mnbt=8192; engine_priority=1; width=32 ;;
+        B2TP24) mode=B2; mnbt=8192; policy=class_first; width=24 ;;
+        B2TP32) mode=B2; mnbt=8192; policy=class_first; width=32 ;;
         B2TW) mode=B2; mnbt=8192; wide=1 ;;
         B2TPW) mode=B2; mnbt=8192; policy=class_first; wide=1 ;;
         *) echo "unknown config $config" >&2; exit 2 ;;
@@ -39,7 +45,9 @@ for spec in "$@"; do
     if [[ "$engine_priority" == 1 ]]; then
         printf 'priority\n' > /workspace/.cacheflow-sched-policy
     fi
-    if [[ "$engine_priority" == 1 || "$wide" == 1 ]]; then
+    if [[ "$width" -gt 0 ]]; then
+        printf '%s\n' "$width" > /workspace/.cacheflow-max-inflight
+    elif [[ "$engine_priority" == 1 || "$wide" == 1 ]]; then
         printf '64\n' > /workspace/.cacheflow-max-inflight
     fi
     printf '%s\n' "${AGE_CAP_MS:-1500}" > /workspace/.cacheflow-age-cap-ms

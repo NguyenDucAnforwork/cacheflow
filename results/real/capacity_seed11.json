@@ -35,24 +35,28 @@
    "tested": [
     "mid50",
     "mid45",
+    "mid42",
     "burst"
    ]
   },
   "B2TP": {
-   "first_fail": "burst",
+   "first_fail": "mid42",
    "heaviest_pass": "mid45",
    "heaviest_pass_offered_rps": 7.566765578635015,
    "tested": [
     "mid50",
     "mid45",
+    "mid42",
     "burst"
    ]
   },
   "B2TV": {
    "first_fail": "burst",
-   "heaviest_pass": null,
-   "heaviest_pass_offered_rps": null,
+   "heaviest_pass": "mid42",
+   "heaviest_pass_offered_rps": 8.1783194355356,
    "tested": [
+    "mid45",
+    "mid42",
     "burst"
    ]
   }
@@ -114,6 +118,13 @@
    "pass": true,
    "runs": 2
   },
+  "B2TD/mid42": {
+   "chat": 0.975,
+   "doc": 0.9523809523809523,
+   "goodput_req_per_s": 7.233259064452059,
+   "pass": true,
+   "runs": 2
+  },
   "B2TD/mid45": {
    "chat": 1.0,
    "doc": 1.0,
@@ -132,6 +143,13 @@
    "chat": 0.9916666666666667,
    "doc": 0.8333333333333334,
    "goodput_req_per_s": 7.271309928068169,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP/mid42": {
+   "chat": 0.9333333333333333,
+   "doc": 0.9642857142857143,
+   "goodput_req_per_s": 7.043763625325788,
    "pass": false,
    "runs": 2
   },
@@ -155,6 +173,20 @@
    "goodput_req_per_s": 7.148694932617852,
    "pass": false,
    "runs": 2
+  },
+  "B2TV/mid42": {
+   "chat": 1.0,
+   "doc": 0.9880952380952381,
+   "goodput_req_per_s": 7.409319664791325,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TV/mid45": {
+   "chat": 1.0,
+   "doc": 1.0,
+   "goodput_req_per_s": 6.955945620102563,
+   "pass": true,
+   "runs": 2
   }
  },
  "load_levels": {
@@ -165,6 +197,10 @@
   "medium": {
    "first_visit_gap_ms": 900,
    "offered_rps": 4.031620553359684
+  },
+  "mid42": {
+   "first_visit_gap_ms": 420,
+   "offered_rps": 8.1783194355356
   },
   "mid45": {
    "first_visit_gap_ms": 450,

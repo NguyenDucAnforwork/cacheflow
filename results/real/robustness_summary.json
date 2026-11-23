@@ -1,0 +1,108 @@
+{
+ "R2_wins": 2,
+ "R3": true,
+ "mechanism": {
+  "cell_verdicts": [
+   "inconclusive",
+   "inconclusive",
+   "H-order",
+   "inconclusive"
+  ],
+  "overall": "mixed"
+ },
+ "seeds": {
+  "11": {
+   "b2tv_heavier_than_b2tp": true,
+   "common_grid_heaviest_pass": {
+    "B2TD": "burst",
+    "B2TP": "mid45",
+    "B2TV": "mid42"
+   },
+   "ordering": [
+    [
+     "B1",
+     null
+    ],
+    [
+     "B2",
+     null
+    ],
+    [
+     "B2T",
+     "mid50"
+    ],
+    [
+     "B2TP",
+     "mid45"
+    ],
+    [
+     "B2TV",
+     "mid42"
+    ]
+   ],
+   "ordering_monotone": true
+  },
+  "23": {
+   "b2tv_heavier_than_b2tp": false,
+   "common_grid_heaviest_pass": {
+    "B2TD": "mid45",
+    "B2TP": "mid50",
+    "B2TV": "mid50"
+   },
+   "ordering": [
+    [
+     "B1",
+     null
+    ],
+    [
+     "B2",
+     null
+    ],
+    [
+     "B2T",
+     null
+    ],
+    [
+     "B2TP",
+     "mid50"
+    ],
+    [
+     "B2TV",
+     "mid50"
+    ]
+   ],
+   "ordering_monotone": true
+  },
+  "7": {
+   "b2tv_heavier_than_b2tp": true,
+   "common_grid_heaviest_pass": {
+    "B2TD": "mid50",
+    "B2TP": "mid50",
+    "B2TV": "mid45"
+   },
+   "ordering": [
+    [
+     "B1",
+     "medium"
+    ],
+    [
+     "B2",
+     "mid65"
+    ],
+    [
+     "B2T",
+     "mid65"
+    ],
+    [
+     "B2TP",
+     "mid50"
+    ],
+    [
+     "B2TV",
+     "mid45"
+    ]
+   ],
+   "ordering_monotone": true
+  }
+ }
+}

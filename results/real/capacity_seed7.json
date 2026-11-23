@@ -43,6 +43,7 @@
    "tested": [
     "mid50",
     "mid45",
+    "mid42",
     "burst"
    ]
   },
@@ -53,6 +54,25 @@
    "tested": [
     "mid65",
     "mid50",
+    "mid45",
+    "mid42",
+    "burst"
+   ]
+  },
+  "B2TP24": {
+   "first_fail": "mid45",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid45",
+    "burst"
+   ]
+  },
+  "B2TP32": {
+   "first_fail": "mid45",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
     "mid45",
     "burst"
    ]
@@ -77,11 +97,30 @@
    ]
   },
   "B2TV": {
-   "first_fail": "burst",
+   "first_fail": "mid42",
    "heaviest_pass": "mid45",
    "heaviest_pass_offered_rps": 7.566765578635015,
    "tested": [
     "mid50",
+    "mid45",
+    "mid42",
+    "burst"
+   ]
+  },
+  "B2TV24": {
+   "first_fail": "mid45",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid45",
+    "burst"
+   ]
+  },
+  "B2TV32": {
+   "first_fail": "mid45",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
     "mid45",
     "burst"
    ]
@@ -209,6 +248,13 @@
    "pass": false,
    "runs": 2
   },
+  "B2TD/mid42": {
+   "chat": 0.9,
+   "doc": 0.8571428571428571,
+   "goodput_req_per_s": 6.513749952825991,
+   "pass": false,
+   "runs": 2
+  },
   "B2TD/mid45": {
    "chat": 0.9416666666666667,
    "doc": 0.9404761904761905,
@@ -227,6 +273,13 @@
    "chat": 0.9416666666666667,
    "doc": 0.6904761904761905,
    "goodput_req_per_s": 6.439373856478404,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP/mid42": {
+   "chat": 0.9333333333333333,
+   "doc": 0.75,
+   "goodput_req_per_s": 6.332157433081061,
    "pass": false,
    "runs": 2
   },
@@ -249,6 +302,34 @@
    "doc": 1.0,
    "goodput_req_per_s": 5.192448157322625,
    "pass": true,
+   "runs": 2
+  },
+  "B2TP24/burst": {
+   "chat": 0.475,
+   "doc": 0.75,
+   "goodput_req_per_s": 4.447015204054465,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP24/mid45": {
+   "chat": 0.5833333333333334,
+   "doc": 0.9642857142857143,
+   "goodput_req_per_s": 5.1717892617695425,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP32/burst": {
+   "chat": 0.30833333333333335,
+   "doc": 0.8452380952380952,
+   "goodput_req_per_s": 3.997527201878757,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP32/mid45": {
+   "chat": 0.5666666666666667,
+   "doc": 1.0,
+   "goodput_req_per_s": 5.186956440216686,
+   "pass": false,
    "runs": 2
   },
   "B2TPW/burst": {
@@ -293,6 +374,13 @@
    "pass": false,
    "runs": 2
   },
+  "B2TV/mid42": {
+   "chat": 1.0,
+   "doc": 0.7380952380952381,
+   "goodput_req_per_s": 6.669310054668351,
+   "pass": false,
+   "runs": 2
+  },
   "B2TV/mid45": {
    "chat": 0.9916666666666667,
    "doc": 0.9166666666666666,
@@ -305,6 +393,34 @@
    "doc": 1.0,
    "goodput_req_per_s": 6.382514064224418,
    "pass": true,
+   "runs": 2
+  },
+  "B2TV24/burst": {
+   "chat": 0.6416666666666667,
+   "doc": 0.75,
+   "goodput_req_per_s": 5.2752803318164165,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TV24/mid45": {
+   "chat": 0.9416666666666667,
+   "doc": 0.9047619047619048,
+   "goodput_req_per_s": 6.454273028131212,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TV32/burst": {
+   "chat": 0.9666666666666667,
+   "doc": 0.6666666666666666,
+   "goodput_req_per_s": 6.460399822685259,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TV32/mid45": {
+   "chat": 0.9916666666666667,
+   "doc": 0.8690476190476191,
+   "goodput_req_per_s": 6.555697917461061,
+   "pass": false,
    "runs": 2
   },
   "B2TW/burst": {
@@ -330,6 +446,10 @@
   "medium": {
    "first_visit_gap_ms": 900,
    "offered_rps": 4.031620553359684
+  },
+  "mid42": {
+   "first_visit_gap_ms": 420,
+   "offered_rps": 8.1783194355356
   },
   "mid45": {
    "first_visit_gap_ms": 450,

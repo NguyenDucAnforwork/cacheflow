@@ -1,0 +1,198 @@
+{
+ "capacity_brackets": {
+  "B1": {
+   "first_fail": "mid50",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid50"
+   ]
+  },
+  "B2": {
+   "first_fail": "mid50",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid50"
+   ]
+  },
+  "B2T": {
+   "first_fail": "mid50",
+   "heaviest_pass": null,
+   "heaviest_pass_offered_rps": null,
+   "tested": [
+    "mid50",
+    "mid45"
+   ]
+  },
+  "B2TD": {
+   "first_fail": "mid42",
+   "heaviest_pass": "mid45",
+   "heaviest_pass_offered_rps": 7.566765578635015,
+   "tested": [
+    "mid45",
+    "mid42",
+    "burst"
+   ]
+  },
+  "B2TP": {
+   "first_fail": "mid45",
+   "heaviest_pass": "mid50",
+   "heaviest_pass_offered_rps": 6.8686868686868685,
+   "tested": [
+    "mid50",
+    "mid45",
+    "mid42",
+    "burst"
+   ]
+  },
+  "B2TV": {
+   "first_fail": "mid45",
+   "heaviest_pass": "mid50",
+   "heaviest_pass_offered_rps": 6.8686868686868685,
+   "tested": [
+    "mid50",
+    "mid45",
+    "mid42",
+    "burst"
+   ]
+  }
+ },
+ "cells": {
+  "B1/mid50": {
+   "chat": 0.4,
+   "doc": 0.9761904761904762,
+   "goodput_req_per_s": 3.4130988141894285,
+   "pass": false,
+   "runs": 2
+  },
+  "B2/mid50": {
+   "chat": 0.5833333333333334,
+   "doc": 1.0,
+   "goodput_req_per_s": 4.8317137630145375,
+   "pass": false,
+   "runs": 2
+  },
+  "B2T/mid45": {
+   "chat": 0.55,
+   "doc": 1.0,
+   "goodput_req_per_s": 5.133012524549951,
+   "pass": false,
+   "runs": 2
+  },
+  "B2T/mid50": {
+   "chat": 0.6833333333333333,
+   "doc": 1.0,
+   "goodput_req_per_s": 5.2058995415039035,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TD/burst": {
+   "chat": 0.8916666666666667,
+   "doc": 0.8333333333333334,
+   "goodput_req_per_s": 6.602818051207196,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TD/mid42": {
+   "chat": 0.9416666666666667,
+   "doc": 0.8690476190476191,
+   "goodput_req_per_s": 6.815483396322406,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TD/mid45": {
+   "chat": 0.9833333333333333,
+   "doc": 0.9285714285714286,
+   "goodput_req_per_s": 6.706038946676362,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TP/burst": {
+   "chat": 0.9333333333333333,
+   "doc": 0.6666666666666666,
+   "goodput_req_per_s": 6.209933438791902,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP/mid42": {
+   "chat": 0.9416666666666667,
+   "doc": 0.7976190476190477,
+   "goodput_req_per_s": 6.598647482675088,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP/mid45": {
+   "chat": 1.0,
+   "doc": 0.8690476190476191,
+   "goodput_req_per_s": 6.593260240917772,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TP/mid50": {
+   "chat": 0.9666666666666667,
+   "doc": 1.0,
+   "goodput_req_per_s": 6.250403066140886,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TV/burst": {
+   "chat": 0.95,
+   "doc": 0.6428571428571429,
+   "goodput_req_per_s": 6.195777826266104,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TV/mid42": {
+   "chat": 0.925,
+   "doc": 0.7619047619047619,
+   "goodput_req_per_s": 6.3993676558880965,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TV/mid45": {
+   "chat": 0.9916666666666667,
+   "doc": 0.8928571428571429,
+   "goodput_req_per_s": 6.613467118777263,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TV/mid50": {
+   "chat": 1.0,
+   "doc": 1.0,
+   "goodput_req_per_s": 6.395829555303253,
+   "pass": true,
+   "runs": 2
+  }
+ },
+ "load_levels": {
+  "burst": {
+   "first_visit_gap_ms": 400,
+   "offered_rps": 8.64406779661017
+  },
+  "medium": {
+   "first_visit_gap_ms": 900,
+   "offered_rps": 4.031620553359684
+  },
+  "mid42": {
+   "first_visit_gap_ms": 420,
+   "offered_rps": 8.1783194355356
+  },
+  "mid45": {
+   "first_visit_gap_ms": 450,
+   "offered_rps": 7.566765578635015
+  },
+  "mid50": {
+   "first_visit_gap_ms": 500,
+   "offered_rps": 6.8686868686868685
+  },
+  "mid65": {
+   "first_visit_gap_ms": 650,
+   "offered_rps": 5.498652291105121
+  }
+ },
+ "targets": {
+  "chat": 0.95,
+  "doc": 0.9
+ }
+}
