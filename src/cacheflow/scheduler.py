@@ -11,7 +11,7 @@ from typing import Literal
 
 from .prefix import group_digest, shared_prefix_tokens
 
-Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first"]
+Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged"]
 
 
 @dataclass(slots=True)
@@ -30,7 +30,8 @@ class Ticket:
     recent_match: bool = False
     readiness_guard_bypassed: bool = False
     readiness_estimate_ms: float | None = None
-    priority: int = 0  # lower is admitted first under policy class_first
+    priority: int = 0  # lower is admitted first under policy class_first / class_aged
+    promoted: bool = False  # class_aged: a priority-1 ticket admitted ahead of chat because it waited past the age cap
 
 
 class AdmissionScheduler:
@@ -45,8 +46,9 @@ class AdmissionScheduler:
         block_size: int = 256,
         store_grace_ms: int = 20,
         group_window_ms: int = 30,
+        age_cap_ms: int = 1500,
     ) -> None:
-        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first"):
+        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged"):
             raise ValueError(f"unknown policy {policy}")
         if min(max_inflight, max_queue, max_wait_ms, min_shared_tokens, block_size) <= 0:
             raise ValueError("capacities and thresholds must be positive")
@@ -58,6 +60,7 @@ class AdmissionScheduler:
         self.block_size = block_size
         self.store_grace_ns = store_grace_ms * 1_000_000
         self.group_window_ns = group_window_ms * 1_000_000
+        self.age_cap_ns = age_cap_ms * 1_000_000
         self._condition = asyncio.Condition()
         self._queue: list[Ticket] = []
         self._active: dict[str, Ticket] = {}
@@ -85,7 +88,7 @@ class AdmissionScheduler:
         return min(matches, key=lambda t: t.dispatch_ns or t.enqueued_ns, default=None)
 
     def _eligible(self, ticket: Ticket, now: int) -> bool:
-        if self.policy in ("fifo", "class_first"):
+        if self.policy in ("fifo", "class_first", "class_aged"):
             return True
         if self.policy == "static_group":
             return len(self._queue) > 1 or now - ticket.enqueued_ns >= self.group_window_ns
@@ -114,6 +117,14 @@ class AdmissionScheduler:
             return None
         if self.policy == "class_first":
             return min(eligible, key=lambda t: t.priority)  # FIFO within a priority level
+        if self.policy == "class_aged":
+            # Chat first, but a request that has waited at least age_cap since its arrival is treated as chat.
+            # Ties (min keeps the first) are FIFO by queue order.
+            def level(t: Ticket) -> int:
+                return 0 if t.priority == 0 or now - t.arrival_ns >= self.age_cap_ns else 1
+            chosen = min(eligible, key=level)
+            chosen.promoted = chosen.priority != 0 and level(chosen) == 0
+            return chosen
         if self.policy != "static_group":
             return eligible[0]
         oldest = eligible[0]

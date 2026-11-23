@@ -57,6 +57,8 @@ def create_app(config_path: str | None = None) -> FastAPI:
         settings["scheduler"]["policy"] = os.environ["CACHEFLOW_POLICY"]
     model = settings["model"]
     tokenizer = AutoTokenizer.from_pretrained(model, local_files_only=True, trust_remote_code=False)
+    if os.environ.get("CACHEFLOW_AGE_CAP_MS"):
+        settings["scheduler"]["age_cap_ms"] = int(os.environ["CACHEFLOW_AGE_CAP_MS"])
     scheduler = AdmissionScheduler(**settings["scheduler"])
     trace = TraceWriter(os.environ.get("CACHEFLOW_TRACE", "/workspace/results/raw/gateway.jsonl"))
     upstream = settings.get("upstream", "http://127.0.0.1:8000").rstrip("/")
@@ -158,6 +160,7 @@ def _record(ticket: Ticket, received_ns: int, input_tokens: int, *, run_id: str,
         "input_tokens": input_tokens,
         "prefix_group": ticket.group,
         "priority": ticket.priority,
+        "promoted": ticket.promoted,
         "delay_hit_candidate": ticket.delay_hit_candidate,
         "readiness_guard_bypassed": ticket.readiness_guard_bypassed,
         "readiness_estimate_ms": ticket.readiness_estimate_ms,

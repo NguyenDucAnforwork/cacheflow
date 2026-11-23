@@ -34,6 +34,8 @@ INSTRUCTION = ("Read the article and answer the multiple-choice question about i
 PROFILES = {
     "moderate": {"first_gap": 2000, "q1_delay": 3000, "revisit_start": 4000, "revisit_gap": 1500},
     "medium": {"first_gap": 900, "q1_delay": 2000, "revisit_start": 2500, "revisit_gap": 700},
+    "mid65": {"first_gap": 650, "q1_delay": 1600, "revisit_start": 2000, "revisit_gap": 500},
+    "mid50": {"first_gap": 500, "q1_delay": 1400, "revisit_start": 1750, "revisit_gap": 400},
     "burst": {"first_gap": 400, "q1_delay": 1200, "revisit_start": 1500, "revisit_gap": 300},
 }
 BLOCKLIST = ("sex", "porn", "nude", "naked", "fuck", "suicide", "kill", "rape", "nsfw", "erotic", "cock", "pussy")

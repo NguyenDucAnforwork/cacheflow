@@ -28,6 +28,10 @@ Measured on 2026-11-22 with 62-request traces: 14 real QuALITY v1.0.1 dev docume
 - Admitting chat before queued documents at the gateway cut burst chat p95 from 3.02 to 0.97 s (SLO attainment 0.30 → 0.94) but raised doc p95 from 3.3 to 4.6 s (doc SLO 0.88 → 0.69): under saturation priority moves SLO misses between classes. The CPU tier and the budget effects looked roughly independent in a B1 versus B2 comparison under burst.
 - Single host and model, two repeats, simulated arrivals; the budget comparison is chunked versus essentially unchunked for these prompts.
 
+## Queue order below saturation and prefill-step cost (second follow-up)
+
+Is chat-first admission still a trade-off below saturation? At first-visit spacing of 0.5 s it is free: chat SLO attainment rose 0.68 to 0.98 while doc stayed at 1.00 (doc p95 2.58 s). At 0.4 s no policy reaches both targets (FIFO 0.30 / 0.88, chat-first 0.94 / 0.69, chat-first with a 1.5 s age cap 0.53 / 0.85, chat / doc), so that load needs capacity rather than reordering. An isolated, queue-free probe measured about 12 ms per scheduler step (95% CI 10.9 to 13.2): going from `max_num_batched_tokens` 2048 to 8192 shortens a 6 to 8K-token prefill by 22 to 49 ms. The pre-registered age-cap hypothesis (H-b) was not supported; details, limitations and reproduce commands: [docs/policy_study_results.md](docs/policy_study_results.md) (hypotheses: [docs/policy_study_prereg.md](docs/policy_study_prereg.md)).
+
 ## Project map
 
 - [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs; [real-data workload results](docs/real_workload_results.md) is a separate study.
