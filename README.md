@@ -2,7 +2,7 @@
 
 A set of pre-registered, paired experiments on a single RTX 3090 with vLLM 0.22.0, an LMCache CPU KV tier and an asyncio admission gateway, using real document and chat content, real arrival structure where available, and a Qwen3-1.7B model. The question that runs through all of it is practical: **when short interactive requests and long-document requests share one inference server, what actually moves latency-SLO attainment, and by how much?**
 
-> Status: 190 serving runs plus an isolated prefill probe, across seven studies. The numbers are from one host, one small model, three document sets, and mostly two repeats per cell. Read the limitations (section 9) before quoting any of them.
+> Status: 230 serving runs plus an isolated prefill probe, across eight studies. The numbers are from one host, one small model, three document sets, and mostly two repeats per cell. Read the limitations (section 9) before quoting any of them.
 
 Contents: [1. TL;DR](#1-tldr) · [2. System](#2-the-system) · [3. Research questions](#3-research-questions) · [4. Data](#4-data) · [5. Literature and survey](#5-literature-review-and-survey) · [6. Experimental setup and workflow](#6-experimental-setup) · [7. Studies and results](#7-studies-and-results) · [8. What failed](#8-what-failed-and-what-i-got-wrong) · [9. Limitations](#9-limitations-and-threats-to-validity) · [10. Reading the results](#10-what-the-results-support) · [11. Repository map](#11-repository-map) · [12. Reproduction commands](#12-reproduction-commands) · [13. Next steps](#13-next-steps)
 
@@ -18,14 +18,16 @@ Contents: [1. TL;DR](#1-tldr) · [2. System](#2-the-system) · [3. Research ques
 |---|---|---|---|
 | 1 | A CPU KV tier (LMCache) raises SLO-constrained capacity when the working set exceeds GPU KV | seed 7: 4.0 to 5.5 req/s (+37%); under burst chat p95 -32 to -34%, computed prefill tokens -48% | fairly solid: mechanism measured, large gap |
 | 2 | Chat-first admission rescues chat under overload, at a cost to documents | chat SLO +0.53 to +0.64 on two document sets, +0.24 to +0.55 on two BurstGPT windows; doc SLO -0.17 to -0.19 | replicated on 3 datasets; trade-off, not a free lunch |
-| 3 | **Where the priority is implemented matters**: engine-level priority (vLLM `--scheduling-policy priority`) reaches a heavier load than gateway chat-first | 7.6 vs 6.9 req/s on seed 7; controls rule out the wider gateway as the cause; holds on 2 of 3 document sets, thin margins | moderate |
+| 3 | **Where the priority is implemented matters**: engine-level priority (vLLM `--scheduling-policy priority`) reaches a heavier load than gateway chat-first | 7.6 vs 6.9 req/s on seed 7 in the first replicate; controls rule out the wider gateway as the cause; holds on 2 of 3 document sets, but a second effective replicate (study 8) did not reproduce the seed-7 pass, and pooled data tie on seed 7 and favour engine priority on seeds 11 and 23 | weak to moderate: within replicate noise |
 | 4 | Priority only works in the **first queue where requests wait**; an FCFS queue upstream defeats it | gateway chat-first falls from chat SLO 0.94 to 0.57 (FIFO level) once the gateway admits more than the engine's 16 sequences | fairly solid on seed 7 |
 | 5 | Demoting documents that can no longer meet their SLO shifts misses toward savable documents | doc SLO +0.08 to +0.11 at no chat cost in two cells; roughly doubles goodput in the heaviest, burstiest BurstGPT window | weak to moderate; one cell missed its pre-registered threshold by 0.005 |
 | 6 | A scheduler step costs about 12 ms | isolated probe, 95% CI 10.9 to 13.2 ms | solid for this measurement |
+| 7 | Combining engine priority with demotion does **not** raise the SLO-constrained load level, but does combine their balance at overloaded cells | 0 of 3 seeds heavier than the better parent; 3 of 4 complementary cells within 0.03 of the better parent per class | negative for capacity, descriptive for balance |
+| 8 | **Replicate noise is large relative to the thresholds**: doc SLO differs by 0.035 on average and up to 0.095 between two effective replicates of one configuration | study 8, attempt 1 (an unintended replicate of engine priority) | one pair of replicates; a warning, not a variance model |
 
-**What did not work** (and is reported as such): age-capped promotion of documents, slack-based promotion, a larger prefill budget as a capacity lever (it lowers p95 but moves no capacity bracket), the original delay-hit-aware admission (DHAS), and several hypotheses I wrote down in advance.
+**What did not work** (and is reported as such): age-capped promotion of documents, slack-based promotion, a larger prefill budget as a capacity lever (it lowers p95 but moves no capacity bracket), the original delay-hit-aware admission (DHAS), the combination of engine priority and demotion (as a capacity lever), and several hypotheses I wrote down in advance.
 
-**Honest framing.** None of the techniques is new; this is an experimental confirmation with controls and replication. The most informative findings are the *negative* and *mechanism* ones: ordering only moves misses between classes unless capacity changes; priority must sit at the first queue; the best configuration depends on the document set.
+**Honest framing.** None of the techniques is new; this is an experimental confirmation with controls and replication. The most informative findings are the *negative* and *mechanism* ones: ordering only moves misses between classes unless capacity changes; priority (and demotion) must act at the first queue where requests wait; the best configuration depends on the document set; and two-repeat cells near a 0.90 threshold are within noise.
 
 ---
 
@@ -78,6 +80,7 @@ The project began as a six-hour sprint on one question (RQ0) with a negative ans
 | **RQ5** | Does demoting documents that cannot meet their SLO recover capacity? | study 5 |
 | **RQ6** | What is the SLO-constrained capacity of each configuration, does engine-level priority beat the gateway, and does real arrival structure change the picture? | study 6 |
 | **RQ7** | Is the capacity ordering robust across document sets, and why does engine-level priority win? | study 7 |
+| **RQ8** | Does combining engine-level priority (for chat) with gateway demotion (for documents) beat either alone? | study 8 |
 
 Practices applied from study 2 on: hypotheses and decision thresholds written down **before** the runs (study 2 states them in its own document; studies 3 to 7 have separate `docs/*_prereg.md` files); paired comparisons over request IDs; negative results kept; post-hoc additions labelled as such (the control runs in study 6 are marked in the pre-registration file).
 
@@ -270,7 +273,7 @@ Reading diagram C with the mechanism result of study 7: a request waits in **eit
 
 ## 7. Studies and results
 
-Detailed tables and caveats are in the per-study documents (linked). Run counts: 12 + 20 + 14 + 18 + 10 + 56 + 60 = **190 serving runs**, plus the isolated probe (5 restarts, 210 samples).
+Detailed tables and caveats are in the per-study documents (linked). Run counts: 12 + 20 + 14 + 18 + 10 + 56 + 60 + 40 = **230 serving runs**, plus the isolated probe (5 restarts, 210 samples).
 
 ### 7.0 Original sprint: delay-hit-aware admission (RQ0) , negative
 
@@ -355,15 +358,26 @@ Engine priority vs gateway chat-first at mid45: 0.99 / 0.92 vs 0.94 / 0.83. **Co
 - **Which is best depends on the document set**: engine priority wins on seed 7, chat-first + demotion on seeds 11 and 23. They were never combined.
 - **Mechanism.** Pre-registered rule: *mixed*. H-width (gain from a wider gateway) is **not** supported: gateway chat-first collapses to FIFO once the gateway admits more than the engine runs (chat 0.94 at width 16, 0.57 at 24/32/64), while engine priority keeps its effect at widths 24 to 64 at mid45 (burst needs width >= 32). Reading: **ordering takes effect in the first queue where requests wait; an FCFS queue upstream defeats it.** The small residual gap between engine priority at width 64 and gateway chat-first at width 16 is **unexplained**.
 
-### 7.8 Consolidated: what worked and what did not
+### 7.8 Engine priority + demotion, and replicate noise (RQ8) , [docs/combo_results.md](docs/combo_results.md)
+
+40 runs in two attempts. Policy `engine_demote`: chat goes straight to vLLM, ordered by engine priority; documents are capped at N in flight at the gateway and admitted in demotion order.
+
+- **Attempt 1 (N = 16) did not bind**: with 42 document requests per trace the cap was almost never reached, documents waited 16 to 21 ms at the gateway and queued in vLLM's FCFS waiting queue where demotion cannot act. It was effectively a second replicate of engine priority. It failed the pre-registered C1 and C2 and met C3.
+- **That replicate measured noise:** chat SLO differs by 0.008 on average (max 0.025) and **doc SLO by 0.035 on average (max 0.095)** between two effective replicates of one configuration over 10 cells; cells near the 0.90 threshold flip (seed 7 mid45 doc 0.917 vs 0.869; seed 23 mid45 0.893 vs 0.940). Pooling the replicates, engine priority ties gateway chat-first on seed 7 and passes a heavier level on seeds 11 and 23 (post hoc).
+- **Attempt 2 (N = 4, fixed by a rule from earlier data, labelled as a post hoc correction):** C1 not met, C2 not met (0 of 3 seeds heavier than the better parent), C3 not met (the cap costs documents attainment at lighter loads: seed 7 mid50 doc 0.95), C4 met in 3 of 4 complementary cells: the combination takes engine priority's chat attainment (0.97 to 0.99) and demotion's document attainment (0.79 to 0.87), but documents stay below 0.90 there, so no extra cell passes.
+
+Lesson: demotion, like priority, must act at the first queue where the request waits; and two-repeat cells near a threshold are within noise.
+
+### 7.9 Consolidated: what worked and what did not
 
 | Worked | Did not work / not supported |
 |---|---|
 | CPU KV tier under working-set pressure | DHAS delay-hit-aware admission (original sprint) |
 | Chat-first (at the first queue) under overload | age-capped promotion (1.5 s too eager) |
-| Engine-level priority (2 of 3 sets) | slack-based promotion (regressed the free case) |
+| Engine-level priority (2 of 3 sets; within replicate noise) | slack-based promotion (regressed the free case) |
 | Demotion of doomed documents (small, set-dependent) | larger prefill budget as a *capacity* lever |
 | Measured step cost (12 ms) | any scheduler reaching both targets at saturation |
+|  | engine priority + demotion as a capacity lever (0 of 3 seeds heavier) |
 
 ---
 
@@ -379,6 +393,8 @@ Kept deliberately; several changed a conclusion.
 - The oracle "33% of prefill spent on documents that miss anyway" was an upper bound; demotion cannot realize it because documents are still served.
 - My hypotheses failed in the open: H1 (20% threshold, got 11.8%), H2, S1, S2, V1 (engine priority was *better*, not equal), D1 (missed by 0.005), and the study 7 mechanism decision rule compared at equal width, which classified a trade-off as inconclusive.
 - The control runs in study 6 were added after seeing the engine-priority result; the pre-registration file marks them as post hoc.
+- Study 8 attempt 1 was a **design error**: the document cap I chose (16) almost never bound with only 42 document requests, so the "combination" was effectively engine priority alone. I found it from a queue-wait diagnostic, fixed the cap by a rule from earlier data (4), and report both attempts; the pre-registration file marks attempt 2 as a post hoc correction.
+- That mistake also exposed that my headline for study 7 (engine priority passes a heavier level on seed 7) did not reproduce in a second effective replicate; the study 7 and README statements now carry that caveat.
 
 **Engineering and environment**
 
@@ -393,7 +409,7 @@ Kept deliberately; several changed a conclusion.
 
 ## 9. Limitations and threats to validity
 
-- **Scope:** one host, one small model (1.7B, `--enforce-eager`), three document sets, mostly **two repeats** per cell; some decisive cells are within 0.01 to 0.02 of a threshold.
+- **Scope:** one host, one small model (1.7B, `--enforce-eager`), three document sets, mostly **two repeats** per cell; some decisive cells are within 0.01 to 0.02 of a threshold, and study 8 measured replicate-to-replicate differences of up to 0.095 in doc SLO (mean 0.035), so single passes at 0.90 to 0.92 should not be read as separations.
 - **Intervals** are request-level bootstraps and understate run-to-run variance; no run-level confidence intervals.
 - **Arrivals** are simulated or heavily time-compressed BurstGPT windows (not a faithful replay of real production traffic); the load axis is not a capacity measure across document sets; the capacity grid is coarse (5 to 6 levels).
 - **SLOs and the pass rule** were chosen by me; chat and doc targets (0.95 / 0.90) are not derived from a product.
@@ -411,7 +427,8 @@ Kept deliberately; several changed a conclusion.
 - **Reordering does not create capacity.** At and above saturation every policy trades one class's misses for the other's; only changes that remove work or add capacity move the bracket. Below saturation, class priority is nearly free.
 - **Place priority at the first queue** where requests wait. Gateway-level and engine-level ordering both work, but a FCFS queue upstream of the ordering point silently disables it.
 - **Report SLOs per class, over all offered requests.** Goodput in requests per second flatters policies that serve many cheap requests, and a mean-TPOT SLO hides large decode stalls.
-- The best configuration among the ones tested is **document-set dependent**; claims should be conditional on the workload.
+- The best configuration among the ones tested is **document-set dependent**, and several conclusions sit within replicate noise; claims should be conditional on the workload and, near a threshold, on more than two repeats.
+- A **second ordering mechanism does not stack for free**: combining engine priority (chat) with gateway demotion (documents) kept their balance at overloaded cells but cost document attainment at lighter loads and raised no capacity bracket.
 
 Claims **not** made: no general speedup guarantee; not a reproduction of Strata, FlowPrefill or SLOs-Serve; nothing about larger models, multi-GPU or production traffic.
 
@@ -421,17 +438,17 @@ Claims **not** made: no general speedup guarantee; not a reproduction of Strata,
 
 | Path | Contents |
 |---|---|
-| `src/cacheflow/` | `gateway.py`, `scheduler.py` (policies `fifo`, `static_group`, `dhas`, `dhas_guarded`, `class_first`, `class_aged`, `class_slack`, `class_demote`), `bench.py` (replay client), `real_workload.py` (trace builder), `burst_arrivals.py`, `prefill_probe.py`, `collect_metrics.py`; analysis: `real_analyze.py`, `chunk_analyze.py`, `policy_analyze.py`, `capacity_analyze.py`, `robustness_summary.py`, `bg_analyze.py`, `probe_analyze.py` |
+| `src/cacheflow/` | `gateway.py`, `scheduler.py` (policies `fifo`, `static_group`, `dhas`, `dhas_guarded`, `class_first`, `class_aged`, `class_slack`, `class_demote`, `engine_demote`), `bench.py` (replay client), `real_workload.py` (trace builder), `burst_arrivals.py`, `prefill_probe.py`, `collect_metrics.py`; analysis: `real_analyze.py`, `chunk_analyze.py`, `policy_analyze.py`, `capacity_analyze.py`, `robustness_summary.py`, `bg_analyze.py`, `probe_analyze.py` |
 | `scripts/` | stack setup (`install_services.sh`, `serve_vllm.sh`, `serve_lmcache.sh`, `serve_gateway.sh`), `set_mode.sh`, `run_real_workload.sh "CONFIG LOAD TAG" ...`, `run_prefill_probe.sh`, `check_before_push.sh` (credential scan) |
 | `configs/` | gateway policy configuration, supervisor programs |
-| `tests/` | 14 unit tests (scheduler policies among them) |
+| `tests/` | 16 unit tests (scheduler policies among them) |
 | `docs/` | one results file per study and a `*_prereg.md` written before it; `readme_by_study.md` is the earlier running README; `reproduce.md` has host setup |
-| `results/` | `*_registry.csv` (190 runs), `raw/` per-run traces and metrics, `real/` analyses and manifests, `figures/` |
+| `results/` | `*_registry.csv` (230 runs), `raw/` per-run traces and metrics, `real/` analyses and manifests, `figures/` |
 | `data/` | git-ignored: raw datasets and trace JSONL (rebuilt by the trace builder) |
 
 **Reproduce.** Section 12 has the exact commands for every study; host setup is in [docs/reproduce.md](docs/reproduce.md). Analyses can be rerun offline from the committed registries and raw files without a GPU.
 
-Cost and time: each run takes about 1.1 to 1.4 minutes (cold restart plus replay); the 190 runs were roughly 4 GPU-hours in total.
+Cost and time: each run takes about 1.1 to 1.4 minutes (cold restart plus replay); the 230 runs were roughly 5 GPU-hours in total.
 
 ---
 
@@ -447,7 +464,7 @@ Install and pin the stack as in [docs/reproduce.md](docs/reproduce.md) (vLLM 0.2
 cd /workspace && source /venv/main/bin/activate
 export HF_HOME=/workspace/.hf_home PYTHONPATH=/workspace/src
 M=/workspace/.hf_home/hub/models--Qwen--Qwen3-1.7B/snapshots/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
-python -m pytest -q tests          # 14 tests
+python -m pytest -q tests          # 16 tests
 ```
 
 ### 12.2 Data and traces
@@ -528,6 +545,16 @@ bash scripts/run_real_workload.sh "B2TP mid42 r1" "B2TD mid42 r1" "B2TV mid42 r1
   "B2TP32 burst r2" "B2TP24 burst r2" "B2TV32 burst r2" "B2TV24 burst r2" "B2TP32 mid45 r2" "B2TP24 mid45 r2" "B2TV32 mid45 r2" "B2TV24 mid45 r2"
 export TRACE_PREFIX=s11 RUN_PREFIX=s11 REGISTRY=/workspace/results/s11_registry.csv
 bash scripts/run_real_workload.sh "B2TV mid45 r1" "B2TP mid42 r1" "B2TD mid42 r1" "B2TV mid42 r1" "B2TV mid42 r2" "B2TD mid42 r2" "B2TP mid42 r2" "B2TV mid45 r2"
+
+# study 8: engine priority + demotion (attempt 1: B2TVD, 16 documents in flight; attempt 2: B2TVD4, 4 documents), 20 runs each
+for CFG in B2TVD B2TVD4; do
+  export TRACE_PREFIX=s23 RUN_PREFIX=s23 REGISTRY=/workspace/results/s23_registry.csv
+  bash scripts/run_real_workload.sh "$CFG mid45 r1" "$CFG mid42 r1" "$CFG burst r1" "$CFG burst r2" "$CFG mid42 r2" "$CFG mid45 r2"
+  export TRACE_PREFIX=s11 RUN_PREFIX=s11 REGISTRY=/workspace/results/s11_registry.csv
+  bash scripts/run_real_workload.sh "$CFG mid45 r1" "$CFG mid42 r1" "$CFG burst r1" "$CFG burst r2" "$CFG mid42 r2" "$CFG mid45 r2"
+  export TRACE_PREFIX=real60 RUN_PREFIX=r60 REGISTRY=/workspace/results/real60_registry.csv
+  bash scripts/run_real_workload.sh "$CFG mid50 r1" "$CFG mid45 r1" "$CFG mid42 r1" "$CFG burst r1" "$CFG burst r2" "$CFG mid42 r2" "$CFG mid45 r2" "$CFG mid50 r2"
+done
 ```
 
 Notes: do not sync code to the host while a driver is running (the sync helper kills running benchmarks). A spec whose run id already exists in the registry raises a duplicate-id error and, because the script uses `set -e`, aborts the rest of the list. The gateway writes every request to `results/raw/gateway.jsonl`; the per-study files used by the analysis (`results/raw/gateway_*_runs.jsonl`) are the lines of that file for the corresponding run ids, extracted with `grep -E '"run_id":"<prefix>' results/raw/gateway.jsonl`.
@@ -560,6 +587,8 @@ python -m cacheflow.capacity_analyze --registry results/s11_registry.csv --run-p
 python -m cacheflow.capacity_analyze --registry results/s23_registry.csv --run-prefix s23 --trace-prefix s23 --gateway $G \
   --out-json results/real/capacity_seed23.json --figure results/figures/capacity/capacity_seed23.png
 python -m cacheflow.robustness_summary --files 7=results/real/capacity_seed7.json 11=results/real/capacity_seed11.json 23=results/real/capacity_seed23.json
+# study 8 (after refreshing the three capacity files with the extra gateway files gateway_combo_runs.jsonl and gateway_combo4_runs.jsonl)
+python -m cacheflow.combo_summary --files 7=results/real/capacity_seed7.json 11=results/real/capacity_seed11.json 23=results/real/capacity_seed23.json --combo B2TVD4
 ```
 
 Check status: the offline commands for studies 1, 2, 3 (policy cells and the probe), the seed-11 command of studies 4 and 5 and the BurstGPT analysis were re-run against the committed data when this section was written (study 2 reproduces the committed numbers exactly, and the study 3 cells reproduce the values in section 7.3); the seed-7 commands of studies 4 to 7 are the ones that produced the committed results. The studies 4 and 5 commands write to the output paths shown; running `policy_analyze` with other `--summary-json` / `--out-dir` values is safe, but running it with the defaults and all gateway files would overwrite the study 3 files with a superset. The serving commands cannot be re-run without the host.
@@ -570,10 +599,10 @@ Check status: the offline commands for studies 1, 2, 3 (policy cells and the pro
 
 Ordered by value for the effort; none is started.
 
-1. **Combine engine-level priority with doomed-document demotion.** The best configuration differs by document set, and the two were never combined. Needs a hook that decides "doomed" when the queue is inside the engine (a gateway estimate with a wide gateway, or a small vLLM scheduler change).
-2. **Explain the residual engine-priority advantage** with per-step instrumentation (scheduler step logs or Nsight) instead of inference: per-step admission latency versus ordering of documents.
-3. **Check a larger model (7 to 8B)** so prefill is heavier and closer to production; first confirm memory (about 6 GB of KV remains on a 24 GB card).
-4. **FP8 KV cache as a substitute for the CPU tier** (capacity x2, about 112K tokens versus the 98K-token working set); needs a feasibility check of the attention backend on sm86 and an accuracy check on QuALITY.
-5. **Statistical hardening:** more repeats, run-level bootstrap intervals, a finer capacity grid between 7.6 and 8.6 req/s.
+1. **Statistical hardening of the thin-margin results** (now the first priority, after study 8 measured replicate noise of up to 0.095 in doc SLO): 4 to 6 repeats on the cells that decide the ordering (seed 7 mid45, seed 23 mid45, seed 11 mid42 and burst), run-level bootstrap intervals, and a finer capacity grid between 7.6 and 8.6 req/s.
+2. **Sweep the document cap of the combined policy** (4 to 16) to find out whether an intermediate cap keeps the load-level gain of demotion without the lighter-load cost; the cap that fits one load is probably not the one that fits another.
+3. **Explain the residual engine-priority advantage** with per-step instrumentation (scheduler step logs or Nsight) instead of inference: per-step admission latency versus ordering of documents.
+4. **Check a larger model (7 to 8B)** so prefill is heavier and closer to production; first confirm memory (about 6 GB of KV remains on a 24 GB card).
+5. **FP8 KV cache as a substitute for the CPU tier** (capacity x2, about 112K tokens versus the 98K-token working set); needs a feasibility check of the attention backend on sm86 and an accuracy check on QuALITY.
 6. **Sparse prefill** (MInference-style) if an integration exists, with accuracy measured on QuALITY.
 7. **Better arrival traces** with sub-second timestamps, not time-compressed windows.

@@ -59,6 +59,26 @@
     "mid42",
     "burst"
    ]
+  },
+  "B2TVD": {
+   "first_fail": "burst",
+   "heaviest_pass": "mid42",
+   "heaviest_pass_offered_rps": 8.1783194355356,
+   "tested": [
+    "mid45",
+    "mid42",
+    "burst"
+   ]
+  },
+  "B2TVD4": {
+   "first_fail": "burst",
+   "heaviest_pass": "mid42",
+   "heaviest_pass_offered_rps": 8.1783194355356,
+   "tested": [
+    "mid45",
+    "mid42",
+    "burst"
+   ]
   }
  },
  "cells": {
@@ -185,6 +205,48 @@
    "chat": 1.0,
    "doc": 1.0,
    "goodput_req_per_s": 6.955945620102563,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TVD/burst": {
+   "chat": 0.9916666666666667,
+   "doc": 0.8690476190476191,
+   "goodput_req_per_s": 7.385345683377347,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TVD/mid42": {
+   "chat": 0.9916666666666667,
+   "doc": 0.9880952380952381,
+   "goodput_req_per_s": 7.397621011107373,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TVD/mid45": {
+   "chat": 1.0,
+   "doc": 1.0,
+   "goodput_req_per_s": 6.951051012195881,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TVD4/burst": {
+   "chat": 1.0,
+   "doc": 0.8571428571428571,
+   "goodput_req_per_s": 7.121713109627706,
+   "pass": false,
+   "runs": 2
+  },
+  "B2TVD4/mid42": {
+   "chat": 1.0,
+   "doc": 0.9404761904761905,
+   "goodput_req_per_s": 7.292709325650868,
+   "pass": true,
+   "runs": 2
+  },
+  "B2TVD4/mid45": {
+   "chat": 1.0,
+   "doc": 0.9523809523809523,
+   "goodput_req_per_s": 6.815343389840942,
    "pass": true,
    "runs": 2
   }

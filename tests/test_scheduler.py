@@ -202,3 +202,38 @@ def test_class_demote_never_demotes_chat_and_still_serves_doomed_doc():
         assert doc_ticket.demoted
         await scheduler.finish(doc_ticket)
     asyncio.run(run())
+
+
+def test_engine_demote_chat_bypasses_the_document_cap():
+    async def run():
+        scheduler = AdmissionScheduler(policy="engine_demote", max_inflight=1, max_wait_ms=500, min_shared_tokens=8,
+                                       block_size=4, doc_slo_ms=10000, ms_per_1k_tokens=100.0)
+        doc1 = await scheduler.admit("doc1", prefix_blocks(list(range(16)), block_size=4), priority=1, input_tokens=1000)
+        doc2 = asyncio.create_task(scheduler.admit("doc2", prefix_blocks(list(range(100, 116)), block_size=4), priority=1, input_tokens=1000))
+        await asyncio.sleep(0.02)
+        assert not doc2.done()  # second document waits for the document cap
+        chat = await asyncio.wait_for(scheduler.admit("chat", prefix_blocks(list(range(200, 216)), block_size=4), priority=0), 0.5)
+        assert chat.priority == 0 and not doc2.done()  # chat went straight through
+        await scheduler.finish(chat)
+        await scheduler.finish(doc1)
+        await scheduler.finish(await asyncio.wait_for(doc2, 0.5))
+    asyncio.run(run())
+
+
+def test_engine_demote_serves_doomed_document_after_savable_one():
+    async def run():
+        scheduler = AdmissionScheduler(policy="engine_demote", max_inflight=1, max_wait_ms=500, min_shared_tokens=8,
+                                       block_size=4, doc_slo_ms=1000, ms_per_1k_tokens=100.0)
+        busy = await scheduler.admit("busy", prefix_blocks(list(range(16)), block_size=4), priority=1, input_tokens=100)
+        old = asyncio.create_task(scheduler.admit("old", prefix_blocks(list(range(100, 116)), block_size=4), priority=1, input_tokens=5000))
+        await asyncio.sleep(0.6)  # old has waited 600 ms: 600 + 500 > 1000, doomed
+        young = asyncio.create_task(scheduler.admit("young", prefix_blocks(list(range(300, 316)), block_size=4), priority=1, input_tokens=5000))
+        await asyncio.sleep(0.01)
+        await scheduler.finish(busy)
+        first = await asyncio.wait_for(asyncio.wait({old, young}, return_when=asyncio.FIRST_COMPLETED), 0.5)
+        assert young in first[0] and old not in first[0]
+        await scheduler.finish(young.result())
+        old_ticket = await asyncio.wait_for(old, 0.5)
+        assert old_ticket.demoted
+        await scheduler.finish(old_ticket)
+    asyncio.run(run())

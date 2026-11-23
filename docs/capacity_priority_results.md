@@ -40,6 +40,8 @@ On seed 11 FIFO passes at a heavier level than on seed 7 for the 8192 configs an
 - **K2 (B2 2048 passes a level heavier than B1): met on seed 7 only** (mid65 vs medium). On seed 11 it was not testable because both fail the lightest level that was run.
 - **K3 (best of chat-first / demotion passes heavier than B2 2048): met on both seeds** (seed 7 mid50 vs mid65; seed 11 mid45 or burst vs below range).
 
+> Note added after study 8 ([combo_results.md](combo_results.md)): the engine-priority cells below are single two-repeat measurements; a second effective replicate showed doc SLO differences up to 0.095 between replicates, so the seed 7 mid45 pass (doc 0.917) is within noise.
+
 ## Part B: where the priority ordering lives
 
 vLLM `--scheduling-policy priority` (confirmed in `/server_info`), request `priority` 0 for chat and 1 for doc; the gateway passes requests through with 64 in-flight and queueing happens in vLLM's waiting queue (`max_num_seqs` stays 16).

@@ -11,7 +11,7 @@ from typing import Literal
 
 from .prefix import group_digest, shared_prefix_tokens
 
-Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack", "class_demote"]
+Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack", "class_demote", "engine_demote"]
 
 
 @dataclass(slots=True)
@@ -54,7 +54,7 @@ class AdmissionScheduler:
         slack_margin_ms: int = 500,
         cached_service_ms: int = 150,
     ) -> None:
-        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack", "class_demote"):
+        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack", "class_demote", "engine_demote"):
             raise ValueError(f"unknown policy {policy}")
         if min(max_inflight, max_queue, max_wait_ms, min_shared_tokens, block_size) <= 0:
             raise ValueError("capacities and thresholds must be positive")
@@ -98,7 +98,7 @@ class AdmissionScheduler:
         return min(matches, key=lambda t: t.dispatch_ns or t.enqueued_ns, default=None)
 
     def _eligible(self, ticket: Ticket, now: int) -> bool:
-        if self.policy in ("fifo", "class_first", "class_aged", "class_slack", "class_demote"):
+        if self.policy in ("fifo", "class_first", "class_aged", "class_slack", "class_demote", "engine_demote"):
             return True
         if self.policy == "static_group":
             return len(self._queue) > 1 or now - ticket.enqueued_ns >= self.group_window_ns
@@ -120,6 +120,25 @@ class AdmissionScheduler:
         return producer.first_token_ns is not None and now >= producer.first_token_ns + self.store_grace_ns
 
     def _choose(self, now: int) -> Ticket | None:
+        if self.policy == "engine_demote":
+            # Chat bypasses the cap and goes straight to the engine, whose priority scheduling (chat 0, doc 1, set by the
+            # client) puts it ahead of waiting documents. Documents are capped at max_inflight in flight and admitted in
+            # demotion order: a doc that cannot meet its SLO even if admitted now is served after the others.
+            chat = [t for t in self._queue if t.priority == 0]
+            if chat:
+                return chat[0]
+            if sum(1 for t in self._active.values() if t.priority != 0) >= self.max_inflight:
+                return None
+            docs = [t for t in self._queue if t.priority != 0]
+            if not docs:
+                return None
+
+            def doc_tier(t: Ticket) -> int:
+                service_ns = self.cached_service_ns if t.recent_match else t.input_tokens * self.ns_per_token
+                return 2 if (now - t.arrival_ns) + service_ns > self.doc_slo_ns else 1
+            chosen_doc = min(docs, key=doc_tier)
+            chosen_doc.demoted = doc_tier(chosen_doc) == 2
+            return chosen_doc
         if len(self._active) >= self.max_inflight:
             return None
         eligible = [ticket for ticket in self._queue if self._eligible(ticket, now)]

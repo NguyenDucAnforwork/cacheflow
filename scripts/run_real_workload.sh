@@ -8,6 +8,8 @@
 #   D = gateway policy class_demote (chat first; docs that cannot meet their SLO are served last)
 #   W = wide gateway (64 in-flight) without engine priority (controls: B2TW FIFO, B2TPW gateway chat-first)
 #   V24/V32, P24/P32 = engine priority / gateway chat-first with 24 or 32 in-flight at the gateway (width sweep)
+#   VD4 = same with 4 documents in flight (attempt 2, binding cap)
+#   VD = engine priority for chat + gateway demotion for documents (policy engine_demote, 16 documents in flight, chat bypasses the cap)
 #   V = engine-level priority (vLLM --scheduling-policy priority, request priority chat 0 / doc 1, gateway pass-through with 64 in-flight)
 #   S = gateway policy class_slack (chat first; a doc is promoted once its remaining slack is below its expected service time + margin)
 # env: TRACE_PREFIX (default real), RUN_PREFIX (default real), REGISTRY (default results/real_registry.csv)
@@ -31,6 +33,8 @@ for spec in "$@"; do
         B2TS) mode=B2; mnbt=8192; policy=class_slack ;;
         B2TD) mode=B2; mnbt=8192; policy=class_demote ;;
         B2TV) mode=B2; mnbt=8192; engine_priority=1 ;;
+        B2TVD4) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=4 ;;
+        B2TVD) mode=B2; mnbt=8192; policy=engine_demote; engine_priority=1; width=16 ;;
         B2TV24) mode=B2; mnbt=8192; engine_priority=1; width=24 ;;
         B2TV32) mode=B2; mnbt=8192; engine_priority=1; width=32 ;;
         B2TP24) mode=B2; mnbt=8192; policy=class_first; width=24 ;;
