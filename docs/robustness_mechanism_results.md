@@ -1,5 +1,8 @@
 # Robustness of the capacity result, and why engine-level priority wins
 
+> **Correction after the statistical hardening ([hardening_results.md](hardening_results.md)):** R2 (engine priority heavier than gateway chat-first on at least 2 of 3 seeds) is **no longer met**: after 6 repeats it is heavier on 1 of 3 seeds (seed 23) and ties on seeds 7 and 11, and chat-first + demotion is the most consistent configuration. The width-sweep mechanism result is unaffected.
+
+
 Sixth follow-up. Pre-registered in [robustness_mechanism_prereg.md](robustness_mechanism_prereg.md); evaluated with `python -m cacheflow.robustness_summary`. Builds on [capacity_priority_results.md](capacity_priority_results.md). Same host (RTX 3090), stack, model, SLOs (chat TTFT <= 1 s, doc <= 3 s, TPOT <= 100 ms), B2, `max_num_batched_tokens` 8192; 60 new runs, 2 repeats per cell with reversed order on the second repeat. Data: `results/real60_registry.csv`, `results/s11_registry.csv`, `results/s23_registry.csv`, `results/real/capacity_seed{7,11,23}.json`, `results/real/robustness_summary.json`, raw `results/raw/s23-*`, `*mid42*`, `*b2tv24*`, `*b2tv32*`, `*b2tp24*`, `*b2tp32*`, figures `results/figures/capacity/`.
 
 ## Part 1: is the headline robust across document sets?

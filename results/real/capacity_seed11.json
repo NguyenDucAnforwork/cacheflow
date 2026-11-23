@@ -40,9 +40,9 @@
    ]
   },
   "B2TP": {
-   "first_fail": "mid42",
-   "heaviest_pass": "mid45",
-   "heaviest_pass_offered_rps": 7.566765578635015,
+   "first_fail": "burst",
+   "heaviest_pass": "mid42",
+   "heaviest_pass_offered_rps": 8.1783194355356,
    "tested": [
     "mid50",
     "mid45",
@@ -132,18 +132,18 @@
    "runs": 2
   },
   "B2TD/burst": {
-   "chat": 0.9916666666666667,
-   "doc": 0.9166666666666666,
-   "goodput_req_per_s": 7.567023125615333,
+   "chat": 0.9833333333333333,
+   "doc": 0.9206349206349206,
+   "goodput_req_per_s": 7.508394770813735,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TD/mid42": {
-   "chat": 0.975,
-   "doc": 0.9523809523809523,
-   "goodput_req_per_s": 7.233259064452059,
+   "chat": 0.9555555555555556,
+   "doc": 0.9563492063492064,
+   "goodput_req_per_s": 7.154412776034319,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TD/mid45": {
    "chat": 1.0,
@@ -160,18 +160,18 @@
    "runs": 2
   },
   "B2TP/burst": {
-   "chat": 0.9916666666666667,
-   "doc": 0.8333333333333334,
-   "goodput_req_per_s": 7.271309928068169,
+   "chat": 0.9861111111111112,
+   "doc": 0.8412698412698413,
+   "goodput_req_per_s": 7.268527741723523,
    "pass": false,
-   "runs": 2
+   "runs": 6
   },
   "B2TP/mid42": {
-   "chat": 0.9333333333333333,
+   "chat": 0.9555555555555556,
    "doc": 0.9642857142857143,
-   "goodput_req_per_s": 7.043763625325788,
-   "pass": false,
-   "runs": 2
+   "goodput_req_per_s": 7.147945676587636,
+   "pass": true,
+   "runs": 6
   },
   "B2TP/mid45": {
    "chat": 1.0,
@@ -188,18 +188,18 @@
    "runs": 2
   },
   "B2TV/burst": {
-   "chat": 0.9833333333333333,
-   "doc": 0.8095238095238095,
-   "goodput_req_per_s": 7.148694932617852,
+   "chat": 0.9861111111111112,
+   "doc": 0.8333333333333334,
+   "goodput_req_per_s": 7.246898640773222,
    "pass": false,
-   "runs": 2
+   "runs": 6
   },
   "B2TV/mid42": {
    "chat": 1.0,
-   "doc": 0.9880952380952381,
-   "goodput_req_per_s": 7.409319664791325,
+   "doc": 0.9682539682539683,
+   "goodput_req_per_s": 7.358644269001801,
    "pass": true,
-   "runs": 2
+   "runs": 6
   },
   "B2TV/mid45": {
    "chat": 1.0,

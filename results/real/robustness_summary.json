@@ -1,5 +1,5 @@
 {
- "R2_wins": 2,
+ "R2_wins": 1,
  "R3": true,
  "mechanism": {
   "cell_verdicts": [
@@ -12,10 +12,10 @@
  },
  "seeds": {
   "11": {
-   "b2tv_heavier_than_b2tp": true,
+   "b2tv_heavier_than_b2tp": false,
    "common_grid_heaviest_pass": {
     "B2TD": "burst",
-    "B2TP": "mid45",
+    "B2TP": "mid42",
     "B2TV": "mid42"
    },
    "ordering": [
@@ -33,7 +33,7 @@
     ],
     [
      "B2TP",
-     "mid45"
+     "mid42"
     ],
     [
      "B2TV",
@@ -43,11 +43,11 @@
    "ordering_monotone": true
   },
   "23": {
-   "b2tv_heavier_than_b2tp": false,
+   "b2tv_heavier_than_b2tp": true,
    "common_grid_heaviest_pass": {
     "B2TD": "mid45",
     "B2TP": "mid50",
-    "B2TV": "mid50"
+    "B2TV": "mid45"
    },
    "ordering": [
     [
@@ -68,17 +68,17 @@
     ],
     [
      "B2TV",
-     "mid50"
+     "mid45"
     ]
    ],
    "ordering_monotone": true
   },
   "7": {
-   "b2tv_heavier_than_b2tp": true,
+   "b2tv_heavier_than_b2tp": false,
    "common_grid_heaviest_pass": {
     "B2TD": "mid50",
     "B2TP": "mid50",
-    "B2TV": "mid45"
+    "B2TV": "mid50"
    },
    "ordering": [
     [
@@ -99,7 +99,7 @@
     ],
     [
      "B2TV",
-     "mid45"
+     "mid50"
     ]
    ],
    "ordering_monotone": true

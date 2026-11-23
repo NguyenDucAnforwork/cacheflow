@@ -1,5 +1,8 @@
 # SLO-constrained capacity, engine-level priority, and real arrival structure
 
+> **Correction after the statistical hardening ([hardening_results.md](hardening_results.md)):** with 6 repeats at the decisive cells, engine priority on seed 7 fails mid45 (0.986 / 0.877, not 0.99 / 0.92) and all three class-ordering policies top out at 6.9 req/s, so the seed-7 capacity gain over B1 is **1.7x, not 1.9x**, and the +10% step attributed to engine priority below is not supported. The mechanism findings (width sweep) are unaffected.
+
+
 Fifth follow-up. Pre-registered in [capacity_prereg.md](capacity_prereg.md) (Part A capacity ladder, Part B engine priority, Part C BurstGPT windows; an addendum for the control runs was written after seeing the first engine-priority results and is marked as such there). Same host (RTX 3090), stack, model and SLOs (chat TTFT <= 1 s, doc <= 3 s, TPOT <= 100 ms). 56 new runs (36 capacity and engine-priority runs, including the smoke-test run of the seed 7 mid50 engine-priority cell, 12 BurstGPT runs, 8 control runs); earlier cells are reused for the other policies. Data: `results/real60_registry.csv`, `results/s11_registry.csv`, `results/bg_registry.csv`, `results/real/capacity_seed7.json`, `capacity_seed11.json`, `bg_analysis.json`, raw `results/raw/*b2tv*`, `*b2tw*`, `*b2tpw*`, `bg-*`, `*-b1-*`, figures `results/figures/capacity/`.
 
 ## Part A: capacity ladder

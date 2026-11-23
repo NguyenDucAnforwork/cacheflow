@@ -1,5 +1,8 @@
 # Engine-level priority combined with doomed-document demotion
 
+> **Correction after the statistical hardening ([hardening_results.md](hardening_results.md)):** the pooled-replicate argument in this document was a post hoc estimate; study 9 replaced it with 6 repeats per decisive cell. Its main numbers: engine priority 0.986 / 0.877 at seed 7 mid45 (fail), doc run SD 0.010 to 0.018 for demotion versus 0.025 to 0.041 for engine priority.
+
+
 Seventh follow-up. Hypotheses C1 to C4 and the attempt 2 design are in [combo_prereg.md](combo_prereg.md) (the attempt 2 addendum was written after attempt 1 and before the attempt 2 runs; it is marked there). Builds on [robustness_mechanism_results.md](robustness_mechanism_results.md). Same host, stack, model, SLOs (chat TTFT <= 1 s, doc <= 3 s, TPOT <= 100 ms), B2, `max_num_batched_tokens` 8192, 2 repeats per cell with reversed order on repeat 2; 40 new runs (20 per attempt). Data: `results/real/combo_summary_attempt{1,2}.json`, `results/real/capacity_seed{7,11,23}.json`, raw `results/raw/*b2tvd-*` (attempt 1) and `*b2tvd4-*` (attempt 2), `results/raw/gateway_combo{,4}_runs.jsonl`.
 
 ## Design
