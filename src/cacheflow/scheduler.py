@@ -11,7 +11,7 @@ from typing import Literal
 
 from .prefix import group_digest, shared_prefix_tokens
 
-Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack"]
+Policy = Literal["fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack", "class_demote"]
 
 
 @dataclass(slots=True)
@@ -32,6 +32,7 @@ class Ticket:
     readiness_estimate_ms: float | None = None
     priority: int = 0  # lower is admitted first under policy class_first / class_aged
     input_tokens: int = 0
+    demoted: bool = False  # class_demote: doc judged unable to meet its SLO, served in the best-effort tier
     promoted: bool = False  # class_aged: a priority-1 ticket admitted ahead of chat because it waited past the age cap
 
 
@@ -51,8 +52,9 @@ class AdmissionScheduler:
         doc_slo_ms: int = 3000,
         ms_per_1k_tokens: float = 72.0,
         slack_margin_ms: int = 500,
+        cached_service_ms: int = 150,
     ) -> None:
-        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack"):
+        if policy not in ("fifo", "static_group", "dhas", "dhas_guarded", "class_first", "class_aged", "class_slack", "class_demote"):
             raise ValueError(f"unknown policy {policy}")
         if min(max_inflight, max_queue, max_wait_ms, min_shared_tokens, block_size) <= 0:
             raise ValueError("capacities and thresholds must be positive")
@@ -68,6 +70,7 @@ class AdmissionScheduler:
         self.doc_slo_ns = doc_slo_ms * 1_000_000
         self.ns_per_token = ms_per_1k_tokens * 1_000.0  # ms per 1k tokens -> ns per token
         self.slack_margin_ns = slack_margin_ms * 1_000_000
+        self.cached_service_ns = cached_service_ms * 1_000_000
         self._condition = asyncio.Condition()
         self._queue: list[Ticket] = []
         self._active: dict[str, Ticket] = {}
@@ -95,7 +98,7 @@ class AdmissionScheduler:
         return min(matches, key=lambda t: t.dispatch_ns or t.enqueued_ns, default=None)
 
     def _eligible(self, ticket: Ticket, now: int) -> bool:
-        if self.policy in ("fifo", "class_first", "class_aged", "class_slack"):
+        if self.policy in ("fifo", "class_first", "class_aged", "class_slack", "class_demote"):
             return True
         if self.policy == "static_group":
             return len(self._queue) > 1 or now - ticket.enqueued_ns >= self.group_window_ns
@@ -124,6 +127,17 @@ class AdmissionScheduler:
             return None
         if self.policy == "class_first":
             return min(eligible, key=lambda t: t.priority)  # FIFO within a priority level
+        if self.policy == "class_demote":
+            # Chat first. A doc that cannot meet its SLO even if admitted now (waited + expected service > SLO) goes to a
+            # best-effort tier served after everything else. Still served, never rejected. FIFO within a tier.
+            def tier(t: Ticket) -> int:
+                if t.priority == 0:
+                    return 0
+                service_ns = self.cached_service_ns if t.recent_match else t.input_tokens * self.ns_per_token
+                return 2 if (now - t.arrival_ns) + service_ns > self.doc_slo_ns else 1
+            chosen = min(eligible, key=tier)
+            chosen.demoted = tier(chosen) == 2
+            return chosen
         if self.policy in ("class_aged", "class_slack"):
             # Chat first, but a request that has waited at least age_cap since its arrival is treated as chat.
             # Ties (min keeps the first) are FIFO by queue order.

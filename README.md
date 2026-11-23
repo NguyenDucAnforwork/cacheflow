@@ -36,6 +36,10 @@ Is chat-first admission still a trade-off below saturation? At first-visit spaci
 
 On a second document set (seed 11) the chat-first effect at saturation replicates (chat SLO +0.53, doc SLO -0.17, versus +0.64 and -0.19 on seed 7), but the load at which FIFO starts to fail does not transfer, so first-visit spacing is not a capacity measure. A slack-based promotion rule (`class_slack`, parameters fixed beforehand) found no load where both classes reach target: at 0.45 s spacing FIFO / chat-first / slack give chat 0.57 / 0.94 / 0.78 and doc 1.00 / 0.83 / 0.95, and at 0.5 s it gives up chat-first's free case (chat 0.92 vs 0.98). Pre-registered hypotheses, tables and limitations: [docs/replication_slack_results.md](docs/replication_slack_results.md) ([prereg](docs/replication_slack_prereg.md)).
 
+## Demoting doomed documents (fourth follow-up)
+
+A gateway policy that serves chat first and sends documents that can no longer meet their 3 s SLO (waited time plus expected service time above the SLO) to a best-effort tier, still serving them. On the pre-registered cells it raised doc SLO attainment by 0.08 to 0.11 with chat unchanged at 0.45 s spacing and on a second document set at burst, and traded 0.05 chat for 0.095 doc on the main burst cell (that hypothesis missed its 0.10 threshold by 0.005). It adds no capacity (computed prefill tokens identical, goodput 0 to +6%) and lengthens the tail of the demoted documents (p95 4.6 s to 7.5 s on the main burst cell). Details: [docs/demotion_results.md](docs/demotion_results.md) ([prereg](docs/demotion_prereg.md)).
+
 ## Project map
 
 - [Results and caveats](docs/main_results.md), [design decisions](docs/decisions.md), [ideas](docs/ideas.md), [lessons](docs/lessons_learned.md), and [reproduction steps](docs/reproduce.md) are the five living docs; [real-data workload results](docs/real_workload_results.md) is a separate study.

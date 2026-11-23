@@ -19,9 +19,9 @@ from .real_analyze import SLO_TTFT_MS, _gateway_index
 
 LOADS = ["medium", "mid65", "mid50", "mid45", "burst"]
 FIRST_GAP_MS = {"medium": 900, "mid65": 650, "mid50": 500, "mid45": 450, "burst": 400}
-POLICIES = ["B2T", "B2TP", "B2TA", "B2TS"]
-LABEL = {"B2T": "FIFO", "B2TP": "chat-first", "B2TA": "chat-first + age cap", "B2TS": "chat-first + slack promotion"}
-COLORS = {"B2T": "#E69F00", "B2TP": "#CC79A7", "B2TA": "#009E73", "B2TS": "#0072B2"}
+POLICIES = ["B2T", "B2TP", "B2TA", "B2TS", "B2TD"]
+LABEL = {"B2T": "FIFO", "B2TP": "chat-first", "B2TA": "chat-first + age cap", "B2TS": "chat-first + slack promotion", "B2TD": "chat-first + doomed-doc demotion"}
+COLORS = {"B2T": "#E69F00", "B2TP": "#CC79A7", "B2TA": "#009E73", "B2TS": "#0072B2", "B2TD": "#D55E00"}
 
 
 def attain_diff_ci(a: dict[str, list[bool]], b: dict[str, list[bool]], iterations: int = 2000, seed: int = 7):
@@ -98,22 +98,32 @@ def main() -> None:
         gateway.update(_gateway_index(Path(path), set(keep)))
     details = [run_detail(rid, Path(args.raw_dir), gateway) for rid in keep]
     promoted = defaultdict(int)
+    demoted = defaultdict(int)
+    demoted_ids = set()
     for (rid, req), row in gateway.items():
         if row.get("promoted"):
             promoted[rid] += 1
+        if row.get("demoted"):
+            demoted[rid] += 1
+            demoted_ids.add((rid, req))
     groups = defaultdict(list)
     for d in details:
         groups[f"{d['load']}/{d['config']}"].append(d)
     cells = {key: cell(items) for key, items in groups.items()}
     for key, items in groups.items():
         cells[key]["promoted_per_run"] = [promoted.get(d["run_id"], 0) for d in items]
+        cells[key]["demoted_per_run"] = [demoted.get(d["run_id"], 0) for d in items]
+        dem = [(d["run_id"], p) for d in items for p in d["requests_detail"] if (d["run_id"], p["request_id"]) in demoted_ids]
+        cells[key]["demoted_outcomes"] = {"n": len(dem), "met_slo": sum(p["slo"] for _, p in dem),
+                                         "first_visit": sum(p["request_id"].endswith("q0") for _, p in dem),
+                                         "first_visit_met_slo": sum(p["slo"] for _, p in dem if p["request_id"].endswith("q0"))}
         cells[key]["doc_gateway_wait_max_ms"] = max(p["gateway_wait_ms"] for d in items for p in d["requests_detail"]
                                                     if p["cls"] == "doc" and p["gateway_wait_ms"] is not None)
         cells[key]["chat_slo_misses_with_first_token_over_1s"] = sum(
             1 for d in items for p in d["requests_detail"] if p["cls"] == "chat" and not p["slo"])
     comparisons = []
     for load in LOADS:
-        for a, b in (("B2T", "B2TP"), ("B2T", "B2TA"), ("B2TP", "B2TA"), ("B2T", "B2TS"), ("B2TP", "B2TS")):
+        for a, b in (("B2T", "B2TP"), ("B2T", "B2TA"), ("B2TP", "B2TA"), ("B2T", "B2TS"), ("B2TP", "B2TS"), ("B2T", "B2TD"), ("B2TP", "B2TD")):
             if f"{load}/{a}" not in groups or f"{load}/{b}" not in groups:
                 continue
             for cls in ("chat", "doc"):
@@ -144,7 +154,7 @@ def main() -> None:
         c = cells[key]
         print(f"{key:12s} runs={c['n_runs']} chat p95={c['chat']['ttft_p95_ms']:.0f} slo={c['chat']['slo_attainment']:.2f} | "
               f"doc p95={c['doc']['ttft_p95_ms']:.0f} slo={c['doc']['slo_attainment']:.2f} | goodput={c['goodput_req_per_s']:.2f} | "
-              f"chat gw wait mean={c['chat']['gateway_wait_mean_ms']:.0f} doc gw wait max={c['doc_gateway_wait_max_ms']:.0f} promoted={c['promoted_per_run']} "
+              f"chat gw wait mean={c['chat']['gateway_wait_mean_ms']:.0f} doc gw wait max={c['doc_gateway_wait_max_ms']:.0f} promoted={c['promoted_per_run']} demoted={c['demoted_per_run']} {c['demoted_outcomes']} "
               f"dur={c['duration_s']:.1f}")
     for item in comparisons:
         print(f"{item['load']:7s} {item['class']:4s} {item['from']}->{item['to']}: p95 {item['p95_from_ms']:.0f}->{item['p95_to_ms']:.0f} "
